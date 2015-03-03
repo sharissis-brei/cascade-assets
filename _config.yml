@@ -13,11 +13,11 @@ assets:
   # Pathname of the destination of generated (bundled) assets relative
   # to the destination of the root.
   #
-  dirname: assets
+  dirname: _assets
   #
   # Base URL of assets paths.
   #
-  baseurl: /assets/
+  baseurl: /_assets/
   #
   # Pathnames where to find assets relative to the root of the site.
   #
