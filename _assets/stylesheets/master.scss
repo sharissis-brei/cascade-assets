@@ -1,4 +1,7 @@
 // Base
+@import "base/variables";
+@import "base/mixins";
+
 @import "base/accordion";
 @import "base/big-masthead";
 @import "base/breadcrumbs";
@@ -26,7 +29,6 @@
 @import "base/main-nav";
 @import "base/masthead-placeholder";
 @import "base/misc";
-@import "base/mixins";
 @import "base/new-button";
 @import "base/news-events";
 @import "base/news-events-content";
@@ -37,11 +39,10 @@
 @import "base/sub-nav-links";
 @import "base/tabs";
 @import "base/tipsy";
-@import "base/variables";
 
 // Layout
 @import "layout/admission/primary-content";
-@import "layout/degress-programs/main";
+@import "layout/degrees-programs/main";
 @import "layout/directory/primary-content";
 @import "layout/directory/right-column";
 @import "layout/faculty/primary-content";
