@@ -60,7 +60,7 @@
   width: 100%;
   left: -100%;
   z-index: 110;
-  background-image: url("../level/img/slide_fade_left.png");
+  background-image: image-url('slide_fade_left.png');
   background-repeat: repeat-y;
   background-position: right top;
 }
@@ -72,7 +72,7 @@
   width: 100%;
   right: -100%;
   z-index: 110;
-  background-image: url("../level/img/slide_fade_right.png");
+  background-image: image-url('slide_fade_right.png');
   background-repeat: repeat-y;
   background-position: left top;
 }
@@ -273,7 +273,7 @@ th.header-light {
     .bird {
       // width: 54px;
       // height: 50px;
-      // background-image: url(../img/tbird.png);
+      // background-image: image-url('tbird.png');
       // position: absolute;
       // top: 0;
       // left: 0;

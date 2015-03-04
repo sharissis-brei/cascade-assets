@@ -19,11 +19,11 @@
 
 #social_follow_us {
   .banner {
-    background-image: url('[system-asset]/_files/social_accounts/images/ces_follow_us.png[/system-asset]');
+    background-image: image-url('ces_follow_us.png');
   }
   li span {
     &.hover_state, &.inactive_state {
-      background: url('[system-asset]/_files/social_accounts/images/ces_icons.png[/system-asset]');
+      background: image-url('ces_icons.png');
     }
   }
 }

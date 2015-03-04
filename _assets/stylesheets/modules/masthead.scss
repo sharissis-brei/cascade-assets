@@ -12,7 +12,7 @@
     color: $white;
     top: -176px;
     cursor: pointer;
-    background-image: url("../img/gray_arrows.png");
+    background-image: image-url('gray_arrows.png');
     background-repeat: no-repeat;
     &.disabled {
       opacity: .4;
@@ -95,7 +95,7 @@
     &:before {
       display: block;
       content: '';
-      background-image: url("../img/pointy_new.png");
+      // background-image: image-url('pointy_new.png');
       background-repeat: no-repeat;
       background-position: center top;
       position: absolute;
@@ -248,7 +248,7 @@
 	    a {
 	      width: 13px;
 	      height: 13px;
-	      background: url(../img/pager_sprite.png) no-repeat;
+	      background: image-url('pager_sprite.png') no-repeat;
 	      background-position: -13px 0;
 	      text-indent: 999px;
 	      overflow: hidden;

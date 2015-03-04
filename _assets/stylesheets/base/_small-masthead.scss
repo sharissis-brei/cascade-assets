@@ -16,7 +16,7 @@
 		    bottom: 0;
 		    left: 0;
 		    background-color: transparent;
-		    background-image: url("../level/img/masthead_bg_small.png");
+		    background-image: image-url('masthead_bg_small.png');
 		    background-repeat: no-repeat;
 		    background-position: left top;
 		  }
@@ -60,7 +60,7 @@
         bottom: 0;
         left: 0;
         background-color: transparent;
-        background-image: url("../img/masthead_bg_small.png");
+        background-image: image-url('masthead_bg_small.png');
         background-repeat: no-repeat;
         background-position: left top;
       }

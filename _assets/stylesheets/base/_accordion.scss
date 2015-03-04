@@ -84,7 +84,7 @@
     font-weight: 800;
     text-transform: none;
     .show, .hide {
-      background-image: url(img/miscButtons.png);
+      background-image: image-url('miscButtons.png');
       // background-position: center center;
       background-position: -23px 0;
       background-repeat: no-repeat;
@@ -102,7 +102,7 @@
     }
     .show {
       // background-color: #d9c782;
-      // background-image: url("../img/down_arrow.png");
+      // background-image: image-url('down_arrow.png');
       background-position: -23px 0;
       display: block;
       &:hover {
@@ -112,7 +112,7 @@
     }
     .hide {
       // background-color: #b3af96;
-      // background-image: url("../img/up_arrow.png");
+      // background-image: image-url('up_arrow.png');
       background-position: -23px -29px;
       display: none;
       &:hover {

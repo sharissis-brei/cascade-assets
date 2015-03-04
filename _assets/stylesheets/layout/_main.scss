@@ -104,7 +104,7 @@
       }
     }
     @include bp(l) {
-      background-image: url("../img/tab_shadow.png");
+      background-image: image-url('tab_shadow.png');
       background-position: left 3px;
       height: auto;
       height: 35px;

@@ -44,7 +44,7 @@
       .arrow {
         top: 50%;
         margin-top: -16px;
-        background: url(/_files/img/up-arrow.png) no-repeat;
+        background: image-url('up-arrow.png') no-repeat;
         text-indent: -999px;
         overflow: hidden;
       }
@@ -70,7 +70,7 @@
       right: 0;
       top: 50%;
       margin-top: -16px;
-      background: url(/_files/img/down-arrow.png) no-repeat;
+      background: image-url('down-arrow.png') no-repeat;
       text-indent: -999px;
       overflow: hidden;
       // background-color: $black;

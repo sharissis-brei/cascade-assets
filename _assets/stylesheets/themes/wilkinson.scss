@@ -23,11 +23,11 @@
 
 #social_follow_us {
   .banner {
-    background-image: url('[system-asset]/_files/social_accounts/images/wilkinson_follow_us.png[/system-asset]');
+    background-image: image-url('wilkinson_follow_us.png');
   }
   li span {
     &.hover_state, &.inactive_state {
-      background: url('[system-asset]/_files/social_accounts/images/wilkinson_icons.png[/system-asset]');
+      background: image-url('wilkinson_icons.png');
     }
   }
 }

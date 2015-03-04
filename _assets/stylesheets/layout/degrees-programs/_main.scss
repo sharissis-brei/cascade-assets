@@ -28,7 +28,7 @@
       }
     }
     @include bp(l) {
-      // background-image: url("../img/tab_shadow_long.png");  
+      // background-image: image-url('tab_shadow_long.png');  
       // background-position: left bottom;
       // height: auto;
       height: 35px;

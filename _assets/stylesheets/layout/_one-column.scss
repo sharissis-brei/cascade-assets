@@ -80,7 +80,7 @@
     margin: 0 auto 0 auto;
     &:before {
     	@include bp(l) {
-    		background-image: url("oneColumnMasthead.png");
+    		// background-image: image-url('oneColumnMasthead.png');
     	}
     }
     > div {

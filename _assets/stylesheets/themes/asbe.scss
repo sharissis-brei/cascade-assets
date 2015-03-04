@@ -25,11 +25,11 @@ div.styleTwo a {
 
 #social_follow_us {
   .banner {
-    background-image: url('[system-asset]/_files/social_accounts/images/asbe_follow_us.png[/system-asset]');
+    background-image: image-url('asbe_follow_us.png');
   }
   li span {
     &.hover_state, &.inactive_state {
-      background: url('[system-asset]/_files/social_accounts/images/asbe_icons.png[/system-asset]');
+      background: image-url('asbe_icons.png');
     }
   }
 }

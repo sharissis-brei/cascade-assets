@@ -24,7 +24,7 @@
     position: absolute;
     width: 73px;
     height: 28px;
-    background: url('/_files/social_accounts/images/default_follow_us.png');
+    background: image-url('default_follow_us.png');
     margin-left: -8px;
     left: -57px;
     top: 6px;
@@ -44,7 +44,7 @@
         position: absolute;
         top: 0;
         left: 0;
-        background: url('/_files/social_accounts/images/default_icons.png') -1px -1px;
+        background: image-url('default_icons.png') -1px -1px;
         z-index: 100;
       }
       &.inactive_state {
@@ -53,7 +53,7 @@
         position: absolute;
         top: 0;
         left: 0;
-        background: url('/_files/social_accounts/images/default_icons.png') -1px -1px;
+        background: image-url('default_icons.png') -1px -1px;
         z-index: 100;
         z-index: 200;
       }

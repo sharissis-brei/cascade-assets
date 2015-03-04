@@ -6,7 +6,7 @@
     margin: 0 auto;
   }
   html:before {
-    content: url("../img/logo.png");
+    content: image-url('logo.png');
   }
   header, .rotatorContainer, .toggleExpanded, .leftNav, footer {
     display: none;

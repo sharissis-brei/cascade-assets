@@ -7,7 +7,7 @@
   right: 0;
   top: 0;
   @include bp(l) {
-  	background-image: url("../level/img/masthead_bg_small.png");
+  	background-image: image-url('masthead_bg_small.png');
     background-position: left top;
     background-repeat: no-repeat;
   }

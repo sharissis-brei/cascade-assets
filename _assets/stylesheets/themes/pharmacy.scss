@@ -36,11 +36,11 @@
 
 #social_follow_us {
   .banner {
-    background-image: url('/_files/social_accounts/images/pharmacy_follow_us.png');
+    background-image: image-url('pharmacy_follow_us.png');
   }
   li span {
     &.hover_state, &.inactive_state {
-      background: url('/_files/social_accounts/images/pharmacy_icons.png');
+      background: image-url('pharmacy_icons.png');
     }
   }
 }

@@ -2,7 +2,7 @@
 
 .footer {
   background-color: #e5e4de;
-  // background-image: url(img/footerBg.jpg);
+  // background-image: image-url('footerBg.jpg');
   // background-repeat: no-repeat;
   // background-position: left 150px;
   color: #4A4949;
@@ -105,7 +105,7 @@
 //       width: 15px;
 //       top: 0;
 //       right: -15px;
-//       background-image: url("../img/ribbon_tails.png");
+//       background-image: image-url('ribbon_tails.png');
 //       background-repeat: no-repeat;
 //       background-position: right -42px;
 //     }
@@ -160,7 +160,7 @@
   }
   .footer-ribbon-after {
     @include bp(m) {
-      background-image: url(img/ribbon_tails.png);
+      background-image: image-url('ribbon_tails.png');
       background-repeat: no-repeat;
       background-position: right 0;
       position: absolute;
@@ -228,7 +228,7 @@
     margin: 0;
     cursor: pointer;
     &:after {
-      background-image: url(img/miscButtons.png);
+      background-image: image-url('miscButtons.png');
       background-position: -23px 0;
       margin-top: -4px;
       width: 27px;

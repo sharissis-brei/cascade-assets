@@ -9,7 +9,7 @@
 
 .tabNav {
   display: block;
-  background-image: url("../img/tab_shadow.png");
+  background-image: image-url('tab_shadow.png');
   background-repeat: no-repeat;
   background-position: left 4px;
   height: 37px;
@@ -25,7 +25,7 @@
     color: #a2a0a0;
     cursor: pointer;
     background-color: $cu-off-white;
-    background-image: url("../img/tab_bg.png");
+    background-image: image-url('tab_bg.png');
     background-repeat: repeat-x;
     background-position: left top;
     border: 1px solid #c4c2b7;
@@ -34,7 +34,7 @@
       color: $white;
       bottom: 0;
       background-color: $cu-red;
-      background-image: url("../img/active_tab_bg.png");
+      background-image: image-url('active_tab_bg.png');
       background-repeat: repeat-x;
       background-position: left top;
       font-weight: bold;
