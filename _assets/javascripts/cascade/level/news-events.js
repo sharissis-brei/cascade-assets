@@ -106,7 +106,7 @@ $(function () {
 	                    //Copy
 	                    //$this.find(".copy").html($(newsData.item[i].description).text().substring(0, 175)).ellipsis();
 	                    //Show today/tomorrow label if appropriate
-	                    //todayLabel();                        
+	                    //todayLabel();
 
 
 	                    //Show News
@@ -122,7 +122,7 @@ $(function () {
 	    });
 	}
 
-	/* 
+	/*
 	 Populate events from 25 Live RSS feed (converted to JSON with YQL)
 	------------------------------------------------------------------------------------------------ */
 	if ($(".events")
@@ -283,7 +283,8 @@ $(function () {
           i = $this.index();
       $this.addClass("active").siblings().removeClass("active");
       $this.parent(".newsEventsNav").siblings(".newsEventsContent").children("li:eq(" + i + ")").addClass("active").siblings().removeClass("active");
-      $(".ellipsis").ellipsis();
+      $ellipsis = $(".ellipsis");
+      if ($ellipsis) $ellipsis.ellipsis();
   });
 
   $(".tabNav li").click(function () {
@@ -291,7 +292,8 @@ $(function () {
           i = $this.index();
       $this.addClass("active").siblings().removeClass("active");
       $this.parent(".tabNav").siblings(".tabContent").children("li:eq(" + i + ")").addClass("active").siblings().removeClass("active");
-      $(".ellipsis").ellipsis();
+      $ellipsis = $(".ellipsis");
+      if ($ellipsis) $ellipsis.ellipsis();
   });
 
   // Apply user selected options
@@ -416,7 +418,8 @@ $(function () {
 	    $(this).html($(this).text());
 	});
 
-	$(".ellipsis").ellipsis();
+	$ellipsis = $(".ellipsis");
+  if ($ellipsis) $ellipsis.ellipsis();
 
 	// Need to add this after the ellipsis takes effect
 	$(".newsEventsContent>li, .tabContent>li").css("display", "none");

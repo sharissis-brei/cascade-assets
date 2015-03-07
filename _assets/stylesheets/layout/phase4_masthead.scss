@@ -1,0 +1,568 @@
+/* styles for new (and old) mastheads, separated from level_2013.css */
+
+ /*
+    ==============================================================
+    Old Mastheads (custom 1024 image, or small Piazza placeholder)
+    ==============================================================
+ */
+.bigMasthead .masthead-old>img{
+    width:100%;
+    max-height:260px;
+}
+.bigMasthead .masthead-old > div {
+    font-style: italic;
+    font-size: 19px;
+    text-align:left;
+    color: #fff;
+    padding: 5px 5% 5px 5%;
+}
+.bigMasthead .masthead-old {
+    background-color: #01CDD4;
+    max-width: 1024px;
+    min-height: 83px;
+    margin: 5px auto 0;
+}
+
+@media only screen and (min-width: 1024px) {
+    .bigMasthead header{
+        padding: 0 0 0 0;
+        margin-top: 30px;
+        margin-bottom: 30px;
+    }
+    .bigMasthead.smallRotator header {
+        padding: 0 0 0 0;
+    }
+    .bigMasthead .masthead-old {
+        position:relative;
+        margin: 40px auto 0 auto;
+    }
+}
+
+.bigMasthead .mastheadPlaceholder {
+    background-color: #01cdd4;
+    bottom: 30px;
+    max-width: 1130px;
+    min-height: 83px;
+    position:relative;
+    margin: 50px auto 0 auto;
+}
+.mastheadPlaceholder:before {
+    background-color: rgba(0, 0, 0, 0);
+    bottom: 0;
+    content: "";
+    left: 0;
+    position: absolute;
+    right: 0;
+    top: 0;
+}
+
+@media only screen and (min-width: 1024px){
+    .mastheadPlaceholder:before {
+      background-image: image-url('masthead_bg_small.png');
+      background-position: left top;
+      background-repeat: no-repeat;
+    }
+}
+
+.bigMasthead .mastheadPlaceholder > div {
+    color: #FFFFFF;
+    font-size: 19px;
+    line-height:19px;
+    font-style:normal;
+    padding: 30px;
+    text-align: left;
+}
+
+@media only screen and (min-width: 1024px){
+    .bigMasthead .mastheadPlaceholder > div {
+        padding: 25px 20px 20px 35%;
+    }
+}
+/*
+    ==========================================================
+    New Masthead - Mini Rotator (red boxes)
+    ==========================================================
+ */
+.miniRotatorContainer {
+    width: 266px;
+    max-width: 1128px;
+    margin: 0 auto;
+    overflow: hidden;
+    position: relative;
+    z-index: 100;
+}
+@media only screen and (min-width: 600px) {
+    .miniRotatorContainer {
+        width: 533px;
+    }
+}
+@media only screen and (min-width: 880px) {
+    .miniRotatorContainer {
+        width: 840px;
+    }
+}
+@media only screen and (min-width: 1160px) {
+    .miniRotatorContainer {
+        width: 100%;
+    }
+}
+.miniRotator{
+    position:relative;
+    overflow: hidden;
+    height: 285px;
+    padding:0;
+    margin:0;
+    list-style:none;
+}
+
+.miniRotator ul {
+    width: 20000em;
+    position: absolute;
+    list-style: none;
+    margin: 0;
+    padding: 0;
+}
+
+.miniRotator li {
+    /*max-width: 100%;*/
+    max-width: 266px;
+    padding: 0;
+    margin: 0 21px 0 0;
+    list-style: none;
+    float: left;
+    overflow: hidden;
+}
+/*
+@media only screen and (min-width: 768px){
+    .miniRotator li{
+        max-width: 266px;
+    }
+}
+*/
+.miniRotator li img {
+    position: relative;
+    z-index: 1;
+}
+.miniRotator li .item{
+    display:block;
+    height:285px;
+    position:relative;
+    background: #a82439;
+}
+.miniRotator .caption{
+    -webkit-box-sizing: border-box;
+    -moz-box-sizing: border-box;
+    -ms-box-sizing: border-box;
+    box-sizing: border-box;
+    background: #a82439;
+    top: 220px;
+    position: absolute;
+    -webkit-transition: all 1s;
+    -moz-transition: all 1s;
+    -ms-transition: all 1s;
+    transition: all 1s;
+    -webkit-transition-delay: 0.8s;
+    -moz-transition-delay: 0.8s;
+    -ms-transition-delay: 0.8s;
+    transition-delay: 0.8s;
+    z-index: 10;
+    height: 100%;
+    max-height: 215px;
+    width: 100%;
+    word-break: break-word;
+}
+.miniRotator .caption:before{
+    display: block;
+    content: '';
+    // background-image: image-url('pointy_new.png');
+    background-repeat: no-repeat;
+    background-position: center top;
+    position: absolute;
+    width: 100%;
+    height: 16px;
+    top: -16px;
+    left: 0;
+    z-index: 9;
+    opacity: 1;
+    -webkit-transition: all 0.3s;
+    -moz-transition: all 0.3s;
+    -ms-transition: all 0.3s;
+    transition: all 0.3s;
+}
+.miniRotator .item .inner{
+    position: absolute;
+    padding: 10px 25px 15px 25px;
+    left: 0;
+    top: 0;
+    -webkit-transition: all 0.8s;
+    -moz-transition: all 0.8s;
+    -ms-transition: all 0.8s;
+    transition: all 0.8s;
+    -webkit-transition-delay: 0s;
+    -moz-transition-delay: 0s;
+    -ms-transition-delay: 0s;
+    transition-delay: 0s;
+    transition-delay: 0s;
+    word-break: break-all;
+}
+.miniRotator .copy{
+    -ms-filter:"progid:DXImageTransform.Microsoft.Alpha(Opacity=0)";
+    filter: alpha(opacity=0);
+    opacity: 0;
+    -webkit-transition: opacity 0.8s;
+    -moz-transition: opacity 0.8s;
+    -ms-transition: opacity 0.8s;
+    transition: opacity 0.8s;
+    -webkit-transition-delay: 0.3s;
+    -moz-transition-delay: 0.3s;
+    -ms-transition-delay: 0.3s;
+    transition-delay: 0.3s;
+    font-size: 13px;
+    margin: 10px 0 0 0;
+    line-height: 1.5;
+}
+.miniRotator .button{
+    opacity: 0;
+    -webkit-transition: opacity 0.8s;
+    -moz-transition: opacity 0.8s;
+    -ms-transition: opacity 0.8s;
+    transition: opacity 0.8s;
+    -webkit-transition-delay: 0s;
+    -moz-transition-delay: 0s;
+    -ms-transition-delay: 0s;
+    transition-delay: 0s;
+    background-color: #fff;
+    font-weight: 600;
+    color: #830c28;
+    float: left;
+    padding: 5px 10px 5px 10px;
+    margin-top: 15px;
+}
+.miniRotator .title{
+    font-family: 'futura-pt', arial, verdana, sans-serif;
+    font-size: 18px;
+    font-weight: 600;
+    position: relative;
+    top: -3px;
+}
+.oldie.miniRotator .inner{
+    word-break: break-all;
+}
+.miniRotator .item .caption:hover:before{
+    opacity: 0;
+}
+.miniRotator .item .caption:hover{
+    top: 50px;
+    -webkit-transition-delay: 0s;
+    -moz-transition-delay: 0s;
+    transition-delay: 0s;
+}
+.miniRotator .item .caption:hover .inner{
+    position: absolute;
+}
+.miniRotator .item .caption:hover .button{
+    opacity: 1;
+    -webkit-transition-delay: 1.3s;
+}
+.miniRotator .item .caption:hover .copy{
+    -ms-filter:"progid:DXImageTransform.Microsoft.Alpha(Opacity=100)";
+    filter: alpha(opacity=100);
+    opacity: 1;
+    -webkit-transition-delay: 1s;
+}
+
+.miniRotatorNav{
+    position:relative;
+    top:0;
+    left:auto;
+    z-index: 1000;
+    /*display: none;*/
+        display:block;
+}
+/*
+    @media only screen and (min-width: 768px){
+        .miniRotatorNav{
+            display: block;
+        }
+    }
+*/
+.miniRotatorNav a {
+    position: absolute;
+    height: 56px;
+    width: 43px;
+    color: #fff;
+    top: -176px;
+    cursor: pointer;
+    background-image: url("../img/gray_arrows.png");
+    background-repeat: no-repeat;
+}
+
+.miniRotatorNav a.disabled{
+    opacity:.4;
+    filter: alpha(opacity=40)
+}
+
+.miniRotatorNav .prev{
+    background-position:left center;
+    left:0;
+}
+
+.miniRotatorNav .next{
+    background-position:right center;
+    right:0;
+}
+ /*
+    ================================================================================
+    New Mastheads (branded Masthead, or Rounded Slider (w/ several variations to it)
+    ================================================================================
+ */
+.bigMasthead .masthead-new{
+    max-width: 1128px;
+    max-height: none;
+    background: transparent;
+    /*position: relative;*/
+}
+.bigMasthead .masthead-new > img {
+    max-height: none;
+    position: relative;
+    z-index: 1;
+}
+.bigMasthead .masthead-new .caption {
+    display: block;
+    top: auto;
+    position: absolute;
+    z-index: 10;
+    bottom: 0;
+    left: 0;
+    box-sizing: border-box;
+    height: auto;
+    background: #a82439;
+    padding: 30px 32px 30px 32px;
+    max-width: 100%;
+    width:100%;
+    font-style: normal;
+    box-shadow: 0px 2px 1px #000;
+}
+@media only screen and (min-width: 1024px){
+    .bigMasthead .masthead-new .caption {
+        position: absolute;
+        bottom: 60px;
+        padding: 60px 32px 30px 32px;
+        max-width: 440px;
+    }
+    .bigMasthead .masthead-new .caption.align-top-right {
+        bottom: auto !important;
+        top: 60px !important;
+        left: auto !important;
+        right: 0 !important;
+    }
+    .bigMasthead .masthead-new .caption.align-top-left{
+        bottom: auto !important;
+        top: 60px !important;
+        left: 0 !important;
+        right: auto !important;
+    }
+    .bigMasthead .masthead-new .caption.align-bottom-right{
+        top: auto !important;
+        bottom: 60px !important;
+        left: auto !important;
+        right: 0 !important;
+    }
+    .bigMasthead .masthead-new .caption.align-bottom-left{
+        bottom: 60px !important;
+        top: auto !important;
+        left: 0 !important;
+        right: auto !important;
+    }
+}
+.bigMasthead .masthead-new .caption h2{
+    margin: 0;
+    color: #fff;
+    font-size: 20px;
+    text-transform: none;
+}
+@media only screen and (min-width: 1024px){
+    .bigMasthead .masthead-new .caption h2{
+        font-size: 30px;
+    }
+}
+.bigMasthead .masthead-new .caption p{
+    color: #fff;
+    font-size: 15px !important;
+    margin: 0;
+    padding: 0 32px 0 32px;
+}
+
+.bigMasthead .masthead-new.captionOnTop p.subTitle {
+    display: block !important;
+    max-width: 100%;
+    position: relative;
+    width: 100%;
+}
+.bigMasthead .masthead-new.captionOnTop p.subTitle {
+    background: none repeat scroll 0 0 #353430;
+    box-sizing: border-box;
+    /*display: none;*/
+    font-size: 12px !important;
+    left: 0;
+    max-width: 75%;
+    padding: 10px 30px;
+    position: relative;
+    top: -30px;
+}
+.bigMasthead .masthead-new .caption p.subTitle {
+    color: #FFFFFF;
+    font-size: 15px !important;
+    margin: 0;
+        max-width: 100%;
+}
+@media only screen and (min-width: 1024px){
+   .bigMasthead .masthead-new.captionOnTop p.subTitle{
+      position: absolute;
+      display: none;
+      padding: 5px 30px;
+      background: #353430;
+      top: -20px;
+      left: 0;
+      font-size: 12px !important;
+      max-width: 75%;
+      box-sizing: border-box;
+   }
+}
+
+.bigMasthead .masthead-new .caption{
+    padding-left: 0;
+    padding-right: 0;
+}
+.bigMasthead .masthead-new h2{
+    padding: 0 32px 0 32px;
+}
+@media only screen and (min-width: 1024px){
+    .bigMasthead .masthead-new p{
+        padding: 15px 30px;
+        top: -20px;
+        display: block !important;
+    }
+    .bigMasthead .masthead-new .caption{
+        padding-left: 32px;
+        padding-right: 32px;
+    }
+}
+.bigMasthead .masthead-new.quote .caption{
+    background: rgba(56,56,56, 1);
+    padding-top: 30px;
+    font-size: 16px;
+}
+@media only screen and (min-width: 1024px){
+    .bigMasthead .masthead-new.quote .caption{
+        background: rgba(56,56,56, 0.75);
+    }
+}
+.bigMasthead .masthead-new.quote p{
+    font-family: 'futura-pt', arial, verdana, sans-serif;
+    font-size: 18px !important;
+    font-weight: normal;
+    line-height: 30px;
+}
+.bigMasthead .masthead-new .author{
+    display: block;
+    margin-top: 15px;
+    font-size: 21px;
+    font-weight: bold;
+    font-family: 'futura-pt', arial, verdana, sans-serif;
+    padding-left: 32px;
+}
+ /*
+    ==========================================================
+    Rotator styles
+    =========================================================
+ */
+.rounded-slider .rotatorContainer{
+    max-width: 1128px;
+    max-height: 440px;
+    background:#353430;
+}
+.rounded-slider .flexslider{
+    overflow: hidden !important;
+}
+
+.rotatorContainer .slide{
+    max-height: 440px;
+    min-height: 240px !important;
+    padding-bottom: 15px;
+}
+@media only screen and (min-width: 768px){
+    .rotatorContainer .slide{
+        height: auto !important;
+        min-height: 340px !important;
+        padding-bottom: 0;
+    }
+}
+
+.rounded-slider .flex-control-nav{
+    background: transparent;
+    text-align: right;
+    padding-right: 15px;
+    bottom: 25px !important;
+    box-sizing: border-box;
+    padding-right: 15px;
+    padding-top: 10px;
+}
+@media only screen and (min-width: 768px){
+    .rounded-slider .flex-control-nav{
+        position: absolute !important;
+        padding-top: 0;
+    }
+}
+
+.rounded-slider .flex-control-nav li{
+    display: inline-block;
+    float: none;
+    margin: 0 0 0 5px;
+}
+.rounded-slider .flex-control-nav li a{
+    width: 13px;
+    height: 13px;
+    background: url(../img/pager_sprite.png) no-repeat;
+    background-position: -13px 0;
+    text-indent: 999px;
+    overflow: hidden;
+}
+.rounded-slider .flex-control-nav li a:hover, .rounded-slider .flex-control-nav li a.flex-active{
+    background-position: 0 0;
+}
+.rounded-slider .flex-control-nav{
+    right: 0;
+    left: auto;
+}
+
+.bigMasthead .brandedMastheadContainer{
+    max-width: 1128px;
+    max-height: 220px;
+    overflow: visible !important;
+    margin: 0 auto;
+    position: relative;
+    z-index:100;
+}
+.bigMasthead .brandedMastheadContainer .masthead-new .caption {
+    padding: 30px 12px 10px 12px;
+}
+.bigMasthead .brandedMastheadContainer .masthead-new.captionOnTop p.subTitle {
+    max-width: 100%;
+}
+@media only screen and (min-width: 1024px){
+    .bigMasthead .brandedMastheadContainer .masthead-new.captionOnTop p.subTitle {
+        max-width: 45%;
+    }
+}
+.bigMasthead .brandedMastheadContainer .masthead-new > img {
+    max-height: 220px;
+    width: 100%;
+    bottom:20px;
+}
+@media only screen and (min-width: 1024px){
+    .bigMasthead .brandedMastheadContainer .masthead-new > img {
+        max-height: 220px;
+        width: 1128px;
+    }
+}

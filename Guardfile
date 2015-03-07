@@ -1,8 +1,10 @@
-guard "jekyll-plus", :extensions => ['js'], :serve => true, config_hash: {baseurl: '', port: 5000} do 
-  watch /.*/
-  ignore /^_site/
-end
+interactor :off
 
-guard 'livereload' do
+# guard "jekyll_plus", extensions: ['js'], serve: true, config_hash: {baseurl: '', port: 5000}, silent: true do
+#   watch /.*/
+#   ignore /^_site/
+# end
+
+guard 'livereload', grace_period: 1 do
   watch /.*/
 end

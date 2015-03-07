@@ -1,0 +1,64 @@
+@import "chapman-web-components";
+
+body {
+  background: $green;
+}
+
+h1,h2,h3,h4,h5,h6,p {
+  color: white;
+  line-height: normal;
+}
+
+code {
+  background: $cool-gray;
+  color: $black;
+  padding: 4px 10px;
+  border-radius: 4px;
+  font-size: 75%;
+  line-height: normal;
+}
+
+.content {
+  font-size: 180%;
+}
+
+.home {
+  padding-top: 80px;
+}
+
+.page-title {
+  font-size: 72px;
+  margin-bottom: 80px;
+}
+
+.page-description {
+  padding: 30px 0;
+  background: rgba(red($black), green($black), blue($black), 0.8);
+  box-shadow: inset 0px 4px 4px -2px $black, inset 0px -4px 4px -2px $black;
+}
+
+.navigation {
+  margin-top: 80px;
+  text-align: center;
+}
+
+.template-options {
+  list-style-type: none;
+  margin: 100px;
+  padding: 0;
+  display: flex;
+  justify-content: space-around;
+  flex-wrap: wrap;
+  text-align: center;
+}
+
+.template-option {
+  margin: 0;
+  padding: 0;
+  display: inline-block;
+
+  img {
+    width: 300px;
+  }
+}
+

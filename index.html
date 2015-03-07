@@ -1,6 +1,49 @@
 ---
-layout: 2_column
+title: Cascade Assets
+layout: docs
 ---
 
-<h1>Hello Cascade Assets!</h1>
-{% include cascade.html %}
+<div class="home">
+
+    <div class="container">
+      <h1 class="page-title">Cascade Assets</h1>
+    </div>
+
+    <article class="page-description">
+      <div class="container content">
+        <p>It is hard to manage assets inside of cascade.</p>
+
+        <p>Instead, organize styles, scripts, and images here, then upload the compressed, production-ready assets to cascade.  The asset source files are located in the <code>_assets/</code> folder.  These assets get compiled into <code>_sites/_assets/</code>.</p>
+
+        <p>This project uses the Jekyll framework to serve a mini-local version of our cascade html templates.  It also utilizes the jekyll-assets plugin to give us an asset pipeline similar to Ruby on Rails.</p>
+
+        <p>Ready to start developing!? Click on one of these sample templates, then start editing the source styles and scripts.</p>
+      </div>
+    </article>
+
+    <nav class="navigation container">
+      <h2>Choose Your Template</h2>
+
+      <ul class="template-options content">
+
+        <li class="template-option">
+          <a href="{{ site.baseurl }}/2_column_module_sample.html">
+            <p class="template-title">2 Column Modular</p>
+            {% image placeholder/2_column_modular_screenshot.png %}
+          </a>
+        </li>
+
+        <li class="template-option">
+          <a href="{{ site.baseurl }}/3_column_module_sample.html">
+            <p class="template-title">3 Column Modular</p>
+            {% image placeholder/3_column_modular_screenshot.png %}
+          </a>
+        </li>
+
+      </ul>
+    </nav>
+
+
+  </div>
+  <br/>
+</div>

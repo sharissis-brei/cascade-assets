@@ -1,5 +1,5 @@
-require 'jekyll'
 require 'bundler/setup'
+require 'jekyll'
 require 'tmpdir'
 require 'launchy'
 
@@ -11,11 +11,11 @@ GITHUB_REPONAME = 'cascade-assets'
 
 desc "Serve the site locally for development"
 task :serve do
-  fork do
-    sleep 2
-    Launchy.open("http://localhost:5000")
-  end
-  exec("bundle exec guard")
+  exec("foreman start")
+end
+
+task :launch do
+  Launchy.open("http://localhost:5000")
 end
 
 desc "Generate the website with jekyll"
@@ -31,7 +31,7 @@ task :publish => [:generate] do
   puts "Publishing local version to http://chapmanu.github.io/#{GITHUB_REPONAME}"
   Dir.mktmpdir do |tmp|
     FileUtils.cp_r "_site/.", tmp
-    
+
     pwd = Dir.pwd
     Dir.chdir tmp
 

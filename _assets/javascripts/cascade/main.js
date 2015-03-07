@@ -7,7 +7,7 @@ var main = chapman.main || {};
 
 (function ($, Modernizr, window, document) {
 
-	/** 
+	/**
 	 * Main
 	 */
 	main.mainInit = function()
@@ -115,11 +115,11 @@ var main = chapman.main || {};
 	    if(!Modernizr.csstransitions)
 	    {
 		    $('.mainNavLinks .has-dropdown').hoverIntent(
-	            function() 
+	            function()
 	            {
 	                $(this).children('.subNavLinks').addClass('is-visible');
 	            },
-	            function() 
+	            function()
 	            {
 	                $(this).children('.subNavLinks').removeClass('is-visible');
 	            }
@@ -143,7 +143,7 @@ var main = chapman.main || {};
 	    $('#infoFor-btn').click(function()
 	    {
 	    	var toggle = $(this).parent('div').children('.infoFor-menu');
-	        
+
 	        if(!isSame(toggle))
 	        	toggleUi(toggle);
 
@@ -151,7 +151,7 @@ var main = chapman.main || {};
 	    });
 
 	    /**
-		 * enables the fancy triangle rollover 
+		 * enables the fancy triangle rollover
 		 */
 		$('#mainNavLinks li:first').hover(function() {
 	        $('#mainNavLinks').addClass('active');
@@ -167,8 +167,8 @@ var main = chapman.main || {};
 	        $(".copyrightYear").html(today.getFullYear());
 	    })();
 
-	    //$.getScript("/_files/level/js/welcome.js");    
-	    
+	    //$.getScript("/_files/level/js/welcome.js");
+
 	    /* New Nav */
 	    $('.mainNavExpand').bind('click', function() {
 	        $('.mainNav').toggleClass('open');
@@ -184,6 +184,6 @@ var main = chapman.main || {};
 	$(function()
 	{
 		main.mainInit();
-	});    
+	});
 
 })(window.jQuery, window.Modernizr, window, window.document);
