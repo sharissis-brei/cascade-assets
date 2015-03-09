@@ -14,6 +14,7 @@ task :serve do
   exec("foreman start")
 end
 
+desc "Launch a web browser on the port"
 task :launch do
   Launchy.open("http://localhost:5000")
 end

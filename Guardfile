@@ -5,6 +5,6 @@ interactor :off
 #   ignore /^_site/
 # end
 
-guard 'livereload', grace_period: 1 do
+guard 'livereload', grace_period: 1.5 do
   watch /.*/
 end

@@ -6,7 +6,7 @@
 hack_file = File.open('images.html', 'w')
 
 hack_file.puts "---"
-hack_file.puts "layout: cascade"
+hack_file.puts "layout: docs"
 hack_file.puts "---"
 
 Dir.glob("_assets/images/**/*.*").each do |image_path| # looks like "_assets/images/gray_arrow.png"
