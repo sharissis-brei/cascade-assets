@@ -1,4 +1,4 @@
-# cascade-assets
+# Cascade Assets
 Manage assets outside of cascade.
 
 # Setup
