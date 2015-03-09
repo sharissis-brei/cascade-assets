@@ -8,5 +8,5 @@ cd cascade-assets
 bundle install
 rake serve
 ```
-Send your browser to http://localhost:5000     
+Send your browser to [http://localhost:5000](http://localhost:5000)
 Turn on your livereload extention (optional)
