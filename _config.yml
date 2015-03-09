@@ -5,6 +5,13 @@ baseurl: "cascade-assets" # the subpath of your site, e.g. /blog/
 # Build settings
 markdown: kramdown
 
+exclude:
+  - Gemfile
+  - Gemfile.lock
+  - Guardfile
+  - Procfile
+  - Rakefile
+
 #
 # Plugin: jekyll-assets
 #
