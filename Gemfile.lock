@@ -141,7 +141,11 @@ GEM
       hitimes
     toml (0.1.2)
       parslet (~> 1.5.0)
+    uglifier (2.5.1)
+      execjs (>= 0.3.0)
+      json (>= 1.8.0)
     yajl-ruby (1.2.1)
+    zip (2.0.2)
 
 PLATFORMS
   ruby
@@ -157,3 +161,5 @@ DEPENDENCIES
   rails-assets-chapman-web-components
   rake
   thin
+  uglifier
+  zip

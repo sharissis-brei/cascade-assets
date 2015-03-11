@@ -2,6 +2,7 @@ require 'bundler/setup'
 require 'jekyll'
 require 'tmpdir'
 require 'launchy'
+require 'zip'
 
 #################
 # ::: TASKS ::: #
@@ -19,12 +20,16 @@ task :launch do
   Launchy.open("http://localhost:5000")
 end
 
-desc "Generate the website with jekyll"
-task :generate do
-  Jekyll::Site.new(Jekyll.configuration({
-    "source"      => ".",
-    "destination" => "_site"
-  })).process
+namespace :generate do
+  desc "Create the production version of the assets"
+  task :production do
+    generate destination: 'dist_production', config: ['_config.yml' , '_production_server_config.yml'] 
+  end
+
+  desc "Create the production version of the assets"
+  task :development do
+    generate destination: 'dist_development', config: ['_config.yml' , '_development_server_config.yml'] 
+  end
 end
 
 desc "Publish this local version of the site to github pages"
@@ -46,4 +51,37 @@ task :publish => [:generate] do
     Dir.chdir pwd
   end
   puts "Publish successful"
+end
+
+
+############################
+# ::: HELPER FUNCTIONS ::: #
+############################
+
+def rm_all_except(file, directory)
+  Dir["#{directory}/*"].each{|f| FileUtils.rm(f) unless f =~ /#{file}/}
+end
+
+def zip(input_folder, output_name)
+  Zip::File.open(output_name, Zip::File::CREATE) do |zipfile|
+      Dir[File.join(input_folder, '**', '**')].each do |file|
+        zipfile.add(file.sub(input_folder, ''), file)
+      end
+  end
+end
+
+def build_site(destination, config)
+  Jekyll::Site.new(Jekyll.configuration({
+    "source"      => ".",
+    "destination" => destination,
+    "config"      => config
+  })).process
+end
+
+def generate(options={})
+  destination = options[:destination]
+  config      = options[:config]
+  build_site(destination, config)
+  rm_all_except('_assets', destination)
+  zip("#{destination}/_assets", "#{destination}/_assets.zip")
 end

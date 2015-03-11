@@ -1,0 +1,5 @@
+# Dev cascade server asset settings
+assets:
+  baseurl: //dev-www.chapman.edu/_assets/
+  js_compressor: uglifier
+  css_compressor: sass

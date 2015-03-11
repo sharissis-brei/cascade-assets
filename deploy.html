@@ -1,0 +1,25 @@
+---
+  layout: docs
+  title: Cascade Deploy Block
+---
+
+
+<div class="container">
+  <h1 class="page-title">Deploy Assets to Cascade</h1>
+  <section class="deployment-instructions content">
+    <ol>
+      <li>Zip up the <code>_site/_assets</code> folder.</li>
+      <li>Use the cascade menu <code>Tools -> Zip Archive</code> function to upload the zip to the root Base Folder</li>
+      <li>Copy and paste the code block below into the <code>_cascade/blocks/html/cascade-assets</code> cascade block.</li>
+    </ol>
+  </section>
+
+  <textarea class="copy-code">
+<system-xml>
+  <!-- Master Stylesheet for 2 and 3 column modular templates -->
+  <link rel="stylesheet" type="text/css" href ="{% asset_path master.css %}" />
+
+  <!-- Master Javascript for 2 and 3 column modular templates -->
+  <script type="text/javascript" src="{% asset_path master.js %}"></script>
+</system-xml></textarea>
+</div>

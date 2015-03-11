@@ -1,10 +1,11 @@
 @import "chapman-web-components";
 
-body {
+html, body {
   background: $green;
+  height: 100%;
 }
 
-h1,h2,h3,h4,h5,h6,p {
+h1,h2,h3,h4,h5,h6,p,ol,ul,li {
   color: white;
   line-height: normal;
 }
@@ -18,11 +19,26 @@ code {
   line-height: normal;
 }
 
+.copy-code {
+  display: block;
+  width: 100%;
+  content: border-box;
+  padding: 10px;
+  border: none;
+  background: $black;
+  color: $gray-mist;
+  font-weight: bold;
+  height: 300px;
+  border-radius: 3px;
+  font-family: monospace;
+
+}
+
 .content {
   font-size: 180%;
 }
 
-.home {
+.page-content {
   padding-top: 80px;
 }
 
