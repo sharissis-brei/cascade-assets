@@ -21,15 +21,12 @@
     <div class="bigMasthead smallRotator" id="container">
 
         {% include header.html %}
+
         <div id="main" role="main">
-            <div class="brandedMastheadContainer">
-                <div class="masthead-new captionOnTop">{% image placeholder/chapman.jpg alt="Chapman University" %}
-                    <div class="caption align-bottom-left">
-                        <p class="subTitle">The Happiest Place on Planet Orange</p>
-                        <h2>Welcome To Chapman!</h2>
-                    </div>
-                </div>
-            </div>
+        
+            {% if page.masthead %}
+                {% include modules/masthead/{{page.masthead}}.html %}
+            {% endif %}
 
             <div class="subRotator">
                 <div class="primaryContent threeColumns clearfix">

@@ -23,9 +23,10 @@
         {% include header.html %}
 
         <div id="main" role="main">
-            <div class="mastheadPlaceholder">
-                <div></div>
-            </div>
+
+            {% if page.masthead %}
+                {% include modules/masthead/{{page.masthead}}.html %}
+            {% endif %}
 
             <div class="subRotator">
 
