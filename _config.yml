@@ -1,28 +1,25 @@
-# Docs site settings
-title: Cascade Assets
-baseurl: "cascade-assets" # the subpath of your site, e.g. /blog/
-exclude:
-  - lib
-  - dist_production
-  - dist_development
-  - Gemfile
-  - Gemfile.lock
-  - Guardfile
-  - Procfile
-  - Rakefile
+# Server
+source:          docs
+destination:     docs/_site
+host:            0.0.0.0
+port:            5000
+baseurl:         
 
-# Local config asset settings
+# Assets
 assets:
-  dirname: _assets
-  baseurl: /_assets/
+  dirname:       _assets
+  baseurl:       /_assets/
   sources:
-    - _assets/javascripts
-    - _assets/stylesheets
-    - _assets/images
-    - _assets/fonts
-  js_compressor: ~
+    - ../src/javascripts
+    - ../src/stylesheets
+    - ../src/images
+    - ../src/fonts
+  js_compressor:  ~
   css_compressor: none
-  cachebust: hard
-  cache: true
-  gzip: [ text/css, application/javascript ]
-  version: 1
+  cachebust:      hard
+  cache:          true
+  gzip:           [ text/css, application/javascript ]
+  version:        1
+
+# Custom Variables
+title:            Cascade Assets

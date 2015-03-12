@@ -1,7 +1,6 @@
 require 'bundler/setup'
 require 'jekyll'
 require 'tmpdir'
-require 'launchy'
 require './lib/zip_file_generator.rb'
 
 #################
@@ -15,44 +14,24 @@ task :serve do
   exec("foreman start")
 end
 
-desc "Launch a web browser on the port"
-task :launch do
-  Launchy.open("http://localhost:5000")
+task :build do
+  puts "Please specify build target."
+  puts "Examples:"
+  puts "  rake build:production"
+  puts "  rake build:staging"
 end
 
-namespace :generate do
+namespace :build do
   desc "Create the production version of the assets"
   task :production do
-    generate destination: 'dist_production', config: ['_config.yml' , '_production_server_config.yml'] 
+    generate destination: 'dist/production', config: ['_config.yml' , '_config.production.yml'] 
   end
 
   desc "Create the production version of the assets"
-  task :development do
-    generate destination: 'dist_development', config: ['_config.yml' , '_development_server_config.yml'] 
+  task :staging do
+    generate destination: 'dist/staging', config: ['_config.yml' , '_config.staging.yml'] 
   end
 end
-
-desc "Publish this local version of the site to github pages"
-task :publish => [:generate] do
-  puts "Publishing local version to http://chapmanu.github.io/#{GITHUB_REPONAME}"
-  Dir.mktmpdir do |tmp|
-    FileUtils.cp_r "_site/.", tmp
-
-    pwd = Dir.pwd
-    Dir.chdir tmp
-
-    cmd "git init"
-    cmd "git add ."
-    message = "Site updated at #{Time.now.utc}"
-    cmd "git commit -m  #{message.inspect}"
-    cmd "git remote add origin git@github.com:#{GITHUB_REPONAME}.git"
-    cmd "git push origin master:refs/heads/gh-pages --force"
-
-    Dir.chdir pwd
-  end
-  puts "Publish successful"
-end
-
 
 ############################
 # ::: HELPER FUNCTIONS ::: #
@@ -74,16 +53,26 @@ end
 
 def build_site(destination, config)
   Jekyll::Site.new(Jekyll.configuration({
-    "source"      => ".",
     "destination" => destination,
-    "config"      => config
+    "config"      => config,
+    "quiet"      => true
   })).process
 end
 
 def generate(options={})
   destination = options[:destination]
   config      = options[:config]
+
+  puts "::: Build Started \xF0\x9F\x94\xA8".yellow
+
   build_site(destination, config)
-  rm_all_except(['_assets', '_assets.zip', 'cascade-assets-block.xml'], destination)
+  rm_all_except(['_assets', '_assets.zip', 'block.xml', 'instructions.txt'], destination)
   zip("#{destination}/_assets", "#{destination}/_assets.zip")
+
+  print "    Assets built                ", "✔ #{destination}/_assets\n".green
+  print "    Assets zipped               ", "✔ #{destination}/_assets.zip\n".green
+  print "    New cascade block           ", "✔ #{destination}/block.xml\n".green
+  print "    Deployment instructions     ", "✔ #{destination}/instructions.txt\n".green
+  
+  puts  "::: Build Succeeded \xF0\x9F\x8F\xA1".green.bold
 end

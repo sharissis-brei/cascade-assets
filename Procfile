@@ -1,2 +1,2 @@
-jekyll: bundle exec jekyll serve --watch --port=5000 --baseurl=''
+jekyll: bundle exec jekyll serve --watch
 livereload: bundle exec guard

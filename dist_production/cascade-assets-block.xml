@@ -1,9 +1,0 @@
-<!-- Paste this snippet in _cascade/blocks/html/cascade-assets -->
-
-<system-xml>
-  <!-- Master Stylesheet for 2 and 3 column modular templates -->
-  <link rel="stylesheet" type="text/css" href ="{% asset_path master.css %}" />
-
-  <!-- Master Javascript for 2 and 3 column modular templates -->
-  <script type="text/javascript" src="{% asset_path master.js %}"></script>
-</system-xml>
