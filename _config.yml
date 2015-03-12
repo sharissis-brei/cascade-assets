@@ -2,8 +2,9 @@
 title: Cascade Assets
 baseurl: "cascade-assets" # the subpath of your site, e.g. /blog/
 exclude:
-  - dist_prod
-  - dist_dev
+  - lib
+  - dist_production
+  - dist_development
   - Gemfile
   - Gemfile.lock
   - Guardfile

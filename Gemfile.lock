@@ -117,6 +117,7 @@ GEM
     rb-inotify (0.9.5)
       ffi (>= 0.5.0)
     redcarpet (3.2.2)
+    rubyzip (1.1.6)
     safe_yaml (1.0.4)
     sass (3.4.13)
     shellany (0.0.1)
@@ -145,7 +146,6 @@ GEM
       execjs (>= 0.3.0)
       json (>= 1.8.0)
     yajl-ruby (1.2.1)
-    zip (2.0.2)
 
 PLATFORMS
   ruby
@@ -160,6 +160,6 @@ DEPENDENCIES
   launchy
   rails-assets-chapman-web-components
   rake
+  rubyzip
   thin
   uglifier
-  zip

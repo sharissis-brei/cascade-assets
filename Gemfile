@@ -11,7 +11,7 @@ gem 'launchy'
 gem 'thin'
 gem 'autoprefixer-rails'
 gem 'uglifier'
-gem 'zip'
+gem 'rubyzip'
 
 # The web-components shared styles
 group :rails_assets do

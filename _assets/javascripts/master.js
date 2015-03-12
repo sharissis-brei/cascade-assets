@@ -1,7 +1,9 @@
-//= include cascade/libs/jquery.cycle.lite.min
-//= include cascade/libs/jquery.hammer.min
-//= include cascade/libs/modernizr-2.0.6.min
-//= include cascade/libs/skrollr.min
+//= include cascade/lib/utils
+
+//= include vendor/jquery.cycle.lite.min
+//= include vendor/jquery.hammer.min
+//= include vendor/modernizr-2.0.6.min
+//= include vendor/skrollr.min
 
 //= include cascade/plugins/amplify
 //= include cascade/plugins/cookie

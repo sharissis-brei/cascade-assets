@@ -2,7 +2,7 @@ require 'bundler/setup'
 require 'jekyll'
 require 'tmpdir'
 require 'launchy'
-require 'zip'
+require './lib/zip_file_generator.rb'
 
 #################
 # ::: TASKS ::: #
@@ -58,16 +58,18 @@ end
 # ::: HELPER FUNCTIONS ::: #
 ############################
 
-def rm_all_except(file, directory)
-  Dir["#{directory}/*"].each{|f| FileUtils.rm(f) unless f =~ /#{file}/}
+def rm_all_except(files, directory)
+  unwanted_files = Dir.glob("#{directory}/*").reject do |file|
+    files.any?{|f| "#{directory}/#{f}" == file}
+  end
+  unwanted_files.each do |file|
+    FileUtils.rm file
+  end
 end
 
 def zip(input_folder, output_name)
-  Zip::File.open(output_name, Zip::File::CREATE) do |zipfile|
-      Dir[File.join(input_folder, '**', '**')].each do |file|
-        zipfile.add(file.sub(input_folder, ''), file)
-      end
-  end
+  zf = ZipFileGenerator.new(input_folder, output_name)
+  zf.write()
 end
 
 def build_site(destination, config)
@@ -82,6 +84,6 @@ def generate(options={})
   destination = options[:destination]
   config      = options[:config]
   build_site(destination, config)
-  rm_all_except('_assets', destination)
+  rm_all_except(['_assets', '_assets.zip', 'cascade-assets-block.xml'], destination)
   zip("#{destination}/_assets", "#{destination}/_assets.zip")
 end
