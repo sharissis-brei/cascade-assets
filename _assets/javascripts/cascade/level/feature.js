@@ -29,7 +29,7 @@ $(function () {
 
       // Date
       $(".newsEventsContent .featured .date .day").html(day);
-      $(".newsEventsContent .featured .date .month").html(toShortMonthName(month));
+      $(".newsEventsContent .featured .date .month").html(utils.toShortMonthName(month));
       $(".newsEventsContent .featured .date .year").html(year);
 
       // Title

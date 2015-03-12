@@ -92,7 +92,7 @@ $(function () {
 	                    //Month
 	                    $this.find(".date .month").html(newsData.item[i].pubDate.split(' ')[2].toUpperCase());
 	                    //Day
-	                    $this.find(".date .day").html(pad2(parseInt((newsData.item[i].pubDate.split(' ')[1]), 10)));
+	                    $this.find(".date .day").html(utils.pad2(parseInt((newsData.item[i].pubDate.split(' ')[1]), 10)));
 	                    //Year
 	                    $this.find(".date .year").html(newsData.item[i].pubDate.split(' ')[3]);
 	                    }
@@ -232,10 +232,10 @@ $(function () {
 	                        //pubdate sometimes contained original but not current event date; use category field instead (has yyyy/mm/dd format):
 	                        //Month
 	                        //$this.find(".date .month").html(rssitem.pubDate.split(' ')[1].toUpperCase());
-	                        $this.find(".date .month").html(toShortMonthName_fromstring(rssitem.category.split('/')[1].toUpperCase()));
+	                        $this.find(".date .month").html(utils.toShortMonthName_fromstring(rssitem.category.split('/')[1].toUpperCase()));
 	                        //Day
-	                        //$this.find(".date .day").html(pad2(parseInt((rssitem.pubDate.split(' ')[0]), 10)));
-	                        $this.find(".date .day").html(pad2(parseInt((rssitem.category.split('/')[2]), 10)));
+	                        //$this.find(".date .day").html(utils.pad2(parseInt((rssitem.pubDate.split(' ')[0]), 10)));
+	                        $this.find(".date .day").html(utils.pad2(parseInt((rssitem.category.split('/')[2]), 10)));
 	                        //Year
 	                        //$this.find(".date .year").html(rssitem.pubDate.split(' ')[2]);
 	                        $this.find(".date .year").html(rssitem.category.split('/')[0]);

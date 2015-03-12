@@ -38,11 +38,11 @@ $(function () {
         for (i = 0; i < events.length; i++) {
             try {
                 //pubdate sometimes contained original but not current event date; use category field instead (has yyyy/mm/dd format)
-                //events[i].$month.html(toShortMonthName(eventsData.item[i].pubDate.split('/')[0]));
-                //events[i].$day.html(pad2(parseInt(eventsData.item[i].pubDate.split('/')[1], 10)));
+                //events[i].$month.html(utils.toShortMonthName(eventsData.item[i].pubDate.split('/')[0]));
+                //events[i].$day.html(utils.pad2(parseInt(eventsData.item[i].pubDate.split('/')[1], 10)));
                 //events[i].$year.html(eventsData.item[i].pubDate.split('/')[2].split(' ')[0]);   
-                events[i].$month.html(toShortMonthName_fromstring(eventsData.item[i].category.split('/')[1]));  
-                events[i].$day.html(pad2(parseInt(eventsData.item[i].category.split('/')[2], 10)));
+                events[i].$month.html(utils.toShortMonthName_fromstring(eventsData.item[i].category.split('/')[1]));  
+                events[i].$day.html(utils.utils.pad2(parseInt(eventsData.item[i].category.split('/')[2], 10)));
                 events[i].$year.html(eventsData.item[i].category.split('/')[0]);
                 events[i].$heading.html(eventsData.item[i].title);
                 events[i].$link.attr('href', eventsData.item[i].link);
@@ -66,7 +66,7 @@ $(function () {
 
         for (i = 0; newsData&&i<3; i++) {
             var month = newsData.item[i].pubDate.split(' ')[2].toUpperCase();
-            var day = pad2(parseInt((newsData.item[i].pubDate.split(' ')[1]),10));
+            var day = utils.pad2(parseInt((newsData.item[i].pubDate.split(' ')[1]),10));
             var year = newsData.item[i].pubDate.split(' ')[3];
             var link = newsData.item[i].link;
             var heading = newsData.item[i].title;
