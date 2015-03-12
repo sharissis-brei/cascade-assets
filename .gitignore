@@ -1,3 +1,6 @@
 _site
+dist_development
+dist_production
+dist
 .sass-cache
 .jekyll-assets-cache
