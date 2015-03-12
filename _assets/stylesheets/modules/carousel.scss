@@ -30,7 +30,7 @@
   }
 }
 
-.carousel a.carousel-prevnext  {
+.carousel-widget a.carousel-prevnext  {
   border: none;
   outline: none;
   &:hover, &:focus, &:active, &:visited {
@@ -39,7 +39,7 @@
   }
 }
 
-.carousel {
+.carousel-widget {
   border: 0 solid;
   -moz-box-sizing: border-box;
   box-sizing: inherit;
@@ -267,7 +267,7 @@
     padding: 0;
     text-decoration: none;
     vertical-align: inherit;
-    &::before, &::after .carousel img {
+    &::before, &::after .carousel-widget img {
       border: 0 solid;
       -moz-box-sizing: border-box;
       box-sizing: inherit;
