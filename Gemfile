@@ -12,6 +12,8 @@ gem 'thin'
 gem 'autoprefixer-rails'
 gem 'uglifier'
 gem 'rubyzip'
+gem 'faker'
+gem 'awesome_print'
 
 # The web-components shared styles
 group :rails_assets do

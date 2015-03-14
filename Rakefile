@@ -2,6 +2,7 @@ require 'bundler/setup'
 require 'jekyll'
 require 'tmpdir'
 require './lib/zip_file_generator.rb'
+require './lib/random_page_generator.rb'
 
 #################
 # ::: TASKS ::: #
@@ -31,6 +32,10 @@ namespace :build do
   task :staging do
     generate destination: 'dist/staging', config: ['_config.yml' , '_config.staging.yml'] 
   end
+end
+
+task :randomize do
+  RandomPageGenerator.new
 end
 
 ############################

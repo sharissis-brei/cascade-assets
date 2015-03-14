@@ -50,7 +50,11 @@
                     </div>
 
                     <div class="leftNav">
-                        {% include left-nav.html %}
+                        {% if page.random == true %}
+                            {% include left_nav_random.html %}
+                        {% else %}
+                            {% include left-nav.html %}
+                        {% endif %} 
                         <div class="leftNavSubContent">
                             {% for module in page.left_column %}
                                 {% include modules/left_column/{{module}}.html %}

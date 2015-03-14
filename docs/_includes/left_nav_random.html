@@ -1,0 +1,9 @@
+<ul>
+    {% for p in site.pages %}
+    {% if p.random == true %}
+    <li class="{% if page.url == p.url %}active{% endif %}">
+        <a href="{{p.url}}" >{{p.title}}</a>
+    </li>
+    {% endif %}
+    {% endfor %}
+</ul>
