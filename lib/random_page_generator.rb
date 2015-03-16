@@ -34,13 +34,14 @@ class RandomPageGenerator
   def create(num)
     (1..num).each do |index|
       page = {}
-      page["title"] = Faker::Company.catch_phrase
-      page["layout"] = @layouts.sample
-      page["masthead"] = @mastheads.sample
-      page["left_column"] = @left_column_widgets.sample(1 + rand(8))
+      page["title"]           = Faker::Company.catch_phrase
+      page["layout"]          = @layouts.sample
+      page["masthead"]        = @mastheads.sample
+      page["left_column"]     = @left_column_widgets.sample(1 + rand(8))
       page["primary_content"] = @primary_content_widgets.sample(1 + rand(8))
-      page["right_column"] = @right_column_widgets.sample(1 + rand(8)) if page["layout"][0] == '3'
-      page["random"] = true
+      page["right_column"]    = @right_column_widgets.sample(1 + rand(8)) if page["layout"][0] == '3'
+      page["random"]          = true
+      
       File.write(File.join(DESTINATION, "#{index}.html"), page.to_yaml + '---')
     end
   end
