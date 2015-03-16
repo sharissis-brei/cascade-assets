@@ -35,7 +35,7 @@ namespace :build do
 end
 
 task :randomize do
-  RandomPageGenerator.new
+  RandomPageGenerator.new.generate(10) # Number to generate
 end
 
 ############################
