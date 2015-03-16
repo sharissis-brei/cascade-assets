@@ -13,7 +13,7 @@ layout: docs
       <div class="container content">
         <p>It is hard to manage assets inside of cascade.</p>
 
-        <p>Instead, organize styles, scripts, and images here, then upload the compressed, production-ready assets to cascade.  The asset source files are located in the <code>_assets/</code> folder.  These assets get compiled into <code>_sites/_assets/</code>.</p>
+        <p>Instead, organize styles, scripts, and images here, then upload the compressed, production-ready assets to cascade.  The asset source files are located in the <code>src/</code> folder.  These assets get compiled into <code>dist</code> after running <code>rake build:production</code> or <code>rake build:staging</code> depending on which server you wish to build for.</p>
 
         <p>This project uses the Jekyll framework to serve a mini-local version of our cascade html templates.  It also utilizes the jekyll-assets plugin to give us an asset pipeline similar to Ruby on Rails.</p>
 
@@ -25,7 +25,6 @@ layout: docs
       <h2>Choose Your Template</h2>
 
       <ul class="template-options content">
-
         <li class="template-option">
           <a href="{{ site.baseurl }}/2_column_module_sample.html">
             <p class="template-title">2 Column Modular</p>
@@ -39,9 +38,19 @@ layout: docs
             {% image placeholder/3_column_modular_screenshot.png %}
           </a>
         </li>
-
       </ul>
     </nav>
+
+    <article class="page-description">
+      <div class="container content">
+      <h2>Random Page Generator</h2>
+      <p>This project has a special feature that will generate random page configurations based on the widget samples in the <code>_includes/</code> folder.   By running the command <code>rake randomize</code>, 10 pages with random layouts, widgets, titles, and content will be generated.  Careful when running that command though, as it will replace any existing random pages with new ones.</p>
+
+      <p>This feature is useful when testing out new styles.  It will allow us to make sure we don't break the layout of pages with very different configurations.</p>
+
+      <p>Visit <a href="/random">/random</a> to see the sample pages and their randomly generated configurations.</p>
+      </div>
+    </article>
 
 
   </div>

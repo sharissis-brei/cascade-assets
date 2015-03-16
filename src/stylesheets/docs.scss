@@ -10,6 +10,11 @@ h1,h2,h3,h4,h5,h6,p,ol,ul,li {
   line-height: normal;
 }
 
+a, a:link, a:active, a:visited {
+  color: $yellow;
+  text-decoration: underline;
+}
+
 code {
   background: $cool-gray;
   color: $black;
@@ -77,4 +82,40 @@ code {
     width: 300px;
   }
 }
+
+.template-title {
+  color: $yellow;
+  text-decoration: none;
+}
+
+/* Random Page Index
+---------------------------------------- */
+
+.random-page {
+  padding: 30px 0;
+  p { font-size: 75%; }
+}
+
+.random-page--layout {
+  margin: 0 0 10px 0;
+}
+
+.random-page--config {
+  display: flex;
+  justify-content: space-between;
+  /* The smallest screen*/ flex-flow: column nowrap; 
+  @include breakpoint(m) { flex-flow: row nowrap; }
+  background: rgba(0,0,0,0.15);
+  border-radius: 3px;
+  padding: 10px;
+
+  strong { text-decoration: underline; }
+
+  p {
+    margin: 10px;
+    font-size: 75%;
+    @include breakpoint(m) { width: 25%;  }
+  }
+}
+
 

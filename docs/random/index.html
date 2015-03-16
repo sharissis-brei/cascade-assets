@@ -1,0 +1,35 @@
+---
+layout: docs
+---
+
+<div class="content container">
+<h1>Randomly Generated Cascade Pages</h1>
+<p>To regenerate these random pages, run <code>rake randomize</code>.</p>
+
+  {% for p in site.pages %}
+  {% if p.random == true %}
+  <section class="random-page">
+    <h6><a href="{{ p.url }}">{{ p.url }}</a></h6>
+    <p class="random-page--layout"><em>{{ p.layout }}</em></p>
+    <div class="random-page--config">
+      <p>
+        <strong>Masthead</strong><br />
+        {{ p.masthead }}
+      </p>
+      <p>
+        <strong>Left Column</strong><br />
+        {{ p.left_column | join:'<br />'}}
+      </p>
+      <p>
+        <strong>Primary Content</strong><br />
+        {{ p.primary_content | join:'<br />'}}
+      </p>
+      <p>
+        <strong>Right Column</strong><br />
+        {{ p.right_column | join:'<br />'}}
+      </p>
+    </div>
+  </section>
+  {% endif %}
+  {% endfor %}
+</div>
