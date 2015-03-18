@@ -1,3 +1,39 @@
 <div class="simple-form-widget">
-
+    <div class="callout short-form">
+        <h2>
+        This is the title thingy for the form and it's kindof long
+    </h2>
+        <form action="http://webfarm.chapman.edu/mailservice/formmail.aspx" id="short-form" method="post" name="BREI_TEST">
+            <input name="sender" type="hidden" value="webmaster@chapman.edu" />
+            <input name="recipient" type="hidden" value="mthomas@chapman.edu" />
+            <input name="mail_format" type="hidden" value="html" />
+            <input name="subject" type="hidden" value="This is a test email" />
+            <input name="table" type="hidden" value="BREI_TEST" />
+            <div>
+                <textarea id="short-response" name="response" placeholder="Type your answer here"></textarea>
+            </div>
+            <div>
+                <input id="short-email" name="email" placeholder="Type your email (optional)" type="text" />
+            </div>
+            <div>
+                <select id="short-choice" name="choice">
+                    <option value="one">
+                        Choice One
+                    </option>
+                    <option value="two">
+                        Choice Two
+                    </option>
+                </select>
+            </div>
+            <div>
+                <input id="short-submit" type="submit" value="Submit" />
+            </div>
+            <!-- The following code is invisible to people and
+     contains some trap text fields-->
+            <div style="display:none;">
+                If you can read this, don't touch the following field:
+                <input name="address_bot" type="text" value="" />
+            </div>
+        </form>
+    </div>
 </div>
