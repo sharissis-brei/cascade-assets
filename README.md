@@ -1,6 +1,10 @@
 # Cascade Assets
 Manage assets outside of cascade.
 
+Update: We are working on integrating these styles into the 2 column and 3 column modular templates.  
+[Use This Spreadsheet to Track Bugs](https://docs.google.com/spreadsheets/d/1PKrGIaNUXJA2B0_kvjVW8TWT7djb8DXJpwrZ48lSjFc/edit#gid=0)
+
+
 ## Setup
 ```
 git clone git@github.com:chapmanu/cascade-assets.git
