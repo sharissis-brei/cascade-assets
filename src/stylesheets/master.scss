@@ -27,6 +27,7 @@
 @import "base/logo";
 @import "base/main-nav-links";
 @import "base/main-nav";
+@import "base/sub-nav-links";
 @import "base/masthead-placeholder";
 @import "base/misc";
 @import "base/new-button";
@@ -36,7 +37,6 @@
 @import "base/search-results";
 @import "base/small-masthead";
 @import "base/social-follow-us";
-@import "base/sub-nav-links";
 @import "base/tabs";
 @import "base/tipsy";
 
@@ -69,16 +69,16 @@
 @import "layout/two-columns";
 
 // Modules
-@import "modules/carousel";
-@import "modules/flickr-picasa-links";
-@import "modules/funnel-region";
-@import "modules/masthead";
-@import "modules/omni-nav";
-@import "modules/personnel-region";
-@import "modules/sponsor-logo-rotator";
-@import "modules/sponsorship-logo-feed";
-@import "modules/spotlight-region";
-@import "modules/three-box-callout";
+@import "widgets/carousel";
+@import "widgets/flickr-picasa-links";
+@import "widgets/funnel-region";
+@import "widgets/masthead";
+@import "widgets/omni-nav";
+@import "widgets/personnel-region";
+@import "widgets/sponsor-logo-rotator";
+@import "widgets/sponsorship-logo-feed";
+@import "widgets/spotlight-region";
+@import "widgets/three-box-callout";
 
 // Themes
 // @import "themes/wilkinson";

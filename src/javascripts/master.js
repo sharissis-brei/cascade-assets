@@ -26,6 +26,7 @@
 //= include cascade/ie7
 //= include cascade/main
 //= include cascade/news-events
+//= include cascade/form-validation
 
 //= include cascade/omni-nav.min
 

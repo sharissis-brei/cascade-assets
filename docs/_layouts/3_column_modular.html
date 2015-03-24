@@ -25,7 +25,7 @@
         <div id="main" role="main">
         
             {% if page.masthead %}
-                {% include modules/masthead/{{page.masthead}}.html %}
+                {% include widgets/masthead/{{page.masthead}}.html %}
             {% endif %}
 
             <div class="subRotator">
@@ -43,13 +43,13 @@
                                 <div class="newsEventsOptions">$tabOptions</div>
                             </div>
                             {{content}}
-                            {% for module in page.primary_content %}
-                                {% include modules/primary_content/{{module}}.html %}
+                            {% for widget in page.primary_content %}
+                                {% include widgets/primary_content/{{widget}}.html %}
                             {% endfor %}
                         </div>
                         <div class="rightColumn">
-                            {% for module in page.right_column %}
-                                {% include modules/right_column/{{module}}.html %}
+                            {% for widget in page.right_column %}
+                                {% include widgets/right_column/{{widget}}.html %}
                             {% endfor %}
                         </div>
                     </div>
@@ -61,8 +61,8 @@
                             {% include left-nav.html %}
                         {% endif %} 
                         <div class="leftNavSubContent">
-                            {% for module in page.left_column %}
-                                {% include modules/left_column/{{module}}.html %}
+                            {% for widget in page.left_column %}
+                                {% include widgets/left_column/{{widget}}.html %}
                             {% endfor %}
                         </div>
                     </div>

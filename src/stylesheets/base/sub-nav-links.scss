@@ -10,7 +10,6 @@
   }
   &.last {
     @include bp(m) {
-      left: auto;
       right: 0;
     }
   }

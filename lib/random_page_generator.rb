@@ -4,7 +4,7 @@ require 'awesome_print'
 
 class RandomPageGenerator
 
-  WIDGET_DIR  = File.expand_path('../docs/_includes/modules', File.dirname(__FILE__))
+  WIDGET_DIR  = File.expand_path('../docs/_includes/widgets', File.dirname(__FILE__))
   DESTINATION = File.expand_path('../docs/random', File.dirname(__FILE__))
 
   def initialize
