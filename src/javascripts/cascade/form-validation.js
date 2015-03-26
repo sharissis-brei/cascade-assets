@@ -1,14 +1,15 @@
 <!--
   //this copy of js file from _chapman_common
   
-  //added so can replace (dynamically when page is viewed in browser) with domain of server that webpage is being viewed on. will put V_HTTP_HOST in redirect_url field in hidden form field:
-  (function(){
-                  var elements = document.getElementsByName("redirect_url");
-                  for (var i = 0; i < elements.length; i++){
-                                  var value = elements[i].value;
-                                  elements[i].value = value.replace("V_HTTP_HOST", document.location.host);
-                  }
-  })()
+    //added so can replace (dynamically when page is viewed in browser) with domain of server that webpage is being viewed on. will put V_HTTP_HOST in redirect_url field in hidden form field:
+    $( document ).ready(function() {
+        var elements = document.getElementsByName("redirect_url");
+        for (var i = 0; i < elements.length; i++){
+            var old_value = elements[i].value;
+            var new_value = old_value.replace("V_HTTP_HOST", document.location.host);
+            elements[i].value = new_value;
+        }
+    });
 
 
     // used to validate radio button collection (tests if at least 1 is checked):
