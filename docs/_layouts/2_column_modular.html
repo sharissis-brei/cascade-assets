@@ -32,7 +32,10 @@
 
                 <div class="primaryContent clearfix twoColumns">
 
-                    {% include breadcrumbs.html %}
+                    <div class="breadcrumbs clearfix">
+                        {% include breadcrumbs.html %}
+                        {% include social-media-icons.html %}
+                    </div>
 
                     <div class="middleRightContainer">
                         <div class="main"><h1><span class="bullet">»</span>{{page.title}}</h1>
