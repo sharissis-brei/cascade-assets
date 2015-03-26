@@ -7,6 +7,10 @@ div.four-col-float {
 
 /*Region*/
 
+.region {
+    overflow: auto; 
+}
+
 .region h3 {
     border-bottom: 1px solid #383838;
     clear: both;
