@@ -422,6 +422,6 @@ $(function () {
   if ($ellipsis) $ellipsis.ellipsis();
 
 	// Need to add this after the ellipsis takes effect
-	$(".newsEventsContent>li, .tabContent>li").css("display", "none");
+	// $(".newsEventsContent>li, .tabContent>li").css("display", "none");
 
 });

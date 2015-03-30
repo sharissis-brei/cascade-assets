@@ -6,11 +6,9 @@
   h1, h2, h3, h4, h5, h6 {
     // font-family: "proxima-nova-soft", sans-serif;
 	}
-	a {
-	  &:link, &:visited {
-	    border-bottom: 1px dotted #C0C0C0;
-	  }
-	}
+	a, a:visited {
+    border-bottom: 1px dotted #C0C0C0;
+  }
   .social {
     margin: 0 0 0 25px;
   }

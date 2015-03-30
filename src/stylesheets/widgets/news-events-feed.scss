@@ -1,0 +1,448 @@
+/* News Events Wrapper
+---------------------------------------- */
+$tab-content-bg-color: #f3f2ee;
+$tab-content-border-color: #cdccc7;
+
+.newsEvents {
+  margin-top: 30px;
+  width: 100%;
+  min-height: 310px; // To avoid jumpyness when loading
+  padding: 0 0 20px 0;
+  clear: both;
+  display: inline-block;
+
+  a { border-bottom: none; }
+  // Story titles
+  h3 { 
+    margin: 0; 
+    a {
+      font-weight: normal;
+      font-size: 14px;
+      color: $text-color;
+      &:hover { color: $link-color; }
+    }
+    .bullet {
+      font-size: 12px;
+      position: relative;
+      bottom: 2px;
+      display: none;
+    }
+  }
+}
+
+/* Navigation Tabs
+---------------------------------------- */
+
+// The navigation container
+.newsEventsNav {
+  display: block;
+  z-index: 100;
+  position: relative;
+  display: block;
+  height: auto;
+  padding: 0 0 10px 0;
+  clear: both;
+}
+
+// The clickable tabs
+.newsEventsNav  li {
+  background-color: #e3e2de;
+  font-size: 1.1em;
+  position: relative;
+  bottom: -1px; // Cover up the border of the primary content
+  list-style-type: none;
+  padding: 0 17px 0 17px;
+  margin: 0 2px 0 0;
+  height: 35px;
+  line-height: 35px;
+  cursor: pointer;
+  float: left;
+  transition: padding 200ms;
+  border-top: 2px solid transparent;
+  &:hover {
+    background-color: #e0e0dd;
+    color: $link-color;
+  }
+  &.active { // The selected tab
+    background-color: $tab-content-bg-color;
+    font-weight: 800;
+    color: $primary-color;
+    padding: 0 40px 0 40px;
+    border-top: 2px solid $primary-color;
+    border-right: 1px solid $tab-content-border-color;
+    border-left: 1px solid $tab-content-border-color;
+    border-bottom: 1px solid $tab-content-bg-color;
+  }
+}
+
+// Left Nav overrides
+.leftNav .newsEventsNav li.active {
+  padding: 0 20px 0 20px; // Less padding
+}
+
+
+/* Content
+---------------------------------------- */
+
+.newsEventsContent {
+  background-color: $tab-content-bg-color;
+  border: 1px solid $tab-content-border-color;
+  position: relative;
+  color: $text-color;
+  clear: both;
+  div { margin: 0; }
+  > li { display: none; }
+  > li.active { display: block;}
+}
+
+
+/* The Featured Tab
+---------------------------------------- */
+
+.newsEventsContent .featured {
+  position: relative;
+  .title    { margin: 35px 0 5px 0; }
+  .readMore { margin-top: 10px; }
+  .image { 
+    width: 100%;
+    height: auto;
+  }
+  .col1 {
+    display: inline-block;
+    max-width: 190px;
+    margin-bottom: 20px;
+    @include bp(m) {
+      border-right: 1px solid $tab-content-border-color;
+      padding-right: 20px;
+      width: 46%;
+      margin-bottom: 0px;
+    }
+  }
+  .col2 {
+    display: inline-block;
+    width: 100%;
+    vertical-align: top;
+    @include bp(m) {
+      padding-left: 15px; // Not 20px because there is a space and this is inline-block
+      width: 46%;
+    }
+  }
+}
+
+/* The news and events tabs
+---------------------------------------- */
+
+.newsEventsContent .story {
+  display: inline-block;
+  vertical-align: top;
+  border-bottom: 1px solid #ded3bb;
+  float: none;
+  width: 100%;
+  height: 100%;
+  padding: 15px 0px 15px 0px;
+  position: relative;
+  @include bp(l) {
+    border: none;
+    border-right: 1px solid #dfd3bc;
+    width: 28.9%;
+    padding-right: 2%;
+    margin-right: 2%;
+  }
+}
+
+.newsEventsContent .story3 {
+  border-right: none;
+}
+
+
+/* LEFT NAV STYLES ONLY
+---------------------------------------- */
+
+.leftNav .newsEventsContent .story {
+  a { border-bottom: none; }
+  border: none;
+  border-bottom: 1px solid $tab-content-border-color;
+  float: none;
+  width: 100%;
+  margin: 0;
+  padding: 15px 0px 15px 0px;
+  position: relative;
+}
+
+// .leftNav {
+//   .allNews, .allEvents {
+//     text-align: left;
+//     padding: 10px 0 0 0;
+//     float: none;
+//   }
+
+//   .newsEvents {
+//     padding-top: 20px;
+//     .story {
+//       border: none;
+//       border-bottom: 1px solid #ded3bb;
+//       float: none;
+//       width: 100%;
+//       margin: 0;
+//       padding: 15px 0px 15px 0px;
+//       position: relative;
+//     }
+//     .todayTomorrow {
+//       position: absolute;
+//       height: 20px;
+//       width: 100%;
+//       min-width: 200px;
+//       font-family: "proxima-nova", sans-serif;
+//       // font-weight: bold;
+//       font-weight: 800;
+//       font-size: 15px;
+//       top: 25px;
+//       left: 90px;
+//       .today, .tomorrow {
+//         border-left: 1px solid $black;
+//         padding: 0 0 0 10px;
+//       }
+//     }
+//     .date {
+//       height: 35px;
+//       position: relative;
+//     }
+//     .featured {
+//       width: 277px;
+//       margin-top: 10px;
+//       padding: 0;
+//       img {
+//         width: 100%;
+//       }
+//       .date {
+//         display: inline-block;
+//         // margin: 0 -15px 0 0;
+//         margin: 12px -15px 0 0;
+//       }
+//       .title {
+//         font-size: 14px;
+//         vertical-align: top;
+//         // border-left: 1px solid $black;
+//         margin: 10px 0 10px 0px;
+//         // width: 150px;
+//         width: 185px;
+//         display: inline-block;
+//         a {
+//           margin: 0 0 0 10px;
+//           padding: 0;
+//         }
+//       }
+//       .readMore {
+//         text-align: left;
+//         float: none;
+//         margin-left: 0;
+//         width: auto;
+//       }
+//     }
+//     .description {
+//       font-size: 14px;
+//       margin-top: 0;
+//       margin-left: 0;
+//     }
+//   }
+//   .newsEventsNav {
+//     clear: both;
+//     background-position: -250px 4px;
+//   }
+//   .newsEventsContent {
+//     background-color: $cu-light-grey;
+//     top: -1px;
+//     // margin: 0 20px 20px 0;
+//     margin: 0;
+//     padding: 1px 0 1px 0;
+//     z-index: 1;
+//     .loading {
+//       position: absolute;
+//       top: 100px;
+//       left: 70px;
+//     }
+//   }
+// }
+// .leftNav .newsEvents .story {
+//   border: none;
+//   border-bottom: 1px solid #ded3bb;
+//   float: none;
+//   width: 100%;
+//   margin: 0;
+//   padding: 15px 0px 15px 0px;
+//   position: relative;
+// }
+
+// .newsEventsContent .leftNav{
+//    & {
+//     margin: 0 20px 20px 0;
+//     margin: 0;
+//     padding: 1px 0 1px 0;
+//     z-index: 1;
+//     .loading {
+//       position: absolute;
+//       top: 100px;
+//       left: 70px;
+//     }
+//   }
+// }
+
+// .newsEvents .todayTomorrow {
+//   position: relative;
+//   height: 20px;
+//   font-family: "proxima-nova", sans-serif;
+//   font-weight: 800;
+//   font-size: 15px;
+//   span {
+//     position: absolute;
+//     visibility: hidden;
+//   }
+// }
+
+// // These are the links to view more events/news at the bottom of the content
+// .allNews, .allEvents {
+//   position: relative;
+//   right: 60px;
+//   clear: both;
+//   float: right;
+//   width: 150px;
+//   text-align: right;
+//   .main & {
+//     position: relative;
+//     right: 60px;
+//   }
+//   .leftNav & {
+//     text-align: left;
+//     padding: 10px 0 0 0;
+//     float: none;
+//   }
+// }
+
+
+
+// /* Content :: Featured
+// ---------------------------------------- */
+// .leftNav .newsEvents .featured {
+//   width: 277px;
+//   margin-top: 10px;
+//   padding: 0;
+//   img { width: 100%; }
+  
+//   .title {
+//     font-size: 14px;
+//     vertical-align: top;
+//     margin: 10px 0 10px 0px;
+//     width: 185px;
+//     display: inline-block;
+//     a {
+//       margin: 0 0 0 10px;
+//       padding: 0;
+//     }
+//   }
+//   .readMore {
+//     text-align: left;
+//     float: none;
+//     margin-left: 0;
+//     width: auto;
+//   }
+// }
+
+
+
+// /* Content :: Story
+// ---------------------------------------- */
+
+
+
+// .newsEventsContent > li {
+//   padding: 20px;
+// }
+
+// /* Titles and descriptions
+// ---------------------------------------- */
+// .newsEvents {
+//   .description {
+//     font-size: 14px;
+//     margin-top: 0;
+//     margin-left: 0;
+//   }
+// }
+
+
+
+// /* The Dates, Today, and Tomorrow stories
+// ---------------------------------------- */
+
+.newsEvents {
+  .date { // For featured things
+    display: inline-block;
+    margin: 12px -15px 0 0;
+    font-family: $font-stack-heading;
+  }
+
+  .date {
+    @include bp(m) {
+      margin: 0 0 0 0;
+    }
+  }
+
+  .date {
+    margin: 0;
+    > div {
+      margin: 0;
+    }
+  }
+
+  .date {
+    font-weight: 800;
+    color: $cu-red;
+    margin: 0;
+    height: 40px;
+    width: 85px;
+    position: relative;
+    > div {
+      margin: 0;
+    }
+    .day {
+      font-size: 29px;
+      position: absolute;
+      top: 5px;
+      left: 0;
+    }
+    .month {
+      font-size: 12px;
+      position: absolute;
+      top: 0;
+      left: 40px;
+    }
+    .year {
+      font-size: 12px;
+      position: absolute;
+      top: 12px;
+      left: 40px;
+    }
+  }
+}
+
+// // Left Nav Overrides
+// .leftNav .newsEvents {
+//   .todayTomorrow {
+//     position: absolute;
+//     height: 20px;
+//     width: 100%;
+//     min-width: 200px;
+//     font-family: "proxima-nova", sans-serif;
+//     font-weight: 800;
+//     font-size: 15px;
+//     top: 25px;
+//     left: 90px;
+//     .today, .tomorrow {
+//       border-left: 1px solid $black;
+//       padding: 0 0 0 10px;
+//     }
+//   }
+//   .date {
+//     height: 35px;
+//     position: relative;
+//   }
+// }
