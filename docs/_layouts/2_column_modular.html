@@ -11,75 +11,79 @@
 <body>
     <!--<![endif]-->
 
-    <span class="hidden"><a href="#main" title="Skip navigation and jump directly to the main content of this page">Jump to the main content of this page</a></span>
+    <div id="page" class="{{page.theme}}">
 
-    <div id="fb-root"></div>
+        <span class="hidden"><a href="#main" title="Skip navigation and jump directly to the main content of this page">Jump to the main content of this page</a></span>
 
-    <div class="noscript">
-        <p>Some of the content on this website requires JavaScript to be enabled in your web browser to function as intended. This includes, but is not limited to: Flash (also requires the <a href="https://www.adobe.com/shockwave/download/download.cgi?P1_Prod_Version=ShockwaveFlash" target="_blank" title="Get Adobe Flash Player (link opens in a new browser window)">Adobe Flash Player</a>), navigation, video, image galleries, etc. While the website is still usable without JavaScript, it should be enabled to enjoy the full interactive experience.</p>
-    </div>
-    <div class="bigMasthead smallRotator" id="container">
+        <div id="fb-root"></div>
 
-        {% include header.html %}
+        <div class="noscript">
+            <p>Some of the content on this website requires JavaScript to be enabled in your web browser to function as intended. This includes, but is not limited to: Flash (also requires the <a href="https://www.adobe.com/shockwave/download/download.cgi?P1_Prod_Version=ShockwaveFlash" target="_blank" title="Get Adobe Flash Player (link opens in a new browser window)">Adobe Flash Player</a>), navigation, video, image galleries, etc. While the website is still usable without JavaScript, it should be enabled to enjoy the full interactive experience.</p>
+        </div>
+        <div class="bigMasthead smallRotator" id="container">
 
-        <div id="main" role="main">
+            {% include header.html %}
 
-            {% if page.masthead %}
-                {% include widgets/masthead/{{page.masthead}}.html %}
-            {% endif %}
+            <div id="main" role="main">
 
-            <div class="subRotator">
+                {% if page.masthead %}
+                    {% include widgets/masthead/{{page.masthead}}.html %}
+                {% endif %}
 
-                <div class="primaryContent clearfix twoColumns">
+                <div class="subRotator">
 
-                    <div class="breadcrumbs clearfix">
-                        {% include breadcrumbs.html %}
-                        {% include social-media-icons.html %}
-                    </div>
+                    <div class="primaryContent clearfix twoColumns">
 
-                    <div class="middleRightContainer">
-                        <div class="main"><h1><span class="bullet">»</span>{{page.title}}</h1>
-                            <div class="hidden">
-                                <div class="featureFeed">/_featured/Default.xml</div>
-                                <div class="newsFeed">Default</div>
-                                <div class="eventsFeed">Default</div>
-                                <div class="newsEventsOptions">$tabOptions</div>
+                        <div class="breadcrumbs clearfix">
+                            {% include breadcrumbs.html %}
+                            {% include social-media-icons.html %}
+                        </div>
+
+                        <div class="middleRightContainer">
+                            <div class="main"><h1><span class="bullet">»</span>{{page.title}}</h1>
+                                <div class="hidden">
+                                    <div class="featureFeed">/_featured/Default.xml</div>
+                                    <div class="newsFeed">Default</div>
+                                    <div class="eventsFeed">Default</div>
+                                    <div class="newsEventsOptions">$tabOptions</div>
+                                </div>
+                                {{content}}
+                                {% for widget in page.primary_content %}
+                                    {% include widgets/primary_content/{{widget}}.html %}
+                                {% endfor %}
                             </div>
-                            {{content}}
-                            {% for widget in page.primary_content %}
-                                {% include widgets/primary_content/{{widget}}.html %}
-                            {% endfor %}
+                        </div>
+
+                        <div class="leftNav">
+                            {% if page.random == true %}
+                                {% include left_nav_random.html %}
+                            {% else %}
+                                {% include left-nav.html %}
+                            {% endif %} 
+                            <div class="leftNavSubContent">
+                                {% for widget in page.left_column %}
+                                    {% include widgets/left_column/{{widget}}.html %}
+                                {% endfor %}
+                            </div>
                         </div>
                     </div>
 
-                    <div class="leftNav">
-                        {% if page.random == true %}
-                            {% include left_nav_random.html %}
-                        {% else %}
-                            {% include left-nav.html %}
-                        {% endif %} 
-                        <div class="leftNavSubContent">
-                            {% for widget in page.left_column %}
-                                {% include widgets/left_column/{{widget}}.html %}
-                            {% endfor %}
-                        </div>
-                    </div>
                 </div>
-
             </div>
+
+            {% include footer.html %}
+
+        </div>
+        <!--! end of #container -->
+
+        <div class="hidden">
+            <div class="featureFeed">/_featured/Default.xml</div>
+            <div class="newsFeed">Default</div>
+            <div class="eventsFeed">Default</div>
+            <div class="newsEventsOptions">$newsEventsOptions</div>
+            <div class="leftColumnNewsEventsOptions">$leftColumnnewsEventsOptions</div>
         </div>
 
-        {% include footer.html %}
-
-    </div>
-    <!--! end of #container -->
-
-    <div class="hidden">
-        <div class="featureFeed">/_featured/Default.xml</div>
-        <div class="newsFeed">Default</div>
-        <div class="eventsFeed">Default</div>
-        <div class="newsEventsOptions">$newsEventsOptions</div>
-        <div class="leftColumnNewsEventsOptions">$leftColumnnewsEventsOptions</div>
     </div>
 </body>
 </html>
