@@ -90,6 +90,7 @@ $tab-content-border-color: #cdccc7;
   position: relative;
   color: $text-color;
   clear: both;
+  padding: 20px;
   div { margin: 0; }
   > li { display: none; }
   > li.active { display: block;}
@@ -422,6 +423,14 @@ $tab-content-border-color: #cdccc7;
       left: 40px;
     }
   }
+}
+
+.story .todayTomorrow {
+  visibility: hidden;
+}
+
+.leftNav .newsEventsContent .story3 {
+  border-style: none;
 }
 
 // // Left Nav Overrides
