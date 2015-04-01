@@ -49,6 +49,7 @@ $tab-content-border-color: #cdccc7;
 // The clickable tabs
 .newsEventsNav  li {
   //When small
+
   background-color: #e3e2de;
   font-size: 1.1em;
   padding: 0 17px 0 17px;
@@ -60,7 +61,12 @@ $tab-content-border-color: #cdccc7;
   border-top: 2px solid transparent;  // Keep text in same spot as active element
   list-style-type: none;
 
-  // When big
+  // When big or when its a news-events-widget item, or if it is in the left-nav
+  .leftNav &, .news-events-widget & {
+    margin: 0 2px 0 0;
+    float: left;
+    transition: padding 200ms;
+  }
   @include bp(l) {
     margin: 0 2px 0 0;
     float: left;
