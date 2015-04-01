@@ -1,3 +1,24 @@
+/* BAD NEWS
+ *
+ * These styles apply to the news-events-widget which can now be present
+ * in the primary content of a cascade page, or in the left column under
+ * the site navigation.  HOWEVER, these are the same styles applied to
+ * the tab-widget despite all the class names referring to only news &
+ * events.  Therefore, test these styles against the following widgets to
+ * ensure you don't break anything:
+ *  - news-events-widget in the left column
+ *  - news-events-widget in primary content
+ *  - tab-widget in primary content
+ *
+ * I recommend changing these class names once cascade is only running on 
+ * the modular template.  That way, you can edit the HTML in velocity to 
+ * output meaningful class names like "tabbed-widget, tabbed-nav, 
+ * tabbed-content", etc.
+ *
+ * Sincerely, James Kerr
+ */
+
+
 /* News Events Wrapper
 ---------------------------------------- */
 $tab-content-bg-color: #f3f2ee;
@@ -28,6 +49,11 @@ $tab-content-border-color: #cdccc7;
       display: none;
     }
   }
+  // The links at the bottom of the page
+  .allNews, .allEvents, .readMore {
+    margin-top: 25px;
+    display: block;
+  }
 }
 
 /* Navigation Tabs
@@ -48,8 +74,7 @@ $tab-content-border-color: #cdccc7;
 
 // The clickable tabs
 .newsEventsNav  li {
-  //When small
-
+  // When small, make the tabs collapse.
   background-color: #e3e2de;
   font-size: 1.1em;
   padding: 0 17px 0 17px;
@@ -61,18 +86,20 @@ $tab-content-border-color: #cdccc7;
   border-top: 2px solid transparent;  // Keep text in same spot as active element
   list-style-type: none;
 
-  // When big or when its a news-events-widget item, or if it is in the left-nav
-  .leftNav &, .news-events-widget & {
+  // When its a news-events-widget item, or 
+  // when if it is in the left-nav,
+  // make the tabs look like normal tabs.
+  .news-events-widget &, .leftNav & {
     margin: 0 2px 0 0;
     float: left;
     transition: padding 200ms;
   }
+  // When big screen, make the tabs look like tabs
   @include bp(l) {
     margin: 0 2px 0 0;
     float: left;
     transition: padding 200ms;
   }
-
   &:hover {
     background-color: #e0e0dd;
     color: $link-color;
@@ -85,13 +112,11 @@ $tab-content-border-color: #cdccc7;
     border-right: 1px solid $tab-content-border-color;
     border-left: 1px solid $tab-content-border-color;
     border-bottom: 1px solid $tab-content-bg-color;
-    @include bp(l){
-      padding: 0 40px 0 40px;
-    }
+    @include bp(l) { padding: 0 40px 0 40px; }
   }
 }
 
-// Left Nav overrides
+// When in Left Nav override padding
 .leftNav .newsEventsNav li.active {
   padding: 0 20px 0 20px; // Less padding
 }
@@ -100,6 +125,7 @@ $tab-content-border-color: #cdccc7;
 /* Content
 ---------------------------------------- */
 
+// The container of all content
 .newsEventsContent {
   background-color: $tab-content-bg-color;
   border: 1px solid $tab-content-border-color;
@@ -112,10 +138,7 @@ $tab-content-border-color: #cdccc7;
   > li.active { display: block;}
 }
 
-
-/* The Featured Tab
----------------------------------------- */
-
+// The featured tab content
 .newsEventsContent .featured {
   position: relative;
   overflow: auto;
@@ -123,7 +146,6 @@ $tab-content-border-color: #cdccc7;
     margin: 5px 0 10px 0; 
     font-weight: bold;
   }
-  .readMore { margin: 10px 10px 0 0; float: right; }
   .image { 
     width: 225px;
     height: auto;
@@ -152,281 +174,57 @@ $tab-content-border-color: #cdccc7;
   }
 }
 
-/* The news and events tabs
----------------------------------------- */
-
+// The news and events tabs content
 .newsEventsContent .story {
+  a { border-bottom: none; }
   display: inline-block;
   vertical-align: top;
   border-bottom: 1px solid #ded3bb;
   float: none;
   width: 100%;
   height: 100%;
-  padding: 0;
   position: relative;
+  padding: 15px 0px 15px 0px;
   @include bp(l) {
     border: none;
     border-right: 1px solid #dfd3bc;
     width: 28.9%;
+    padding: 0;
     padding-right: 2%;
     margin-right: 2%;
   }
+
+  // The overrides for the last story
+  &.story3 {
+    border: none;
+    margin-right: 0px;
+  }
 }
 
-.newsEventsContent .story3 {
-  border-right: none;
-  margin-right: 0px;
-}
-
-
-/* LEFT NAV STYLES ONLY
----------------------------------------- */
-
+// Overrides for when the widget is in the left nav
 .leftNav .newsEventsContent .story {
-  a { border-bottom: none; }
   border: none;
   border-bottom: 1px solid $tab-content-border-color;
-  float: none;
   width: 100%;
   margin: 0;
   padding: 15px 0px 15px 0px;
   position: relative;
+
+  &.story3 {
+    border: none;
+  }
 }
 
-// .leftNav {
-//   .allNews, .allEvents {
-//     text-align: left;
-//     padding: 10px 0 0 0;
-//     float: none;
-//   }
-
-//   .newsEvents {
-//     padding-top: 20px;
-//     .story {
-//       border: none;
-//       border-bottom: 1px solid #ded3bb;
-//       float: none;
-//       width: 100%;
-//       margin: 0;
-//       padding: 15px 0px 15px 0px;
-//       position: relative;
-//     }
-//     .todayTomorrow {
-//       position: absolute;
-//       height: 20px;
-//       width: 100%;
-//       min-width: 200px;
-//       font-family: "proxima-nova", sans-serif;
-//       // font-weight: bold;
-//       font-weight: 800;
-//       font-size: 15px;
-//       top: 25px;
-//       left: 90px;
-//       .today, .tomorrow {
-//         border-left: 1px solid $black;
-//         padding: 0 0 0 10px;
-//       }
-//     }
-//     .date {
-//       height: 35px;
-//       position: relative;
-//     }
-//     .featured {
-//       width: 277px;
-//       margin-top: 10px;
-//       padding: 0;
-//       img {
-//         width: 100%;
-//       }
-//       .date {
-//         display: inline-block;
-//         // margin: 0 -15px 0 0;
-//         margin: 12px -15px 0 0;
-//       }
-//       .title {
-//         font-size: 14px;
-//         vertical-align: top;
-//         // border-left: 1px solid $black;
-//         margin: 10px 0 10px 0px;
-//         // width: 150px;
-//         width: 185px;
-//         display: inline-block;
-//         a {
-//           margin: 0 0 0 10px;
-//           padding: 0;
-//         }
-//       }
-//       .readMore {
-//         text-align: left;
-//         float: none;
-//         margin-left: 0;
-//         width: auto;
-//       }
-//     }
-//     .description {
-//       font-size: 14px;
-//       margin-top: 0;
-//       margin-left: 0;
-//     }
-//   }
-//   .newsEventsNav {
-//     clear: both;
-//     background-position: -250px 4px;
-//   }
-//   .newsEventsContent {
-//     background-color: $cu-light-grey;
-//     top: -1px;
-//     // margin: 0 20px 20px 0;
-//     margin: 0;
-//     padding: 1px 0 1px 0;
-//     z-index: 1;
-//     .loading {
-//       position: absolute;
-//       top: 100px;
-//       left: 70px;
-//     }
-//   }
-// }
-// .leftNav .newsEvents .story {
-//   border: none;
-//   border-bottom: 1px solid #ded3bb;
-//   float: none;
-//   width: 100%;
-//   margin: 0;
-//   padding: 15px 0px 15px 0px;
-//   position: relative;
-// }
-
-// .newsEventsContent .leftNav{
-//    & {
-//     margin: 0 20px 20px 0;
-//     margin: 0;
-//     padding: 1px 0 1px 0;
-//     z-index: 1;
-//     .loading {
-//       position: absolute;
-//       top: 100px;
-//       left: 70px;
-//     }
-//   }
-// }
-
-// .newsEvents .todayTomorrow {
-//   position: relative;
-//   height: 20px;
-//   font-family: "proxima-nova", sans-serif;
-//   font-weight: 800;
-//   font-size: 15px;
-//   span {
-//     position: absolute;
-//     visibility: hidden;
-//   }
-// }
-
-// // These are the links to view more events/news at the bottom of the content
-// .allNews, .allEvents {
-//   position: relative;
-//   right: 60px;
-//   clear: both;
-//   float: right;
-//   width: 150px;
-//   text-align: right;
-//   .main & {
-//     position: relative;
-//     right: 60px;
-//   }
-//   .leftNav & {
-//     text-align: left;
-//     padding: 10px 0 0 0;
-//     float: none;
-//   }
-// }
-
-
-
-// /* Content :: Featured
-// ---------------------------------------- */
-// .leftNav .newsEvents .featured {
-//   width: 277px;
-//   margin-top: 10px;
-//   padding: 0;
-//   img { width: 100%; }
-  
-//   .title {
-//     font-size: 14px;
-//     vertical-align: top;
-//     margin: 10px 0 10px 0px;
-//     width: 185px;
-//     display: inline-block;
-//     a {
-//       margin: 0 0 0 10px;
-//       padding: 0;
-//     }
-//   }
-//   .readMore {
-//     text-align: left;
-//     float: none;
-//     margin-left: 0;
-//     width: auto;
-//   }
-// }
-
-
-
-// /* Content :: Story
-// ---------------------------------------- */
-
-
-
-// .newsEventsContent > li {
-//   padding: 20px;
-// }
-
-// /* Titles and descriptions
-// ---------------------------------------- */
-// .newsEvents {
-//   .description {
-//     font-size: 14px;
-//     margin-top: 0;
-//     margin-left: 0;
-//   }
-// }
-
-
-
-// /* The Dates, Today, and Tomorrow stories
-// ---------------------------------------- */
-
+// Styles for the cool red dates
 .newsEvents {
-  .date { // For featured things
-    display: inline-block;
-    margin: 12px -15px 0 0;
+  .date {
     font-family: $font-stack-heading;
-  }
-
-  .date {
-    @include bp(m) {
-      margin: 0 0 0 0;
-    }
-  }
-
-  .date {
-    margin: 0;
-    > div {
-      margin: 0;
-    }
-  }
-
-  .date {
-    font-weight: 800;
     color: $red;
-    margin: 0;
+    display: inline-block;
+    font-weight: 800;
     height: 25px;
     width: 85px;
     position: relative;
-    > div {
-      margin: 0;
-    }
     .day {
       font-size: 29px;
       position: absolute;
@@ -448,43 +246,11 @@ $tab-content-border-color: #cdccc7;
   }
 }
 
-.story .today, .story .tomorrow {
-  display: none;
-  font-weight: bold;
+// Styles for the today and tomorrow texts (hidden by default, and shown with js)
+.newsEvents .story {
+  .todayTomorrow { height: 20px; }
+  .today, .tomorrow {
+    display: none;
+    font-weight: bold;
+  }
 }
-
-.story .todayTomorrow {
-  height: 20px;
-}
-
-.leftNav .newsEventsContent .story3, .newsEventsContent .story3 {
-  border-style: none;
-}
-
-.allNews, .allEvents {
-  margin-top: 25px;
-  display: block;
-}
-
-// // Left Nav Overrides
-// .leftNav .newsEvents {
-//   .todayTomorrow {
-//     position: absolute;
-//     height: 20px;
-//     width: 100%;
-//     min-width: 200px;
-//     font-family: "proxima-nova", sans-serif;
-//     font-weight: 800;
-//     font-size: 15px;
-//     top: 25px;
-//     left: 90px;
-//     .today, .tomorrow {
-//       border-left: 1px solid $black;
-//       padding: 0 0 0 10px;
-//     }
-//   }
-//   .date {
-//     height: 35px;
-//     position: relative;
-//   }
-// }
