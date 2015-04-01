@@ -145,19 +145,19 @@ $tab-content-border-color: #cdccc7;
   .title { 
     margin: 5px 0 10px 0; 
     font-weight: bold;
+    font-size: 1.3em;
+    line-height: 1.3em;
+  }
+  .description {
+    clear: left;
   }
   .image { 
-    box-shadow: 0px 8px 8px -4px rgba(0,0,0,0.5);
+    box-shadow: 0px 8px 8px -4px rgba(0,0,0,0.3);
     margin: 0 20px 20px 0;
     height: auto;
   }
   .col1 {
     float: left;
-  }
-  .col2 {
-    @include bp(m) {
-      padding-left: 15px; // Not 20px because there is a space and this is inline-block
-    }
   }
 }
 
@@ -170,12 +170,14 @@ $tab-content-border-color: #cdccc7;
   float: none;
   width: 100%;
   height: 100%;
+  min-height: 130px;
   position: relative;
   padding: 15px 0px 15px 0px;
   @include bp(l) {
     border: none;
     border-right: 1px solid #dfd3bc;
     width: 28.9%;
+    
     padding: 0;
     padding-right: 2%;
     margin-right: 2%;
