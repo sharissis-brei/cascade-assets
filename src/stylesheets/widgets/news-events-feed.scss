@@ -147,29 +147,16 @@ $tab-content-border-color: #cdccc7;
     font-weight: bold;
   }
   .image { 
-    width: 225px;
-    height: auto;
-    float: left;
+    box-shadow: 0px 8px 8px -4px rgba(0,0,0,0.5);
     margin: 0 20px 20px 0;
+    height: auto;
   }
   .col1 {
-    display: inline-block;
-    max-width: 190px;
-    margin-bottom: 20px;
-    @include bp(m) {
-      border-right: 1px solid $tab-content-border-color;
-      padding-right: 20px;
-      width: 46%;
-      margin-bottom: 0px;
-    }
+    float: left;
   }
   .col2 {
-    display: inline-block;
-    width: 100%;
-    vertical-align: top;
     @include bp(m) {
       padding-left: 15px; // Not 20px because there is a space and this is inline-block
-      width: 46%;
     }
   }
 }

@@ -42,12 +42,12 @@ end
 # ::: HELPER FUNCTIONS ::: #
 ############################
 
-def rm_all_except(files, directory)
+def rm_rf_all_except(files, directory)
   unwanted_files = Dir.glob("#{directory}/*").reject do |file|
     files.any?{|f| "#{directory}/#{f}" == file}
   end
   unwanted_files.each do |file|
-    FileUtils.rm file
+    FileUtils.rm_rf file
   end
 end
 
@@ -71,11 +71,10 @@ def generate(options={})
   puts "::: Build Started \xF0\x9F\x94\xA8".yellow
 
   build_site(destination, config)
-  rm_all_except(['_assets', '_assets.zip', 'block.xml', 'instructions.txt'], destination)
   zip("#{destination}/_assets", "#{destination}/_assets.zip")
+  rm_rf_all_except(['_assets.zip', 'block.xml', 'instructions.txt'], destination)
 
-  print "    Assets built                ", "✔ #{destination}/_assets\n".green
-  print "    Assets zipped               ", "✔ #{destination}/_assets.zip\n".green
+  print "    Assets built                ", "✔ #{destination}/_assets.zip\n".green
   print "    New cascade block           ", "✔ #{destination}/block.xml\n".green
   print "    Deployment instructions     ", "✔ #{destination}/instructions.txt\n".green
   
