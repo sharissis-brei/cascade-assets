@@ -14,7 +14,7 @@ $tab-content-border-color: #cdccc7;
   a { border-bottom: none; }
   // Story titles
   h3 { 
-    margin: 0; 
+    margin: 10px 0 0 0; 
     a {
       font-weight: normal;
       font-size: 14px;
@@ -442,12 +442,22 @@ $tab-content-border-color: #cdccc7;
   }
 }
 
-.story .todayTomorrow {
-  visibility: hidden;
+.story .today, .story .tomorrow {
+  display: none;
+  font-weight: bold;
 }
 
-.newsEventsContent .story3 {
+.story .todayTomorrow {
+  height: 20px;
+}
+
+.leftNav .newsEventsContent .story3, .newsEventsContent .story3 {
   border-style: none;
+}
+
+.allNews, .allEvents {
+  margin-top: 25px;
+  display: block;
 }
 
 // // Left Nav Overrides
