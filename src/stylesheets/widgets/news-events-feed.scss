@@ -102,11 +102,17 @@ $tab-content-border-color: #cdccc7;
 
 .newsEventsContent .featured {
   position: relative;
-  .title    { margin: 35px 0 5px 0; }
-  .readMore { margin-top: 10px; }
+  overflow: auto;
+  .title { 
+    margin: 5px 0 10px 0; 
+    font-weight: bold;
+  }
+  .readMore { margin: 10px 10px 0 0; float: right; }
   .image { 
-    width: 100%;
+    width: 225px;
     height: auto;
+    float: left;
+    margin-right: 20px;
   }
   .col1 {
     display: inline-block;
@@ -140,7 +146,7 @@ $tab-content-border-color: #cdccc7;
   float: none;
   width: 100%;
   height: 100%;
-  padding: 15px 0px 15px 0px;
+  padding: 0;
   position: relative;
   @include bp(l) {
     border: none;
@@ -153,6 +159,7 @@ $tab-content-border-color: #cdccc7;
 
 .newsEventsContent .story3 {
   border-right: none;
+  margin-right: 0px;
 }
 
 
@@ -396,9 +403,9 @@ $tab-content-border-color: #cdccc7;
 
   .date {
     font-weight: 800;
-    color: $cu-red;
+    color: $red;
     margin: 0;
-    height: 40px;
+    height: 25px;
     width: 85px;
     position: relative;
     > div {
