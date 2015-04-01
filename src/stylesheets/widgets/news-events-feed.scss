@@ -40,25 +40,33 @@ $tab-content-border-color: #cdccc7;
   position: relative;
   display: block;
   height: auto;
-  padding: 0 0 10px 0;
   clear: both;
+  @include bp(l) {
+    padding: 0 0 10px 0;
+  }
 }
 
 // The clickable tabs
 .newsEventsNav  li {
+  //When small
   background-color: #e3e2de;
   font-size: 1.1em;
-  position: relative;
-  bottom: -1px; // Cover up the border of the primary content
-  list-style-type: none;
   padding: 0 17px 0 17px;
-  margin: 0 2px 0 0;
-  height: 35px;
   line-height: 35px;
+  height: 35px;
   cursor: pointer;
-  float: left;
-  transition: padding 200ms;
-  border-top: 2px solid transparent;
+  bottom: -1px; // Cover up the border of the primary content
+  position: relative;
+  border-top: 2px solid transparent;  // Keep text in same spot as active element
+  list-style-type: none;
+
+  // When big
+  @include bp(l) {
+    margin: 0 2px 0 0;
+    float: left;
+    transition: padding 200ms;
+  }
+
   &:hover {
     background-color: #e0e0dd;
     color: $link-color;
@@ -67,11 +75,13 @@ $tab-content-border-color: #cdccc7;
     background-color: $tab-content-bg-color;
     font-weight: 800;
     color: $primary-color;
-    padding: 0 40px 0 40px;
     border-top: 2px solid $primary-color;
     border-right: 1px solid $tab-content-border-color;
     border-left: 1px solid $tab-content-border-color;
     border-bottom: 1px solid $tab-content-bg-color;
+    @include bp(l){
+      padding: 0 40px 0 40px;
+    }
   }
 }
 
@@ -112,7 +122,7 @@ $tab-content-border-color: #cdccc7;
     width: 225px;
     height: auto;
     float: left;
-    margin-right: 20px;
+    margin: 0 20px 20px 0;
   }
   .col1 {
     display: inline-block;
@@ -436,7 +446,7 @@ $tab-content-border-color: #cdccc7;
   visibility: hidden;
 }
 
-.leftNav .newsEventsContent .story3 {
+.newsEventsContent .story3 {
   border-style: none;
 }
 
