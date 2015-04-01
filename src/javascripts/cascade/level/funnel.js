@@ -5,7 +5,7 @@ $( document ).ready(function() {
 	 * 
 	 * If the funnel boxes contain a list of links longer than 3 links, hide the rest and create a Show/Hide toggle
 	------------------------------------------------------------------------------------------------*/
-	$(".funnel-boxes-widget").each(function() {
+	$(".funnelBlock").each(function() {
 
 		// CONFIGURABLE:
 		var number_of_links_to_show = 3;
