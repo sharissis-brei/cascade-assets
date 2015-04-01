@@ -395,7 +395,7 @@ $(function () {
           if (today.getFullYear() === parseInt($(this).children(".year").html(), 10)) {
               if (month[today.getMonth()].toUpperCase() === $(this).children(".month").html()) {
                   if (today.getDate() === parseInt($(this).children(".day").html(), 10)) {
-                      $(this).siblings(".todayTomorrow").children(".today").css("visibility", "visible");
+                      $(this).siblings(".todayTomorrow").children(".today").css("display", "inline");
                   }
               }
           }
@@ -406,7 +406,7 @@ $(function () {
           if (tomorrow.getFullYear() === parseInt($(this).children(".year").html(), 10)) {
               if (month[tomorrow.getMonth()].toUpperCase() === $(this).children(".month").html()) {
                   if (tomorrow.getDate() === parseInt($(this).children(".day").html(), 10)) {
-                      $(this).siblings(".todayTomorrow").children(".tomorrow").css("visibility", "visible");
+                      $(this).siblings(".todayTomorrow").children(".tomorrow").css("display", "inline");
                   }
               }
           }
@@ -422,6 +422,6 @@ $(function () {
   if ($ellipsis) $ellipsis.ellipsis();
 
 	// Need to add this after the ellipsis takes effect
-	$(".newsEventsContent>li, .tabContent>li").css("display", "none");
+	// $(".newsEventsContent>li, .tabContent>li").css("display", "none");
 
 });

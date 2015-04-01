@@ -5,3 +5,5 @@ assets:
   baseurl: //www.chapman.edu/_assets/
   js_compressor: uglifier
   css_compressor: sass
+  debug:          false
+  cachebust:      hard
