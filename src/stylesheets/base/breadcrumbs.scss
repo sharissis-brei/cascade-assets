@@ -2,6 +2,14 @@
   clear: both;
   // margin: 0 0 10px 50px;
   margin: 0 0 30px 10px;
+
+  // Hotfix for Social media icon overlap
+  @media only screen and (min-width: 780px) {
+    > ul {
+      padding-right: 225px;
+    }
+  }
+
   .virtualTour & {
     text-align: center;
     padding: 0;
