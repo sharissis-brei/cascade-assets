@@ -12,6 +12,11 @@
     filter: progid:DXImageTransform.Microsoft.gradient( startColorstr='#793141', endColorstr='#592530',GradientType=1 ); /* IE6-9 fallback on horizontal gradient */
     }
     .rightColumn .styleTwo .border { background-color: #592530; }
+
+    .rightColumn .styleTwo a {
+      color: #ffffff;
+    }
+    
     .nameBarButtons li a { color: #592530;}
     .expandedNameBarContainer h2, .expandedNameBarContainer a { color: #c9adb3; }
 

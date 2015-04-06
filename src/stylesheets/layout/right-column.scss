@@ -23,25 +23,15 @@
     }
   }
   .styleOne {
-    // background-color: $cu-light-grey;
-    // background: -ms-radial-gradient(circle, #e2dcc0, #e1dbbf);
-    // background: -webkit-radial-gradient(circle, #e2dcc0, #e1dbbf);
-    // background: -moz-radial-gradient(circle, #e2dcc0, #e1dbbf);
-    // background: -ms-radial-gradient(circle, #e2dcc0, #e1dbbf); 
-    // position: relative;
-    // overflow: hidden;
-    // background-color: #e1dbbf;
-    // background: -ms-radial-gradient(circle, #e2dcc0, #e1dbbf);
-    // background: -webkit-radial-gradient(circle, #e2dcc0, #e1dbbf);
-    // background: -moz-radial-gradient(circle, #e2dcc0, #e1dbbf);
-    // background: -ms-radial-gradient(circle, #e2dcc0, #e1dbbf);
+    background-color: #e2e1dc;
+    border-right: 1px solid #c0c0b8;
+    border-bottom: 1px solid #c0c0b8;
+    vertical-align: top;
     h2 {
       // color: $grey;
       // color: $brown;
     }
     .border {
-      // background-color: #e2e1db;
-      // background-color: $brown;
       background-color: #d2d1cd;
     }
   }
