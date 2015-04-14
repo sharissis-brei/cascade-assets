@@ -122,158 +122,168 @@ $(function () {
 	    });
 	}
 
-	/*
-	 Populate events from 25 Live RSS feed (converted to JSON with YQL)
-	------------------------------------------------------------------------------------------------ */
-	if ($(".events")
-	    .length) {
-	    //var eventsFeedUrl = "https://25livepub.collegenet.com/calendars/calendar.7285.rss",
+  /* 
+   Populate events from RSS feeds (converted to JSON with YQL)
+  ------------------------------------------------------------------------------------------------ */
+  if ($(".events")
+      .length) {
+      //var eventsFeedUrl = "https://25livepub.collegenet.com/calendars/calendar.7285.rss",
+
+      var eventsFeedUrl = "http://www.chapman.edu/getFeed.ashx?name=events",
+          eventsYqlUrl = function () {
+              return ("//query.yahooapis.com/v1/public/yql?q=select%20*%20from%20rss(3)%20where%20url%3D'" + eventsFeedUrl + "'&format=json&diagnostics=true&callback=?")
+          },
+          eventsFeedOptions = $(".eventsFeed")
+              .text();
+      $(".allEvents")
+          .attr("href", "https://events.chapman.edu/");
+
+      switch (eventsFeedOptions) {
+          case "ASBE":
+              eventsFeedUrl = "http://www.chapman.edu/getFeed.ashx?name=eventBusiness";
+              $(".allEvents")
+                  .attr("href", "https://events.chapman.edu/?group_id=11,73,29");
+              break;
+          case "CES":
+              eventsFeedUrl = "http://www.chapman.edu/getFeed.ashx?name=eventCES";
+              $(".allEvents")
+                  .attr("href", "https://events.chapman.edu/?group_id=61");
+              break;
+          case "COPA":
+              eventsFeedUrl = "http://www.chapman.edu/getFeed.ashx?name=eventCOPA";
+              $(".allEvents")
+                  .attr("href", "https://events.chapman.edu/?group_id=21,56,105,75");
+              break;
+          case "CREAN":
+              eventsFeedUrl = "http://www.chapman.edu/getFeed.ashx?name=eventCREAN";
+              $(".allEvents")
+                  .attr("href", "https://events.chapman.edu/?group_id=44,108");
+              break;
+          case "DANCE":
+              eventsFeedUrl = "http://www.chapman.edu/getFeed.ashx?name=eventDANCE";
+              $(".allEvents")
+                  .attr("href", "https://events.chapman.edu/?group_id=105");
+              break;
+          case "DODGE":
+              eventsFeedUrl = "http://www.chapman.edu/getFeed.ashx?name=eventDODGE";
+              $(".allEvents")
+                  .attr("href", "https://events.chapman.edu/?group_id=23");
+              break;
+          case "LAW":
+              eventsFeedUrl = "http://www.chapman.edu/getFeed.ashx?name=eventLAW";
+              $(".allEvents")
+                  .attr("href", "https://events.chapman.edu/?group_id=28");
+              break;
+          case "MUSIC":
+              eventsFeedUrl = "http://www.chapman.edu/getFeed.ashx?name=eventMUSIC";
+              $(".allEvents")
+                  .attr("href", "https://events.chapman.edu/?group_id=56");
+              break;
+          case "PHARMACY":
+              eventsFeedUrl = "http://www.chapman.edu/getFeed.ashx?name=eventPHARMACY";
+              $(".allEvents")
+                  .attr("href", "https://events.chapman.edu/?group_id=141");
+              break;
+          case "SCHMID":
+              eventsFeedUrl = "http://www.chapman.edu/getFeed.ashx?name=eventSCHMID";
+              $(".allEvents")
+                  .attr("href", "https://events.chapman.edu/?group_id=36,101");
+              break;
+          case "STUDENTS":
+              eventsFeedUrl = "http://www.chapman.edu/getFeed.ashx?name=eventSTUDENTS";
+              $(".allEvents")
+                  .attr("href", "https://events.chapman.edu/?group_id=53,135,58,70,137,49,99,88,131,14,144,50,126,64,74,71,102,142,41");
+              break;
+          case "THEATRE":
+              eventsFeedUrl = "http://www.chapman.edu/getFeed.ashx?name=eventTHEATRE";
+              $(".allEvents")
+                  .attr("href", "https://events.chapman.edu/?group_id=75");
+              break;
+          case "WILKINSON":
+              eventsFeedUrl = "http://www.chapman.edu/getFeed.ashx?name=eventWILKINSON";
+              $(".allEvents")
+                  .attr("href", "https://events.chapman.edu/?group_id=84,115,60,86");
+              break;
+          case "ESI":
+              eventsFeedUrl = "http://www.chapman.edu/getFeed.ashx?name=eventESI";
+              $(".allEvents")
+                  .attr("href", "https://events.chapman.edu/?group_id=83");
+              break;
+          default:
+              eventsFeedUrl = "http://www.chapman.edu/getFeed.ashx?name=events";
+              break;
+      }
+
+      $(".events .loading").siblings(".story").css("visibility", "hidden");
+      $.getJSON(eventsYqlUrl(), function (data) {
+
+          var eventsData = data.query.results;
+          if (eventsData) {
+              $(".newsEvents").each(function () {
+                  $(this).find(".events .story").each(function (i) {
+                      var $this = $(this);
 
 
-	    var eventsFeedUrl = "http://www.chapman.edu/getFeed.ashx?name=events",
-	        eventsYqlUrl = function () {
-	            return ("//query.yahooapis.com/v1/public/yql?q=select%20*%20from%20rss(3)%20where%20url%3D'" + eventsFeedUrl + "'&format=json&diagnostics=true&callback=?")
-	        },
-	        eventsFeedOptions = $(".eventsFeed")
-	            .text();
-	    $(".allEvents")
-	        .attr("href", "/events/calendar.aspx");
-
-	    switch (eventsFeedOptions) {
-	        case "ASBE":
-	            eventsFeedUrl = "http://www.chapman.edu/getFeed.ashx?name=eventBusiness";
-	            $(".allEvents")
-	                .attr("href", "/events/business-calendar.aspx");
-	            break;
-	        case "CES":
-	            eventsFeedUrl = "http://www.chapman.edu/getFeed.ashx?name=eventCES";
-	            $(".allEvents")
-	                .attr("href", "/events/ces-calendar.aspx");
-	            break;
-	        case "COPA":
-	            eventsFeedUrl = "http://www.chapman.edu/getFeed.ashx?name=eventCOPA";
-	            $(".allEvents")
-	                .attr("href", "/events/copa-calendar.aspx");
-	            break;
-	        case "DANCE":
-	            eventsFeedUrl = "http://www.chapman.edu/getFeed.ashx?name=eventDANCE";
-	            $(".allEvents")
-	                .attr("href", "http://www.chapman.edu/events/copa-calendar.aspx");
-	            break;
-	        case "DODGE":
-	            eventsFeedUrl = "http://www.chapman.edu/getFeed.ashx?name=eventDODGE";
-	            $(".allEvents")
-	                .attr("href", "/events/dodge-calendar.aspx");
-	            break;
-	        case "LAW":
-	            eventsFeedUrl = "http://www.chapman.edu/getFeed.ashx?name=eventLAW";
-	            $(".allEvents")
-	                .attr("href", "/events/law-calendar.aspx");
-	            break;
-	        case "MUSIC":
-	            eventsFeedUrl = "http://www.chapman.edu/getFeed.ashx?name=eventMUSIC";
-	            $(".allEvents")
-	                .attr("href", "/events/copa-calendar.aspx");
-	            break;
-	        case "SCHMID":
-	            eventsFeedUrl = "http://www.chapman.edu/getFeed.ashx?name=eventSCHMID";
-	            $(".allEvents")
-	                .attr("href", "/events/scst-calendar.aspx");
-	            break;
-	        case "STUDENTS":
-	            eventsFeedUrl = "http://www.chapman.edu/getFeed.ashx?name=eventSTUDENTS";
-	            $(".allEvents")
-	                .attr("href", "/events/student-calendar.aspx");
-	            break;
-	        case "THEATRE":
-	            eventsFeedUrl = "http://www.chapman.edu/getFeed.ashx?name=eventTHEATRE";
-	            $(".allEvents")
-	                .attr("href", "/events/copa-calendar.aspx");
-	            break;
-	        case "WILKINSON":
-	            eventsFeedUrl = "http://www.chapman.edu/getFeed.ashx?name=eventWILKINSON";
-	            $(".allEvents")
-	                .attr("href", "/events/wilkinson-calendar.aspx");
-	            break;
-	        case "ESI":
-	            eventsFeedUrl = "http://www.chapman.edu/getFeed.ashx?name=eventESI";
-	            $(".allEvents")
-	                .attr("href", "/events/esi-calendar.aspx");
-	            break;
-	        default:
-	            eventsFeedUrl = "http://www.chapman.edu/getFeed.ashx?name=events";
-	            break;
-	    }
-
-	    $(".events .loading").siblings(".story").css("visibility", "hidden");
-	    $.getJSON(eventsYqlUrl(), function (data) {
-
-	        var eventsData = data.query.results;
-	        if (eventsData) {
-	            $(".newsEvents").each(function () {
-	                $(this).find(".events .story").each(function (i) {
-	                    var $this = $(this);
+                      var rssitem;
+                      var maxloop;
+                      if (typeof eventsData.item.length == 'undefined') {
+                          rssitem = eventsData.item;
+                          maxloop = 0;
 
 
-	                    var rssitem;
-	                    var maxloop;
-	                    if (typeof eventsData.item.length == 'undefined') {
-	                        rssitem = eventsData.item;
-	                        maxloop = 0;
+                      } else {
+                          rssitem = eventsData.item[i];
+                          maxloop = eventsData.item.length;
+                      }
+
+                      if(rssitem){
+
+                          //pubdate sometimes contained original but not current event date; use category field instead (has yyyy/mm/dd format):
+                          //Month
+                          //$this.find(".date .month").html(rssitem.pubDate.split(' ')[1].toUpperCase());
+                          $this.find(".date .month").html(utils.toShortMonthName_fromstring(rssitem.category.split('/')[1].toUpperCase()));
+                          //Day
+                          //$this.find(".date .day").html(pad2(parseInt((rssitem.pubDate.split(' ')[0]), 10)));
+                          $this.find(".date .day").html(utils.pad2(parseInt((rssitem.category.split('/')[2]), 10)));
+                          //Year
+                          //$this.find(".date .year").html(rssitem.pubDate.split(' ')[2]);
+                          $this.find(".date .year").html(rssitem.category.split('/')[0]);
+                          //Title
+                          $this.find("h3>a").html(rssitem.title);
+                          //Links
+
+                          $this.find("h3>a, .readMore").each(function () {
+                              $(this).attr('href', rssitem.link);
+                          });
+                      }
+                      else{
+                          $(this).hide();
+                      }
+
+                      //Copy
+                      //$this.find(".copy").html(rssitem.description.substring(0, 175)).ellipsis();
+                      //Show today/tomorrow label if appropritae
+                      //todayLabel();
+                      //Set href of all events link
+                      //move this into cases above and manually set for each school: $(".allEvents").attr("href", eventsFeedUrl.slice(0, -4));
+                      //Show Events
+                      $(".events .loading").hide().siblings(".story").css("visibility", "visible");
+
+                      if (maxloop == i) {
+                          return false;
+                      }
+                  });
+              });
 
 
-	                    } else {
-	                        rssitem = eventsData.item[i];
-	                        maxloop = eventsData.item.length;
-	                    }
+          } else {
+              $(".events").html("<p>There are no events found (or " +
+                                  "<a href='" + eventsFeedUrl + "'>" + eventsFeedUrl + "</a> is temporarily down)." +
+                                "</p>");
+          }
 
-	                    if(rssitem){
-
-	                        //pubdate sometimes contained original but not current event date; use category field instead (has yyyy/mm/dd format):
-	                        //Month
-	                        //$this.find(".date .month").html(rssitem.pubDate.split(' ')[1].toUpperCase());
-	                        $this.find(".date .month").html(utils.toShortMonthName_fromstring(rssitem.category.split('/')[1].toUpperCase()));
-	                        //Day
-	                        //$this.find(".date .day").html(utils.pad2(parseInt((rssitem.pubDate.split(' ')[0]), 10)));
-	                        $this.find(".date .day").html(utils.pad2(parseInt((rssitem.category.split('/')[2]), 10)));
-	                        //Year
-	                        //$this.find(".date .year").html(rssitem.pubDate.split(' ')[2]);
-	                        $this.find(".date .year").html(rssitem.category.split('/')[0]);
-	                        //Title
-	                        $this.find("h3>a").html(rssitem.title);
-	                        //Links
-
-	                        $this.find("h3>a, .readMore").each(function () {
-	                            $(this).attr('href', rssitem.link);
-	                        });
-	                    }
-	                    else{
-	                        $(this).hide();
-	                    }
-
-	                    //Copy
-	                    //$this.find(".copy").html(rssitem.description.substring(0, 175)).ellipsis();
-	                    //Show today/tomorrow label if appropritae
-	                    //todayLabel();
-	                    //Set href of all events link
-	                    //move this into cases above and manually set for each school: $(".allEvents").attr("href", eventsFeedUrl.slice(0, -4));
-	                    //Show Events
-	                    $(".events .loading").hide().siblings(".story").css("visibility", "visible");
-
-	                    if (maxloop == i) {
-	                        return false;
-	                    }
-	                });
-	            });
-
-
-	        } else {
-	            $(".events").html("<p>There are no events found (or <a href='" + eventsFeedUrl + "'>" + eventsFeedUrl + "</a> is temporarily down).</p>");
-	            //$(".events").html("<p>No events found at this time.</p>");
-	        }
-
-	    });
-	}
+      });
+  }
 
 	/* Switch news events tabs
   ------------------------------------------------------------------------------------------------*/
