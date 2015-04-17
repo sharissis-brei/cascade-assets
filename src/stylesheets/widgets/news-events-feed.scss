@@ -140,8 +140,9 @@ $tab-content-border-color: #cdccc7;
 
 // The featured tab content
 .newsEventsContent .featured {
-  position: relative;
-  overflow: auto;
+  position:   relative;
+  overflow:   auto;
+  overflow-x: hidden;
   .title { 
     margin: 5px 0 10px 0; 
     font-weight: bold;
