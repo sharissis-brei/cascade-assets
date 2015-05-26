@@ -1,10 +1,30 @@
 .personnel-listing {
   padding: 0 20px 20px 20px;
   margin: 0 0 20px 0;
-  background-color: $white;
+
   .person {
+    padding: 15px 0 15px 85px;
+    border-bottom: 1px solid $cu-border;
+    min-height: 80px;
+    position: relative;
+    color: #4a4949;
+    font-size: 14px;
+    line-height: 1.2;
+
     height: auto;
     min-height: 150px;
+  }
+
+  .image {
+    position: absolute;
+    top: 15px;
+    left: 0;
+  }
+  .name {
+    font-size: 18px;
+  }
+  .email {
+    text-decoration: underline;
   }
   .name, .title, .location, .phone, .email, .bio, .bio-url {
     margin-left: 60px;
