@@ -87,7 +87,7 @@ $(function () {
                     }
                 }
 
-                $picasa.find(".more-link").attr("href", data.query.results.feed.author.uri);
+                $picasa.find(".more-link").attr("href", data.query.results.feed.id);
             }
         });
     }
