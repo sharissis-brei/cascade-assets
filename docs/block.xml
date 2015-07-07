@@ -6,7 +6,7 @@
 
 <system-xml>
   <!-- Master Stylesheet for 2 and 3 column modular templates -->
-  <link rel="stylesheet" type="text/css" href ="{% asset_path master.css %}" />
+  <link rel="stylesheet" type="text/css" href="{% asset_path master.css %}" />
 
   <!-- Master Javascript for 2 and 3 column modular templates -->
   <script type="text/javascript" src="{% asset_path master.js %}"></script>
