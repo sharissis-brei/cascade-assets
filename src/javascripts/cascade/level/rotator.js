@@ -347,7 +347,10 @@ $(function () {
         $(".miniRotatorContainer").jcarousel({
             start: (function () {
                 var number = $(".slideOptions .startingSlideNumber").text();
-
+				//mst added to default to slide 1, otherwise when blank, in old/new mini rotators pushing slide1 to position 2:
+    			if (number == "") {
+					number = 1;
+				}
                 return (number * 1);
 
             })(),
