@@ -1,74 +1,70 @@
+// Vendors
+@import "bourbon";
+@import "neat";
 @import "chapman-web-components/_assets/stylesheets/shared/_colors.scss";
 
-@import "base/variables";
-@import "base/mixins";
+// The Base folder
+@import "base/base";
 
-// Layout
-@import "base/defaults";
-@import "base/default";
-@import "base/accordion";
-@import "base/big-masthead";
-@import "base/breadcrumbs";
-@import "base/button-links";
-@import "base/callout";
-@import "base/caption";
-@import "base/common";
-@import "base/cu-companion-bar";
-@import "base/cu-login-form";
-@import "base/cu-login";
-@import "base/cu-nav";
-@import "base/cu-search-results";
-@import "base/cu-search";
-@import "base/date";
-@import "base/flexslider";
-@import "base/home";
-@import "base/icomoon";
-@import "base/left-nav-sub-content";
-@import "base/left-nav-ul";
-@import "base/left-nav";
-@import "base/logo";
-@import "base/main-nav-links";
-@import "base/main-nav";
-@import "base/sub-nav-links";
-@import "base/masthead-placeholder";
-@import "base/misc";
-@import "base/new-button";
-@import "base/news-events-content";
-@import "base/news-events-nav";
-@import "base/news-events";
-@import "base/search-results";
-@import "base/small-masthead";
-@import "base/social-follow-us";
-@import "base/tabs";
-@import "base/tipsy";
+// Import our New Layout Files
+@import "layout_2/landing";
+
+// Import Our New Objects
+@import "objects_2/feed_stories";
+@import "objects_2/navigation";
+@import "objects_2/footer";
+
+
+
+// Old Objects being deleted 1 by 1
+@import "objects/accordion";
+@import "objects/big-masthead";
+@import "objects/breadcrumbs";
+@import "objects/button-links";
+@import "objects/callout";
+@import "objects/caption";
+@import "objects/common";
+@import "objects/cu-companion-bar";
+@import "objects/cu-login-form";
+@import "objects/cu-login";
+@import "objects/cu-nav";
+@import "objects/cu-search-results";
+@import "objects/cu-search";
+@import "objects/flexslider";
+@import "objects/icomoon";
+@import "objects/left-nav-sub-content";
+@import "objects/left-nav-ul";
+@import "objects/left-nav";
+@import "objects/sub-nav-links";
+@import "objects/masthead-placeholder";
+@import "objects/new-button";
+@import "objects/search-results";
+@import "objects/small-masthead";
+@import "objects/social-follow-us";
+@import "objects/tabs";
+@import "objects/tipsy";
 
 
 // Layout
 @import "layout/admission/primary-content";
-@import "layout/degrees-programs/main";
 @import "layout/directory/primary-content";
 @import "layout/directory/right-column";
 @import "layout/faculty/primary-content";
 @import "layout/home/main";
-@import "layout/level/header";
 @import "layout/level/layout";
 @import "layout/level/middle-right-container";
 @import "layout/level-level/middle-right-container";
 @import "layout/level-level/primary-content";
-@import "layout/level-level/two-columns";
 @import "layout/profile/primary-content";
 @import "layout/virtual-tour/layout";
 
 @import "layout/editable-content";
-@import "layout/footer";
-@import "layout/form";
 @import "layout/main";
 @import "layout/middle-right-container";
 @import "layout/phase4_masthead";
 @import "layout/one-column";
 @import "layout/primary-content";
 @import "layout/right-column";
-@import "layout/two-columns";
 
 // Modules
 @import "widgets/carousel";
@@ -83,16 +79,5 @@
 @import "widgets/three-box-callout";
 @import "widgets/news-events-feed";
 
-// Themes
-@import "themes/wilkinson";
-@import "themes/copa";
-@import "themes/copa__theatre";
-@import "themes/copa__dance";
-@import "themes/copa__music";
-@import "themes/business";
-@import "themes/ces";
-@import "themes/crean";
-@import "themes/dodge";
-@import "themes/pharmacy";
-@import "themes/law";
-@import "themes/scst";
+// Import all the Colors for the specific schools
+@import "themes/themes";

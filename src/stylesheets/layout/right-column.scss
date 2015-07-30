@@ -1,10 +1,5 @@
 .rightColumn {
-	// margin: 20px 0 0 0;
   margin: 0 0 10px 0;
-  // float: left;
-  .oldie & {
-  	// margin: 15px 0 0 0;
-  }
   .border {
     position: absolute;
     top: 0;
@@ -13,7 +8,6 @@
     height: 7px;
   }
   .photo {
-  	// float: left;
     img {
       width: 100%;
       max-width: 206px;
@@ -27,10 +21,6 @@
     border-right: 1px solid #c0c0b8;
     border-bottom: 1px solid #c0c0b8;
     vertical-align: top;
-    h2 {
-      // color: $grey;
-      // color: $brown;
-    }
     .border {
       background-color: #d2d1cd;
     }
@@ -41,32 +31,20 @@
     background: -webkit-radial-gradient(circle, $teal2-hover, $teal2);
     background: -moz-radial-gradient(circle, $teal2-hover, $teal2);
     background: -ms-radial-gradient(circle, $teal2-hover, $teal2);
-    color: $white;
+    color: white;
     position: relative;
     overflow: hidden;
-    // background-color: #36aada;
-    // background: -ms-radial-gradient(circle, #44a8d2, #0e8fc5);
-    // background: -webkit-radial-gradient(circle, #44a8d2, #0e8fc5);
-    // background: -moz-radial-gradient(circle, #44a8d2, #0e8fc5);
-    // background: -ms-radial-gradient(circle, #44a8d2, #0e8fc5);
     h2 {
-      color: $white;
+      color: white;
     }
     a {
-    	// color: #99ffff;
       color: $cu-red;
       font-weight: 800;
-      // background-color: $white;
-      // font-size: 13px;
-      // padding: 8px 10px 8px 10px;
-      // margin: 0 auto 0 auto;
-      // display: inline-block;
       &:hover {
         text-decoration: underline;
       }
     }
     .border {
-    	// background-color: #0c85b8;
       background-color: #01999f;
     }
   }
@@ -94,56 +72,14 @@
 	  }
 	}
 	.callout {
-    // background-color: #e1dbbf;
-    // float: left;
-    // vertical-align: top;
-    // width: 160px;
-    // padding: 10px 25px 10px 10px;
-    // margin: 0 10px 10px 0;
-    // position: relative;
-    // -moz-box-shadow: inset 8px 8px 8px -8px #ccc5a5;
-    // -webkit-box-shadow: inset 8px 8px 8px -8px #ccc5a5;
-    // box-shadow: inset 8px 8px 8px -8px #ccc5a5;
-    > img {
-      // position: relative;
-      // top: -10px;
-      // left: -10px;
-    }
-    h2 {
-      // font-family: "Open Sans";
-      // font-weight: 600;
-      // font-size: 14px;
-      // margin: 0 0 5px 0;
-    }
-    .editableContent {
-      // font-family: Arial;
-      // font-size: 11px;
-      // line-height: 16px;
-    }
     &.noPhoto h2 {
       margin-top: 7px;
     }
-    .linkList li {
-      a {
-        // padding: 10px 0 10px 0;
-        // display: block;
-        // border-top: 1px solid #ccc0a7;
-      }
-      &:first-child a {
-        // border-top: none;
-      }
-    }
-    @include bp(l) {
-      // margin: 0 0 10px 0;
-    }
-  }
   @include bp(l) {
     width: 25%;
     position: relative;
     float: right;
     padding-right: 0;
-    // margin: 0 30px 0 0;
-    // margin: 0 30px 0 -195px;
     margin: 45px 0 0 -195px;
   }
 }

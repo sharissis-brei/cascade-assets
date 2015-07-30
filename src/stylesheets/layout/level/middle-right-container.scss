@@ -3,6 +3,6 @@
   	width: 73%;
 	  position: relative;
 	  float: right;
-	  @include vendorize(box-sizing, border-box);
+	  box-sizing: border-box;
   }
 }

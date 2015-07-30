@@ -14,6 +14,8 @@ gem 'uglifier'
 gem 'rubyzip'
 gem 'faker'
 gem 'awesome_print'
+gem 'neat'
+gem 'bourbon'
 
 # The web-components shared styles
 group :rails_assets do

@@ -8,6 +8,9 @@ GEM
       json
     awesome_print (1.2.0)
     blankslate (2.1.2.4)
+    bourbon (4.2.3)
+      sass (~> 3.4)
+      thor
     celluloid (0.16.0)
       timers (~> 4.0.0)
     classifier-reborn (2.0.3)
@@ -99,6 +102,9 @@ GEM
     mercenary (0.3.5)
     method_source (0.8.2)
     multi_json (1.11.0)
+    neat (1.7.2)
+      bourbon (>= 4.0)
+      sass (>= 3.3)
     nenv (0.2.0)
     notiffany (0.0.6)
       nenv (~> 0.1)
@@ -156,6 +162,7 @@ PLATFORMS
 DEPENDENCIES
   autoprefixer-rails
   awesome_print
+  bourbon
   faker
   foreman
   guard-livereload
@@ -163,8 +170,12 @@ DEPENDENCIES
   jekyll
   jekyll-assets
   launchy
+  neat
   rails-assets-chapman-web-components
   rake
   rubyzip
   thin
   uglifier
+
+BUNDLED WITH
+   1.10.5

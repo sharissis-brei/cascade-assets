@@ -3,7 +3,7 @@ source:          docs
 destination:     docs/_site
 host:            0.0.0.0
 port:            5000
-baseurl:         
+baseurl:
 
 # Assets
 assets:
@@ -16,8 +16,8 @@ assets:
     - ../src/fonts
   js_compressor:  ~
   css_compressor: none
-  cachebust:      none
-  cache:          true
+  # cachebust:      none
+  # cache:          true
   gzip:           [ text/css, application/javascript ]
   version:        1
   debug:          true

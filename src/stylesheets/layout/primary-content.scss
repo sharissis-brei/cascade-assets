@@ -32,7 +32,7 @@
 			@include bp(l) {
 				max-width: 100%;
         width: 100%;
-        @include vendorize(box-sizing, border-box);
+        box-sizing: border-box;
 			}
 		}
 		&.calendar .main {
@@ -76,7 +76,7 @@
       margin: 0 10px;
     }
 	  // max-width: none !important;
-	  @include vendorize(box-sizing, border-box);
+	  box-sizing: border-box;
 	  &.profile { // Added by SH
 	  	// max-width: 745px !important;
 		  min-height: 230px;

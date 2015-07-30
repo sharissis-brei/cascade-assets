@@ -1,91 +1,56 @@
-<header>
-    <div class="maxWidth">
-        <nav class="mainNav"><a class="logo" href="../../index.aspx" itemscope="itemscope" itemtype="http://schema.org/Organization"><span itemprop="name">Chapman University</span></a>
-            <div class="mainNavExpand"><a href="javascript:;">
-                Menu <span class="arrow">&#160;</span></a>
-            </div>
-            <ul class="mainNavLinks" id="mainNavLinks">
-                <li class="has-dropdown"><a class="first" href="../../about/index.aspx"><span>About</span></a>
-                    <div class="subNavLinks clearfix">
-                        <ul>
-                            <li><a class="icon icon-location" href="../../about/maps-directions/index.aspx">Maps and Directions </a>
-                            </li>
-                            <li><a class="icon icon-california" href="../../about/visit-chapman/index.aspx">Visit Chapman</a>
-                            </li>
-                            <li><a class="icon icon-cu-monogram" href="../../discover/index.html">Discover Chapman</a>
-                            </li>
-                            <li><a class="icon icon-office" href="../../about/campus/index.aspx">Our Campus</a>
-                            </li>
-                            <li><a class="icon icon-cu-monogram" href="../../about/facts-history/index.aspx">Facts and History</a>
-                            </li>
-                            <li><a class="icon icon-cu-window" href="../../about/administration/index.aspx">Administration</a>
-                            </li>
-                            <li><a class="icon icon-envelop" href="../../about/contact-us.aspx">Contact Us</a>
-                            </li>
-                        </ul>
-                    </div>
-                </li>
-                <li class="has-dropdown"><a href="../../academics/index.aspx"><span>Academics</span></a>
-                    <div class="subNavLinks clearfix">
-                        <ul>
-                            <li><a class="icon icon-graduation" href="../../academics/degrees-and-programs.aspx">Degrees &amp; Programs</a>
-                            </li>
-                            <li><a class="icon icon-library2" href="../../academics/schools-colleges.aspx">Schools &amp; Colleges</a>
-                            </li>
-                            <li><a class="icon icon-calendar4" href="../../academics/academic-calendar.aspx">Academic Calendar</a>
-                            </li>
-                            <li><a class="icon icon-books" href="../../academics/libraries/index.aspx">Libraries</a>
-                            </li>
-                            <li><a class="icon icon-book2" href="../../academics/course-catalogs/index.aspx">Course Catalogs</a>
-                            </li>
-                            <li><a class="icon icon-earth" href="../../international-studies/index.aspx">International Study</a>
-                            </li>
-                        </ul>
-                    </div>
-                </li>
-                <li class="has-dropdown"><a href="../../admission/index.aspx"><span>Admission</span></a>
-                    <div class="subNavLinks clearfix">
-                        <ul>
-                            <li><a class="icon icon-bookmark" href="../../admission/undergraduate/index.aspx">Undergraduate Admission</a>
-                            </li>
-                            <li><a class="icon icon-pencil5" href="../../admission/undergraduate/applynow.aspx">Undergraduate Application</a>
-                            </li>
-                            <li><a class="icon icon-bookmark2" href="../../admission/graduate/index.aspx">Graduate Admission</a>
-                            </li>
-                            <li><a class="icon icon-pencil5" href="../../admission/graduate/applynow.aspx">Graduate Application</a>
-                            </li>
-                            <li><a class="icon icon-calculate2" href="../../admission/undergraduate/afford.aspx">Affordability</a>
-                            </li>
-                            <li><a class="icon icon-calculate" href="../../students/tuition-and-aid/financial-aid/net-cost-calculator/index.aspx">Financial Aid Calculator</a>
-                            </li>
-                            <li><a class="icon icon-office" href="../../admission/undergraduate/visit.aspx">Campus Tours</a>
-                            </li>
-                        </ul>
-                    </div>
-                </li>
-                <li><a href="../../arts/index.aspx"><span>Arts</span></a>
-                </li>
-                <li><a href="http://www.chapmanathletics.com/"><span>Athletics</span></a>
-                </li>
-                <li><a href="../../research-and-institutions/index.aspx"><span>Research</span></a>
-                </li>
-                <li class="has-dropdown"><a href="../../support-chapman/index.aspx"><span>Support</span></a>
-                    <div class="subNavLinks last clearfix">
-                        <ul>
-                            <li><a class="icon icon-envelop" href="../../support-chapman/contact-us.aspx">Contact Development</a>
-                            </li>
-                            <li><a class="icon icon-hand" href="../../support-chapman/get-involved.aspx">Get Involved</a>
-                            </li>
-                            <li><a class="icon icon-cu-monogram" href="../../support-chapman/ways-to-give/areas-to-support.aspx">Areas to Support</a>
-                            </li>
-                            <li><a class="icon icon-paw" href="../../alumni/index.aspx">Alumni</a>
-                            </li>
-                        </ul>
-                    </div>
-                </li>
-                <li class="mainNavLinksAfter"> </li>
+<header class="navigation" role="banner">
+  <div class="navigation-wrapper">
+    <a href="javascript:void(0)" class="logo">
+      {% image 'logo.png' alt="Chapman University Logo Image"%}
+    </a>
+    <a href="javascript:void(0)" class="navigation-menu-button" id="js-mobile-menu">MENU</a>
+        <span class="navigation-ribbon-edge"></span>
+    <nav role="navigation">
+      <ul id="js-navigation-menu" class="navigation-menu show">
+        <li class="nav-link more first"><a href="javascript:void(0)">ABOUT</a>
+            <ul class="submenu">
+                <li><a class="icon icon-location" href="javascript:void(0)">Maps and Directions</a></li>
+                <li><a class="icon icon-california" href="javascript:void(0)">Visit Chapman</a></li>
+                <li><a class="icon icon-cu-monogram" href="javascript:void(0)">Discover Chapman</a></li>
+                <li><a class="icon icon-office" href="javascript:void(0)">Our Campus</a></li>
+                <li><a class="icon icon-cu-monogram" href="javascript:void(0)">Facts and History</a></li>
+                <li><a class="icon icon-cu-window" href="javascript:void(0)">Administration</a></li>
+                <li><a class="icon icon-envelop" href="javascript:void(0)">Contact Us</a></li>
             </ul>
-        </nav>
-    </div>
-    <br style="clear:both" />
+        </li>
+        <li class="nav-link more"><a href="javascript:void(0)">ACADEMICS</a>
+            <ul class="submenu">
+                <li><a class="icon icon-graduation" href="javascript:void(0)">Degrees &amp; Programs</a></li>
+                <li><a class="icon icon-library2" href="javascript:void(0)">Schools &amp; Colleges</a></li>
+                <li><a class="icon icon-calendar4" href="javascript:void(0)">Academic Calendar</a></li>
+                <li><a class="icon icon-books" href="javascript:void(0)">Libraries</a></li>
+                <li><a class="icon icon-book2" href="javascript:void(0)">Course Catalogs</a></li>
+                <li><a class="icon icon-earth" href="javascript:void(0)">International Study</a></li>
+            </ul>
+        </li>
+        <li class="nav-link more"><a href="javascript:void(0)">ADMISSION</a>
+            <ul class="submenu">
+                <li><a class="icon icon-bookmark" href="javascript:void(0)">Undergraduate Admission</a></li>
+                <li><a class="icon icon-pencil5" href="javascript:void(0)">Undergraduate Application</a></li>
+                <li><a class="icon icon-bookmark2" href="javascript:void(0)">Graduate Admission</a></li>
+                <li><a class="icon icon-pencil5" href="javascript:void(0)">Graduate Application</a></li>
+                <li><a class="icon icon-calculate2" href="javascript:void(0)">Affordability</a></li>
+                <li><a class="icon icon-calculate" href="javascript:void(0)">Financial Aid Calculator</a></li>
+                <li><a class="icon icon-office" href="javascript:void(0)">Campus Tours</a></li>
+            </ul>
+        </li>
+        <li class="nav-link"><a href="javascript:void(0)">ARTS</a></li>
+        <li class="nav-link"><a href="javascript:void(0)">ATHLETICS</a></li>
+        <li class="nav-link"><a href="javascript:void(0)">RESEARCH</a></li>
+        <li class="nav-link more"><a href="javascript:void(0)">SUPPORT</a>
+            <ul class="submenu">
+                <li><a class="icon icon-envelop" href="javascript:void(0)">Contact Development</a></li>
+                <li><a class="icon icon-hand" href="javascript:void(0)">Get Involved</a></li>
+                <li><a class="icon icon-cu-monogram" href="javascript:void(0)">Areas to Support</a></li>
+                <li><a class="icon icon-paw" href="javascript:void(0)">Alumni</a></li>
+            </ul>
+        </li>
+      </ul>
+    </nav>
+  </div>
 </header>
