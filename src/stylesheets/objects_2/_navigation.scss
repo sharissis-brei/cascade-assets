@@ -63,37 +63,37 @@ header.navigation {
     }
   }
 
-  // Nav menu
+  // ---------------- THE MAIN NAV ELEMENT -------------------- //
 
   nav {
     float: none;
     min-height: $navigation-height;
-    background-color: $navigation-background;
     z-index: 9999999;
     position: relative;
 
     @include media ($horizontal-bar-mode) {
       float: left;
-    }
-
-    &:before {
-      content: ' ';
-      position: absolute;
-      height: 0;
-      left: 0;  top: 0;
-      border-width: ($navigation-height / 2)  10px;
-      border-style: solid;
-      border-color: transparent transparent transparent $light-gray;
-    }
-
-    &:after {
-      position: absolute;
-      top: 0;
-      left: 100%;
-      content: ' ';
       background-color: $navigation-background;
-      height: $navigation-height;
-      width: 100%;
+
+      &:before {
+        content: ' ';
+        position: absolute;
+        height: 0;
+        left: 0;  top: 0;
+        border-width: ($navigation-height / 2)  10px;
+        border-style: solid;
+        border-color: transparent transparent transparent $light-gray;
+      }
+
+      &:after {
+        position: absolute;
+        top: 0;
+        left: 100%;
+        content: ' ';
+        background-color: $navigation-background;
+        height: $navigation-height;
+        width: 100%;
+      }
     }
   }
 
@@ -118,11 +118,12 @@ header.navigation {
     }
   }
 
+  // --------------- THE PRIMARY LINKS ---------------- //
   ul li.nav-link {
     background: $navigation-background;
     display: block;
     overflow: hidden;
-    text-align: right;
+    text-align: left;
     width: 100%;
     z-index: 9999;
 
@@ -147,28 +148,39 @@ header.navigation {
       }
     }
 
-    &:hover > a,
-    &:focus > a, {
-      background-color: $navigation-submenu-background;
-      color: $navigation-color-hover;
-      transition: background-color $base-duration $base-timing;
-      transition: color $base-duration $base-timing;
-    }
-
     > a {
       font-family: $heading-font-family;
-      font-size: 20px;
-      line-height: $navigation-height;
+
+      @include media($horizontal-bar-mode) {
+        font-size: 20px;
+        line-height: $navigation-height;
+      }
     }
 
+    &:hover > a,
+    &:focus > a, {
+      color: $navigation-color-hover;
+      background-color: ligten($navigation-background, 10%);
+      transition: color $base-duration $base-timing;
+      transition: background-color $base-duration $base-timing;
+      background-color: $navigation-submenu-background;
+
+      @include media($horizontal-bar-mode) {
+      }
+    }
+
+    // All links
     a {
       color: $navigation-color;
       display: inline-block;
       font-weight: 400;
       text-decoration: none;
+      padding: $navigation-padding;
+      width: 100%;
 
       @include media ($horizontal-bar-mode) {
         padding: 0 $navigation-padding;
+        width: auto;
       }
     }
     .icon:before {
@@ -220,7 +232,7 @@ header.navigation {
         top: 0;
       }
     }
-
+    // ------------- SUBMENU ITEMS AND LINKS ----------------- //
     li {
       display: block;
       padding-right: 0;
@@ -241,25 +253,27 @@ header.navigation {
       }
 
       a {
-        background-color: $navigation-submenu-background;
-        color: $dark-gray;
         display: inline-block;
-        text-align: right;
+        text-align: left;
         width: 100%;
         border-top: 1px solid lighten($dark-gray, 60%);
         padding: $small-spacing / 2;
+        background-color: $navigation-submenu-background;
+        color: $dark-gray;
+
+        @include media($horizontal-bar-mode) {
+          padding-left: $navigation-submenu-padding;
+          text-align: left;
+          width: $navigation-submenu-width;
+        }
 
         &:hover {
           color: $red;
           transition: color none;
           background-color: lighten($navigation-submenu-background, 20%);
-        }
 
-        @include media($horizontal-bar-mode) {
-          background-color: $navigation-submenu-background;
-          padding-left: $navigation-submenu-padding;
-          text-align: left;
-          width: $navigation-submenu-width;
+          @include media($horizontal-bar-mode) {
+          }
         }
       }
     }
