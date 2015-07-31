@@ -3,7 +3,6 @@ header.navigation {
   $base-border-radius: 3px !default;
   $action-color: #477DCA !default;
   $dark-gray: #333 !default;
-  $large-screen: em(860) !default;
 
   $navigation-padding: 0.7em;
   $navigation-background: $dark-gray;
@@ -17,11 +16,11 @@ header.navigation {
   $navigation-active-link-color: transparentize(white, 0.5);
   $navigation-submenu-padding: 1em;
   $navigation-submenu-width: em(275px);
-  $horizontal-bar-mode: $large-screen;
+  $horizontal-bar-mode:       $large-screen;
+  $horizontal-bar-mode-huge:  1134px;
 
   min-height: $navigation-height;
   width: 100%;
-  z-index: 999;
   margin-top:    $base-spacing * 2;
   margin-bottom: $base-spacing * 2;
 
@@ -29,15 +28,19 @@ header.navigation {
     @include clearfix;
     @include outer-container;
     position: relative;
-    z-index: 9999;
   }
 
   .logo {
     float: left;
+
     img {
-      width: 272px;
-      height: 50px;
       padding-right: $base-spacing;
+      width: 240px;
+      height: auto;
+      @include media($horizontal-bar-mode) {
+        height: 50px;
+        width: 272px;
+      }
     }
   }
 
@@ -50,8 +53,26 @@ header.navigation {
     font-weight: 700;
     line-height: $navigation-height;
     margin: 0;
-    padding-right: 1em;
+    padding: 0 1em 0 1.5em;
     text-transform: uppercase;
+    position: relative;
+    z-index: 9999;
+    cursor: pointer;
+    background-color: $navigation-background;
+
+    &:before {
+      content: ' ';
+      position: absolute;
+      top: 0; left: 0;
+      height: 0; width: 0;
+      border-width: ($navigation-height / 2)  10px;
+      border-style: solid;
+      border-color: transparent transparent transparent $light-gray;
+
+      @include media($horizontal-bar-mode) {
+        content: none;
+      }
+    }
 
     @include media ($horizontal-bar-mode) {
       display: none;
@@ -67,32 +88,36 @@ header.navigation {
 
   nav {
     float: none;
-    min-height: $navigation-height;
-    z-index: 9999999;
     position: relative;
+    min-height: $navigation-height;
+
+    &:before,
+    &:after {
+      content: ' ';
+      position: absolute;
+      top: 0; left: 0;
+      height: 0; width: 0;
+    }
 
     @include media ($horizontal-bar-mode) {
       float: left;
       background-color: $navigation-background;
 
       &:before {
-        content: ' ';
-        position: absolute;
-        height: 0;
-        left: 0;  top: 0;
         border-width: ($navigation-height / 2)  10px;
         border-style: solid;
         border-color: transparent transparent transparent $light-gray;
       }
 
       &:after {
-        position: absolute;
-        top: 0;
         left: 100%;
-        content: ' ';
+        width: 100%;
         background-color: $navigation-background;
         height: $navigation-height;
-        width: 100%;
+      }
+
+      @include media($horizontal-bar-mode-huge) {
+        min-height: $navigation-height;
       }
     }
   }
@@ -105,7 +130,6 @@ header.navigation {
     overflow: visible;
     padding: 0;
     width: 100%;
-    z-index: 9999;
 
     &.show {
       display: block;
@@ -125,7 +149,7 @@ header.navigation {
     overflow: hidden;
     text-align: left;
     width: 100%;
-    z-index: 9999;
+    z-index: 999;
 
     @include media ($horizontal-bar-mode) {
       text-align: center;
@@ -135,9 +159,16 @@ header.navigation {
       width: auto;
 
       &.first > a {
-        padding-left: 36px;
+        position: relative;
+        padding-left: 24px;
+
+        @include media(1134px) {
+          padding-left: 36px;
+        }
+
         &:before {
-          content: ' ';
+          height: $navigation-height;
+          content: '';
           position: absolute;
           width: 0; height: 0;
           left: 0;  top: 0;
@@ -152,11 +183,20 @@ header.navigation {
       font-family: $heading-font-family;
 
       @include media($horizontal-bar-mode) {
-        font-size: 20px;
+        font-size: 14px;
         line-height: $navigation-height;
+      }
+
+      @include media(970px) {
+        font-size: 16px;
+      }
+
+      @include media(1134px) {
+        font-size: 20px;
       }
     }
 
+    &.active > a,
     &:hover > a,
     &:focus > a, {
       color: $navigation-color-hover;
@@ -189,27 +229,38 @@ header.navigation {
   }
 
   // Sub menus
-  li.more.nav-link {
+  li.more.nav-link.last {
     @include media($horizontal-bar-mode) {
+      .submenu {
+        position: absolute;
+        right: 0px;
+        left: auto;
+      }
     }
   }
 
   li.more {
+    position: relative;
     overflow: visible;
 
-    > a {
-      position: relative;
+    &:focus > a:after,
+    &:hover > a:after {
+      color: $navigation-color-hover;
     }
 
-    &:focus > .submenu,
-    &:hover > .submenu {
+    &.active > .submenu {
       display: block;
       opacity: 1;
       transition: opacity $base-duration $base-timing;
     }
 
     @include media($horizontal-bar-mode) {
-      position: relative;
+      &:focus > .submenu,
+      &:hover > .submenu {
+        display: block;
+        opacity: 1;
+        transition: opacity $base-duration $base-timing;
+      }
     }
   }
 
@@ -220,10 +271,11 @@ header.navigation {
     padding-left: 0;
     box-shadow: 0px 10px 10px 1px rgba(0, 0, 0, .2);
 
+
     @include media($horizontal-bar-mode) {
       position: absolute;
       left: 0;
-      top: 34px
+      top: 34px;
     }
 
     .submenu {
@@ -271,9 +323,6 @@ header.navigation {
           color: $red;
           transition: color none;
           background-color: lighten($navigation-submenu-background, 20%);
-
-          @include media($horizontal-bar-mode) {
-          }
         }
       }
     }
