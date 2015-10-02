@@ -103,7 +103,7 @@ code {
 .random-page--config {
   display: flex;
   justify-content: space-between;
-  /* The smallest screen*/ flex-flow: column nowrap; 
+  /* The smallest screen*/ flex-flow: column nowrap;
   @include breakpoint(m) { flex-flow: row nowrap; }
   background: rgba(0,0,0,0.15);
   border-radius: 3px;
