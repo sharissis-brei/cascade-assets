@@ -8,54 +8,56 @@ div.four-col-float {
 /*Region*/
 
 .region {
-    overflow: auto; 
+  overflow: auto;
 }
 
 .region h3 {
-    border-bottom: 1px solid #383838;
-    clear: both;
-    margin: 0;
-    padding: 20px 0 7px;
+  border-bottom: 1px solid #383838;
+  clear: both;
+  margin: 0;
+  padding: 20px 0 7px;
 }
 
 .region h3, .funnel .region h3 a {
-    /*font-family: "proxima-nova-soft", sans-serif;*/
-    font-weight: 700;
-    font-size: 18px;
-    font-style: normal;
-    color: #353430;
-    padding: 10px 0 5px 0;
-    margin: 0;
-    clear: both;
-    line-height:1.25;
-}
-
-
-.region  ul{
-    list-style-type:none;
-    padding:0;
-}
-
-.region  .linkList{
-    margin: 10px 0 0 0;
-}
-
-.region  li{
-    margin:0 0 3px 0;
-}
-
-.region h3 a:hover {color:#a82439;}
-
-.region .content {
-    float: left;
-    width: 100%;
+  font-weight: 700;
+  font-size: 18px;
+  font-style: normal;
+  color: #353430;
+  padding: 10px 0 5px 0;
+  margin: 0;
+  clear: both;
+  line-height:1.25;
 }
 
 .region .featureImage {
-    border: 3px solid white;
-    box-shadow: 0 0 7px #434343;
-    -webkit-box-shadow: 0px 0px 7px #434343;
-    -moz-box-shadow: 0px 0px 7px #434343;
-    float: left;
-    margin: 0 10px 10px 0;
+  border: 3px solid white;
+  box-shadow: 0 0 7px #434343;
+  -webkit-box-shadow: 0px 0px 7px #434343;
+  -moz-box-shadow: 0px 0px 7px #434343;
+  float: left;
+  margin: 0 10px 10px 0;
 }
+
+.region li {
+  margin:0 0 3px 0;
+}
+
+.region h3 a:hover {
+  color:#a82439;
+}
+
+.region .content {
+  float: left;
+  width: 100%;
+
+  ul {
+    padding-left: 40px;
+  }
+}
+
+.region  ul.linkList {
+  margin: 10px 0 0 0;
+  list-style-type: none;
+  padding: 0;
+}
+
