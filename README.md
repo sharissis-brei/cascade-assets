@@ -1,3 +1,7 @@
+# Cascade Assets
+
+This repository consists of sample HTML that Cascade Server generates for www.chapman.edu.  It contains the build system for stylesheets, javascripts, and images that we use on www.chapman.edu.  Use this repository to develop for www.chapman.edu locally, then copy your HTML changes and asset files into Cascade Server when they are ready.
+
 ## Setup
 ```
 git clone git@github.com:chapmanu/cascade-assets.git
@@ -8,10 +12,16 @@ rake serve
 Send your browser to [http://localhost:5000](http://localhost:5000)  
 Turn on your livereload extention (optional)
 
-## Editing assets
-All assets are located in the `src/` folder.  Change stylesheets there and test them out on the sample pages located in the `docs/` folder.
+## Making Changes
 
-## Deploying to Cascade
+**HTML:** Sample HTML for the website lives in `docs/`  
+**CSS:** Edit the stylesheets in `src/stylesheets/`  
+**JS:** Edit the javascripts in `src/javascripts/`  
+**IMAGES:** Add/remove images in `src/images/`  
+
+Each time you make a change, the server will regenerate the site.  This ofter takes a second or two.  If the page is not updating, check your server logs to see if you have a syntax error that is preventing the compilation from happening.
+
+## Deploying Assets to Cascade
 
 ### Step 1: Build
 
@@ -60,7 +70,11 @@ The styles are ready to go.
 
 Every page that is published from now on will use the new assets.
 
-# Templates
+## Deploy HTML to Cascade
+
+All HTML must be manually copied and converted into Cascade.
+
+### Templates
 
 Chapman.edu has 3 different templates for content:
 
@@ -73,9 +87,9 @@ Each template is composed of modular widgets in each column.  Website editors ca
 In this Jekyll repository, the templates live in the `docs/_layouts/` folder.  
 In Cascade, the templates live in `_cascade/templates/modular/`
 
-# Widgets
+### Widgets
 
-Widgets can be categories into two types:
+There are two types of widgets:
 
   * Primary Column Widgets (designed to fit into the primary column of the template)
   * Side Column Widgets (designed to fit into the left and/or right columns of the template)
