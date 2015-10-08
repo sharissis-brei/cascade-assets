@@ -23,6 +23,9 @@
         {% include header.html %}
 
         <div id="main" role="main">
+            {% for widget in page.single_column %}
+                {% include widgets/single_column/{{widget}}.html %}
+            {% endfor %}
             {{ content }}
         </div>
 

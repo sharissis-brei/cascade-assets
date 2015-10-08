@@ -1,0 +1,31 @@
+.messaging-2-column {
+	padding: 20px 0;
+	margin-top: 20px;
+	background: #ecebe5;
+	.wrap {
+		@include outer-container(1128px);
+
+		.column.image {
+			@include span-columns(7);
+		}
+		.column.message {
+			@include span-columns(5);
+			padding-left: 20px;
+		}
+	}
+	img {
+		width: 100%;
+		max-height: 374px;
+	}
+	h1.title {
+		margin: 0;
+		font-weight: normal;
+	}
+	p.message-text {
+		margin: 30px 0;
+	}
+	.button.red {
+		padding: 15px 25px;
+		font-size: 14px;
+	}
+}
