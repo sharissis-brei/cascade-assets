@@ -58,3 +58,4 @@
 //= include cascade/level/scroll-bar
 //= include cascade/level/social
 //= include cascade/level/sponsor
+//= include lib/chapman-social-feed
