@@ -10,7 +10,6 @@
 
 <body>
     <!--<![endif]-->
-
     <span class="hidden"><a href="#main" title="Skip navigation and jump directly to the main content of this page">Jump to the main content of this page</a></span>
 
     <div id="fb-root"></div>
@@ -21,12 +20,13 @@
 
     <div id="container">
         {% include header.html %}
-
         <div id="main" role="main">
-            {% for widget in page.single_column %}
-                {% include widgets/single_column/{{widget}}.html %}
-            {% endfor %}
-            {{ content }}
+            <div class= "primary-content one-column">
+                {% for widget in page.single_column %}
+                    {% include widgets/single_column/{{widget}}.html %}
+                {% endfor %}
+                {{ content }}
+            </div>
         </div>
         {% include footer.html %}
     </div>
