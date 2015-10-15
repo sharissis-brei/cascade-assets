@@ -1,22 +1,13 @@
 .messaging-2-column {
 	background-size: cover;
 	background-repeat: no-repeat;
-	position: relative;
 	background-position: center center;
 	margin: $base-spacing*2 0;
 
-	@include direction-context(left-to-right) {
-
-
 	.outer-container {
 		@include outer-container;
-	}
-
-	.row {
-		@include fill-parent;
 		@include clearfix;
 	}
-
 
 	.media-column {
 		padding: $base-spacing*4 0 0 0;
@@ -34,12 +25,11 @@
 
 		@include media($medium-screen) {
 			@include span-columns(7);
-			@include reset-display;
-			padding-left: flex-gutter()*6;
+			@include shift(1);
 			padding-top: $base-spacing*4;
 		}
 	}
-	}
+
 	.image {
 		@include fill-parent;
 	}
