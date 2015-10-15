@@ -1,23 +1,47 @@
 .messaging-2-column {
-	
-	@include outer-container();
+	background-size: cover;
+	background-repeat: no-repeat;
+	position: relative;
+	background-position: center center;
+	margin: $base-spacing*2 0;
 
-	.column {
-		&:first-of-type {
+	@include direction-context(left-to-right) {
+
+
+	.outer-container {
+		@include outer-container;
+	}
+
+	.row {
+		@include fill-parent;
+		@include clearfix;
+	}
+
+
+	.media-column {
+		padding: $base-spacing*4 0 0 0;
+
+		@include media($medium-screen) {
 			@include span-columns(10);
-		}
-		@include span-columns(8);
-
-		@include media($medium-screen-up) {
-			&:first-of-type {
-				@include fill-parent();
-			}
-			@include fill-parent();
+			vertical-align: middle;
+			text-align: center;
+			padding: $base-spacing*4 0;
 		}
 	}
 
-	img {
-		width: 100%;
+	.text-column {
+		@include pad($base-spacing*2 default $base-spacing*4 default);
+
+		@include media($medium-screen) {
+			@include span-columns(7);
+			@include reset-display;
+			padding-left: flex-gutter()*6;
+			padding-top: $base-spacing*4;
+		}
+	}
+	}
+	.image {
+		@include fill-parent;
 	}
 
 	h1.title {
@@ -42,13 +66,10 @@
 		font-size: 16px;
 		font-weight: normal;
 	}
-
-	@media only screen and (max-width: 600px) {
-		.actions {
-			text-align: center;
-		}
-		h4.category {
-			margin-top: 30px;
+	.actions {
+		text-align: center;
+		@include media($medium-screen) {
+			text-align: left;
 		}
 	}
 }
