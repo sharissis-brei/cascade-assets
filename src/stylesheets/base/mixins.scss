@@ -76,3 +76,99 @@
 	-ms-transition: $sel $time $time;
 	transition: $sel $time $time;
 }
+
+//Headings
+@mixin main_heading($weight: 800) {
+	margin-top: 16px;
+	font-family: "proxima-nova", "Helvetica Neue", "Microsoft Sans Serif", sans-serif;
+	font-size: 40px;
+	@if type-of($weight) == string {
+		font-weight: unquote($weight);
+	} @else {
+		font-weight: $weight;
+	}
+	color: #353430;
+	line-height: 48px;
+}
+
+@mixin sub_heading($weight: 800) {
+	font-family: "proxima-nova", "Helvetica Neue", "Microsoft Sans Serif", sans-serif;
+	font-size: 32px;
+	@if type-of($weight) == string {
+		font-weight: unquote($weight);
+	} @else {
+		font-weight: $weight;
+	}
+	color: #353430;
+	line-height: 40px;
+}
+
+@mixin section_heading($weight: 800) {
+	font-family: "proxima-nova", "Helvetica Neue", "Microsoft Sans Serif", sans-serif;
+	font-size: 24px;
+	@if type-of($weight) == string {
+		font-weight: unquote($weight);
+	} @else {
+		font-weight: $weight;
+	}
+	color: #353430;
+	line-height: 32px;
+	letter-spacing: .8;
+}
+
+@mixin sub_section_heading($weight: 800) {
+	font-family: "proxima-nova", "Helvetica Neue", "Microsoft Sans Serif", sans-serif;
+	font-size: 18px;
+	@if type-of($weight) == string {
+		font-weight: unquote($weight);
+	} @else {
+		font-weight: $weight;
+	}
+	color: #353430;
+	line-height: 24px;
+}
+
+@mixin content_heading($weight: 800) {
+	font-family: "proxima-nova", "Helvetica Neue", "Microsoft Sans Serif", sans-serif;
+	font-size: 14px;
+	@if type-of($weight) == string {
+		font-weight: unquote($weight);
+	} @else {
+		font-weight: $weight;
+	}
+	color: #353430;
+	line-height: 18px;
+}
+
+@mixin content_label() {
+	font-family: "proxima-nova", "Helvetica Neue", "Microsoft Sans Serif", sans-serif;
+	font-size: 10px;
+	font-weight: 800;
+	color: #9B9B9B;
+	line-height: 12px;
+	text-transform: uppercase;
+}
+
+//Paragraphs
+@mixin p_standard() {
+	margin-top: 24px;
+	font-family: "proxima-nova-soft", "proxima-nova", "futura-pt", Arial, Verdana, "Sans Serif";
+	font-size: 14px;
+	font-weight: 400;
+	color: #353430;
+	line-height: 20px;
+}
+
+@mixin p_small() {
+	margin-top: 24px;
+	font-family: "proxima-nova-soft", "proxima-nova", "futura-pt", Arial, Verdana, "Sans Serif";
+	font-size: 12px;
+	font-weight: 400;
+	color: #353430;
+	line-height: 18px;
+}
+
+@mixin hyperlinks() {
+	margin-top: 14px;
+	line-height: 14px;
+}

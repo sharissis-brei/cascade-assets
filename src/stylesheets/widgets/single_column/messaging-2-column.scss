@@ -35,28 +35,29 @@
 	}
 
 	h1.title {
-		margin: 0;
-		font-weight: normal;
+		@include main_heading(100);
+		margin-bottom: 0;
 	}
 
 	h4.category {
+		@include content_label();
 		margin-top: 0;
-		text-transform: uppercase;
-		color: #62605a;
 	}
 
 	p.message-text {
-		margin: 20px 0 30px;
+		@include p_standard();
+		margin: 32px 0 0;
 	}
 
 	.button.red {
 		text-align: center;
 		padding: 15px 25px;
-		margin: 0;
 		font-size: 16px;
 		font-weight: normal;
 	}
+
 	.actions {
+		margin-top: 72px;
 		text-align: center;
 		@include media($medium-screen) {
 			text-align: left;
