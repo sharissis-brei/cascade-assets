@@ -1,28 +1,35 @@
 @charset "UTF-8";
 
+// Neat Breakpoints
+$medium-screen: 600px;
+
+$medium-screen-up: new-breakpoint(max-width $medium-screen 4);
+
+$large-screen: 1120px;
+
 /// Sets the relative width of a single grid column. The unit used should be the same one used to define `$gutter`. To learn more about modular-scale() see [Bourbon docs](http://bourbon.io/docs/#modular-scale). Set with a `!global` flag.
 ///
 /// @type Number (Unit)
 
-$column: modular-scale(3, 1em, $golden) !default;
+$column: 48px !default;
 
 /// Sets the relative width of a single grid gutter. The unit used should be the same one used to define `$column`. To learn more about modular-scale() see [Bourbon docs](http://bourbon.io/docs/#modular-scale). Set with the `!global` flag.
 ///
 /// @type Number (Unit)
 
-$gutter: modular-scale(1, 1em, $golden) !default;
+$gutter: 16px !default;
 
 /// Sets the total number of columns in the grid. Its value can be overridden inside a media query using the `media()` mixin. Set with the `!global` flag.
 ///
 /// @type Number (Unitless)
 
-$grid-columns: 12 !default;
+$grid-columns: 18 !default;
 
 /// Sets the max-width property of the element that includes `outer-container()`. To learn more about `em()` see [Bourbon docs](http://bourbon.io/docs/#px-to-em). Set with the `!global` flag.
 ///
 /// @type Number (Unit)
 ///
-$max-width: em(1088) !default;
+$max-width: 1136px !default;
 
 /// When set to true, it sets the box-sizing property of all elements to `border-box`. Set with a `!global` flag.
 ///

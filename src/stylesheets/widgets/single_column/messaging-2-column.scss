@@ -1,54 +1,82 @@
 .messaging-2-column {
-	
-	@include outer-container();
+	background-size: cover;
+	background-repeat: no-repeat;
+	background-position: center center;
+	margin: $base-spacing*2 0;
 
-	.column {
-		&:first-of-type {
-			@include span-columns(10);
+	.outer-container {
+		@include outer-container;
+		@include clearfix;
+	}
+
+	.media-column {
+		padding: $base-spacing*4 0 0 0;
+		white-space: nowrap;
+		@include media($medium-screen) {
+			@include span-columns(8);
+			@include pad($base-spacing*4 default);
 		}
-		@include span-columns(8);
 
-		@include media($medium-screen-up) {
-			&:first-of-type {
-				@include fill-parent();
-			}
-			@include fill-parent();
+		@include media($large-screen){
+			@include span-columns(10);
+			text-align: center;
 		}
 	}
 
-	img {
+	.text-column {
+		@include pad($base-spacing*2 $base-spacing*2 $base-spacing*4);
+
+		@include media($medium-screen) {
+			@include span-columns(9);
+			padding-top: $base-spacing*4;
+		}
+
+		@include media($large-screen){
+			@include pad($base-spacing*2 default $base-spacing*4);
+			@include span-columns(7);
+			@include shift(1);
+		}
+	}
+
+	.center-media-helper {
+		display: inline-block;
+		height: 100%;
+		vertical-align: middle;
+	}
+
+	.media {
+		vertical-align: middle;
 		width: 100%;
+		height: auto;
 	}
 
 	h1.title {
-		margin: 0;
-		font-weight: normal;
+		@include main_heading(100);
+		margin-bottom: 0;
 	}
 
 	h4.category {
+		@include content_label();
 		margin-top: 0;
-		text-transform: uppercase;
-		color: #62605a;
 	}
 
-	p.message-text {
-		margin: 20px 0 30px;
+	p {
+		@include p_standard();
+		margin: 32px 0 0;
 	}
 
 	.button.red {
 		text-align: center;
 		padding: 15px 25px;
-		margin: 0;
 		font-size: 16px;
 		font-weight: normal;
 	}
 
-	@media only screen and (max-width: 600px) {
-		.actions {
-			text-align: center;
-		}
-		h4.category {
-			margin-top: 30px;
+	.actions {
+		margin-top: 72px;
+		text-align: center;
+		@include media($medium-screen) {
+			text-align: left;
 		}
 	}
 }
