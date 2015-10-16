@@ -13,10 +13,15 @@
 		padding: $base-spacing*4 0 0 0;
 
 		@include media($medium-screen) {
+			@include span-columns(8);
+			@include pad($base-spacing*4 default);
+		}
+
+		@include media($large-screen){
 			@include span-columns(10);
 			vertical-align: middle;
 			text-align: center;
-			padding: $base-spacing*4 0;
+
 		}
 	}
 
@@ -24,9 +29,13 @@
 		@include pad($base-spacing*2 default $base-spacing*4 default);
 
 		@include media($medium-screen) {
+			@include span-columns(10);
+			padding-top: $base-spacing*4;
+		}
+
+		@include media($large-screen){
 			@include span-columns(7);
 			@include shift(1);
-			padding-top: $base-spacing*4;
 		}
 	}
 
@@ -44,7 +53,7 @@
 		margin-top: 0;
 	}
 
-	p.message-text {
+	p {
 		@include p_standard();
 		margin: 32px 0 0;
 	}
