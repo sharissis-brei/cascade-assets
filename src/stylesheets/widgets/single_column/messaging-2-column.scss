@@ -20,15 +20,14 @@
 		@include media($large-screen){
 			@include span-columns(10);
 			text-align: center;
-
 		}
 	}
 
 	.text-column {
-		@include pad($base-spacing*2 default $base-spacing*4 default);
+		@include pad($base-spacing*2 $base-spacing*2 $base-spacing*4);
 
 		@include media($medium-screen) {
-			@include span-columns(10);
+			@include span-columns(9);
 			padding-top: $base-spacing*4;
 		}
 
