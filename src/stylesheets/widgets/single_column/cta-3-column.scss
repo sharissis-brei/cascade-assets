@@ -10,7 +10,7 @@
 
 		@include media($medium-screen) {
 			@include span-columns(6);
-			@include pad($base-spacing*2 default $base-spacing*4);
+			@include pad($base-spacing*4 default $base-spacing*4);
 		}
 	}
 
