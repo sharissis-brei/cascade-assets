@@ -1,29 +1,36 @@
-.chapman-social-feed {
-	/****************************
-	* STYLES FOR POST CONTAINER *
-	*****************************/
-	$gutter_width: 20px;
-	$tile_width: 335px;
+$gutter_width: 20px;
+$tile_width: 335px;
 
-	#content {
-		min-height: 650px;
-		text-align: center;
-		margin: 0 auto;
-		margin-top: 80px;
-		width: $tile_width + $gutter_width;
-		position: relative;
-		overflow: visible;
-		-ms-overflow-style:none;
+.chapman-social-feed-widget-container {
+	@include outer-container;
+	margin-top: $base-spacing*4;
+	margin-bottom: $base-spacing*4;
+	padding: 0 $base-spacing*2;
+	text-align: center;
+
+	@include media($large-screen) {
+		padding: 0;
 	}
 
-	@media screen and (min-width: 900px) {
-		#content {
-			margin-top: 0;
-		}
+	.chapman-social-feed-title {
+		@include main_heading(100);
+		text-transform: none;
+	}
+
+	.chapman-social-feed {
+		@include clearfix;
+		text-align: center;
+	}
+
+	.view-all-link {
+		@include hyperlinks;
+		display: block;
+		margin-top: $base-spacing*4;
 	}
 
 	.column {
-		float: left;
+		vertical-align: top;
+		display: inline-block;
 		width: $tile_width + $gutter_width;
 	}
 
@@ -120,6 +127,10 @@
 		width: 335px;
 		word-break: break-word;
 
+		h2 {
+			text-transform: none;
+		}
+
 		.message {
 			background: rgba(255, 255, 255, 1);
 			border-radius: 0px;
@@ -194,6 +205,7 @@
 			max-width: 200px;
 			text-shadow: 1px 1px 0 rgba(255,255,255,0.15);
 			vertical-align: middle;
+			text-transform: none;
 			a { color: inherit; }
 			a:hover {color: #a82439}
 			a p { font-size: inherit; line-height: inherit; margin: 0 0 0 14px; }
