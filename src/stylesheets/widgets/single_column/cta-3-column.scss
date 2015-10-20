@@ -1,19 +1,68 @@
 .cta-3-column {
+	margin: $base-spacing*2 0;
 
-	@include outer-container();
+	.outer-container {
+		@include outer-container();
+	}
 
 	.column {
-		@include span-columns(6 of 18);
+		padding: $base-spacing*4 0 0 0;
 
-		@include media($medium-screen-up) {
-			@include fill-parent();
-			&:nth-of-type(2) {
-				margin: $gutter 0;
-			}
+		@include media($medium-screen) {
+			@include span-columns(6);
+			@include pad($base-spacing*4 default $base-spacing*4);
 		}
 	}
-	.image {
-		width: 100%;
-		cursor: pointer;
+
+	h3.headline {
+		@include section_heading();
+		margin: 24px 0 0;
+
+		@include media($medium-screen) {
+			@include sub_section_heading();
+		}	
+
+		@include media(min-width 800px) {
+			@include section_heading();
+		}	
+	}
+
+	.image-wrap {
+		@include aspect_ratio(3, 2);
+		position: relative;
+		overflow: hidden;
+		max-width: 900px;
+		max-height: 400px;
+		width: auto;
+		height: auto;
+
+		img {
+			height: 100%;
+			width: 100%;
+		}
+	}
+	
+	.text-wrap {
+		display: inline-block;
+		@include pad($base-spacing*2 $base-spacing*2 0);
+
+		@include media($medium-screen) {
+			@include pad(0 default);
+		}
+
+		@include media(min-width 800px) {
+			@include pad(0 default);
+		}
+	}
+
+	p {
+		@include p_standard();
+		margin: 24px 0 0!important;
+	}
+
+	a.more-link {
+		@include hyperlinks();
+		display: inline-block;
+		margin-top: 44px;
 	}
 }
