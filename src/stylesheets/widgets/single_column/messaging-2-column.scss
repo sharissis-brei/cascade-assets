@@ -51,6 +51,11 @@
 		height: auto;
 	}
 
+	.fluid-width-video-container {
+		@include fluid-width-video-container;
+		display: inline-block;
+	}
+
 	h1.title {
 		@include main_heading(100);
 		margin-bottom: 0;
