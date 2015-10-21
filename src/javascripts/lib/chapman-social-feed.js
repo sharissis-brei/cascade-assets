@@ -67,10 +67,15 @@ ChapmanSocialFeed.prototype.sortPosts = function($posts) {
 
 ChapmanSocialFeed.prototype.detectNumberOfColumns = function() {
   var calculated =  Math.floor(this.$container.width() /  this.post_width);
-  if (calculated <= this.max_columns)
+  if (calculated < 1){
+    return 1;
+  }
+  else if (calculated <= this.max_columns){
     return calculated
-  else
+  }
+  else {
     return this.max_columns;
+  }
 };
 
 ChapmanSocialFeed.prototype.createNewColumns = function() {
@@ -199,8 +204,9 @@ ChapmanSocialFeed.prototype.onResize = function(e) {
   var self = this;
   clearTimeout(self.resize_timer);
   self.resize_timer = setTimeout(function() {
+    console.log("Layout!");
     self.layoutPostsInColumns();
-  }, 100);
+  }, 200);
 };
 
 
