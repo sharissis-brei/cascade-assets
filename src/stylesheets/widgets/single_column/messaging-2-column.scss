@@ -2,8 +2,8 @@
 	background-size: cover;
 	background-repeat: no-repeat;
 	background-position: center center;
-	margin: $base-spacing*2 0;
 	background-color: white;
+	padding: $widget-padding 0;
 
 	.outer-container {
 		@include outer-container;
