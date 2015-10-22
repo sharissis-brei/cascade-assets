@@ -1,0 +1,23 @@
+<h1>Sample Cascade Pages</h1>
+
+
+<h2>One Column Sample Pages</h2>
+<ul>
+<% @one_column_pages.each do |page| %>
+  <li><%= link_to page.titleize, "/one_column/#{page}" %></li>
+<% end %>
+</ul>
+
+<h2>Two Column Sample Pages</h2>
+<ul>
+<% @two_column_pages.each do |page| %>
+  <li><%= link_to page.titleize, "/two_column/#{page}" %></li>
+<% end %>
+</ul>
+
+<h2>Three Column Sample Pages</h2>
+<ul>
+<% @three_column_pages.each do |page| %>
+  <li><%= link_to page.titleize, "/three_column/#{page}" %></li>
+<% end %>
+</ul>

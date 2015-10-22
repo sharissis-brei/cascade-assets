@@ -1,0 +1,6 @@
+I, [2015-10-22T09:07:23.733370 #76276]  INFO -- :   Rendered layouts/cascade-assets.xml.erb (1.7ms)
+I, [2015-10-22T09:12:40.600089 #76854]  INFO -- :   Rendered layouts/cascade-assets.xml.erb (39.3ms)
+I, [2015-10-22T09:18:04.645682 #77239]  INFO -- :   Rendered layouts/cascade-assets.xml.erb (1.6ms)
+I, [2015-10-22T09:21:18.848937 #77411]  INFO -- :   Rendered layouts/cascade-assets.xml.erb (1.1ms)
+I, [2015-10-22T09:21:46.888682 #77444]  INFO -- :   Rendered layouts/cascade-assets.xml.erb (1.5ms)
+I, [2015-10-22T09:45:06.863275 #78918]  INFO -- :   Rendered layouts/cascade-assets.xml.erb (1.9ms)
