@@ -9,17 +9,15 @@ cd cascade-assets
 bundle install
 rake serve
 ```
-Send your browser to [http://localhost:5000](http://localhost:5000)  
+Send your browser to [http://localhost:5000](http://localhost:5000)
 Turn on your livereload extention (optional)
 
 ## Making Changes
 
-**HTML:** Sample HTML for the website lives in `docs/`  
-**CSS:** Edit the stylesheets in `src/stylesheets/`  
-**JS:** Edit the javascripts in `src/javascripts/`  
-**IMAGES:** Add/remove images in `src/images/`  
-
-Each time you make a change, the server will regenerate the site.  This ofter takes a second or two.  If the page is not updating, check your server logs to see if you have a syntax error that is preventing the compilation from happening.
+**HTML:** Sample HTML for the website lives in `app/views`
+**CSS:** Edit the stylesheets in `app/assets/stylesheets/`
+**JS:** Edit the javascripts in `app/assets/javascripts/`
+**IMAGES:** Add/remove images in `app/assets/images/`
 
 ## Deploying Assets to Cascade
 
@@ -29,10 +27,10 @@ In your terminal, run one of these rake build commands.
 
 ```bash
 # For the cascade production server
-rake build:production
+rake build RAILS_ENV=production
 
 # For the cascade dev server
-rake build:staging
+rake build RAILS_ENV=staging
 ```
 
 ### Step 2: Upload
@@ -58,15 +56,15 @@ Publish the `_assets` folder on cascade so that the new assets will be available
 
 Find the block located at `_cascade/blocks/html/cascade-assets`
 
-Edit that block to match `block.xml` located in the `/dist` folder you just build.  Copy and paste please.
+Edit that block to match `cascade-assets.xml` located in the `/dist` folder you just build.  Copy and paste please.
 
 
 
 ### Step 5: Have a Drink
 
-> (coffee if AM, beer if PM) 
+> (coffee if AM, beer if PM)
 
-The styles are ready to go.  
+The styles are ready to go.
 
 Every page that is published from now on will use the new assets.
 
@@ -84,7 +82,7 @@ Chapman.edu has 3 different templates for content:
 
 Each template is composed of modular widgets in each column.  Website editors can add as many widgets as they want to a column, and reorder them as they desire.
 
-In this Jekyll repository, the templates live in the `docs/_layouts/` folder.  
+In this Jekyll repository, the templates live in the `app/views/layouts/` folder.
 In Cascade, the templates live in `_cascade/templates/modular/`
 
 ### Widgets
@@ -94,9 +92,9 @@ There are two types of widgets:
   * Primary Column Widgets (designed to fit into the primary column of the template)
   * Side Column Widgets (designed to fit into the left and/or right columns of the template)
 
-In this Jekyll repository, the code for widgets lives in the following folders:
-  * The HTML for sample versions of the widgets lives in `docs/_includes/widgets/`
-  * The CSS for the widgets lives in `src/stylesheets/widgets/`
-  * The JS for the widgets lives in `src/javascripts/widgets/` (at the moment it doesn't but it will soon)
+In this repository, the code for widgets lives in the following folders:
+  * The HTML for sample versions of the widgets lives in `app/views/widgets/`
+  * The CSS for the widgets lives in `app/assets/stylesheets/widgets/`
+  * The JS for the widgets lives in `app/assets/javascripts/widgets/` (at the moment it doesn't but it will soon)
 
 In Cascade, the code that outputs the widget HTML is located in `_cascade/formats/modular/widgets`
