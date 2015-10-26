@@ -1,0 +1,54 @@
+###########################
+#    Step 1. --- Build    #
+###########################
+
+Note: You have probably already done this.
+
+In your terminal, run one of these rake build commands.
+
+  # For the cascade production server:
+  rake build RAILS_ENV=production
+
+  # For the cascade dev server:
+  rake build RAILS_ENV=staging
+
+
+
+############################
+#    Step 2. --- Upload    #
+############################
+
+In cascade, click the [Tools -> Zip Archive] menu item.
+
+Change the placement folder to "/_assets".
+
+Upload the _assets.zip file located in the folder you just built.
+
+Click submit
+
+
+
+#############################
+#    Step 3. --- Publish    # (VERY IMPORTANT)
+#############################
+
+Publish the "_assets" folder on cascade so that the new assets will be available.
+
+
+
+##################################################
+#    Step 4. --- Link Templates to New Assets    #
+##################################################
+
+Find the block located at "_cascade/blocks/html/cascade-assets"
+
+Edit that block to match "cascade-assets.xml" located in this folder.  Copy and paste.
+
+
+##########################
+#    Step 5. --- Done    #
+##########################
+
+The styles are ready to go.
+
+Every page that is published from now on will use the new assets.

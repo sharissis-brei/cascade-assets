@@ -21,19 +21,23 @@
       // margin: 0 0 20px 0;
       // width: 160px;
     }
+    .image-container {
+      height: 130px; 
+    }
     img {
       max-width: 100%;
     }
     .caption {
-      height: 43px;
+      height: 50px;
       background-color: $teal2;
+      top: 0px;
       .text {
         text-align: center;
         text-transform: uppercase;
         font-size: 14px;
         font-family: Arial, sans-serif;
-        padding: 0;
         line-height: 1;
+        padding: 0px;
       }
     }
     @include bp(wildcard-min, 500px) {
