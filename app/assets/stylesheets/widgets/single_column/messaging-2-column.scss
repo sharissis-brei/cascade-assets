@@ -1,3 +1,4 @@
+/*  Base Styles */
 .messaging-2-column {
 	background-size: cover;
 	background-repeat: no-repeat;
@@ -8,35 +9,16 @@
 	.outer-container {
 		@include outer-container;
 		@include clearfix;
+		@include pad(0 $base-spacing * 3);
+
+		@include media($large-screen) {
+			@include pad(0 $base-spacing);
+		}
 	}
 
 	.media-column {
-		padding: $base-spacing*4 0 0 0;
 		white-space: nowrap;
-		@include media($medium-screen) {
-			@include span-columns(8);
-			@include pad($base-spacing*4 default);
-		}
-
-		@include media($large-screen){
-			@include span-columns(10);
-			text-align: center;
-		}
-	}
-
-	.text-column {
-		@include pad($base-spacing*2 $base-spacing*2 $base-spacing*4);
-
-		@include media($medium-screen) {
-			@include span-columns(9);
-			padding-top: $base-spacing*4;
-		}
-
-		@include media($large-screen){
-			@include pad($base-spacing*2 default $base-spacing*4);
-			@include span-columns(7);
-			@include shift(1);
-		}
+		margin-bottom: $base-spacing * 2;
 	}
 
 	.center-media-helper {
@@ -84,5 +66,82 @@
 		@include media($medium-screen) {
 			text-align: left;
 		}
+	}
+}
+
+
+
+
+/* Text Right Variation */
+.messaging-2-column.text-right {
+
+	/* Medium Screen */
+	@include media($medium-screen) {
+		.media-column {
+			@include span-columns(8);
+		}
+		.text-column {
+			@include span-columns(9);
+			@include shift(1);
+		}
+	}
+
+	/* Large Screen */
+	@include media($large-screen) {
+		.media-column {
+			@include span-columns(10);
+		}
+		.text-column {
+			@include span-columns(7);
+			@include shift(1);
+		}
+	}
+}
+
+
+
+
+/* Text Left Variation */
+.messaging-2-column.text-left {
+	@include direction-context(right-to-left) {
+
+		/* Medium Screen */
+		@include media($medium-screen) {
+			.media-column {
+				@include span-columns(8);
+			}
+			.text-column {
+				@include span-columns(9);
+				@include shift(1);
+			}
+		}
+
+		/* Large Screen */
+		@include media($large-screen) {
+			.media-column {
+				@include span-columns(10);
+			}
+			.text-column {
+				@include span-columns(7);
+				@include shift(1);
+			}
+		}
+	}
+}
+
+
+
+/* Light Variation */
+.messaging-2-column.text-light {
+	h1.title {
+		color: white;
+	}
+
+	h4.category {
+		color: white;
+	}
+
+	p {
+		color: white;
 	}
 }
