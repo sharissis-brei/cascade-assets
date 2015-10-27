@@ -33,9 +33,7 @@ $(function () {
 
         if (!$(this).hasClass('stuck')) {
           tmp = 0;
-          // console.log($(this), $(this).height());
-          tmp = $(this).height() // + parseInt($(this).css('paddingTop')) + parseInt($(this).css('paddingBottom'));
-          // console.log(tmp);
+          tmp = $(this).height();
           if (tmp > nLheight) {
             nLheight = tmp;
           }

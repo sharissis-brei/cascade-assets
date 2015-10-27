@@ -8,16 +8,19 @@ Messaging2Column.centerMessagingMedia = function() {
     $('.messaging-widget.messaging-widget__2-column').each(function() {
       var $text  = $(this).find('.text-column');
       var $media = $(this).find('.media-column');
-      if (Media.smallScreen()) {
-        $media.css('height', 'auto');
-      } else {
+      $media.css('height', 'auto');
+      var text_height  = $text.height();
+      var media_height = $media.height();
+
+      if (Media.smallScreen() || text_height === media_height)
+        return;
+      if (media_height < text_height)
         $media.css('height', $text.height());
-      }
     });
-  }, 10);
+  }, 0);
 };
 
 
 // Initialize
-$(document).ready(function() {Messaging2Column.centerMessagingMedia(); console.log("Fired centering function on ready"); });
+$(document).ready(function() {Messaging2Column.centerMessagingMedia(); });
 $(window).on('resize', Messaging2Column.centerMessagingMedia);

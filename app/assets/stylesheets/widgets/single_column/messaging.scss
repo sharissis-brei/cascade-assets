@@ -14,10 +14,10 @@
 		@include media($large-screen) {
 			@include pad(0 $base-spacing);
 		}
+		// outline: 1px solid rgba(0,0,0,0.3);
 	}
 
 	.media-column {
-		white-space: nowrap;
 		text-align: center;
 	}
 
@@ -28,6 +28,7 @@
 	}
 
 	.media {
+		display: inline-block;
 		vertical-align: middle;
 		width: 100%;
 		height: auto;
@@ -93,6 +94,7 @@
 .messaging-widget__2-column {
 	/* All Variations */
 	.media-column {
+		white-space: nowrap;
 		margin-bottom: $base-spacing * 2;
 		padding: 0;
 	}
@@ -184,7 +186,10 @@
 
 /* Fact Card Media */
 .messaging-widget .media-column {
-	white-space: normal;
+	.fact-card-container {
+		white-space: normal;
+	}
+
 	.fact-card {
 		white-space: normal;
 		margin: $base-spacing $base-spacing 0;

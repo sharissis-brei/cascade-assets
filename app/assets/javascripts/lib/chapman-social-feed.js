@@ -204,7 +204,6 @@ ChapmanSocialFeed.prototype.onResize = function(e) {
   var self = this;
   clearTimeout(self.resize_timer);
   self.resize_timer = setTimeout(function() {
-    console.log("Layout!");
     self.layoutPostsInColumns();
   }, 200);
 };
