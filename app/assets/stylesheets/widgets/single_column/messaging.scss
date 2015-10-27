@@ -18,6 +18,7 @@
 
 	.media-column {
 		white-space: nowrap;
+		text-align: center;
 	}
 
 	.center-media-helper {
@@ -90,6 +91,7 @@
 
 /* Two Column Variation */
 .messaging-widget__2-column {
+	/* All Variations */
 	.media-column {
 		margin-bottom: $base-spacing * 2;
 		padding: 0;
@@ -97,6 +99,12 @@
 	.text-column {
 		text-align: left;
 	}
+	@include media($medium-screen) {
+		.media-column {
+			margin-bottom: 0;
+		}
+	}
+
 
 	/* Text Right Variation */
 	&.messaging-widget__text-right {
@@ -170,5 +178,15 @@
 
 	p {
 		color: white;
+	}
+}
+
+
+/* Fact Card Media */
+.messaging-widget .media-column {
+	white-space: normal;
+	.fact-card {
+		white-space: normal;
+		margin: $base-spacing $base-spacing 0;
 	}
 }
