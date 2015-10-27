@@ -26,3 +26,5 @@ node_modules
 db/data.yml
 
 npm-debug.log
+
+*.log
