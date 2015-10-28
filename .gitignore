@@ -29,3 +29,5 @@ db/data.yml
 npm-debug.log
 
 *.log
+
+.sass-cache/
