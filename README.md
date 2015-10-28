@@ -98,3 +98,28 @@ In this repository, the code for widgets lives in the following folders:
   * The JS for the widgets lives in `app/assets/javascripts/widgets/` (at the moment it doesn't but it will soon)
 
 In Cascade, the code that outputs the widget HTML is located in `_cascade/formats/modular/widgets`
+
+### CSS Conventions
+
+#### Widget Names and Classes
+HTML for widgets should all have a class on the outer most element composed of its name followed by the `-widget` suffix.  For example:
+
+```html
+<div class="messaging-widget"> ... </div>
+<div class="chapman-social-feed-widget"> ... </div>
+<div class="cta-3-column-widget"> ... </div>
+```
+
+#### Widget Variations
+
+When it is necessary to have variations of the same widget, add more classes to the root element of the widget.  The classes should consist of the full widget class name noted above, followed by two underscores and the name of the variation.
+
+```html
+<div class="messaging-widget messaging-widget__2-column"> ... </div>
+<div class="messaging-widget messaging-widget__1-column"> ... </div>
+<div class="messaging-widget
+            messaging-widget__1-column
+            messaging-widget__text-light"> ... </div>
+```
+
+Following these conventions helps us keep our css in check.
