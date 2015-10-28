@@ -1,7 +1,7 @@
 $gutter_width: 20px;
 $tile_width: 335px;
 
-.chapman-social-feed-widget-container {
+.chapman-social-feed-widget {
 	@include outer-container;
 	padding: $base-spacing*4 0;
 	text-align: center;
