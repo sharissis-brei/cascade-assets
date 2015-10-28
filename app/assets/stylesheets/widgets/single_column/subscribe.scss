@@ -1,0 +1,63 @@
+.subscribe-widget {
+  padding: $widget-padding 0;
+  background-color: $black;
+  color: white;
+
+  .outer-container {
+    @include outer-container;
+    padding: 0 $base-spacing*3;
+    @include media($large-screen) { padding: 0 $base-spacing; }
+  }
+
+  .subscribe-message-column {
+    margin-bottom: $base-spacing;
+    p { margin: $base-spacing / 2 0; }
+  }
+
+  .subscribe-form-column {
+    text-align: center;
+  }
+
+  form { @include clearfix }
+
+  .text-input {
+    display: inline-block;
+    font-size: 16px;
+    margin-bottom: $base-spacing;
+  }
+
+  .submit {
+    @include button($blue);
+    width: 100%;
+  }
+
+  /* Medium Screen */
+
+  @include media($medium-screen) {
+    .subscribe-form-column {
+      text-align: left;
+    }
+    .text-input {
+      width: 75%;
+      float: left;
+      margin-bottom: 0;
+    }
+    .submit {
+      padding-top:    ($base-spacing/2) + 1px; // The border of the form is
+      padding-bottom: ($base-spacing/2) + 1px;
+      width: 20%;
+      float: right;
+    }
+  }
+
+  /* Large Screen */
+  @include media($large-screen) {
+    .subscribe-message-column {
+      margin-bottom: 0;
+      @include span-columns(6);
+    }
+    .subscribe-form-column    {
+      @include span-columns(12);
+    }
+  }
+}

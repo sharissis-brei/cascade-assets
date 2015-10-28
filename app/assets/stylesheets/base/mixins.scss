@@ -202,3 +202,30 @@
 		bottom: 0;
 	}
 }
+
+@mixin button($bg-color: $red, $text-color: white) {
+	display: inline-block;
+	padding: $base-spacing / 2 $base-spacing;
+	font-size: 16px;
+	border-radius: 3px;
+	background: $bg-color;
+	color: $text-color;
+	cursor: pointer;
+	border: none;
+	box-shadow: 0px 2px 1px -1px rgba(0, 0, 0, 0.3);
+
+	&:hover, &:focus {
+		outline: none;
+		background-color: lighten($bg-color, 5%);
+		@include transition(background-color);
+	}
+
+	&:active {
+		transition: none;
+		background-color: darken($bg-color, 5%);
+	}
+}
+
+@mixin transition($property) {
+	transition: $property 150ms;
+}

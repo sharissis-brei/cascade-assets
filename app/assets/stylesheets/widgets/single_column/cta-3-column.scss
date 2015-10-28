@@ -6,7 +6,10 @@
 	}
 
 	.column {
+		margin-bottom: $base-spacing*3;
+		&:last-child { margin-bottom: 0; }
 		@include media($medium-screen) {
+			margin-bottom: 0;
 			@include span-columns(6);
 			@include pad(0 default);
 		}

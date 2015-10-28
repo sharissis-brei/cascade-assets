@@ -1,9 +1,7 @@
 @import "bourbon/bourbon";
 @import "neat/neat";
-
-@import "base/colors";
-
 @import "base/variables";
+@import "base/colors";
 @import "base/mixins";
 
 // Layout
@@ -75,31 +73,7 @@
 @import "layout/two-columns";
 
 // Modules
-@import "widgets/carousel";
-@import "widgets/flickr-picasa-links";
-@import "widgets/funnel-region";
-@import "widgets/masthead";
-@import "widgets/omni-nav";
-@import "widgets/personnel-region";
-@import "widgets/sponsor-logo-rotator";
-@import "widgets/sponsorship-logo-feed";
-@import "widgets/spotlight-region";
-@import "widgets/three-box-callout";
-@import "widgets/news-events-feed";
-@import "widgets/single_column/messaging";
-@import "widgets/single_column/cta-3-column";
-@import "widgets/single_column/chapman-social-feed";
+@import "widgets/**/*";
 
 // Themes
-@import "themes/wilkinson";
-@import "themes/copa";
-@import "themes/copa__theatre";
-@import "themes/copa__dance";
-@import "themes/copa__music";
-@import "themes/business";
-@import "themes/ces";
-@import "themes/crean";
-@import "themes/dodge";
-@import "themes/pharmacy";
-@import "themes/law";
-@import "themes/scst";
+@import "themes/*";

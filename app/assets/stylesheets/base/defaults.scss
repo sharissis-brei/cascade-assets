@@ -127,8 +127,9 @@ a {
     border-radius: 3px;
     background: #dad8cf no-repeat center;
     color: $grey;
-    width: 80%;
+    width: 100%;
     margin-bottom: 10px;
+    cursor: pointer;
     @include vendorize(box-sizing, border-box);
     &:hover {
       background-color: #cac9c4;
@@ -383,13 +384,11 @@ td {
 p, li {
   font-family: "proxima-nova-soft", "proxima-nova-soft-n4", sans-serif;
   font-size: 14px;
-  color: $cu-font-color;
   line-height: 1.45em;
 }
 
 h1, h2, h3, h4, h5, h6 {
   font-family: 'proxima-nova', arial, verdana, sans-serif;
-  color: $cu-font-color;
 }
 
 h2, h3, h4, h5, h6 {

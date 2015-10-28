@@ -1,3 +1,19 @@
+/* New Form Styles */
+
+  .text-input {
+    width: 100%;
+    padding: $base-spacing / 2;
+    border-radius: 3px;
+    border: 1px solid rgba(0,0,0,0.1);
+    box-shadow: inset 0px 0px 1px 0px rgba(0,0,0,0.1);
+    transition: border 150ms;
+    &:focus {
+      outline: none;
+      border: 1px solid $blue;
+    }
+  }
+
+/* Old form styles */
 .form {
   padding: 10px 45px;
   background-color: #E5E2CF;
@@ -77,7 +93,7 @@
   }
 }
 
-input[type=submit], a.button {
+input[type=submit] {
   font-weight: bold;
   font-size: 12px;
   background-color: #8F0C30;
@@ -85,7 +101,6 @@ input[type=submit], a.button {
   color: $white;
   padding: 4px;
   border: none;
-  box-shadow: 0px 0px 7px #434343;
   display: inline-block;
   zoom: 1;
   &:hover {
@@ -111,35 +126,35 @@ input[type=submit], a.button {
 .responsiveForm textarea,
 .responsiveForm select{
     max-width:100%;
-    margin:5px 0 15px 0;   
+    margin:5px 0 15px 0;
 }
 
 .responsiveForm input[type=checkbox],
 .responsiveForm input[type=radio]{
-    margin: 5px 0 3px 25px;   
+    margin: 5px 0 3px 25px;
 }
 
-.responsiveForm input[type=submit], 
+.responsiveForm input[type=submit],
 .responsiveForm a.button{
     display:block;
 }
 
 .responsiveForm fieldset{
-    margin:10px 0 10px 0;  
+    margin:10px 0 10px 0;
 }
 .responsiveForm fieldset.showBorder {
-    border: thin solid #D2D1CD; 
-    padding: 5px;   
+    border: thin solid #D2D1CD;
+    padding: 5px;
 }
 
 .responsiveForm fieldset legend{
-    margin:0 0 10px 0; 
+    margin:0 0 10px 0;
     font-weight: bold;
 }
 
 .responsiveForm input[type=radio]+label,
 .responsiveForm input[type=checkbox]+label {
-    display:block;     
+    display:block;
     margin-top:-17px; margin-left: 41px;
     font-weight: normal;
 }
