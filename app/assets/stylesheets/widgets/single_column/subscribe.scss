@@ -11,7 +11,13 @@
 
   .subscribe-message-column {
     margin-bottom: $base-spacing;
-    p { margin: $base-spacing / 2 0; }
+
+    p {
+      margin: 0;
+      @include media($large-screen) {
+        margin: $base-spacing / 2 0;
+      }
+    }
   }
 
   .subscribe-form-column {

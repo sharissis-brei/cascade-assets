@@ -1,8 +1,113 @@
+
+/* The Container of the main navigation element */
+.mainNav {
+  @include clearfix;
+}
+
+/* The little arrow to expand the navigation on small screens */
+.mainNavExpand {
+  text-transform: uppercase;
+  position: relative;
+  background-color: $grey;
+  margin-top: 5px;
+  .open & {
+    a {
+      .arrow {
+        top: 50%;
+        margin-top: -16px;
+        background: image-url('up-arrow.png') no-repeat;
+        text-indent: -999px;
+        overflow: hidden;
+      }
+    }
+    @include bp(m) {
+      display: none;
+    }
+  }
+  a {
+    color: $white;
+    display: block;
+    font-weight: 600;
+    margin: 0 0 1px 0;
+    padding: 10px 0 10px $base-spacing;
+    background-color: $grey;
+    text-decoration: none;
+    .arrow {
+      position: absolute;
+      display: block;
+      width: 32px;
+      height: 32px;
+      right: 8px;
+      top: 50%;
+      margin-top: -16px;
+      background: image-url('down-arrow.png') no-repeat;
+      text-indent: -999px;
+      overflow: hidden;
+    }
+    &:hover {
+      text-decoration: none;
+    }
+  }
+  @include bp(m) {
+    display: none;
+  }
+}
+
+
+
+.logo {
+  display: block;
+  height: 45px;
+  width: 265px;
+  text-indent: -999em;
+  margin-bottom: $base-spacing;
+  background-image: image-url('chapman_logo_horizonal_stacked.svg');
+  background-repeat: no-repeat;
+  background-size: contain;
+  margin-left: $base-spacing;
+  width: 100%;
+
+  @include bp(m) {
+    float: left;
+    display: block;
+    position: static;
+    height: 45px;
+    margin: 0;
+    width: 265px;
+  }
+}
+
 .mainNavLinks {
   display: none;
-  .open & {
-    display: block;
+  .open & { display: block; }
+
+  /* The little icons on the menu */
+  .icon {
+    &:before {
+      font-size: 1.0em;
+      text-align: center;
+      line-height: 1.4em;
+      color: $grey;
+      padding: 0.1em;
+      margin-top: -4px;
+      width: 24px;
+      height: 24px;
+      float: left;
+      display: block;
+    }
+    &:hover:before {
+      color: $cu-red;
+      background-color: $white;
+    }
+    .ie8 & {
+      margin-left: 0;
+      &:before {
+        display: none;
+      }
+    }
   }
+
+
   &.active {
     @include bp(m) {
       background-position: -2px -45px;
@@ -25,9 +130,7 @@
     &:hover {
       @include bp(wildcard-min, 1120px) {
         position: absolute;
-        // background-color: $black;
         background-color: $grey;
-        // height: 30px;
         height: 45px;
         width: 1000%;
         top: 0;
@@ -37,9 +140,7 @@
     }
     @include bp(wildcard-min, 1120px) {
       position: absolute;
-      // background-color: $black;
       background-color: $grey;
-      // height: 30px;
       height: 45px;
       width: 1000%;
       top: 0;
@@ -69,11 +170,7 @@
       }
     }
   }
-  .subNavLinks li:hover .icon:before {
-    // background-color: $cu-red;
-  }
   > li {
-    // background-color: $black;
     background-color: $grey;
     &:hover {
       .subNavLinks {
@@ -128,10 +225,8 @@
     }
     > a {
       color: $white;
-      // font-weight: 600;
       font-weight: 100;
       display: block;
-      // background-color: $black;
       background-color: $grey;
       padding: 10px 0 10px 10px;
       margin: 0 0 1px 0;
@@ -165,25 +260,19 @@
         float: left;
         color: $white;
         display: block;
-        // height: 30px;
         height: 45px;
-        // font-size: 12px;
         font-size: 17px;
-        // font-family: 'Open Sans', Sans-Serif;
         font-family: 'futura-pt', Sans-Serif;
         position: relative;
         padding: 0;
-        // @include vendorize(transform, skew(-15deg));
       }
       @include bp(wildcard-min, 1120px) {
         font-size: 20px;
       }
     }
     @include bp(m) {
-      // background-color: $black;
       background-color: $grey;
       text-transform: uppercase;
-      // height: 30px;
       height: 45px;
       float: left;
       position: relative;
@@ -197,28 +286,18 @@
   }
   @include bp(m) {
     display: block;
-    // background-color: transparent;
-    // background-color: $black;
+
     background-color: $grey;
     background-image: image-url('ribbon_tails.png');
     background-repeat: no-repeat;
     background-position: -2px 0;
-    // width: 700px;
     width: 100%;
-    // height: 30px;
     height: 45px;
     padding: 0 0 0 10px;
-    // margin: 25px 0 0 0;
     margin: 10px 0 0 0;
     float: left;
     position: relative;
-    // z-index: 1000;
     list-style: none;
-    // line-height: 30px;
-  }
-  @include bp(wildcard-min, 1085px) {
-    // width: 730px;
-    // background-color: transparent;
   }
   @include bp(wildcard-min, 1120px) {
     background-color: transparent;
