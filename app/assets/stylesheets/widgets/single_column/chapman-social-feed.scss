@@ -27,7 +27,8 @@ $tile_width: 335px;
 	.column {
 		vertical-align: top;
 		display: inline-block;
-		width: $tile_width + $gutter_width;
+		width: 100%;
+		max-width: $tile_width + $gutter_width;
 	}
 
 	// 2 Columns
@@ -120,7 +121,8 @@ $tile_width: 335px;
 		text-align: left;
 		transition: opacity .5s;
 		vertical-align: top;
-		width: 335px;
+		width: auto;
+		max-width: 335px;
 		word-break: break-word;
 
 		h2 {
@@ -275,7 +277,13 @@ $tile_width: 335px;
 		}
 
 		.photo img {
-			display: block; width: 335px;
+			display: block;
+			width: 100%;
+			height: auto;
+			@include media(375px) {
+				width: 335px;
+				height: inherit;
+			}
 		}
 
 		footer {
@@ -294,7 +302,15 @@ $tile_width: 335px;
 	// POST WITH PICTURE
 	//---------------------------
 	.post_tile.post_photo {
-		.photo img { display: block; width: 335px; }
+		.photo img {
+			display: block;
+			width: 100%;
+			height: auto;
+			@include media(375px) {
+				width: 335px;
+				height: inherit;
+			}
+		}
 
 		.view_message {
 			bottom: 40px;
