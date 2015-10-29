@@ -61,19 +61,21 @@
   width: 265px;
   text-indent: -999em;
   margin-bottom: $base-spacing;
+  margin-left: $base-spacing;
   background-image: image-url('chapman_logo_horizonal_stacked.svg');
   background-repeat: no-repeat;
   background-size: contain;
-  margin-left: $base-spacing;
-  width: 100%;
 
   @include bp(m) {
+    margin-bottom: 0;
     float: left;
     display: block;
     position: static;
     height: 45px;
-    margin: 0;
     width: 265px;
+  }
+  @media (min-width: 1120px) {
+    margin: 0;
   }
 }
 
@@ -250,9 +252,6 @@
           height: 33px;
         }
         @include bp(wildcard-min, 1120px) {
-          padding: 8px 18px 0 18px;
-        }
-        @include bp(wildcard-min, 1140px) {
           padding: 12px 20px 0 20px;
         }
       }
