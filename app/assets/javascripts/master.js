@@ -57,3 +57,5 @@
 //= require cascade/level/sponsor
 
 //= require_tree ./widgets
+
+//= require fact_cards
