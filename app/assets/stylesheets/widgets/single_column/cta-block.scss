@@ -1,0 +1,64 @@
+.cta-block-widget {
+  .outer-container {
+    @include outer-container();
+    display: table;
+    width: 100%;
+
+    outline: 1px solid red;
+  }
+
+  .row {
+    display: table-row;
+    width: 100%;
+  }
+
+  .box {
+    outline: 1px solid black;
+
+    background-size: cover;
+    background-repeat: no-repeat;
+    background-position: center center;
+    background-color: white;
+
+    text-align: center;
+    height: 30px;
+
+    .content-container {
+      display: table;
+      position: relative;
+      height: 100%;
+      width: 100%;
+    
+      .content {
+        display: table-cell;
+        text-align: center;
+        vertical-align: middle;
+
+      }
+
+      h1 {
+        vertical-align: middle;
+        @include sub_section_heading(500);
+        color: white;
+      }
+
+      p {
+        font-size: 0;
+      }
+    }
+
+    @include media($medium-screen) {
+      display: table-cell;
+      vertical-align: middle;
+      height: 150px;
+      width: 25%;
+
+      .content-container {
+        p {
+          @include p_small();
+          color: white;  
+        }
+      }
+    }
+  }
+}

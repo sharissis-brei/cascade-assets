@@ -14,7 +14,6 @@
 		@include media($large-screen) {
 			@include pad(0 $base-spacing);
 		}
-		// outline: 1px solid rgba(0,0,0,0.3);
 	}
 
 	.media-column {
