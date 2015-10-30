@@ -108,6 +108,7 @@ HTML for widgets should all have a class on the outer most element composed of i
 <div class="messaging-widget"> ... </div>
 <div class="chapman-social-feed-widget"> ... </div>
 <div class="cta-3-column-widget"> ... </div>
+<div class="cta-block-widget"> ... </div>
 ```
 
 #### Widget Variations

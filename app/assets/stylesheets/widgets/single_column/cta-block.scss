@@ -1,0 +1,78 @@
+.cta-block-widget {
+  .outer-container {
+    @include outer-container();
+    display: table;
+    width: 100%;
+  }
+
+  .row {
+    display: table-row;
+    width: 100%;
+  }
+
+  .box {
+    background-size: cover;
+    background-repeat: no-repeat;
+    background-position: center center;
+    background-color: white;
+
+    text-align: center;
+    height: 30px;
+
+    .content-container {
+      display: table;
+      position: relative;
+      height: 100%;
+      width: 100%;
+    
+      .content {
+        display: table-row;
+        text-align: center;
+        vertical-align: middle;
+        padding: 10px;
+
+        @include media($medium-screen) {
+          display: table-cell;
+        }
+
+      }
+
+      h1 {
+        vertical-align: middle;
+        @include sub_section_heading(500);
+        display: table-cell;
+      }
+
+      p {
+        font-size: 0;
+      }
+      
+      /* Light Text Variation */
+      .content__text-light {
+        h1 {
+          color: white;
+        }
+        p {
+          color: white;
+        }
+      }
+    }
+
+    @include media($medium-screen) {
+      display: table-cell;
+      vertical-align: middle;
+      height: 150px;
+      width: 25%;
+
+      .content-container {
+        h1 {
+          display: block;
+        }
+
+        p {
+          @include p_small();
+        }
+      }
+    }
+  }
+}
