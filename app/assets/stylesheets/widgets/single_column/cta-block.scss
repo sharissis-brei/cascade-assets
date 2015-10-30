@@ -3,8 +3,6 @@
     @include outer-container();
     display: table;
     width: 100%;
-
-    outline: 1px solid red;
   }
 
   .row {
@@ -13,8 +11,6 @@
   }
 
   .box {
-    outline: 1px solid black;
-
     background-size: cover;
     background-repeat: no-repeat;
     background-position: center center;
@@ -30,20 +26,35 @@
       width: 100%;
     
       .content {
-        display: table-cell;
+        display: table-row;
         text-align: center;
         vertical-align: middle;
+        padding: 10px;
+
+        @include media($medium-screen) {
+          display: table-cell;
+        }
 
       }
 
       h1 {
         vertical-align: middle;
         @include sub_section_heading(500);
-        color: white;
+        display: table-cell;
       }
 
       p {
         font-size: 0;
+      }
+      
+      /* Light Text Variation */
+      .content__text-light {
+        h1 {
+          color: white;
+        }
+        p {
+          color: white;
+        }
       }
     }
 
@@ -54,9 +65,12 @@
       width: 25%;
 
       .content-container {
+        h1 {
+          display: block;
+        }
+
         p {
           @include p_small();
-          color: white;  
         }
       }
     }
