@@ -1,8 +1,14 @@
 .cta-block-widget {
+  padding: $widget-padding 0;
+
   .outer-container {
     @include outer-container();
     display: table;
     width: 100%;
+
+    @include media($large-screen) {
+      @include pad(0 $base-spacing);
+    }
   }
 
   .row {
@@ -17,7 +23,7 @@
     background-color: white;
 
     text-align: center;
-    height: 30px;
+    height: 50px;
 
     .content-container {
       display: table;
