@@ -11,7 +11,7 @@
     font-size: 28px;
     cursor: pointer;
 
-  .fact-front, .fact-back{
+  .fact-front, .fact-back {
       @include box-shadow;
       display: flex;
       align-items: center;
@@ -138,6 +138,8 @@
     z-index: 4;
     background-repeat: no-repeat;
     opacity: 0.2;
+    top: 0;
+    left: 0;
 
     &.people{
       background-image: image-url('many_people.svg');
