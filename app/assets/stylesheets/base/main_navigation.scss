@@ -62,7 +62,8 @@
   text-indent: -999em;
   margin-bottom: $base-spacing;
   margin-left: $base-spacing;
-  background-image: image-url('chapman_logo_horizonal_stacked.svg');
+  background: image-url('chapman_logo_horizonal_stacked.png'); // IE 8
+  background: image-url('chapman_logo_horizonal_stacked.svg'), linear-gradient(transparent, transparent);
   background-repeat: no-repeat;
   background-size: contain;
 

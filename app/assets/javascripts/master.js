@@ -1,5 +1,5 @@
-//= require_tree ./vendor
-//= require_tree ./lib
+//= require_tree ../../../vendor/assets/javascripts
+//= require_tree ../../../lib/assets/javascripts
 
 
 //= require cascade/plugins/amplify
@@ -55,6 +55,5 @@
 //= require cascade/level/scroll-bar
 //= require cascade/level/social
 //= require cascade/level/sponsor
-//= require lib/chapman-social-feed
 
 //= require_tree ./widgets
