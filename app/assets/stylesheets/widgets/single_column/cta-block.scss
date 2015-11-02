@@ -1,5 +1,5 @@
 .cta-block-widget {
-  padding: $widget-padding 0;
+  padding: $one-column-widget-spacing 0;
 
   .outer-container {
     @include outer-container();
@@ -30,7 +30,7 @@
       position: relative;
       height: 100%;
       width: 100%;
-    
+
       .content {
         display: table-row;
         text-align: center;
@@ -52,7 +52,7 @@
       p {
         font-size: 0;
       }
-      
+
       /* Light Text Variation */
       .content__text-light {
         h1 {

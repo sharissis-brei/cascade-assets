@@ -57,4 +57,6 @@ $default-feature: min-width; // Default @media feature for the breakpoint() mixi
 
 $default-layout-direction: LTR !default;
 
-$widget-padding: 16px*4 !default;
+$one-column-widget-spacing:     16px*4 !default;
+
+$primary-column-widget-spacing: 16px*2 !default;
