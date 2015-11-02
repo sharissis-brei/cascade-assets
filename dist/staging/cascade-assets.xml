@@ -1,6 +1,6 @@
 <!-- Paste this snippet in _cascade/blocks/html/cascade-assets -->
 
 <system-xml>
-  <link rel="stylesheet" media="screen" href="//dev-www.chapman.edu/_assets/master-1f9d027060527ca4497c8f0095d2a788f4151e90a235aad57e68c61dde207904.css" />
-  <script src="//dev-www.chapman.edu/_assets/master-a669761e2b7234dacc164f53fb472c031f9a2f608bd2c3941d96171dcf34a267.js"></script>
+  <link rel="stylesheet" media="screen" href="//dev-www.chapman.edu/stylesheets/master.css" />
+  <script src="//dev-www.chapman.edu/javascripts/master.js"></script>
 </system-xml>

@@ -1,0 +1,9 @@
+/* These styles are coupled with the news-events-feed.  Please
+ * see those styles and witness the horror.  Rewrite these to
+ * be decoupled in the future.  Code for just the tabs widget
+ * goes here.
+ */
+
+.tabs-widget {
+  padding: $primary-column-widget-spacing 0;
+}

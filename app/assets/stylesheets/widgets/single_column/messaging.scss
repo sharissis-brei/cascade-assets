@@ -4,7 +4,7 @@
 	background-repeat: no-repeat;
 	background-position: center center;
 	background-color: white;
-	padding: $widget-padding 0;
+	padding: $one-column-widget-spacing 0;
 
 	.outer-container {
 		@include outer-container;

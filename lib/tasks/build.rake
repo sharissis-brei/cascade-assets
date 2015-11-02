@@ -2,7 +2,7 @@ require 'zip_file_generator'
 require 'render_anywhere'
 include RenderAnywhere
 
-task :build do
+task build: :environment do
   if Rails.env.development?
     puts "Please specify build environment"
     puts "Examples:"
