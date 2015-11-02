@@ -15,7 +15,7 @@
 # Ignore the redis database
 /*.rdb
 
-/tmp
+/tmp/
 /public/_assets
 
 # Ignore .DS_Store files
