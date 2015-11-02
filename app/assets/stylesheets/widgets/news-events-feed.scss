@@ -8,11 +8,11 @@
  * ensure you don't break anything:
  *  - news-events-widget in the left column
  *  - news-events-widget in primary content
- *  - tab-widget in primary content
+ *  - tabs-widget in primary content
  *
- * I recommend changing these class names once cascade is only running on 
- * the modular template.  That way, you can edit the HTML in velocity to 
- * output meaningful class names like "tabbed-widget, tabbed-nav, 
+ * I recommend changing these class names once cascade is only running on
+ * the modular template.  That way, you can edit the HTML in velocity to
+ * output meaningful class names like "tabbed-widget, tabbed-nav,
  * tabbed-content", etc.
  *
  * Sincerely, James Kerr
@@ -24,18 +24,20 @@
 $tab-content-bg-color: #f3f2ee;
 $tab-content-border-color: #cdccc7;
 
+.news-events-widget {
+  padding: $widget-padding 0;
+}
+
 .newsEvents {
-  margin-top: 30px;
   width: 100%;
   min-height: 310px; // To avoid jumpyness when loading
-  padding: 0 0 20px 0;
   clear: both;
   display: inline-block;
 
   a { border-bottom: none; }
   // Story titles
-  h3 { 
-    margin: 10px 0 0 0; 
+  h3 {
+    margin: 10px 0 0 0;
     a {
       font-weight: normal;
       font-size: 14px;
@@ -86,7 +88,7 @@ $tab-content-border-color: #cdccc7;
   border-top: 2px solid transparent;  // Keep text in same spot as active element
   list-style-type: none;
 
-  // When its a news-events-widget item, or 
+  // When its a news-events-widget item, or
   // when if it is in the left-nav,
   // make the tabs look like normal tabs.
   .news-events-widget &, .leftNav & {
@@ -143,8 +145,8 @@ $tab-content-border-color: #cdccc7;
   position:   relative;
   overflow:   auto;
   overflow-x: hidden;
-  .title { 
-    margin: 5px 0 10px 0; 
+  .title {
+    margin: 5px 0 10px 0;
     font-weight: bold;
     font-size: 1.3em;
     line-height: 1.3em;
@@ -152,7 +154,7 @@ $tab-content-border-color: #cdccc7;
   .description {
     clear: left;
   }
-  .image { 
+  .image {
     box-shadow: 0px 8px 8px -4px rgba(0,0,0,0.3);
     margin: 0 20px 20px 0;
     height: auto;
