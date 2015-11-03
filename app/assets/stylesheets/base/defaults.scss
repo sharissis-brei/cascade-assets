@@ -80,19 +80,15 @@ button, input, select, textarea {
 }
 
 a {
-  // color: #00e;
   color: $red;
   text-decoration: none;
   &:visited {
-    // color: #551a8b;
     color: $red;
     border-bottom: none;
   }
   &:hover {
-    // color: $cu-red;
     color: $cu-link-hover;
     border-bottom: none;
-    // text-decoration: none;
     text-decoration: underline;
   }
   &:focus {
@@ -104,14 +100,11 @@ a {
   }
   &.cta {
     padding: 7px 10px 7px 10px;
-    // background-color: $cu-red;
     background-color: $cu-dark-red;
     color: $white;
     display: inline-block;
     text-transform: uppercase;
-    // font-family: 'Open Sans';
     font-family: 'proxima-nova', sans-serif;
-    // font-weight: 800;
     font-weight: bold;
     max-width: 100%;
     &.hover {
@@ -168,7 +161,6 @@ abbr[title] {
 }
 
 b, strong {
-  // font-weight: bold;
   font-weight: 800;
 }
 
@@ -204,13 +196,11 @@ mark {
 }
 
 pre, code, kbd, samp {
-  font-family: monospace, monospace;
-  _font-family: 'courier new', monospace;
+  font-family: 'courier new', monospace;
   font-size: 1em;
 }
 
 pre {
-  white-space: pre;
   white-space: pre-wrap;
   word-wrap: break-word;
 }
@@ -348,13 +338,6 @@ input {
       -webkit-appearance: none;
     }
   }
-  &[type='submit'] {
-	  // width: 163px;
-	  // margin-top: 10px;
-	  // border: 1px solid #bdbcb9;
-	  // margin: 10px 0 0 0;
-	  // padding: 5px;
-	}
 }
 
 button::-moz-focus-inner, input::-moz-focus-inner {
@@ -382,9 +365,7 @@ td {
 }
 
 p, li {
-  font-family: "proxima-nova-soft", "proxima-nova-soft-n4", sans-serif;
-  font-size: 14px;
-  line-height: 1.45em;
+  @include paragraph;
 }
 
 h1, h2, h3, h4, h5, h6 {
@@ -400,21 +381,6 @@ h2, h3, h4, h5, h6 {
 h1 {
 	font-size: 30px;
   font-weight: 800;
-  // font-family: Times New Roman;
-  // font-size: 25px;
-  // font-weight: normal;
-  // color: #3a3939;
-  // margin: 0;
-  // position: relative;
-  .bullet {
-    // position: relative;
-    // top: -2px;
-    // left: -10px;
-    // color: #A6B0B7;
-    // font-family: Georgia;
-    // font-weight: bold;
-    // font-size: 25px;
-  }
 }
 
 h2 {
@@ -444,9 +410,6 @@ h3 {
   font-weight: 700;
   line-height: 1.4em;
   letter-spacing: 0px;
-  /*padding: 10px 0;*/
-  /* margin: 1em 0 0.5em;*/
-  /*font-family:"proxima-nova-soft", "proxima-nova-soft-n4", sans-serif;*/
   margin: 0;
   padding: 0;
   margin-top: 30px;
@@ -465,4 +428,45 @@ h5 {
   font-weight: 500;
   font-style: italic;
   color: $cu-font-color;
+}
+
+
+
+/*** PRINT STYLES ***/
+
+@include bp(print) {
+  body, html {
+    width: 100%;
+    height: 700px;
+    margin: 0 auto;
+  }
+  html:before {
+    content: image-url('logo.png');
+  }
+  header, .rotatorContainer, .toggleExpanded, .leftNav, footer {
+    display: none;
+  }
+  #virtualTour-mainColumn {
+    display: none;
+  }
+  #virtualTour-mapColumn {
+    position: relative;
+    display: block;
+    margin-top: 20px;
+    width: 700px;
+    height: 700px;
+  }
+  #virtualTour-mapCanvas {
+    width: 100%;
+    height: 100%;
+  }
+  #printButton {
+    display: none;
+  }
+  .label {
+    background: rgba(255, 255, 255, 0.75);
+    padding: 5px;
+    width: 120px;
+    text-align: center;
+  }
 }

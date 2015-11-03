@@ -1,0 +1,307 @@
+
+/* The Container of the main navigation element */
+.mainNav {
+  @include clearfix;
+}
+
+/* The little arrow to expand the navigation on small screens */
+.mainNavExpand {
+  text-transform: uppercase;
+  position: relative;
+  background-color: $grey;
+  margin-top: 5px;
+  .open & {
+    a {
+      .arrow {
+        top: 50%;
+        margin-top: -16px;
+        background: image-url('up-arrow.png') no-repeat;
+        text-indent: -999px;
+        overflow: hidden;
+      }
+    }
+    @include bp(m) {
+      display: none;
+    }
+  }
+  a {
+    color: $white;
+    display: block;
+    font-weight: 600;
+    margin: 0 0 1px 0;
+    padding: 10px 0 10px $base-spacing;
+    background-color: $grey;
+    text-decoration: none;
+    .arrow {
+      position: absolute;
+      display: block;
+      width: 32px;
+      height: 32px;
+      right: 8px;
+      top: 50%;
+      margin-top: -16px;
+      background: image-url('down-arrow.png') no-repeat;
+      text-indent: -999px;
+      overflow: hidden;
+    }
+    &:hover {
+      text-decoration: none;
+    }
+  }
+  @include bp(m) {
+    display: none;
+  }
+}
+
+
+
+.logo {
+  display: block;
+  height: 45px;
+  width: 265px;
+  text-indent: -999em;
+  margin-bottom: $base-spacing;
+  margin-left: $base-spacing;
+  background: image-url('chapman_logo_horizonal_stacked.png'); // IE 8
+  background: image-url('chapman_logo_horizonal_stacked.svg'), linear-gradient(transparent, transparent);
+  background-repeat: no-repeat;
+  background-size: contain;
+
+  @include bp(m) {
+    margin-bottom: 0;
+    float: left;
+    display: block;
+    position: static;
+    height: 45px;
+    width: 265px;
+  }
+  @media (min-width: 1120px) {
+    margin: 0;
+  }
+}
+
+.mainNavLinks {
+  display: none;
+  .open & { display: block; }
+
+  /* The little icons on the menu */
+  .icon {
+    &:before {
+      font-size: 1.0em;
+      text-align: center;
+      line-height: 1.4em;
+      color: $grey;
+      padding: 0.1em;
+      margin-top: -4px;
+      width: 24px;
+      height: 24px;
+      float: left;
+      display: block;
+    }
+    &:hover:before {
+      color: $cu-red;
+      background-color: $white;
+    }
+    .ie8 & {
+      margin-left: 0;
+      &:before {
+        display: none;
+      }
+    }
+  }
+
+
+  &.active {
+    @include bp(m) {
+      background-position: -2px -45px;
+    }
+  }
+  .csstransitions & {
+    > li:hover .subNavLinks {
+      @include bp(m) {
+        left: 0;
+        opacity: 1;
+      }
+    }
+  }
+  > .active {
+    @include bp(m) {
+      background-color: #555a5e;
+    }
+  }
+  .mainNavLinksAfter {
+    &:hover {
+      @include bp(wildcard-min, 1120px) {
+        position: absolute;
+        background-color: $grey;
+        height: 45px;
+        width: 1000%;
+        top: 0;
+        right: -950%;
+        z-index: -1;
+      }
+    }
+    @include bp(wildcard-min, 1120px) {
+      position: absolute;
+      background-color: $grey;
+      height: 45px;
+      width: 1000%;
+      top: 0;
+      right: -950%;
+      z-index: -1;
+    }
+  }
+  .has-dropdown {
+    &.is-visible > a {
+      > span {
+        .ie8 & {
+          @include bp(m) {
+            border-left: 1px solid $grey;
+          }
+        }
+        @include bp(m) {
+          background-color: #faf9f6;
+        }
+      }
+      @include bp(m) {
+        color: $cu-red;
+      }
+    }
+    .subNavLinks.is-visible {
+      @include bp(m) {
+        visibility: visible;
+      }
+    }
+  }
+  > li {
+    background-color: $grey;
+    &:hover {
+      .subNavLinks {
+        &.last {
+          @include bp(m) {
+            left: auto;
+            right: 0;
+          }
+        }
+        @include bp(m) {
+          left: 0;
+          opacity: 1;
+        }
+      }
+      > a {
+        > span {
+          .ie8 & {
+            @include bp(m) {
+              border-left: 1px solid $grey;
+            }
+          }
+          @include bp(m) {
+            background-color: #faf9f6;
+            background-image: image-url('up_arrow.png');
+          }
+        }
+        @include bp(m) {
+          color: $cu-red;
+          background-color: #555a5e;
+        }
+      }
+      @include bp(m) {
+        background-color: #555a5e;
+      }
+    }
+    &.noSubNav {
+      &:hover {
+        @include bp(m) {
+          background-color: $black;
+        }
+      }
+      > a {
+        > span {
+          @include bp(m) {
+            background-image: none !important;
+          }
+        }
+        @include bp(m) {
+          padding: 0 0 0 3px;
+        }
+      }
+    }
+    > a {
+      color: $white;
+      font-weight: 100;
+      display: block;
+      background-color: $grey;
+      padding: 10px 0 10px 10px;
+      margin: 0 0 1px 0;
+      .bullet {
+        position: absolute;
+        right: 10px;
+        font-weight: normal;
+        @include bp(m) {
+          display: none;
+        }
+      }
+      > span {
+        box-sizing: content-box;
+        @include bp(m) {
+          float: left;
+          display: block;
+          background-repeat: no-repeat;
+          background-position: right center;
+          padding: 12px 18px 0 18px;
+          margin-top: 0;
+          height: 33px;
+        }
+        @include bp(wildcard-min, 1120px) {
+          padding: 12px 20px 0 20px;
+        }
+      }
+      @include bp(m) {
+        float: left;
+        color: $white;
+        display: block;
+        height: 45px;
+        font-size: 17px;
+        font-family: 'futura-pt', Sans-Serif;
+        position: relative;
+        padding: 0;
+      }
+      @include bp(wildcard-min, 1120px) {
+        font-size: 20px;
+      }
+    }
+    @include bp(m) {
+      background-color: $grey;
+      text-transform: uppercase;
+      height: 45px;
+      float: left;
+      position: relative;
+    }
+  }
+  a {
+    text-decoration: none;
+    &:hover {
+      text-decoration: none;
+    }
+  }
+  @include bp(m) {
+    display: block;
+
+    background-color: $grey;
+    background-image: image-url('ribbon_tails.png');
+    background-repeat: no-repeat;
+    background-position: -2px 0;
+    width: 100%;
+    height: 45px;
+    padding: 0 0 0 10px;
+    margin: 10px 0 0 0;
+    float: left;
+    position: relative;
+    list-style: none;
+  }
+  @include bp(wildcard-min, 1120px) {
+    background-color: transparent;
+    margin: 0 0 0 0;
+    width: auto;
+  }
+}

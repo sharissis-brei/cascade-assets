@@ -1,0 +1,24 @@
+/* These styles get applied to anywhere a user added content to the
+ * website through a cascade wysiwyg editor.  We add the class .editableContent
+ * on all wysiwyg content.
+ */
+
+.editableContent {
+  ul {
+    margin-left: $base-spacing*2;
+  }
+
+  img {
+    margin: 0 $base-spacing $base-spacing $base-spacing;
+    padding: 3px;
+    background-color: #fff;
+    box-shadow: 1px 1px 2px rgba(50, 50, 50, 0.25);
+
+    &[align="left"] {
+      margin-left: 0;
+    }
+    &[align="right"] {
+      margin-right: 0;
+    }
+  }
+}

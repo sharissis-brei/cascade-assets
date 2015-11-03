@@ -1,77 +1,17 @@
-@import "bourbon/bourbon";
-@import "neat/neat";
-@import "base/variables";
-@import "base/colors";
-@import "base/mixins";
+// Sass variables, mixins, and global styles
+@import "base/base";
 
-// Layout
-@import "base/defaults";
-@import "base/default";
-@import "base/big-masthead";
-@import "base/breadcrumbs";
-@import "base/button-links";
-@import "base/callout";
-@import "base/caption";
-@import "base/common";
-@import "base/cu-companion-bar";
-@import "base/cu-login-form";
-@import "base/cu-login";
-@import "base/cu-nav";
-@import "base/cu-search-results";
-@import "base/cu-search";
-@import "base/date";
-@import "base/flexslider";
-@import "base/home";
-@import "base/icomoon";
-@import "base/left-nav-sub-content";
-@import "base/left-nav-ul";
-@import "base/left-nav";
-@import "base/main_navigation";
-@import "base/sub-nav-links";
-@import "base/masthead-placeholder";
-@import "base/misc";
-@import "base/new-button";
-@import "base/news-events-content";
-@import "base/news-events-nav";
-@import "base/news-events";
-@import "base/search-results";
-@import "base/small-masthead";
-@import "base/social-follow-us";
-@import "base/tabs";
-@import "base/tipsy";
-@import "base/fact-card";
+// Types of elements on the page
+@import "components/*";
 
+// Old page layout styles
+@import "layout_old/**/*";
 
-// Layout
-@import "layout_old/admission/primary-content";
-@import "layout_old/degrees-programs/main";
-@import "layout_old/directory/primary-content";
-@import "layout_old/directory/right-column";
-@import "layout_old/faculty/primary-content";
-@import "layout_old/home/main";
-@import "layout_old/level/header";
-@import "layout_old/level/layout";
-@import "layout_old/level/middle-right-container";
-@import "layout_old/level-level/middle-right-container";
-@import "layout_old/level-level/primary-content";
-@import "layout_old/level-level/two-columns";
-@import "layout_old/profile/primary-content";
-@import "layout_old/virtual-tour/layout";
-
-@import "layout_old/editable-content";
-@import "layout_old/footer";
-@import "layout_old/form";
-@import "layout_old/main";
-@import "layout_old/middle-right-container";
-@import "layout_old/phase4_masthead";
-@import "layout_old/one-column";
-@import "layout_old/primary-content";
-@import "layout_old/right-column";
-@import "layout_old/two-columns";
-
-// Widgets
+// Styles for officially supported modular widgets
 @import "widgets/**/*";
-// Page Layouts
+
+// New full page layout styles
 @import "layouts/*";
-// Themes
+
+// Themes for each college
 @import "themes/*";

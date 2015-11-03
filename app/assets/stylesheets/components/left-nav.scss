@@ -1,0 +1,34 @@
+.leftNav {
+  .currentPage {
+    font-weight: 800;
+  }
+	.callout {
+		@include bp(l) {
+  		-moz-box-sizing: border-box;
+	    -webkit-box-sizing: border-box;
+	    box-sizing: border-box;
+	    width: 100%;
+  	}
+	}
+	@include bp(l) {
+    width: 25%;
+    margin: 0 0 15px 0;
+	}
+}
+
+.leftNav-sub {
+  &.is-open {
+    background: $white;
+  }
+  a {
+    font-style: normal;
+    color: #62605a;
+    margin-left: 0;
+    &:hover {
+      color: $cu-red;
+    }
+    .bullet {
+      display: none;
+    }
+  }
+}

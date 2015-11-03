@@ -49,7 +49,7 @@
 	}
 
 	p {
-		@include p_standard();
+		@include paragraph();
 		margin: 32px 0 0;
 	}
 

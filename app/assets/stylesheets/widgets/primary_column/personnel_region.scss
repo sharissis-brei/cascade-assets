@@ -1,0 +1,39 @@
+.personnel-listing-widget {
+  padding: $primary-column-widget-spacing 0;
+
+  .person {
+    position: relative;
+    border-top: 1px solid $cu-border;
+    padding: $base-spacing*2 0;
+    padding-left: 145px;
+    height: auto;
+    min-height: 150px;
+  }
+
+  .title, .location, .phone, .email {
+    @include paragraph;
+    margin-bottom: 0;
+  }
+
+  .image {
+    position: absolute;
+    top: $base-spacing*2;
+    left: 0;
+    border-radius: 3px;
+  }
+
+  .name {
+    font-size: 18px;
+    margin-bottom: $base-spacing;
+    padding-top: 0;
+  }
+
+  .bio, .bio-url {
+    @include paragraph;
+    margin-top: $base-spacing;
+
+    &:last-child {
+      margin-bottom: 0;
+    }
+  }
+}

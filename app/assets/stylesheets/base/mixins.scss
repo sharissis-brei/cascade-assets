@@ -150,13 +150,11 @@
 }
 
 //Paragraphs
-@mixin p_standard() {
-	margin-top: 24px;
-	font-family: "proxima-nova-soft", "proxima-nova", "futura-pt", Arial, Verdana, "Sans Serif";
+@mixin paragraph() {
 	font-size: 14px;
-	font-weight: 400;
-	color: #353430;
 	line-height: 20px;
+	margin:0 0 10px 0;
+	font-weight: 400;
 }
 
 @mixin p_small() {
