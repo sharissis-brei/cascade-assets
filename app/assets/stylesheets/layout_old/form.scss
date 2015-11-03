@@ -1,0 +1,160 @@
+/* New Form Styles */
+
+  .text-input {
+    width: 100%;
+    padding: $base-spacing / 2;
+    border-radius: 3px;
+    border: 1px solid rgba(0,0,0,0.1);
+    box-shadow: inset 0px 0px 1px 0px rgba(0,0,0,0.1);
+    transition: border 150ms;
+    &:focus {
+      outline: none;
+      border: 1px solid $blue;
+    }
+  }
+
+/* Old form styles */
+.form {
+  padding: 10px 45px;
+  background-color: #E5E2CF;
+  border-left: 1px solid $white;
+  border-bottom: 1px solid $cu-border;
+  color: #4A4949;
+  div {
+    margin: 7px 0;
+  }
+  label.inline {
+    display: inline;
+    margin: 10px;
+  }
+  input {
+    &[type=text], &[type=password] {
+      width: 300px;
+    }
+    &[readonly=readonly] {
+      background-color: #ececec;
+      border: 1px solid #bbb;
+    }
+  }
+  textarea[readonly=readonly] {
+    background-color: #ececec;
+    border: 1px solid #bbb;
+  }
+}
+
+.form-label {
+  display: inline-block;
+  width: 150px;
+  text-align: right;
+  margin: 0 10px;
+  vertical-align: middle;
+}
+
+.short-form {
+  width: 175px !important;
+  padding: 10px !important;
+  h2 {
+    color: #8e6b4a;
+  }
+  input[type='text'], textarea {
+    -webkit-appearance: none;
+  }
+  input[type='text'] {
+    width: 163px;
+    margin-top: 10px;
+    border: 1px solid #bdbcb9;
+    margin: 10px 0 0 0;
+    padding: 5px;
+  }
+  input[type='submit'] {
+    float: right;
+    width: 74px;
+    background-color: $cu-red;
+    border: 0;
+    -webkit-appearance: none;
+    padding: 5px 0;
+    margin-top: 14px;
+    color: $white;
+  }
+  textarea {
+    width: 163px;
+    margin-top: 10px;
+    border: 1px solid #bdbcb9;
+    margin: 10px 0 0 0;
+    padding: 5px;
+    height: 75px;
+  }
+  select {
+    width: 175px;
+    margin-top: 10px;
+    border: 1px solid #bdbcb9;
+    margin: 10px 0 0 0;
+    padding: 0 0 0 0;
+  }
+}
+
+input[type=submit] {
+  font-weight: bold;
+  font-size: 12px;
+  background-color: #8F0C30;
+  cursor: pointer;
+  color: $white;
+  padding: 4px;
+  border: none;
+  display: inline-block;
+  zoom: 1;
+  &:hover {
+    background-color: #AF2C50;
+  }
+}
+
+.responsiveForm {
+    background-color: #f7f6f0;
+    border-bottom: 1px solid #4A4949;
+    color: #4A4949;
+    padding: 10px 45px;
+}
+
+/************ these responsiveForm used in surrounding DIV for all full page forms ************/
+.responsiveForm label{
+    display:block;
+    font-weight: bold;
+}
+
+.responsiveForm input[type=text],
+.responsiveForm input[type=password],
+.responsiveForm textarea,
+.responsiveForm select{
+    max-width:100%;
+    margin:5px 0 15px 0;
+}
+
+.responsiveForm input[type=checkbox],
+.responsiveForm input[type=radio]{
+    margin: 5px 0 3px 25px;
+}
+
+.responsiveForm input[type=submit],
+.responsiveForm a.button{
+    display:block;
+}
+
+.responsiveForm fieldset{
+    margin:10px 0 10px 0;
+}
+.responsiveForm fieldset.showBorder {
+    border: thin solid #D2D1CD;
+    padding: 5px;
+}
+
+.responsiveForm fieldset legend{
+    margin:0 0 10px 0;
+    font-weight: bold;
+}
+
+.responsiveForm input[type=radio]+label,
+.responsiveForm input[type=checkbox]+label {
+    display:block;
+    margin-top:-17px; margin-left: 41px;
+    font-weight: normal;
+}

@@ -1,3 +1,7 @@
+.funnel-boxes-widget {
+  padding: $primary-column-widget-spacing 0;
+}
+
 .funnel {
 	.ie7 & {
 		.funnelBlock {
@@ -9,29 +13,23 @@
 	  display: inline-block;
 	  vertical-align: top;
 	  width: 300px;
-	  // background-color: #f1eedc;
 	  padding: 10px;
-	  margin: 20px 20px 20px 0;
+    padding-top: 10px;
+	  margin: 0 20px 20px 0;
 	  .featureImage {
       text-align: center;
       line-height: 0;
     }
     h3 {
-      // font-family: "Open Sans";
-      // font-family: "proxima-nova-soft", sans-serif;
-      // font-weight: normal;
       font-weight: 700;
-      // font-size: 16px;
       font-size: 18px;
       font-style: normal;
-      // color: $cu-red;
       color: $grey;
       padding: 10px 0 5px 0;
       margin: 0;
       clear: both;
       line-height: 1.25;
       a {
-        // font-family: "proxima-nova-soft", sans-serif;
         font-weight: 700;
         font-size: 18px;
         font-style: normal;
@@ -62,14 +60,11 @@
 	}
 	.more {
     color: $black;
-    // font-weight: bold;
     font-weight: 800;
     font-size: 11px;
-    // cursor: hand;
     cursor: pointer;
   }
   .region h3 a {
-    // font-family: "proxima-nova-soft", sans-serif;
     font-weight: 700;
     font-size: 18px;
     font-style: normal;
