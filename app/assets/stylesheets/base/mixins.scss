@@ -87,7 +87,6 @@
 	} @else {
 		font-weight: $weight;
 	}
-	color: #353430;
 	line-height: 48px;
 }
 
@@ -99,7 +98,6 @@
 	} @else {
 		font-weight: $weight;
 	}
-	color: #353430;
 	line-height: 40px;
 }
 
@@ -111,7 +109,6 @@
 	} @else {
 		font-weight: $weight;
 	}
-	color: #353430;
 	line-height: 32px;
 	letter-spacing: .8;
 }
@@ -124,7 +121,6 @@
 	} @else {
 		font-weight: $weight;
 	}
-	color: #353430;
 	line-height: 24px;
 }
 
@@ -136,7 +132,6 @@
 	} @else {
 		font-weight: $weight;
 	}
-	color: #353430;
 	line-height: 18px;
 }
 
@@ -162,7 +157,6 @@
 	font-family: "proxima-nova-soft", "proxima-nova", "futura-pt", Arial, Verdana, "Sans Serif";
 	font-size: 12px;
 	font-weight: 400;
-	color: #353430;
 	line-height: 18px;
 }
 
@@ -232,3 +226,8 @@
 	transition: $property 150ms;
 }
 
+@mixin ellipsis {
+	white-space: nowrap;
+	overflow: hidden;
+	text-overflow: ellipsis;
+}

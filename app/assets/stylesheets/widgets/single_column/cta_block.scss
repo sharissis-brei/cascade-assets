@@ -1,0 +1,73 @@
+$cta-block-mobile-height: 50px;
+$cta-block-screen-height: 150px;
+
+.cta-block-widget {
+  padding: $one-column-widget-spacing 0;
+
+  .outer-container {
+    @include outer-container();
+    width: 100%;
+
+    @include media($large-screen) {
+      @include pad(0 $base-spacing);
+    }
+  }
+
+  .box {
+    position: relative;
+    display: block;
+    width: 100%;
+    height: $cta-block-mobile-height;
+    text-align: center;
+    overflow: hidden;
+    color: $black;
+    background-size: cover;
+    background-repeat: no-repeat;
+    background-position: center center;
+    background-color: white;
+
+    @include media($medium-screen) {
+      width: 25%;
+      height: $cta-block-screen-height;
+      float: left;
+      padding: $base-spacing 8px;
+    }
+  }
+
+  .content-container {
+    display: table;
+    height: 100%;
+    width: 100%;
+  }
+
+  .content {
+    display: table-cell;
+    vertical-align: middle;
+    text-align: center;
+  }
+  .title {
+    @include sub_section_heading(500);
+    line-height: $cta-block-mobile-height;
+    margin: 0;
+    padding: 0 $base-spacing;
+    white-space: nowrap;
+
+    @include media($medium-screen) {
+      white-space: normal;
+      line-height: 22px;
+    }
+  }
+
+  .subtitle {
+    @include p_small;
+    margin: 0;
+    display: none;
+    @include media($medium-screen) {
+      display: block;
+    }
+  }
+
+  .box__text-light {
+    color: white;
+  }
+}
