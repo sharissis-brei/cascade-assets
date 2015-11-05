@@ -124,3 +124,59 @@ When it is necessary to have variations of the same widget, add more classes to 
 ```
 
 Following these conventions helps us keep our css in check.
+
+
+## Velocity Templating Language Cheat Sheet
+
+#### Setting Variables
+```html
+ #set ($name = "James")
+```
+
+#### If Else
+```
+#if ($name == 'James')
+ <h1>Hello James</h1>
+#else
+ <h1>Hello Other Person</h1>
+#end
+```
+
+#### Loops
+```html
+ #set ($items = $_XPathTool.selectNodes($xml_object, '//path/to/items'))
+ 
+ #foreach($item in $items)
+   ...
+   <h1>$item.getChild('title').value</h1>
+   ...
+ #end
+```
+
+#### Navigating XML Data
+```html
+## Selecting multiple xml nodes.
+#set ($items = $_XPathTool.selectNodes($object, '//x_path/to/item'))
+
+## Selecting a single node in xml
+$_XPathTool.selectSingleNode($cardElement, 'backStat/title')
+
+## Which is also the same as...
+$cardElement.getChild('backStat').getChild('title')
+```
+
+#### Outputing values into HTML
+```html
+## You must always escape the value of an xml node before displaying it.
+<p>$_EscapeTool.xml($cardElement.getChild('title').value)</p>
+```
+
+#### Macros
+```html
+#macro(outputCalloutText $param)
+ <p>$_EscapeTool.xml($param.getChild('text').value)</p>
+#end
+
+## Call it with this...
+#outputCalloutText($callout)
+```
