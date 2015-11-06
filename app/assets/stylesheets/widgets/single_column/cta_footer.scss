@@ -1,0 +1,58 @@
+.cta-footer-widget {
+  background-color: $gray-mist;
+  padding: $one-column-widget-spacing 0px;
+
+  .outer-container {
+    @include outer-container;
+  }
+
+  .tool-bar{
+    p{
+      font-size: 20px;
+      @include span-columns(4);
+    } 
+  }
+
+  .selector {
+    @include span-columns(4);
+    select {
+      padding:3px;
+      margin: 0;
+      border-radius:4px;
+      box-shadow: 0 3px 0 #ccc, 0 -1px #fff inset;
+      background: #f8f8f8;
+      color:#888;
+
+}
+  }
+
+  .v_campus {
+    @include span-columns(4);
+    a{
+      @include button($red, white);
+    }
+  }
+    v:hover{
+      @include button(#D4364F, white);
+    }
+
+    v:active{
+      @include button(#871D2E, white);
+    }
+
+  .a_now {
+    @include span-columns(4);
+    a{
+      @include button($red, white);
+    }
+  }
+
+    a:hover{
+      @include button(#D4364F, white);
+    }
+
+    a:active
+    {
+      @include button(#871D2E, white);
+    }
+}
