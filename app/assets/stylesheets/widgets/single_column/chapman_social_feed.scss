@@ -110,8 +110,7 @@ $tile_width: 335px;
 	}
 
 	.post_tile {
-		background: #FFF;
-		box-shadow: 2px 2px 6px 1px rgba(0, 0, 0, 0.2);
+		background: white;
 		color: #353430;
 		display: inline-block;
 		margin: 10px;
@@ -182,7 +181,6 @@ $tile_width: 335px;
 
 		footer {
 			background: #f7f6f0;
-			box-shadow: inset 0 1px 2px rgba(0, 0, 0, 0.2);
 			box-sizing: border-box;
 			display: table;
 			font-size: 12px;

@@ -24,14 +24,14 @@ $cta-block-screen-height: 150px;
     background-size: cover;
     background-repeat: no-repeat;
     background-position: 25% center;
-    background-color: darken(white, 3%);
+    background-color: darken(white, 2%);
     transition: transform 100ms;
 
     &:hover {
       background-color: white;
       transform: scale(1.02);
       z-index: 2;
-      box-shadow: 0px 3px 18px 3px rgba(0, 0, 0, 0.3)
+      box-shadow: 0px 3px 18px 3px rgba(0, 0, 0, 0.3);
     }
 
     @include media($medium-screen) {
