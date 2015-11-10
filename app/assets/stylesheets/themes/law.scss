@@ -1,5 +1,207 @@
-
 #theme.law {
+    .bigMasthead header {
+        @include media(1024px) { margin: 0; }
+        @include media(1120px) { margin: 30px 0; }
+    }
+
+    .logo {
+        background: image-url('logo_law_alternate.png') ;
+        // background: image-url('chapman_logo_horizonal_stacked.svg'), linear-gradient(transparent, transparent);
+        background-repeat: no-repeat;
+        height: 68px;
+        width: 238px;
+        margin: 0 auto $base-spacing auto;
+        @include bp(m) { margin: 0 $base-spacing $base-spacing $base-spacing;}
+        @include media(1120px) { margin: -25px $base-spacing 0 0; }
+    }
+
+    .collapsedNav {
+        margin: 115px 0 0 0;
+    }
+
+    .mainNavLinks > li > a,
+    .footerLinks li a {
+        background-color:#002f7c;
+    }
+
+    .mainNavLinks .mainNavLinksAfter,
+    .mainNavLinks .mainNavLinksAfter:hover {
+        background-color:#002f7c !important;
+    }
+
+    .footerLogo{
+        padding:10px 0 0 10px;
+        clear:both;
+    }
+    @include bp(m) {
+        .ie8 .subNavLinks {
+            border-right: 1px solid #00307c;
+            border-bottom: 1px solid #00307c;
+            border-left: 1px solid #00307c;
+        }
+
+        .mainNav .icon {
+            margin-left: 0;
+        }
+
+        .mainNav .icon:before {
+            display: none;
+        }
+
+        .footer-ribbon, .footer-ribbon .footer-ribbon-before {
+            background-color: #00307c;
+        }
+        .footer-ribbon .footer-ribbon-after {
+            background-image: image-url('ribbon_tails_law.png');
+        }
+    }
+    @include bp(m) {
+        .footer-links-group > h3 {
+            color: #fff;
+        }
+    }
+    .nameBarButtons li a {
+        color: #00307c;
+    }
+    .expandedNameBarContainer h2,
+    .expandedNameBarContainer a,
+    div.styleTwo a {
+        color: #99afda;
+    }
+
+    .smallMasthead .masthead,
+    .bigMasthead .masthead,
+    .nameBar {
+        background: #00307c;
+    }
+
+    #social_follow_us .banner {
+        background-image: image-url('law_follow_us.png');
+    }
+    #social_follow_us li span.hover_state,
+    #social_follow_us li span.inactive_state {
+        background: image-url('law_icons.png');
+    }
+
+    .ie8 .slideDescription,
+    .ie9 .slideDescription{
+        display: none !important;
+    }
+
+    .mainNavExpand a {
+        background-color: #002F7C;
+    }
+
+    .mainNavLinks > li {
+        background-color: #353430;
+    }
+
+    /* ==|== media queries ====================================================== */
+    @include bp(m) {
+
+        header {
+            padding: 0 0 15px 0;
+        }
+
+        .infoFor {
+            width: 600px;
+        }
+
+        .mainNavLinks {
+        }
+
+        .mainNavLinks > li.noSubNav > a {
+            padding:0 !important;
+        }
+
+        .mainNavLinks > li:hover{
+            background-color:transparent;
+        }
+
+        .mainNavLinks > li > a > span {
+            padding-left: 12px;
+            padding-right: 12px;
+        }
+
+        .mainNavLinks,
+        .mainNavLinks > li,
+        .mainNavLinks > li.noSubNav:hover,
+        footer .footerBefore,
+        .footerLinks{
+            background-color:#002f7c;
+        }
+
+        .mainNavLinks,
+        footer .footerAfter {
+            background-image: image-url('ribbon_tails_law.png');
+        }
+
+        .footerLinks {
+            padding: 0;
+            text-indent: 10px;
+        }
+
+        .subFooter{
+            width:780px;
+        }
+
+        .ie7 .subFooter{
+            width:855px;
+        }
+
+        .ie8 .subFooter{
+            width:835px;
+        }
+
+        .subFooter .socialIcons{
+            width: auto;
+        }
+
+        .subFooter .copyright {
+            right: 148px;
+        }
+
+        .footerLinks .switch{
+            display:none;
+        }
+
+    }
+
+    @include media(1120px) {
+
+        .subFooter ul {
+            margin: 0 10px 0 -10px;
+        }
+
+        .mainNavLinks{
+            background-color: transparent;
+        }
+
+        .footerLogo{
+            position: absolute;
+            top: 35px;
+            left: 20px;
+            padding:10px 0 0 0;
+        }
+
+        .oldie .footerLinks li a{
+            font-size:10px;
+            margin:0;
+        }
+
+        .oldie .footerLinks{
+            float:none;
+        }
+
+        .ie7 .subFooter{
+            width:795px;
+        }
+
+        .ie8 .subFooter{
+            width:780px;
+        }
+
+    }
 
     .smallMasthead .masthead, .smallMasthead .masthead-old, .bigMasthead .mastheadPlaceholder, .bigMasthead .masthead, .bigMasthead .masthead-old, .nameBar, .rightColumn .styleTwo {
     background: #002f7c; /* Old browsers */
@@ -15,11 +217,11 @@
     .nameBarButtons li a { color: #002f7c;}
     .expandedNameBarContainer h2, .expandedNameBarContainer a, div.styleTwo a { color: #99afda; }
 
-    #social_follow_us .banner { 
-        background-image: url('[system-asset]/_files/social_accounts/images/law_follow_us.png[/system-asset]'); 
+    #social_follow_us .banner {
+        background-image: image-url('law_follow_us.png');
         }
     #social_follow_us li span.hover_state, #social_follow_us li span.inactive_state {
-        background: url('[system-asset]/_files/social_accounts/images/law_icons.png[/system-asset]');
+        background: image-url('law_icons.png');
         }
 
     .rounded-slider .info-container .blue{
@@ -30,7 +232,7 @@
         background-image: -o-linear-gradient(top, #002f7c, #01235b);
         background-image: linear-gradient(to bottom, #002f7c, #01235b);
         filter: progid:DXImageTransform.Microsoft.gradient( startColorstr='#002f7c', endColorstr='#01235b',GradientType=1 );
-    }    
+    }
 
     .newbutton a, .newbutton a:hover {
         border: 1px solid #002f7c;
@@ -46,6 +248,6 @@
     .midPhotoCallouts .photoCallout .caption,
     .photoCallouts .caption,
     .photoCallouts .rollover{
-         background-color: #002f7c;   
+         background-color: #002f7c;
     }
 }

@@ -1,0 +1,32 @@
+<%= title "Two Column Modular Sample Page" %>
+<%= theme "law" %>
+
+<%= widgets <<-YAML
+
+  masthead: masthead/boxes_1
+
+  primary_content:
+    - primary_content/wysiwyg_editor_3
+    - primary_content/collapsables_2
+    - primary_content/personnel_region_2
+    - primary_content/personnel_region_1
+    - primary_content/tabs_1
+    # - primary_content/funnel_boxes_1
+    # - primary_content/collapsables_1
+    # - primary_content/carousel_1
+    # - primary_content/carousel_2
+    # - primary_content/featured_news_events_feed_1
+    # - primary_content/regions_1
+    # - primary_content/sponsor_box_1
+    # - primary_content/sponsor_box_2
+    # - primary_content/three_photo_callout_1
+    # - primary_content/twitter_feed_1
+
+  left_column:
+    - left_column/news_events_1
+    - left_column/callout_1
+    - left_column/calls_to_action_1
+    - left_column/calls_to_action_2
+
+  YAML
+%>
