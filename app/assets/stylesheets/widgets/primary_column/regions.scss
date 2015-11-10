@@ -34,10 +34,9 @@ div.four-col-float {
   .region .featureImage {
     border: 3px solid white;
     box-shadow: 0 0 7px #434343;
-    -webkit-box-shadow: 0px 0px 7px #434343;
-    -moz-box-shadow: 0px 0px 7px #434343;
     float: left;
-    margin: 0 10px 10px 0;
+    margin: $base-spacing;
+    margin-left: 3px;
   }
 
   .region li {
@@ -55,12 +54,16 @@ div.four-col-float {
     ul {
       padding-left: 40px;
     }
+    > p {
+      margin: 0;
+    }
   }
 
   .region  ul.linkList {
-    margin: 10px 0 0 0;
+    margin: $base-spacing 0 0 0;
     list-style-type: none;
     padding: 0;
+    float: left;
   }
 }
 
