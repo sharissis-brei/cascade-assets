@@ -1,7 +1,7 @@
 .wysiwyg-widget {
   padding: $primary-column-widget-spacing 0;
 
-  .content p:last-of-type {
+  .content > p:last-of-type {
     margin-bottom: 0;
   }
 }
