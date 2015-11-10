@@ -1,3 +1,4 @@
 .callout-box-widget {
-  width: 166px;
+  width: 200px;
+  @include bp(l) { width: 100%; }
 }
