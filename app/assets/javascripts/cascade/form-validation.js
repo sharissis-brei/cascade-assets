@@ -12,13 +12,14 @@
     });
 
 
-    //used to populate a dropdown with times 
+    //used to populate a dropdown with times. 
     // selector is fieldname, 
     // startTime or endTime is 0 for 12am, 30 for 12:30am etc.
     // increment is how many minutes different each value in dropdown is eg 30 for every 30 minutes, 60 for each hour etc)
     function populateTime(selector, startTime, endTime, increment) {
         var select = $(selector);
         var hours, minutes, ampm;
+		var finaltime;
         for(var i = startTime; i <= endTime; i += increment){
             hours = Math.floor(i / 60);
             minutes = i % 60;
@@ -30,11 +31,13 @@
             if (hours === 0){
                 hours = 12;
             }
+			finaltime = hours + ':' + minutes + ' ' + ampm;
             select.append($('<option></option>')
-                .attr('value', i)
-                .text(hours + ':' + minutes + ' ' + ampm)); 
+                .attr('value', finaltime)
+                .text(finaltime)); 
         }
     }
+
 
     // used to validate radio button collection (tests if at least 1 is checked):
     function checkRadioSelected (obj) 
