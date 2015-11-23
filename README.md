@@ -14,10 +14,10 @@ Turn on your livereload extention (optional)
 
 ## Making Changes
 
-**HTML:** Sample HTML for the website lives in `app/views`
-**CSS:** Edit the stylesheets in `app/assets/stylesheets/`
-**JS:** Edit the javascripts in `app/assets/javascripts/`
-**IMAGES:** Add/remove images in `app/assets/images/`
+**HTML:** Sample HTML for the website lives in `app/views`  
+**CSS:** Edit the stylesheets in `app/assets/stylesheets/`  
+**JS:** Edit the javascripts in `app/assets/javascripts/`  
+**IMAGES:** Add/remove images in `app/assets/images/`  
 
 ## Deploying Assets to Cascade
 
