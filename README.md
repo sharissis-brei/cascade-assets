@@ -153,6 +153,18 @@ Following these conventions helps us keep our css in check.
  #end
 ```
 
+#### String Interpolation
+Wrap a variable with ${ ... } to interpolate it into a string. For example:
+```
+#set ($name = "James")
+#set ($greeting = "Hello ${name}, Nice to meet you.")
+```
+You can also do ifs and elses right in a string.  For example:
+```
+#set($classStr = "messaging-widget__#if($textAlign == 'Left')text-left#{else}text-right#end")
+```
+
+
 #### Navigating XML Data
 ```html
 ## Selecting multiple xml nodes.
@@ -180,3 +192,11 @@ $cardElement.getChild('backStat').getChild('title')
 ## Call it with this...
 #outputCalloutText($callout)
 ```
+
+#### System Assets
+If you are linking to interal files, you must wrap the url in [system-asset] tags.  This is so that the images will appear in the cascade preview window as well as the published page.  For example:
+```html
+ #set ($linkUrl = "[system-asset]${content.getChild('fileLink').getChild('path').value}[system-asset]")
+```
+
+
