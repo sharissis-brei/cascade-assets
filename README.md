@@ -133,30 +133,30 @@ Follow these conventions to keep our xml consistent across link types in our dat
 #### Media/Image Link
 
 ```xml
-  <group identifier="media" label="Media">
-    <text type="radiobutton" identifier="linkType" label="Link Type" default="External Link" help-text="Your Photo Dimensions Here">
-      <radio-item value="External Link" show-fields="path/to/my/widget/media/externalLink"/>
-      <radio-item value="File Link" show-fields="path/to/my/widget/media/fileLink"/>
-    </text>
-    <text identifier="externalLink" label="External Link" help-text="full url (including http) to page outside of Cascade"/>
-    <asset type="file" identifier="fileLink" label="File Link"/>
-  </group>
+<group identifier="media" label="Media">
+  <text type="radiobutton" identifier="linkType" label="Link Type" default="External Link" help-text="Your Photo Dimensions Here">
+    <radio-item value="External Link" show-fields="path/to/my/widget/media/externalLink"/>
+    <radio-item value="File Link" show-fields="path/to/my/widget/media/fileLink"/>
+  </text>
+  <text identifier="externalLink" label="External Link" help-text="full url (including http) to page outside of Cascade"/>
+  <asset type="file" identifier="fileLink" label="File Link"/>
+</group>
 ``` 
 
 #### Page Link
 
 ```xml
-  <group identifier="link" label="Link">
-    <text type="radiobutton" identifier="linkType" label="Link Type" default="Internal Link">
-      <radio-item value="Internal Link" show-fields="path/to/my/widget/link/internalLink"/>
-      <radio-item value="External Link" show-fields="path/to/my/widget/link/externalLink"/>
-      <radio-item value="File Link" show-fields="path/to/my/widget/link/fileLink"/>
-    </text>
-    <text identifier="externalLink" label="External Link" help-text="full url (including http) to page outside of Cascade"/>
-    <asset type="page" identifier="internalLink" label="Internal Link"/>
-    <asset type="file" identifier="fileLink" label="File Link"/>
-    <text identifier="label" label="Label"/>
-  </group>
+<group identifier="link" label="Link">
+  <text type="radiobutton" identifier="linkType" label="Link Type" default="Internal Link">
+    <radio-item value="Internal Link" show-fields="path/to/my/widget/link/internalLink"/>
+    <radio-item value="External Link" show-fields="path/to/my/widget/link/externalLink"/>
+    <radio-item value="File Link" show-fields="path/to/my/widget/link/fileLink"/>
+  </text>
+  <text identifier="externalLink" label="External Link" help-text="full url (including http) to page outside of Cascade"/>
+  <asset type="page" identifier="internalLink" label="Internal Link"/>
+  <asset type="file" identifier="fileLink" label="File Link"/>
+  <text identifier="label" label="Label"/>
+</group>
 ```
 
 ## Velocity Templating Language Cheat Sheet
