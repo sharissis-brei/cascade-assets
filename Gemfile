@@ -5,6 +5,7 @@ gem 'render_anywhere', :require => false
 gem 'rubyzip'
 gem 'autoprefixer-rails'
 gem 'awesome_print'
+gem 'tzinfo-data'
 
 # Bundle edge Rails instead: gem 'rails', github: 'rails/rails'
 gem 'rails', '4.2.3'
