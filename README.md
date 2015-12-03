@@ -130,7 +130,7 @@ Following these conventions helps us keep our css in check.
 ### Links
 Follow these conventions to keep our xml consistent across link types in our data definitions within Cascade.
 
-#### Media/Image Link
+##### Media/Image Link
 
 ```xml
 <group identifier="media" label="Media">
@@ -144,7 +144,7 @@ Follow these conventions to keep our xml consistent across link types in our dat
 </group>
 ``` 
 
-#### Page Link
+##### Page Link
 
 ```xml
 <group identifier="link" label="Link">
