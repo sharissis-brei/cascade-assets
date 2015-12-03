@@ -23,14 +23,12 @@ Turn on your livereload extention (optional)
 
 ### Step 1: Build
 
-In your terminal, run one of these rake build commands.
+In your terminal, run this build command.
 
 ```bash
-# For the cascade dev server
-rake build RAILS_ENV=staging
+# For the cascade dev/production server 
+bin/build
 
-# For the cascade production server
-rake build RAILS_ENV=production
 ```
 
 ### Step 2: Upload

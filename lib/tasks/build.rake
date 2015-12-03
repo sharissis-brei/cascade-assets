@@ -18,7 +18,7 @@ task build: :environment do
   end
 end
 
-task :do_precompile  do
+task do_precompile: :environment do
   Rake::Task['assets:clobber'].invoke
   Rake::Task['assets:precompile'].invoke
 end
