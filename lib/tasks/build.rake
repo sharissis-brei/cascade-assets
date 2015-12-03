@@ -9,14 +9,18 @@ task build: :environment do
     puts "  rake build RAILS_ENV=staging"
     puts "  rake build RAILS_ENV=production"
   else
-    Rake::Task['assets:clobber'].invoke
-    Rake::Task['assets:precompile'].invoke
+    FileUtils.mkdir('dist') unless File.directory?('dist')
     FileUtils.rm_rf dist_folder
     FileUtils.mkdir dist_folder
     zip rails_asset_path, dist_assets_path
     File.write(dist_cascade_block_path, render(file: 'layouts/cascade-assets.xml', layout: false))
     FileUtils.cp instructions, dist_folder
   end
+end
+
+task :do_precompile  do
+  Rake::Task['assets:clobber'].invoke
+  Rake::Task['assets:precompile'].invoke
 end
 
 ####################
