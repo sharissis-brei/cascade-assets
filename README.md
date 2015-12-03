@@ -140,6 +140,7 @@ Follow these conventions to keep our xml consistent across link types in our dat
   </text>
   <text identifier="externalLink" label="External Link" help-text="full url (including http) to page outside of Cascade"/>
   <asset type="file" identifier="fileLink" label="File Link"/>
+  <text identifier="alternateText" label="Alternate Text"/> <!-- Do NOT include alt text if image is a background image -->
 </group>
 ``` 
 
