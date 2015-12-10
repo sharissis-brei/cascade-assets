@@ -11,6 +11,7 @@
 
   .subscribe-message-column {
     margin-bottom: $base-spacing;
+    // border: 1px solid white;
 
     p {
       margin: 0;
@@ -20,39 +21,63 @@
     }
   }
 
-  .subscribe-form-column {
-    text-align: center;
-  }
-
   form { @include clearfix }
 
-  .text-input {
-    display: inline-block;
-    font-size: 16px;
-    margin-bottom: $base-spacing;
-  }
+  .campaign-monitor-forms {
+    text-align: center;
+    // border: 1px solid white;
 
-  .submit {
-    @include button($blue);
-    width: 100%;
+    p {
+      display: inline;
+    }
+
+    label, br {
+      display: none;
+    }
+
+    input {
+      display: inline-block;
+      font-size: 16px;
+      margin-bottom: $base-spacing;
+      width: 100%;
+      padding: $base-spacing / 2;
+      border-radius: 3px;
+      border: 1px solid rgba(0,0,0,0.1);
+      box-shadow: inset 0px 0px 1px 0px rgba(0,0,0,0.1);
+      transition: border 150ms;
+      &:focus {
+        outline: none;
+        border: 1px solid $blue;
+      }
+    }
+
+    button {
+      @include button($blue);
+      width: 100%;
+    }
   }
 
   /* Medium Screen */
 
   @include media($medium-screen) {
-    .subscribe-form-column {
+    .campaign-monitor-forms {
       text-align: left;
-    }
-    .text-input {
-      width: 75%;
-      float: left;
-      margin-bottom: 0;
-    }
-    .submit {
-      padding-top:    ($base-spacing/2) + 1px; // The border of the form is
-      padding-bottom: ($base-spacing/2) + 1px;
-      width: 20%;
-      float: right;
+      
+      p {
+        display: inline;
+      }
+
+      input {
+        width: 75%;
+        float: left;
+        margin-bottom: 0;
+      }
+      button {
+        padding-top:    ($base-spacing/2) + 1px; // The border of the form is
+        padding-bottom: ($base-spacing/2) + 1px;
+        width: 20%;
+        float: right;
+      }
     }
   }
 
@@ -62,7 +87,7 @@
       margin-bottom: 0;
       @include span-columns(6);
     }
-    .subscribe-form-column    {
+    .campaign-monitor-forms {
       @include span-columns(12);
     }
   }
