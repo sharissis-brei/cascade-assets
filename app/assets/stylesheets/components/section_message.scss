@@ -1,0 +1,33 @@
+/* These styles are for the one column section messages.
+ * They have a category, title, content, and call to action.
+ *
+ * I've seperated them here to share them between all widgets that need
+ * to use them.
+ */ 
+
+.section-message {
+  .category {
+    @include content_label();
+    margin-top: 0;
+  }
+
+  .title {
+    @include main_heading();
+    margin-bottom: 0;
+  }
+
+  .body p {
+    @include paragraph();
+    margin: 32px 0 0;
+  }
+
+  .actions {
+    margin-top: 72px;
+    text-align: center;
+  }
+
+  .button.red {
+   @include button();
+   padding: $base-spacing $base-spacing*2;
+  }
+}

@@ -37,31 +37,6 @@
 		@include fluid-width-video-container;
 		display: inline-block;
 	}
-
-	h1.title {
-		@include main_heading(100);
-		margin-bottom: 0;
-	}
-
-	h4.category {
-		@include content_label();
-		margin-top: 0;
-	}
-
-	p {
-		@include paragraph();
-		margin: 32px 0 0;
-	}
-
-	.button.red {
-		@include button;
-		padding: $base-spacing $base-spacing*2;
-	}
-
-	.actions {
-		margin-top: 72px;
-		text-align: center;
-	}
 }
 
 /* One Column Variation */
@@ -168,17 +143,7 @@
 /* Light Text Variation */
 .messaging-widget__text-light {
 	background-color: black;
-	h1.title {
-		color: white;
-	}
-
-	h4.category {
-		color: white;
-	}
-
-	p {
-		color: white;
-	}
+	.title, .category, p { color: white; }
 }
 
 

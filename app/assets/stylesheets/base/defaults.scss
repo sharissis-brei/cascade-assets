@@ -386,32 +386,13 @@ h1 {
 h2 {
   font-size: 20px;
   font-weight: 800;
-  position: relative;
   line-height: 1.2em;
-  text-transform: uppercase;
-  letter-spacing: 0px;
-  margin: 1em 0 0.5em;
-  .bullet {
-    font-family: Georgia;
-    font-size: 25px;
-    color: #666;
-    position: absolute;
-    top: 5px;
-    left: -30px;
-    display: none;
-    @include bp(xl) {
-        display: none;
-    }
-  }
 }
 
 h3 {
   font-size: 16px;
   font-weight: 700;
   line-height: 1.4em;
-  letter-spacing: 0px;
-  margin: 0;
-  padding: 0;
   margin-top: 30px;
   margin-bottom: 15px;
 }
@@ -419,14 +400,11 @@ h3 {
 h4 {
   font-size: 14px;
   font-weight: 500;
-  color: $cu-font-color;
 }
 
 h5 {
   font-size: 14px;
   font-weight: 500;
-  font-style: italic;
-  color: $cu-font-color;
 }
 
 

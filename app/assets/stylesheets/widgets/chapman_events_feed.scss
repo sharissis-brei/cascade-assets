@@ -3,21 +3,52 @@
   text-align: center;
   @include clearfix;
 
-
-  .chapman-events-feed-title {
-    @include main_heading(100);
-    padding: 0 $base-spacing*2;
-    margin: 0;
-    text-transform: none;
-  }
-
   .feed-column {
     padding: 0 $base-spacing;
     @include media($medium-screen) {
       padding: 0;
     }
   }
+
+  .outer-container {
+    @include outer-container;
+  }
+
+  // When there is no featured event
+  .section-message {
+    text-align: left;
+    width: 55%;
+    float: left;
+    .actions { text-align: left; }
+  }
+
+  .feed-column {
+    float: right;
+    width: 40%;
+  }
+
+  // When there is a featured event and a feed.
+  .contains-featured.contains-feed {
+    .section-message {
+      text-align: center;
+      float: none;
+      margin: 0 auto;
+      width: 60%;
+      margin-bottom: $base-spacing*4;
+      .actions { text-align: center; }
+    }
+  }
+
+
 }
+
+/*
+ * Copy and pasted from https://github.com/chapmanu/events-feed
+ *
+ * ----------------- Starting below this line -----------------
+ */
+
+
 
 /* Variables & Mixins */
 
@@ -29,33 +60,36 @@ $cef_small_screen: 48em;
 $cef_headings-font: "proxima-nova", "Helvetica Neue", "Microsoft Sans Serif", sans-serif;
 $cef_body-font: "proxima-nova-soft", "Helvetica Neue", "Microsoft Sans Serif", sans-serif;
 
+@mixin clearfix() {
+  &::after {
+    clear: both;
+    content: "";
+    display: table;
+  }
+}
+
+
+
 /* Parent Class */
 
 .chapman-events-feed {
-  @include outer-container;
-  padding: 0 $base-spacing;
-  @include media($large-screen) {
-    padding: 0;
-  }
-
   a { text-decoration: none; }
   .day-divider { display: none; }
   .pagination  { display: none; }
 
-  .featured-column {
-    @include media($medium-screen) {
-      @include span-columns(12);
+  &.contains-featured.contains-feed {
+    .featured-column {
+      @media(min-width: $cef_small_screen) {
+        float: left;
+        width: 60%;
+      }
     }
-
-  }
-  .feed-column {
-    @include media($medium-screen) {
-      @include span-columns(6);
+    .feed-column {
+      @media(min-width: $cef_small_screen) {
+        float: right;
+        width: 35%;
+      }
     }
-  }
-  .feed-title {
-    font-weight: 100;
-    font-size: 24px;
   }
 
   .browse-link {
@@ -70,7 +104,7 @@ $cef_body-font: "proxima-nova-soft", "Helvetica Neue", "Microsoft Sans Serif", s
 .chapman-event-card {
   font-family: $cef_body-font;
   color: $cef_black;
-  margin: 12px 0;
+  margin: 0 0 $base-spacing 0;
   position: relative;
   background-color: white;
   transition: transform 100ms;
@@ -183,14 +217,6 @@ $cef_body-font: "proxima-nova-soft", "Helvetica Neue", "Microsoft Sans Serif", s
 
 .chapman-featured-event-card {
   text-align: left;
-  transition: transform 100ms;
-  &:hover, &:focus {
-    transform: scale(1.01);
-    z-index: 2;
-    box-shadow: 0px 10px 10px -3px rgba(0, 0, 0, 0.3);
-    .title { color: $cef_blue; }
-  }
-
   a { color: $cef_black; }
   .photo {
     width: 100%;
@@ -203,7 +229,7 @@ $cef_body-font: "proxima-nova-soft", "Helvetica Neue", "Microsoft Sans Serif", s
     position: relative;
     padding: 16px 0;
     background: white;
-    min-height: 158px;
+    min-height: 155px;
   }
 
   .calendar-card {
@@ -223,7 +249,6 @@ $cef_body-font: "proxima-nova-soft", "Helvetica Neue", "Microsoft Sans Serif", s
     line-height: 28px;
     font-weight: bold;
     font-family: $cef_headings-font;
-    transition: color 100ms;
   }
 
   .subtitle {
@@ -240,7 +265,6 @@ $cef_body-font: "proxima-nova-soft", "Helvetica Neue", "Microsoft Sans Serif", s
 
     text-align: left;
     color: $cef_gray-slate;
-    font-size: 16px;
 
     .past & {
       color: #ADADAD;
