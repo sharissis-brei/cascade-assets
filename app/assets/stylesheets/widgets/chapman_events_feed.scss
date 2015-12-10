@@ -220,8 +220,11 @@ $cef_body-font: "proxima-nova-soft", "Helvetica Neue", "Microsoft Sans Serif", s
   a { color: $cef_black; }
   .photo {
     width: 100%;
-    height: auto;
+    height: 300px;
     display: block;
+    background-size: cover;
+    background-repeat: no-repeat;
+    background-position: center top;
   }
 
   .primary-event-info {
