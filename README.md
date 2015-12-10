@@ -37,7 +37,7 @@ In cascade, click the `[Tools -> Zip Archive]` menu item.
 
 Change the placement folder to `/_assets`.
 
-Upload the `_assets.zip` file located in the folder you just built.
+Upload the `_assets.zip` file located in either the `production` or `staging` folder within your local `cascade-assets/dist/` folder.
 
 Click submit.
 
