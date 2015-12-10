@@ -45,6 +45,7 @@
       border: 1px solid rgba(0,0,0,0.1);
       box-shadow: inset 0px 0px 1px 0px rgba(0,0,0,0.1);
       transition: border 150ms;
+      background-color: #fff;
       &:focus {
         outline: none;
         border: 1px solid $blue;
