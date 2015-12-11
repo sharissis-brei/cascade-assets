@@ -1,8 +1,8 @@
 #!/bin/bash
 #staging
-rake do_precompile RAILS_ENV=staging
-rake build RAILS_ENV=staging
+bundle exec rake do_precompile RAILS_ENV=staging
+bundle exec rake build RAILS_ENV=staging
 
 #production
-rake do_precompile RAILS_ENV=production
-rake build RAILS_ENV=production
+bundle exec rake do_precompile RAILS_ENV=production
+bundle exec rake build RAILS_ENV=production

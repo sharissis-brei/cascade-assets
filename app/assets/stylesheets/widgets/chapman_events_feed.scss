@@ -1,49 +1,67 @@
 .chapman-events-feed-widget {
   padding: $one-column-widget-spacing 0;
   text-align: center;
-  @include clearfix;
-
-  .feed-column {
-    padding: 0 $base-spacing;
-    @include media($medium-screen) {
-      padding: 0;
-    }
-  }
 
   .outer-container {
     @include outer-container;
+    @include pad(0 $base-spacing * 3);
   }
 
-  // When there is no featured event
+  .events-feed-url {
+    @include button;
+    padding: $base-spacing $base-spacing*2;
+  }
+
+  .actions {
+    margin-top: $base-spacing*3;
+  }
+
   .section-message {
-    text-align: left;
-    width: 55%;
-    float: left;
-    .actions { text-align: left; }
+    margin-bottom: $base-spacing*3;
   }
 
-  .feed-column {
-    float: right;
-    width: 40%;
+  .featured-column {
+    margin-bottom: 12px;
   }
 
-  // When there is a featured event and a feed.
-  .contains-featured.contains-feed {
+  @include media($medium-screen) {
     .section-message {
-      text-align: center;
-      float: none;
-      margin: 0 auto;
-      width: 60%;
-      margin-bottom: $base-spacing*4;
-      .actions { text-align: center; }
+      text-align: left;
+      width: 55%;
+      float: left;
+    }
+
+    .feed-column {
+      float: right;
+      width: 40%;
+    }
+
+    .actions {
+      float: left;
+      margin-top: $base-spacing*3;
+    }
+
+    // When there is a featured event and a feed.
+    .contains-featured.contains-feed {
+      .section-message {
+        text-align: center;
+        float: none;
+        margin: 0 auto;
+        width: 60%;
+        margin-bottom: $base-spacing*4;
+      }
+    }
+
+    .contains-featured.contains-feed + .actions {
+      margin-top: 12px;
+      float: right;
+      width: 35%;
     }
   }
-
-
 }
 
 /*
- * Copy and pasted from https://github.com/chapmanu/events-feed
+ * Based but slightly modified from https://github.com/chapmanu/events-feed
  *
  * ----------------- Starting below this line -----------------
  */
@@ -236,14 +254,21 @@ $cef_body-font: "proxima-nova-soft", "Helvetica Neue", "Microsoft Sans Serif", s
   }
 
   .calendar-card {
-    position: absolute;
-    top: 16px;
-    left: 16px;
+    display: none;
+    @media($medium-screen) {
+      display: block;
+      position: absolute;
+      top: 16px;
+      left: 16px;
+    }
   }
 
   .primary-event-info-content {
-    margin-left: 135px + 16px;
-    padding: 0 16px;
+    padding: 12px 24px;
+    @media($medium-screen) {
+      margin-left: 135px + 16px;
+      padding: 0 16px;
+    }
   }
 
   .title {
