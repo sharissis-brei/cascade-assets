@@ -26,6 +26,7 @@
 
   @include media($medium-screen) {
     .section-message {
+      margin-bottom: 0;
       text-align: left;
       width: 55%;
       float: left;
@@ -74,7 +75,7 @@ $cef_blue: #407892;
 $cef_black: #353430;
 $cef_red: #a82439;
 $cef_gray-slate: #62605a;
-$cef_small_screen: 48em;
+$cef_small_screen: $medium-screen;
 $cef_headings-font: "proxima-nova", "Helvetica Neue", "Microsoft Sans Serif", sans-serif;
 $cef_body-font: "proxima-nova-soft", "Helvetica Neue", "Microsoft Sans Serif", sans-serif;
 
