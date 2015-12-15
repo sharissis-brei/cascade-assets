@@ -50,59 +50,6 @@
   vertical-align: middle;
 }
 
-.short-form {
-  width: 175px !important;
-  padding: 10px !important;
-  h2 {
-    color: #8e6b4a;
-  }
-  input[type='text'], textarea {
-    -webkit-appearance: none;
-  }
-  input[type='text'] {
-    width: 163px;
-    margin-top: 10px;
-    border: 1px solid #bdbcb9;
-    margin: 10px 0 0 0;
-    padding: 5px;
-  }
-  input[type='submit'] {
-    float: right;
-    margin-top: 14px;
-    @include button;
-  }
-  textarea {
-    width: 163px;
-    margin-top: 10px;
-    border: 1px solid #bdbcb9;
-    margin: 10px 0 0 0;
-    padding: 5px;
-    height: 75px;
-  }
-  select {
-    width: 175px;
-    margin-top: 10px;
-    border: 1px solid #bdbcb9;
-    margin: 10px 0 0 0;
-    padding: 0 0 0 0;
-  }
-}
-
-input[type=submit] {
-  font-weight: bold;
-  font-size: 12px;
-  background-color: #8F0C30;
-  cursor: pointer;
-  color: $white;
-  padding: 4px;
-  border: none;
-  display: inline-block;
-  zoom: 1;
-  &:hover {
-    background-color: #AF2C50;
-  }
-}
-
 .responsiveForm {
     background-color: #f7f6f0;
     border-bottom: 1px solid #4A4949;
