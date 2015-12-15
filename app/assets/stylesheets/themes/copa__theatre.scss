@@ -1,6 +1,7 @@
 
 #theme.copa__theatre {
-
+  @include theme-color-classes($theatre-primary, $theatre-secondary);
+  
   .smallMasthead .masthead, .smallMasthead .masthead-old, .bigMasthead .mastheadPlaceholder, .bigMasthead .masthead, .bigMasthead .masthead-old, .nameBar, .rightColumn .styleTwo {
   	background: $theatre-primary; /* Old browsers */
   	background: -moz-radial-gradient(center, ellipse cover,  $theatre-primary 0%, $theatre-secondary 100%); /* FF3.6+ */

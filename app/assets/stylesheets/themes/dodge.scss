@@ -1,6 +1,7 @@
 
 #theme.dodge {
-
+  @include theme-color-classes($dodge-primary, $dodge-secondary);
+  
   .smallMasthead .masthead, .smallMasthead .masthead-old, .bigMasthead .mastheadPlaceholder, .bigMasthead .masthead, .bigMasthead .masthead-old, .nameBar, .rightColumn .styleTwo {
   	background: $dodge-primary; /* Old browsers */
   	background: -moz-radial-gradient(center, ellipse cover,  $dodge-primary 0%, $dodge-secondary 100%); /* FF3.6+ */

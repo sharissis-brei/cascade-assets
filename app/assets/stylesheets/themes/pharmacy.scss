@@ -1,6 +1,6 @@
 
 #theme.pharmacy {
-
+  @include theme-color-classes($pharmacy-primary, $pharmacy-secondary);
   .smallMasthead .masthead, .smallMasthead .masthead-old, .bigMasthead .mastheadPlaceholder, .bigMasthead .masthead, .bigMasthead .masthead-old, .nameBar, .rightColumn .styleTwo {
   	background: $pharmacy-primary; /* Old browsers */
   	background: -moz-radial-gradient(center, ellipse cover, $pharmacy-primary 1%, $pharmacy-secondary 93%); /* FF3.6+ */

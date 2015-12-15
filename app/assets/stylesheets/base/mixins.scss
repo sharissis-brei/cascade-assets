@@ -241,3 +241,11 @@
     box-shadow: 0 0 5px $color-rgba;
   }
 }
+
+@mixin theme-color-classes($primary, $secondary) {
+	.theme-primary-bg { background-color: $primary; }
+	.theme-secondary-bg { background-color: $secondary; }
+	// Identify more items like this to create for themeing the templates.
+	// .theme-content {}
+	// .theme-button {}
+}
