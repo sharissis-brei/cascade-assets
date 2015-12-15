@@ -3,8 +3,8 @@
   background-color: #e2e1dc;
   border-right: 1px solid #c0c0b8;
   border-bottom: 1px solid #c0c0b8;
-  padding: 10px;
-  margin: 10px 0 10px 0;
+  padding: $base-spacing;
+  margin: 0 0 $base-spacing 0;
   width: 195px;
   @include bp(l) {
     width: 100%;

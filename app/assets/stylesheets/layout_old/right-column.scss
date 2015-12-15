@@ -1,5 +1,10 @@
 .rightColumn {
   margin: 0 0 10px 0;
+  padding-top: $base-spacing;
+  @include bp(l) {
+    padding-top: 0;
+  }
+
   .border {
     position: absolute;
     top: 0;
@@ -66,11 +71,6 @@
       margin-top: 0;
     }
   }
-  a {
-	  &:link, &:visited {
-	    border-bottom: 1px dotted #C0C0C0;
-	  }
-	}
 	.callout {
     &.noPhoto h2 {
       margin-top: 7px;
