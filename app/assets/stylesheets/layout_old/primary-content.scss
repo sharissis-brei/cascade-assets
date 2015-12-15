@@ -2,6 +2,13 @@
 	margin: 0 auto 10px auto;
   width: 100%;
   max-width: 1128px;
+  padding: 0 16px;
+  @media (min-width: 1120px) {
+    padding: 0;
+  }
+
+
+
   .ie7 & {
   	position: relative;
   	.main {
@@ -53,7 +60,6 @@
   }
 	.main {
 		float: none;
-	  padding: 0 10px 0 10px;
 	  position: relative;
     width: 100%;
     margin: 0;
