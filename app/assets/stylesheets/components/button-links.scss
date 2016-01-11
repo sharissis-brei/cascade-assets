@@ -1,9 +1,10 @@
 .buttonLinks {
   list-style-type: none;
   margin: 10px 0 0 0;
-  > li {
-    margin-top: 2px;
-    > a {
+  li {
+    margin-bottom: 2px;
+
+    a {
       background-color: $white;
       font-size: 13px;
       color: #8f0c30;
@@ -12,6 +13,9 @@
       display: inline-block;
       &:hover {
         background-color: #fcfafb;
+      }
+      &:after {
+        content: ' »';
       }
     }
   }
