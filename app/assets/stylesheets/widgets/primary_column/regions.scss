@@ -35,8 +35,6 @@ div.four-col-float {
     border: 3px solid white;
     box-shadow: 0 0 7px #434343;
     float: left;
-    margin: $base-spacing;
-    margin-left: 3px;
   }
 
   .region li {
@@ -50,6 +48,7 @@ div.four-col-float {
   .region .content {
     float: left;
     width: 100%;
+    padding: $base-spacing 3px;
 
     ul {
       padding-left: 40px;
