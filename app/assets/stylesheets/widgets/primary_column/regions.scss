@@ -51,7 +51,8 @@ div.four-col-float {
     padding: $base-spacing 3px;
 
     ul {
-      padding-left: 40px;
+      padding-left: $base-spacing*2;
+      overflow: hidden;
     }
     > p {
       margin: 0;
