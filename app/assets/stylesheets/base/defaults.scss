@@ -24,10 +24,9 @@ html {
 }
 
 body {
+  @include paragraph;
   margin: 0;
   padding: 0;
-  font-size: 13px;
-  line-height: 1.231;
   color: $cu-font-color;
   font-family: "proxima-nova-soft", "proxima-nova-soft-n4", sans-serif;
   &.personnel .main {
