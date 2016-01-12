@@ -6,6 +6,7 @@
   padding: $base-spacing;
   margin: 0 0 $base-spacing 0;
   width: 195px;
+  position: relative;
   @include bp(l) {
     width: 100%;
   }
