@@ -3,14 +3,19 @@
   background-color: #e2e1dc;
   border-right: 1px solid #c0c0b8;
   border-bottom: 1px solid #c0c0b8;
-  padding: $base-spacing;
   margin: 0 0 $base-spacing 0;
   width: 195px;
+  position: relative;
   @include bp(l) {
     width: 100%;
   }
 
-
-  h3 { margin: 5px 0 5px 0; }
+  .editableContent, h2, h3 {
+    padding: 0 $base-spacing ;
+    margin: $base-spacing 0;
+  }
+  
+  img { display: block; }
+  h3 { margin: 5px 0; }
   h2 { font-size: 14px; }
 }
