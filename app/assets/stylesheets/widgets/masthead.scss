@@ -167,6 +167,7 @@
     margin: 10px 0 0 0;
     line-height: 1.5;
     word-break: normal;
+	word-wrap: break-word;
   }
   .button {
     opacity: 0;
@@ -191,6 +192,8 @@
     font-weight: 600;
     position: relative;
     top: -3px;
+	word-wrap: break-word;
+    word-break: normal;
   }
 }
 
