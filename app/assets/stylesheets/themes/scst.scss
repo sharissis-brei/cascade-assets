@@ -2,7 +2,7 @@
 #theme.scst {
 
   .smallMasthead .masthead, .smallMasthead .masthead-old, .bigMasthead .mastheadPlaceholder, .bigMasthead .masthead, .bigMasthead .masthead-old, .nameBar, .rightColumn .styleTwo {
-  	background: $theme-yellow; /* Old browsers */
+  	background: $scst-primary; /* Old browsers */
   	background: -moz-radial-gradient(center, ellipse cover, $scst-primary 1%, $scst-secondary 93%); /* FF3.6+ */
   	background: -webkit-gradient(radial, center center, 0px, center center, 100%, color-stop(1%,$scst-primary), color-stop(93%,$scst-secondary)); /* Chrome,Safari4+ */
   	background: -webkit-radial-gradient(center, ellipse cover, $scst-primary 1%,$scst-secondary 93%); /* Chrome10+,Safari5.1+ */
