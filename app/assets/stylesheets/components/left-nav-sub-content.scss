@@ -1,11 +1,8 @@
 .leftNavSubContent {
 	width: 100%;
-	// margin: 10px 0 0 0;
   margin: 0 0 0 0;
   float: left;
-  h1, h2, h3, h4, h5, h6 {
-    // font-family: "proxima-nova-soft", sans-serif;
-	}
+
 	a, a:visited {
     border-bottom: 1px dotted #C0C0C0;
   }
@@ -23,51 +20,10 @@
 		vertical-align: top;
 		
 		.border {
-			position: absolute;
-			top: 0;
-			left: 0;
-			right: 0;
 			height: 7px;
 			background-color: #d2d1cd;
 		}
 
-		// padding: 10px 19px 10px 19px;
-		// margin: 0 0 20px 0;
-		// position: relative;
-		// -moz-box-shadow: inset 8px 8px 8px -8px #ccc5a5;
-		// -webkit-box-shadow: inset 8px 8px 8px -8px #ccc5a5;
-		// box-shadow: inset 8px 8px 8px -8px #ccc5a5;
-		// background-color: #ede9d4;
-		// background: -ms-radial-gradient(circle, #eee9d7, #ede9d4);
-		// background: -webkit-radial-gradient(circle, #eee9d7, #ede9d4);
-		// background: -moz-radial-gradient(circle, #eee9d7, #ede9d4);
-		// background: -ms-radial-gradient(circle, #eee9d7, #ede9d4);
-		ol > li {
-	    // list-style-type: decimal;
-	  }
-	  h2 {
-	    // color: $brown;
-	    // font-family: "Open Sans";
-	    // font-weight: 600;
-	    // font-size: 14px;
-	    // margin: 10px 0 5px 0;
-	  }
-	  .buttonLinks {
-	    // margin: 10px 0 0 0;
-	    li a {
-	      // margin: 0 auto 3px auto;
-	      // padding: 5px 10px 5px 10px;
-	      // color: #8f0c30;
-	      // background-color: $white;
-	      // font-family: "Open Sans";
-	      // font-weight: 800;
-	      // font-size: 11px;
-	      // position: relative;
-	      &:hover {
-	        // background-color: #FAF8EF;
-	      }
-	    }
-	  }
 		.editableContent {
   		a {
   			display: inline;
@@ -92,7 +48,6 @@
 		      padding: 0 30px 0 5px;
 		      color: $white;
 		      text-transform: uppercase;
-		      // font-weight: bold;
 		      font-weight: 800;
 		      line-height: 47px;
 		      display: block;
