@@ -30,7 +30,7 @@
     }
     li span {
       &.hover_state, &.inactive_state {
-        background: image-url('ces_icons.png');
+        background-image: image-url('ces_icons.png');
       }
     }
   }

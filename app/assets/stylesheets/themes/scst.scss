@@ -47,7 +47,7 @@
     }
     li span {
       &.hover_state, &.inactive_state {
-        background: image-url('scst_icons.png');
+        background-image: image-url('scst_icons.png');
       }
     }
   }

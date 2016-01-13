@@ -41,7 +41,7 @@
     }
     li span {
       &.hover_state, &.inactive_state {
-        background: image-url('pharmacy_icons.png');
+        background-image: image-url('pharmacy_icons.png');
       }
     }
   }

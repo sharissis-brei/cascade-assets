@@ -46,7 +46,7 @@
     }
     li span {
       &.hover_state, &.inactive_state {
-        background: image-url('dodge_icons.png');
+        background-image: image-url('dodge_icons.png');
       }
     }
   }

@@ -32,7 +32,7 @@
     }
     li span {
       &.hover_state, &.inactive_state {
-        background: image-url('asbe_icons.png');
+        background-image: image-url('asbe_icons.png');
       }
     }
   }
