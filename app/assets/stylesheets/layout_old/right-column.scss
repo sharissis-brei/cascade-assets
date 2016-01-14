@@ -71,11 +71,6 @@
       margin-top: 0;
     }
   }
-	.callout {
-    &.noPhoto h2 {
-      margin-top: 7px;
-    }
-  }
   @include bp(l) {
     width: 25%;
     position: relative;
