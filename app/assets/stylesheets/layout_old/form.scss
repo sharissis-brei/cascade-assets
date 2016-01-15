@@ -52,9 +52,8 @@
 
 .responsiveForm {
     background-color: #f7f6f0;
-    border-bottom: 1px solid #4A4949;
     color: #4A4949;
-    padding: 10px 45px;
+    padding: 25px 45px 45px; 
 }
 
 /************ these responsiveForm used in surrounding DIV for all full page forms ************/
@@ -73,7 +72,7 @@
 
 .responsiveForm input[type=checkbox],
 .responsiveForm input[type=radio]{
-    margin: 5px 0 3px 25px;
+    margin: 5px 0 3px 15px;
 }
 
 .responsiveForm input[type=submit],
@@ -98,6 +97,6 @@
 .responsiveForm input[type=radio]+label,
 .responsiveForm input[type=checkbox]+label {
     display:block;
-    margin-top:-17px; margin-left: 41px;
+    margin-top:-19px; margin-left: 40px;
     font-weight: normal;
 }
