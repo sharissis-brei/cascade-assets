@@ -2,55 +2,75 @@
 #theme.copa__music {
 
   .smallMasthead .masthead, .smallMasthead .masthead-old, .bigMasthead .mastheadPlaceholder, .bigMasthead .masthead, .bigMasthead .masthead-old, .nameBar, .rightColumn .styleTwo {
-    background: $music-primary; /* Old browsers */
-    background: -moz-radial-gradient(center, ellipse cover,  $music-primary 0%, $music-secondary 100%); /* FF3.6+ */
-    background: -webkit-gradient(radial, center center, 0px, center center, 100%, color-stop(0%,$music-primary), color-stop(100%,$music-secondary)); /* Chrome,Safari4+ */
-    background: -webkit-radial-gradient(center, ellipse cover,  $music-primary 0%,$music-secondary 100%); /* Chrome10+,Safari5.1+ */
-    background: -o-radial-gradient(center, ellipse cover,  $music-primary 0%,$music-secondary 100%); /* Opera 12+ */
-    background: -ms-radial-gradient(center, ellipse cover,  $music-primary 0%,$music-secondary 100%); /* IE10+ */
-    background: radial-gradient(center, ellipse cover,  $music-primary 0%,$music-secondary 100%); /* W3C */
-    filter: progid:DXImageTransform.Microsoft.gradient( startColorstr='$music-primary', endColorstr='$music-secondary',GradientType=1 ); /* IE6-9 fallback on horizontal gradient */
-    }
+  	background: $music-primary; /* Old browsers */
+  	background: -moz-radial-gradient(center, ellipse cover,  $music-primary 0%, $music-secondary 100%); /* FF3.6+ */
+  	background: -webkit-gradient(radial, center center, 0px, center center, 100%, color-stop(0%,$music-primary), color-stop(100%,$music-secondary)); /* Chrome,Safari4+ */
+  	background: -webkit-radial-gradient(center, ellipse cover,  $music-primary 0%,$music-secondary 100%); /* Chrome10+,Safari5.1+ */
+  	background: -o-radial-gradient(center, ellipse cover,  $music-primary 0%,$music-secondary 100%); /* Opera 12+ */
+  	background: -ms-radial-gradient(center, ellipse cover,  $music-primary 0%,$music-secondary 100%); /* IE10+ */
+  	background: radial-gradient(center, ellipse cover,  $music-primary 0%,$music-secondary 100%); /* W3C */
+  	filter: progid:DXImageTransform.Microsoft.gradient( startColorstr='#{$music-primary}', endColorstr='#{$music-secondary}',GradientType=1 ); /* IE6-9 fallback on horizontal gradient */
+  }
 	
     .rightColumn .styleTwo .border { 
-		background-color: $music-secondary; }
+		background-color: $music-secondary; 
+	}
 
     .rightColumn .styleTwo a {
       color: #ffffff;
     }
     
     .nameBarButtons li a { 
-		color: $music-secondary;}
+		color: $music-secondary;
+	}
     
 	.expandedNameBarContainer h2, .expandedNameBarContainer a { 
-		color: #c9adb3; }
+		color: #c9adb3; 
+	}
 
-    #social_follow_us .banner { 
-        background-image: url('copa_music_follow_us.png'); 
-        }
-		
-    #social_follow_us li span.hover_state, #social_follow_us li span.inactive_state {
-        background-image: url('copa_music_icons.png');
-        }
+    #social_follow_us {
+    .banner {
+      background-image: image-url('copa_music_follow_us.png');
+    }
+    li span {
+      &.hover_state, &.inactive_state {
+        background-image: image-url('copa_music_icons.png');
+      }
+    }
+  }
         
     .rounded-slider .info-container .blue{
-        background-color:$music-primary;
+        background-color: $music-primary;
     }   
 
-    .newbutton a, .newbutton a:hover {
-        border: 1px solid $music-primary;
-        background-color: $music-primary;
-        background-image: -webkit-gradient(linear, left top, left bottom, from($music-primary), to($music-secondary));
-        background-image: -webkit-linear-gradient(top, $music-primary, $music-secondary);
-        background-image: -moz-linear-gradient(top, $music-primary, $music-secondary);
-        background-image: -o-linear-gradient(top, $music-primary, $music-secondary);
-        background-image: linear-gradient(to bottom, $music-primary, $music-secondary);
-        filter: progid:DXImageTransform.Microsoft.gradient( startColorstr='$music-primary', endColorstr='$music-secondary',GradientType=1 );
+    .newbutton a {
+    border: 1px solid $music-primary;
+    background-color: $music-primary;
+    background-image: -webkit-gradient(linear, left top, left bottom, from($music-primary), to($music-secondary));
+    background-image: -webkit-linear-gradient(top, $music-primary, $music-secondary);
+    background-image: -moz-linear-gradient(top, $music-primary, $music-secondary);
+    background-image: -o-linear-gradient(top, $music-primary, $music-secondary);
+    background-image: linear-gradient(to bottom, $music-primary, $music-secondary);
+    filter: progid:DXImageTransform.Microsoft.gradient( startColorstr='#{$music-primary}', endColorstr='#{$music-secondary}',GradientType=1 );
+    &:hover {
+      border: 1px solid $music-primary;
+      background-color: $music-primary;
+      background-image: -webkit-gradient(linear, left top, left bottom, from($music-primary), to($music-secondary));
+      background-image: -webkit-linear-gradient(top, $music-primary, $music-secondary);
+      background-image: -moz-linear-gradient(top, $music-primary, $music-secondary);
+      background-image: -o-linear-gradient(top, $music-primary, $music-secondary);
+      background-image: linear-gradient(to bottom, $music-primary, $music-secondary);
+      filter: progid:DXImageTransform.Microsoft.gradient( startColorstr='#{$music-primary}', endColorstr='#{$music-secondary}',GradientType=1 );
     }
+  }
 
-    .midPhotoCallouts .photoCallout .caption,
-    .photoCallouts .caption,
-    .photoCallouts .rollover{
-         background-color: $music-primary;   
+   .midPhotoCallouts .photoCallout .caption {
+    background-color: $music-primary;
+  }
+
+  .photoCallouts {
+    .caption, .rollover {
+      background-color: $music-primary;
     }
+  }
 }
