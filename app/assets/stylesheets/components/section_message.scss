@@ -13,12 +13,11 @@
 
   .title {
     @include main_heading();
-    margin-bottom: 0;
+    margin-bottom: 32px;
   }
 
   .body p {
     @include paragraph();
-    margin: 32px 0 0;
   }
 
   .actions {
