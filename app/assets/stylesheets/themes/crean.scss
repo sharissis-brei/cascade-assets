@@ -18,6 +18,7 @@
 
     .rightColumn .styleTwo a {
       color: $white;
+	  text-decoration: underline;
     }
     
     .nameBarButtons li a { 
@@ -25,7 +26,8 @@
 	}
     
 	.expandedNameBarContainer h2, .expandedNameBarContainer a { 
-		color: $theme-light-grey; 
+		color: $theme-light-grey;
+		text-decoration: underline; 
 	}
 
     #social_follow_us {
