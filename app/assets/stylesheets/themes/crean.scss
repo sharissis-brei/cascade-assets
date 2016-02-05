@@ -2,46 +2,33 @@
 #theme.crean {
 
   .smallMasthead .masthead, .smallMasthead .masthead-old, .bigMasthead .mastheadPlaceholder, .bigMasthead .masthead, .bigMasthead .masthead-old, .nameBar, .rightColumn .styleTwo {
-  	background: $theme-yellow; /* Old browsers */
-  	background: -moz-radial-gradient(center, ellipse cover, $crean-primary 1%, $crean-secondary 93%); /* FF3.6+ */
-  	background: -webkit-gradient(radial, center center, 0px, center center, 100%, color-stop(1%,$crean-primary), color-stop(93%,$crean-secondary)); /* Chrome,Safari4+ */
-  	background: -webkit-radial-gradient(center, ellipse cover, $crean-primary 1%,$crean-secondary 93%); /* Chrome10+,Safari5.1+ */
-  	background: -o-radial-gradient(center, ellipse cover, $crean-primary 1%,$crean-secondary 93%); /* Opera 12+ */
-  	background: -ms-radial-gradient(center, ellipse cover, $crean-primary 1%,$crean-secondary 93%); /* IE10+ */
-  	background: radial-gradient(center, ellipse cover, $crean-primary 1%,$crean-secondary 93%); /* W3C */
+  	background: $crean-primary; /* Old browsers */
+  	background: -moz-radial-gradient(center, ellipse cover,  $crean-primary 0%, $crean-secondary 100%); /* FF3.6+ */
+  	background: -webkit-gradient(radial, center center, 0px, center center, 100%, color-stop(0%,$crean-primary), color-stop(100%,$crean-secondary)); /* Chrome,Safari4+ */
+  	background: -webkit-radial-gradient(center, ellipse cover,  $crean-primary 0%,$crean-secondary 100%); /* Chrome10+,Safari5.1+ */
+  	background: -o-radial-gradient(center, ellipse cover,  $crean-primary 0%,$crean-secondary 100%); /* Opera 12+ */
+  	background: -ms-radial-gradient(center, ellipse cover,  $crean-primary 0%,$crean-secondary 100%); /* IE10+ */
+  	background: radial-gradient(center, ellipse cover,  $crean-primary 0%,$crean-secondary 100%); /* W3C */
   	filter: progid:DXImageTransform.Microsoft.gradient( startColorstr='#{$crean-primary}', endColorstr='#{$crean-secondary}',GradientType=1 ); /* IE6-9 fallback on horizontal gradient */
   }
+	
+    .rightColumn .styleTwo .border { 
+		background-color: $crean-secondary; 
+	}
 
-  .rightColumn .styleTwo {
-    .border {
-      background-color: $crean-secondary;
+    .rightColumn .styleTwo a {
+      color: $white;
     }
-    .editableContent {
-      p {
-        color: #e2fcfb;
-      }
-      a {
-        color: $white;
-        text-decoration: underline;
-      }
-    }
-  }
+    
+    .nameBarButtons li a { 
+		color: $crean-secondary;
+	}
+    
+	.expandedNameBarContainer h2, .expandedNameBarContainer a { 
+		color: $theme-light-grey; 
+	}
 
-  .nameBarButtons li a {
-    color: $crean-primary;
-  }
-
-  .expandedNameBarContainer {
-    h2, .copy {
-      color: $theme-light-grey;
-    }
-    a {
-      color: $theme-light-grey;
-      text-decoration: underline;
-    }
-  }
-
-  #social_follow_us {
+    #social_follow_us {
     .banner {
       background-image: image-url('crean_follow_us.png');
     }
@@ -51,12 +38,12 @@
       }
     }
   }
+        
+    .rounded-slider .info-container .blue{
+        background-color: $crean-primary;
+    }   
 
-  .rounded-slider .info-container .blue {
-    background-color: $crean-primary;
-  }
-
-  .newbutton a {
+    .newbutton a {
     border: 1px solid $crean-primary;
     background-color: $crean-primary;
     background-image: -webkit-gradient(linear, left top, left bottom, from($crean-primary), to($crean-secondary));
@@ -77,7 +64,7 @@
     }
   }
 
-  .midPhotoCallouts .photoCallout .caption {
+   .midPhotoCallouts .photoCallout .caption {
     background-color: $crean-primary;
   }
 
