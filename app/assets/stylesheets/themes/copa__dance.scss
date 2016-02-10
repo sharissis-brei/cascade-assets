@@ -1,6 +1,6 @@
 
 #theme.copa__dance {
-
+  @include theme-color-classes($dance-primary, $dance-secondary);
   .smallMasthead .masthead, .smallMasthead .masthead-old, .bigMasthead .mastheadPlaceholder, .bigMasthead .masthead, .bigMasthead .masthead-old, .nameBar, .rightColumn .styleTwo {
   	background: $dance-primary; /* Old browsers */
   	background: -moz-radial-gradient(center, ellipse cover,  $dance-primary 0%, $dance-secondary 100%); /* FF3.6+ */

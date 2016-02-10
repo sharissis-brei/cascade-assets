@@ -1,6 +1,7 @@
 
 #theme.ces {
-
+  @include theme-color-classes($ces-primary, $ces-secondary);
+  
   .smallMasthead .masthead, .smallMasthead .masthead-old, .bigMasthead .mastheadPlaceholder, .bigMasthead .masthead, .bigMasthead .masthead-old, .nameBar, .rightColumn .styleTwo {
   	background: $ces-primary; /* Old browsers */
   	background: -moz-radial-gradient(center, ellipse cover, $ces-primary 1%, $ces-secondary 93%); /* FF3.6+ */

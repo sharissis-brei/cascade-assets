@@ -1,6 +1,6 @@
 
 #theme.copa {
-
+  @include theme-color-classes($copa-primary, $copa-secondary);
   .smallMasthead .masthead, .smallMasthead .masthead-old, .bigMasthead .mastheadPlaceholder, .bigMasthead .masthead, .bigMasthead .masthead-old, .nameBar, .rightColumn .styleTwo  {
   	background: $copa-primary; /* Old browsers */
   	background: -moz-radial-gradient(center, ellipse cover, $copa-primary 1%, $copa-secondary 93%); /* FF3.6+ */
