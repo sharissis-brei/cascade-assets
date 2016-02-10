@@ -1,3 +1,4 @@
 $(document).ready(function(e) {
-  $('.side-panel-hero .background-video').coverVid(1920, 1080);
+  $backgroundVideo = $('.side-panel-hero .background-video');
+  if ($backgroundVideo.length) { $backgroundVideo.coverVid(1920, 1080); }
 });
