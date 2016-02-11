@@ -105,8 +105,8 @@ HTML for widgets should all have a class on the outer most element composed of i
 ```html
 <div class="messaging-widget"> ... </div>
 <div class="chapman-social-feed-widget"> ... </div>
-<div class="cta-3-column-widget"> ... </div>
-<div class="cta-block-widget"> ... </div>
+<div class="call-to-action-3-up-widget"> ... </div>
+<div class="call-to-action-block-widget"> ... </div>
 ```
 
 #### Widget Variations
@@ -132,11 +132,6 @@ Follow these conventions to keep our xml consistent across link types in our dat
 
 ```xml
 <group identifier="media" label="Media">
-  <text type="radiobutton" identifier="linkType" label="Link Type" default="External Link" help-text="Your Photo Dimensions Here">
-    <radio-item value="External Link" show-fields="path/to/my/widget/media/externalLink"/>
-    <radio-item value="File Link" show-fields="path/to/my/widget/media/fileLink"/>
-  </text>
-  <text identifier="externalLink" label="External Link" help-text="full url (including http) to page outside of Cascade"/>
   <asset type="file" identifier="fileLink" label="File Link"/>
   <text identifier="alternateText" label="Alternate Text"/> <!-- Do NOT include alt text if image is a background image -->
 </group>
