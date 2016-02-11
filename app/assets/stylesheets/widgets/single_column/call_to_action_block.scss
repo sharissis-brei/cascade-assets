@@ -1,7 +1,7 @@
-$cta-block-mobile-height: 50px;
-$cta-block-screen-height: 150px;
+$call-to-action-block-mobile-height: 50px;
+$call-to-action-block-screen-height: 150px;
 
-.cta-block-widget {
+.call-to-action-block-widget {
   padding: $one-column-widget-spacing 0;
 
   .outer-container {
@@ -17,7 +17,7 @@ $cta-block-screen-height: 150px;
     position: relative;
     display: block;
     width: 100%;
-    height: $cta-block-mobile-height;
+    height: $call-to-action-block-mobile-height;
     text-align: center;
     overflow: hidden;
     color: $black;
@@ -36,7 +36,7 @@ $cta-block-screen-height: 150px;
 
     @include media($medium-screen) {
       width: 25%;
-      height: $cta-block-screen-height;
+      height: $call-to-action-block-screen-height;
       float: left;
       padding: $base-spacing 8px;
     }
@@ -55,7 +55,7 @@ $cta-block-screen-height: 150px;
   }
   .title {
     @include sub_section_heading(500);
-    line-height: $cta-block-mobile-height;
+    line-height: $call-to-action-block-mobile-height;
     margin: 0;
     padding: 0 $base-spacing;
     white-space: nowrap;
