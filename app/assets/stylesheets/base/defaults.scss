@@ -25,6 +25,7 @@ html {
 
 body {
   @include paragraph;
+  line-height: initial;
   margin: 0;
   padding: 0;
   color: $cu-font-color;
@@ -51,7 +52,6 @@ section {
   }
   p {
     @include bp(m) {
-      // font-family: Arial;
 		  color: $cu-font-color;
     }
   }

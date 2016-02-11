@@ -1,7 +1,6 @@
 .side-panel-hero {
   position: relative;
 
-
   + div { // Whatever is under this hero area should have double padding to account for the overlap
     padding-top: $one-column-widget-spacing*2;
   }
@@ -51,8 +50,7 @@
     // Subtitle
     h2 { font-weight: 200; }
     
-    // Calls to action
-    nav { 
+    .calls-to-action { 
       margin-top: $base-spacing*3;
       a {
         @include button($blue);
@@ -61,6 +59,25 @@
         text-align: center;
         line-height: 36px;
         border-radius: 0px;
+      }
+    }
+
+    .program-select {
+      margin-top: $base-spacing*3;
+      select {
+        position: relative;
+        background-image: image-url('arrow-down2.png');
+        -webkit-appearance: initial;
+        -moz-appearance: none;
+        font-size: 16px;
+        padding: $base-spacing/2 $base-spacing;
+        background-color: white;
+        box-shadow: none;
+        margin: 0;
+        height: auto;
+        border-radius: $base-spacing;
+        background-position: center right;
+        background-repeat: no-repeat;
       }
     }
   }
