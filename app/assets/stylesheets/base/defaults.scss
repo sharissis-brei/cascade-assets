@@ -1,4 +1,7 @@
-@include theme-color-classes($red, $red);
+#theme {
+  @include theme-color-classes($red, $red);
+}
+
 
 * {
   word-wrap: break-word;
