@@ -1,3 +1,5 @@
+@include theme-color-classes($red, $red);
+
 * {
   word-wrap: break-word;
   .ie7 & {
