@@ -64,14 +64,28 @@
 
     .program-select {
       margin-top: $base-spacing*3;
+      position: relative;
+
+      .select-arrow {
+        position: absolute;
+        top: 14px;
+        right: 18px;
+        display: block;
+        background: transparent;
+        border-width: 0px 1px 1px 0px;
+        border-style: solid;
+        width: 8px;
+        height: 8px;
+        transform: rotateZ(45deg);
+      }
+
       select {
         position: relative;
-        background-image: image-url('arrow-down2.png');
         -webkit-appearance: initial;
         -moz-appearance: none;
         font-size: 16px;
         padding: $base-spacing/2 $base-spacing;
-        background-color: white;
+        background-color: transparent;
         box-shadow: none;
         margin: 0;
         height: auto;
