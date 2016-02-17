@@ -1,21 +1,7 @@
-/* BAD NEWS
- *
+/* 
  * These styles apply to the news-events-widget which can now be present
  * in the primary content of a cascade page, or in the left column under
- * the site navigation.  HOWEVER, these are the same styles applied to
- * the tab-widget despite all the class names referring to only news &
- * events.  Therefore, test these styles against the following widgets to
- * ensure you don't break anything:
- *  - news-events-widget in the left column
- *  - news-events-widget in primary content
- *  - tabs-widget in primary content
- *
- * I recommend changing these class names once cascade is only running on
- * the modular template.  That way, you can edit the HTML in velocity to
- * output meaningful class names like "tabbed-widget, tabbed-nav,
- * tabbed-content", etc.
- *
- * Sincerely, James Kerr
+ * the site navigation.
  */
 
 
