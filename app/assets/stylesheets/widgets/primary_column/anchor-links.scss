@@ -7,22 +7,25 @@
 	}
 	
 	.anchorLinks>a{
-		padding:0 10px 0 10px;
+		padding:0 8px 0 8px;
 		text-decoration:underline;
 		border-left:1px solid black;
+		border-bottom: none;
+		font-weight:600;
 	}
 	
 	.anchorLinks>a:first-child{
-		padding:0 10px 0 0;
+		padding:0 8px 0 0;
 		text-decoration:underline;
 		border-left:none;
+		border-bottom: none;
 	}
 	
 	.letterBlock {
 		margin: 0 0 20px 20px;
 		display: inline-block;
 		vertical-align: top;
-		width: 40%;
+		width: 100%;
 	}
 	
 	.ie7 .letterBlock{
@@ -43,6 +46,6 @@
 	.letter, .letter:hover, .letter:focus, .letter:visited{
 		color:Black !important;   
 		text-decoration:none;
-		margin:0 0 5px 0;
+		margin: 20px 0 5px 0;
 		display:block;
 	}
