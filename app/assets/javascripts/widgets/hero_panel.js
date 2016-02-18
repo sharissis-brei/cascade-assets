@@ -4,12 +4,12 @@
 */
 
 $(document).ready(function(){
-  var programNav = $('#program-select-links');
-  var links = programNav.children('input');
-  var programSelector = programNav.children('select');
+  var container = $('#program-select-links');
+  var links     = container.children('input');
+  var select    = container.children('select');
   
-  programSelector.on('change', function(){
+  select.on('change', function(){
   	var index = $(this).prop('selectedIndex');
-    window.location.href = links.eq(index).val();
+    location.href = links.eq(index).attr('href');
   });
 });
