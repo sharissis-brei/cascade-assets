@@ -1,7 +1,7 @@
 $(document).ready(function(){
-  var nav = $('.program-select');
-  var links = nav.children('input');
-  var programSelector = nav.children('select');
+  var programNav = $('.program-select');
+  var links = programNav.children('input');
+  var programSelector = programNav.children('#program-select-links');
   
   programSelector.on('change', function(){
   	var index = $(this).prop('selectedIndex');
