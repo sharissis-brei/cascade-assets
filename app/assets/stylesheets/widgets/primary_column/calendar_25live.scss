@@ -1,0 +1,36 @@
+//for 25Live Trumba Calendars 
+.calendar-25live-widget {
+	padding: $primary-column-widget-spacing 0;
+}
+//header bar above calendar
+.calendar-25live-headerbar {
+    width:100%;
+    background-color: #E2E1DC; 
+    border-bottom: 1px solid #C0C0B8; 
+    border-right: 1px solid #C0C0B8; 
+	padding:10px;
+    padding-top:15px; 
+	padding-bottom:5px;
+	height: 60px;
+	@include bp(m) {
+    	width:100%;
+    }
+}
+.calendar-25live-headerbar-sect1 {
+    float:left; width:30%;
+	@include bp(m) {
+    	float:none; text-align:left; width:100%;
+    }
+}
+.calendar-25live-headerbar-sect2 {
+    float:left; width:30%;
+	@include bp(m) {
+    	float:none; text-align:left; width:100%;
+    }
+}
+.calendar-25live-headerbar-sect3 {
+    text-align:right; display:inline-block;
+	@include bp(m) {
+    	float:none; text-align:left; width:100%;
+    }
+}
