@@ -5,22 +5,23 @@ var FactCard = function($el) {
 };
 
 FactCard.prototype.initialize = function() {
+  var self = this;
+
+  // Hover Listeners
   if (!utils.ios()) { // iOS translates mouseleave to clicks, lame :(
-    this.$front.on('mouseenter', this.flipToBack.bind(this));
-    this.$back.on('mouseleave', this.flipToFront.bind(this));
+    this.$root.on('mouseenter', function(e) { $(this).addClass('flipped'); });
+    this.$root.on('mouseleave', function(e) { $(this).removeClass('flipped'); });
   }
-  this.$front.hammer().bind('tap', this.flipToBack.bind(this));
-  this.$back .hammer().bind('tap', this.flipToFront.bind(this));
-};
 
-FactCard.prototype.flipToBack = function(event) {
-  this.$root.addClass('flipped');
-};
+  // Tap listeners
+  this.$front.hammer().bind('tap', function(e) { 
+    self.$root.addClass('flipped'); 
+  });
 
-FactCard.prototype.flipToFront = function (event) {
-  if (!$(event.target).hasClass('fact-link')) {
-    this.$root.removeClass('flipped');
-  }
+  this.$back.hammer().bind('tap', function(e) {
+    if (!$(event.target).closest('a').length) // Ensure that a link wasn't tapped
+      self.$root.removeClass('flipped');
+  });
 };
 
 $(document).ready(function() {
