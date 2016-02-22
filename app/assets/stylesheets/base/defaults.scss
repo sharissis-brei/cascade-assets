@@ -422,7 +422,13 @@ h5 {
   html:before {
     content: image-url('logo.png');
   }
-  header, .rotatorContainer, .toggleExpanded, .leftNav, footer {
+  header,
+  #cu_nav,
+  .rotatorContainer, 
+  .toggleExpanded, 
+  .leftNav,
+  .mainNav,
+  footer {
     display: none;
   }
   #virtualTour-mainColumn {
