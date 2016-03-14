@@ -1,6 +1,6 @@
 
 #theme.ces {
-  @include theme-color-classes($ces-primary, $ces-secondary);
+  @include theme-color-classes($ces-primary);
   
   .smallMasthead .masthead, .smallMasthead .masthead-old, .bigMasthead .mastheadPlaceholder, .bigMasthead .masthead, .bigMasthead .masthead-old, .nameBar, .rightColumn .styleTwo {
   	background: $ces-primary; /* Old browsers */

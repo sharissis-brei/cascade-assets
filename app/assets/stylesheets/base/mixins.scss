@@ -242,7 +242,7 @@
   }
 }
 
-@mixin theme-color-classes($primary, $secondary) {
+@mixin theme-color-classes($primary) {
 	.theme-bg-color       { background-color: $primary; }
 	.theme-bg-color-alpha { background-color: rgba(red($primary), green($primary), blue($primary), 0.95); }
 	.theme-border-color   { border-color: $primary; }

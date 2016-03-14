@@ -1,6 +1,6 @@
 
 #theme.dodge {
-  @include theme-color-classes($dodge-primary, $dodge-secondary);
+  @include theme-color-classes($dodge-primary);
   
   .smallMasthead .masthead, .smallMasthead .masthead-old, .bigMasthead .mastheadPlaceholder, .bigMasthead .masthead, .bigMasthead .masthead-old, .nameBar, .rightColumn .styleTwo {
   	background: $dodge-primary; /* Old browsers */

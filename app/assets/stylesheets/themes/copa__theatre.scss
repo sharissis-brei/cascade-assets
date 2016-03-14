@@ -1,6 +1,6 @@
 
 #theme.copa__theatre {
-  @include theme-color-classes($theatre-primary, $theatre-secondary);
+  @include theme-color-classes($theatre-primary);
   
   .smallMasthead .masthead, .smallMasthead .masthead-old, .bigMasthead .mastheadPlaceholder, .bigMasthead .masthead, .bigMasthead .masthead-old, .nameBar, .rightColumn .styleTwo {
   	background: $theatre-primary; /* Old browsers */

@@ -1,6 +1,6 @@
 
 #theme.crean {
-  @include theme-color-classes($crean-primary, $crean-secondary);
+  @include theme-color-classes($crean-primary);
   .smallMasthead .masthead, .smallMasthead .masthead-old, .bigMasthead .mastheadPlaceholder, .bigMasthead .masthead, .bigMasthead .masthead-old, .nameBar, .rightColumn .styleTwo {
   	background: $crean-primary; /* Old browsers */
   	background: -moz-radial-gradient(center, ellipse cover,  $crean-primary 0%, $crean-secondary 100%); /* FF3.6+ */
