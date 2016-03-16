@@ -1,4 +1,4 @@
-.fact-card{
+.fact-card {
     display: inline-block;
     white-space: normal;
     margin: 30px auto;
@@ -10,6 +10,10 @@
     border-radius: 3px;
     font-size: 28px;
     cursor: pointer;
+
+  .fact-front {
+    padding: 8px;
+  }
 
   .fact-front, .fact-back {
       @include box-shadow;
@@ -26,12 +30,12 @@
       border-radius: 3px;
   }
 
-  .fact-content{
+  .fact-content {
     flex: 0 0 auto;
     width: 100%;
   }
 
-  .fact-back{
+  .fact-back {
     /* The back side is flipped 180 deg by default */
     transform: rotateY(180deg);
     background-color: #ffffff;
@@ -56,50 +60,55 @@
   }
 
   /* Background color classes */
-  .red{
+  .red {
     position: absolute;
     z-index: 2;
     background-color: #e35c4a;
   }
-  .orange{
+  .orange {
     position: absolute;
     z-index: 2;
     background-color: #f39c12;
   }
-  .green{
+  .green {
     position: absolute;
     z-index: 2;
     background-color: #25b6a4;
   }
-  .blue{
+  .blue {
     position: absolute;
     z-index: 2;
     background-color: #02bac1;
   }
 
   /* Text size classes */
-  .fact-stat-nums{
+  .fact-stat-nums {
     position: relative;
     z-index: 6;
     font-family: proxima-nova;
     font-weight: 800;
     font-size: 72px;
   }
-  .fact-title-1{
+  .fact-title-1 {
+    display: block;
     position: relative;
     z-index: 6;
     font-family: proxima-nova;
     font-weight: 100;
     font-size: 24px;
+    line-height: 1;
+    margin-bottom: 8px;
   }
-  .fact-title-2{
+  .fact-title-2 {
+    display: block;
     position: relative;
     z-index: 6;
     font-family: proxima-nova;
     font-weight: 800;
     font-size: 20px;
+    line-height: 1;
   }
-  .fact-back-text{
+  .fact-back-text {
     font-family: proxima-nova;
     font-weight: 100;
     font-size: 16px;
@@ -109,7 +118,7 @@
   }
 
   /* Link class */
-  .fact-link{
+  .fact-link {
     width: 100%;
     min-height: 50px;
     position: absolute;
@@ -120,7 +129,7 @@
     font-family: proxima-nova;
     text-align: left;
     color: $color-chapman-blue;
-    &:hover{
+    &:hover {
       color: darken($color-chapman-blue, 10%);
     }
     line-height: 14px;
@@ -132,7 +141,7 @@
   }
 
 
-  .fact-image{
+  .fact-image {
     position: absolute;
     height: 100%;
     width: 100%;
@@ -142,27 +151,27 @@
     top: 0;
     left: 0;
 
-    &.people{
+    &.people {
       background-image: image-url('many_people.svg');
       background-size: contain;
       background-position: center top;
     }
-    &.student{
+    &.student {
       background-image: image-url('student_walking.svg');
       background-size: 185px;
       background-position: left center;
     }
-    &.chair{
+    &.chair {
       background-image: image-url('desk_chair.svg');
       background-size: contain;
       background-position: right center;
     }
-    &.books{
+    &.books {
       background-image: image-url('stacked_books.svg');
       background-size: contain;
       background-position: right top;
     }
-    &.mortarboard{
+    &.mortarboard {
       background-image: image-url('mortarboard.svg');
       background-size: 65px;
       background-position: center top;
