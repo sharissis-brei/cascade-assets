@@ -56,7 +56,7 @@
     h2 { font-weight: 200; }
     
     .calls-to-action { 
-      margin-top: $base-spacing*3;
+      margin-top: $base-spacing;
       a {
         @include button($blue);
         width: 100%;
@@ -73,7 +73,7 @@
 
       .select-arrow {
         position: absolute;
-        top: 14px;
+        top: 21px;
         right: 18px;
         display: block;
         background: transparent;
@@ -89,12 +89,13 @@
         -webkit-appearance: initial;
         -moz-appearance: none;
         font-size: 16px;
+        line-height: 36px;
         padding: $base-spacing/2 $base-spacing;
         background-color: transparent;
         box-shadow: none;
         margin: 0;
         height: auto;
-        border-radius: $base-spacing;
+        border-radius: 24px;
         background-position: center right;
         background-repeat: no-repeat;
       }
