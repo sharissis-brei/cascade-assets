@@ -108,7 +108,8 @@
 
 
 	/* Text Left Variation */
-	&.messaging-widget__text-left {
+	&.messaging-widget__text-left,
+	&.messaging-widget__text-right.has-fact-cards {
 		@include direction-context(right-to-left) {
 			/* Medium Screen */
 			@include media($medium-screen) {
@@ -137,14 +138,20 @@
 	}
 }
 
+.messaging-widget__text-right.has-fact-cards .media-column {
+	padding: $base-spacing * 4;
 
+	@include media($medium-screen) {
+		padding: 0;
+		text-align: left;
+	}
+}
 
 /* Light Text Variation */
 .messaging-widget__text-light {
 	background-color: #353430;
 	.title, .category, .body { color: white; }
 }
-
 
 /* Fact Card Media */
 .messaging-widget .media-column {
