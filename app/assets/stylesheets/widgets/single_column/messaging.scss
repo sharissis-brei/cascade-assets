@@ -109,7 +109,7 @@
 
 	/* Text Left Variation */
 	&.messaging-widget__text-left,
-	&.messaging-widget__text-right.has-fact-cards {
+	&.messaging-widget__has-fact-cards {
 		@include direction-context(right-to-left) {
 			/* Medium Screen */
 			@include media($medium-screen) {
@@ -138,11 +138,11 @@
 	}
 }
 
-.messaging-widget__text-right.has-fact-cards .media-column {
-	padding: $base-spacing * 4;
+.messaging-widget__has-fact-cards .media-column {
+	padding-top: $base-spacing * 4;
 
 	@include media($medium-screen) {
-		padding: 0;
+		padding-top: 0;
 		text-align: left;
 	}
 }
