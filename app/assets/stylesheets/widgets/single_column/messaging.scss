@@ -109,7 +109,7 @@
 
 	/* Text Left Variation */
 	&.messaging-widget__text-left,
-	&.messaging-widget__has-fact-cards {
+	&.messaging-widget__text-right.messaging-widget__has-fact-cards {
 		@include direction-context(right-to-left) {
 			/* Medium Screen */
 			@include media($medium-screen) {
@@ -138,7 +138,7 @@
 	}
 }
 
-.messaging-widget__has-fact-cards .media-column {
+.messaging-widget__text-right.messaging-widget__has-fact-cards .media-column {
 	padding-top: $base-spacing * 4;
 
 	@include media($medium-screen) {
