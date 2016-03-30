@@ -1,6 +1,10 @@
 .call-to-action-3-up-widget {
 	padding: $one-column-widget-spacing 0;
 
+	&.call-to-action-3-up-widget__white-container {
+		background-color: #ffffff;
+	}
+
 	.outer-container {
 		@include outer-container();
 	}
