@@ -10,8 +10,9 @@
   }
 
   .background-image, .background-video-wrapper {
-    display: none;
+    padding: $one-column-widget-spacing;
     @include media($large-screen) {
+      padding: 0;
       overflow: hidden;
       display: block;
       position: absolute;
@@ -21,9 +22,19 @@
   }
 
   .background-image {
-    background-size: cover;
-    background-repeat: no-repeat;
-    background-position: center bottom;
+    background-size: 0 0;
+    @include media($large-screen) {
+      background-size: cover;
+      background-repeat: no-repeat;
+      background-position: center bottom;
+    }
+  }
+
+  .background-video-wrapper #background-video {
+    display: none;
+    @include media($large-screen) {
+      display: inline-block;
+    }
   }
 
   .hero-content {
@@ -112,10 +123,11 @@
     }
 
     @include media($large-screen) {
-      @include span-columns(10);
-      @include shift(1);
-      margin-top: 35%;
+      @include span-columns(9);
+      @include shift(7);
+      margin-top: 20%;
       border-radius: 3px;
+      position: absolute;
     }
 
     img, video {
