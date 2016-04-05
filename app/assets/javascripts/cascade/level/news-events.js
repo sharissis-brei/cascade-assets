@@ -219,6 +219,11 @@ $(function () {
                 $(".allEvents")
                     .attr("href", "https://events.chapman.edu/?group_id=75");
                 break;
+			case "Thompson Policy Institute":
+                eventsFeedUrl = "http://www.chapman.edu/getFeed.ashx?name=eventTHOMPSONPOLICY";
+                $(".allEvents")
+                    .attr("href", "https://events.chapman.edu/?group_id=191");
+                break;
             case "WILKINSON":
                 eventsFeedUrl = "http://www.chapman.edu/getFeed.ashx?name=eventWILKINSON";
                 $(".allEvents")
