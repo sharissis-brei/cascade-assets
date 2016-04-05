@@ -82,6 +82,11 @@ $(function () {
               $(".allNews")
                   .attr("href", "http://blogs.chapman.edu/happenings");
               break;
+		  case "Thompson Policy Institute":
+                newsFeedUrl = "http://www.chapman.edu/getFeed.ashx?name=newsThompsonInstitute";
+                $(".allNews")
+                    .attr("href", "http://blogs.chapman.edu/tpi/");
+                break;
           case "Wilkinson":
               newsFeedUrl = "http://www.chapman.edu/getFeed.ashx?name=newsWilkinson";
               $(".allNews")
