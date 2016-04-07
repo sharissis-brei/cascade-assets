@@ -8,6 +8,8 @@
 //= require cascade/plugins/flexslider
 //= require cascade/plugins/hover-intent
 //= require cascade/plugins/jcarousel
+//= require cascade/plugins/modernizr
+//= require cascade/plugins/hero-slider
 //= require cascade/plugins/personalize
 //= require cascade/plugins/respond
 //= require cascade/plugins/super-pager
@@ -33,7 +35,6 @@
 // don't require cascade/shortcuts
 //= require cascade/video-overlay
 //= require cascade/weather
-
 
 
 //= require cascade/level/accordion
