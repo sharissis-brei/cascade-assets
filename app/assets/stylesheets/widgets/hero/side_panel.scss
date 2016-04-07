@@ -17,7 +17,19 @@
       display: block;
       position: absolute;
       top: 0; right: 0; left: 0; bottom: 0;
-      height: 100%; width: 100%;
+      width: 100%;
+    }
+  }
+
+  .cd-hero {
+    display: none;
+    @include media($large-screen) {
+      padding: 0;
+      overflow: hidden;
+      display: block;
+      position: absolute;
+      top: 0; right: 0; left: 0; bottom: 0;
+      height: 750px; width: 100%;
     }
   }
 
@@ -123,8 +135,8 @@
     }
 
     @include media($large-screen) {
-      @include span-columns(9);
-      @include shift(7);
+      @include span-columns(7);
+      @include shift(9);
       margin-top: 20%;
       border-radius: 3px;
       position: absolute;
@@ -142,7 +154,7 @@
 
     .category {
       @include content_label();
-      color: white; 
+      color: white;
     }
     
     .title {
@@ -152,6 +164,10 @@
     .subtitle { 
       margin-top: 0;
       font-weight: 200;
+    }
+
+    .body {
+      color: white;
     }
 
     a {
