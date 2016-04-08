@@ -31,11 +31,10 @@
 			display: table-cell;
 			vertical-align: top;
 			text-align: left;
-			width: 25%;
 			padding-right: 4%;
 
 			&.title {
-				width:30%;
+				width: 30%;
 			}
 
 			&.contact-2 {
@@ -56,6 +55,7 @@
 	a.address {
 		margin-bottom: 0;
 		font-style: normal;
+		white-space: nowrap;
 	}
 
 	a.address {
@@ -86,17 +86,7 @@
 			width: 16px;
 			background-repeat: no-repeat;
 			background-position: center;
-			&.instagram {
-				background-image: url('instagram.svg');
-			}
-
-			&.facebook {
-				background-image: url('facebook.svg');
-			}
-
-			&.twitter {
-				background-image: url('twitter.svg');
-			}
+			background-size: contain;
 		}
 	}
 }
