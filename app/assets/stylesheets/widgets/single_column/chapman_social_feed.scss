@@ -13,6 +13,34 @@ $tile_width: 335px;
 		text-transform: none;
 	}
 
+	&.chapman-social-feed-widget__has-social-icons {
+		.chapman-social-feed-title {
+			margin-bottom: 16px;
+		}
+	}
+
+	.chapman-social-feed-icons {
+		margin-bottom: 32px;
+
+		ul.social-icon-list {
+			li {
+				display: inline-block;
+				margin: 0 12px;
+				list-style-type: none;
+				text-align: center;
+			}
+
+			.social-link {
+				display: inline-block;
+				height: 22px;
+				width: 22px;
+				background-repeat: no-repeat;
+				background-position: center;
+				background-size: contain;
+			}
+		}
+	}
+
 	.chapman-social-feed {
 		@include clearfix;
 		text-align: center;
