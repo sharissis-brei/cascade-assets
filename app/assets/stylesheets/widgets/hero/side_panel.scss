@@ -11,6 +11,7 @@
 
   .cd-hero, .background-image, .background-video-wrapper {
     padding-bottom: $one-column-widget-spacing;
+    pointer-events: none;
 
     @include media($medium-screen) {
       padding: 0;
@@ -30,12 +31,12 @@
     list-style-type: none;
 
     li {
-      padding: 0;
+      padding: $one-column-widget-spacing/2 0;
       max-width: 100%;
       margin-bottom: 0;
       background-color: #ECEBE5;
       @include media($medium-screen) {
-        padding: $one-column-widget-spacing;
+        padding: $one-column-widget-spacing/2 $one-column-widget-spacing;
       }
     }
   }
@@ -44,6 +45,7 @@
     height: 17%;
     background-color: transparent;
     text-align: right;
+    pointer-events: all;
 
     .cd-marker { background-color: transparent; }
 
@@ -65,7 +67,7 @@
     }
 
     @include media($medium-screen) {
-      height: 6%;
+      height: 3%;
       padding-right: 64px;
       a {
         font-size: 12px;
@@ -76,8 +78,9 @@
     }
 
     @include media($large-screen){
-      height: 4%;
-      padding-right: 0;
+      text-align: center;
+      height: 2%;
+      @include shift(4);
       a {
         font-size: 14px;
         padding: 0 15px;
@@ -104,17 +107,20 @@
   .hero-content {
     @include outer-container;
     position: relative;
-    padding: 0;
+    padding: $one-column-widget-spacing/2 0 $one-column-widget-spacing;
+
     @include media($medium-screen) {
-      padding: $one-column-widget-spacing;
+      padding: $one-column-widget-spacing/2 $one-column-widget-spacing;
     }
     @include media($large-screen) {
       padding: $one-column-widget-spacing 0;
+      pointer-events: none;
+      z-index: 666;
     }
   }
 
   // The side panel
-  section {
+  .hero-content-panel {
     box-shadow: 0px 0px 6px 2px rgba(0, 0, 0, 0.2);
     padding: $one-column-widget-spacing;
     background-color: white;
@@ -122,6 +128,7 @@
     @include media($large-screen) {
       @include span-columns(6);
       margin-bottom: -$one-column-widget-spacing*2;
+      pointer-events: all;
     }
 
     // Title
@@ -181,6 +188,7 @@
   article {
     box-shadow: 0px 0px 6px 2px rgba(0, 0, 0, 0.2);
     color: white;
+    pointer-events: all;
 
     @include media($medium-screen) {
       margin-top: $base-spacing*3;
@@ -202,6 +210,7 @@
 
     .content {
       padding: $base-spacing*2 $base-spacing*3;
+      z-index: 667;
     }
 
     .category {
