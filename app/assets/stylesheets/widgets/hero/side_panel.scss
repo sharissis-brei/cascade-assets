@@ -196,7 +196,7 @@
     @include media($large-screen) {
       @include span-columns(7);
       @include shift(9);
-      margin-top: 20%;
+      margin-top: 15%;
       border-radius: 3px;
       position: absolute;
     }
