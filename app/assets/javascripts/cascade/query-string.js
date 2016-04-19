@@ -33,7 +33,7 @@ $(function () {
         $activeElementRegion.siblings().find("div.content").hide();
 		
         // Scroll to the active element (offset by 50 because behind omni-nav)
-        //setTimeout(function(){
+        setTimeout(function(){
            $('html, body').stop().animate({
                 scrollTop:$activeElementRegion.offset().top -50 
             },1000) ;
