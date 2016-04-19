@@ -1,8 +1,5 @@
 $(function () {
-
-	/* Get Query string for starting stage if exists, otherwise randomize starting stage
-       pull in URL query string if available
-    ------------------------------------------------------------------------------------------------*/
+    ---------------------------------------------------------------------------*/
     var urlParams = {};
     (function () {
         var e,
@@ -13,48 +10,57 @@ $(function () {
 
         while (e = r.exec(q))
         urlParams[d(e[1])] = d(e[2]);
-    })();
-    
-    //alert(urlParams["stage"]);
-    var stage = urlParams["stage"];
-    var queryAutoplay = urlParams["autoplay"];
-    var autoplay = true;
-    
-    //console.log(stage);
-    var queryStartingPane = 0;
-    var startingPane = 0;
-    
-    if (stage != undefined) { 
-        queryStartingPane = stage;
-        switch(queryStartingPane) {
-            case "0": 
-            case "imagine":
-                startingPane = 0;
-                break;
-            //case "1":
-            //case "explore":
-           //     startingPane = 1;
-           //     break;  
-            case "1":
-            case "create":
-                startingPane = 1;
-                break;
-            //case "3":
-            //case "global":
-            //    startingPane = 3;
-           //     break;  
-            case "3": 
-            case "leaders":
-                startingPane = 3;
-                break;
-            default:
-                startingPane = 0;
-        }
-    } else { 
-        startingPane = (Math.floor(Math.random()*3)) 
-    }
-    if ( queryAutoplay == 'false') {
-        autoplay = false;
-    }
+    })();  
 
+    /* Used with Collapsibles widget. 
+    ----------------------------------*/
+    if ((urlParams["openregion"] != undefined) && (urlParams["openregion"] == parseInt(urlParams["openregion"])) && urlParams["openregion"] - 1 < $(".collapsibles-widget .accordion").length) {
+
+        // Offset for zero based arrays
+        if (urlParams["openregion"] != 0) 
+            urlParams["openregion"] = urlParams["openregion"] - 1;
+        
+        var $activeElementRegion = $(".collapsibles-widget .accordion").eq(urlParams["openregion"]);
+
+        // Add the active class to nth accordion and remove all other active classes
+        $activeElementRegion.addClass("active").siblings().removeClass("active");
+
+        // Display the current region
+        $activeElementRegion.find("div.collapsibles-widget").show();
+
+        // Hide the other regions
+        $activeElementRegion.siblings().find("div.content").hide();
+		
+        // Scroll to the active element (offset by 50 because behind omni-nav)
+        //setTimeout(function(){
+           $('html, body').stop().animate({
+                scrollTop:$activeElementRegion.offset().top -50 
+            },1000) ;
+        },250);
+    }
+    /* End open collapsible */
+	
+	/* Used with Tabs widget.
+    -------------------------*/ 
+    if ((urlParams["startingtab"] != undefined) && (urlParams["startingtab"] == parseInt(urlParams["startingtab"])) && (urlParams["startingtab"] - 1 < $(".main .tabs-nav li").length)) {
+        // Offset for zero based arrays
+        if (urlParams["startingtab"] != 0)
+            urlParams["startingtab"] = urlParams["startingtab"] - 1;
+        
+        var $activeElementTab = $(".main .tabs-nav li").eq(urlParams["startingtab"]);
+
+        // Set active class
+        $activeElementTab.addClass("active").siblings().removeClass("active");
+        // Update the content section - set active content to display
+		//$activeElementTab.siblings().find("div.content").hide();
+        $activeElementTab.parent().siblings().children("li:eq(" + urlParams["startingtab"] + ")").addClass("active").siblings().removeClass("active");
+
+        // Scroll to the active element (offset by 50 because behind omni-nav)
+        setTimeout(function(){
+            $('html, body').stop().animate({
+                scrollTop:$activeElementTab.offset().top -50
+            },1000) ;
+        },250);
+    }
+	/* end open tab */
 });
