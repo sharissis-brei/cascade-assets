@@ -1,4 +1,5 @@
 $(function () {
+    /* evaluate query string to see if param to set an open collapsible or tab 
     ---------------------------------------------------------------------------*/
     var urlParams = {};
     (function () {
