@@ -2,18 +2,19 @@
   position: relative;
   padding: 13px 17px 6px;
   img {
-  	max-width:144px; 
-	padding-left:25px;
+  	max-width: 144px; 
+	padding-left: 28px;
   }
   h2.header {
     color:#353430;
     text-transform: uppercase;
-    font-size:1.1em;
+    font-size: 1.1em;
     font-weight: bold;
     width: 100%;
     text-align: center;
     display: block;
     padding-top: 5px;
+	margin-top: 1px;
     min-height: 15px;
   }
   .jcarousel-clip {
