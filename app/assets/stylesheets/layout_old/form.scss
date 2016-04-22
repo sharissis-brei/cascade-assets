@@ -57,6 +57,38 @@
 }
 
 /************ these responsiveForm used in surrounding DIV for all full page forms ************/
+/* moved these next 3 from components/forms.scss and associate display:block only with .responsiveForm not global:
+// Allow the height of file controls to match text inputs
+.responsiveForm input[type="file"] {
+  display: block;
+}
+
+// Makes range inputs behave like textual form controls
+.responsiveForm input[type="range"] {
+  display: block;
+  width: 100%;
+}
+
+.responsiveForm select,
+.responsiveForm textarea,
+.responsiveForm input[type="text"],
+.responsiveForm input[type="password"],
+.responsiveForm input[type="datetime"],
+.responsiveForm input[type="datetime-local"],
+.responsiveForm input[type="date"],
+.responsiveForm input[type="month"],
+.responsiveForm input[type="time"],
+.responsiveForm input[type="week"],
+.responsiveForm input[type="number"],
+.responsiveForm input[type="email"],
+.responsiveForm input[type="url"],
+.responsiveForm input[type="search"],
+.responsiveForm input[type="tel"],
+.responsiveForm input[type="col"] {
+  display: block;
+  width: 100%;
+}
+
 .responsiveForm label{
     display:block;
     font-weight: bold;

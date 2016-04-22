@@ -25,17 +25,6 @@ input[type="checkbox"] {
   line-height: normal;
 }
 
-// Allow the height of file controls to match text inputs
-input[type="file"] {
-  display: block;
-}
-
-// Makes range inputs behave like textual form controls
-input[type="range"] {
-  display: block;
-  width: 100%;
-}
-
 select[multiple],
 select[size] {
   height: auto;
@@ -45,6 +34,7 @@ select {
   height: 34px;
 }
 
+//move all display:block so part of .responsiveForm class only
 // The bulk of the form styles
 select,
 textarea,
@@ -62,8 +52,6 @@ input[type="url"],
 input[type="search"],
 input[type="tel"],
 input[type="col"] {
-  display: block;
-  width: 100%;
   border: 1px solid $input-border-color;
   border-radius: $input-border-radius;
   line-height: normal;
