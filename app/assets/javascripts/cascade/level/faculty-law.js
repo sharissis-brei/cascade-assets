@@ -1,6 +1,6 @@
 $(function () {
     //NOTE: this script is for the school or dept specific faculty listing pages eg /copa/faculty-directory.aspx, NOT /our-faculty/index.aspx
-	//from old level/js.faculty-law.js in Cascade
+
     var devUrl = "//chapmanfaculty.dev.breilabs.com",
         prodUrl = "//" + window.location.hostname,
         page = 0,
@@ -175,9 +175,7 @@ $(function () {
                     //put each title on own line
     				var splitTitles = data[i].AdditionalTitles;
 					if (splitTitles != '' && splitTitles != null) {
-						splitTitles = splitTitles.replace(/;/gi, "
-<br/>") + "
-<br/>";					
+						splitTitles = splitTitles.replace(/;/gi, "<br/>") + "<br/>";					
 					}
                     
                     var result = {
@@ -225,8 +223,7 @@ $(function () {
 								else {
 									if (prev_dept == '') {
 										if (data[i].DeanFlag == 'Y') {
-											final_school_dept = prev_school + ',
-<em>Dean</em>';
+											final_school_dept = prev_school + ',<em>Dean</em>';
 										}
 										else {
 											final_school_dept = prev_school;	
@@ -235,8 +232,7 @@ $(function () {
 									else {
 										if (prev_school != '') {
                                             if (data[i].DeanFlag == 'Y') {
-                                                final_school_dept = prev_school + "; " + prev_dept + ',
-<em>Dean</em>';
+                                                final_school_dept = prev_school + "; " + prev_dept + ',<em>Dean</em>';
                                             }
                                             else {
                                                 final_school_dept = prev_school + "; " + prev_dept;
@@ -245,8 +241,7 @@ $(function () {
 										}
 										else {
                                             if (data[i].DeanFlag == 'Y') {
-                                                final_school_dept = prev_dept + ',
-<em>Dean</em>';
+                                                final_school_dept = prev_dept + ',<em>Dean</em>';
                                             }
                                             else {
                                                 final_school_dept = prev_dept;
@@ -264,8 +259,7 @@ $(function () {
 							if (prev_dept == '') {
 								if (data[i].DeanFlag == 'Y') 
                                 {
-									final_school_dept = prev_school + ', 
-<em>Dean</em>';
+									final_school_dept = prev_school + ', <em>Dean</em>';
 								}
 								else {
 									final_school_dept = prev_school;	
@@ -274,8 +268,7 @@ $(function () {
 							else {
 								if (prev_school != '') {
                                     if (data[i].DeanFlag == 'Y') {
-                                        final_school_dept = prev_school + '; ' + prev_dept + ', 
-<em>Dean</em>';
+                                        final_school_dept = prev_school + '; ' + prev_dept + ', <em>Dean</em>';
                                     }
                                     else 
                                     {
@@ -286,8 +279,7 @@ $(function () {
 								else {
                                     if (data[i].DeanFlag == 'Y') 
                                     {
-                                        final_school_dept = prev_dept + ', 
-<em>Dean</em>';
+                                        final_school_dept = prev_dept + ', <em>Dean</em>';
                                     }
                                     else {
                                         final_school_dept = prev_dept;
@@ -296,8 +288,7 @@ $(function () {
 								}
 							}
  							affiliation.push(final_school_dept);							
-                            return affiliation.join('
-<div class="spacer"></div>');
+                            return affiliation.join('<div class="spacer"></div>');
                         })(),
                         phone: data[i].OfficePhone,
                         email: data[i].ChapEmail,
@@ -404,34 +395,16 @@ $(function () {
     function formatResult(result) {
 
         var formattedResult =
-            '
-<div class="facultyMember" itemscope itemtype="http://schema.org/Person">' +
-                (result.image ? '
-    <div class="profilePicture">
-        <img width="80px" src="' + result.image + '" itemprop="image">
-        </div>' : '') +
-                (result.name ? '
-        <h2 class="name" itemprop="name">' + (result.link ? ('
-            <a href="' + result.link) + '">' + result.name + '</a>' : result.name) + '
-        </h2>' : '') +
-                (result.title ? '
-        <div class="title" itemprop="jobTitle">' + result.title + '</div>' : '') +
-                (result.additionalTitles ? '
-        <div class="additionalTitles" itemprop="jobTitle">' + result.additionalTitles + '</div>' : '') +
-                (result.specialty ? '
-        <div class="specialty" itemprop="specialty">' + result.specialty + '</div>' : '') +
-                (result.affiliation ? '
-        <div class="affiliation" itemprop="affiliation">' + result.affiliation + '</div>' : '') +                
-                //(result.phone ? '
-        <div class="phone" itemprop="telephone">' + result.phone + '</div>' : '') +
-                (result.email ? '
-        <div class="email" itemprop="email">
-            <a href="mailto:' + result.email + '">' + result.email + '</a>
-        </div>' : '') +
-                //(result.link ? '
-        <a class="bio" href="' + result.link + '" itemprop="url">View Profile &raquo;</a>' : '') +
-            '
-    </div>';
+            '<div class="facultyMember" itemscope itemtype="http://schema.org/Person">' +
+                (result.image ? '<div class="profilePicture"><img width="80px" src="' + result.image + '" itemprop="image"></div>' : '') +
+                (result.name ? '<h2 class="name" itemprop="name">' + (result.link ? ('<a href="' + result.link) + '">' + result.name + '</a>' : result.name) 
+				+ '</h2>' : '') +
+                (result.title ? '<div class="title" itemprop="jobTitle">' + result.title + '</div>' : '') +
+                (result.additionalTitles ? '<div class="additionalTitles" itemprop="jobTitle">' + result.additionalTitles + '</div>' : '') +
+                (result.specialty ? '<div class="specialty" itemprop="specialty">' + result.specialty + '</div>' : '') +
+                (result.affiliation ? '<div class="affiliation" itemprop="affiliation">' + result.affiliation + '</div>' : '') +                
+                (result.email ? '<div class="email" itemprop="email"><a href="mailto:' + result.email + '">' + result.email + '</a></div>' : '') +
+            '</div>';
 
         return formattedResult;
     }
