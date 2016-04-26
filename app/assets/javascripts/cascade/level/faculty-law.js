@@ -1,47 +1,6 @@
 $(function () {
-//THIS function was part of old level/js/script_2013.js file  
-	/* Faculty List Old IE styling 
-    ------------------------------------------------------------------------------------------------*/
-    if ($(".facultyList .facultyMember").length && $("html").hasClass("oldie")) {
-        $(".facultyList .facultyMember:nth-child(odd)").css("margin-right", "45px");
-        $(".facultyList .facultyMember:nth-child(even)").css("margin-right", "0");
-    }
-
-
-    /* Faculty Video Fancybox
-    ------------------------------------------------------------------------------------------------*/
-    if ($(".facultySpotlight>.video[href]").length) {
-        if ($("html").outerWidth() >= 780) {
-            $(".facultySpotlight>.video").fancybox({
-                type: 'iframe'
-            });
-
-            $(window).resize(function () {
-                if ($("html").outerWidth() < 780) {
-                    $.fancybox.close();
-                    $(".facultySpotlight>.video").unbind();
-
-
-                } else {
-                    $(".facultySpotlight>.video").fancybox({
-                        type: 'iframe'
-                    });
-                }
-            });
-        }
-
-    } else {
-        $(".facultySpotlight>.video").click(function (event) {
-            event.preventDefault();
-        });
-    }
-
-});
-
-
-$(function () {
     //NOTE: this script is for the school or dept specific faculty listing pages eg /copa/faculty-directory.aspx, NOT /our-faculty/index.aspx
-	//from old level/js/faculty.js in Cascade
+	//from old level/js.faculty-law.js in Cascade
     var devUrl = "//chapmanfaculty.dev.breilabs.com",
         prodUrl = "//" + window.location.hostname,
         page = 0,
@@ -51,17 +10,15 @@ $(function () {
 
             if (window.sessionStorage) {
                 switch (sessionStorage.scope) {
+                    case "_faculty/full":
+                        $("#fullTime").attr("checked", "checked");
+                        break;
                     case "_faculty/all":
-
                         $("#showAll").attr("checked", "checked");
                         break;
                     case "_faculty/tenure":
-
                         $("#tenure").attr("checked", "checked");
                         break;
-
-
-
                     default:
                         break;
                 }
@@ -72,13 +29,12 @@ $(function () {
             switch (inputVal) {
                 case "Tenure":
                     return "_faculty/tenure";
-
-
-
-
+                case "Full Time":
+                    return "full";
+                case "All":
+                    return "all";
                 default:
-                    return "_faculty/all";
-
+                    return "_faculty/full";
             }
 
         })(),
@@ -203,7 +159,7 @@ $(function () {
             $.getJSON(facultyFeedUrl(), function (data) {
                 for (var i = 0; i < data.length; i++) {
                     var v_photo;
-        			if (!data[i].ThumbnailPhoto) {
+            		if (!data[i].ThumbnailPhoto) {
 						v_photo = '/_files/level/img/unisex-silhouette.jpg';
 					}
 					else if (data[i].ThumbnailPhoto == '/') {
@@ -220,8 +176,10 @@ $(function () {
     				var splitTitles = data[i].AdditionalTitles;
 					if (splitTitles != '' && splitTitles != null) {
 						splitTitles = splitTitles.replace(/;/gi, "
-<br/>"); 					
-					}                    
+<br/>") + "
+<br/>";					
+					}
+                    
                     var result = {
                         link: data[i].CascadePath ? '/our-faculty/' + data[i].CascadePath : '',
                         image: v_photo,
@@ -229,10 +187,11 @@ $(function () {
                         lastName: $.trim(data[i].FacLastName),
                         name: $.trim(data[i].FacFullName),
                         title: data[i].Rank,
+                        //additionalTitles: data[i].AdditionalTitles,
                         additionalTitles: splitTitles,
                         affiliation: (function () {
                             var affiliation = [];
-							var cntr = 0;
+    						var cntr = 0;
 							var dept = '';
 							var school = '';
 							var prev_school = '';
@@ -430,16 +389,16 @@ $(function () {
         page = totalPages;
         populateResults();
     });
-
+    
     $("#showAll").bind("change", function () {
         scope = "_faculty/all";
-
     });
-
+    
+    $("#fulltime").bind("change", function () {
+        scope = "_facultysearch/full";
+    });
     $("#tenure").bind("change", function () {
         scope = "_facultysearch/tenure";
-
-
     });
 
     function formatResult(result) {
@@ -476,5 +435,4 @@ $(function () {
 
         return formattedResult;
     }
-
 });
