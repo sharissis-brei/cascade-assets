@@ -18,7 +18,8 @@
       left: 0;
       box-sizing: border-box;
       height: auto;
-      background: $cu-red-rgb-transparent;
+      //background: $cu-red;
+	  background: $cu-red-rgb-transparent;
       padding: 30px 32px 30px 32px;
       max-width: 100%;
       width: 100%;
@@ -83,7 +84,8 @@
       max-width: 100%;
       position: relative;
       width: 100%;
-      background: none repeat scroll 0 0 $grey;
+      //background: none repeat scroll 0 0 $grey;
+	  background: none repeat scroll 0 0 rgba(56, 56, 56, 0.75);
       box-sizing: border-box;
       /*display: none;*/
       font-size: 12px !important;
