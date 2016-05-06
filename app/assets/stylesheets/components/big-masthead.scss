@@ -85,10 +85,10 @@
       position: relative;
       width: 100%;
       //background: none repeat scroll 0 0 $grey;
-	  background: none repeat scroll 0 0 rgba(56, 56, 56, 0.75);
+	  background: none repeat scroll 0 0 rgba(56, 56, 56, 0.90);
       box-sizing: border-box;
       /*display: none;*/
-      font-size: 12px !important;
+      font-size: 13px !important;
       left: 0;
       max-width: 75%;
       padding: 10px 30px;
@@ -136,14 +136,14 @@
         padding-top: 30px;
         font-size: 16px;
         @include bp(l) {
-          background: rgba(56, 56, 56, 0.75);
+          background: rgba(56, 56, 56, 0.85);
         }
       }
       p {
         font-family: 'futura-pt', arial, verdana, sans-serif;
         font-size: 18px !important;
         font-weight: normal;
-        line-height: 30px;
+        line-height: 20px;
       }
     }
     .author {
