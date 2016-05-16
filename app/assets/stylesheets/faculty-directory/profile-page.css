@@ -1,4 +1,4 @@
-/* used in faculty directory (profile/bio pages not listing pages). Was old profile_2013.css */
+//used in faculty directory (individual profile pages not listing pages). Was old profile_2013.css
 
 .facultyProfile {
     font-size:14px;
@@ -63,7 +63,6 @@
 
 .facultyProfile .noFloat{
     margin: 10px 0 10px 0;   
-    /*max-width:600px;*/
     width: 70%;
 }
 
@@ -121,14 +120,14 @@
     content:'';   
 }
 	
-/* copied these social icon classes from level_2013.css: */
+//copied these social icon classes from level_2013.css. also new name and folder for image:
 .facultyProfile .social a{
     float:left;
     margin:0 10px 0 0;
     text-indent:-999em;
     height:26px;
     width:26px;
-    background-image:url("../_files/level/img left_nav_social_icons.png");
+    background-image:url("../images/social_icons_faculty_profile.png");
     background-repeat:no-repeat;
 }
 
