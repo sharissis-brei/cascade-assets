@@ -1,4 +1,4 @@
-/** used in faculty directory (profile/bio pages not listing pages). Was old profile_2013.css */
+/* used in faculty directory (profile/bio pages not listing pages). Was old profile_2013.css */
 
 .facultyProfile {
     font-size:14px;
@@ -128,7 +128,7 @@
     text-indent:-999em;
     height:26px;
     width:26px;
-    background-image:url("../img/left_nav_social_icons.png");
+    background-image:url("../_files/level/img left_nav_social_icons.png");
     background-repeat:no-repeat;
 }
 
