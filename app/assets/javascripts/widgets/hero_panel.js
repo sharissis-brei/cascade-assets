@@ -1,15 +1,40 @@
-/*
-* Cascade can't check managed links in select options, so this code gets the link from a hidden field when a program option is selected
-* http://www.hannonhill.com/kb/Linking/ 
-*/
-
 $(document).ready(function(){
-  var container = $('#program-select-links');
-  var links     = container.children('input');
-  var select    = container.children('select');
-  
-  select.on('change', function(){
-  	var index = $(this).prop('selectedIndex');
-    location.href = links.eq(index).attr('href');
+  var trigger = $('.hero-select-button');
+  var list    = $('.hero-select-list');
+  var highlighted;
+
+  var highlight = function(i) {
+    highlighted = $(i);
+    highlighted.addClass('selected').siblings('.selected').removeClass('selected');
+  };
+
+  trigger.text($('.hero-select-list li').first().text());
+
+  trigger.on('click', function() {
+    trigger.toggleClass('active');
+    list.slideToggle(200);
+  });
+
+  $('li').on('hover', function() {
+    highlight(this);
+  });
+
+  $(document).on('click', function(event) {
+    if(trigger[0] !== event.target && !list.has(event.target).length) {
+      list.slideUp(200);
+    }
+  });
+
+  $(window).keydown(function(event) {
+    switch(event.keyCode) {
+      case 38:
+        highlight((highlighted && highlighted.prev().length > 0) ? highlighted.prev() : list.children().last());
+        list.scrollTo('.selected');
+        break;
+      case 40:
+        highlight((highlighted && highlighted.next().length > 0) ? highlighted.next() : list.children().first());
+        list.scrollTo('.selected');
+        break;
+    }
   });
 });
