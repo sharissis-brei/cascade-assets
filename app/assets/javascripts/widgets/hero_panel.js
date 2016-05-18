@@ -15,7 +15,7 @@ $(document).ready(function(){
     list.slideToggle(200);
   });
 
-  $('li').on('hover', function() {
+  $('.hero-select-list li').on('hover', function() {
     highlight(this);
   });
 
