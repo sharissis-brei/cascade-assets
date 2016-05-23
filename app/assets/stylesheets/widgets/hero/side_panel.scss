@@ -46,6 +46,7 @@
     background-color: transparent;
     text-align: right;
     pointer-events: all;
+    padding-right: 32px;
 
     .cd-marker {
       background-color: transparent;
@@ -227,6 +228,7 @@
     img, video {
       width: 100%;
       height: auto;
+      margin-bottom: -6px;
       @include media($large-screen) { display: none; }
     }
 
