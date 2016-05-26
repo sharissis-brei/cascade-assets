@@ -6,6 +6,7 @@ gem 'rubyzip'
 gem 'autoprefixer-rails'
 gem 'awesome_print'
 gem 'tzinfo-data'
+gem 'nokogiri', '>= 1.6.7.rc'
 
 # Bundle edge Rails instead: gem 'rails', github: 'rails/rails'
 gem 'rails', '4.2.3'
