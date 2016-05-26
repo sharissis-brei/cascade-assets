@@ -201,8 +201,8 @@
 
 @mixin button($bg-color: $red, $text-color: white) {
 	display: inline-block;
-	padding: $base-spacing / 2 $base-spacing;
-	font-size: 16px;
+	padding: 12px 20px;
+	font-size: 14px;
 	border-radius: 3px;
 	background: $bg-color;
 	color: $text-color;
@@ -212,18 +212,18 @@
 
 	&:hover, &:focus {
 		outline: none;
-		background-color: lighten($bg-color, 5%);
+		background-color: darken($bg-color, 7%);
 		@include transition(background-color);
 	}
 
 	&:active {
 		transition: none;
-		background-color: darken($bg-color, 5%);
+		background-color: darken($bg-color, 7%);
 	}
 }
 
 @mixin transition($property) {
-	transition: $property 150ms;
+	transition: $property .4s;
 }
 
 @mixin ellipsis {

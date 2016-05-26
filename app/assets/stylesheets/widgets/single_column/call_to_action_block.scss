@@ -86,9 +86,9 @@ $call-to-action-block-screen-height: 150px;
   .box__text-light {
     color: white;
     background-color: $black;
-    &:hover { background-color: black; }
+    &:hover { background-color: $black; }
 
-    &:after {
+    &.box__background-media:after {
       content: '';
       position: absolute;
       top: 0; left: 0; bottom: 0; right: 0;
