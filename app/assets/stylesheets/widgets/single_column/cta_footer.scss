@@ -40,11 +40,11 @@
 				width: 80%;
 			}
 
-			&.gray .footer-button {
+			.gray.footer-button {
 				@include button($gray-smoke);			
 			}
 
-			&.red .footer-button {
+			.red.footer-button {
 				@include button($red);
 			}
 		}
