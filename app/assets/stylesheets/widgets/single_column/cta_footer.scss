@@ -4,17 +4,23 @@
 
 	.outer-container {
 		@include outer-container();
-		@include pad(0 $base-spacing);
-		display: table;
-		border-spacing: 0 12px;
-		border-collapse: separate;
+		@include pad($base-spacing*2);
 		width: 100%;
+
+		@include media($medium-screen) {
+			display: table;
+			@include pad( $base-spacing $base-spacing*2);
+		}
+
+		@include media($large-screen) {
+			@include pad($base-spacing);
+		}
 	}
 
 	.footer-section {
-		display: table-row;
 		background-color: transparent;
 		text-align: center;
+
 
 		&.text {
 			p {
@@ -25,27 +31,57 @@
 
 		@include media($medium-screen) {
 			display: table-cell;
+			vertical-align: middle;
 			text-align: left;
 
-			&.text p {
-				margin-bottom: 0;
+			&.text {
+				width: 20%;
+				p {
+					margin-bottom: 0;
+				}
+			}
+
+			&.buttons {
+				width: 90%;
+				text-align: right;
 			}
 		}
 		
 
-		&.link {
-			text-align: center;
+		&.buttons {
+			.button-wrapper {
+				margin-top: 8px;
+			}
+
+			.buttons-container {
+				margin-top:32px;
+			}
 
 			.footer-button {
-				width: 80%;
+				text-align: center;
+				width: 100%;
+
+				&.gray {
+					@include button($gray-smoke);			
+				}
+
+				&.red {
+					@include button($red);
+				}
 			}
 
-			.gray.footer-button {
-				@include button($gray-smoke);			
-			}
+			@include media($medium-screen) {
+				.buttons-container {
+					display: table;
+					width: 100%;
+					margin: 0;
+				}
 
-			.red.footer-button {
-				@include button($red);
+				.button-wrapper {
+					display: table-cell;
+					margin: 0;
+					padding-left: 12px;
+				}
 			}
 		}
 	}
