@@ -45,6 +45,33 @@
 	.media-column {
 		padding-top: $base-spacing * 4;
 	}
+
+	&.messaging-widget__has-fact-cards {
+		.actions {
+			@include pad($base-spacing * 4  0 0 0);
+			text-align: center;
+		}
+
+		.text-column {
+			margin-bottom: $base-spacing * 3;
+		}
+
+		.media-column {
+			padding-top: 0;
+		}
+
+		@include media($medium-screen) {
+			.text-column {
+				margin-bottom: 0;
+				margin-bottom: $base-spacing * 2;
+
+				p {
+					margin-bottom: 0;
+				}
+			}
+		}		
+	}
+
 	@include media($medium-screen) {
 		.text-column {
 			margin: 0 auto;
@@ -56,9 +83,8 @@
 			width: 60%;
 		}
 	}
+
 }
-
-
 
 /* Two Column Variation */
 .messaging-widget__2-column {
