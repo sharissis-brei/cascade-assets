@@ -97,9 +97,21 @@
 	.text-column {
 		text-align: left;
 	}
+
+	&.messaging-widget__has-fact-cards {
+		.text-column {
+			text-align: center;
+		}
+	}
 	@include media($medium-screen) {
 		.media-column {
 			margin-bottom: 0;
+		}
+
+		&.messaging-widget__has-fact-cards {
+			.text-column {
+				text-align: left;
+			}
 		}
 	}
 
