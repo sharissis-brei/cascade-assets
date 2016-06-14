@@ -1,6 +1,5 @@
 .cta-footer-widget {
 	padding: 24px 0;
-	background-color: $bg-silver-gray;
 
 	.outer-container {
 		@include outer-container();
@@ -85,4 +84,13 @@
 			}
 		}
 	}
+}
+
+.cta-footer-widget__medium-bg {
+  background-color: $bg-silver-gray;
+}
+
+.cta-footer-widget__dark-bg {
+  background-color: $black;
+  color: white;
 }
