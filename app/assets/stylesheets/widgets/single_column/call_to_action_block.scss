@@ -3,6 +3,7 @@ $call-to-action-block-screen-height: 150px;
 
 .call-to-action-block-widget {
   padding: $one-column-widget-spacing 0;
+  background-color: #eaeaea;
 
   .outer-container {
     @include outer-container();
@@ -100,3 +101,12 @@ $call-to-action-block-screen-height: 150px;
     color: white;
   }
 }
+
+.call-to-action-block-widget__medium-bg {
+  background-color: #cfcfcf;
+}
+
+.call-to-action-block-widget__dark-bg {
+  background-color: #323430;
+}
+
