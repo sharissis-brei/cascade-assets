@@ -1,8 +1,6 @@
 .subscribe-widget {
   padding: $one-column-widget-spacing 0;
-  background-color: $black;
-  color: white;
-
+  
   .outer-container {
     @include outer-container;
     padding: 0 $base-spacing*3;
@@ -92,4 +90,13 @@
       @include span-columns(12);
     }
   }
+}
+
+.subscribe-widget__medium-bg {
+  background-color: $bg-silver-gray;
+}
+
+.subscribe-widget__dark-bg {
+  background-color: $black;
+  color: white;
 }
