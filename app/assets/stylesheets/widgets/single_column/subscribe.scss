@@ -1,5 +1,6 @@
 .subscribe-widget {
   padding: $one-column-widget-spacing 0;
+  background-color: #eaeaea;
   
   .outer-container {
     @include outer-container;
