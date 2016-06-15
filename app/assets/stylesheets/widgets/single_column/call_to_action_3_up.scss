@@ -1,10 +1,7 @@
 .call-to-action-3-up-widget {
 	padding: $one-column-widget-spacing 0;
-
-	&.call-to-action-3-up-widget__white-container {
-		background-color: #ffffff;
-	}
-
+	background-color: #eaeaea;
+	
 	.outer-container {
 		@include outer-container();
 	}
@@ -74,4 +71,13 @@
 			content: " »"
 		}
 	}
+}
+
+.call-to-action-3-up-widget__medium-bg {
+  background-color: $bg-silver-gray;
+}
+
+.call-to-action-3-up-widget__dark-bg {
+  background-color: $black;
+  color: white;
 }

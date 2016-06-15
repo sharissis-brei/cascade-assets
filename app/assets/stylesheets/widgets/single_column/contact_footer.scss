@@ -1,6 +1,6 @@
 .contact-footer-widget {
 	@include pad($base-spacing*2 0);
-	background-color: #E5E5E5;
+	background-color: #eaeaea;
 
 	.outer-container {
 		@include outer-container();
@@ -63,7 +63,7 @@
 		color: $blue;
 	}
 
-	h3.footer-heading{
+	h3.footer-heading {
 		margin-top: 0;
 		margin-bottom: 8px;
 		font-size: 18px;
@@ -89,4 +89,17 @@
 			background-size: contain;
 		}
 	}
+}
+
+.contact-footer-widget__medium-bg {
+	background-color: $bg-silver-gray;
+}
+
+.contact-footer-widget__dark-bg {
+	background-color: $black;
+  color: white;
+
+  p.address, h3.footer-heading {
+  	color: white;
+  }
 }

@@ -369,3 +369,12 @@ $cef_body-font: "proxima-nova-soft", "Helvetica Neue", "Microsoft Sans Serif", s
       font-weight: 100;
   }
 }
+
+.chapman-events-feed-widget__medium-bg {
+  background-color: $bg-silver-gray;
+}
+
+.chapman-events-feed-widget__dark-bg {
+  background-color: $black;
+  color: white;
+}

@@ -2,9 +2,18 @@ $gutter_width: 20px;
 $tile_width: 335px;
 
 .chapman-social-feed-widget {
-	@include outer-container;
-	padding: $base-spacing*4 0;
-	text-align: center;
+  padding: $one-column-widget-spacing 0;
+  text-align: center;
+	background-color: #eaeaea;
+
+	.outer-container {
+		@include outer-container();
+		width: 100%;
+
+		@include media($large-screen) {
+		  @include pad(0 $base-spacing);
+		}
+	}
 
 	.chapman-social-feed-title {
 		@include main_heading(100);
@@ -376,3 +385,13 @@ $tile_width: 335px;
 		text-shadow: 0 -1px 2px rgba(0, 0, 0, 0.2);
 	}
 }
+
+.chapman-social-feed-widget__medium-bg {
+	background-color: #cfcfcf;
+}
+
+.chapman-social-feed-widget__dark-bg {
+	background-color: $black;
+	color: white;
+}
+

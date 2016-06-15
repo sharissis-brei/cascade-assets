@@ -39,6 +39,8 @@
 
 /* One Column Variation */
 .messaging-widget__1-column {
+	background-color: #eaeaea;
+	
 	.text-column {
 		text-align: center;
 	}
@@ -88,6 +90,7 @@
 
 /* Two Column Variation */
 .messaging-widget__2-column {
+	background-color: #eaeaea;
 	/* All Variations */
 	.media-column {
 		white-space: nowrap;
@@ -206,7 +209,7 @@
 
 /* Dark bg Variation */
 .messaging-widget__dark-bg {
-	background-color: $color-dark-gray;
+	background-color: $black;
 	.title, .category, .body { color: white; }
 }
 
