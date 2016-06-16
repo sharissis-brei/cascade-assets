@@ -1,4 +1,5 @@
 .chapman-events-feed-widget {
+  background-color: #eaeaea;
   padding: $one-column-widget-spacing 0;
   text-align: center;
 
@@ -20,10 +21,6 @@
     margin-bottom: $base-spacing*3;
   }
 
-  .featured-column {
-    margin-bottom: 12px;
-  }
-
   @include media($medium-screen) {
     .section-message {
       margin-bottom: 0;
@@ -35,6 +32,12 @@
     .feed-column {
       float: right;
       width: 40%;
+    }
+
+    .featured-column {
+      float: none;
+      width: 100%;
+      margin-bottom: 50px;
     }
 
     .actions {
@@ -231,6 +234,31 @@ $cef_body-font: "proxima-nova-soft", "Helvetica Neue", "Microsoft Sans Serif", s
   clear: both;
 }
 
+/* Featured Variation */
+.chapman-event-card.featured {
+  .primary-column {
+    .title, .time {
+      font-size:   18px;
+      line-height: 20px;
+    }
+
+    .subtitle {
+      font-size:   14px;
+      line-height: 16px;
+    }
+
+    .date {
+      line-height: 12px;
+    }
+  }
+
+  .icons {
+    position: relative;
+    text-align: center;
+    padding: 12px 0 0 0;
+    img { box-shadow: 1px 1px 10px #eaeaea; }
+  }
+}
 
 /* Featured Event Styles */
 
