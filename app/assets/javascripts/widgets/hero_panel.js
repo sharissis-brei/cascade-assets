@@ -8,8 +8,6 @@ $(document).ready(function(){
     highlighted.addClass('selected').siblings('.selected').removeClass('selected');
   };
 
-  trigger.text($('.hero-select-list li').first().text());
-
   trigger.on('click', function() {
     trigger.toggleClass('active');
     list.slideToggle(200);
