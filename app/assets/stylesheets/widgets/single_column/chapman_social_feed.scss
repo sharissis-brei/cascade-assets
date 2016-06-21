@@ -41,11 +41,8 @@ $tile_width: 335px;
 
 			.social-link {
 				display: inline-block;
-				height: 22px;
-				width: 22px;
-				background-repeat: no-repeat;
-				background-position: center;
-				background-size: contain;
+				font-size: 24px;
+				color: $black;
 			}
 		}
 	}
@@ -393,5 +390,10 @@ $tile_width: 335px;
 .chapman-social-feed-widget__dark-bg {
 	background-color: $black;
 	color: white;
+
+
+  .chapman-social-feed-icons ul.social-icon-list .social-link {
+  	color: $bg-silver-gray;
+  }
 }
 

@@ -72,7 +72,7 @@
 		font-style: center;
 	}
 
-	ul.social-media-list {
+	ul.social-icon-list {
 		li {
 			display: inline-block;
 			margin: 0 5px;
@@ -82,11 +82,8 @@
 
 		.social-link {
 			display: inline-block;
-			height: 16px;
-			width: 16px;
-			background-repeat: no-repeat;
-			background-position: center;
-			background-size: contain;
+			color: $black;
+			font-size: 16px;
 		}
 	}
 }
@@ -101,5 +98,9 @@
 
   p.address, h3.footer-heading {
   	color: white;
+  }
+
+  ul.social-icon-list .social-link {
+  	color: $bg-silver-gray;
   }
 }
