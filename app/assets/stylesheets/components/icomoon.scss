@@ -9,32 +9,33 @@
     font-style: normal;
 }
 
-[class^="icon-"], [class*=" icon-"] {
-    /* use !important to prevent issues with browser extensions that change fonts */
-    font-family: 'icomoon' !important;
+/*
+Instead of a list of all class selectors,
+you can use the generic selector below, but it's slower:
+[class*="icon-"] {
+*/
+.icon-file-text:before,.icon-google-plus:before,.icon-facebook:before,.icon-instagram:before,.icon-twitter:before,.icon-youtube:before,.icon-linkedin2:before,.icon-pinterest:before,.icon-newspaper:before,.icon-arrows_up:before,.icon-lab3:before,.icon-hand:before,.icon-bed:before,.icon-bathroom:before,.icon-arrows_down:before,.icon-aid:before,.icon-accessibility2:before,.icon-ladder:before,.icon-books:before,.icon-graduation:before,.icon-book2:before,.icon-direction:before,.icon-library2:before,.icon-smiley:before,.icon-heart:before,.icon-bookmark:before,.icon-list:before,.icon-location:before,.icon-link:before,.icon-earth:before,.icon-envelop:before,.icon-pencil:before,.icon-users:before,.icon-address-book:before,.icon-tree:before,.icon-steps:before,.icon-office:before,.icon-star3:before,.icon-pencil-2:before,.icon-heart3:before,.icon-square:before,.icon-calculate2:before,.icon-search3:before,.icon-location-2:before,.icon-print:before,.icon-books-2:before,.icon-pin:before,.icon-calendar4:before,.icon-mic3:before,.icon-cu-window:before,.icon-home2:before,.icon-cu-monogram:before,.icon-graduation-2:before,.icon-california:before,.icon-food3:before,.icon-toilets_unisex:before,.icon-dumbbell:before,.icon-calculate:before,.icon-coin:before,.icon-bookmark2:before,.icon-checkmark3:before,.icon-pencil5:before,.icon-car:before,.icon-paw:before,.icon-camera:before,.icon-ladder-2:before,.icon-bus:before {
+    font-family: 'icomoon';
     speak: none;
     font-style: normal;
     font-weight: normal;
     font-variant: normal;
     text-transform: none;
     line-height: 1;
-
-    /* Better Font Rendering =========== */
     -webkit-font-smoothing: antialiased;
-    -moz-osx-font-smoothing: grayscale;
 }
 
-.icomoon {
-     font-family: "icomoon";
-     speak: none;
-     font-style: normal;
-     font-weight: normal;
-     font-variant: normal;
-     text-transform: none;
-     line-height: 1;
-/*Better font rendering ======*/
--webkit-font-smoothing: antialiased;
--moz-osx-font-smoothing: grayscale;
+/* Use the following CSS code if you want to use data attributes for inserting your icons */
+[data-icon]:before {
+    font-family: 'icomoon';
+    content: attr(data-icon);
+    speak: none;
+    font-weight: normal;
+    font-variant: normal;
+    text-transform: none;
+    line-height: 1;
+    -webkit-font-smoothing: antialiased;
+    -moz-osx-font-smoothing: grayscale;
 }
 
 .icon-file-text:before {
