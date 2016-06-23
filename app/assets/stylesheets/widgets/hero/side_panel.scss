@@ -1,5 +1,6 @@
 .side-panel-hero {
   position: relative;
+  background-color: #eaeaea;
 
   + div { // Whatever is under this hero area should have double padding to account for the overlap
     padding-top: $one-column-widget-spacing*2;
