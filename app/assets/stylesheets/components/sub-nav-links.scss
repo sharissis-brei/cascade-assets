@@ -24,6 +24,7 @@
     li {
       @include bp(m) {
         border-bottom: 1px solid darken($cu-light-grey, 8%);
+        margin: 0;
       }
     }
     @include bp(m) {
