@@ -58,6 +58,10 @@ $tile_width: 335px;
 		margin-top: $base-spacing*4;
 	}
 
+	.view_message {
+		box-sizing: content-box;
+	}
+
 	.column {
 		vertical-align: top;
 		display: inline-block;
