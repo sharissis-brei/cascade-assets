@@ -18,7 +18,7 @@
 // The clickable tabs
 .tabs-nav  li {
   // When small, make the tabs collapse.
-  background-color: #e3e2de;
+  background-color: #d8d8d8;
   font-size: 1.1em;
   padding: 0 17px 0 17px;
   line-height: 35px;
@@ -27,6 +27,7 @@
   bottom: -1px; // Cover up the border of the primary content
   position: relative;
   border-top: 2px solid transparent;  // Keep text in same spot as active element
+  border-bottom: 1px solid #c1c1c1;
   list-style-type: none;
   margin: 0;
 

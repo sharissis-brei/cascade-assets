@@ -73,6 +73,7 @@ $tab-content-border-color: #c1c1c1;
   bottom: -1px; // Cover up the border of the primary content
   position: relative;
   border-top: 2px solid transparent;  // Keep text in same spot as active element
+  border-bottom: 1px solid #c1c1c1;
   list-style-type: none;
   margin: 0;
 
