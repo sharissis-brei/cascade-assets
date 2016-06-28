@@ -39,9 +39,11 @@
 	        }
 				}
 				a {
-					border-top: 1px solid $cu-light-grey;
+					//border-top: 1px solid $cu-light-grey;
+					border-top: 1px solid #c1c1c1;
 	        font-size: 16px;
-	        color: $grey;
+	        //color: $grey;
+			color: #383838;
 	        padding: 7px 40px 7px 20px;
 	        position: relative;
 	        &:hover {
