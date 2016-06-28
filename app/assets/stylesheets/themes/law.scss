@@ -240,15 +240,12 @@
         filter: progid:DXImageTransform.Microsoft.gradient( startColorstr='#002f7c', endColorstr='#01235b',GradientType=1 );
     }
 
-    .newbutton a, .newbutton a:hover {
-        border: 1px solid #002f7c;
+    .newbutton a {
         background-color: #002f7c;
-        background-image: -webkit-gradient(linear, left top, left bottom, from(#002f7c), to(#022155));
-        background-image: -webkit-linear-gradient(top, #002f7c, #022155);
-        background-image: -moz-linear-gradient(top, #002f7c, #022155);
-        background-image: -o-linear-gradient(top, #002f7c, #022155);
-        background-image: linear-gradient(to bottom, #002f7c, #022155);
-        filter: progid:DXImageTransform.Microsoft.gradient( startColorstr='#002f7c', endColorstr='#022155',GradientType=1 );
+    }
+
+    .newbutton a:hover {
+        background-color: #00235c;
     }
 
     .midPhotoCallouts .photoCallout .caption,
