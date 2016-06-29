@@ -1,8 +1,7 @@
 .callout {
   @include clearfix;
-  background-color: #e2e1dc;
-  border-right: 1px solid #c0c0b8;
-  border-bottom: 1px solid #c0c0b8;
+  background-color: $white;
+  border: 1px solid #c1c1c1;
   margin: 0 0 $base-spacing 0;
   width: 195px;
   position: relative;

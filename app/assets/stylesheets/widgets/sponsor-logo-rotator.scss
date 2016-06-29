@@ -3,7 +3,7 @@
   padding: 13px 17px 6px;
   img {
   	max-width: 144px; 
-	padding-left: 28px;
+	  padding-left: 28px;
   }
   h2.header {
     color:#353430;
@@ -13,15 +13,15 @@
     width: 100%;
     text-align: center;
     display: block;
-    padding-top: 5px;
-	margin-top: 1px;
+    padding: 5px;
+	  margin-top: 1px;
     min-height: 15px;
   }
   .jcarousel-clip {
     overflow: hidden;
   }
   .carousel {
-    border: 1px solid #bcbcbc;
+    border: 0;
     background: $white;
     li {
       width: 153px;
@@ -30,7 +30,6 @@
     }
     .jcarousel-prev, .jcarousel-next {
       position: absolute;
-      background-color: #e2e1dc;
       color: $cu-red;
       width: 16px;
       height: 26px;
@@ -39,12 +38,12 @@
       cursor: pointer;
     }
     .jcarousel-prev {
-      bottom: -27px;
-      left: 0px;
+      bottom: -20px;
+      left: -15px;
     }
     .jcarousel-next {
-      bottom: -27px;
-      right: 0px;
+      bottom: -20px;
+      right: -15px;
     }
     .jcarousel-prev-disabled, .jcarousel-next-disabled {
       color: #bcbcbc;
