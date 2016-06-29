@@ -24,18 +24,22 @@
   .styleOne {
     background-color: #d8d8d8;
     border: 1px solid #c1c1c1;
-	color: #313131;
+	  color: #313131;
     vertical-align: top;
     .border {
-      background-color: #c1c1c1;
+    background-color: #c1c1c1;
+    }
+    a {
+      color: $cu-red;
+      font-weight: 800;
+      &:hover {
+        text-decoration: underline;
+      }
     }
   }
   .styleTwo {
-    background-color: $teal2-hover;
-    background: -ms-radial-gradient(circle, $teal2-hover, $teal2);
-    background: -webkit-radial-gradient(circle, $teal2-hover, $teal2);
-    background: -moz-radial-gradient(circle, $teal2-hover, $teal2);
-    background: -ms-radial-gradient(circle, $teal2-hover, $teal2);
+    background-color: #8a8a8a;
+    border: 1px solid #c1c1c1;
     color: $white;
     position: relative;
     overflow: hidden;
@@ -50,7 +54,7 @@
       }
     }
     .border {
-      background-color: #01999f;
+      background-color: #c1c1c1;
     }
   }
   .linkList {
