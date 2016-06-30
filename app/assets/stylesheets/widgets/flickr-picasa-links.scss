@@ -12,13 +12,15 @@
   ul {
     list-style: none;
     position: relative;
-    left: -2px;
     @extend .clearfix; // Added by SH
   }
   li {
     display: inline-block;
-    margin: 3px;
-    border: 5px solid $white;
+    margin: 8px;
+    border: 8px solid $white;
+    -webkit-box-shadow: 1px 1px 2px 1px rgba(0, 0, 0, 0.2);
+    -moz-box-shadow: 1px 1px 2px 1px rgba(0, 0, 0, 0.2);
+    box-shadow: 1px 1px 2px 1px rgba(0, 0, 0, 0.2);
     width: 84px;
     height: 77px;
     position: relative;
@@ -36,8 +38,7 @@
     }
   }
   .more-link {
-    color: #a4896a;
-    padding-right: 0.5em;
+    color: #98002e;
     font-weight: bold;
     .arrow {
       color: $cu-red;
