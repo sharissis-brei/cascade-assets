@@ -1,5 +1,5 @@
 .newbutton {
-  margin: 20px 0 20px 0;
+  margin: 0 0 20px 0;
   .rightColumn & {
   	@include bp(m) {
       margin-top: 0;

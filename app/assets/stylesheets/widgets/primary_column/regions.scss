@@ -7,7 +7,8 @@ div.four-col-float {
 
 /*Region*/
 .regions-widget {
-  padding: $primary-column-widget-spacing 0;
+  //padding: $primary-column-widget-spacing 0;
+  padding: 0 0 20px 0;
 
   .region {
     overflow: auto;
@@ -24,7 +25,7 @@ div.four-col-float {
     font-weight: 700;
     font-size: 18px;
     font-style: normal;
-    color: #353430;
+    color: #313131;
     padding: 10px 0 5px 0;
     margin: 0;
     clear: both;
@@ -32,8 +33,13 @@ div.four-col-float {
   }
 
   .region .featureImage {
-    border: 3px solid white;
-    box-shadow: 0 0 7px #434343;
+    //border: 3px solid white;
+    //box-shadow: 0 0 7px #434343;
+    background: #ffffff;
+    padding:10px;
+    -webkit-box-shadow: 1px 1px 2px 1px rgba(0, 0, 0, 0.2);
+    -moz-box-shadow: 1px 1px 2px 1px rgba(0, 0, 0, 0.2);
+    box-shadow: 1px 1px 2px 1px rgba(0, 0, 0, 0.2);
     float: left;
   }
 
@@ -42,7 +48,7 @@ div.four-col-float {
   }
 
   .region h3 a:hover {
-    color:#a82439;
+    color:$cu_red;
   }
 
   .region .content {
