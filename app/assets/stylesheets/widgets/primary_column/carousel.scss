@@ -52,10 +52,9 @@
   position: relative;
   width: 100%;
   z-index: 0;
-  box-shadow: 0 4px 4px -4px #111;
-  background-color: #111;
+  background-color: #2f2f2f;
   border-radius: 0 0 4px 4px;
-  color: #F9F9F9;
+  color: #ffffff;
   #big-sponsor &, #small-sponsor & {
     border: 1px solid #bcbcbc;
     background: $white;
@@ -169,7 +168,7 @@
     text-decoration: none;
     vertical-align: inherit;
     display: block;
-    background-color: #111;
+    background-color: #2f2f2f;
     border-radius: 0 0 4px 4px;
     bottom: 0;
     font-size: 14px;
