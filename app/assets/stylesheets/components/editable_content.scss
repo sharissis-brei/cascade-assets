@@ -11,18 +11,21 @@
   img {
     margin: 0 $base-spacing $base-spacing $base-spacing;
     padding: 10px;
-    background-color: #fff;
-    //border: 1px solid #c1c1c1;
+    background: #ffffff;
     -webkit-box-shadow: 1px 1px 2px 1px rgba(0, 0, 0, 0.2);
     -moz-box-shadow: 1px 1px 2px 1px rgba(0, 0, 0, 0.2);
     box-shadow: 1px 1px 2px 1px rgba(0, 0, 0, 0.2);
-
+    
     &[align="left"] {
       margin-left: 0;
     }
     &[align="right"] {
       margin-right: 0;
     }
+  }
+
+  .noborder {
+  border: 0;
   }
 
   .video {
