@@ -1,6 +1,6 @@
 .simple-form-widget {
 	background-color: #d8d8d8;
-  border: 1px solid #c1c1c1;
+  border: 1px solid #c1c1c1; 
 	color: #313131;
 	
   input[type="text"],
@@ -17,17 +17,21 @@
   label {
   	/*display: inline;*/
   	margin-left: 2px;
-	margin-top: 10px;
+	margin-top:10px;
+	margin-bottom:2px;
   }
   
   legend {
   	font-weight: bold;
-	margin-top: 10px;
+	margin-top:10px;
+	margin-bottom:10px;
   }
   	input[type=radio]+label,
 	input[type=checkbox]+label {
 		font-weight: normal;
 		display: inline;
+		margin-top:2px;
+		margin-botton:10px;
 	}
   
   h2 {

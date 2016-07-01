@@ -1,6 +1,8 @@
 <div class="simple-form-widget callout">
-        
-<script src="/_files/js/form_validation.js" type="text/javascript"></script>
+<h2> Request Information</h2>
+<div class="editableContent">Complete this form to stay informed about our programs, important deadlines, &amp; news. Please let us know if you have any questions.</div>
+                        
+<!--<script src="/_files/js/form_validation.js" type="text/javascript"></script>-->
 <script language="JavaScript" type="text/javascript">
 <!--
 function validate() {
@@ -31,20 +33,7 @@ function validate() {
     return false;
    }
     else {        
-        // get meta tag og:url and put value (current page url) into redirect_url for mailservice to send user back here;
-        //also populate form_url field from same og:url so can store in sql db (mult pages use same form):
-        var x=document.getElementsByTagName("meta");
-        for (var i=0;i<x.length;i++) {
-              att=x.item(i).attributes.getNamedItem("property");
-              var attr_list = x[i].attributes;
-              for (var j=0;j<attr_list.length;j++) { 
-                  if (attr_list[j].name == 'property' && attr_list[j].value == 'og:url') {
-                    formObj.form_url.value = x[i].content;
-                  }
-                  
-              }
-        }
-        alert("Submitted.");      
+              
         return true;
     }
 }
@@ -53,36 +42,36 @@ function validate() {
 
 <div class="short-form">
 <form action="https://webfarm.chapman.edu/mailservice/formmail.aspx" id="form1" method="post" name="form1" onsubmit="return validate(this);">
-  <input name="recipient" type="hidden" value="llm@chapman.edu;steiner@chapman.edu;yeung@chapman.edu;gwillis@chapman.edu;dfinley@chapman.edu">
+  <input name="recipient" type="hidden" value="mthomas@chapman.edu">
     <input name="sender" type="hidden" value="webmaster@chapman.edu">
-    <input name="subject" type="hidden" value="Law School LLM Program Inquiry from web">
+    <input name="subject" type="hidden" value="Sample form from github">
     <input name="mail_format" type="hidden" value="html">
-    <input name="table" type="hidden" value="law_llm_request_info">
+    <!--<input name="table" type="hidden" value="law_llm_request_info">-->
   <input name="redirect_url" type="hidden" value="http://www.chapman.edu/law/academic-programs/llm/request-information-thank-you.aspx"> 
   <!-- version of this form page we're on (block uses on multiple pages). Populated using JS from og:url meta field: -->
     <input name="form_url" type="hidden" value="">
   
-<div><h3>Request Information</h3></div>
-<div>Complete this form to stay informed about our programs, important deadlines &amp; news. Please let us know if you have any questions.</div>      <div>  
-              <input maxlength="50" name="requestor_name" placeholder="your name" size="20" type="text">
+     
+	<div>  
+              <input maxlength="50" name="requestor_name" placeholder="your name" size="20" type="text"/>
        </div>
        <div> 
-              <input id="email" maxlength="50" name="email" placeholder="your email" size="20" type="text">
+              <input id="email" maxlength="50" name="email" placeholder="your email" size="20" type="text"/>
        </div>
         <div> 
               
           <fieldset>
           <legend>Areas of interest:<br>(check all that apply)</legend>
               <input id="business_law" name="emphasis_area" type="checkbox" value="Business Law"><label for="business_law">Business Law</label>              
-              <br>            
+               <br/>       
               <input id="entertainment_law" name="emphasis_area" type="checkbox" value="Entertainment and Media Law"><label for="entertainment_law">Entertainment/Media Law</label>
-            <br>  
+            <br/> 
               <input id="international_law" name="emphasis_area" type="checkbox" value="International and Comparative Law"><label for="international_law">Intl. and Comparative Law</label>
-            <br>  
+            <br/> 
               <input id="double" name="emphasis_area" type="checkbox" value="LL.M.-MBA Double Masters"><label for="double">LL.M.-MBA Double Masters</label>
-            <br>  
+            <br/> 
               <input id="taxation" name="emphasis_area" type="checkbox" value="Taxation"><label for="taxation">Taxation</label>
-            <br>  
+        <br/> 
               <input id="trial_advocacy" name="emphasis_area" type="checkbox" value="Trial Advocacy (with Court Residency)"><label for="trial_advocacy">Trial Advocacy (with Court Residency)</label>
                
                   
@@ -100,6 +89,6 @@ function validate() {
     </div>
 </form>
 </div>
-<script language="JavaScript" type="text/javascript" src="/_files/js/form_validation.js"></script>
+
 
     </div>
