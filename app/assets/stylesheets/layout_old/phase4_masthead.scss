@@ -35,7 +35,8 @@
     }
     .bigMasthead .masthead-old {
         position:relative;
-        margin: 40px auto 0 auto;
+        //margin: 40px auto 0 auto;
+        margin: 0 auto 0 auto;
     }
 }
 
@@ -540,7 +541,7 @@
 .bigMasthead .brandedMastheadContainer{
     max-width: 1128px;
     max-height: 220px;
-    overflow: visible !important;
+    //overflow: visible !important;
     margin: 0 auto;
     position: relative;
     z-index:100;
@@ -559,7 +560,7 @@
 .bigMasthead .brandedMastheadContainer .masthead-new > img {
     max-height: 220px;
     width: 100%;
-    bottom:20px;
+    //bottom:20px;
 }
 @media only screen and (min-width: 1024px){
     .bigMasthead .brandedMastheadContainer .masthead-new > img {
