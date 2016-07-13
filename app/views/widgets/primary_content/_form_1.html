@@ -24,11 +24,12 @@
             <input name="subject" type="hidden" value="Test of form">
             <input name="mail_format" type="hidden" value="html">
             <input name="redirect_url" type="hidden" value="http://V_HTTP_HOST/index.aspx">
+            
             <h2>Student Information:</h2>
             <label for="student_name">Student NAme:</label>
             <input id="student_name" maxlength="50" name="student_name" size="30" type="text">
             <label for="email">* Email:</label>
-            <input id="email" maxlength="50" name="email" size="15" type="text">
+            <input aria-require="true" id="email" maxlength="50" name="email" size="15" type="text">
             
             <label for="Course_Term_Semester">Semester:</label>
             <select name="Course_Term_Semester" title="Semester">
