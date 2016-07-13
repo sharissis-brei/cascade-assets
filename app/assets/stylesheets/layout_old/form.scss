@@ -67,6 +67,7 @@
 // Allow the height of file controls to match text inputs
 .responsiveForm input[type="file"] {
   display: block;
+  margin-bottom: 10px;
 }
 
 // Makes range inputs behave like textual form controls
@@ -117,6 +118,7 @@
 .responsiveForm a.button{
   @include button;
   display: block;
+  margin-top: 10px;
 }
 
 .responsiveForm fieldset {
