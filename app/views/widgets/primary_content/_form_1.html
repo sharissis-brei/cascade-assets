@@ -3,19 +3,12 @@
     <!--
     function validate() {
             var formObj = document.form1;
-            if (formObj.Student_email.value.length == 0) {
-                alert("Student Email");
-                formObj.Student_email.focus();
+            if (formObj.email.value.length == 0) {
+                alert("Email");
+                formObj.email.focus();
                 return false;
-            } else if (checkEmail(formObj.Student_email) != true) {
-                formObj.Student_email.focus();
-                return false;
-            } else if (formObj.Instructor_email.value.length == 0) {
-                alert("Instructor Email");
-                formObj.Instructor_email.focus();
-                return false;
-            } else if (checkEmail(formObj.Instructor_email) != true) {
-                formObj.Instructor_email.focus();
+            } else if (checkEmail(formObj.email) != true) {
+                formObj.email.focus();
                 return false;
             } else {
                 alert("Successfully submitted.");
@@ -28,17 +21,16 @@
         <form action="http://webfarm.chapman.edu/mailservice/formmail.aspx" id="form1" method="post" name="form1" onsubmit="return validate(this);">
             <input name="recipient" type="hidden" value="mthomas@chapman.edu">
             <input name="sender" type="hidden" value="webmaster@chapman.edu">
-            <input name="subject" type="hidden" value="Request for AIC Designee for Academic Integrity Violation Meeting">
+            <input name="subject" type="hidden" value="Test of form">
             <input name="mail_format" type="hidden" value="html">
-            <input name="redirect_url" type="hidden" value="http://V_HTTP_HOST/academics/academic-integrity/violations.aspx">
-            <h2>Course Information:</h2>
-            <label for="Class_title">Class Title: </label>
-            <input id="Class_title" maxlength="50" name="Class_title" size="30" type="text">
-            <label for="Course_number">Course/Number:</label>
-            <input id="Course_number" maxlength="20" name="Course_number" size="15" type="text">
-            <label for="Course_section">Section:</label>
-            <input id="Course_section" maxlength="20" name="Course_section" size="15" type="text">
-            <label for="Course_Term_Semester">Term: Semester:</label>
+            <input name="redirect_url" type="hidden" value="http://V_HTTP_HOST/index.aspx">
+            <h2>Student Information:</h2>
+            <label for="student_name">Student NAme:</label>
+            <input id="student_name" maxlength="50" name="student_name" size="30" type="text">
+            <label for="email">* Email:</label>
+            <input id="email" maxlength="50" name="email" size="15" type="text">
+            
+            <label for="Course_Term_Semester">Semester:</label>
             <select name="Course_Term_Semester" title="Semester">
                 <option value="">(select one)</option>
                 <option value="Spring">Spring</option>
@@ -48,27 +40,23 @@
             </select>
             <label for="Course_Term_Year">Year:</label>
             <input id="Course_Term_Year" maxlength="4" name="Course_Term_Year" size="4" type="text">
-            <h2>Student Information:</h2>
-            <label for="Student_name">Student Name:</label>
-            <input id="Student_name" maxlength="50" name="Student_name" size="30" type="text">
-            <label for="Student_email">* Student's Chapman Email:</label>
-            <input aria-required="true" id="Student_email" maxlength="50" name="Student_email" size="30" type="text">
-            <label for="Student_id">Student ID#:</label>
-            <input id="Student_id" maxlength="8" name="Student_id" size="30" type="text">
-            <h2>Instructor Information:</h2>
-            <label for="Instructor_name">Instructor Name:</label>
-            <input id="Instructor_name" maxlength="50" name="Instructor_name" size="30" type="text">
-            <label for="Instructor_email">* Instructor's Chapman Email:</label>
-            <input aria-required="true" id="Instructor_email" maxlength="50" name="Instructor_email" size="30" type="text">
-            <label for="Instructor_phone">Phone:</label>
-            <input id="Instructor_phone" maxlength="50" name="Instructor_phone" size="30" type="text">
-            <h2>Scheduled Meeting with Student:</h2>
-            <label for="Meeting_date">Date:</label>
-            <input id="Meeting_date" maxlength="20" name="Meeting_date" size="30" type="text">
-            <label for="Meeting_time">Time:</label>
-            <input id="Meeting_time" maxlength="20" name="Meeting_time" size="30" type="text">
-            <label for="Meeting_location">Location:</label>
-            <input id="Meeting_location" maxlength="50" name="Meeting_location" size="30" type="text">
+            <fieldset>
+  <legend>Sample Radio button</legend>         
+  <input id="yes_orig" name="proposal_contains_original_research" type="radio" value="yes"/>
+  <label for="yes_orig">Yes</label>  
+  <input id="no_orig" name="proposal_contains_original_research" type="radio" value="no"/>
+  <label for="no_orig">No</label>
+</fieldset>
+            
+            <label for="proposal_abstract">Abstract (50 words or less):</label>
+<textarea name="proposal_abstract" id="proposal_abstract" cols="50" rows="5"></textarea>
+
+<label for="proposal_text">Proposal (upload document):</label>
+<input id="proposal_text" name="proposal_text" type="file"/>
+
+<label for="proposal_text2">Outline (upload document:</label>
+<input id="proposal_text2" name="proposal_text2" type="file"/>
+
             <input name="submit" type="submit" value="Submit">
             <!-- The following code is invisible to people and
      contains some trap text fields-->
