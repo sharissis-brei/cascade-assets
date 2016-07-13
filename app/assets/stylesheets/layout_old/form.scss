@@ -1,3 +1,8 @@
+.form-widget {
+  /*moved to responsiveForm class: border: 1px solid #c1c1c1;*/
+  margin: 0 0 20px 0;
+}
+
 /* New Form Styles */
 
   .text-input {
@@ -54,6 +59,7 @@
     background-color: #f5f5f5;
     color: #313131;
     padding: 25px 45px 45px; 
+	border: 1px solid #c1c1c1;
 }
 
 /************ these responsiveForm used in surrounding DIV for all full page forms ************/
