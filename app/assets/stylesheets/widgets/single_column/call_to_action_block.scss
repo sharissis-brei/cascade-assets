@@ -8,10 +8,6 @@ $call-to-action-block-screen-height: 150px;
   .outer-container {
     @include outer-container();
     width: 100%;
-
-    @include media($large-screen) {
-      @include pad(0 $base-spacing);
-    }
   }
 
   .box {

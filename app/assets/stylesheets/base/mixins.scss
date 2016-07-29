@@ -79,7 +79,7 @@
 
 //Headings
 @mixin main_heading($weight: 800) {
-	margin-top: 16px;
+	margin-top: 12px;
 	font-family: "proxima-nova", "Helvetica Neue", "Microsoft Sans Serif", sans-serif;
 	font-size: 24px;
 	@if type-of($weight) == string {
@@ -139,7 +139,7 @@
 	margin-bottom: 0px;
 	font-family: "proxima-nova", "Helvetica Neue", "Microsoft Sans Serif", sans-serif;
 	font-size: 20px;
-	font-weight: normal;
+	font-weight: 300;
 	line-height: 20px;
 }
 

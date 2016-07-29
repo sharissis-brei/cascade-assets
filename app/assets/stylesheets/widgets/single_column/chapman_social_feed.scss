@@ -16,7 +16,7 @@ $tile_width: 335px;
 	}
 
 	.chapman-social-feed-title {
-		@include main_heading(100);
+		@include main_heading(800);
 		padding: 0 $base-spacing*2;
 		margin-top: 0;
 		text-transform: none;
