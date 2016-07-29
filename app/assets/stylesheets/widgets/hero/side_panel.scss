@@ -11,7 +11,7 @@
   }
 
   .cd-hero, .background-image, .background-video-wrapper {
-    padding-bottom: $one-column-widget-spacing;
+    padding-bottom: $one-column-widget-spacing/2;
     pointer-events: none;
     background-color: #eaeaea;
 
@@ -33,7 +33,7 @@
     list-style-type: none;
 
     li {
-      padding: $one-column-widget-spacing/2 0;
+      padding: $one-column-widget-spacing/4 0;
       max-width: 100%;
       margin-bottom: 0;
       background-color: #eaeaea;
@@ -44,44 +44,51 @@
   }
 
   .cd-slider-nav {
-    height: 17%;
+    height: 13%;
     background-color: transparent;
-    text-align: right;
+    text-align: left;
     pointer-events: all;
-    padding-right: 32px;
+    padding-left: 16px;
 
     .cd-marker {
       background-color: transparent;
       color: #E5E5E5;
+      box-shadow: none;
     }
 
     a {
-      box-shadow: inset 0 2px 0 currentColor;
-      padding-top: 10px;
-      font-size: 10px;
-      padding: 0 5px;
-      font-weight: normal;
-      text-transform: uppercase;
-      max-width: 100px;
-      text-align: left;
+      outline: none;
+      display: inline-block;
+      font-size: 0px;
+      height: 15px;
+      width: 15px;
+      line-height: 10px;
+      background: white;
+      color: white;
+      border-radius: 15px;
+      text-indent: -9999px;
+      margin-right: 12px;
+      box-shadow: 0 0 2px $black;
+      padding-top: 0;
       &:hover { background-color: transparent; }
     }
 
     li {
       width: inherit;
-      a {
-        color: $black;
-      }
       &.selected a {
-        margin: 0 10px;
-        box-shadow: inset 0 2px 0 $red;
-        color: $red;
+        background: $black;
+        color: $black;
+        opacity: 1;
+        box-shadow: 0 0 2px #F0EFE7;
+        &:hover { background-color: $black }
       }
     }
 
     @include media($medium-screen) {
       height: 3%;
       padding-right: 64px;
+      padding-left: 0;
+      text-align: right;
       a {
         font-size: 12px;
         padding: 0 10px;
