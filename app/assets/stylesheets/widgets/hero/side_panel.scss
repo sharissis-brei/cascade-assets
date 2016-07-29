@@ -119,7 +119,7 @@
   .hero-content {
     @include outer-container;
     position: relative;
-    padding: $one-column-widget-spacing/2 0 $one-column-widget-spacing;
+    padding: $one-column-widget-spacing/2 $primary-column-widget-spacing;
 
     @include media($medium-screen) {
       padding: $one-column-widget-spacing/2 $base-spacing*3;
@@ -133,11 +133,10 @@
 
   // The side panel
   .hero-content-panel {
-    padding: $one-column-widget-spacing;
 
     @include media($large-screen) {
       @include span-columns(6);
-      margin-bottom: -$one-column-widget-spacing*2;
+      margin-bottom: $one-column-widget-spacing*2;
       pointer-events: all;
     }
 
@@ -158,13 +157,13 @@
     }
     
     .calls-to-action { 
-      margin-top: $base-spacing;
+      margin-top: $base-spacing/2;
       a {
         @include button($blue);
         width: 100%;
-        margin-bottom: $base-spacing;
+        margin-bottom: $base-spacing/2;
         text-align: center;
-        line-height: 36px;
+        line-height: 30px;
         border-radius: 0px;
       }
     }
@@ -175,7 +174,7 @@
 
       .select-arrow {
         position: absolute;
-        top: 21px;
+        top: 20px;
         right: 18px;
         display: block;
         background: transparent;
@@ -189,7 +188,7 @@
       .hero-select-button {
         width: 100%;
         font-size: 16px;
-        line-height: 36px;
+        line-height: 30px;
         outline: none;
         padding: $base-spacing/2 $base-spacing;
         background-color: transparent;
@@ -197,7 +196,7 @@
         margin: 0;
         height: auto;
         border: 2px solid #000000;
-        border-radius: 24px;
+        border-radius: 3px;
         background-position: center right;
         background-repeat: no-repeat;
       }
@@ -227,7 +226,7 @@
 
   // The featured article
   article {
-    color: white;
+    color: $black;
     pointer-events: all;
 
     @include media($medium-screen) {
@@ -241,6 +240,7 @@
       margin-bottom: 2%; 
       border-radius: 3px;
       position: absolute;
+      color: white;
     }
 
     img, video {
@@ -251,13 +251,17 @@
     }
 
     .content {
-      padding: $base-spacing*2 $base-spacing*3;
+      padding: $base-spacing*2 $base-spacing;
       z-index: 667;
+
+      @include media($large-screen) {
+        padding: $base-spacing*2 $base-spacing*3;
+      }
     }
 
     .category {
       @include content_label();
-      color: white;
+      color: $black;
     }
     
     .title {
@@ -270,11 +274,11 @@
     }
 
     .body {
-      color: white;
+      // color: $black;
     }
 
     a {
-      color: white;
+      color: $black;
       text-decoration: underline;
       font-weight: bold;
     }
@@ -284,5 +288,5 @@
 
 // Override the default background color when no theme is applied
 #theme .side-panel-hero .theme-bg-color-alpha { 
-  background-color: rgba(0,0,0,0.95); 
+  background-color: transparent;
 }
