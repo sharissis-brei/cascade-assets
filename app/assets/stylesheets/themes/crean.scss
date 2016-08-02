@@ -3,13 +3,7 @@
   @include theme-color-classes($crean-primary);
   .smallMasthead .masthead, .smallMasthead .masthead-old, .bigMasthead .mastheadPlaceholder, .bigMasthead .masthead, .bigMasthead .masthead-old, .nameBar, .rightColumn .styleTwo {
   	background: $crean-primary; /* Old browsers */
-  	background: -moz-radial-gradient(center, ellipse cover,  $crean-primary 0%, $crean-secondary 100%); /* FF3.6+ */
-  	background: -webkit-gradient(radial, center center, 0px, center center, 100%, color-stop(0%,$crean-primary), color-stop(100%,$crean-secondary)); /* Chrome,Safari4+ */
-  	background: -webkit-radial-gradient(center, ellipse cover,  $crean-primary 0%,$crean-secondary 100%); /* Chrome10+,Safari5.1+ */
-  	background: -o-radial-gradient(center, ellipse cover,  $crean-primary 0%,$crean-secondary 100%); /* Opera 12+ */
-  	background: -ms-radial-gradient(center, ellipse cover,  $crean-primary 0%,$crean-secondary 100%); /* IE10+ */
-  	background: radial-gradient(center, ellipse cover,  $crean-primary 0%,$crean-secondary 100%); /* W3C */
-  	filter: progid:DXImageTransform.Microsoft.gradient( startColorstr='#{$crean-primary}', endColorstr='#{$crean-secondary}',GradientType=1 ); /* IE6-9 fallback on horizontal gradient */
+  	
   }
 	
     .rightColumn .styleTwo .border { 
@@ -48,21 +42,11 @@
     .newbutton a {
     border: 1px solid $crean-primary;
     background-color: $crean-primary;
-    background-image: -webkit-gradient(linear, left top, left bottom, from($crean-primary), to($crean-secondary));
-    background-image: -webkit-linear-gradient(top, $crean-primary, $crean-secondary);
-    background-image: -moz-linear-gradient(top, $crean-primary, $crean-secondary);
-    background-image: -o-linear-gradient(top, $crean-primary, $crean-secondary);
-    background-image: linear-gradient(to bottom, $crean-primary, $crean-secondary);
-    filter: progid:DXImageTransform.Microsoft.gradient( startColorstr='#{$crean-primary}', endColorstr='#{$crean-secondary}',GradientType=1 );
+    
     &:hover {
       border: 1px solid $crean-primary;
       background-color: $crean-primary;
-      background-image: -webkit-gradient(linear, left top, left bottom, from($crean-primary), to($crean-secondary));
-      background-image: -webkit-linear-gradient(top, $crean-primary, $crean-secondary);
-      background-image: -moz-linear-gradient(top, $crean-primary, $crean-secondary);
-      background-image: -o-linear-gradient(top, $crean-primary, $crean-secondary);
-      background-image: linear-gradient(to bottom, $crean-primary, $crean-secondary);
-      filter: progid:DXImageTransform.Microsoft.gradient( startColorstr='#{$crean-primary}', endColorstr='#{$crean-secondary}',GradientType=1 );
+    
     }
   }
 
