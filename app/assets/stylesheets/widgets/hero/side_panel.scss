@@ -38,7 +38,7 @@
       margin-bottom: 0;
       background-color: #eaeaea;
       @include media($medium-screen) {
-        padding: $one-column-widget-spacing/2 $primary-column-widget-spacing*3;
+        // padding: $one-column-widget-spacing/2 $primary-column-widget-spacing*3;
       }
     }
   }
@@ -85,25 +85,18 @@
     }
 
     @include media($medium-screen) {
-      height: 3%;
-      padding-right: 64px;
-      padding-left: 0;
-      text-align: right;
-      a {
-        font-size: 12px;
-        padding: 0 10px;
-        max-width: none;
-        text-align: right;
-      }
+      height: 7%;
+      padding-left: 32px;
+      padding-right: 0;
     }
 
     @include media($large-screen){
       text-align: center;
       @include shift(4);
-      a {
-        font-size: 14px;
-        padding: 0 15px;
-      }
+      // a {
+      //   font-size: 14px;
+      //   padding: 0 15px;
+      // }
     }
   }
 
@@ -140,9 +133,12 @@
 
   // The side panel
   .hero-content-panel {
-
+    
     @include media($large-screen) {
       @include span-columns(6);
+      padding: $one-column-widget-spacing $one-column-widget-spacing/2;
+      box-shadow: 0px 0px 6px 2px rgba(0, 0, 0, 0.2);
+      background-color: white;
       margin-bottom: $one-column-widget-spacing*2;
       pointer-events: all;
     }
@@ -258,7 +254,7 @@
     }
 
     .content {
-      padding: $base-spacing*2 $base-spacing;
+      padding: $base-spacing*2;
       z-index: 667;
 
       @include media($large-screen) {
@@ -269,6 +265,10 @@
     .category {
       @include content_label();
       color: $black;
+
+      @include media($large-screen) {
+        color: white;
+      }
     }
     
     .title {
@@ -280,14 +280,14 @@
       font-weight: 200;
     }
 
-    .body {
-      // color: $black;
-    }
-
     a {
       color: $black;
       text-decoration: underline;
       font-weight: bold;
+
+      @include media($large-screen) {
+        color: white;
+      }
     }
   } 
 }
@@ -296,4 +296,8 @@
 // Override the default background color when no theme is applied
 #theme .side-panel-hero .theme-bg-color-alpha { 
   background-color: transparent;
+
+  @include media($large-screen) {
+    background-color: rgba(0,0,0,0.95); 
+  }
 }
