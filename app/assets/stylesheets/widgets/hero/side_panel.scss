@@ -160,7 +160,9 @@
     }
     
     .calls-to-action { 
-      margin-top: $base-spacing/2;
+      margin-top: $base-spacing*3;
+      text-align: center;
+
       a {
         @include button($blue);
         width: 100%;
@@ -168,12 +170,34 @@
         text-align: center;
         line-height: 30px;
         border-radius: 0px;
+
+        @include media($medium-screen) {
+          width: 45%;
+          margin: 8px;
+        }
+
+        @include media($large-screen) {
+          width: 100%;
+          margin: 8px 0px;
+        }
       }
     }
 
     .program-select {
-      margin-top: $base-spacing*3;
+      margin-top: $base-spacing/2;
       position: relative;
+
+      @include media($medium-screen) {
+        width: 50%;
+        margin-top: $base-spacing*3;
+        margin-left: auto;
+        margin-right: auto;
+      }
+      @include media($large-screen) {
+        width: 100%;
+        margin: 0;
+        margin-top: $base-spacing/2;
+      }
 
       .select-arrow {
         position: absolute;
