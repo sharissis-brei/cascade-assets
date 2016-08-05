@@ -1,0 +1,56 @@
+
+#theme.communication {
+  @include theme-color-classes($communication-primary);
+  
+  .smallMasthead .masthead, .smallMasthead .masthead-old, .bigMasthead .mastheadPlaceholder, .bigMasthead .masthead, .bigMasthead .masthead-old, .nameBar, .rightColumn .styleTwo {
+  	background: $communication-primary; /* Old browsers */
+  }
+
+  .rightColumn .styleTwo .border {
+    background-color: #b47500;
+  }
+
+  .rightColumn .styleTwo a {
+    color: #ffffff;
+  }secp
+
+  .nameBarButtons li a {
+    color: $communication-primary;
+  }
+
+  #social_follow_us {
+    .banner {
+      background-image: image-url('default_follow_us.png');
+    }
+    li span {
+      &.hover_state, &.inactive_state {
+        background-image: image-url('default_icons.png');
+      }
+    }
+  }
+
+  .rounded-slider .info-container .blue {
+    background-color: $communication-primary;
+  }
+
+  .newbutton a {
+    border: 1px solid $communication-primary;
+    background-color: $communication-primary;
+    
+    &:hover {
+      border: 1px solid $communication-primary;
+      background-color: $communication-primary;
+    
+    }
+  }
+
+  .midPhotoCallouts .photoCallout .caption {
+    background-color: $communication-primary;
+  }
+
+  .photoCallouts {
+    .caption, .rollover {
+      background-color: $communication-primary;
+    }
+  }
+}
