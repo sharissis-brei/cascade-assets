@@ -1,6 +1,6 @@
 .bigMasthead {
   .masthead-new {
-    max-width: 1128px;
+    max-width: 1130px;
     max-height: none;
     background: transparent;
     // position: relative;
@@ -240,7 +240,7 @@
     }
   }
   .brandedMastheadContainer {
-    max-width: 1128px;
+    max-width: 1130px;
     max-height: 220px;
     //overflow: visible !important;
     margin: 0 auto;
@@ -262,7 +262,7 @@
         //bottom: 20px;
         @include bp(l) {
           max-height: 220px;
-          width: 1128px;
+          width: 1130px;
         }
       }
     }
