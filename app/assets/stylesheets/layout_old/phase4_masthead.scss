@@ -87,7 +87,7 @@
  */
 .miniRotatorContainer {
     width: 266px;
-    max-width: 1128px;
+    max-width: 1130px;
     margin: 0 auto;
     overflow: hidden;
     position: relative;
@@ -317,7 +317,7 @@
     ================================================================================
  */
 .bigMasthead .masthead-new{
-    max-width: 1128px;
+    max-width: 1130px;
     max-height: none;
     background: transparent;
     /*position: relative;*/
@@ -480,7 +480,7 @@
     =========================================================
  */
 .rounded-slider .rotatorContainer{
-    max-width: 1128px;
+    max-width: 1130px;
     max-height: 440px;
     background:#353430;
 }
@@ -539,7 +539,7 @@
 }
 
 .bigMasthead .brandedMastheadContainer{
-    max-width: 1128px;
+    max-width: 1130px;
     max-height: 220px;
     //overflow: visible !important;
     margin: 0 auto;
@@ -565,6 +565,6 @@
 @media only screen and (min-width: 1024px){
     .bigMasthead .brandedMastheadContainer .masthead-new > img {
         max-height: 220px;
-        width: 1128px;
+        width: 1130px;
     }
 }
