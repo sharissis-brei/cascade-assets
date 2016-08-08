@@ -6,6 +6,8 @@ jQuery(document).ready(function($){
 		var primaryNav = $('.cd-primary-nav'),
 			sliderNav = $('.cd-slider-nav'),
 			navigationMarker = $('.cd-marker'),
+			prevSlideButton = $('.cd-arrow-left'),
+			nextSlideButton = $('.cd-arrow-right'),
 			slidesNumber = slidesWrapper.children('li').length,
 			visibleSlidePosition = 0,
 			autoPlayId,
@@ -23,6 +25,24 @@ jQuery(document).ready(function($){
 		});
 		
 		//change visible slide
+		prevSlideButton.on('click', function(event){
+			event.preventDefault();
+			var activePosition = slidesWrapper.find('li.selected').index();
+			var selectedPosition = (activePosition - 1) < 0 ? slidesNumber - 1 : activePosition - 1;
+
+			prevSlide(slidesWrapper.find('.selected'), slidesWrapper, sliderNav, selectedPosition);
+			resetAutoplay(selectedPosition);
+		});
+
+		nextSlideButton.on('click', function(event){
+			event.preventDefault();
+			var activePosition = slidesWrapper.find('li.selected').index();
+			var selectedPosition = (activePosition + 1) > slidesNumber ? 0 : activePosition + 1;
+
+			nextSlide(slidesWrapper.find('.selected'), slidesWrapper, sliderNav, selectedPosition);
+			resetAutoplay(selectedPosition);
+		});
+
 		sliderNav.on('click', 'li', function(event){
 			event.preventDefault();
 			var selectedItem = $(this);
@@ -37,15 +57,28 @@ jQuery(document).ready(function($){
 					prevSlide(slidesWrapper.find('.selected'), slidesWrapper, sliderNav, selectedPosition);
 				}
 
-				//this is used for the autoplay
-				visibleSlidePosition = selectedPosition;
+				resetAutoplay(selectedPosition);
 
-				updateSliderNavigation(sliderNav, selectedPosition);
-				updateNavigationMarker(navigationMarker, selectedPosition+1);
-				//reset autoplay
-				setAutoplay(slidesWrapper, slidesNumber, autoPlayDelay);
+				// //this is used for the autoplay
+				// visibleSlidePosition = selectedPosition;
+
+				// updateSliderNavigation(sliderNav, selectedPosition);
+				// updateNavigationMarker(navigationMarker, selectedPosition+1);
+				// //reset autoplay
+				// setAutoplay(slidesWrapper, slidesNumber, autoPlayDelay);
 			}
 		});
+	}
+
+	function resetAutoplay(n){
+		//this is used for the autoplay
+		visibleSlidePosition = n;
+
+		updateSliderNavigation(sliderNav, n);
+		updateNavigationMarker(navigationMarker, n+1);
+
+		//reset autoplay
+		setAutoplay(slidesWrapper, slidesNumber, autoPlayDelay);
 	}
 
 	function nextSlide(visibleSlide, container, pagination, n){
