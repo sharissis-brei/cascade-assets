@@ -52,6 +52,10 @@
 			@include pad(0 default);
 		}
 
+		@include media($large-screen) {
+			padding: 0;
+		}
+
 		@include media(min-width 800px) {
 			@include pad(0 default);
 		}
@@ -59,7 +63,7 @@
 
 	p {
 		@include paragraph();
-		margin: 24px 0 0!important;
+		margin: 0;
 	}
 
 	a.more-link {
