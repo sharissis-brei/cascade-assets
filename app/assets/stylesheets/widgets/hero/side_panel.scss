@@ -28,35 +28,38 @@
     }
   }
 
-  .cd-arrow-container {
+
+
+  .cd-arrow-left, .cd-arrow-right {
     position: absolute;
-    top: 50%;
-    width: 100%;
+    top: 0;
+    bottom: 0;
     height: 50px;
-    border: 2px solid red;
+    width: 50px;
+    text-align:center;
+    margin: auto;
     z-index: 668;
+    pointer-events:all;
+    background-color: white;
+    opacity: .6;
 
-    .cd-arrow-left, .cd-arrow-right {
-      height: 100%;
-      width: 50px;
-      position: absolute;
-      background-color: white;
-      pointer-events:all;
-
-      &:hover{
-        background-color: $black;
-      }
+    a {
+      display: inline-block;
+      height: 50px;
+      font-size:80px;
+      line-height: 40px;
+      color: $black;
     }
+  }
 
-    .cd-arrow-left { left: 0; }
-    .cd-arrow-right { right: 0; }
-    
-    @include media($medium-screen) {
-      .cd-arrow-left, .cd-arrow-right { display: none; }
-      &:hover{
-        .cd-arrow-left, .cd-arrow-right { display: block; }
-     }
-    }
+  .cd-arrow-left { left: 0; }
+  .cd-arrow-right { right: 0; }
+  
+  @include media($medium-screen) {
+    .cd-arrow-left, .cd-arrow-right { display: none; }
+    &:hover{
+      .cd-arrow-left, .cd-arrow-right { display: block; }
+   }
   }
   
 
