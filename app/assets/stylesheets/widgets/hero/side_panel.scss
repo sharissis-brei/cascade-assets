@@ -28,7 +28,14 @@
     }
   }
 
-
+  .cd-hero {
+    @include media($medium-screen) {
+      .cd-arrow-left, .cd-arrow-right { display: none; }
+      &:hover{
+        .cd-arrow-left, .cd-arrow-right { display: block; }
+     }
+    }
+  }
 
   .cd-arrow-left, .cd-arrow-right {
     position: absolute;
@@ -41,11 +48,12 @@
     z-index: 668;
     pointer-events:all;
     background-color: white;
-    opacity: .6;
+    opacity: .8;
 
     a {
       display: inline-block;
       height: 50px;
+      width: 50px;
       font-size:80px;
       line-height: 40px;
       color: $black;
@@ -54,14 +62,6 @@
 
   .cd-arrow-left { left: 0; }
   .cd-arrow-right { right: 0; }
-  
-  @include media($medium-screen) {
-    .cd-arrow-left, .cd-arrow-right { display: none; }
-    &:hover{
-      .cd-arrow-left, .cd-arrow-right { display: block; }
-   }
-  }
-  
 
   .cd-slide-container {
     height: 95%;
@@ -145,7 +145,7 @@
     }
 
     @include media($large-screen){
-      height: 4%;
+      height: 9%;
       text-align: center;
       @include shift(6);
     }
