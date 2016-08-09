@@ -7,7 +7,6 @@
 		width: 100%;
 
 		@include media($medium-screen) {
-			display: table;
 			@include pad( $base-spacing $base-spacing*2);
 		}
 
@@ -16,71 +15,53 @@
 		}
 	}
 
-	.footer-section {
-		background-color: transparent;
-		text-align: center;
+	.text-section {
+		margin-bottom: 16px;
 
+		p {
+			margin-bottom: 0;
+			text-align: center;
+			font-size: 20px;
+			line-height: 20px;
+			text-transform: uppercase;
+		}
 
-		&.text {
-			p {
-				font-size: 22px;
-				margin-bottom: 12px;
+		@include media($medium-screen) {
+			margin-bottom: 10px;
+		}
+	}
+
+	.button-section {
+		.button-container {
+			width: 100%;
+			text-align: center;
+		}
+
+		.button-wrapper {
+			margin-top:8px;
+		}
+
+		.footer-button {
+			text-align: center;
+			width: 100%;
+
+			&.gray {
+				@include button($gray-smoke);			
+			}
+
+			&.red {
+				@include button($red);
 			}
 		}
 
 		@include media($medium-screen) {
-			display: table-cell;
-			vertical-align: middle;
-			text-align: left;
-
-			&.text {
-				width: 20%;
-				p {
-					margin-bottom: 0;
-				}
+			.button-container {
+				display: table;
 			}
 
-			&.buttons {
-				width: 90%;
-				text-align: right;
-			}
-		}
-		
-
-		&.buttons {
 			.button-wrapper {
-				margin-top: 8px;
-			}
-
-			.buttons-container {
-				margin-top:32px;
-			}
-
-			.footer-button {
-				text-align: center;
-				width: 100%;
-
-				&.gray {
-					@include button($gray-smoke);			
-				}
-
-				&.red {
-					@include button($red);
-				}
-			}
-
-			@include media($medium-screen) {
-				.buttons-container {
-					display: table;
-					width: 100%;
-					margin: 0;
-				}
-
-				.button-wrapper {
-					display: table-cell;
-					margin: 0;
-					padding-left: 12px;
-				}
+				display: table-cell;
+				padding: 1%;
 			}
 		}
 	}
