@@ -6,7 +6,6 @@
 		cu_hero_area.initialize();
 		cu_stories_area.initialize();
 		cu_admission_area.initialize();
-		cu_news_events_nav_area.initialize();
 		smc_cta_tracker.initialize();
 
 	});
@@ -1027,42 +1026,6 @@
 		}
 
 	} // end cu_admission_area
-
-	var cu_news_events_nav_area = {
-
-		initialize : function() {
-
-			$(".newsEventsNav li").on("click", function() {
-	        var $this = $(this),
-	            i = $this.index();
-	            
-	        // Begin Analytics Event Tracking
-	        if (! $this.hasClass('active')) {
-	            var keyword = 'unknown';
-	            if (i == 0) keyword = 'Featured';
-	            if (i == 1) keyword = 'News';
-	            if (i == 2) keyword = 'Events';
-	            _gaq.push(['_trackEvent', 'Home Page Tab Interaction', 'Select Tab', keyword]);
-	        }
-	        // End Analytics Event Tracking
-
-	        $this.addClass("active").siblings().removeClass("active");
-	        $(".newsEventsContent li:eq(" + i + ")").addClass("active").siblings().removeClass("active");
-	    });
-
-	    // Keep the slide arrows on the edge of the browser window
-	    $(".flex-direction-nav li .flex-next").offset({ left: $("#container").outerWidth() - 43 });
-	    $(".flex-direction-nav li .flex-prev").offset({ left: $("#container").offset().left });
-
-	    $(window).bind("resize", function ()
-	    {
-	        $(".flex-direction-nav li a.flex-next").offset({ left: $("#container").outerWidth() - 43 });
-	        $(".flex-direction-nav li a.flex-prev").offset({ left: $("#container").offset().left });
-	    });
-
-		}
-
-	}
 
 
 	/***************************************************
