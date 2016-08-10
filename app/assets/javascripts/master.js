@@ -21,7 +21,7 @@
 //= require cascade/carousel
 //= require cascade/collapsed-nav
 //= require cascade/console-log
-//= require cascade/home
+// don't require cascade/home
 //= require cascade/ie7
 //= require cascade/main
 //= require cascade/news-events
