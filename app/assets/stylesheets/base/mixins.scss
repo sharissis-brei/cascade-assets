@@ -79,15 +79,26 @@
 
 //Headings
 @mixin main_heading($weight: 800) {
-	margin-top: 16px;
 	font-family: "proxima-nova", "Helvetica Neue", "Microsoft Sans Serif", sans-serif;
-	font-size: 40px;
+	font-size: 22px;
+	line-height: 26px;
+	margin-top: 12px;
+	margin-bottom: 24px;
+
 	@if type-of($weight) == string {
 		font-weight: unquote($weight);
 	} @else {
 		font-weight: $weight;
 	}
-	line-height: 48px;
+
+	@include media($medium-screen) {
+		font-size: 28px;
+		line-height: 36px;
+	}
+
+	@include media($large-screen) {
+		font-size: 32px;
+	}
 }
 
 @mixin sub_heading($weight: 800) {
@@ -103,14 +114,24 @@
 
 @mixin section_heading($weight: 800) {
 	font-family: "proxima-nova", "Helvetica Neue", "Microsoft Sans Serif", sans-serif;
-	font-size: 24px;
+	font-size: 22px;
+	line-height: 26px;
+
 	@if type-of($weight) == string {
 		font-weight: unquote($weight);
 	} @else {
 		font-weight: $weight;
 	}
-	line-height: 32px;
-	letter-spacing: .8;
+
+	@include media($medium-screen) {
+		font-size: 16px;
+		line-height: 24px;
+	}
+
+	@include media($large-screen) {
+		font-size: 22px;
+		line-height: 32px;
+	}
 }
 
 @mixin sub_section_heading($weight: 800) {
@@ -136,12 +157,20 @@
 }
 
 @mixin content_label() {
+	margin-bottom: 0px;
 	font-family: "proxima-nova", "Helvetica Neue", "Microsoft Sans Serif", sans-serif;
-	font-size: 10px;
-	font-weight: 800;
-	color: #9B9B9B;
-	line-height: 12px;
-	text-transform: uppercase;
+	font-size: 20px;
+	line-height: 26px;
+	font-weight: 300;
+
+	@include media($medium-screen) {
+		font-size: 22px;
+		line-height: 22px;
+	}
+
+	@include media($large-screen) {
+		font-size: 24px;
+	}
 }
 
 //Paragraphs
@@ -210,6 +239,12 @@
 	border: none;
 	@include box-shadow;
 
+	&:after {
+		content: '»';
+		padding-left: 4px;
+		font-size: 16px;
+	}
+
 	&:hover, &:focus {
 		outline: none;
 		background-color: darken($bg-color, 7%);
@@ -244,7 +279,10 @@
 
 @mixin theme-color-classes($primary) {
 	.theme-bg-color       { background-color: $primary; }
-	.theme-bg-color-alpha { background-color: rgba(red($primary), green($primary), blue($primary), 0.95); }
 	.theme-border-color   { border-color: $primary; }
 	.theme-button { @include button($primary); }
+
+	@include media($large-screen) {
+		.theme-bg-color-alpha { background-color: rgba(red($primary), green($primary), blue($primary), 0.95); }
+	}
 }

@@ -1,11 +1,11 @@
 @charset "UTF-8";
 
 // Neat Breakpoints
-$medium-screen: 600px;
+$medium-screen: 768px;
 
 $medium-screen-up: new-breakpoint(max-width $medium-screen 4);
 
-$large-screen: 1120px;
+$large-screen: 1024px;
 
 /// Sets the relative width of a single grid column. The unit used should be the same one used to define `$gutter`. To learn more about modular-scale() see [Bourbon docs](http://bourbon.io/docs/#modular-scale). Set with a `!global` flag.
 ///
@@ -57,6 +57,8 @@ $default-feature: min-width; // Default @media feature for the breakpoint() mixi
 
 $default-layout-direction: LTR !default;
 
-$one-column-widget-spacing:     16px*4 !default;
+$one-column-widget-spacing:      16px*4 !default;
 
-$primary-column-widget-spacing: 16px !default;
+// $one-column-side-widget-spacing: 20px;
+
+$primary-column-widget-spacing:  16px !default;

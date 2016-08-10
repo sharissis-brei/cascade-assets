@@ -11,8 +11,9 @@
   }
 
   .cd-hero, .background-image, .background-video-wrapper {
-    padding-bottom: $one-column-widget-spacing;
+    padding-bottom: $one-column-widget-spacing/2;
     pointer-events: none;
+    background-color: #eaeaea;
 
     @include media($medium-screen) {
       padding: 0;
@@ -27,75 +28,126 @@
     }
   }
 
+  .cd-hero {
+    @include media($medium-screen) {
+      .cd-arrow-left, .cd-arrow-right { display: none; }
+      &:hover{
+        .cd-arrow-left, .cd-arrow-right { display: block; }
+     }
+    }
+  }
+
+  .cd-arrow-left, .cd-arrow-right {
+    position: absolute;
+    top: 0;
+    bottom: 0;
+    height: 50px;
+    width: 50px;
+    text-align:center;
+    margin: auto;
+    z-index: 668;
+    pointer-events:all;
+    background-color: white;
+    opacity: .8;
+
+    a {
+      display: inline-block;
+      height: 50px;
+      width: 50px;
+      font-size:80px;
+      line-height: 40px;
+      color: $black;
+    }
+  }
+
+  .cd-arrow-left { left: 0; }
+  .cd-arrow-right { right: 0; }
+
+  .cd-slide-container {
+    height: 95%;
+    width: 100%;
+  }
+  // super ugly css I know, but this was the only fix I could come up with to make the arrows appear properly
+  @include media($large-screen) {
+    .cd-arrow-left, .cd-arrow-right { display: none; }
+    &:hover{
+      .cd-arrow-left, .cd-arrow-right { display: block; }
+   }
+  }
+
   .cd-hero-slider {
     height: 95%;
     list-style-type: none;
 
     li {
-      padding: $one-column-widget-spacing/2 0;
+      padding: $one-column-widget-spacing/4 0;
       max-width: 100%;
       margin-bottom: 0;
-      background-color: #E5E5E5;
-      @include media($medium-screen) {
-        padding: $one-column-widget-spacing/2 $one-column-widget-spacing;
+      background-color: #eaeaea;
+    }
+
+    .slider-bottom-border {
+      @include media($large-screen){
+        position: absolute;
+        bottom: 0;
+        height: 10px;
+        z-index: 667;
+        width: 100%;
       }
     }
   }
 
   .cd-slider-nav {
-    height: 17%;
+    height: 13%;
     background-color: transparent;
-    text-align: right;
+    text-align: left;
     pointer-events: all;
-    padding-right: 32px;
+    padding-left: 16px;
 
     .cd-marker {
       background-color: transparent;
       color: #E5E5E5;
+      box-shadow: none;
     }
 
     a {
-      box-shadow: inset 0 2px 0 currentColor;
-      padding-top: 10px;
-      font-size: 10px;
-      padding: 0 5px;
-      font-weight: normal;
-      text-transform: uppercase;
-      max-width: 100px;
-      text-align: left;
+      outline: none;
+      display: inline-block;
+      font-size: 0px;
+      height: 15px;
+      width: 15px;
+      line-height: 10px;
+      background: white;
+      color: white;
+      border-radius: 15px;
+      text-indent: -9999px;
+      margin-right: 12px;
+      box-shadow: 0 0 2px $black;
+      padding-top: 0;
       &:hover { background-color: transparent; }
     }
 
     li {
       width: inherit;
-      a {
-        color: $black;
-      }
       &.selected a {
-        margin: 0 10px;
-        box-shadow: inset 0 2px 0 $red;
-        color: $red;
+        background: $black;
+        color: $black;
+        opacity: 1;
+        box-shadow: 0 0 2px #F0EFE7;
+        &:hover { background-color: $black }
       }
     }
 
     @include media($medium-screen) {
-      height: 3%;
-      padding-right: 64px;
-      a {
-        font-size: 12px;
-        padding: 0 10px;
-        max-width: none;
-        text-align: right;
-      }
+      height: 7%;
+      padding-left: 32px;
+      padding-right: 0;
     }
 
     @include media($large-screen){
+      height: 9%;
       text-align: center;
-      @include shift(4);
-      a {
-        font-size: 14px;
-        padding: 0 15px;
-      }
+      @include shift(6);
     }
   }
 
@@ -118,13 +170,13 @@
   .hero-content {
     @include outer-container;
     position: relative;
-    padding: $one-column-widget-spacing/2 0 $one-column-widget-spacing;
+    padding: $one-column-widget-spacing/2 $primary-column-widget-spacing;
 
     @include media($medium-screen) {
-      padding: $one-column-widget-spacing/2 $one-column-widget-spacing;
+      padding: $one-column-widget-spacing/2 $base-spacing*3;
     }
     @include media($large-screen) {
-      padding: $one-column-widget-spacing 0;
+      padding: $primary-column-widget-spacing*2 0;
       pointer-events: none;
       z-index: 666;
     }
@@ -132,41 +184,74 @@
 
   // The side panel
   .hero-content-panel {
-    box-shadow: 0px 0px 6px 2px rgba(0, 0, 0, 0.2);
-    padding: $one-column-widget-spacing;
-    background-color: white;
-
+    
     @include media($large-screen) {
       @include span-columns(6);
-      margin-bottom: -$one-column-widget-spacing*2;
+      padding: $one-column-widget-spacing $one-column-widget-spacing/2;
+      box-shadow: 0px 0px 6px 2px rgba(0, 0, 0, 0.2);
+      background-color: white;
       pointer-events: all;
     }
 
     // Title
-    h1 { margin-top: 0; }
+    h1 { 
+      margin-top: 0; 
+      text-align: center;
+    }
 
     // Subtitle
-    h2 { font-weight: 200; }
+    h2 { 
+      font-weight: 200;
+      text-align: center;
+    }
+
+    p {
+      text-align: center;
+    }
     
     .calls-to-action { 
-      margin-top: $base-spacing;
+      margin-top: $base-spacing*3;
+      text-align: center;
+
       a {
         @include button($blue);
         width: 100%;
-        margin-bottom: $base-spacing;
+        margin-bottom: $base-spacing/2;
         text-align: center;
-        line-height: 36px;
+        line-height: 30px;
         border-radius: 0px;
+
+        @include media($medium-screen) {
+          width: 45%;
+          margin: 8px;
+        }
+
+        @include media($large-screen) {
+          width: 100%;
+          margin: 8px 0px;
+        }
       }
     }
 
     .program-select {
-      margin-top: $base-spacing*3;
+      margin-top: $base-spacing/2;
       position: relative;
+
+      @include media($medium-screen) {
+        width: 50%;
+        margin-top: $base-spacing*3;
+        margin-left: auto;
+        margin-right: auto;
+      }
+      @include media($large-screen) {
+        width: 100%;
+        margin: 0;
+        margin-top: $base-spacing/2;
+      }
 
       .select-arrow {
         position: absolute;
-        top: 21px;
+        top: 20px;
         right: 18px;
         display: block;
         background: transparent;
@@ -180,7 +265,7 @@
       .hero-select-button {
         width: 100%;
         font-size: 16px;
-        line-height: 36px;
+        line-height: 30px;
         outline: none;
         padding: $base-spacing/2 $base-spacing;
         background-color: transparent;
@@ -188,7 +273,7 @@
         margin: 0;
         height: auto;
         border: 2px solid #000000;
-        border-radius: 24px;
+        border-radius: 3px;
         background-position: center right;
         background-repeat: no-repeat;
       }
@@ -201,7 +286,7 @@
         width: 100%;
         background-color: #FFF;
         top: 0px;
-        z-index: 668;
+        z-index: 667;
 
         li {
           max-width: 100%;
@@ -218,7 +303,7 @@
 
   // The featured article
   article {
-    color: white;
+    color: $black;
     pointer-events: all;
 
     @include media($medium-screen) {
@@ -229,9 +314,9 @@
       @include span-columns(7);
       @include shift(9);
       bottom: 0;
-      margin-bottom: 2%; 
       border-radius: 3px;
       position: absolute;
+      color: white;
     }
 
     img, video {
@@ -242,13 +327,21 @@
     }
 
     .content {
-      padding: $base-spacing*2 $base-spacing*3;
+      padding: $base-spacing*2;
       z-index: 667;
+
+      @include media($large-screen) {
+        padding: $base-spacing*2 $base-spacing*3;
+      }
     }
 
     .category {
       @include content_label();
-      color: white;
+      color: $black;
+
+      @include media($large-screen) {
+        color: white;
+      }
     }
     
     .title {
@@ -260,14 +353,14 @@
       font-weight: 200;
     }
 
-    .body {
-      color: white;
-    }
-
     a {
-      color: white;
+      color: $black;
       text-decoration: underline;
       font-weight: bold;
+
+      @include media($large-screen) {
+        color: white;
+      }
     }
   } 
 }
@@ -275,5 +368,9 @@
 
 // Override the default background color when no theme is applied
 #theme .side-panel-hero .theme-bg-color-alpha { 
-  background-color: rgba(0,0,0,0.95); 
+  background-color: transparent;
+
+  @include media($large-screen) {
+    background-color: rgba(0,0,0,0.95); 
+  }
 }

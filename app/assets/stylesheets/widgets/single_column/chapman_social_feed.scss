@@ -16,9 +16,8 @@ $tile_width: 335px;
 	}
 
 	.chapman-social-feed-title {
-		@include main_heading(100);
+		@include main_heading(600);
 		padding: 0 $base-spacing*2;
-		margin-top: 0;
 		text-transform: none;
 	}
 
@@ -29,7 +28,7 @@ $tile_width: 335px;
 	}
 
 	.chapman-social-feed-icons {
-		margin-bottom: 32px;
+		margin: 24px 0;
 
 		ul.social-icon-list {
 			li {
@@ -41,8 +40,16 @@ $tile_width: 335px;
 
 			.social-link {
 				display: inline-block;
-				font-size: 24px;
+				font-size: 20px;
 				color: $black;
+			}
+		}
+
+		@include media($large-screen) {
+			margin: 32px 0;
+
+			ul.social-icon-list .social-link {
+				font-size: 24px;
 			}
 		}
 	}
@@ -218,8 +225,9 @@ $tile_width: 335px;
 		}
 
 		footer {
-			background: #f7f6f0;
+			background: white;
 			box-sizing: border-box;
+			border-top: 1px solid #d8d8d8;
 			display: table;
 			font-size: 12px;
 			font-weight: normal;

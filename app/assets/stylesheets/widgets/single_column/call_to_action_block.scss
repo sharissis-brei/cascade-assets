@@ -1,4 +1,4 @@
-$call-to-action-block-mobile-height: 50px;
+$call-to-action-block-mobile-height: 56px;
 $call-to-action-block-screen-height: 150px;
 
 .call-to-action-block-widget {
@@ -8,10 +8,6 @@ $call-to-action-block-screen-height: 150px;
   .outer-container {
     @include outer-container();
     width: 100%;
-
-    @include media($large-screen) {
-      @include pad(0 $base-spacing);
-    }
   }
 
   .box {
@@ -45,7 +41,7 @@ $call-to-action-block-screen-height: 150px;
       width: 25%;
       height: $call-to-action-block-screen-height;
       float: left;
-      padding: $base-spacing 8px;
+      padding: $base-spacing;
     }
   }
 
@@ -61,17 +57,36 @@ $call-to-action-block-screen-height: 150px;
     display: table-cell;
     vertical-align: middle;
     text-align: center;
+
+    @include media($medium-screen) {
+      &:hover {
+        border: 1px solid $black;
+      }
+    }
   }
   .title {
     @include sub_section_heading(500);
+    display: inline-block;
     line-height: $call-to-action-block-mobile-height;
     margin: 0;
     padding: 0 $base-spacing;
     white-space: nowrap;
+    text-transform: uppercase;
+    font-size: 16px;
+
+    &:after {
+      padding-left: 8px;
+      content: '»';
+      font-size: 18px;
+    }
 
     @include media($medium-screen) {
       white-space: normal;
       line-height: 22px;
+
+      &:after {
+        content: none;
+      }
     }
   }
 
@@ -87,7 +102,9 @@ $call-to-action-block-screen-height: 150px;
   .box__text-light {
     color: white;
     background-color: $black;
-    &:hover { background-color: $black; }
+    &:hover { 
+      background-color: $black;
+    }
 
     &.box__background-media:after {
       content: '';
@@ -99,6 +116,13 @@ $call-to-action-block-screen-height: 150px;
 
   .theme-bg-color {
     color: white;
+  }
+
+  .box__text-light .content:hover, 
+  .theme-bg-color .content:hover {
+    @include media($medium-screen) {
+      border-color: white;
+    }
   }
 }
 

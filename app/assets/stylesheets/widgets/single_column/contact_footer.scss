@@ -4,103 +4,84 @@
 
 	.outer-container {
 		@include outer-container();
-		@include pad(0 $base-spacing*2);
+		@include pad(0 $base-spacing*3);
 		display: table;
-		border-spacing: 28px;
 		width: 100%;
 
 		&::after {
-    		display: none!important;
-  		}
-
-		@media(min-width: 780px) {
-			@include pad(0 $base-spacing*2);
-			border-spacing: 0;
+	  	display: none!important;
 		}
 
-		@media(min-width: $large-screen) {
-			@include pad(0 $base-spacing);
+		@media(min-width: 780px) {
+			padding: 0;
 		}
 	}
 
-	.footer-section {
+	.content-cell {
 		display: table-row;
 		text-align: center;
 
-		@media(min-width: 780px) {
+		@include media($medium-screen) {
 			display: table-cell;
-			vertical-align: top;
-			text-align: left;
-			padding-right: 4%;
+			width: 50%;
 
-			&.title {
-				width: 30%;
+			&.right {
+				text-align: left;
 			}
 
-			&.contact-2 {
-				vertical-align: middle;
+			&.left {
+				text-align: right;
+
+				.content-wrap {
+					border-right: 1px solid $black;
+				}
+			}
+
+			.content-wrap {
+				padding: $base-spacing $base-spacing*2;
+			}
+
+			.contact-line-2 {
+				margin-bottom: 0;
 			}
 		}
 
-		h2.footer-title {
-			margin-top: 0;
-			margin-bottom: 0;
-			font-size: 22px;
-			font-weight: 500;
-			line-height: 28px;
+		.contact-line-1, .contact-line-2 {
+			margin-bottom: 24px;
 		}
-	}
-
-	p.address,
-	a.address {
-		margin-bottom: 0;
-		font-style: normal;
-		white-space: nowrap;
-	}
-
-	a.address {
-		display: block;
-		color: $blue;
-	}
-
-	h3.footer-heading {
-		margin-top: 0;
-		margin-bottom: 8px;
-		font-size: 18px;
-		line-height: 24px;
-		font-weight: 500;
-		font-style: center;
-	}
-
-	ul.social-icon-list {
-		li {
-			display: inline-block;
-			margin: 0 5px;
+		
+		.social-icon-list {
 			list-style-type: none;
-			text-align: center;
+			line-height: 20px;
+
+			li {
+				display: inline-block;
+				margin: 0 5px;
+				list-style-type: none;
+				text-align: center;
+				line-height: 24px;
+			}
+			a {
+				color: $black;
+			}
 		}
 
-		.social-link {
-			display: inline-block;
-			color: $black;
-			font-size: 16px;
+		h3.footer-heading {
+			margin: 0;
+			font-size: 18px;
+			line-height: 24px;
+			font-weight: 600;
+		}
+
+		.address {
+			margin-bottom: 0;
+			line-height: 20px;
+			font-style: normal;
+
+			&.email {
+				color: $red;
+				cursor: pointer;
+			}
 		}
 	}
-}
-
-.contact-footer-widget__medium-bg {
-	background-color: $bg-silver-gray;
-}
-
-.contact-footer-widget__dark-bg {
-	background-color: $black;
-  color: white;
-
-  p.address, h3.footer-heading {
-  	color: white;
-  }
-
-  ul.social-icon-list .social-link {
-  	color: $bg-silver-gray;
-  }
 }
