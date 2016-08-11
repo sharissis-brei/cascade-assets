@@ -214,6 +214,9 @@ if (/MSIE [0-8]\b/.test(navigator.userAgent)) {
 			prev.href = '#prev';
 			next.href = '#next';
 
+			prev.title = 'Move to the previous slide in the carousel';
+			next.title = 'Move to the next slide in the carousel';
+
 			// add prev and next events
 			prev.addEventListener('click', function (event) {
 				event.preventDefault();
