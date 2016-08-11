@@ -388,9 +388,10 @@ $(function () {
     });
 
     function formatResult(result) {
-        var formattedResult =
+        var imgAlt = result.name ? 'Photo of ' + result.name : 'Faculty Member Photo',
+            formattedResult =
             '<div class="facultyMember" itemscope itemtype="http://schema.org/Person">' +
-                (result.image ? '<div class="profilePicture"><img width="80px" src="' + result.image + '" itemprop="image"></div>' : '') +
+                (result.image ? '<div class="profilePicture"><img width="80px" src="' + result.image + '" itemprop="image" alt="' + imgAlt + '"></div>' : '') +
                 (result.name ? '<h2 class="name" itemprop="name">' + (result.link ? ('<a href="' + result.link) + '">' + result.name + '</a>' : result.name) + '</h2>' : '') +
                 (result.title ? '<div class="title" itemprop="jobTitle">' + result.title + '</div>' : '') +
                 (result.additionalTitles ? '<div class="additionalTitles" itemprop="jobTitle">' + result.additionalTitles + '</div>' : '') +
