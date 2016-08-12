@@ -1,55 +1,62 @@
 jQuery(document).ready(function($){
-	var slidesWrapper = $('.cd-hero-slider');
+	var $slidesWrapper = $('.cd-hero-slider');
 
 	//check if a .cd-hero-slider exists in the DOM 
-	if ( slidesWrapper.length > 0 ) {
-		var primaryNav = $('.cd-primary-nav'),
-			sliderNav = $('.cd-slider-nav'),
-			navigationMarker = $('.cd-marker'),
-			prevSlideButton = $('.cd-arrow-left'),
-			nextSlideButton = $('.cd-arrow-right'),
-			slidesNumber = slidesWrapper.children('li').length,
+	if ( $slidesWrapper.length > 0 ) {
+		var $primaryNav = $('.cd-primary-nav'),
+			$sliderNav = $('.cd-slider-nav'),
+			$navigationMarker = $('.cd-marker'),
+			$prevSlideButton = $('.cd-arrow-left'),
+			$nextSlideButton = $('.cd-arrow-right'),
+			slidesNumber = $slidesWrapper.children('li').length,
 			visibleSlidePosition = 0,
 			autoPlayId,
 			autoPlayDelay = 10000;
 
+
+		if(slidesNumber <= 1){
+			$prevSlideButton.css('display', 'none');
+			$nextSlideButton.css('display', 'none');
+			$sliderNav.css('display', 'none');
+		}
+
 		//upload videos (if not on mobile devices)
-		uploadVideo(slidesWrapper);
+		uploadVideo($slidesWrapper);
 
 		//autoplay slider
-		setAutoplay(slidesWrapper, slidesNumber, autoPlayDelay);
+		setAutoplay($slidesWrapper, slidesNumber, autoPlayDelay);
 
 		//on mobile - open/close primary navigation clicking/tapping the menu icon
-		primaryNav.on('click', function(event){
+		$primaryNav.on('click', function(event){
 			if($(event.target).is('.cd-primary-nav')) $(this).children('ul').toggleClass('is-visible');
 		});
 		
 		//change visible slide
-		prevSlideButton.on('click', function(event){
+		$prevSlideButton.on('click', function(event){
 			event.preventDefault();
-			var activePosition = slidesWrapper.find('li.selected').index();
+			var activePosition = $slidesWrapper.find('li.selected').index();
 			var selectedPosition = (activePosition == 0) ? slidesNumber - 1 : activePosition - 1;
 
 			slideSelection(activePosition, selectedPosition);
 			resetAutoplay(selectedPosition);
 		});
 
-		nextSlideButton.on('click', function(event){
+		$nextSlideButton.on('click', function(event){
 			event.preventDefault();
-			var activePosition = slidesWrapper.find('li.selected').index();
+			var activePosition = $slidesWrapper.find('li.selected').index();
 			var selectedPosition = (activePosition + 1) == slidesNumber ? 0 : activePosition + 1;
 
 			slideSelection(activePosition, selectedPosition);
 			resetAutoplay(selectedPosition);
 		});
 
-		sliderNav.on('click', 'li', function(event){
+		$sliderNav.on('click', 'li', function(event){
 			event.preventDefault();
 			var selectedItem = $(this);
 			if(!selectedItem.hasClass('selected')) {
 				// if it's not already selected
 				var selectedPosition = selectedItem.index(),
-					activePosition = slidesWrapper.find('li.selected').index();			
+					activePosition = $slidesWrapper.find('li.selected').index();			
 
 				slideSelection(activePosition, selectedPosition);
 				resetAutoplay(selectedPosition);
@@ -59,9 +66,9 @@ jQuery(document).ready(function($){
 
 	function slideSelection(active, selected){
 		if(active < selected) {
-			nextSlide(slidesWrapper.find('.selected'), slidesWrapper, sliderNav, selected);
+			nextSlide($slidesWrapper.find('.selected'), $slidesWrapper, $sliderNav, selected);
 		} else {
-			prevSlide(slidesWrapper.find('.selected'), slidesWrapper, sliderNav, selected);
+			prevSlide($slidesWrapper.find('.selected'), $slidesWrapper, $sliderNav, selected);
 		}
 	}
 
@@ -69,11 +76,11 @@ jQuery(document).ready(function($){
 		//this is used for the autoplay
 		visibleSlidePosition = selected;
 
-		updateSliderNavigation(sliderNav, selected);
-		updateNavigationMarker(navigationMarker, selected+1);
+		updateSliderNavigation($sliderNav, selected);
+		updateNavigationMarker($navigationMarker, selected+1);
 
 		//reset autoplay
-		setAutoplay(slidesWrapper, slidesNumber, autoPlayDelay);
+		setAutoplay($slidesWrapper, slidesNumber, autoPlayDelay);
 	}
 
 	function nextSlide(visibleSlide, container, pagination, n){
@@ -109,14 +116,14 @@ jQuery(document).ready(function($){
 
 	function autoplaySlider(length) {
 		if( visibleSlidePosition < length - 1) {
-			nextSlide(slidesWrapper.find('.selected'), slidesWrapper, sliderNav, visibleSlidePosition + 1);
+			nextSlide($slidesWrapper.find('.selected'), $slidesWrapper, $sliderNav, visibleSlidePosition + 1);
 			visibleSlidePosition +=1;
 		} else {
-			prevSlide(slidesWrapper.find('.selected'), slidesWrapper, sliderNav, 0);
+			prevSlide($slidesWrapper.find('.selected'), $slidesWrapper, $sliderNav, 0);
 			visibleSlidePosition = 0;
 		}
-		updateNavigationMarker(navigationMarker, visibleSlidePosition+1);
-		updateSliderNavigation(sliderNav, visibleSlidePosition);
+		updateNavigationMarker($navigationMarker, visibleSlidePosition+1);
+		updateSliderNavigation($sliderNav, visibleSlidePosition);
 	}
 
 	function uploadVideo(container) {
