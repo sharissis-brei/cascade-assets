@@ -135,7 +135,6 @@ $cef_body-font: "proxima-nova-soft", "Helvetica Neue", "Microsoft Sans Serif", s
   &:hover, &:focus {
     transform: scale(1.01);
     z-index: 2;
-    box-shadow: 0px 10px 10px -3px rgba(0, 0, 0, 0.3);
     .title { color: $cef_blue; }
   }
 
@@ -196,6 +195,7 @@ $cef_body-font: "proxima-nova-soft", "Helvetica Neue", "Microsoft Sans Serif", s
   background-size: cover;
   background-position: 50% 10%;
   background-repeat: no-repeat;
+  background-color: transparent;
   display: block;
   padding: 24px 0;
 
@@ -236,6 +236,7 @@ $cef_body-font: "proxima-nova-soft", "Helvetica Neue", "Microsoft Sans Serif", s
 
 /* Featured Variation */
 .chapman-event-card.featured {
+  background-color: transparent;
   .primary-column {
     .title, .time {
       font-size:   18px;
@@ -264,6 +265,7 @@ $cef_body-font: "proxima-nova-soft", "Helvetica Neue", "Microsoft Sans Serif", s
 
 .chapman-featured-event-card {
   text-align: left;
+
   a { color: $cef_black; }
   .photo {
     width: 100%;
