@@ -1,9 +1,10 @@
 Rails.application.routes.draw do
-  root 'home#index'
+  root 'index#index'
 
-  get 'one_column/:page',   to: 'home#one_column'
-  get 'two_column/:page',   to: 'home#two_column'
-  get 'three_column/:page', to: 'home#three_column'
+  get 'one_column/:page',   to: 'index#one_column'
+  get 'two_column/:page',   to: 'index#two_column'
+  get 'three_column/:page', to: 'index#three_column'
+  get 'home_page/:page',    to: 'index#home_page'
 
   # The priority is based upon order of creation: first created -> highest priority.
   # See how all your routes lay out with "rake routes".
