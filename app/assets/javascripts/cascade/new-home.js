@@ -542,8 +542,23 @@
 
 		},
 
+		absoluteUrls : function() {
+			$("#mastheadVideo source").each(function() {
+				videoUrl = $(this).attr('src').replace('/_files', 'http://www.chapman.edu/_files');
+				$(this).attr('src', videoUrl);
+			})
+
+			imageUrl = $('#mastheadImage').attr('src').replace('../', 'http://www.chapman.edu/');
+			$('#mastheadImage').attr('src', imageUrl);
+
+			fallbackUrl = $('#hero').css('background-image').replace('localhost:5000', 'www.chapman.edu');
+			$('#hero').css('background-image', fallbackUrl);
+		},
+
 		setupContent : function($content) {
 
+			// This fires if working on a development server to change relative image urls to absolute urls
+			if (document.location.hostname == 'localhost') cu_hero_area.absoluteUrls()
 
 			// This clears any remaining transitions from the previous content
 			if (cu_hero_area.videoTransitionTimeout != null) {
