@@ -171,6 +171,7 @@
 
 			// Force the height of .imagerotator to be the correct aspect ratio 
 
+			// TODO: dead code - remove in future.
 			// $(".imagerotator").each(function() {
 			// 	var ratio = Math.round(($(this).find("img").outerHeight() / $(this).find("img").outerWidth()) * 100);
 			// 	$(this).find('.imagerotator_clearfix').css('padding-bottom', ratio + '%');
@@ -311,8 +312,9 @@
 			/*
 			* Graduate Admission | ken burns
 			*************************/
-			// if (this.graduateAdmissionAnimationReady && cu_window_manager.scrollBot > this.graduateAdmissionStartPX ) {
 
+			// TODO: dead code - remove in future.
+			// if (this.graduateAdmissionAnimationReady && cu_window_manager.scrollBot > this.graduateAdmissionStartPX ) {
 			// 	// this.kenBurns(this.$graduateAdmission);
 			// 	this.graduateAdmissionAnimationReady = false;
 			// } 
@@ -498,6 +500,8 @@
 					if (typeof(ga) !== 'undefined') ga('send', 'event', "Homepage UI Interaction", "Switch hero story", "newer");
 				});
 
+
+				// TODO: dead code - remove in future.
 				// $("#heroWrapper").hammer().on("swipeleft", function(e) {
 				// 	cu_hero_area.processNavigation('older');
 				// });
@@ -878,14 +882,12 @@
 				var service = $(e.target).parents("a").attr('service');
 			}
 
+			// TODO: dead code - remove in future.
 			// if (service == 'Comments') {
-
 			// 	_gaq.push(['_trackEvent', 'Social Engagement', 'Comment Jump Button', service]);
-
 			// 	setTimeout(function() {
 			// 		document.location.href = url;
 			// 	}, 200);
-
 			// 	return false;
 			// }
 
