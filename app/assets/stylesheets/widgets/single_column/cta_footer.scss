@@ -1,5 +1,7 @@
+$white: #ffffff;
 .cta-footer-widget {
 	padding: 24px 0;
+	background: white;
 
 	.outer-container {
 		@include outer-container();
@@ -22,6 +24,7 @@
 			margin-bottom: 0;
 			text-align: center;
 			font-size: 20px;
+			font-weight: 600;
 			line-height: 20px;
 			text-transform: uppercase;
 		}
@@ -45,13 +48,6 @@
 			text-align: center;
 			width: 100%;
 
-			&.gray {
-				@include button($gray-smoke);			
-			}
-
-			&.red {
-				@include button($red);
-			}
 		}
 
 		@include media($medium-screen) {
@@ -65,13 +61,12 @@
 			}
 		}
 	}
-}
 
-.cta-footer-widget__medium-bg {
-  background-color: $bg-silver-gray;
-}
+	&.theme-bg-color {
+		color: white;
 
-.cta-footer-widget__dark-bg {
-  background-color: $black;
-  color: white;
+		.button-section .footer-button {
+			@include button($white); 
+		}
+	}
 }

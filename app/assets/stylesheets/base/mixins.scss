@@ -281,6 +281,7 @@
 	.theme-bg-color       { background-color: $primary; }
 	.theme-border-color   { border-color: $primary; }
 	.theme-button { @include button($primary); }
+	.theme-text-color	{ color: $primary }
 
 	@include media($large-screen) {
 		.theme-bg-color-alpha { background-color: rgba(red($primary), green($primary), blue($primary), 0.95); }
