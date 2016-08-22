@@ -215,11 +215,17 @@
 }
 
 .fast_transition {
-  transition: left 1s ease-out, opacity 1s ease-out;
+  -webkit-transition: left 1s ease-out, opacity 1s ease-out;
+     -moz-transition: left 1s ease-out, opacity 1s ease-out;
+       -o-transition: left 1s ease-out, opacity 1s ease-out;
+          transition: left 1s ease-out, opacity 1s ease-out;
 }
 
 .slow_transition {
-  transition: left 2s ease-out, opacity 2s ease-out;
+  -webkit-transition: left 2s ease-out, opacity 2s ease-out;
+     -moz-transition: left 2s ease-out, opacity 2s ease-out;
+       -o-transition: left 2s ease-out, opacity 2s ease-out;
+          transition: left 2s ease-out, opacity 2s ease-out;
 }
 
 .maxWidth {
