@@ -122,7 +122,7 @@
 
 			if(!(/Android|iPhone|iPad|iPod|BlackBerry|Windows Phone/i).test(navigator.userAgent || navigator.vendor || window.opera)){ 
 				cu_window_manager.useParallax = true;
-				// cu_parallax_fx.setupFX();
+				cu_parallax_fx.setupFX();
 
 			} else {
 				cu_window_manager.useParallax = false;
