@@ -410,12 +410,14 @@
 
 	} // end cu_parallax_fx
 
+	var hero_stories_hostname = (document.location.hostname == 'localhost') ? 'http://www.chapman.edu/' : '';
+
 	var cu_hero_area = {
 
 		// Configurations
 		volumeTransitionSpeed 	: 0, // Set dynamically in setupContent()
 		contentTransitionSpeed	: 2000,
-		hero_stories_html_dir	: 'http://www.chapman.edu/_hero_stories/',
+		hero_stories_html_dir	: hero_stories_hostname.concat('_hero_stories/'),
 
 		// Do not configure these
 		videoPlayer 			: null,

@@ -755,7 +755,7 @@ h1, h2, h3, h4, h5, h6 {
           display: block;
           width: 20px;
           height: 20px;
-          background: url('../img/cu_monogram_red.svg') no-repeat center left;
+          background: image-url('cu_monogram_red.svg') no-repeat center left;
           background-size: contain;
           position: absolute;
           top: 10px;
@@ -1179,8 +1179,8 @@ h1, h2, h3, h4, h5, h6 {
           background-image: none, image-url('email.svg');
         }
         &.monogram {
-          background-image: url('../img/cu_icons/cu_monogram_gray_25.png');
-          background-image: none, url('../img/cu_icons/cu_monogram_gray.svg');
+          background-image: image-url('cu_monogram_gray_25.png');
+          background-image: none, image-url('cu_monogram_gray.svg');
           background-size: 25px;
           padding-left: 43px;
         }
