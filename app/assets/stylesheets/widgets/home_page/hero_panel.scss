@@ -1,0 +1,309 @@
+/***************************************************
+* Hero area navigation controls
+***************************************************/
+
+@media only screen and (min-width: 680px) {
+  .homepage #mastheadNavigation {
+    display: block;
+  }
+}
+
+/***************************************************
+* Main Hero Area
+***************************************************/
+
+#heroWrapper {
+  overflow: auto;
+  background: #111111;
+}
+
+#hero {
+  clear: both;
+  position: relative;
+  overflow: hidden;
+  min-height: 300px;
+  padding: 15px 0 80px 0;
+  background: #333333 no-repeat center;
+  background-size: cover;
+  color: #FFFFFF;
+  .button {
+    margin-right: 10px;
+  }
+  .actions {
+    margin-top: 50px;
+  }
+  #mastheadContent {
+    position: relative;
+    z-index: 20;
+  }
+  &.dark-bg {
+    .heading, .subheading, .excerpt {
+      color: #FFFFFF;
+      text-shadow: 1px 1px 1px rgba(0, 0, 0, 0.3);
+    }
+  }
+  &.light-bg {
+    .heading, .subheading, .excerpt {
+      color: #353430;
+    }
+  }
+  &.align-left {
+    text-align: left;
+  }
+  &.align-right {
+    text-align: right;
+    .excerpt {
+      margin-left: auto !important;
+      margin-right: 0 !important;
+    }
+  }
+  &.align-center {
+    text-align: center;
+    .excerpt {
+      margin-left: auto !important;
+      margin-right: auto !important;
+    }
+  }
+  .heading {
+    margin: 0;
+    padding: 40px 0 0 0;
+    font-size: 32px;
+    line-height: 32px;
+    text-transform: none;
+    font-weight: 800;
+  }
+  .subheading {
+    margin: 0;
+    padding: 0;
+    font-size: 32px;
+    line-height: 32px;
+    text-transform: none;
+    font-weight: 800;
+  }
+  .excerpt {
+    margin: 20px 0;
+    padding: 0;
+    font-size: 14px;
+    line-height: 16px;
+    max-width: 600px;
+    display: none;
+  }
+  .heading {
+    &.uppercase, &.lowercase, &.extended, &.thin {}
+  }
+  .subheading {
+    &.uppercase, &.lowercase, &.extended, &.thin {}
+  }
+  #mastheadGradient {
+    position: absolute;
+    top: 0;
+    left: 0;
+    width: 100%;
+    height: 100%;
+    z-index: 10;
+    background: rgba(0, 0, 0, 0.4);
+    background: image-url('gray_30.png') repeat;
+    background: -moz-linear-gradient(left, rgba(0, 0, 0, 0.6) 0%, rgba(0, 0, 0, 0) 100%);
+    /* FF3.6+ */
+    background: -webkit-gradient(linear, left top, right top, color-stop(0%, rgba(0, 0, 0, 0.6)), color-stop(100%, rgba(0, 0, 0, 0)));
+    /* Chrome,Safari4+ */
+    background: -webkit-linear-gradient(left, rgba(0, 0, 0, 0.6) 0%, rgba(0, 0, 0, 0) 100%);
+    /* Chrome10+,Safari5.1+ */
+    background: -o-linear-gradient(left, rgba(0, 0, 0, 0.6) 0%, rgba(0, 0, 0, 0) 100%);
+    /* Opera 11.10+ */
+    background: -ms-linear-gradient(left, rgba(0, 0, 0, 0.6) 0%, rgba(0, 0, 0, 0) 100%);
+    /* IE10+ */
+    background: linear-gradient(to right, rgba(0, 0, 0, 0.6) 0%, rgba(0, 0, 0, 0) 100%);
+    /* W3C */
+    filter: progid:DXImageTransform.Microsoft.gradient( startColorstr='#a6000000', endColorstr='#00000000',GradientType=1 );
+    /* IE6-9 */
+  }
+  #mastheadBackground {
+    position: absolute;
+    top: 0;
+    left: 0;
+    width: 100%;
+    min-height: 100%;
+    overflow: hidden;
+    img {
+      width: 100%;
+      height: auto;
+    }
+  }
+}
+
+@media only screen and (min-width: 780px) {
+  #hero {
+    min-height: 350px;
+    padding: 15px 0 150px 0;
+    .actions {
+      margin-top: 70px;
+    }
+  }
+}
+
+@media only screen and (min-width: 1180px) {
+  #hero {
+    min-height: 450px;
+  }
+}
+
+@media only screen and (min-width: 1480px) {
+  #hero {
+    min-height: 550px;
+  }
+}
+
+/*
+* Top content layer & Title Styles
+***************************************************/
+
+/* Dark BG Colors */
+
+/* Light BG Colors */
+
+/* Alignment */
+
+/* Styles */
+
+@media only screen and (min-width: 480px) {
+  #hero {
+    .heading, .subheading, .excerpt {
+      display: block;
+    }
+    .heading, .subheading {
+      &.uppercase {
+        text-transform: uppercase;
+      }
+      &.lowercase {
+        text-transform: lowercase;
+      }
+      &.extended {
+        letter-spacing: 4px;
+      }
+      &.thin {
+        font-weight: 100;
+      }
+    }
+  }
+}
+
+@media only screen and (min-width: 780px) {
+  #hero {
+    .heading {
+      font-size: 48px;
+      line-height: 48px;
+      padding-top: 100px;
+    }
+    .subheading {
+      font-size: 48px;
+      line-height: 48px;
+    }
+    .excerpt {
+      font-size: 18px;
+      line-height: 22px;
+    }
+    .heading {
+      &.uppercase, &.lowercase, &.extended {}
+      &.thin {
+        font-size: 62px;
+        line-height: 62px;
+      }
+    }
+    .subheading {
+      &.uppercase, &.lowercase, &.extended, &.thin {}
+    }
+  }
+}
+
+@media only screen and (min-width: 1140px) {
+  #hero {
+    .heading, .subheading {
+      font-size: 52px;
+      line-height: 52px;
+    }
+    .excerpt {
+      font-size: 18px;
+      line-height: 22px;
+    }
+    .heading {
+      &.big800, &.lowercase, &.extended {}
+      &.thin {
+        font-size: 62px;
+        line-height: 62px;
+      }
+    }
+    .subheading {
+      &.big800, &.lowercase, &.extended, &.thin {}
+    }
+  }
+}
+
+/*
+* Middle gradient layer
+***************************************************/
+
+/*
+* Background image or video layer
+***************************************************/
+
+.backgroundsize #hero #mastheadBackground img {
+  display: none;
+}
+
+#hero #mastheadVideo {
+  position: absolute;
+  top: 0;
+  left: 0;
+  width: 100%;
+  height: auto;
+}
+
+@media only screen and (max-width: 639px) {
+  #hero #mastheadVideo {
+    display: none;
+  }
+}
+
+/***************
+Image Quick View
+****************/
+
+.homepage {
+  #heroQuickView {
+    display: none;
+    width: 100%;
+    height: 100%;
+    background: #333333;
+    background: rgba(0, 0, 0, 0.6);
+    z-index: 99999;
+    position: fixed;
+    top: 0;
+    left: 0;
+    color: #FFFFFF;
+  }
+
+  #heroQuickViewTable {
+    display: table;
+    width: 100%;
+    height: 100%;
+  }
+
+  #heroQuickViewCell {
+    display: inline-block;
+    display: table-cell;
+    vertical-align: middle;
+    text-align: center;
+    width: 100%;
+    height: 100%;
+  }
+
+  #heroQuickView {
+    img, iframe {
+      max-width: 90%;
+      max-height: 90%;
+      box-shadow: 2px 2px 5px rgba(0, 0, 0, 0.8);
+      cursor: pointer;
+    }
+  }
+}

@@ -1,0 +1,33 @@
+<!DOCTYPE html>
+<html class="no-js" lang="en">
+
+<%= render 'widgets/shared/head' %>
+
+<!--[if lt IE 7]> <body class="ie6 oldie""> <![endif]-->
+<!--[if IE 7]>    <body class="ie7 oldie""> <![endif]-->
+<!--[if IE 8]>    <body class="ie8 oldie""> <![endif]-->
+<!--[if gt IE 8]><!-->
+
+<body>
+  <!--<![endif]-->
+  <span class="hidden"><a href="#main" title="Skip navigation and jump directly to the main content of this page">Jump to the main content of this page</a></span>
+
+  <div id="fb-root"></div>
+
+  <div class="noscript">
+    <p>Some of the content on this website requires JavaScript to be enabled in your web browser to function as intended. This includes, but is not limited to: Flash (also requires the <a href="http://www.adobe.com/shockwave/download/download.cgi?P1_Prod_Version=ShockwaveFlash" target="_blank" title="Get Adobe Flash Player (link opens in a new browser window)">Adobe Flash Player</a>), navigation, video, image galleries, etc. While the website is still usable without JavaScript, it should be enabled to enjoy the full interactive experience.</p>
+  </div>
+
+  <div id="container">
+
+    <%= render 'widgets/shared/header' %>
+
+    <div class="homepage" id="main" role="main">
+      <%= yield(:primary_content) %>
+    </div>
+      
+    <%= render 'widgets/shared/footer' %>
+
+  </div>
+</body>
+</html>
