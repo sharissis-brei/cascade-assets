@@ -1,13 +1,13 @@
 (function ($) {
 
-    $(document).ready( function() {
-
-		cu_window_manager.initialize();
-		cu_hero_area.initialize();
-		cu_stories_area.initialize();
-		cu_admission_area.initialize();
-		smc_cta_tracker.initialize();
-
+  $(document).ready( function() {
+  	if ($(".homepage")[0]){
+			cu_window_manager.initialize();
+			cu_hero_area.initialize();
+			cu_stories_area.initialize();
+			cu_admission_area.initialize();
+			smc_cta_tracker.initialize();
+		}
 	});
 
 	// SMC CTA tracker
