@@ -46,7 +46,6 @@ var ChapmanImageFeeds = (function() {
     }
 
     var flickrCallback = function(data) {
-        console.debug(data);
         var $flul = $flickr.find('ul');
         var images = populateWidgetWithImages($flul, data);
 
