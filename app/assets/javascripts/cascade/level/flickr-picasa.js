@@ -46,6 +46,7 @@ var ChapmanImageFeeds = (function() {
     }
 
     var flickrCallback = function(data) {
+        console.debug(data);
         var $flul = $flickr.find('ul');
         var images = populateWidgetWithImages($flul, data);
 
@@ -60,11 +61,6 @@ var ChapmanImageFeeds = (function() {
     var picasaCallback = function(data) {
         var $pcul = $picasa.find('ul');
         var images = populateWidgetWithImages($pcul, data);
-
-        // Update See Full Gallery link.
-        if ( images ) {
-            $picasa.find(".more-link").attr("href", data.query.results.feed.id);
-        }
     };
 
     var populateWidgetWithImages = function($parent, feedData) {
@@ -111,7 +107,11 @@ var ChapmanImageFeeds = (function() {
                     'height': '100%'
                 })
             }
+
+            populatedImages.push(data);
         }
+
+        return populatedImages;
     }
  
     // Public API
