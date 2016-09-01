@@ -230,8 +230,8 @@
 
 @mixin button($bg-color: $red, $text-color: white) {
 	display: inline-block;
-	padding: 12px 20px;
-	font-size: 14px;
+	padding: 15px 25px;
+	font-size: 16px;
 	border-radius: 3px;
 	background: $bg-color;
 	color: $text-color;
