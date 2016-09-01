@@ -27,3 +27,10 @@
   <li><%= link_to page.titleize, "/three_column/#{page}" %></li>
 <% end %>
 </ul>
+
+<h2>Ad Landing Sample Pages</h2>
+<ul>
+  <% @ad_landing_pages.each do |page| %>
+    <li><%= link_to page.titleize, "ad_landing_page/#{page}" %></li>
+  <% end %>
+</ul>

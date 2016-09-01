@@ -4,6 +4,7 @@ class IndexController < ApplicationController
     @two_column_pages   = html_files_in '2_column'
     @three_column_pages = html_files_in '3_column'
     @home_page_pages    = html_files_in 'home_page'
+    @ad_landing_pages   = html_files_in 'ad_landing_page'
   end
 
   def one_column
@@ -20,6 +21,10 @@ class IndexController < ApplicationController
 
   def home_page
     render template: "home_page/#{params[:page]}", layout: 'home_page'
+  end
+
+  def ad_landing_page
+    render template: "ad_landing_page/#{params[:page]}", layout: 'ad_landing_page'
   end
 
   private
