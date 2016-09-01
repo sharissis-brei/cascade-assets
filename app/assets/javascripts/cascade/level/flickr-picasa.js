@@ -87,9 +87,9 @@ var ChapmanImageFeeds = (function() {
 
             // If we ever support a third feed, we can come up with something less crude then.
             if ( isPicasaFeed ) {
-                var href = data.link[1].href;
-                var title = data.title.content;
-                var src = data.content.src;
+                href = data.link[1].href;
+                title = data.title.content;
+                src = data.content.src;
             }
 
             var $item = $("<li>").append(
