@@ -2,7 +2,7 @@
 #theme.communication {
   @include theme-color-classes($communication-primary);
   
-  .smallMasthead .masthead, .smallMasthead .masthead-old, .bigMasthead .mastheadPlaceholder, .bigMasthead .masthead, .bigMasthead .masthead-old, .nameBar, .rightColumn .styleTwo {
+  .smallMasthead .masthead, .smallMasthead .masthead-old, .bigMasthead .mastheadPlaceholder, .bigMasthead .masthead, .bigMasthead .masthead-old, .nameBar, .rightColumn .styleTwo, .background-image-overlay {
   	background: $communication-primary; /* Old browsers */
   }
 

@@ -2,7 +2,7 @@
 #theme.copa__music {
   @include theme-color-classes($music-primary);
   
-  .smallMasthead .masthead, .smallMasthead .masthead-old, .bigMasthead .mastheadPlaceholder, .bigMasthead .masthead, .bigMasthead .masthead-old, .nameBar, .rightColumn .styleTwo {
+  .smallMasthead .masthead, .smallMasthead .masthead-old, .bigMasthead .mastheadPlaceholder, .bigMasthead .masthead, .bigMasthead .masthead-old, .nameBar, .rightColumn .styleTwo, .background-image-overlay {
   	background: $music-primary; /* Old browsers */
   	
   }

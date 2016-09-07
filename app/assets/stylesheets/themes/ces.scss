@@ -2,7 +2,7 @@
 #theme.ces {
   @include theme-color-classes($ces-primary);
   
-  .smallMasthead .masthead, .smallMasthead .masthead-old, .bigMasthead .mastheadPlaceholder, .bigMasthead .masthead, .bigMasthead .masthead-old, .nameBar, .rightColumn .styleTwo {
+  .smallMasthead .masthead, .smallMasthead .masthead-old, .bigMasthead .mastheadPlaceholder, .bigMasthead .masthead, .bigMasthead .masthead-old, .nameBar, .rightColumn .styleTwo, .background-image-overlay {
   	background: $ces-primary; /* Old browsers */
   	//background: -moz-radial-gradient(center, ellipse cover, $ces-primary 1%, $ces-secondary 93%); /* FF3.6+ */
   	//background: -webkit-gradient(radial, center center, 0px, center center, 100%, color-stop(1%,$ces-primary), color-stop(93%,$ces-secondary)); /* Chrome,Safari4+ */
