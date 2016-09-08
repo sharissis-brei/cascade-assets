@@ -1,11 +1,14 @@
 Rails.application.routes.draw do
-  root 'index#index'
+  root 'dashboard#index'
 
-  get 'one_column/:page',      to: 'index#one_column'
-  get 'two_column/:page',      to: 'index#two_column'
-  get 'three_column/:page',    to: 'index#three_column'
-  get 'home_page/:page',       to: 'index#home_page'
-  get 'ad_landing_page/:page', to: 'index#ad_landing_page'
+  get 'one_column/:page',      to: 'dashboard#one_column'
+  get 'two_column/:page',      to: 'dashboard#two_column'
+  get 'three_column/:page',    to: 'dashboard#three_column'
+  get 'home_page/:page',       to: 'dashboard#home_page'
+  get 'ad_landing_page/:page', to: 'dashboard#ad_landing_page'
+
+  # TODO: Debugging controller test issue. Remove when fixed.
+  get 'foo', to: 'dashboard#foo'
 
   # The priority is based upon order of creation: first created -> highest priority.
   # See how all your routes lay out with "rake routes".
