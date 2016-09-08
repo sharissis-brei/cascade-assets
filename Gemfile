@@ -38,9 +38,21 @@ gem 'sdoc', '~> 0.4.0', group: :doc
 # Access an IRB console on exception pages or by using <%= console %> in views
 gem 'web-console', '~> 2.0', group: :development
 
-# Rubocop static code analyzer: https://github.com/bbatsov/rubocop
-gem 'rubocop', require: false, group: :development
+# Test-Only Gems
+group :test do
+  # Rubocop static code analyzer: https://github.com/bbatsov/rubocop
+  gem 'rubocop'
 
+  # Feature-testing with Capybara and Selenium
+  gem "minitest-rails-capybara"
+  gem 'selenium-webdriver'
+
+  # PhantomJS webdriver for Capybara: https://github.com/teampoltergeist/poltergeist
+  # Requires phantomjs installed: brew install phantomjs
+  gem 'poltergeist'
+end
+
+# Gems for Development and Test
 group :development, :test do
   # Call 'byebug' anywhere in the code to stop execution and get a debugger console
   gem 'byebug'
