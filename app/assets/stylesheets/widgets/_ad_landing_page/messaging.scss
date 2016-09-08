@@ -1,0 +1,226 @@
+/*  Base Styles */
+.messaging-widget {
+  background-size: cover;
+  background-repeat: no-repeat;
+  background-position: center center;
+  padding: $one-column-widget-spacing 0;
+
+  .outer-container {
+    @include outer-container;
+    @include pad(0 $base-spacing * 3);
+
+    @include media($large-screen) {
+      @include pad(0 $base-spacing);
+    }
+  }
+
+  .media-column {
+    text-align: center;
+  }
+
+  .center-media-helper {
+    display: inline-block;
+    height: 100%;
+    vertical-align: middle;
+  }
+
+  .media {
+    display: inline-block;
+    vertical-align: middle;
+    width: 100%;
+    height: auto;
+  }
+
+  .fluid-width-video-container {
+    @include fluid-width-video-container;
+    display: inline-block;
+  }
+}
+
+/* One Column Variation */
+.messaging-widget__1-column {
+  background-color: #eaeaea;
+  
+  .text-column {
+    text-align: center;
+  }
+  .media-column {
+    padding-top: $base-spacing * 4;
+  }
+
+  &.messaging-widget__has-fact-cards {
+    .actions {
+      @include pad($base-spacing * 4  0 0 0);
+      text-align: center;
+    }
+
+    .text-column {
+      margin-bottom: $base-spacing * 3;
+    }
+
+    .media-column {
+      padding-top: 0;
+    }
+
+    @include media($medium-screen) {
+      .text-column {
+        margin-bottom: 0;
+        margin-bottom: $base-spacing * 2;
+
+        p {
+          margin-bottom: 0;
+        }
+      }
+    }   
+  }
+
+  @include media($medium-screen) {
+    .text-column {
+      margin: 0 auto;
+      width: 75%;
+    }
+  }
+  @include media($large-screen) {
+    .text-column {
+      width: 60%;
+    }
+  }
+
+}
+
+/* Two Column Variation */
+.messaging-widget__2-column {
+  background-color: #eaeaea;
+  /* All Variations */
+  .media-column {
+    white-space: nowrap;
+    margin-bottom: $base-spacing * 2;
+    padding: 0;
+  }
+  .text-column {
+    text-align: left;
+  }
+
+  &.messaging-widget__has-fact-cards {
+    .text-column {
+      text-align: center;
+    }
+  }
+  @include media($medium-screen) {
+    .media-column {
+      margin-bottom: 0;
+    }
+
+    &.messaging-widget__has-fact-cards {
+      .text-column {
+        text-align: left;
+      }
+    }
+  }
+
+
+  /* Text Right Variation */
+  &.messaging-widget__text-right {
+    /* Medium Screen */
+    @include media($medium-screen) {
+
+      .media-column {
+        @include span-columns(8);
+      }
+      .text-column {
+        @include shift(1);
+        @include span-columns(9);
+      }
+      .actions {
+        text-align: left;
+      }
+    }
+    /* Large Screen */
+    @include media($large-screen) {
+      .media-column {
+        @include span-columns(10);
+      }
+      .text-column {
+        @include span-columns(7);
+        @include shift(1);
+      }
+    }
+  }
+
+
+  /* Text Left Variation */
+  &.messaging-widget__text-left {
+    @include direction-context(right-to-left) {
+      /* Medium Screen */
+      @include media($medium-screen) {
+        .media-column {
+          @include span-columns(8);
+        }
+        .text-column {
+          @include span-columns(9);
+          @include shift(1);
+        }
+        .actions {
+          text-align: left;
+        }
+      }
+      /* Large Screen */
+      @include media($large-screen) {
+        .media-column {
+          @include span-columns(10);
+        }
+        .text-column {
+          @include span-columns(7);
+          @include shift(1);
+        }
+      }
+    }
+  }
+
+  &.messaging-widget__text-right.messaging-widget__has-fact-cards {
+    @include media($medium-screen) {
+      .text-column {
+        float: right;
+      }
+    }
+  }
+
+  &.messaging-widget__text-left.messaging-widget__has-fact-cards {
+    @include media($medium-screen) {
+      .text-column {
+        float: left;
+      }
+    }
+  }
+}
+
+.messaging-widget__has-fact-cards .media-column {
+  padding-top: $base-spacing * 4;
+
+  @include media($medium-screen) {
+    padding-top: 0;
+  }
+}
+
+/* Medium bg Variation */
+.messaging-widget__medium-bg {
+  background-color: $bg-silver-gray;
+}
+
+/* Dark bg Variation */
+.messaging-widget__dark-bg {
+  background-color: $black;
+  .title, .category, .body { color: white; }
+}
+
+/* Fact Card Media */
+.messaging-widget .media-column {
+  .fact-card-container {
+    white-space: normal;
+  }
+
+  .fact-card {
+    white-space: normal;
+    margin: $base-spacing $base-spacing 0;
+  }
+}
