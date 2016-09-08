@@ -2,7 +2,7 @@
 #theme.business {
   @include theme-color-classes($asbe-primary);
 
-  .smallMasthead .masthead, .smallMasthead .masthead-old, .bigMasthead .mastheadPlaceholder, .bigMasthead .masthead, .bigMasthead .masthead-old, .nameBar, .rightColumn .styleTwo, .background-image-overlay {
+  .smallMasthead .masthead, .smallMasthead .masthead-old, .bigMasthead .mastheadPlaceholder, .bigMasthead .masthead, .bigMasthead .masthead-old, .nameBar, .rightColumn .styleTwo, .outer-background-overlay, .inner-background-overlay {
     background: $asbe-primary; /* Old browsers */
   }
 

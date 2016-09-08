@@ -1,7 +1,7 @@
 
 #theme.crean {
   @include theme-color-classes($crean-primary);
-  .smallMasthead .masthead, .smallMasthead .masthead-old, .bigMasthead .mastheadPlaceholder, .bigMasthead .masthead, .bigMasthead .masthead-old, .nameBar, .rightColumn .styleTwo, .background-image-overlay {
+  .smallMasthead .masthead, .smallMasthead .masthead-old, .bigMasthead .mastheadPlaceholder, .bigMasthead .masthead, .bigMasthead .masthead-old, .nameBar, .rightColumn .styleTwo, .outer-background-overlay, .inner-background-overlay {
   	background: $crean-primary; /* Old browsers */
   	
   }

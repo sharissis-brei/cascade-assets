@@ -2,7 +2,7 @@
 #theme.scst {
   @include theme-color-classes($scst-primary);
 
-  .smallMasthead .masthead, .smallMasthead .masthead-old, .bigMasthead .mastheadPlaceholder, .bigMasthead .masthead, .bigMasthead .masthead-old, .nameBar, .rightColumn .styleTwo, .background-image-overlay {
+  .smallMasthead .masthead, .smallMasthead .masthead-old, .bigMasthead .mastheadPlaceholder, .bigMasthead .masthead, .bigMasthead .masthead-old, .nameBar, .rightColumn .styleTwo, .outer-background-overlay, .inner-background-overlay {
   	background: $scst-primary; /* Old browsers */
   	
   }
