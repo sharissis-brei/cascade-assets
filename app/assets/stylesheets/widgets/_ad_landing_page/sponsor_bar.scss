@@ -1,0 +1,65 @@
+#sponsor-bar {
+	padding: $one-column-widget-spacing 36px;
+	background-color: white;
+	.outer-container {
+		@include outer-container;
+	}
+	.carousel-container {
+		padding: 0 24px;
+	}
+	.jcarousel {
+		position: relative;
+		overflow: hidden;
+		z-index: 666;
+	}
+
+	.sponsor-list {
+		width: 2000em;
+		position: relative;
+		list-style: none;
+    margin: 0;
+    padding: 0;
+	}
+
+	.sponsor-list-item {
+		float: left;
+		height: 95px;
+		line-height: 95px;
+		margin: 0 24px;
+		text-align: center;
+
+		img {
+			width: 95px;
+			max-height: 95px;
+			vertical-align: middle;
+		}
+	}
+	.control { 
+		position: absolute;
+		top: 0;
+    bottom: 0;
+    height: 50px;
+    width: 50px;
+    margin: auto;
+  	z-index: 667;
+  	pointer-events:all;
+  	background-color: white;
+  	opacity: .8;
+  	cursor: pointer;
+
+		&.prev { left: 0; }
+		&.next{ right: 0; }
+
+  	a {
+  	  display: inline-block;
+  	  height: 50px;
+  	  width: 50px;
+  	  font-size:80px;
+  	  line-height: 40px;
+  	  color: $black;
+
+  	  &.jcarousel-next {text-align: right; }
+  	  &.jcarousel-prev {text-align: left; }
+  	}
+	}
+}
