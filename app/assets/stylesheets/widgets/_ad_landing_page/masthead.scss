@@ -10,6 +10,11 @@
     width: 100%;
   }
 
+  .masthead-header {
+    border: 1px solid $red;
+    width: 100%;
+    height: 100px;
+    background: #000;
   }
 
   .masthead-hero, .background-image, .background-video-wrapper {
