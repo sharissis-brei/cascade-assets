@@ -5,6 +5,7 @@ AllCops:
     - 'db/**/*'
     - 'config/**/*'
     - 'script/**/*'
+    - 'Guardfile'
     - !ruby/regexp /old_and_unused\.rb$/
 
 Rails:
@@ -45,9 +46,10 @@ Style/AlignHash:
 Style/HashSyntax:
   EnforcedStyle: ruby19_no_mixed_keys
 
+# This cop no longer recognized.
 # has_key? and has_value? are far more readable than key? and value?
-Style/DeprecatedHashMethods:
-  Enabled: false
+#Style/DeprecatedHashMethods:
+#  Enabled: false
 
 # String#% is by far the least verbose and only object oriented variant.
 Style/FormatString:
@@ -89,11 +91,11 @@ Style/SignalException:
 Lint/HandleExceptions:
   Enabled: false
 
-Style/SpaceInsideBlockBraces:
+#Style/SpaceInsideBlockBraces:
   # The space here provides no real gain in readability while consuming
   # horizontal space that could be used for a better parameter name.
   # Also {| differentiates better from a hash than { | does.
-  SpaceBeforeBlockParameters: false
+#  SpaceBeforeBlockParameters: false
 
 # No trailing space differentiates better from the block:
 # foo} means hash, foo } means block.

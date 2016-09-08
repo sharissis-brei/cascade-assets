@@ -5,12 +5,11 @@ class DashboardController < ApplicationController
     @three_column_pages = html_files_in '3_column'
     @home_page_pages    = html_files_in 'home_page'
     @ad_landing_pages   = html_files_in 'ad_landing_page'
-    #render plain: 'ok'
   end
 
   # TODO: Debugging controller test issue. Remove when fixed.
   def foo
-    #render plain: 'ok'
+    # render plain: 'ok'
   end
 
   def one_column
@@ -34,10 +33,11 @@ class DashboardController < ApplicationController
   end
 
   private
-    def html_files_in(folder)
-      extention = '.html.erb'
-      Dir[Rails.root.join('app', 'views', folder, '*' + extention)].map do |path|
-        File.basename(path, extention)
-      end
+
+  def html_files_in(folder)
+    extention = '.html.erb'
+    Dir[Rails.root.join('app', 'views', folder, '*' + extention)].map do |path|
+      File.basename(path, extention)
     end
+  end
 end

@@ -49,5 +49,5 @@ end
 
 def zip(input_folder, output_name)
   zf = ZipFileGenerator.new(input_folder, output_name)
-  zf.write()
+  zf.write
 end

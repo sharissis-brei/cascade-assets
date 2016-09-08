@@ -1,7 +1,7 @@
 source 'https://rubygems.org'
 
 gem 'foreman'
-gem 'render_anywhere', :require => false
+gem 'render_anywhere', require: false
 gem 'rubyzip'
 gem 'autoprefixer-rails'
 gem 'awesome_print'
