@@ -7,9 +7,6 @@ Rails.application.routes.draw do
   get 'home_page/:page',       to: 'dashboard#home_page'
   get 'ad_landing_page/:page', to: 'dashboard#ad_landing_page'
 
-  # TODO: Debugging controller test issue. Remove when fixed.
-  get 'foo', to: 'dashboard#foo'
-
   # The priority is based upon order of creation: first created -> highest priority.
   # See how all your routes lay out with "rake routes".
 

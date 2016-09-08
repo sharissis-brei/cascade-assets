@@ -7,11 +7,6 @@ class DashboardController < ApplicationController
     @ad_landing_pages   = html_files_in 'ad_landing_page'
   end
 
-  # TODO: Debugging controller test issue. Remove when fixed.
-  def foo
-    # render plain: 'ok'
-  end
-
   def one_column
     render template: "1_column/#{params[:page]}", layout: '1_column'
   end

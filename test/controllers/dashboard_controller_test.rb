@@ -10,9 +10,4 @@ class DashboardControllerTest < ActionController::TestCase
     get :home_page, page: 'sample'
     assert_response :success
   end
-
-  test "get foo" do
-    get :foo
-    assert_response :success
-  end
 end
