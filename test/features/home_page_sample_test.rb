@@ -58,7 +58,9 @@ feature "Sample home page" do
     find(close_icon_selector).click
 
     # Assert
-    assert page.has_no_selector?(side_nav_menu_open_selector),
+    # Test was occasionally failing. Upped wait to 5s (default is 2) on theory that selector
+    # was timing out before menu was fully retracted and open class removed.
+    assert page.has_no_selector?(side_nav_menu_open_selector, wait: 5),
            "Side menu should now NOT be visible in viewport again."
   end
 end
