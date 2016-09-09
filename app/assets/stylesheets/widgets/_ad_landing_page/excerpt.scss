@@ -1,0 +1,24 @@
+.excerpt {
+	.outer-container {
+		@include outer-container;
+		padding-bottom: 32px;
+	}
+	
+	.text-container {
+		border-top: 2px solid $bg-silver-gray;
+		border-bottom: 2px solid $bg-silver-gray;
+		padding: 32px;
+
+		@include media($medium-screen) { padding: 32px 0; }
+	}
+
+	.text {
+		margin: 0;
+		text-align: center;
+		font-size: 26px;
+		font-weight: 600;
+		color: #828282;
+
+		@include media($large-screen) { text-align: left; }
+	}
+}
