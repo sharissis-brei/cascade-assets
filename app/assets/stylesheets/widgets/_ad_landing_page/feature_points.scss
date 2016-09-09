@@ -1,0 +1,32 @@
+.feature-points {
+	.outer-container {
+		@include outer-container;
+		padding: 0 32px 32px;
+
+		@include media($medium-screen) { padding: 0 0 32px; }
+	}
+
+	.feature-points-list {
+		display: inline-block;
+		list-style-type: none;
+	}
+
+	.point-item {
+		font-weight: 600;
+	}
+
+	.icon {
+		display: inline-block;
+		height: 48px;
+		width: 48px;
+		line-height: 48px;
+		margin-right: 12px;
+		text-align: center;
+		border-radius: 50%;
+		background-color: $bg-silver-gray;
+		font-size: 21px;
+		color: white;
+
+		&::before { line-height: inherit; }
+	}
+}
