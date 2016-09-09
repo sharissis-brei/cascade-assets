@@ -211,8 +211,10 @@ if (/MSIE [0-8]\b/.test(navigator.userAgent)) {
 			prev.className = 'carousel-prevnext carousel-prev';
 			next.className = 'carousel-prevnext carousel-next';
 
-			prev.href = '#prev';
-			next.href = '#next';
+			// Removing for accessibility purposes
+			// WAVE tool views these as broken same page links
+			// prev.href = '#prev';
+			// next.href = '#next';
 
 			prev.title = 'Move to the previous slide in the carousel';
 			next.title = 'Move to the next slide in the carousel';
