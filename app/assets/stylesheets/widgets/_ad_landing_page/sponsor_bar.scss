@@ -4,7 +4,7 @@
 
 	.outer-container {
 		@include outer-container;
-			padding: $one-column-widget-spacing 36px;
+		padding: $one-column-widget-spacing 36px;
 	}
 
 	.sponsor-title {
@@ -57,27 +57,25 @@
 		top: 0;
     bottom: 0;
     height: 50px;
-    width: 50px;
+  	width: 50px;
+  	line-height: 50px;
+  	font-size: 28px;
     margin: auto;
   	z-index: 667;
   	pointer-events:all;
-  	background-color: white;
-  	opacity: .8;
   	cursor: pointer;
+  	color: #676767;
 
-		&.prev { left: 0; }
-		&.next{ right: 0; }
+		&.jcarousel-prev{ 
+			left: 0;
+			text-align: left;
+		}
 
-  	a {
-  	  display: inline-block;
-  	  height: 50px;
-  	  width: 50px;
-  	  font-size:80px;
-  	  line-height: 40px;
-  	  color: $black;
+		&.jcarousel-next{ 
+			right: 0;
+			text-align: right; 
+		}
 
-  	  &.jcarousel-next {text-align: right; }
-  	  &.jcarousel-prev {text-align: left; }
-  	}
+		&::before { line-height: inherit; }
 	}
 }

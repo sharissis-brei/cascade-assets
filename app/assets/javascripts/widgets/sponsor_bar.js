@@ -7,8 +7,8 @@ $(document).ready(function(){
 			slideControls = $();
 
 	slider.jcarousel({
-		buttonNextHTML: "<div class='control next'><a class='jcarousel-next'>&rsaquo;</a></div>",
-		buttonPrevHTML: "<div class='control prev'><a class='jcarousel-prev'>&lsaquo;</a></div>",
+		buttonNextHTML: "<div class='control jcarousel-next icon-circle-right'></div>",
+		buttonPrevHTML: "<div class='control jcarousel-prev icon-circle-left'></div>",
 		scroll: 1,
 		wrap: "both",
 		visible: getVisibleItems(),
