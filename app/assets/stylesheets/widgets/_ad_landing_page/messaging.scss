@@ -60,7 +60,11 @@
   .text-column {
     text-align: left;
 
-    h2, p { padding: 0 32px; }
+    h2, p {
+      padding: 0 32px;
+
+      @include media($medium-screen) { padding: 0; }
+    }
   }
 
   .table-spacer { height: 32px; }
