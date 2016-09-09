@@ -12,7 +12,7 @@ require "test_helper"
 feature "Dashboard" do
   scenario "the test is sound" do
     # Arrange
-    # Use poltergeist driver for headless phantomjs.
+    # Use poltergeist driver for headless broswer testing with phantomjs.
     Capybara.javascript_driver = :poltergeist
 
     # Act

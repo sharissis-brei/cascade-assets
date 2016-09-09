@@ -50,6 +50,9 @@ group :test do
   # PhantomJS webdriver for Capybara: https://github.com/teampoltergeist/poltergeist
   # Requires phantomjs installed: brew install phantomjs
   gem 'poltergeist'
+
+  # Stub or block HTTP requests in tests: https://github.com/bblimke/webmock
+  gem 'webmock'
 end
 
 # Gems for Development and Test
