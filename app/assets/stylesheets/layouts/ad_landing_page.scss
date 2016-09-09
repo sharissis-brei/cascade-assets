@@ -3,8 +3,15 @@
     @include outer-container;
 
     .ad-landing-left-column, .ad-landing-right-column {
-      @include span-columns(9);
-      padding: 0 $base-spacing;
+      @include media($medium-screen) {
+        @include span-columns(9);
+        padding: 0 $base-spacing*2;
+      }
+    }
+    
+    .ad-landing-title {
+      font-size: 32px;
+      @include media($medium-screen) { margin-top: 0; }
     }
 
     .ad-landing-left-column {
