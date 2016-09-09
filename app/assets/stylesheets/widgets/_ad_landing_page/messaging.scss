@@ -1,21 +1,27 @@
 /*  Base Styles */
-.messaging-widget {
-  background-size: cover;
-  background-repeat: no-repeat;
-  background-position: center center;
-  padding: $one-column-widget-spacing 0;
+.ad-landing-messaging-widget {
+  padding: 0;
+  padding-bottom: $base-spacing*2;
 
   .outer-container {
     @include outer-container;
-    @include pad(0 $base-spacing * 3);
+  }
+  
+  .text-column {
+    @include pad(0 $base-spacing * 2);
 
-    @include media($large-screen) {
-      @include pad(0 $base-spacing);
+    @include media($medium-screen) {
+      padding: 0;
     }
   }
 
   .media-column {
     text-align: center;
+  }
+
+  .title {
+    font-size: 22px;
+    line-height: 26px;
   }
 
   .center-media-helper {
@@ -37,190 +43,93 @@
   }
 }
 
-/* One Column Variation */
-.messaging-widget__1-column {
+/* Text Only Variation */
+.ad-landing-messaging-widget__text-only {
+  .section-message .body p {
+    font-weight: 800;
+    line-height: 28px;
+  }
+}
+
+/* Video Variation */
+.ad-landing-messaging-widget__video {
   background-color: #eaeaea;
-  
+
+  .outer-container { display: table; }
+
   .text-column {
-    text-align: center;
+    text-align: left;
+
+    h2, p { padding: 0 32px; }
   }
-  .media-column {
-    padding-top: $base-spacing * 4;
+
+  .table-spacer { height: 32px; }
+
+  &.ad-landing-messaging-widget__text-top {
+    .text-column { display: table-header-group; }
+    .media-column { display: table-footer-group; }
   }
 
-  &.messaging-widget__has-fact-cards {
-    .actions {
-      @include pad($base-spacing * 4  0 0 0);
-      text-align: center;
-    }
-
-    .text-column {
-      margin-bottom: $base-spacing * 3;
-    }
-
-    .media-column {
-      padding-top: 0;
-    }
-
-    @include media($medium-screen) {
-      .text-column {
-        margin-bottom: 0;
-        margin-bottom: $base-spacing * 2;
-
-        p {
-          margin-bottom: 0;
-        }
-      }
-    }   
+  &.ad-landing-messaging-widget__text-bottom {
+    .text-column { display: table-footer-group; }
+    .media-column { display: table-header-group; }
   }
 
   @include media($medium-screen) {
     .text-column {
-      margin: 0 auto;
-      width: 75%;
+      margin: 0;
     }
   }
-  @include media($large-screen) {
-    .text-column {
-      width: 60%;
-    }
-  }
-
 }
 
-/* Two Column Variation */
-.messaging-widget__2-column {
-  background-color: #eaeaea;
-  /* All Variations */
+/* Image Variation */
+.ad-landing-messaging-widget__image {
   .media-column {
-    white-space: nowrap;
-    margin-bottom: $base-spacing * 2;
-    padding: 0;
+    display: none;
   }
   .text-column {
     text-align: left;
   }
 
-  &.messaging-widget__has-fact-cards {
-    .text-column {
-      text-align: center;
+  .media {
+    display: none;
+
+    @include media($medium-screen) {
+      display: inline-block;
+      padding: 0;
+      width: 50%;
     }
   }
+
   @include media($medium-screen) {
     .media-column {
+      display: block;
+      white-space: nowrap;
+      padding: 0;
       margin-bottom: 0;
     }
-
-    &.messaging-widget__has-fact-cards {
-      .text-column {
-        text-align: left;
-      }
-    }
   }
 
 
-  /* Text Right Variation */
-  &.messaging-widget__text-right {
-    /* Medium Screen */
-    @include media($medium-screen) {
-
-      .media-column {
-        @include span-columns(8);
-      }
-      .text-column {
-        @include shift(1);
-        @include span-columns(9);
-      }
-      .actions {
-        text-align: left;
-      }
-    }
-    /* Large Screen */
-    @include media($large-screen) {
-      .media-column {
-        @include span-columns(10);
-      }
-      .text-column {
-        @include span-columns(7);
-        @include shift(1);
-      }
-    }
-  }
-
-
-  /* Text Left Variation */
-  &.messaging-widget__text-left {
-    @include direction-context(right-to-left) {
-      /* Medium Screen */
-      @include media($medium-screen) {
-        .media-column {
-          @include span-columns(8);
-        }
-        .text-column {
-          @include span-columns(9);
-          @include shift(1);
-        }
-        .actions {
-          text-align: left;
-        }
-      }
-      /* Large Screen */
-      @include media($large-screen) {
-        .media-column {
-          @include span-columns(10);
-        }
-        .text-column {
-          @include span-columns(7);
-          @include shift(1);
-        }
-      }
-    }
-  }
-
-  &.messaging-widget__text-right.messaging-widget__has-fact-cards {
+  &.ad-landing-messaging-widget__text-right, &.ad-landing-messaging-widget__text-left {
     @include media($medium-screen) {
       .text-column {
-        float: right;
+        @include span-columns(18);
       }
     }
   }
 
-  &.messaging-widget__text-left.messaging-widget__has-fact-cards {
-    @include media($medium-screen) {
-      .text-column {
-        float: left;
-      }
+  &.ad-landing-messaging-widget__text-right {
+    .media {
+      float: left;
+      margin: 0 16px 0 0;
     }
   }
-}
 
-.messaging-widget__has-fact-cards .media-column {
-  padding-top: $base-spacing * 4;
-
-  @include media($medium-screen) {
-    padding-top: 0;
-  }
-}
-
-/* Medium bg Variation */
-.messaging-widget__medium-bg {
-  background-color: $bg-silver-gray;
-}
-
-/* Dark bg Variation */
-.messaging-widget__dark-bg {
-  background-color: $black;
-  .title, .category, .body { color: white; }
-}
-
-/* Fact Card Media */
-.messaging-widget .media-column {
-  .fact-card-container {
-    white-space: normal;
-  }
-
-  .fact-card {
-    white-space: normal;
-    margin: $base-spacing $base-spacing 0;
+  &.ad-landing-messaging-widget__text-left {
+    .media {
+      float: right;
+      margin: 0 0 0 16px;
+    }
   }
 }

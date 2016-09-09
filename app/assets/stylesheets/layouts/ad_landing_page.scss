@@ -1,25 +1,29 @@
 .ad-landing-container {
   .ad-landing-column-container {
     @include outer-container;
-
-    .ad-landing-left-column, .ad-landing-right-column {
+    
+    .ad-landing-left-column {
       @include media($medium-screen) {
-        @include span-columns(9);
+        @include span-columns(11);
         padding: 0 $base-spacing*2;
       }
     }
-    
-    .ad-landing-title {
-      font-size: 32px;
-      @include media($medium-screen) { margin-top: 0; }
-    }
-
-    .ad-landing-left-column {
-      
-    }
 
     .ad-landing-right-column {
-    
+      @include media($medium-screen) {
+        @include span-columns(7);
+        padding: 0 $base-spacing*2;
+      }
+    }
+
+    .ad-landing-title {
+      padding-left: $base-spacing*2;
+      font-size: 32px;
+
+      @include media($medium-screen) {
+        margin-top: 0;
+        padding-left: 0;
+      }
     }
   }
 
