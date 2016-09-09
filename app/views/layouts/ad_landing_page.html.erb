@@ -18,14 +18,16 @@
       <p>Some of the content on this website requires JavaScript to be enabled in your web browser to function as intended. This includes, but is not limited to: Flash (also requires the <a href="https://www.adobe.com/shockwave/download/download.cgi?P1_Prod_Version=ShockwaveFlash" target="_blank" title="Get Adobe Flash Player (link opens in a new browser window)">Adobe Flash Player</a>), navigation, video, image galleries, etc. While the website is still usable without JavaScript, it should be enabled to enjoy the full interactive experience.</p>
     </div>
 
-    <div id="ad-landing-container container">
+    <div id="container" class="ad-landing-container">
       <%= yield(:masthead) %>
-      <div id="left-column" class="ad-landing-left-column">
-        <h2><%= yield(:title) %></h2>
-        <%= yield(:left_column) %>
-      </div>
-      <div id="right-column" class="ad-landing-left-column">
-        <%= yield(:right_column) %>
+      <div id="column-container" class="ad-landing-column-container">
+        <div id="left-column" class="ad-landing-left-column">
+          <h2><%= yield(:title) %></h2>
+          <%= yield(:left_column) %>
+        </div>
+        <div id="right-column" class="ad-landing-left-column">
+          <%= yield(:right_column) %>
+        </div>
       </div>
       <%= yield(:footer) %>
     </div>

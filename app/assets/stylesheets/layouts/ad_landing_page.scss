@@ -1,0 +1,18 @@
+.ad-landing-container {
+  .ad-landing-column-container {
+    @include outer-container;
+
+    .ad-landing-left-column, .ad-landing-right-column {
+      @include span-columns(9);
+      padding: 0 $base-spacing;
+    }
+
+    .ad-landing-left-column {
+      
+    }
+
+    .ad-landing-right-column {
+    
+    }
+  }
+}
