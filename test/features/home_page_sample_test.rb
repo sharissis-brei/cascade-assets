@@ -28,31 +28,37 @@ feature "Sample home page" do
     side_nav_menu_open_selector = 'div#js-cu-off-canvas-nav-container.open'
     close_icon_selector = 'span#js-cu-close-off-canvas-nav'
 
-    # FIXME: fails here with error:
-    # ActionController::RoutingError: No route matches
-    # [GET] "/home_page/_hero_stories/listing_order.json.txt"
-    # Is this an AJAX request? We should be able to mock this up somehow.
-    skip
-    visit "/home_page/sample"
+    # Capture javascript errors. Still should fix any issues. Test will output error.
+    # FIXME: Currently getting error:
+    # "TypeError: Requested keys of a value that is not an object."
+    # May need to better stub an AJAX response or set up test.
+    begin
+      visit "/home_page/sample"
+    rescue Capybara::Poltergeist::JavascriptError => e
+      puts format("[WARNING] Rescued javascript error:\n%s", e.message)
+    end
 
-    # Open hamburger menu.
+    # Open side nav menu.
     # Assume
     assert page.has_selector?(hamburger_icon_selector)
     assert page.has_selector?(side_nav_menu_selector)
-    assert !page.has_selector?(side_nav_menu_open_selector)
+    assert page.has_no_selector?(side_nav_menu_open_selector),
+           "Side menu should NOT be visible in viewport."
     assert page.has_selector?(close_icon_selector)
 
     # Act
     page.find(hamburger_icon_selector).click
 
     # Assert
-    assert page.has_selector?(side_nav_menu_open_selector)
+    assert page.has_selector?(side_nav_menu_open_selector),
+           "Side menu should now be visible in viewport."
 
-    # Close hamburger menu.
+    # Close side nav menu.
     # Act
     find(close_icon_selector).click
 
     # Assert
-    assert !page.has_selector?(side_nav_menu_open_selector)
+    assert page.has_no_selector?(side_nav_menu_open_selector),
+           "Side menu should now NOT be visible in viewport again."
   end
 end
