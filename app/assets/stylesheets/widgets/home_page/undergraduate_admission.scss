@@ -1,0 +1,153 @@
+/***************************************************
+* Statistics Blocks
+***************************************************/
+
+.homepage {
+  ul.statistics {
+    list-style-type: none;
+    margin: 75px 0;
+    text-align: center;
+    overflow: auto;
+    box-sizing: initial;
+    /*max-width:50%; */
+    p {
+      margin: 0;
+    }
+    li {
+      max-width: 100%;
+      padding: 10px;
+      background: url('../img/gray_50.png');
+      &:last-of-type {
+        margin-right: 0;
+      }
+      .bigstat {
+        font-size: 32px;
+        line-height: 32px;
+        font-family: 'futura-pt', sans-serif;
+        color: #FFFFFF;
+        margin-top: 0px;
+        font-weight: 800;
+      }
+      .label {
+        font-size: 18px;
+        line-height: 18px;
+        font-family: 'futura-pt', sans-serif;
+        color: #FFFFFF;
+      }
+    }
+  }
+}
+
+@media only screen and (min-width: 680px) {
+  .homepage {
+    /* Break stats and label onto two lines */
+    ul.statistics li {
+      .bigstat {
+        display: block;
+      }
+      .label {
+        display: block;
+        font-size: 16px;
+        line-height: 16px;
+      }
+    }
+    /* Centered <ul> */
+    #undergraduateAdmission ul.statistics {
+      overflow: visible;
+      float: right;
+      position: relative;
+      right: 50%;
+      li {
+        position: relative;
+        left: 50%;
+      }
+    }
+    /* Colored circles */
+    ul.statistics li {
+      float: left;
+      width: 85px;
+      height: 85px;
+      padding: 30px;
+      margin-right: -15px;
+      border-radius: 50%;
+      padding: 30px;
+      &.fact1 {
+        background: rgba(255, 142, 59, 0.6);
+      }
+      &.fact2 {
+        background: rgba(53, 109, 157, 0.6);
+      }
+      &.fact3 {
+        background: rgba(152, 172, 82, 0.6);
+      }
+      &.fact4 {
+        background: rgba(251, 208, 79, 0.6);
+      }
+      &.fact5 {
+        background: rgba(28, 141, 169, 0.6);
+      }
+    }
+  }
+}
+
+@media only screen and (min-width: 980px) {
+  .homepage {
+    ul.statistics li {
+      .bigstat {
+        font-size: 38px;
+        line-height: 38px;
+      }
+      .label {
+        font-size: 18px;
+        line-height: 18px;
+        margin-top: 10px;
+      }
+      width: 100px;
+      height: 100px;
+      padding: 50px;
+      margin-right: -40px;
+    }
+  }
+}
+
+@media only screen and (min-width: 1180px) {
+  .homepage {
+    ul.statistics li {
+      .bigstat {
+        font-size: 52px;
+        line-height: 52px;
+      }
+      .label {
+        font-size: 22px;
+        line-height: 22px;
+        font-weight: 800;
+      }
+      width: 150px;
+      height: 130px;
+      padding: 70px 50px 50px 50px;
+    }
+  }
+}
+
+/***************************************************
+* Undergraduate Admission Section
+***************************************************/
+
+#undergraduateAdmission {
+  background: #111111 image-url('undergrad-admissions.jpg') no-repeat center;
+  background-size: cover;
+  color: #FFFFFF;
+  padding: 65px 0 140px 0;
+  text-align: center;
+  .maxWidth {
+    margin: 0 auto;
+  }
+}
+
+.skrollr #undergraduateAdmission {
+  background-attachment: fixed;
+}
+
+#undergraduateAdmission .subheading {
+  font-weight: 100;
+}

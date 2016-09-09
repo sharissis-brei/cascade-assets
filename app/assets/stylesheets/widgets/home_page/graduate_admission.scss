@@ -1,0 +1,101 @@
+/***************************************************
+* Graduate Admission Section
+***************************************************/
+
+#graduateAdmission {
+  background: #111111 image-url('graduate_admissions_960_v3.jpg') no-repeat center;
+  background-size: cover;
+  color: #FFFFFF;
+  padding: 50px 0;
+  text-align: center;
+  overflow: hidden;
+  p, h3 {
+    color: #FFFFFF;
+  }
+}
+
+.skrollr #graduateAdmission {
+  background-attachment: fixed;
+}
+
+#graduateAdmission {
+  .maxWidth {
+    position: relative;
+  }
+  .heading {
+    margin: 0 auto 15px auto;
+    font-weight: 800;
+    text-align: center;
+  }
+  .subheading {
+    margin: 0 auto;
+    font-weight: 400;
+    font-size: 26px;
+    line-height: 30px;
+    text-align: center;
+  }
+  p.subheading {
+    font-family: 'proxima-nova', sans-serif;
+    font-weight: 800;
+    margin-top: 15px;
+  }
+  .statistics {
+    margin: 0 0 30px 0;
+    li {
+      margin: 0;
+    }
+  }
+  .actions {
+    margin: 35px 0 40px 0;
+  }
+  br.large-screens {
+    display: none;
+  }
+}
+
+@media only screen and (min-width: 680px) {
+  #graduateAdmission {
+    background-image: image-url('graduate_admissions_1200_v3.jpg');
+    text-align: left;
+    background-position: center;
+    .statistics {
+      position: absolute;
+      top: 0;
+      left: 40px;
+    }
+    .heading, .subheading {
+      z-index: 1;
+      position: relative;
+    }
+    .actions {}
+  }
+}
+
+@media only screen and (min-width: 980px) {
+  #graduateAdmission {
+    .actions {
+      margin: 40px 0 100px 0;
+    }
+    .statistics {
+      left: 20px;
+    }
+    .heading, .subheading {}
+  }
+}
+
+@media only screen and (min-width: 1180px) {
+  #graduateAdmission {
+    background-image: image-url('graduate_admissions_1706_v3.jpg');
+    padding: 100px;
+    .statistics {
+      left: -50px;
+    }
+    .heading, .subheading {}
+  }
+}
+
+@media only screen and (min-width: 1250px) {
+  #graduateAdmission br.large-screens {
+    display: block;
+  }
+}

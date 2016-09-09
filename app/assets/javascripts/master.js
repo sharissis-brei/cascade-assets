@@ -22,6 +22,7 @@
 //= require cascade/collapsed-nav
 //= require cascade/console-log
 // don't require cascade/home
+//= require cascade/new-home
 //= require cascade/ie7
 //= require cascade/main
 //= require cascade/news-events

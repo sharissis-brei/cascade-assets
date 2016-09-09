@@ -1,8 +1,9 @@
-class HomeController < ApplicationController
+class IndexController < ApplicationController
   def index
     @one_column_pages   = html_files_in '1_column'
     @two_column_pages   = html_files_in '2_column'
     @three_column_pages = html_files_in '3_column'
+    @home_page_pages    = html_files_in 'home_page'
   end
 
   def one_column
@@ -15,6 +16,10 @@ class HomeController < ApplicationController
 
   def three_column
     render template: "3_column/#{params[:page]}", layout: '3_column'
+  end
+
+  def home_page
+    render template: "home_page/#{params[:page]}", layout: 'home_page'
   end
 
   private
