@@ -22,4 +22,19 @@
     
     }
   }
+
+  #footer {
+    padding: 82px 0 36px;
+
+    @include media($medium-screen) { padding-top: 116px; }
+
+    .copyright {
+      padding: 82px 36px 0px;
+      text-align: center;
+
+      p {
+        font-style: normal;
+      }
+    }
+  }
 }
