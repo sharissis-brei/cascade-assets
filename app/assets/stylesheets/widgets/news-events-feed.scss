@@ -59,10 +59,19 @@ $tab-content-border-color: #c1c1c1;
   @include bp(l) {
     padding: 0 0 10px 0;
   }
+  .no-js & {
+    display: none;
+  }
+  .no-js-link {
+    display: none;
+    .no-js & {
+      display: block;
+    }
+  }
 }
 
 // The clickable tabs
-.newsEventsNav  li {
+.newsEventsNav li {
   // When small, make the tabs collapse.
   background-color: #cfcfcf;
   color: #383838;
@@ -128,7 +137,12 @@ $tab-content-border-color: #c1c1c1;
   padding: 20px;
   div { margin: 0; }
   > li { display: none; }
-  > li.active { display: block;}
+  > li.active {
+    display: block;
+    .no-js & {
+      display: none;
+    }
+  }
 }
 
 // The featured tab content
