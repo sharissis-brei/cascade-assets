@@ -12,7 +12,13 @@
 	}
 
 	.point-item {
+		display: table;
 		font-weight: 600;
+	}
+
+	.item-wrap {
+		display: table-cell;
+		vertical-align: middle;
 	}
 
 	.icon {
