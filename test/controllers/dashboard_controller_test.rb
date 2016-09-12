@@ -10,4 +10,9 @@ class DashboardControllerTest < ActionController::TestCase
     get :home_page, page: 'sample'
     assert_response :success
   end
+
+  test 'get ad landing page sample' do
+    get :ad_landing_page, page: 'sample'
+    assert_response :success
+  end
 end
