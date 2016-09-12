@@ -126,30 +126,12 @@
     @include media($medium-screen) {
       @include span-columns(6);
       float: right;
-      padding: $base-spacing*3 $one-column-widget-spacing/2 $one-column-widget-spacing $one-column-widget-spacing/2;
+      padding: $one-column-widget-spacing/2 $one-column-widget-spacing/2 $one-column-widget-spacing $one-column-widget-spacing/2;
       pointer-events: all;
     }
 
-    // Title
-    h1 {
-      margin: 0;
-      font-size: 22px;
-      line-height: 30px;
-
-      @include media($medium-screen) {
-        font-size: 28px;
-        line-height: 36px;
-      }
-
-      @include media($large-screen) {
-        font-size: 32px;
-        line-height: 40px;
-      }
-    }
-
-    // Subtitle
     h2 {
-      font-weight: 200;
+      font-weight: 800;
       margin: $base-spacing/2 0;
       font-size: 20px;
       line-height: 30px;
@@ -167,27 +149,20 @@
 
     p { line-height: 24px; }
 
-    h1, h2, p {
-      text-align: center;
-      @include media($medium-screen) { text-align: left; }
+    h2, p {
+      text-align: left;
     }
     
     .calls-to-action { 
       margin-top: $base-spacing;
-      text-align: center;
+      color: #767676;
 
-      a {
-        @include button($blue);
+      input {
+        border-radius: 0;
+        margin-bottom: 16px;
         width: 100%;
-        margin-bottom: $base-spacing/2;
-        text-align: center;
-        line-height: 30px;
-        border-radius: 0px;
 
-        @include media($medium-screen) {
-          width: 100%;
-          margin: $base-spacing/4 0px;
-        }
+        &[type="submit"] { border-radius: 3px; }
       }
     }
   }
