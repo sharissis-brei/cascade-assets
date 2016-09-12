@@ -179,7 +179,7 @@
     @include media($medium-screen) {
       @include span-columns(8);
       padding: $base-spacing*2 $base-spacing;
-      margin-bottom: $base-spacing*3;
+      margin-bottom: $base-spacing*6;
       bottom: 0;
       position: absolute;
       color: white;
@@ -264,7 +264,7 @@
 
     .footer-text-desktop {
       line-height: 0.7em;
-      font-size: 101px;
+      font-size: 130px;
       margin: 0 -5%;
       white-space: nowrap;
     }
