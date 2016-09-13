@@ -20,7 +20,8 @@
 
     .ad-landing-title {
       padding: 0 24px;
-      font-size: 32px;
+      font-size: 30px;
+      line-height: 38px;
 
       @include media($medium-screen) {
         margin-top: 0;
