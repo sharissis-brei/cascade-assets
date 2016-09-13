@@ -1,15 +1,15 @@
 .excerpt {
 	.outer-container {
 		@include outer-container;
-		padding-bottom: 32px;
+		padding-bottom: 24px;
 	}
 	
 	.text-container {
 		border-top: 2px solid $bg-silver-gray;
 		border-bottom: 2px solid $bg-silver-gray;
-		padding: 32px;
+		padding: 24px;
 
-		@include media($medium-screen) { padding: 32px 0; }
+		@include media($medium-screen) { padding: $base-spacing*2 0; }
 	}
 
 	.text {

@@ -1,14 +1,14 @@
 /*  Base Styles */
 .ad-landing-messaging-widget {
   padding: 0;
-  padding-bottom: $base-spacing*2;
+  padding-bottom: $base-spacing;
 
   .outer-container {
     @include outer-container;
   }
   
   .text-column {
-    @include pad(0 $base-spacing * 2);
+    @include pad(0 24px);
 
     @include media($medium-screen) {
       padding: 0;

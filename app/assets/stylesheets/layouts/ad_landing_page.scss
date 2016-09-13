@@ -1,4 +1,6 @@
 .ad-landing-container {
+  margin-top: -($base-spacing*4);
+
   .ad-landing-column-container {
     @include outer-container;
     
@@ -17,7 +19,7 @@
     }
 
     .ad-landing-title {
-      padding-left: $base-spacing*2;
+      padding: 0 24px;
       font-size: 32px;
 
       @include media($medium-screen) {
