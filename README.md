@@ -1,6 +1,7 @@
 # Cascade Assets
 
-This repository consists of sample HTML that Cascade Server generates for www.chapman.edu.  It contains the build system for stylesheets, javascripts, and images that we use on www.chapman.edu.  Use this repository to develop for www.chapman.edu locally, then copy your HTML changes and asset files into Cascade Server when they are ready. 
+This repository consists of sample HTML that Cascade Server generates for www.chapman.edu.  It contains the build system for stylesheets, javascripts, and images that we use on www.chapman.edu.  Use this repository to develop for www.chapman.edu locally, then copy your HTML changes and asset files into Cascade Server when they are ready.
+
 
 ## Setup
 ```
@@ -12,12 +13,29 @@ rake serve
 Send your browser to [http://localhost:5000](http://localhost:5000)
 Turn on your livereload extention (optional)
 
+
 ## Making Changes
 
-**HTML:** Sample HTML for the website lives in `app/views`  
-**CSS:** Edit the stylesheets in `app/assets/stylesheets/`  
-**JS:** Edit the javascripts in `app/assets/javascripts/`  
-**IMAGES:** Add/remove images in `app/assets/images/`  
+**HTML:** Sample HTML for the website lives in `app/views`
+**CSS:** Edit the stylesheets in `app/assets/stylesheets/`
+**JS:** Edit the javascripts in `app/assets/javascripts/`
+**IMAGES:** Add/remove images in `app/assets/images/`
+
+
+## Tests
+
+The testing suite includes feature tests exercising javascript functionality. These tests require the phantomjs driver. The easiest way to install this is with homebrew:
+
+    brew install phantomjs
+
+To run all tests:
+
+    bundle exec rake test
+
+To run a single test:
+
+    bundle exec rake test/features/dashboard_test.rb
+
 
 ## Deploying Assets to Cascade
 
@@ -26,7 +44,7 @@ Turn on your livereload extention (optional)
 In your terminal, run this build command.
 
 ```bash
-# For the cascade dev/production server 
+# For the cascade dev/production server
 bin/build
 
 ```
@@ -47,16 +65,11 @@ Click submit.
 
 Publish the `_assets` folder on cascade so that the new assets will be available.
 
-
-
-
 ### Step 4: Link Templates to New Assets
 
 Find the block located at `_cascade/blocks/html/cascade-assets`
 
 Edit that block to match `cascade-assets.xml` located in the `/dist` folder you just build.  Copy and paste please.
-
-
 
 ### Step 5: Have a Drink
 
@@ -65,6 +78,8 @@ Edit that block to match `cascade-assets.xml` located in the `/dist` folder you 
 The styles are ready to go.
 
 Every page that is published from now on will use the new assets.
+
+
 
 ## Deploy HTML to Cascade
 
@@ -123,6 +138,7 @@ When it is necessary to have variations of the same widget, add more classes to 
 
 Following these conventions helps us keep our css in check.
 
+
 ## Data Definition XML Conventions
 
 ### Links
@@ -135,7 +151,7 @@ Follow these conventions to keep our xml consistent across link types in our dat
   <asset type="file" identifier="fileLink" label="File Link"/>
   <text identifier="alternateText" label="Alternate Text"/> <!-- Do NOT include alt text if image is a background image -->
 </group>
-``` 
+```
 
 ##### Page Link
 
@@ -152,6 +168,7 @@ Follow these conventions to keep our xml consistent across link types in our dat
   <text identifier="label" label="Label"/>
 </group>
 ```
+
 
 ## Velocity Templating Language Cheat Sheet
 
@@ -172,7 +189,7 @@ Follow these conventions to keep our xml consistent across link types in our dat
 #### Loops
 ```html
  #set ($items = $_XPathTool.selectNodes($xml_object, '//path/to/items'))
- 
+
  #foreach($item in $items)
    ...
    <h1>$item.getChild('title').value</h1>
@@ -190,7 +207,6 @@ You can also do ifs and elses right in a string.  For example:
 ```
 #set($classStr = "messaging-widget__#if($textAlign == 'Left')text-left#{else}text-right#end")
 ```
-
 
 #### Navigating XML Data
 ```html

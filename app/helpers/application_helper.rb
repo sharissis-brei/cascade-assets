@@ -15,6 +15,6 @@ module ApplicationHelper
   end
 
   def render_widgets(*widgets)
-    widgets.map {|widget|  render "widgets/#{widget}" }.join.html_safe
+    safe_join(widgets.map { |widget| render "widgets/#{widget}" })
   end
 end

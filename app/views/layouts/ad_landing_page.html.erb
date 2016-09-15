@@ -1,0 +1,39 @@
+<!DOCTYPE html>
+<html class="no-js" lang="en">
+<script async="async" src="https://go.chapman.edu/ping">/**/</script>
+<%= render 'widgets/shared/head' %>
+
+<!--[if lt IE 7]> <body class="ie6 oldie phaseFour"> <![endif]-->
+<!--[if IE 7]>    <body class="ie7 oldie phaseFour"> <![endif]-->
+<!--[if IE 8]>    <body class="ie8 oldie phaseFour"> <![endif]-->
+<!--[if gt IE 8]><!-->
+
+<body>
+  <div id="theme" class="<%= yield(:theme) %>">
+    <span class="hidden"><a href="#main" title="Skip navigation and jump directly to the main content of this page">Jump to the main content of this page</a></span>
+
+    <div id="fb-root"></div>
+
+    <div class="noscript">
+      <p>Some of the content on this website requires JavaScript to be enabled in your web browser to function as intended. This includes, but is not limited to: Flash (also requires the <a href="https://www.adobe.com/shockwave/download/download.cgi?P1_Prod_Version=ShockwaveFlash" target="_blank" title="Get Adobe Flash Player (link opens in a new browser window)">Adobe Flash Player</a>), navigation, video, image galleries, etc. While the website is still usable without JavaScript, it should be enabled to enjoy the full interactive experience.</p>
+    </div>
+
+    <div id="container" class="ad-landing-container">
+      <%= yield(:masthead) %>
+      <div id="column-container" class="ad-landing-column-container">
+        <div id="left-column" class="ad-landing-left-column">
+          <h2 class="ad-landing-title"><%= yield(:title) %></h2>
+          <%= yield(:left_column) %>
+        </div>
+        <div id="right-column" class="ad-landing-right-column">
+          <%= yield(:right_column) %>
+        </div>
+      </div>
+      <footer id="footer">
+        <%= yield(:footer) %>
+        <div class="copyright"><p>All Rights Reserved. Chapman University &reg; 2016</p></div>
+      </footer>
+    </div>
+  </div>
+</body>
+</html>

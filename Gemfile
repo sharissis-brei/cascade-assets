@@ -1,7 +1,7 @@
 source 'https://rubygems.org'
 
 gem 'foreman'
-gem 'render_anywhere', :require => false
+gem 'render_anywhere', require: false
 gem 'rubyzip'
 gem 'autoprefixer-rails'
 gem 'awesome_print'
@@ -35,15 +35,33 @@ gem 'sdoc', '~> 0.4.0', group: :doc
 # Use Capistrano for deployment
 # gem 'capistrano-rails', group: :development
 
+# Access an IRB console on exception pages or by using <%= console %> in views
+gem 'web-console', '~> 2.0', group: :development
+
+# Test-Only Gems
+group :test do
+  # Rubocop static code analyzer: https://github.com/bbatsov/rubocop
+  gem 'rubocop'
+
+  # Feature-testing with Capybara and Selenium
+  gem "minitest-rails-capybara"
+  gem 'selenium-webdriver'
+
+  # PhantomJS webdriver for Capybara: https://github.com/teampoltergeist/poltergeist
+  # Requires phantomjs installed: brew install phantomjs
+  gem 'poltergeist'
+
+  # Stub or block HTTP requests in tests: https://github.com/bblimke/webmock
+  gem 'webmock'
+end
+
+# Gems for Development and Test
 group :development, :test do
   # Call 'byebug' anywhere in the code to stop execution and get a debugger console
   gem 'byebug'
 
-  # Access an IRB console on exception pages or by using <%= console %> in views
-  gem 'web-console', '~> 2.0'
-
   # Spring speeds up development by keeping your application running in the background. Read more: https://github.com/rails/spring
   gem 'spring'
 
-   gem 'guard-livereload', '~> 2.4', require: false
+  gem 'guard-livereload', '~> 2.4', require: false
 end
