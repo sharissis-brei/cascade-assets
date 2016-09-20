@@ -56,10 +56,10 @@
     .header-text-desktop {
       display: none;
 
-      @include media($large-screen) {
+      @include media($medium-screen) {
         display: table-cell;
         text-align: right;
-        font-size: 16px;
+        font-size: 20px;
         text-transform: uppercase;
         padding-right: 8px;
         vertical-align: middle;
@@ -169,7 +169,7 @@
 
       input, select {
         border-radius: 0;
-        margin-bottom: 5px;
+        margin-bottom: 0;
         width: 100%;
       }
 
@@ -269,7 +269,7 @@
       font-size: 20px;
       line-height: 28px;
       font-weight: 200;
-
+      
       @include media($medium-screen) {
         @include span-columns(12);
         font-size: 24px;
