@@ -1,0 +1,151 @@
+/*  Base Styles */
+.ad-landing-messaging-widget {
+  padding: 0;
+  padding-bottom: $base-spacing;
+
+  .outer-container {
+    @include outer-container;
+  }
+  
+  .text-column {
+    @include pad(0 24px);
+
+    @include media($medium-screen) {
+      padding: 0;
+    }
+  }
+
+  .media-column {
+    text-align: center;
+  }
+
+  .title {
+    font-size: 20px;
+    line-height: 30px;
+    font-weight: 600;
+  }
+
+  .center-media-helper {
+    display: inline-block;
+    height: 100%;
+    vertical-align: middle;
+  }
+
+  .media {
+    display: inline-block;
+    vertical-align: middle;
+    width: 100%;
+    height: auto;
+  }
+
+  .fluid-width-video-container {
+    @include fluid-width-video-container;
+    display: inline-block;
+  }
+}
+
+.section-message .body p {
+  font-size: 16px;
+  line-height: 24px;
+}
+
+/* Text Only Variation */
+.ad-landing-messaging-widget__text-only {
+  .section-message .body p {
+    font-size: 16px;
+    line-height: 36px;
+    font-weight: 800;
+
+    @include media($large-screen) {
+      font-size: 18px;
+      line-height: 40px;
+    }
+  }
+}
+
+/* Video Variation */
+.ad-landing-messaging-widget__video {
+  background-color: #eaeaea;
+
+  .outer-container { display: table; }
+
+  .text-column {
+    text-align: left;
+
+    h2, p {
+      padding: 0 24px;
+
+      @include media($medium-screen) { padding: 0; }
+    }
+  }
+
+  .table-spacer { height: 32px; }
+
+  &.ad-landing-messaging-widget__text-top {
+    .text-column { display: table-header-group; }
+    .media-column { display: table-footer-group; }
+  }
+
+  &.ad-landing-messaging-widget__text-bottom {
+    .text-column { display: table-footer-group; }
+    .media-column { display: table-header-group; }
+  }
+
+  @include media($medium-screen) {
+    .text-column {
+      margin: 0;
+    }
+  }
+}
+
+/* Image Variation */
+.ad-landing-messaging-widget__image {
+  .media-column {
+    display: none;
+  }
+  .text-column {
+    text-align: left;
+  }
+
+  .media {
+    display: none;
+
+    @include media($medium-screen) {
+      display: inline-block;
+      padding: 0;
+      width: 50%;
+    }
+  }
+
+  @include media($medium-screen) {
+    .media-column {
+      display: block;
+      white-space: nowrap;
+      padding: 0;
+      margin-bottom: 0;
+    }
+  }
+
+
+  &.ad-landing-messaging-widget__text-right, &.ad-landing-messaging-widget__text-left {
+    @include media($medium-screen) {
+      .text-column {
+        @include span-columns(18);
+      }
+    }
+  }
+
+  &.ad-landing-messaging-widget__text-right {
+    .media {
+      float: left;
+      margin: 0 16px 0 0;
+    }
+  }
+
+  &.ad-landing-messaging-widget__text-left {
+    .media {
+      float: right;
+      margin: 0 0 0 16px;
+    }
+  }
+}

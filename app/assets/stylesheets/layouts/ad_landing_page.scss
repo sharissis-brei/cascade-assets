@@ -1,0 +1,47 @@
+.ad-landing-container {
+  margin-top: -($base-spacing*4);
+
+  .ad-landing-column-container {
+    @include outer-container;
+    
+    .ad-landing-left-column {
+      @include media($medium-screen) {
+        @include span-columns(11);
+        padding: 0 $base-spacing*2;
+      }
+    }
+
+    .ad-landing-right-column {
+      @include media($medium-screen) {
+        @include span-columns(7);
+        padding: 0 $base-spacing*2;
+      }
+    }
+
+    .ad-landing-title {
+      padding: 0 24px;
+      font-size: 30px;
+      line-height: 38px;
+
+      @include media($medium-screen) {
+        margin-top: 0;
+        padding-left: 0;
+      }
+    }
+  }
+
+  #footer {
+    padding: 16px 0;
+
+    @include media($medium-screen) { padding-top: 48px; }
+
+    .copyright {
+      padding: 72px 36px 0px;
+      text-align: center;
+
+      p {
+        font-style: normal;
+      }
+    }
+  }
+}

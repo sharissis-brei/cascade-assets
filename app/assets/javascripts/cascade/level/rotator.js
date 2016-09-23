@@ -317,15 +317,15 @@ $(function () {
 
         // Keep the slide arrows on the edge of the browser window
 
-        $(".flex-direction-nav li .next").offset({ left: $("#container").outerWidth() - 43 });
-        $(".flex-direction-nav li .prev").offset({ left: $("#container").offset().left });
+        // $(".flex-direction-nav li .next").offset({ left: $("#container").outerWidth() - 43 });
+        // $(".flex-direction-nav li .prev").offset({ left: $("#container").offset().left });
 
-        $(window).bind("resize", function () {
+        // $(window).bind("resize", function () {
 
-            $(".flex-direction-nav li a.next").offset({ left: $("#container").outerWidth() - 43 });
-            $(".flex-direction-nav li a.prev").offset({ left: $("#container").offset().left });
+        //     $(".flex-direction-nav li a.next").offset({ left: $("#container").outerWidth() - 43 });
+        //     $(".flex-direction-nav li a.prev").offset({ left: $("#container").offset().left });
 
-        });
+        // });
 
     }
 

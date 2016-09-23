@@ -1,6 +1,12 @@
 require 'zip_file_generator'
-require 'render_anywhere'
-include RenderAnywhere
+
+# RenderAnywhere here breaks controller tests for some inexplicable reason. We're not testing
+# this task, so let's just tiptoe around this mess. For more info, see
+# http://stackoverflow.com/q/39396601/1093087.
+unless Rails.env.test?
+  require 'render_anywhere'
+  include RenderAnywhere
+end
 
 task build: :environment do
   if Rails.env.development?
@@ -49,5 +55,5 @@ end
 
 def zip(input_folder, output_name)
   zf = ZipFileGenerator.new(input_folder, output_name)
-  zf.write()
+  zf.write
 end
