@@ -43,6 +43,12 @@ $tab-content-border-color: #c1c1c1;
     margin-top: 25px;
     display: block;
   }
+  .no-js-link {
+    display: none;
+    .no-js & {
+      display: block;
+    }
+  }
 }
 
 /* Navigation Tabs
@@ -61,12 +67,6 @@ $tab-content-border-color: #c1c1c1;
   }
   .no-js & {
     display: none;
-  }
-  .no-js-link {
-    display: none;
-    .no-js & {
-      display: block;
-    }
   }
 }
 
