@@ -17,41 +17,46 @@
 }
 
 // The clickable tabs
-.tabs-nav  li {
-  // When small, make the tabs collapse.
-  background-color: #cfcfcf;
-  font-size: 1.1em;
-  padding: 0 17px 0 17px;
-  line-height: 35px;
-  height: 35px;
-  cursor: pointer;
-  bottom: -1px; // Cover up the border of the primary content
-  position: relative;
-  border-top: 2px solid transparent;  // Keep text in same spot as active element
-  border-bottom: 1px solid #c1c1c1;
-  list-style-type: none;
-  margin: 0;
-
-  // When big screen, make the tabs look like tabs
-  @include bp(l) {
-    margin: 0 2px 0 0;
-    float: left;
-    transition: padding 200ms;
+.tabs-nav {
+  .no-js & {
+    display: none;
   }
+  li {
+    // When small, make the tabs collapse.
+    background-color: #cfcfcf;
+    font-size: 1.1em;
+    padding: 0 17px 0 17px;
+    line-height: 35px;
+    height: 35px;
+    cursor: pointer;
+    bottom: -1px; // Cover up the border of the primary content
+    position: relative;
+    border-top: 2px solid transparent;  // Keep text in same spot as active element
+    border-bottom: 1px solid #c1c1c1;
+    list-style-type: none;
+    margin: 0;
 
-  &:hover {
-    background-color: #d8d8d8;
-    color: $link-color;
-  }
-  &.active { // The selected tab
-    background-color: $tab-content-bg-color;
-    font-weight: 800;
-    color: $primary-color;
-    border-top: 2px solid $primary-color;
-    border-right: 1px solid $tab-content-border-color;
-    border-left: 1px solid $tab-content-border-color;
-    border-bottom: 1px solid $tab-content-bg-color;
-    @include bp(l) { padding: 0 40px 0 40px; }
+    // When big screen, make the tabs look like tabs
+    @include bp(l) {
+      margin: 0 2px 0 0;
+      float: left;
+      transition: padding 200ms;
+    }
+
+    &:hover {
+      background-color: #d8d8d8;
+      color: $link-color;
+    }
+    &.active { // The selected tab
+      background-color: $tab-content-bg-color;
+      font-weight: 800;
+      color: $primary-color;
+      border-top: 2px solid $primary-color;
+      border-right: 1px solid $tab-content-border-color;
+      border-left: 1px solid $tab-content-border-color;
+      border-bottom: 1px solid $tab-content-bg-color;
+      @include bp(l) { padding: 0 40px 0 40px; }
+    }
   }
 }
 
@@ -62,7 +67,22 @@
   color: $text-color;
   clear: both;
   padding: 20px;
-  div { margin: 0; }
-  > li { display: none; }
-  > li.active { display: block;}
+  div {
+    margin: 0;
+  }
+  > li {
+    display: none;
+    > h2 { // Backup tab heading for no JS
+      display: none;
+      .no-js & {
+        display: block;
+      }
+    }
+    .no-js & {
+      display: block;
+    }
+  }
+  > li.active {
+    display: block;
+  }
 }

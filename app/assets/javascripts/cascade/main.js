@@ -14,8 +14,7 @@ var main = chapman.main || {};
 	{
 		main.ui();
 
-		$('.footer-links-group > h3').click(function()
-		{
+		$('.footer-links-group > h2, .footer-links-group > h3').click(function() {
 			$(this).parent().toggleClass('is-visible');
 		});
 	};

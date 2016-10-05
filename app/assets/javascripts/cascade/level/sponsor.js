@@ -1,8 +1,8 @@
 $(function () {
 
 	$('#big-sponsor ul').jcarousel({
-	  buttonNextHTML: "<div>&raquo;</div>",
-	  buttonPrevHTML: "<div>&laquo;</div>",
+	  buttonNextHTML: "<div title='Move to the next sponsor'>&raquo;</div>",
+	  buttonPrevHTML: "<div title='Move to the previous sponsor'>&laquo;</div>",
 	  auto: 5,
 	  wrap: "circular",
 	  scroll: 1
@@ -21,8 +21,8 @@ $(function () {
 	});
 
 	$('#small-sponsor ul').jcarousel({
-	  buttonNextHTML: "<div>&raquo;</div>",
-	  buttonPrevHTML: "<div>&laquo;</div>",
+	  buttonNextHTML: "<div title='Move to the next sponsor'>&raquo;</div>",
+	  buttonPrevHTML: "<div title='Move to the previous sponsor'>&laquo;</div>",
 	  auto: 5,
 	  wrap: "circular",
 	  scroll: 1

@@ -327,7 +327,8 @@
       margin-top: 0;
     }
   }
-  > h3 {
+  > h2,
+    h3 {
     /*font-family: "proxima-nova-soft", "proxima-nova-soft-n4", sans-serif;*/
     font-family: 'proxima-nova', sans-serif;
     font-style: normal;
@@ -335,6 +336,7 @@
     padding: 20px;
     margin: 0;
     cursor: pointer;
+    line-height: 1.4em;
     &:after {
       background-image: image-url('miscButtons.png');
       background-position: -23px 0;
@@ -364,6 +366,7 @@
     }
   }
   &.is-visible {
+    > h2:after,
     > h3:after {
       background-position: -23px -29px;
     }

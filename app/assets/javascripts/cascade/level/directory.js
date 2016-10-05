@@ -324,11 +324,11 @@ $(function () {
     }
 
     function formatResult(result) {
-
-        var formattedResult =
+        var imgAlt = result.name ? 'Photo of ' + result.name : 'Faculty Member Photo',
+            formattedResult =
             '<div class="result" itemscope itemtype="http://schema.org/Person">' +
                 (result.link ? '<a class="link" href="' + result.link + '" itemprop="url">VIEW PROFILE</a>' : '') +
-                (result.image ? '<div class="profilePicture"><img class="image" width="80px" src="' + result.image + '" itemprop="image"></div>' : '') +
+                (result.image ? '<div class="profilePicture"><img class="image" width="80px" src="' + result.image + '" itemprop="image" alt="' + imgAlt + '"></div>' : '') +
                 (result.name ? '<div class="name" itemprop="name">' + result.name + '</div>' : '') +
                 (result.title ? '<div class="title" itemprop="jobTitle">' + result.title + '</div>' : '') +
                 (result.additionalTitles ? '<div class="additionalTitles" itemprop="jobTitle">' + result.additionalTitles + '</div>' : '') +

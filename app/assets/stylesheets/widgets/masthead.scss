@@ -57,6 +57,9 @@
     list-style: none;
     float: left;
     overflow: hidden;
+    .no-js & {
+      margin: 0 15px 0 0; // Prevents 4th item from overflowing to next line
+    }
     img {
       position: relative;
       z-index: 1;

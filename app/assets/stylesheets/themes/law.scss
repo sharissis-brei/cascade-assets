@@ -62,6 +62,7 @@
         }
     }
     @include bp(m) {
+        .footer-links-group > h2,
         .footer-links-group > h3 {
             color: #fff;
         }
