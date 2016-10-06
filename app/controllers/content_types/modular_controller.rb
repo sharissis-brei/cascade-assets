@@ -27,6 +27,25 @@ class ContentTypes::ModularController < ApplicationController
       page_wrapper_open: nil
     }
 
+    # Alternate approach
+    @regions = {
+      cascade_assets: block('html/cascade-assets'),
+
+      jump_link: block('templates/jump-link'),
+
+      masthead: format('modular/one-column-masthead', block('index/current-page'))
+
+      page_wrapper_close: format('modular/page-wrapper-close')
+    }
+
     render plain: 'TODO'
+  end
+
+  private
+
+  def block(path)
+  end
+
+  def format(path, block=nil)
   end
 end
