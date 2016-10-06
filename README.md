@@ -1,6 +1,6 @@
 # Cascade Assets
 
-This repository consists of sample HTML that Cascade Server generates for www.chapman.edu.  It contains the build system for stylesheets, javascripts, and images that we use on www.chapman.edu.  Use this repository to develop for www.chapman.edu locally, then copy your HTML changes and asset files into Cascade Server when they are ready.
+This repository consists of sample HTML that Cascade Server generates for www.chapman.edu.  It contains the build system for stylesheets, javascripts, and images that we use on www.chapman.edu.  Use this repository to develop for www.chapman.edu locally, then deploy your HTML changes and asset files to the Cascade Server when they are ready.
 
 
 ## Setup
@@ -10,16 +10,17 @@ cd cascade-assets
 bundle install
 rake serve
 ```
+
 Send your browser to [http://localhost:5000](http://localhost:5000)
 Turn on your livereload extention (optional)
 
 
 ## Making Changes
 
-**HTML:** Sample HTML for the website lives in `app/views`
-**CSS:** Edit the stylesheets in `app/assets/stylesheets/`
-**JS:** Edit the javascripts in `app/assets/javascripts/`
-**IMAGES:** Add/remove images in `app/assets/images/`
+- **HTML:** Sample HTML for the website lives in `app/views`
+- **CSS:** Edit the stylesheets in `app/assets/stylesheets/`
+- **JS:** Edit the javascripts in `app/assets/javascripts/`
+- **IMAGES:** Add/remove images in `app/assets/images/`
 
 
 ## Tests
@@ -37,47 +38,9 @@ To run a single test:
     bundle exec rake test/features/dashboard_test.rb
 
 
-## Deploying Assets to Cascade
+## Deploying to Cascade
 
-### Step 1: Build
-
-In your terminal, run this build command.
-
-```bash
-# For the cascade dev/production server
-bin/build
-
-```
-
-### Step 2: Upload
-
-In cascade, click the `[Tools -> Zip Archive]` menu item.
-
-Change the placement folder to `/_assets`.
-
-Upload the `_assets.zip` file located in either the `production` or `staging` folder within your local `cascade-assets/dist/` folder.
-
-Click submit.
-
-### Step 3: Publish
-
-> Very Important Step!
-
-Publish the `_assets` folder on cascade so that the new assets will be available.
-
-### Step 4: Link Templates to New Assets
-
-Find the block located at `_cascade/blocks/html/cascade-assets`
-
-Edit that block to match `cascade-assets.xml` located in the `/dist` folder you just build.  Copy and paste please.
-
-### Step 5: Have a Drink
-
-> (coffee if AM, beer if PM)
-
-The styles are ready to go.
-
-Every page that is published from now on will use the new assets.
+To deploy changes in this repository to Cascade, please see the **Deploying to Staging** section of [this page] in our knowledge base.
 
 
 
