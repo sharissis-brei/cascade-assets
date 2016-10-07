@@ -3,6 +3,12 @@
   padding: 0;
   padding-bottom: $base-spacing;
 
+  .section-message .body p {
+    font-size: 16px;
+    line-height:24px;
+    margin: 0 0 15px 0;
+  }
+
   .outer-container {
     @include outer-container;
   }
@@ -44,14 +50,18 @@
   }
 }
 
-.section-message .body p {
+.section-message .body ul {
+  margin-left:20px;
+}
+
+.section-message .body li {
   font-size: 16px;
   line-height: 24px;
 }
 
 /* Text Only Variation */
 .ad-landing-messaging-widget__text-only {
-  .section-message .body p {
+  .section-message .body p, .section-message .body li {
     font-size: 16px;
     line-height: 36px;
     font-weight: 800;
