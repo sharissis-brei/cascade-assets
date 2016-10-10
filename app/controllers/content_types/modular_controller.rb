@@ -1,13 +1,27 @@
 class ContentTypes::ModularController < ApplicationController
-  layout 'modular'
+  layout nil
   after_filter :render_regions
 
   # GET /modular/spike
   def spike
+    # These properties define a ContentType in Cascade (Administration > Content Types > Modular):
+    # - Name
+    # - Configuration Set
+    # - Metadata Set
+    # - Data Definition
+    # - Outputs Publishing
+    @configuration_set = ConfigurationSet.one_column
+    @metadata_set = MetadataSet.page(title: 'Modular ContentType Spike')
+
+    # TODO: Add a tableless DataDefinition model.
+    @data_definition = nil
+
     # Spike demonstrating new pattern in simplified form.
     @regions = {
       'PRIMARY CONTENT' => '<h2>Welcome to the Spike!</h2>'
     }
+
+    render @configuration_set.template
   end
 
   # GET /modular/one_column
