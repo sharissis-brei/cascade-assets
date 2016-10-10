@@ -1,6 +1,6 @@
 class ContentTypes::ModularController < ApplicationController
-  layout nil
-  after_filter :render_regions
+  layout false
+  after_filter :render_region_tags, :render_system_page_meta_tags
 
   # GET /modular/spike
   def spike
@@ -32,7 +32,7 @@ class ContentTypes::ModularController < ApplicationController
 
   private
 
-  def render_regions
+  def render_region_tags
     @configuration_set.regions.each do |name, html|
       region_tag = format('<system-region name="%s"/>', name)
       response.body = response.body.gsub(region_tag, html)
@@ -40,7 +40,18 @@ class ContentTypes::ModularController < ApplicationController
   end
 
   def render_system_page_meta_tags
-    # TODO
+    @metadata_set.class.column_names.each do |name|
+      meta_tag = format('<system-page-meta-%s/>', name)
+      p name, @metadata_set.send(name)
+
+      if ['title'].include? name
+        html = @metadata_set.send(name)
+      else
+        html = format('<meta name="%s" content="%s"/>', name, @metadata_set.send(name))
+      end
+
+      response.body = response.body.gsub(meta_tag, html)
+    end
   end
 
   def cascade_assets
