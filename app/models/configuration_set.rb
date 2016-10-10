@@ -3,18 +3,17 @@
 #
 # Model pattern based on http://stackoverflow.com/a/11199814/6763239
 #
-class ConfigurationSet
-  include ActiveModel::Model
+class ConfigurationSet < Tableless
+  column :name, :string         # ConfigurationSet type (e.g., 1 Column, 2 Column, etc.)
+  column :template, :string
+  column :format, :string
+  column :publishable, :boolean
+  column :file_extension, :string
+  column :serialization_type, :string
+  column :include_xml_declaration, :boolean
+  column :default_output, :boolean
 
-  # Virtual columns
-  attr_accessor :name,          # ConfigurationSet type (e.g., 1 Column, 2 Column, etc.)
-                :template,
-                :format,
-                :publishable,
-                :file_extension,
-                :serialization_type,
-                :include_xml_declaration,
-                :default_output
+  attr_accessor :regions        # Regions map to <system-region/> tags in template.
 
   validates :template, presence: true
 

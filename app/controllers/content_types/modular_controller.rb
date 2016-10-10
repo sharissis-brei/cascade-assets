@@ -16,8 +16,8 @@ class ContentTypes::ModularController < ApplicationController
     # TODO: Add a tableless DataDefinition model.
     @data_definition = nil
 
-    # Spike demonstrating new pattern in simplified form.
-    @regions = {
+    # Define configuration set regions.
+    @configuration_set.regions = {
       'PRIMARY CONTENT' => '<h2>Welcome to the Spike!</h2>'
     }
 
@@ -33,10 +33,14 @@ class ContentTypes::ModularController < ApplicationController
   private
 
   def render_regions
-    @regions.each do |name, html|
+    @configuration_set.regions.each do |name, html|
       region_tag = format('<system-region name="%s"/>', name)
       response.body = response.body.gsub(region_tag, html)
     end
+  end
+
+  def render_system_page_meta_tags
+    # TODO
   end
 
   def cascade_assets

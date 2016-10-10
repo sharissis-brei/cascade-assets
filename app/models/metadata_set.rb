@@ -1,16 +1,11 @@
 #
 # Tableless model simulating Metadata Sets in Cascade: Administration > Metadata Sets
 #
-# Model pattern based on http://stackoverflow.com/a/11199814/6763239
-#
-class MetadataSet
-  include ActiveModel::Model
-
-  # Virtual columns
-  attr_accessor :name,          # MetadataSet type (e.g., Page, CSS File, etc.)
-                :display_name,
-                :title,
-                :description
+class MetadataSet < Tableless
+  column :name, :string
+  column :display_name, :string
+  column :title, :string
+  column :description, :string
 
   validates :name, presence: true
 
