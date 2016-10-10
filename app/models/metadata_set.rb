@@ -10,7 +10,7 @@ class MetadataSet < Tableless
 
   validates :name, presence: true
 
-  def self.page(options = {})
+  def self.page(options={})
     metadata_set = MetadataSet.new(name: 'page')
     metadata_set.display_name = options.fetch(:display_name, 'MetadataSet Display Name')
     metadata_set.title = options.fetch(:title, 'MetadataSet Title')

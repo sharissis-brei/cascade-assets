@@ -17,7 +17,7 @@ class ConfigurationSet < Tableless
 
   validates :template, presence: true
 
-  def self.one_column(options = {})
+  def self.one_column(options={})
     configuraton_set = ConfigurationSet.new(name: '1 Column')
     configuraton_set.template = options.fetch(:template,
                                               '_cascade/templates/modular/one_column.html')

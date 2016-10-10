@@ -38,9 +38,9 @@ Style/SymbolArray:
   Enabled: true
 
 # Most readable form.
-Style/AlignHash:
-  EnforcedHashRocketStyle: table
-  EnforcedColonStyle: table
+#Style/AlignHash:
+#  EnforcedHashRocketStyle: table
+#  EnforcedColonStyle: table
 
 # Mixing the styles looks just silly.
 Style/HashSyntax:
