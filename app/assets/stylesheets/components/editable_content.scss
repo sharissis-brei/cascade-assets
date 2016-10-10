@@ -8,6 +8,10 @@
     margin-left: $base-spacing*2;
   }
 
+  li ul, li ol {
+    margin-top: 10px;
+  }
+
   img {
     margin: 0 $base-spacing $base-spacing $base-spacing;
     padding: 10px;
