@@ -1,7 +1,5 @@
 #
-# Tableless model simulating Metadata Sets in Cascade: Administration > Configuration Sets
-#
-# Model pattern based on http://stackoverflow.com/a/11199814/6763239
+# Tableless model simulating Configuration Sets in Cascade: Administration > Configuration Sets
 #
 class ConfigurationSet < Tableless
   column :name, :string         # ConfigurationSet type (e.g., 1 Column, 2 Column, etc.)

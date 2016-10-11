@@ -19,6 +19,8 @@ module ContentTypes
 
       # Define configuration set regions.
       @configuration_set.regions = {
+        'MASTHEAD' => cascade_format('_cascade/formats/modular/one_column_masthead',
+                                     @data_definition),
         'PRIMARY CONTENT' => '<h2>Welcome to the Spike!</h2>'
       }
 
@@ -32,6 +34,17 @@ module ContentTypes
     end
 
     private
+
+    def cascade_format(format_path, data)
+      velocity_render(format_path, data)
+    end
+
+    def velocity_render(format_path, data)
+      # TODO: figure out how to stub this. Do we try to make an external call to a Velocity
+      # renderer that parses the format path? Or maybe just make the format path file a Rails
+      # module with a structure that parallels the format file in Cascade.
+      format('TODO: render %s somehow', format_path)
+    end
 
     def render_region_tags
       @configuration_set.regions.each do |name, html|
