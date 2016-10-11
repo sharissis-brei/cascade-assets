@@ -19,9 +19,12 @@ module ContentTypes
 
       # Define configuration set regions.
       @configuration_set.regions = {
+        'OMNI-NAV' => render_static_partial('widgets/shared/omninav'),
+        'NAVIGATION' => render_static_partial('widgets/shared/navigation'),
         'MASTHEAD' => cascade_format('_cascade/formats/modular/one_column_masthead',
                                      @data_definition),
-        'PRIMARY CONTENT' => '<h2>Welcome to the Spike!</h2>'
+        'PRIMARY CONTENT' => '<h2>Welcome to the Spike!</h2>',
+        'GLOBAL FOOTER' => render_static_partial('widgets/shared/footer')
       }
 
       render @configuration_set.template
@@ -44,6 +47,11 @@ module ContentTypes
       # renderer that parses the format path? Or maybe just make the format path file a Rails
       # module with a structure that parallels the format file in Cascade.
       format('TODO: render %s somehow', format_path)
+    end
+
+    def render_static_partial(view_path)
+      # This can be used as a workaround until cascade formatting issue is resolved.
+      render_to_string(partial: view_path)
     end
 
     def render_region_tags
