@@ -219,7 +219,7 @@
     .styleTwo div {color: #fff;}
     .styleTwo h2 {color: #fff;}
     .styleTwo h3 {color: #fff;}
-    .rightColumn .styleTwo a {color: #d0e2fe; text-decoration: underline;}
+    .rightColumn .styleTwo a {color: #ffffff; border-bottom: 2px dotted #61728d;}
 
     .nameBarButtons li a { color: #002f7c;}
     .expandedNameBarContainer h2, .expandedNameBarContainer a, div.styleTwo a { color: #99afda; }
@@ -243,12 +243,15 @@
 
     .newbutton a {
         background-color: #002f7c;
+        &:hover {
+            background-color: #063a8f;
+        }
+        &:active {
+            background-color: #002562;
+        }
     }
 
-    .newbutton a:hover {
-        background-color: #00235c;
-    }
-
+    
     .midPhotoCallouts .photoCallout .caption,
     .photoCallouts .caption,
     .photoCallouts .rollover{

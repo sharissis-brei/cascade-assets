@@ -12,7 +12,8 @@
       background-color: #bebd69;
     }
     a {
-      color: #fafadf;
+      color: #ffffff;
+      border-bottom: 2px dotted #b2b198;
     }
   }
 
@@ -46,13 +47,12 @@
   }
 
   .newbutton a {
-    border: 1px solid $pharmacy-primary;
     background-color: $pharmacy-primary;
-    
     &:hover {
-      border: 1px solid $pharmacy-primary;
-      background-color: $pharmacy-primary;
-    
+      background-color: $pharmacy-secondary;
+    }
+    &:active {
+      background-color: $pharmacy-tertiary;
     }
   }
 

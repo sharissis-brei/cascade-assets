@@ -12,7 +12,7 @@
 
     .rightColumn .styleTwo a {
       color: $white;
-	  text-decoration: underline;
+	    border-bottom: 2px dotted #90aaa8;
     }
     
     .nameBarButtons li a { 
@@ -40,13 +40,12 @@
     }   
 
     .newbutton a {
-    border: 1px solid $crean-primary;
     background-color: $crean-primary;
-    
     &:hover {
-      border: 1px solid $crean-primary;
-      background-color: $crean-primary;
-    
+      background-color: $crean-secondary;
+    }  
+    &:active {
+      background-color: $crean-tertiary;
     }
   }
 

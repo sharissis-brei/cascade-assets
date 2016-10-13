@@ -2,7 +2,7 @@
   @include clearfix;
   background-color: $white;
   border: 1px solid #c1c1c1;
-  //margin: 0 0 $base-spacing 0;
+  line-height: 20px;
   margin: 0 0 20px 0;
   width: 195px;
   position: relative;
@@ -13,6 +13,7 @@
   .editableContent, h2 {
     padding: 0 $base-spacing;
     margin: $base-spacing 0;
+    line-height: 20px;
   }
   
   img { display: block; }

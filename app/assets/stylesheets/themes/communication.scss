@@ -12,7 +12,8 @@
 
   .rightColumn .styleTwo a {
     color: #ffffff;
-  }secp
+    border-bottom: 2px dotted #cfab66;
+  }
 
   .nameBarButtons li a {
     color: $communication-primary;
@@ -34,13 +35,12 @@
   }
 
   .newbutton a {
-    border: 1px solid $communication-primary;
     background-color: $communication-primary;
-    
     &:hover {
-      border: 1px solid $communication-primary;
-      background-color: $communication-primary;
-    
+      background-color: $communication-secondary;
+    }
+    &:active {
+      background-color: $communication-tertiary;
     }
   }
 

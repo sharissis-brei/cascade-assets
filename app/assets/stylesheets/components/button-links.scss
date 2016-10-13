@@ -1,19 +1,21 @@
 .buttonLinks {
   padding: 0 16px;
   list-style-type: none;
-  margin: 10px 0 16px 0;
+  margin: 0 0 16px 0;
   li {
     margin-bottom: 2px;
 
     a {
       background-color: $white;
       font-size: 13px;
-      color: #8f0c30;
+      color: $cu-red;
       padding: 8px 10px 8px 10px;
       margin: 0 auto 0 auto;
+      width: 100%;
       display: inline-block;
       &:hover {
         background-color: #fcfafb;
+        color: #bb223c;
       }
       &:after {
         content: ' »';

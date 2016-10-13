@@ -12,6 +12,7 @@
 
   .rightColumn .styleTwo a {
     color: #ffffff;
+    border-bottom: 2px dotted #8b7784;
   }
 
   .nameBarButtons li a {
@@ -38,13 +39,12 @@
   }
 
   .newbutton a {
-    border: 1px solid $copa-primary;
     background-color: $copa-primary;
-    
     &:hover {
-      border: 1px solid $copa-primary;
-      background-color: $copa-primary;
-    
+      background-color: $copa-secondary;
+    }
+    &:active {
+      background-color: $copa-tertiary;
     }
   }
 

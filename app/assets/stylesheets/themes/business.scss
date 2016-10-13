@@ -7,11 +7,12 @@
   }
 
   .nameBarButtons li a {
-    color: $theme-blue;
+    color: $asbe-primary;
   }
 
   div.styleTwo a {
     color: $white;
+    border-bottom: 2px dotted #74868c;
   }
 
   .expandedNameBarContainer {
@@ -36,13 +37,12 @@
   }
 
   .newbutton a {
-    border: 1px solid $theme-blue;
-    background-color: $theme-blue;
-    
+    background-color: $asbe-primary;
     &:hover {
-      border: 1px solid $theme-blue;
-      background-color: $theme-blue;
-    
+      background-color: $asbe-secondary;
+    }
+    &:active {
+      background-color: $asbe-tertiary;
     }
   }
 
