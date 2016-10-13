@@ -1,6 +1,7 @@
 module ContentTypes
   class ModularController < ApplicationController
     layout false
+    before_action :build_assets_on_fly
     after_action :render_region_tags, :render_system_page_meta_tags
 
     # GET /modular/spike
@@ -19,6 +20,15 @@ module ContentTypes
 
       # Define configuration set regions.
       @configuration_set.regions = {
+        # TODO: clean these up!
+        'JQUERY' => '<script src="//ajax.googleapis.com/ajax/libs/jquery/1.7.2/jquery.min.js"></script>',
+
+        # We can just set the paths statically because we turned off assets digest and debug in
+        # config/environments/development.rb and are building assets on fly in before_action.
+        'CASCADE ASSETS' => format("%s\n%s",
+                                   '<script src="/_assets/master.js"></script>',
+                                   '<link rel="stylesheet" media="all" href="/_assets/master.css" />'),
+
         'OMNI-NAV' => render_static_partial('widgets/shared/omninav'),
         'NAVIGATION' => render_static_partial('widgets/shared/navigation'),
         'MASTHEAD' => cascade_format('_cascade/formats/modular/one_column_masthead',
@@ -69,26 +79,16 @@ module ContentTypes
       end
     end
 
-    def cascade_assets
-      # Based on:
-      # - http://microblog.anthonyestebe.com/2014-04-28/compile-your-scss-according-to-your-model-on-rails/
-      # - https://github.com/BLauris/custom-css-for-user/blob/master/lib/generate_custom_style.rb
-      # Compile assets here so that we can replace <system-region name="CASCADE ASSETS"/> tag
-      # with them. This currently chokes on import lines in SASS files:
-      # Sass::SyntaxError: File to import not found or unreadable: settings/
-      opts = {
-        syntax: :scss,
-        load_paths: CascadeAssetsRails::Application.assets.paths,
-        style: :nested
-      }
-      css = File.read(File.join(Rails.root, 'app', 'assets', 'stylesheets', 'master.scss'))
+    def build_assets_on_fly
+      # It's not pretty but it works. I think.
+      # See http://stackoverflow.com/a/9943895/6763239
+      require 'rake'
+      Rake::Task.clear # necessary to avoid tasks being loaded several times in dev mode
+      CascadeAssetsRails::Application.load_tasks # providing your application name is 'sample'
 
-      html = <<-HTML
-  <style>
-    %s
-  </style>
-  HTML
-      format(html, Sass::Engine.new(css, opts).render)
+      # This is what the Build :do_precompile task does.
+      Rake::Task['assets:clobber'].invoke
+      Rake::Task['assets:precompile'].invoke
     end
   end
 end
