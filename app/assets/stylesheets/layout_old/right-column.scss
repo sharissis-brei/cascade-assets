@@ -26,19 +26,21 @@
     border: 1px solid #c1c1c1;
 	  color: #313131;
     vertical-align: top;
+    line-height: 20px;
     .border {
     background-color: #c1c1c1;
     }
     a {
       color: $cu-red;
-      font-weight: 800;
+      border-bottom: 2px dotted #a8a8a8;
       &:hover {
-        text-decoration: underline;
+        text-decoration: none;
+        color: #bb223c;
       }
     }
   }
   .styleTwo {
-    background-color: #a0a0a0;
+    background-color: #8a8a8a;
     border: 1px solid #c1c1c1;
     color: $white;
     position: relative;
@@ -47,11 +49,9 @@
       color: $white;
     }
     a {
-      color: $cu-red;
-      font-weight: 800;
-      &:hover {
-        text-decoration: underline;
-      }
+      color: $white;
+      font-weight: 400;
+      border-bottom: 2px dotted #adadad;
     }
     .border {
       background-color: #c1c1c1;

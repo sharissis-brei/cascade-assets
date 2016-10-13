@@ -13,6 +13,7 @@
 
   .rightColumn .styleTwo a {
     color: #ffffff;
+    border-bottom: 2px dotted #89bbcd;
   }
 
   .nameBarButtons li a {
@@ -39,13 +40,12 @@
   }
 
   .newbutton a {
-    border: 1px solid $wilkinson-primary;
     background-color: $wilkinson-primary;
-    
     &:hover {
-      border: 1px solid $wilkinson-primary;
-      background-color: $wilkinson-primary;
-    
+      background-color: $wilkinson-secondary;
+    }
+    &:active {
+      background-color: $wilkinson-tertiary;
     }
   }
 

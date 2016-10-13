@@ -17,7 +17,7 @@
       }
       a {
         color: #ffffff;
-        text-decoration: underline;
+        border-bottom: 2px dotted #838a6d;
       }
     }
   }
@@ -52,13 +52,12 @@
   }
 
   .newbutton a {
-    border: 1px solid $scst-primary;
     background-color: $scst-primary;
-    
     &:hover {
-      border: 1px solid $scst-primary;
-      background-color: $scst-primary;
-    
+      background-color: $scst-secondary;
+    }
+    &:active {
+      background-color: $scst-tertiary;
     }
   }
 

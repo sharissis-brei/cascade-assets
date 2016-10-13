@@ -11,12 +11,13 @@
   }
 }
 
+/* center column CSS */
 .main {
 	body.personnel & {
 		margin-left: 0;
 	}
 	a {
-	    border-bottom: 1px dotted #C0C0C0;
+	    border-bottom: 2px dotted #c1c1c1;
 	}
 	.ie7 & {
     h2 {
