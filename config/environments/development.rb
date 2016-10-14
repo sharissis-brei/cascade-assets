@@ -20,7 +20,8 @@ Rails.application.configure do
   config.active_support.deprecation = :log
 
   # I'm setting the following two settings as false because it allows us to build
-  # assets on the fly in development.
+  # assets on the fly in development. I ran the build script and it did not appear
+  # to be affected. But the resulting asset build was not tested.
 
   # Debug mode disables concatenation and preprocessing of assets.
   # This option may cause significant delays in view rendering with a large
