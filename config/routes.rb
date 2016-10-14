@@ -11,6 +11,12 @@ Rails.application.routes.draw do
   # Mock routes
   get '/home_page/_hero_stories/listing_order.json.txt', to: 'dashboard#mock_success'
 
+  # Modular controller actions in content_types folder
+  scope module: 'content_types' do
+    get '/modular/spike', to: 'modular#spike'
+    get '/modular/one_column', to: 'modular#one_column'
+  end
+
   # The priority is based upon order of creation: first created -> highest priority.
   # See how all your routes lay out with "rake routes".
 

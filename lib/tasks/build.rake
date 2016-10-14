@@ -1,13 +1,5 @@
 require 'zip_file_generator'
 
-# RenderAnywhere here breaks controller tests for some inexplicable reason. We're not testing
-# this task, so let's just tiptoe around this mess. For more info, see
-# http://stackoverflow.com/q/39396601/1093087.
-unless Rails.env.test?
-  require 'render_anywhere'
-  include RenderAnywhere
-end
-
 task build: :environment do
   if Rails.env.development?
     puts "Please specify build environment"
@@ -15,6 +7,16 @@ task build: :environment do
     puts "  rake build RAILS_ENV=staging"
     puts "  rake build RAILS_ENV=production"
   else
+    # FIXME
+    # This is only needed here (AFAICT) and breaks things in test and elsewhere because it
+    # overrides the behavior of render. For more info, see
+    # http://stackoverflow.com/q/39396601/1093087.
+    #
+    # Bigger question: do we really need this gem just for this one call? Can't we leverage
+    # something already in Rails?
+    require 'render_anywhere'
+    include RenderAnywhere
+
     FileUtils.mkdir('dist') unless File.directory?('dist')
     FileUtils.rm_rf dist_folder
     FileUtils.mkdir dist_folder
