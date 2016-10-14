@@ -1,3 +1,16 @@
+#
+# ContentTypes::ModularController
+#
+# This controller models development in Cascade by recreating and mocking the different
+# components that go into design a Content Type, or page template, in Cascade.
+#
+# These properties define a ContentType in Cascade (Administration > Content Types > Modular):
+# - Name
+# - Configuration Set (including page template)
+# - Metadata Set
+# - Data Definition (schema for user inputs)
+# - Outputs Publishing (xml or html)
+#
 module ContentTypes
   class ModularController < ApplicationController
     layout false
@@ -6,12 +19,7 @@ module ContentTypes
 
     # GET /modular/spike
     def spike
-      # These properties define a ContentType in Cascade (Administration > Content Types > Modular):
-      # - Name
-      # - Configuration Set
-      # - Metadata Set
-      # - Data Definition
-      # - Outputs Publishing
+      # TODO: Move this to one_column method and remove this method.
       @configuration_set = ConfigurationSet.one_column
       @metadata_set = MetadataSet.page(title: 'Modular ContentType Spike')
 
@@ -46,6 +54,16 @@ module ContentTypes
       render plain: 'TODO'
     end
 
+    # GET /modular/ad_landing
+    # Maps to Content Types/Modular/Ad Landing in Cascade.
+    def ad_landing
+      @configuration_set = ConfigurationSet.ad_landing
+      @metadata_set = MetadataSet.page(title: 'Ad Landing Page',
+                                       template: '_cascade/templates/modular/ad_landing.html')
+
+      render @configuration_set.template
+    end
+
     private
 
     def cascade_format(format_path, data)
@@ -68,7 +86,7 @@ module ContentTypes
       @configuration_set.regions.each do |name, html|
         region_tag = format('<system-region name="%s"/>', name)
         response.body = response.body.gsub(region_tag, html)
-      end
+      end if @configuration_set
     end
 
     def render_system_page_meta_tags
@@ -76,7 +94,7 @@ module ContentTypes
         meta_tag = format('<system-page-meta-%s/>', name)
         html = format('<meta name="%s" content="%s"/>', name, @metadata_set.send(name))
         response.body = response.body.gsub(meta_tag, html)
-      end
+      end if @metadata_set
     end
 
     def build_assets_on_fly
