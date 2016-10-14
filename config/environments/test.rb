@@ -39,4 +39,8 @@ Rails.application.configure do
 
   # Raises error for missing translations
   # config.action_view.raise_on_missing_translations = true
+
+  # This solved an issue where feature test was reporting routing error for js file.
+  # For more info, see http://stackoverflow.com/a/14945023/6763239.
+  config.action_dispatch.show_exceptions = true
 end
