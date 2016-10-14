@@ -21,17 +21,11 @@
     display: block;
     
     background-color: $cu-red;
-    font-size: 1.1em;
+    font-size: 1.2em;
     clear: both;
     &:after {
-      font-family: Georgia;
       content: '»';
-      position: absolute;
-      display: inline-block;
-      vertical-align: middle;
-      top: 50%;
-      right: 16px;
-      margin-top: -9px;
+      margin-left: 3px;
     }
     &:hover {
     	background: $red-hover;
