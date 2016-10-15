@@ -55,6 +55,7 @@ module ContentTypes
 
     # GET /modular/ad_landing
     # Maps to Content Types/Modular/Ad Landing in Cascade.
+    # rubocop:disable Metrics/MethodLength
     def ad_landing
       @configuration_set = ConfigurationSet.ad_landing
       @metadata_set = MetadataSet.page(title: 'Ad Landing Page',
@@ -81,6 +82,7 @@ module ContentTypes
 
       render @configuration_set.template
     end
+    # rubocop:enable Metrics/MethodLength
 
     private
 
