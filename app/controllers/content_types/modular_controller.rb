@@ -26,16 +26,15 @@ module ContentTypes
       # TODO: Add a tableless DataDefinition model.
       @data_definition = nil
 
-      # Define configuration set regions.
+      # Define configuration set regions. This mimics the regions section of Configuation Set
+      # properties view in Cascade.
       @configuration_set.regions = {
         # TODO: clean these up!
-        'JQUERY' => '<script src="//ajax.googleapis.com/ajax/libs/jquery/1.7.2/jquery.min.js"></script>',
+        'JQUERY' => cascade_block('_cascade/blocks/html/jquery'),
 
         # We can just set the paths statically because we turned off assets digest and debug in
         # config/environments/development.rb and are building assets on fly in before_action.
-        'CASCADE ASSETS' => format("%s\n%s",
-                                   '<script src="/_assets/master.js"></script>',
-                                   '<link rel="stylesheet" media="all" href="/_assets/master.css" />'),
+        'CASCADE ASSETS' => cascade_block('_cascade/blocks/html/cascade_assets'),
 
         'OMNI-NAV' => render_static_partial('widgets/shared/omninav'),
         'NAVIGATION' => render_static_partial('widgets/shared/navigation'),
@@ -61,20 +60,44 @@ module ContentTypes
       @metadata_set = MetadataSet.page(title: 'Ad Landing Page',
                                        template: '_cascade/templates/modular/ad_landing.html')
 
+      # Define configuration set regions.
+      @configuration_set.regions = {
+        'ADDITIONAL BODY AT-END' => '',
+        'ADDITIONAL HEAD' => '',
+        'CASCADE ASSETS' => cascade_block('_cascade/blocks/html/cascade_assets'),
+        'FB_JS_SDK' => cascade_block('_cascade/blocks/html/facebook_javascript_sdk'),
+        'FOOTER' => render_static_partial('widgets/ad_landing_page/sponsor_bar'),
+        'GOOGLE_ANALYTICS' => '',
+        'JQUERY' => cascade_block('_cascade/blocks/html/jquery'),
+        'JUMP LINK' => cascade_block('_cascade/blocks/html/jump_link'),
+        'MASTHEAD' => render_static_partial('widgets/ad_landing_page/masthead'),
+        'META VIEWPORT' => cascade_block('_cascade/blocks/html/global_meta_viewport'),
+        'NAVIGATION' => '',
+        'OG_TAGS' => '',
+        'PAGE WRAPPER CLOSE' => '',
+        'PAGE WRAPPER OPEN' => '',
+        'PRIMARY CONTENT' => ''
+      }
+
       render @configuration_set.template
     end
 
     private
 
-    def cascade_format(format_path, data)
-      velocity_render(format_path, data)
+    # TODO: Most of these methods should be moved into a concern.
+    def cascade_block(block_path)
+      render_to_string(partial: block_path)
     end
 
-    def velocity_render(format_path, data)
+    def cascade_format(format_path, data)
+      render_velocity(format_path, data)
+    end
+
+    def render_velocity(format_path, data)
       # TODO: figure out how to stub this. Do we try to make an external call to a Velocity
       # renderer that parses the format path? Or maybe just make the format path file a Rails
       # module with a structure that parallels the format file in Cascade.
-      format('TODO: render %s somehow', format_path)
+      format('TODO: render %s somehow with data %s', format_path, data)
     end
 
     def render_static_partial(view_path)
