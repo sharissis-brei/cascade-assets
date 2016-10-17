@@ -5,7 +5,6 @@
   // background-image: image-url('footerBg.jpg');
   // background-repeat: no-repeat;
   // background-position: left 150px;
-  color: #4A4949;
   position: relative;
   padding-bottom: 140px;
   // height: 300px;
@@ -148,7 +147,7 @@
     font-size: 14px;
     @include bp(m) {
     	margin-top: 15px;
-      line-height: 15px;
+      line-height: 20px;
     }
   }
 
@@ -329,8 +328,7 @@
   }
   > h2,
     h3 {
-    /*font-family: "proxima-nova-soft", "proxima-nova-soft-n4", sans-serif;*/
-    font-family: 'proxima-nova', sans-serif;
+    font-family: 'futura-pt', sans-serif;
     font-style: normal;
     font-size: 18px;
     padding: 20px;
@@ -355,7 +353,7 @@
       font-size: 16px;
       font-weight: 100;
       text-transform: uppercase;
-      color: $cu-warm-light-grey;
+      color: $cu-light-grey;
       display: block;
       cursor: default;
       padding: 10px 0 10px 0;
@@ -495,7 +493,6 @@
   }
   @include bp(m) {
     float: none;
-    height: 50px;
     width: 130px;
     position: absolute;
     bottom: 0;
@@ -504,13 +501,12 @@
 
   .temp {
     float: left;
-    color: #4A4949;
+    font-family: 'futura-pt', sans-serif;
     line-height: 20px;
     margin-top: 15px;
 
     .f {
       font-weight: 700;
-      color: #353430;
       font-size: 35px;
     }
   }
