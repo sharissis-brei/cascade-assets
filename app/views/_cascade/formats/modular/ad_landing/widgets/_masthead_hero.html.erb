@@ -1,0 +1,95 @@
+<%#
+  # Ad Landing Masthead Hero Widget
+  #
+  # Based on original Cascade format:
+  # - /_cascade/formats/modular/Ad Landing/widget/masthead-hero
+  # - http://dev-cascade.chapman.edu/entity/open.act?id=bb5d6979c0a81453442fbe479f0e0571&type=format&
+  #
+  # This tries to preserve the original markup and only tweak as needed for Rails.
+  #
+  # Code wrapped in <!-- CASCADE ... --> comment tags indicate original disabled markup.
+  # %>
+
+<!-- CASCADE
+#import( "/_cascade/formats/helpers.velocity" )
+
+#macro(outputMastheadHero $element)
+    ## Variables
+    #set ( $header     = $element.getChild('header') )
+    #set ( $headerText = $header.getChild('headerText').value )
+
+    #set ( $hero            = $element.getChild('hero') )
+    #set ( $backgroundImage = $hero.getChild('backgroundImage') )
+    #set ( $heroTitle       = $hero.getChild('title').value )
+    #set ( $heroSubtitle    = $hero.getChild('subtitle').value )
+
+    #set ( $form      = $element.getChild('form') )
+    #set ( $formTitle = $form.getChild('title').value )
+-->
+
+    <div class="ad-landing-masthead">
+      <div class="masthead-header">
+        <img class="header-mobile"/>
+        <div class="header-desktop">
+          <img class="header-logo-desktop"/>
+          <!-- CASCADE
+          <p class="header-text-desktop">$headerText</p>
+          -->
+          <p class="header-text-desktop">$headerText</p>
+        </div>
+      </div>
+
+      <!-- CASCADE
+      <div class="masthead-hero">
+        <div class="background-image" style=#addBackgroundImage($backgroundImage)>
+          <div class="outer-background-overlay"></div>
+          <article style=#addBackgroundImage($backgroundImage)>
+            <div class="inner-background-overlay"></div>
+            <div class="content">
+              <h1 class="title">$_EscapeTool.xml($heroTitle)</h1>
+              <h2 class="subtitle">$_EscapeTool.xml($heroSubtitle)</h2>
+            </div>
+          </article>
+        </div>
+      </div>
+      -->
+      <div class="masthead-hero">
+        <div class="background-image" style="">
+          <div class="outer-background-overlay"></div>
+          <article style="">
+            <div class="inner-background-overlay"></div>
+            <div class="content">
+              <h1 class="title">TODO: title</h1>
+              <h2 class="subtitle">TODO: subtitle</h2>
+            </div>
+          </article>
+        </div>
+      </div>
+
+      <div class="masthead-content">
+        <section class="masthead-content-panel">
+          <!-- CASCADE
+          <h2>$_EscapeTool.xml($formTitle)</h2>
+          -->
+          <h2><%= @dd.document.at_xpath('//group[@identifier="form"]/text[@identifier="title"]').content %></h2>
+
+          <div class="calls-to-action">
+            <div id="form_a4517720-e7d7-4e0e-bafd-2c1045918e0d">Loading...</div>
+            <script>/*<![CDATA[*/
+              var script = document.createElement('script');
+              script.async = 1;
+              script.src = 'https://go.chapman.edu/register/?id=a4517720-e7d7-4e0e-bafd-2c1045918e0d&output=embed&div=form_a4517720-e7d7-4e0e-bafd-2c1045918e0d' + ((location.search.length > 1) ? '&' + location.search.substring(1) : '');
+              var s = document.getElementsByTagName('script')[0];
+              s.parentNode.insertBefore(script, s);
+            /*]]>*/</script>
+          </div>
+        </section>
+      </div>
+
+      <div class="masthead-footer">
+        <h2 class="footer-text-desktop">CHAPMAN UNIVERSITY</h2>
+      </div>
+    </div>
+<!-- CASCADE
+#end
+-->

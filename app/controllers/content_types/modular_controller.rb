@@ -23,8 +23,8 @@ module ContentTypes
       @configuration_set = ConfigurationSet.one_column
       @metadata_set = MetadataSet.page(title: 'Modular ContentType Spike')
 
-      # TODO: Add a tableless DataDefinition model.
-      @data_definition = nil
+      # TODO: Model DataDefinition.
+      @dd = nil
 
       # Define configuration set regions. This mimics the regions section of Configuation Set
       # properties view in Cascade.
@@ -38,8 +38,7 @@ module ContentTypes
 
         'OMNI-NAV' => render_static_partial('widgets/shared/omninav'),
         'NAVIGATION' => render_static_partial('widgets/shared/navigation'),
-        'MASTHEAD' => cascade_format('_cascade/formats/modular/one_column_masthead',
-                                     @data_definition),
+        'MASTHEAD' => render_velocity('_cascade/formats/modular/one_column_masthead', @dd),
         'PRIMARY CONTENT' => '<h2>Welcome to the Spike!</h2>',
         'GLOBAL FOOTER' => render_static_partial('widgets/shared/footer')
       }
@@ -60,6 +59,7 @@ module ContentTypes
       @configuration_set = ConfigurationSet.ad_landing
       @metadata_set = MetadataSet.page(title: 'Ad Landing Page',
                                        template: '_cascade/templates/modular/ad_landing.html')
+      @dd = DataDefinitions::AdLanding.default
 
       # Define configuration set regions.
       @configuration_set.regions = {
@@ -71,7 +71,8 @@ module ContentTypes
         'GOOGLE_ANALYTICS' => '',
         'JQUERY' => cascade_block('_cascade/blocks/html/jquery'),
         'JUMP LINK' => cascade_block('_cascade/blocks/html/jump_link'),
-        'MASTHEAD' => render_static_partial('widgets/ad_landing_page/masthead'),
+        # 'MASTHEAD' => render_static_partial('widgets/ad_landing_page/masthead'),
+        'MASTHEAD' => cascade_format('_cascade/formats/modular/ad_landing/widgets/masthead_hero'),
         'META VIEWPORT' => cascade_block('_cascade/blocks/html/global_meta_viewport'),
         'NAVIGATION' => '',
         'OG_TAGS' => '',
@@ -91,8 +92,8 @@ module ContentTypes
       render_to_string(partial: block_path)
     end
 
-    def cascade_format(format_path, data)
-      render_velocity(format_path, data)
+    def cascade_format(format_path)
+      render_to_string(partial: format_path)
     end
 
     def render_velocity(format_path, data)
