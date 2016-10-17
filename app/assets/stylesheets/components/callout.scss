@@ -14,6 +14,9 @@
     padding: 0 $base-spacing;
     margin: $base-spacing 0;
     line-height: 20px;
+    a {
+      border-bottom: 2px dotted #a8a8a8;
+    }
   }
   
   img { display: block; }
