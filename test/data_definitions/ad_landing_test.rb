@@ -1,7 +1,8 @@
 #
 # AdLanding Data Definition Test
-# To run individually:
 #
+# To run individually:
+#   rake test test/data_definitions/ad_landing_test.rb
 #
 require 'test_helper'
 
