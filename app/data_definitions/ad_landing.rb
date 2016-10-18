@@ -1,157 +1,58 @@
 module DataDefinitions
   class AdLanding < DataDefinitions::Base
-    # Not sure how to freeze a heredoc, so...
-    # rubocop:disable Style/MutableConstant
-    CASCADE_XML = <<-EOXML
-<system-data-structure>
-    <group identifier="masthead" label="Masthead" collapsed="true">
-        <group identifier="header" label="Header" collapsed="true">
-            <text type="radiobutton" identifier="displayHeader" label="Show" default="Yes">
-                <radio-item value="Yes"/>
-                <radio-item value="No"/>
-            </text>
-            <text wysiwyg="true" identifier="headerText" label="Header Text"/>
-        </group>
-        <group identifier="hero" label="Hero" collapsed="true">
-            <text type="radiobutton" identifier="displayHero" label="Show" default="Yes">
-                <radio-item value="Yes"/>
-                <radio-item value="No"/>
-            </text>
-            <group identifier="backgroundImage" label="Background Image" collapsed="true">
-                <asset type="file" identifier="fileLink" label="File Link (Around 1600px by 800px)"/>
-                <text identifier="alternateText" label="Alternate Text"/>
-            </group>
-            <text identifier="title" label="Title"/>
-            <text identifier="subtitle" label="Subtitle"/>
-        </group>
-        <group identifier="form" label="Form" collapsed="true">
-            <text identifier="title" label="Title"/>
-        </group>
-    </group>
-    <group identifier="primaryContent" label="Primary Content" collapsed="true">
-        <text identifier="pageTitle" label="Page Title" required="true"/>
-        <group identifier="leftColumn" label="Left Column" collapsed="true">
-            <group identifier="widget" label="Widget" multiple="true">
-                <text type="dropdown" identifier="widgetType" label="Type of Widget" default="(select a widget)" help-text="Choose a widget to add to the left column of the page">
-                    <dropdown-item value="(select a widget)"/>
-                    <dropdown-item value="Messaging with Video" show-fields="primaryContent/leftColumn/widget/messagingWithVideo"/>
-                    <dropdown-item value="Messaging with Image" show-fields="primaryContent/leftColumn/widget/messagingWithImage"/>
-                </text>
-                <group identifier="messagingWithVideo" label="Messaging with Video" collapsed="true">
-                    <text type="radiobutton" identifier="displayMessagingWithVideo" label="Show" default="Yes">
-                        <radio-item value="Yes"/>
-                        <radio-item value="No"/>
-                    </text>
-                    <text type="radiobutton" identifier="textAlign" label="Text Align" default="Top">
-                        <radio-item value="Top"/>
-                        <radio-item value="Bottom"/>
-                    </text>
-                    <text identifier="youtubeShareLink" label="Youtube Share Link" help-text="Example: https://youtu.be/jhz862KOstA"/>
-                    <text wysiwyg="true" identifier="body" label="Body"></text>
-                </group>
-                <group identifier="messagingWithImage" label="Messaging with Image" collapsed="true">
-                    <text type="radiobutton" identifier="displayMessagingWithImage" label="Show" default="Yes">
-                        <radio-item value="Yes"/>
-                        <radio-item value="No"/>
-                    </text>
-                    <text type="radiobutton" identifier="textAlign" label="Text Align" default="Left">
-                        <radio-item value="Left"/>
-                        <radio-item value="Right"/>
-                    </text>
-                    <group identifier="imageFields" label="Image Fields" collapsed="true">
-                        <asset type="file" identifier="fileLink" label="File Link"/>
-                        <text identifier="alternateText" label="Alternate Text"/>
-                    </group>
-                    <text identifier="title" label="Title"></text>
-                    <text wysiwyg="true" identifier="body" label="Body"></text>
-                </group>
-            </group>
-        </group>
-        <group identifier="rightColumn" label="Right Column" collapsed="true">
-            <group identifier="widget" label="Widget" multiple="true">
-                <text type="dropdown" identifier="widgetType" label="Type of Widget" default="(select a widget)" help-text="Choose a widget to add to the right column of the page">
-                    <dropdown-item value="(select a widget)"/>
-                    <dropdown-item value="Feature Points" show-fields="primaryContent/rightColumn/widget/featurePoints"/>
-                    <dropdown-item value="Excerpt" show-fields="primaryContent/rightColumn/widget/excerpt"/>
-                    <dropdown-item value="Messaging Only" show-fields="primaryContent/rightColumn/widget/messagingOnly"/>
-                </text>
-                <group identifier="featurePoints" label="Feature Points" collapsed="true">
-                    <text type="radiobutton" identifier="displayFeaturePoints" label="Show" default="Yes">
-                        <radio-item value="Yes"/>
-                        <radio-item value="No"/>
-                    </text>
-                    <group identifier="point" label="point" collapsed="true" multiple="true">
-                        <text identifier="message" label="Message"></text>
-                        <text type="dropdown" identifier="icon" label="icon">
-                            <dropdown-item value="Bookmark"/>
-                            <dropdown-item value="Calendar"/>
-                            <dropdown-item value="Earth"/>
-                            <dropdown-item value="Leaf"/>
-                            <dropdown-item value="Library"/>
-                        </text>
-                    </group>
-                </group>
-                <group identifier="excerpt" label="Excerpt" collapsed="true">
-                    <text type="radiobutton" identifier="displayExcerpt" label="Show" default="Yes">
-                        <radio-item value="Yes"/>
-                        <radio-item value="No"/>
-                    </text>
-                    <text wysiwyg="true" identifier="body" label="Content"/>
-                </group>
-                <group identifier="messagingOnly" label="Messaging Only" collapsed="true">
-                    <text type="radiobutton" identifier="displayMessagingOnly" label="Show" default="Yes">
-                        <radio-item value="Yes"/>
-                        <radio-item value="No"/>
-                    </text>
-                    <text wysiwyg="true" identifier="body" label="Content"/>
-                </group>
-            </group>
-        </group>
-    </group>
-    <group identifier="footer" label="Footer" collapsed="true">
-        <group identifier="sponsorCarousel" label="Sponsor Carousel" collapsed="true">
-            <text type="radiobutton" identifier="displaySponsorCarousel" label="Show" default="Yes">
-                <radio-item value="Yes"/>
-                <radio-item value="No"/>
-            </text>
-            <text identifier="title" label="Title"/>
-            <group identifier="sponsors" label="Sponsors" collapsed="true">
-                <group identifier="sponsor" label="Sponsor" multiple="true">
-                    <asset type="file" identifier="sponsorIcon" label="Sponsor Icon" help-text="Sponsor Icon should be around 95px w, 95px h."/>
-                    <text identifier="alternateText" label="Alternate Text"/>
-                </group>
-            </group>
-        </group>
-    </group>
-    <group identifier="meta" label="Supplemental Content" collapsed="true">
-        <group identifier="sharing" label="Sharing " collapsed="true">
-            <asset type="file" identifier="og_image" label="OG Image" help-text="Image used for sharing on facebook (130px w, 110px h exactly)"/>
-            <text identifier="og_title" label="OG Title" help-text="Overrides title for when page is shared to facebook (defaults to Display Name)"/>
-            <text identifier="og_description" label="OG Description" help-text="Overrides description when page is shared to facebook"/>
-            <text identifier="twitter_text" label="Twitter Share Text" help-text="The text that prepopulates on twitter (followed by URL and hashtags)"/>
-            <text identifier="twitter_hashtag" label="Twitter Hashtag" multiple="true" maximum-number="3" help-text="Hashtags to get appended to tweet (no #!)"/>
-        </group>
-    </group>
-</system-data-structure>
-EOXML
-    # rubocop:enable Style/MutableConstant
-
-    # Preset definition profiles
-    DEFAULTS = {
-      # Selector => Value
-      '//group[@identifier="form"]/text[@identifier="title"]' =>
-        'Take the first step to advance your career.'
+    # XML XPath Selectors
+    XPATH = {
+      header_text: '//group[@identifier="header"]/text[@identifier="headerText"]',
+      background_image: '//group[@identifier="hero"]//asset[@identifier="fileLink"]',
+      hero_title: '//group[@identifier="hero"]/text[@identifier="title"]',
+      hero_subtitle: '//group[@identifier="hero"]/text[@identifier="subtitle"]',
+      form_title: '//group[@identifier="form"]/text[@identifier="title"]'
     }.freeze
 
+    # Preset Data Values
+    DEFAULTS = {
+      # Selector => Value
+      XPATH[:header_text] => 'MAKING <strong>BOLD</strong> STEPS',
+      XPATH[:background_image] => '/_assets/ad_landing_page/dmac-masthead.jpg',
+      XPATH[:hero_title] => 'Turn your passion, knowledge, and experience into a rewarding career',
+      XPATH[:hero_subtitle] => 'Earn your Masters Degree at Dodge College of Film and Media Arts.',
+      XPATH[:form_title] => 'Take the first step to advance your career.'
+    }.freeze
+
+    # Class Methods
     def self.default
-      dd = DataDefinitions::AdLanding.new
+      ad_landing = DataDefinitions::AdLanding.new
 
       DataDefinitions::AdLanding::DEFAULTS.each do |xpath, value|
-        node = dd.document.at_xpath(xpath)
+        node = ad_landing.document.at_xpath(xpath)
+        raise "Node at xpath #{xpath} not found." unless node
         node.content = value
       end
 
-      dd
+      ad_landing
+    end
+
+    # Instance Methods
+    # rubocop:disable Rails/OutputSafety
+    def header_text
+      document.at_xpath(XPATH[:header_text]).content.html_safe
+    end
+    # rubocop:enable Rails/OutputSafety
+
+    def background_image
+      document.at_xpath(XPATH[:background_image]).content
+    end
+
+    def hero_title
+      document.at_xpath(XPATH[:hero_title]).content
+    end
+
+    def hero_subtitle
+      document.at_xpath(XPATH[:hero_subtitle]).content
+    end
+
+    def form_title
+      document.at_xpath(XPATH[:form_title]).content
     end
   end
 end

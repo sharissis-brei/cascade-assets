@@ -59,7 +59,7 @@ module ContentTypes
       @configuration_set = ConfigurationSet.ad_landing
       @metadata_set = MetadataSet.page(title: 'Ad Landing Page',
                                        template: '_cascade/templates/modular/ad_landing.html')
-      @dd = DataDefinitions::AdLanding.default
+      @data_definition = DataDefinitions::AdLanding.default
 
       # Define configuration set regions.
       @configuration_set.regions = {
@@ -71,7 +71,6 @@ module ContentTypes
         'GOOGLE_ANALYTICS' => '',
         'JQUERY' => cascade_block('_cascade/blocks/html/jquery'),
         'JUMP LINK' => cascade_block('_cascade/blocks/html/jump_link'),
-        # 'MASTHEAD' => render_static_partial('widgets/ad_landing_page/masthead'),
         'MASTHEAD' => cascade_format('_cascade/formats/modular/ad_landing/widgets/masthead_hero'),
         'META VIEWPORT' => cascade_block('_cascade/blocks/html/global_meta_viewport'),
         'NAVIGATION' => '',
@@ -93,7 +92,7 @@ module ContentTypes
     end
 
     def cascade_format(format_path)
-      render_to_string(partial: format_path)
+      render_to_string(partial: format_path, locals: {ad_landing: @data_definition})
     end
 
     def render_velocity(format_path, data)
@@ -128,7 +127,7 @@ module ContentTypes
       # See http://stackoverflow.com/a/9943895/6763239
       require 'rake'
       Rake::Task.clear # necessary to avoid tasks being loaded several times in dev mode
-      CascadeAssetsRails::Application.load_tasks # providing your application name is 'sample'
+      CascadeAssetsRails::Application.load_tasks
 
       # This is what the Build :do_precompile task does.
       Rake::Task['assets:clobber'].invoke

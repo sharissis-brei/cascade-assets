@@ -17,13 +17,20 @@ class AdLandingDataDefinitionTest < ActiveSupport::TestCase
 
   test "expects default initializer to set default data values" do
     # Assume
-    xpath_selector = '//group[@identifier="form"]/text[@identifier="title"]'
-    expected_value = 'Take the first step to advance your career.'
+    expected_header_text = 'MAKING <strong>BOLD</strong> STEPS'
+    expected_background_image = '/_assets/ad_landing_page/dmac-masthead.jpg'
+    expected_hero_title = 'Turn your passion, knowledge, and experience into a rewarding career'
+    expected_hero_subtitle = 'Earn your Masters Degree at Dodge College of Film and Media Arts.'
+    expected_form_title = 'Take the first step to advance your career.'
 
     # Act
-    dd = DataDefinitions::AdLanding.default
+    ad_landing = DataDefinitions::AdLanding.default
 
     # Assert
-    assert_equal(dd.document.at_xpath(xpath_selector).content, expected_value)
+    assert_equal(ad_landing.header_text, expected_header_text)
+    assert_equal(ad_landing.background_image, expected_background_image)
+    assert_equal(ad_landing.hero_title, expected_hero_title)
+    assert_equal(ad_landing.hero_subtitle, expected_hero_subtitle)
+    assert_equal(ad_landing.form_title, expected_form_title)
   end
 end
