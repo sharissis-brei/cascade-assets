@@ -56,9 +56,9 @@ module ContentTypes
     # Maps to Content Types/Modular/Ad Landing in Cascade.
     # rubocop:disable Metrics/MethodLength
     def ad_landing
-      @configuration_set = ConfigurationSet.ad_landing
-      @metadata_set = MetadataSet.page(title: 'Ad Landing Page',
-                                       template: '_cascade/templates/modular/ad_landing.html')
+      @configuration_set = ConfigurationSet.ad_landing(
+        template: '_cascade/templates/modular/ad_landing.html')
+      @metadata_set = MetadataSet.page(title: 'Ad Landing Page')
       @data_definition = DataDefinitions::AdLanding.default
 
       # Define configuration set regions.
@@ -103,7 +103,7 @@ module ContentTypes
   </div>
 </div>
 HTML
-
+00
       format(primary_content,
              'Master of Business Administration',
              render_static_partial('widgets/ad_landing_page/messaging_with_video'),
@@ -142,6 +142,11 @@ HTML
     end
 
     def render_system_page_meta_tags
+      # Most tags have format system-page-meta-foo, but title tag is just: system-page-title
+      title_tag = '<system-page-title/>'
+      response.body = response.body.gsub(title_tag, @metadata_set.title)
+
+      # Replace <system-page-meta-foo/> tags.
       @metadata_set.class.column_names.each do |name|
         meta_tag = format('<system-page-meta-%s/>', name)
         html = format('<meta name="%s" content="%s"/>', name, @metadata_set.send(name))
