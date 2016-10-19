@@ -77,7 +77,7 @@ module ContentTypes
         'OG_TAGS' => '',
         'PAGE WRAPPER CLOSE' => '',
         'PAGE WRAPPER OPEN' => '',
-        'PRIMARY CONTENT' => ''
+        'PRIMARY CONTENT' => render_static_primary_content
       }
 
       render @configuration_set.template
@@ -85,6 +85,33 @@ module ContentTypes
     # rubocop:enable Metrics/MethodLength
 
     private
+
+    def render_static_primary_content
+      # TODO: Replace with more Cascadesque rendering.
+      # This reproduces content from static sample version.
+      primary_content = <<-HTML
+<div id="column-container" class="ad-landing-column-container">
+  <div id="left-column" class="ad-landing-left-column">
+    <h2 class="ad-landing-title">%s</h2>
+    %s
+    %s
+  </div>
+  <div id="right-column" class="ad-landing-right-column">
+    %s
+    %s
+    %s
+  </div>
+</div>
+HTML
+
+      format(primary_content,
+             'Master of Business Administration',
+             render_static_partial('widgets/ad_landing_page/messaging_with_video'),
+             render_static_partial('widgets/ad_landing_page/messaging_with_image'),
+             render_static_partial('widgets/ad_landing_page/feature_points'),
+             render_static_partial('widgets/ad_landing_page/excerpt'),
+             render_static_partial('widgets/ad_landing_page/messaging_only'))
+    end
 
     # TODO: Most of these methods should be moved into a concern.
     def cascade_block(block_path)
