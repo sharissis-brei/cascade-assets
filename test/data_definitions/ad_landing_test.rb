@@ -28,10 +28,10 @@ class AdLandingDataDefinitionTest < ActiveSupport::TestCase
     ad_landing = DataDefinitions::AdLanding.default
 
     # Assert
-    assert_equal(ad_landing.header_text, expected_header_text)
-    assert_equal(ad_landing.background_image, expected_background_image)
-    assert_equal(ad_landing.hero_title, expected_hero_title)
-    assert_equal(ad_landing.hero_subtitle, expected_hero_subtitle)
-    assert_equal(ad_landing.form_title, expected_form_title)
+    assert_equal(ad_landing.get_child_value(:header_text, true), expected_header_text)
+    assert_equal(ad_landing.get_child_value(:background_image), expected_background_image)
+    assert_equal(ad_landing.get_child_value(:hero_title), expected_hero_title)
+    assert_equal(ad_landing.get_child_value(:hero_subtitle), expected_hero_subtitle)
+    assert_equal(ad_landing.get_child_value(:form_title), expected_form_title)
   end
 end

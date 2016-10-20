@@ -17,9 +17,9 @@ module ContentTypes
     before_action :build_assets_on_fly
     after_action :render_region_tags, :render_system_page_meta_tags
 
+    # TODO: Move this to one_column method and remove this method. There is an Action Item.
     # GET /modular/spike
     def spike
-      # TODO: Move this to one_column method and remove this method.
       @configuration_set = ConfigurationSet.one_column
       @metadata_set = MetadataSet.page(title: 'Modular ContentType Spike')
 
@@ -153,7 +153,8 @@ HTML
       # Replace <system-page-meta-foo/> tags.
       @metadata_set.class.column_names.each do |name|
         meta_tag = format('<system-page-meta-%s/>', name)
-        html = format('<meta name="%s" content="%s"/>', name, @metadata_set.send(name))
+        content = @metadata_set.send(name)
+        html = content.nil? ? '' : format('<meta name="%s" content="%s"/>', name, content)
         response.body = response.body.gsub(meta_tag, html)
       end if @metadata_set
     end

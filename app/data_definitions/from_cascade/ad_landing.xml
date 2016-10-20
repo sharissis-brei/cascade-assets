@@ -5,6 +5,14 @@
                 <radio-item value="Yes"/>
                 <radio-item value="No"/>
             </text>
+            <group identifier="desktopLogoFields" label="Desktop Logo Fields" collapsed="true">
+                <asset type="file" identifier="fileLink" label="File Link"/>
+                <text identifier="alternateText" label="Alternate Text"/>
+            </group>
+            <group identifier="mobileLogoFields" label="Mobile Logo Fields" collapsed="true">
+                <asset type="file" identifier="fileLink" label="File Link"/>
+                <text identifier="alternateText" label="Alternate Text"/>
+            </group>
             <text wysiwyg="true" identifier="headerText" label="Header Text"/>
         </group>
         <group identifier="hero" label="Hero" collapsed="true">
@@ -21,6 +29,7 @@
         </group>
         <group identifier="form" label="Form" collapsed="true">
             <text identifier="title" label="Title"/>
+            <text identifier="formId" label="Form ID"/>
         </group>
     </group>
     <group identifier="primaryContent" label="Primary Content" collapsed="true">
