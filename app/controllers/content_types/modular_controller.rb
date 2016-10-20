@@ -68,7 +68,6 @@ module ContentTypes
         'ADDITIONAL HEAD' => '',
         'CASCADE ASSETS' => cascade_block('_cascade/blocks/html/cascade_assets'),
         'FB_JS_SDK' => cascade_block('_cascade/blocks/html/facebook_javascript_sdk'),
-        'FOOTER' => render_static_partial('widgets/ad_landing_page/sponsor_bar'),
         'GOOGLE_ANALYTICS' => '',
         'JQUERY' => cascade_block('_cascade/blocks/html/jquery'),
         'JUMP LINK' => cascade_block('_cascade/blocks/html/jump_link'),
@@ -78,7 +77,10 @@ module ContentTypes
         'OG_TAGS' => '',
         'PAGE WRAPPER CLOSE' => '',
         'PAGE WRAPPER OPEN' => '',
-        'PRIMARY CONTENT' => render_static_primary_content
+
+        # TODO: convert these to cascade_format action. There are action items.
+        'PRIMARY CONTENT' => render_static_primary_content,
+        'FOOTER' => render_static_partial('widgets/ad_landing_page/sponsor_bar')
       }
 
       render @configuration_set.template
