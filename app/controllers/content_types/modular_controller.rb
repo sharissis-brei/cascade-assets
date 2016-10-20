@@ -57,7 +57,8 @@ module ContentTypes
     # rubocop:disable Metrics/MethodLength
     def ad_landing
       @configuration_set = ConfigurationSet.ad_landing(
-        template: '_cascade/templates/modular/ad_landing.html')
+        template: '_cascade/templates/modular/ad_landing.html'
+      )
       @metadata_set = MetadataSet.page(title: 'Ad Landing Page')
       @data_definition = DataDefinitions::AdLanding.default
 
@@ -86,8 +87,9 @@ module ContentTypes
 
     private
 
+    # rubocop:disable Metrics/MethodLength
+    # TODO: Replace with more Cascadesque rendering.
     def render_static_primary_content
-      # TODO: Replace with more Cascadesque rendering.
       # This reproduces content from static sample version.
       primary_content = <<-HTML
 <div id="column-container" class="ad-landing-column-container">
@@ -103,7 +105,7 @@ module ContentTypes
   </div>
 </div>
 HTML
-00
+
       format(primary_content,
              'Master of Business Administration',
              render_static_partial('widgets/ad_landing_page/messaging_with_video'),
@@ -112,6 +114,7 @@ HTML
              render_static_partial('widgets/ad_landing_page/excerpt'),
              render_static_partial('widgets/ad_landing_page/messaging_only'))
     end
+    # rubocop:enable Metrics/MethodLength
 
     # TODO: Most of these methods should be moved into a concern.
     def cascade_block(block_path)
@@ -141,6 +144,7 @@ HTML
       end if @configuration_set
     end
 
+    # rubocop:disable Metrics/AbcSize
     def render_system_page_meta_tags
       # Most tags have format system-page-meta-foo, but title tag is just: system-page-title
       title_tag = '<system-page-title/>'
@@ -153,6 +157,7 @@ HTML
         response.body = response.body.gsub(meta_tag, html)
       end if @metadata_set
     end
+    # rubocop:enable Metrics/AbcSize
 
     def build_assets_on_fly
       # It's not pretty but it works. I think.
