@@ -1,7 +1,7 @@
 module DataDefinitions
   class AdLanding < DataDefinitions::Base
     # If valid value not used, form will not load and just display 'Loading...'
-    VALID_SLATE_FORM_ID = 'a4517720-e7d7-4e0e-bafd-2c1045918e0d'.freeze
+    VALID_SLATE_FORM_ID = '4c37abdc-d5ba-4313-99b6-89b7a869ac37'.freeze
 
     # rubocop:disable Metrics/LineLength
     # XML XPath Selectors
