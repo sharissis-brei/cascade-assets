@@ -34,11 +34,6 @@
 				ok_to_navigate_away = false;
 			}
 
-			// If play audio
-			if ($(e.currentTarget).hasClass('toggleAudio') && (!modifierKey)) {
-				ok_to_navigate_away = false;
-			}
-
 			// Figure out the category for Google Analytics
 			if ($(e.currentTarget).parents('#hero').length > 0) {
 				var category = 'Home Page Hero CTA';
@@ -415,25 +410,17 @@
 	var cu_hero_area = {
 
 		// Configurations
-		volumeTransitionSpeed 	: 0, // Set dynamically in setupContent()
 		contentTransitionSpeed	: 2000,
 		hero_stories_html_dir	: hero_stories_hostname.concat('_hero_stories/'),
 
 		// Do not configure these
 		videoPlayer 			: null,
-		audioPlayer				: false,
 		pastCampaigns 			: null, // array of campaigns with some data
 		currentCampaign 		: null, // int - the position in the pastCampaigns array
 		videoTransitionTimeout	: null,
 		isChanging				: false,
 
-		ga_sound_event			: false,
-
-
 		initialize : function() {
-
-			// Volume function 
-			$("#changeVolume").on('click', this.toggleSound);
 
 			var requested_story_slug = (location.hash.match(/story-([\w-]+)/) || [])[1]; // undefined, or a string with the story slug
 
@@ -672,42 +659,6 @@
 
 		},
 
-		toggleSound : function() {
-
-			if (cu_hero_area.audioPlayer) {
-				var player = cu_hero_area.audioPlayer;
-			} else if(cu_hero_area.videoPlayer) {
-				var player = cu_hero_area.videoPlayer;
-			} else {
-				return false;
-			}
-
-			if ($("#changeVolume").hasClass("muted")) {
-				if (cu_hero_area.audioPlayer) player.play();
-
-				$("#changeVolume").removeClass("muted");
-				player.muted = false;
-				player.volume = 0;
-				$(player).animate({volume: 1}, cu_hero_area.volumeTransitionSpeed);
-			} else {
-
-				$("#changeVolume").addClass("muted");
-				$(player).animate({volume: 0}, cu_hero_area.volumeTransitionSpeed / 4);
-				setTimeout(function() {
-					player.muted = true;
-					if (cu_hero_area.audioPlayer) player.pause();
-				}, cu_hero_area.volumeTransitionSpeed / 4);
-			}
-
-			if (!cu_hero_area.ga_sound_event) {
-				cu_hero_area.ga_sound_event = true;
-				var campaign_id = $("#hero").find('.smc-cta').attr('data-cta-id');
-				// _gaq.push(['_trackEvent', "Homepage UI Interaction", "Toggle sound on hero video", campaign_id]);
-				if (typeof(ga) !== 'undefined') ga('send', 'event', "Homepage UI Interaction", "Toggle sound on hero video", campaign_id);
-			}
-
-		},
-
 		// Accepts an int ID of a slide, or the string 'older' or 'newer' then transitions to that slide. 
 		processNavigation : function(input) {
 
@@ -760,11 +711,6 @@
 		}, // end processNavigation
 
 		transitionToStory : function(raw_html, direction) {
-
-			// Fade out audio if old slide had audio
-			if (cu_hero_area.videoPlayer) {
-				$(cu_hero_area.videoPlayer).animate({volume: 0}, cu_hero_area.volumeTransitionSpeed);
-			}
 
 			$new_content = $(raw_html);
 			$old_content = $("#hero");
@@ -1046,12 +992,6 @@
 				var modifierKey = (e.metaKey || e.ctrlKey);
 
 				var $quickviewHTML = jQuery(e.currentTarget).attr('data-quickview-content');
-
-				var toggleAudio = jQuery(e.currentTarget).hasClass('toggleAudio');
-
-				if (!modifierKey && toggleAudio) {
-					cu_hero_area.toggleSound();
-				}
 
 				//Do not intercept URLs that are alt clicked or in small windows
 				if (!modifierKey && (cu_window_manager.windowWidth > 640)) {
