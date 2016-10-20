@@ -2,13 +2,13 @@
 #theme.copa__theatre {
   @include theme-color-classes($theatre-primary);
   
-  .smallMasthead .masthead, .smallMasthead .masthead-old, .bigMasthead .mastheadPlaceholder, .bigMasthead .masthead, .bigMasthead .masthead-old, .nameBar, .rightColumn .styleTwo, .outer-background-overlay, .inner-background-overlay {
+  .smallMasthead .masthead, .smallMasthead .masthead-old, .bigMasthead .mastheadPlaceholder, .bigMasthead .masthead, .bigMasthead .masthead-old, .nameBar, .rightColumn .styleTwo {
   	background: $theatre-primary; /* Old browsers */
   	
   }
 
   .rightColumn .styleTwo .border {
-    background-color: #001226;
+    background-color: $theatre-tertiary;
   }
 
   .rightColumn .styleTwo a {

@@ -1,13 +1,13 @@
 
 #theme.crean {
   @include theme-color-classes($crean-primary);
-  .smallMasthead .masthead, .smallMasthead .masthead-old, .bigMasthead .mastheadPlaceholder, .bigMasthead .masthead, .bigMasthead .masthead-old, .nameBar, .rightColumn .styleTwo, .outer-background-overlay, .inner-background-overlay {
+  .smallMasthead .masthead, .smallMasthead .masthead-old, .bigMasthead .mastheadPlaceholder, .bigMasthead .masthead, .bigMasthead .masthead-old, .nameBar, .rightColumn .styleTwo {
   	background: $crean-primary; /* Old browsers */
   	
   }
 	
     .rightColumn .styleTwo .border { 
-		background-color: $crean-secondary; 
+		background-color: $crean-tertiary; 
 	}
 
     .rightColumn .styleTwo a {

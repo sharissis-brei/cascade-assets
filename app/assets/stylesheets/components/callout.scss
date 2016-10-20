@@ -14,9 +14,12 @@
     padding: 0 $base-spacing;
     margin: $base-spacing 0;
     line-height: 20px;
+    a {
+      border-bottom: 2px dotted #a8a8a8;
+    }
   }
   
   img { display: block; }
   h3 { margin: 5px 0; }
-  h2 { font-size: 14px; }
+  h2 { font-size: 14px; font-family: "proxima-nova", sans-serif;}
 }

@@ -2,12 +2,12 @@
 #theme.communication {
   @include theme-color-classes($communication-primary);
   
-  .smallMasthead .masthead, .smallMasthead .masthead-old, .bigMasthead .mastheadPlaceholder, .bigMasthead .masthead, .bigMasthead .masthead-old, .nameBar, .rightColumn .styleTwo, .outer-background-overlay, .inner-background-overlay {
+  .smallMasthead .masthead, .smallMasthead .masthead-old, .bigMasthead .mastheadPlaceholder, .bigMasthead .masthead, .bigMasthead .masthead-old, .nameBar, .rightColumn .styleTwo {
   	background: $communication-primary; /* Old browsers */
   }
 
   .rightColumn .styleTwo .border {
-    background-color: #b47500;
+    background-color: $communication-tertiary;
   }
 
   .rightColumn .styleTwo a {

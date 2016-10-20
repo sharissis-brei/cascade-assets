@@ -1,13 +1,13 @@
 
 #theme.copa {
   @include theme-color-classes($copa-primary);
-  .smallMasthead .masthead, .smallMasthead .masthead-old, .bigMasthead .mastheadPlaceholder, .bigMasthead .masthead, .bigMasthead .masthead-old, .nameBar, .rightColumn .styleTwo, .outer-background-overlay, .inner-background-overlay {
+  .smallMasthead .masthead, .smallMasthead .masthead-old, .bigMasthead .mastheadPlaceholder, .bigMasthead .masthead, .bigMasthead .masthead-old, .nameBar, .rightColumn .styleTwo {
   	background: $copa-primary; /* Old browsers */
 
   }
 
   .rightColumn .styleTwo .border {
-    background-color: #36232f;
+    background-color: $copa-tertiary;
   }
 
   .rightColumn .styleTwo a {

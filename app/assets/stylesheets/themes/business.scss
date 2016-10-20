@@ -2,7 +2,7 @@
 #theme.business {
   @include theme-color-classes($asbe-primary);
 
-  .smallMasthead .masthead, .smallMasthead .masthead-old, .bigMasthead .mastheadPlaceholder, .bigMasthead .masthead, .bigMasthead .masthead-old, .nameBar, .rightColumn .styleTwo, .outer-background-overlay, .inner-background-overlay {
+  .smallMasthead .masthead, .smallMasthead .masthead-old, .bigMasthead .mastheadPlaceholder, .bigMasthead .masthead, .bigMasthead .masthead-old, .nameBar, .rightColumn .styleTwo {
     background: $asbe-primary; /* Old browsers */
   }
 
@@ -10,7 +10,11 @@
     color: $asbe-primary;
   }
 
-  div.styleTwo a {
+  .rightColumn .styleTwo .border {
+    background-color: $asbe-tertiary;
+  }
+
+  .rightColumn .styleTwo a {
     color: $white;
     border-bottom: 2px dotted #74868c;
   }

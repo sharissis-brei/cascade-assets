@@ -2,13 +2,13 @@
 #theme.copa__music {
   @include theme-color-classes($music-primary);
   
-  .smallMasthead .masthead, .smallMasthead .masthead-old, .bigMasthead .mastheadPlaceholder, .bigMasthead .masthead, .bigMasthead .masthead-old, .nameBar, .rightColumn .styleTwo, .outer-background-overlay, .inner-background-overlay {
+  .smallMasthead .masthead, .smallMasthead .masthead-old, .bigMasthead .mastheadPlaceholder, .bigMasthead .masthead, .bigMasthead .masthead-old, .nameBar, .rightColumn .styleTwo {
   	background: $music-primary; /* Old browsers */
   	
   }
 	
     .rightColumn .styleTwo .border { 
-		background-color: $music-secondary; 
+		background-color: $music-tertiary; 
 	}
 
     .rightColumn .styleTwo a {
