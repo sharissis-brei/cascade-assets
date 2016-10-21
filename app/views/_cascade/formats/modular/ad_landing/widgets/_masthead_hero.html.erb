@@ -1,0 +1,110 @@
+<%#
+  # Ad Landing Masthead Hero Widget
+  #
+  # Based on original Cascade format:
+  # - /_cascade/formats/modular/Ad Landing/widget/masthead-hero
+  # - http://dev-cascade.chapman.edu/entity/open.act?id=bb5d6979c0a81453442fbe479f0e0571&type=format&
+  #
+  # Initially, I tried to preserve the original markup and only tweak as needed for Rails.
+  #
+  # Code wrapped in <!-- CASCADE ... --> comment tags indicate original disabled markup.
+  # %>
+
+<!-- CASCADE
+#import( "/_cascade/formats/helpers.velocity" )
+
+#macro(outputMastheadHero $element)
+    ## Variables
+    #set ( $header     = $element.getChild('header') )
+    #set ( $headerText = $header.getChild('headerText').value )
+
+    #set ( $hero            = $element.getChild('hero') )
+    #set ( $backgroundImage = $hero.getChild('backgroundImage') )
+    #set ( $heroTitle       = $hero.getChild('title').value )
+    #set ( $heroSubtitle    = $hero.getChild('subtitle').value )
+
+    #set ( $form      = $element.getChild('form') )
+    #set ( $formTitle = $form.getChild('title').value )
+-->
+
+    <div class="ad-landing-masthead">
+      <!-- CASCADE
+      <div class="masthead-header">
+        <img class="header-mobile" #outputSrc($mobileLogoFields) alt="$_EscapeTool.xml($mobileLogoFields.getChild('alternateText').value)"/>
+        <div class="header-desktop">
+          <img class="header-logo-desktop" #outputSrc($desktopLogoFields) alt="$_EscapeTool.xml($desktopLogoFields.getChild('alternateText').value)"/>
+          <p class="header-text-desktop">$headerText</p>
+        </div>
+      </div>
+      -->
+      <div class="masthead-header">
+        <img class="header-mobile"
+             src="<%= ad_landing.get_child_value(:mobile_logo_src) %>"
+             alt="<%= ad_landing.get_child_value(:mobile_logo_alt) %>"/>
+        <div class="header-desktop">
+          <img class="header-logo-desktop"
+               src="<%= ad_landing.get_child_value(:desktop_logo_src) %>"
+               alt="<%= ad_landing.get_child_value(:desktop_logo_alt) %>"/>
+          <p class="header-text-desktop"><%= ad_landing.get_child_value(:header_text, true) %></p>
+        </div>
+      </div>
+
+      <!-- CASCADE
+      <div class="masthead-hero">
+        <div class="background-image" style=#addBackgroundImage($backgroundImage)>
+          <div class="outer-background-overlay"></div>
+          <article style=#addBackgroundImage($backgroundImage)>
+            <div class="inner-background-overlay"></div>
+            <div class="content">
+              <h1 class="title">$_EscapeTool.xml($heroTitle)</h1>
+              <h2 class="subtitle">$_EscapeTool.xml($heroSubtitle)</h2>
+            </div>
+          </article>
+        </div>
+      </div>
+      -->
+      <div class="masthead-hero">
+        <div class="background-image"
+             style="background-image: url('<%= ad_landing.get_child_value(:background_image) %>');">
+          <div class="outer-background-overlay"></div>
+          <article style="background-image: url('<%= ad_landing.get_child_value(:background_image) %>');">
+            <div class="inner-background-overlay"></div>
+            <div class="content">
+              <h1 class="title"><%= ad_landing.get_child_value(:hero_title) %></h1>
+              <h2 class="subtitle"><%= ad_landing.get_child_value(:hero_subtitle) %></h2>
+            </div>
+          </article>
+        </div>
+      </div>
+
+      <div class="masthead-content">
+        <section class="masthead-content-panel">
+          <!-- CASCADE
+          <h2>$_EscapeTool.xml($formTitle)</h2>
+          -->
+          <h2><%= ad_landing.get_child_value(:form_title) %></h2>
+
+          <div class="calls-to-action">
+            <div id="form_<%= ad_landing.get_child_value(:form_id) %>">Loading...</div>
+            <script>/*<![CDATA[*/
+              var script = document.createElement('script');
+              script.async = 1;
+              script.src = 'https://go.chapman.edu/register/' +
+                           '?id=<%= ad_landing.get_child_value(:form_id) %>&' +
+                           'output=embed&' +
+                           'div=form_<%= ad_landing.get_child_value(:form_id) %>' +
+                           ((location.search.length > 1) ? '&' + location.search.substring(1) : '');
+              var s = document.getElementsByTagName('script')[0];
+              s.parentNode.insertBefore(script, s);
+            /*]]>*/</script>
+          </div>
+        </section>
+      </div>
+
+      <div class="masthead-footer">
+        <h2 class="footer-text-desktop">CHAPMAN UNIVERSITY</h2>
+      </div>
+    </div>
+<!-- CASCADE
+#end
+-->

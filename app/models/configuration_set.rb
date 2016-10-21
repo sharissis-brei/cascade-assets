@@ -16,15 +16,28 @@ class ConfigurationSet < Tableless
   validates :template, presence: true
 
   def self.one_column(options={})
-    configuraton_set = ConfigurationSet.new(name: '1 Column')
-    configuraton_set.template = options.fetch(:template,
-                                              '_cascade/templates/modular/one_column.html')
-    configuraton_set.publishable = true
-    configuraton_set.file_extension = '.aspx'
-    configuraton_set.serialization_type = 'HTML'
-    configuraton_set.include_xml_declaration = false
-    configuraton_set.default_output = true
+    configuration_set = ConfigurationSet.new(name: '1 Column')
+    configuration_set.set_defaults
+    configuration_set.template = options.fetch(:template,
+                                               '_cascade/templates/modular/one_column.html')
+    configuration_set
+  end
 
-    configuraton_set
+  def self.ad_landing(options={})
+    configuration_set = ConfigurationSet.new(name: '1 Column')
+    configuration_set.set_defaults
+    configuration_set.template = options.fetch(:template,
+                                               '_cascade/templates/modular/ad_landing.html')
+    configuration_set
+  end
+
+  def set_defaults
+    self.template = nil
+    self.publishable = true
+    self.file_extension = '.aspx'
+    self.serialization_type = 'HTML'
+    self.include_xml_declaration = false
+    self.default_output = true
+    self.regions = {}
   end
 end

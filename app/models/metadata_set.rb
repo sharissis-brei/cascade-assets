@@ -7,6 +7,7 @@ class MetadataSet < Tableless
   column :title, :string
   column :description, :string
   column :keywords, :string
+  column :author, :string
 
   validates :name, presence: true
 
@@ -16,6 +17,7 @@ class MetadataSet < Tableless
     metadata_set.title = options.fetch(:title, 'MetadataSet Title')
     metadata_set.description = options.fetch(:description, 'MetadataSet description.')
     metadata_set.keywords = options.fetch(:keywords, 'MetadataSet keywords')
+    metadata_set.author = options.fetch(:keywords, nil)
     metadata_set
   end
 end

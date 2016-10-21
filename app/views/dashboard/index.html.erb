@@ -30,6 +30,7 @@
 
 <h2>Ad Landing Sample Pages</h2>
 <ul>
+  <li><%= link_to 'Modular Sample', "/modular/ad_landing" %></li>
   <% @ad_landing_pages.each do |page| %>
     <li><%= link_to page.titleize, "ad_landing_page/#{page}" %></li>
   <% end %>

@@ -14,6 +14,7 @@ Rails.application.routes.draw do
   # Modular controller actions in content_types folder
   scope module: 'content_types' do
     get '/modular/spike', to: 'modular#spike'
+    get '/modular/ad_landing', to: 'modular#ad_landing'
     get '/modular/one_column', to: 'modular#one_column'
   end
 

@@ -19,6 +19,9 @@ module CascadeAssetsRails
   class Application < Rails::Application
     config.assets.prefix = "/_assets"
 
+    # Need to include this to autoload data_definitions directory (even in Rails 4.2).
+    config.autoload_paths += %W(#{config.root}/app)
+
     # Settings in config/environments/* take precedence over those specified here.
     # Application configuration should go into files in config/initializers
     # -- all .rb files in that directory are automatically loaded.
