@@ -9,16 +9,14 @@
 }
 
 .collapsibles-widget .accordion {
-	//background-color: $cu-off-white;
-	background-color: #f5f5f5;
+	background-color: $white;
   border: 1px solid #c1c1c1;
   border-radius: 2px;
   margin-bottom: 2px;
 	.ie7 & {
 		zoom: normal;
 		&.active header {
-			//background-color: $cu-off-white;
-			background-color: #f5f5f5;
+			background-color: $white;
 		}
     h3 {
       zoom: normal;
@@ -36,13 +34,11 @@
   }
 	&.active {
 		header {
-			//background-color: $cu-off-white;
-			background-color: #f5f5f5;
+			background-color: $white;
 		}
 		.header {
 			font-weight: 800;
-      //background: $cu-off-white;
-	  background: #f5f5f5;
+      background: $white;
 
 			.show {
 	      display: none;
@@ -61,7 +57,6 @@
   .header {
     background-color: #d8d8d8;
     font-size: 16px;
-    color: #313131;
     padding: 10px 45px 10px 20px;
     margin: 0;
     position: relative;
