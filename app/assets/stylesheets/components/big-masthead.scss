@@ -140,7 +140,7 @@
         }
       }
       p {
-        font-family: 'futura-pt', arial, verdana, sans-serif;
+        font-family: $font-stack-heading;
         font-size: 18px !important;
         font-weight: normal;
         line-height: 20px;
@@ -151,7 +151,7 @@
       margin-top: 15px;
       font-size: 21px;
       font-weight: bold;
-      font-family: 'futura-pt', arial, verdana, sans-serif;
+      font-family: $font-stack-heading;
       padding-left: 32px;
     }
   }

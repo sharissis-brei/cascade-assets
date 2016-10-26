@@ -19,13 +19,21 @@ h1, h2, h3, h4, h5, h6 {
     background: #cfcfcf no-repeat center;
     color: #313131;
     &:hover {
-      background-color: #c1c1c1;
+      background-color: #ffffff;
+      text-decoration: none;
+    }
+    &:active {
+      background-color: #b8b8b8;
       text-decoration: none;
     }
     &.red {
       background: #98002e no-repeat center;
       color: #FFFFFF;
       &:hover {
+        background-color: #ba183e;
+        text-decoration: none;
+      }
+      &:active {
         background-color: #7f0026;
         text-decoration: none;
       }
@@ -39,10 +47,14 @@ h1, h2, h3, h4, h5, h6 {
       }
     }
     &.white {
-      background: #ffffff no-repeat center;
+      background: #eaeaea no-repeat center;
       color: #313131;
       &:hover {
-        background-color: #eaeaea;
+        background-color: #ffffff;
+        text-decoration: none;
+      }
+      &:active {
+        background-color: #d8d8d8;
         text-decoration: none;
       }
     }
@@ -163,34 +175,34 @@ h1, h2, h3, h4, h5, h6 {
     }
     &.light-bg {
       .heading, .subheading {
-        color: #353430;
+        color: $grey;
       }
       .heading {
-        color: #353430;
+        color: $grey;
         font-size: 18px;
         line-height: 18px;
         margin: 40px 0 0 0;
         text-align: center;
       }
       .subheading {
-        color: #353430;
+        color: $grey;
         font-size: 18px;
         line-height: 18px;
         margin: 0 0 40px 0;
         text-align: center;
       }
       .heading, .subheading {
-        color: #353430;
+        color: $grey;
       }
       .heading {
-        color: #353430;
+        color: $grey;
         font-size: 18px;
         line-height: 18px;
         margin: 40px 0 0 0;
         text-align: center;
       }
       .subheading {
-        color: #353430;
+        color: $grey;
         font-size: 18px;
         line-height: 18px;
         margin: 0 0 40px 0;
@@ -306,6 +318,7 @@ h1, h2, h3, h4, h5, h6 {
       }
       .subheading {
         font-size: 32px;
+        font-family: $font-stack-heading;
         line-height: 32px;
       }
       &.light-bg {

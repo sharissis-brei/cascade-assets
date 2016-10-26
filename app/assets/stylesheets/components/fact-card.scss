@@ -85,7 +85,7 @@
   .fact-stat-nums {
     position: relative;
     z-index: 6;
-    font-family: proxima-nova;
+    font-family: $font-stack-body;
     font-weight: 800;
     font-size: 72px;
   }
@@ -93,7 +93,7 @@
     display: block;
     position: relative;
     z-index: 6;
-    font-family: proxima-nova;
+    font-family: $font-stack-body;
     font-weight: 100;
     font-size: 24px;
     line-height: 1;
@@ -103,13 +103,13 @@
     display: block;
     position: relative;
     z-index: 6;
-    font-family: proxima-nova;
+    font-family: $font-stack-body;
     font-weight: 800;
     font-size: 20px;
     line-height: 1;
   }
   .fact-back-text {
-    font-family: proxima-nova;
+    font-family: $font-stack-body;
     font-weight: 100;
     font-size: 16px;
     text-align: left;
@@ -126,7 +126,7 @@
     bottom: 0;
     left: 0;
     background-color: #f7f6f0;
-    font-family: proxima-nova;
+    font-family: $font-stack-body;
     text-align: left;
     color: $color-chapman-blue;
     &:hover {

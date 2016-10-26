@@ -6,8 +6,6 @@
   float: right;
   margin-top: 0;
   background: $cu-light-grey;
-  border-top: 1px solid #c0c0b8;
-  border-bottom: 1px solid #c0c0b8;
   padding-left: 8px;
   padding-right: 8px;
   @include vendorize(border-radius, 4px);
@@ -59,6 +57,7 @@
       height: 25px;
       z-index: 1000;
       position: absolute;
+      border-bottom: 0;
     }
     &:hover {
       background-position: -1px -27px;

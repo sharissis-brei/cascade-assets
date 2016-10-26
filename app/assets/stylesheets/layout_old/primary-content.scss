@@ -119,7 +119,10 @@
 	  }
 	  @include bp(l) {
 	  	float: left;
-      max-width: 465px;
+      	max-width: 465px;
+	  }
+	  .addthis_toolbox a {
+	  	border-bottom: 0;
 	  }
 	}
 }

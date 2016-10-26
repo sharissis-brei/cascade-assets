@@ -20,7 +20,7 @@ html {
   -ms-text-size-adjust: 100%;
   background-image: image-url('window-pattern.gif');
   background-color: $cu-light-grey;
-  font-family: "proxima-nova-soft", "proxima-nova-soft-n4", sans-serif;
+  font-family: $font-stack-body;
   overflow-x: hidden;
   -webkit-font-smoothing: antialiased;
   &.cu-companion-bar {
@@ -34,7 +34,7 @@ body {
   margin: 0;
   padding: 0;
   color: $cu-font-color;
-  font-family: "proxima-nova-soft", "proxima-nova-soft-n4", sans-serif;
+  font-family: $font-stack-body;
   &.personnel .main {
 	  margin-left: 0;
 	}
@@ -73,7 +73,7 @@ audio:not([controls]), [hidden] {
 }
 
 button, input, select, textarea {
-  font-family: "proxima-nova-soft", "proxima-nova-soft-n4", sans-serif;
+  font-family: $font-stack-body;
   color: $cu-font-color;
 }
 
@@ -108,7 +108,7 @@ a {
     color: $white;
     display: inline-block;
     text-transform: uppercase;
-    font-family: 'proxima-nova', sans-serif;
+    font-family: $font-stack-body;
     font-weight: bold;
     max-width: 100%;
     &.hover {
@@ -372,8 +372,8 @@ p, li {
   @include paragraph;
 }
 
-h1, h2, h3, h4, h5, h6 {
-  font-family: 'futura-pt', arial, verdana, sans-serif;
+h1, h2 {
+  font-family: $font-stack-heading;
 }
 
 h2, h3, h4, h5, h6 {
@@ -387,13 +387,13 @@ h1 {
 
 h2 {
   font-size: 20px;
-  font-weight: 800;
+  font-weight: 600;
   line-height: 1.2em;
 }
 
 h3 {
   font-size: 16px;
-  font-weight: 700;
+  font-weight: 600;
   line-height: 1.4em;
   margin-top: 30px;
   margin-bottom: 15px;
