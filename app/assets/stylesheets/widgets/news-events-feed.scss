@@ -108,7 +108,7 @@ $tab-content-border-color: #c1c1c1;
   }
   &.active { // The selected tab
     background-color: $tab-content-bg-color;
-    font-weight: 800;
+    font-weight: 600;
     color: $primary-color;
     border-top: 2px solid $primary-color;
     border-right: 1px solid $tab-content-border-color;
@@ -226,9 +226,9 @@ $tab-content-border-color: #c1c1c1;
     width: 85px;
     position: relative;
     .day {
-      font-size: 29px;
+      font-size: 30px;
       position: absolute;
-      top: 5px;
+      top: 7px;
       left: 0;
     }
     .month {

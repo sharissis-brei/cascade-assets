@@ -175,34 +175,34 @@ h1, h2, h3, h4, h5, h6 {
     }
     &.light-bg {
       .heading, .subheading {
-        color: #353430;
+        color: $grey;
       }
       .heading {
-        color: #353430;
+        color: $grey;
         font-size: 18px;
         line-height: 18px;
         margin: 40px 0 0 0;
         text-align: center;
       }
       .subheading {
-        color: #353430;
+        color: $grey;
         font-size: 18px;
         line-height: 18px;
         margin: 0 0 40px 0;
         text-align: center;
       }
       .heading, .subheading {
-        color: #353430;
+        color: $grey;
       }
       .heading {
-        color: #353430;
+        color: $grey;
         font-size: 18px;
         line-height: 18px;
         margin: 40px 0 0 0;
         text-align: center;
       }
       .subheading {
-        color: #353430;
+        color: $grey;
         font-size: 18px;
         line-height: 18px;
         margin: 0 0 40px 0;
@@ -318,6 +318,7 @@ h1, h2, h3, h4, h5, h6 {
       }
       .subheading {
         font-size: 32px;
+        font-family: "futura-pt", verdana, sans-serif;
         line-height: 32px;
       }
       &.light-bg {
