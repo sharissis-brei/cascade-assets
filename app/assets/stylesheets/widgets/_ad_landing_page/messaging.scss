@@ -94,11 +94,13 @@
   &.ad-landing-messaging-widget__text-top {
     .text-column { display: table-header-group; }
     .media-column { display: table-footer-group; }
+    .table-spacer { height: 16px; }
   }
 
   &.ad-landing-messaging-widget__text-bottom {
     .text-column { display: table-footer-group; }
     .media-column { display: table-header-group; }
+    .table-spacer { height: 32px; }
   }
 
   @include media($medium-screen) {
