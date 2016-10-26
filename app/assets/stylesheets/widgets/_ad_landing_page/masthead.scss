@@ -3,7 +3,7 @@
   background-color: #eaeaea;
 
   .title, .subtitle, .header-text-desktop {
-    font-family: 'futura-pt', Sans-Serif;
+    font-family: $font-stack-heading;
   }
 
   + div {
@@ -277,7 +277,7 @@
     }
 
     .footer-text-desktop {
-      font-family: 'futura-pt';
+      font-family: $font-stack-heading;
       font-weight: 800;
       line-height: 0.65em;
       font-size: 135px;

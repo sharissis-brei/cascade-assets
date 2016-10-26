@@ -207,7 +207,7 @@ $tile_width: 335px;
 			vertical-align: top;
 
 			h2 {
-				font: bold 14px/20px $font-stack-heading;
+				font: bold 14px/20px $font-stack-body;
 				margin: 0;
 			}
 
@@ -293,7 +293,7 @@ $tile_width: 335px;
 		}
 
 		.message time {
-			font: regular 14px/14px "proxima-nova";
+			font: regular 14px/14px $font-stack-body;
 		}
 
 		.message .tag {

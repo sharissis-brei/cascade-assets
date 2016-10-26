@@ -328,7 +328,7 @@
   }
   > h2,
     h3 {
-    font-family: 'futura-pt', sans-serif;
+    font-family: $font-stack-heading;
     font-style: normal;
     font-size: 18px;
     padding: 20px;
@@ -501,7 +501,7 @@
 
   .temp {
     float: left;
-    font-family: 'futura-pt', sans-serif;
+    font-family: $font-stack-heading;
     line-height: 20px;
     margin-top: 15px;
 

@@ -61,7 +61,7 @@
     margin: 0;
     position: relative;
     cursor: pointer;
-    font-family: 'proxima-nova', sans-serif;
+    font-family: $font-stack-body;
     font-weight: 600;
     text-transform: none;
     .show, .hide {

@@ -97,7 +97,7 @@
   }
   .masthead {
     &.withLink > div {
-      font-family: "proxima-nova", sans-serif;
+      font-family: $font-stack-body;
       font-weight: 600;
       text-transform: uppercase;
       font-style: normal;
@@ -113,7 +113,7 @@
       vertical-align: bottom;
       background-color: $white;
       color: #1994c8;
-      font-family: 'proxima-nova', sans-serif;
+      font-family: $font-stack-body;
       font-weight: 800;
       font-size: 14px;
       padding: 5px;
@@ -149,7 +149,7 @@
 	    padding: 10px 0 10px 10px;
 	    color: $white;
 	    background-color: $black;
-	    font-family: 'proxima-nova', sans-serif;
+	    font-family: $font-stack-body;
 	    font-weight: 800;
 	    text-transform: uppercase;
 	    @include bp(m) {
