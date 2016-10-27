@@ -1,6 +1,7 @@
 //= require_tree ../../../vendor/assets/javascripts
 //= require_tree ../../../lib/assets/javascripts
 
+//= require omni-nav
 
 //= require cascade/plugins/amplify
 //= require cascade/plugins/cookie
@@ -28,15 +29,12 @@
 //= require cascade/news-events
 //= require cascade/form-validation
 
-//= require cascade/omni-nav.min
-
 //= require cascade/query-string
 //= require cascade/rotator
 //= require cascade/search
 // don't require cascade/shortcuts
 //= require cascade/video-overlay
 //= require cascade/weather
-
 
 //= require cascade/level/accordion
 //= require cascade/level/degrees-programs
