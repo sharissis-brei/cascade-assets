@@ -868,7 +868,6 @@ this.jQuery && (function ($) {
 	var CU_off_canvas_nav = {
 
 		initialize : function() {
-			console.log('EAT A DICK');
 			CU_off_canvas_nav.syncLinkWidths();
 
 			$('#js-cu-off-canvas-nav-trigger, #js-cu-close-off-canvas-nav, #js-cu-off-canvas-overlay').on('click', function(event) {
