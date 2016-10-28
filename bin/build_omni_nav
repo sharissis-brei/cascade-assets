@@ -1,0 +1,8 @@
+#!/bin/bash
+#staging
+bundle exec rake assets:clobber RAILS_ENV=staging
+bundle exec rake build_omni_nav RAILS_ENV=staging
+
+#production
+bundle exec rake assets:clobber RAILS_ENV=production
+bundle exec rake build_omni_nav RAILS_ENV=production

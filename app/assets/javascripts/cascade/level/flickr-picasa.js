@@ -50,7 +50,7 @@ var ChapmanImageFeeds = (function() {
         var images = populateWidgetWithImages($flul, data);
 
         // Update See Full Gallery link.
-        if ( images ) {
+        if ( images.length ) {
             var apiLink = data.query.results.feed.link[0].href;
             var userId = apiLink.split('userid=')[1].split('&')[0];
             $flickr.find(".more-link").attr("href", 'https://www.flickr.com/groups/' + userId);

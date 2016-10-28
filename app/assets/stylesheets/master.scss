@@ -2,7 +2,7 @@
 @import "base/base";
 
 // Types of elements on the page
-@import "components/*";
+@import "components/**/*";
 
 // Old page layout styles
 @import "layout_old/**/*";
@@ -15,3 +15,10 @@
 
 // Themes for each college
 @import "themes/*";
+
+// Omni-Nav styles
+@import "omni_nav/helpers/mixins-and-variables.scss";
+// @import "helpers/icomoon.scss";
+@import "omni_nav/modules/etc.scss";
+@import "omni_nav/modules/omni-nav.scss";
+@import "omni_nav/modules/off-canvas-nav.scss";
