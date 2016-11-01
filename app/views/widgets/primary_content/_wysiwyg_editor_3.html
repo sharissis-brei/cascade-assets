@@ -9,8 +9,24 @@
         -->
         <h3>A YouTube Video (iframe)</h3>
         <p>
+            <iframe id="widget2"
+                    frameborder="0" height="350" width="425"
+                    src="http://www.youtube.com/embed/2gyh6NtlQEw?enablejsapi=1&amp;origin=http:%2F%2Fdev-www.chapman.edu"
+                    style="display: block; margin-left: auto; margin-right: auto;" ></iframe>
+        </p>
 
-            <iframe frameborder="0" height="350" src="http://www.youtube.com/embed/2gyh6NtlQEw?enablejsapi=1&amp;origin=http:%2F%2Fdev-www.chapman.edu" style="display: block; margin-left: auto; margin-right: auto;" width="425" id="widget2"></iframe>
+        <h3>YouTube Video (iframe) wrapped in .no-video tag</h3>
+        <p>Tests video tag bypass for embeds. Should <strong>not</strong> apply video styling.</p>
+        <p>
+            <!--
+              This tests level.js code that skips iframe wrapped in no-video tag.
+            -->
+            <div class="no-video">
+              <iframe id="widget2"
+                      frameborder="0" height="350" width="425"
+                      src="http://www.youtube.com/embed/2gyh6NtlQEw?enablejsapi=1&amp;origin=http:%2F%2Fdev-www.chapman.edu"
+                      style="display: block; margin-left: auto; margin-right: auto;" ></iframe>
+            </div>
         </p>
 
         <h3>Civic Engagment Widget (JS that builds an iFrame)</h3>

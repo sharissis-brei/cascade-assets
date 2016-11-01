@@ -3,10 +3,14 @@ function wrapIframes() {
   // just embedded YouTube videos? All embedded videos? Blacklist below is added to avoid breaking
   // any existing behavior while providing some flexibility in more selectively applying wrap to
   // future embeds.
+  var skipClass = '.no-video';
 
   // iframe Blacklist: Skip any iframes with the following selectors.
   var iframeSelectorBlacklist = [
-    '#no-video',                        // ID user can add in Cascade
+    skipClass,                          // Class user can add in Cascade.
+    '#no-video',                        // This is for existing cases (should use class above).
+
+    // Special cases can be added below:
     '#message-your-lawmaker-iframe'     // countable.us widget
   ];
   var notSelector = iframeSelectorBlacklist.join(', ');
@@ -15,8 +19,15 @@ function wrapIframes() {
     // Point any YouTube videos to https address.
     this.src.replace('http://www.youtube.com','https://www.youtube.com');
 
-    // Wrap in div.video tag
-    $(this).wrap('<div class="video"/>');
+    // Wrap in div.video tag to apply stylesheet rules which adds large bottom-padding. If
+    // iframe has parent with skipClass tag then skip. This is for non-video embeds that may
+    // dynamically generate iframes (like countable.us). It gives Cascade users themselves a
+    // chance to avoid video styling by wrapping embed in <div class="no-video"> tag.
+    // See https://github.com/chapmanu/cascade-assets/issues/87 for more details.
+    var isWrappedWithNoVideoTag = $(this).parents(skipClass).length > 0;
+    if ( ! isWrappedWithNoVideoTag ) {
+      $(this).wrap('<div class="video"/>');
+    }
   });
 }
 
