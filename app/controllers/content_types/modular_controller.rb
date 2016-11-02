@@ -27,7 +27,8 @@ module ContentTypes
       @metadata_set = MetadataSet.page(title: 'Ad Landing Page')
       @data_definition = DataDefinitions::AdLanding.default
 
-      # Define configuration set regions.
+      # Define configuration set regions. This mimics the regions section of Configuation Set
+      # properties view in Cascade.
       @configuration_set.regions = {
         'ADDITIONAL BODY AT-END' => '',
         'ADDITIONAL HEAD' => '',
@@ -60,8 +61,7 @@ module ContentTypes
       @metadata_set = MetadataSet.page(title: 'Modular One Column')
       @data_definition = DataDefinitions::OneColumn.default
 
-      # Define configuration set regions. This mimics the regions section of Configuation Set
-      # properties view in Cascade.
+      # Define configuration set regions.
       @configuration_set.regions = {
         'ADDITIONAL BODY AT-END' => '',
         'ADDITIONAL HEAD' => '',
@@ -72,12 +72,13 @@ module ContentTypes
         'JUMP LINK' => cascade_block('_cascade/blocks/html/jump_link'),
         'MASTHEAD' => cascade_format('_cascade/formats/modular/one_column_masthead'),
         'META VIEWPORT' => cascade_block('_cascade/blocks/html/global_meta_viewport'),
-        'NAVIGATION' => '',
         'OG_TAGS' => '',
         'PAGE WRAPPER CLOSE' => '',
         'PAGE WRAPPER OPEN' => '',
 
         # TODO: convert these to cascade_format action.
+        'OMNI-NAV' => render_static_partial('widgets/shared/omninav'),
+        'NAVIGATION' => render_static_partial('widgets/shared/navigation'),
         'PRIMARY CONTENT' => '<h2>PRIMARY CONTENT GOES HERE!</h2>',
         'GLOBAL FOOTER' => render_static_partial('widgets/shared/footer')
       }

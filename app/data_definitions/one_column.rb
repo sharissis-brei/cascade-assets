@@ -1,6 +1,5 @@
 module DataDefinitions
   class OneColumn < DataDefinitions::Base
-    # rubocop:disable Metrics/LineLength
     # XML XPath Selectors
     XPATH = {
       masthead_type: '//group[@identifier="masthead"]/text[@identifier="mastheadType"]'
@@ -10,7 +9,6 @@ module DataDefinitions
     DEFAULTS = {
       XPATH[:masthead_type] => 'Side panel hero'
     }.freeze
-    # rubocop:enable Metrics/LineLength
 
     # Class Methods
     def self.default
