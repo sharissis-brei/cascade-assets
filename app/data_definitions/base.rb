@@ -8,6 +8,14 @@ module DataDefinitions
       @document = Nokogiri::XML(File.read(xml_path)) if File.exist?(xml_path)
     end
 
+    def set_defaults
+      self.class::DEFAULTS.each do |xpath, value|
+        node = @document.at_xpath(xpath)
+        raise "Node at xpath #{xpath} not found." unless node
+        node.content = value
+      end
+    end
+
     # rubocop:disable Rails/OutputSafety
     def get_child_value(field, unescaped=false)
       # Mirrors $element.getChild('foo').value used in Cascade Velocity formats

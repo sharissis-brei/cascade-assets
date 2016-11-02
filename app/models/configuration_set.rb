@@ -15,19 +15,19 @@ class ConfigurationSet < Tableless
 
   validates :template, presence: true
 
+  def self.ad_landing(options={})
+    configuration_set = ConfigurationSet.new(name: 'Ad Landing')
+    configuration_set.set_defaults
+    configuration_set.template = options.fetch(:template,
+                                               '_cascade/templates/modular/ad_landing.html')
+    configuration_set
+  end
+
   def self.one_column(options={})
     configuration_set = ConfigurationSet.new(name: '1 Column')
     configuration_set.set_defaults
     configuration_set.template = options.fetch(:template,
                                                '_cascade/templates/modular/one_column.html')
-    configuration_set
-  end
-
-  def self.ad_landing(options={})
-    configuration_set = ConfigurationSet.new(name: '1 Column')
-    configuration_set.set_defaults
-    configuration_set.template = options.fetch(:template,
-                                               '_cascade/templates/modular/ad_landing.html')
     configuration_set
   end
 

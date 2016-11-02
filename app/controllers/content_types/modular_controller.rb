@@ -44,7 +44,7 @@ module ContentTypes
         'PAGE WRAPPER OPEN' => '',
 
         # TODO: convert these to cascade_format action. There are action items.
-        'PRIMARY CONTENT' => render_static_primary_content,
+        'PRIMARY CONTENT' => render_static_ad_landing_primary_content,
         'FOOTER' => render_static_partial('widgets/ad_landing_page/sponsor_bar')
       }
 
@@ -54,38 +54,43 @@ module ContentTypes
 
     # GET /modular/one_column
     # Maps to Content Types/Modular/1 Column in Cascade.
+    # rubocop:disable Metrics/MethodLength
     def one_column
       @configuration_set = ConfigurationSet.one_column
-      @metadata_set = MetadataSet.page(title: 'Modular ContentType Spike')
-
-      # TODO: Model DataDefinition.
-      @dd = nil
+      @metadata_set = MetadataSet.page(title: 'Modular One Column')
+      @data_definition = DataDefinitions::OneColumn.default
 
       # Define configuration set regions. This mimics the regions section of Configuation Set
       # properties view in Cascade.
       @configuration_set.regions = {
-        # TODO: clean these up!
-        'JQUERY' => cascade_block('_cascade/blocks/html/jquery'),
-
-        # We can just set the paths statically because we turned off assets digest and debug in
-        # config/environments/development.rb and are building assets on fly in before_action.
+        'ADDITIONAL BODY AT-END' => '',
+        'ADDITIONAL HEAD' => '',
         'CASCADE ASSETS' => cascade_block('_cascade/blocks/html/cascade_assets'),
+        'FB_JS_SDK' => cascade_block('_cascade/blocks/html/facebook_javascript_sdk'),
+        'GOOGLE_ANALYTICS' => '',
+        'JQUERY' => cascade_block('_cascade/blocks/html/jquery'),
+        'JUMP LINK' => cascade_block('_cascade/blocks/html/jump_link'),
+        'META VIEWPORT' => cascade_block('_cascade/blocks/html/global_meta_viewport'),
+        'NAVIGATION' => '',
+        'OG_TAGS' => '',
+        'PAGE WRAPPER CLOSE' => '',
+        'PAGE WRAPPER OPEN' => '',
 
-        'OMNI-NAV' => render_static_partial('widgets/shared/omninav'),
-        'NAVIGATION' => render_static_partial('widgets/shared/navigation'),
-        'MASTHEAD' => render_velocity('_cascade/formats/modular/one_column_masthead', @dd),
-        'PRIMARY CONTENT' => '<h2>Welcome to the Spike!</h2>',
+        # TODO: convert these to cascade_format action.
+        'MASTHEAD' => render_static_partial('widgets/shared/header'),
+        'PRIMARY CONTENT' => '<h2>PRIMARY CONTENT GOES HERE!</h2>',
         'GLOBAL FOOTER' => render_static_partial('widgets/shared/footer')
       }
 
       render @configuration_set.template
     end
+    # rubocop:enable Metrics/MethodLength
 
     private
 
     # rubocop:disable Metrics/MethodLength
     # TODO: Replace with more Cascadesque rendering.
-    def render_static_primary_content
+    def render_static_ad_landing_primary_content
       # This reproduces content from static sample version.
       primary_content = <<-HTML
 <div id="column-container" class="ad-landing-column-container">
