@@ -1,11 +1,51 @@
 <div class="wysiwyg-widget editableContent clearfix">
     <div class="content">
         <p>The master of science in athletic training prepares students for a career as a certified athletic trainer. Athletic trainers (ATs) are health care professionals who collaborate with physicians to optimize activity and participation of patients and clients. The services provided by ATs comprise prevention, diagnosis and intervention of emergency, acute and chronic medical conditions involving impairment, functional limitations and disabilities. Athletic training is recognized by the American Medical Association as a healthcare profession. The master of science in athletic training (MS.AT) will begin in summer 2015 and will be a full-time, cohort-model program.&nbsp;</p>
+
+        <!--
+          Two sample iframe embeds. One YouTube, the other the civic engagment widget.
+          A JS function will wrap these in div.video tags. YouTube embeds require special
+          styling to deal with margin/padding issues. Others probably don't.
+        -->
+        <h3>A YouTube Video (iframe)</h3>
         <p>
-            <div class="video">
-                <iframe frameborder="0" height="350" src="http://www.youtube.com/embed/2gyh6NtlQEw?enablejsapi=1&amp;origin=http:%2F%2Fdev-www.chapman.edu" style="display: block; margin-left: auto; margin-right: auto;" width="425" id="widget2"></iframe>
+            <iframe id="widget2"
+                    frameborder="0" height="350" width="425"
+                    src="http://www.youtube.com/embed/2gyh6NtlQEw?enablejsapi=1&amp;origin=http:%2F%2Fdev-www.chapman.edu"
+                    style="display: block; margin-left: auto; margin-right: auto;" ></iframe>
+        </p>
+
+        <h3>YouTube Video (iframe) wrapped in .no-video tag</h3>
+        <p>Tests video tag bypass for embeds. Should <strong>not</strong> apply video styling.</p>
+        <p>
+            <!--
+              This tests level.js code that skips iframe wrapped in no-video tag.
+            -->
+            <div class="no-video">
+              <iframe id="widget2"
+                      frameborder="0" height="350" width="425"
+                      src="http://www.youtube.com/embed/2gyh6NtlQEw?enablejsapi=1&amp;origin=http:%2F%2Fdev-www.chapman.edu"
+                      style="display: block; margin-left: auto; margin-right: auto;" ></iframe>
             </div>
         </p>
+
+        <h3>Civic Engagment Widget (JS that builds an iFrame)</h3>
+        <p>
+            <!--
+              Source: https://www.countable.us/about/widget
+              This builds an iframe. It is being added to
+              /students/life/civic-engagement/programs/cubooths.
+
+              There was an issue where it was being displayed with a large unsightly bottom border.
+              See https://github.com/chapmanu/cascade-assets.
+            -->
+            <script async=""
+                    id="countable-message-lawmaker"
+                    src="https://assets.countable.us/widgets/message-your-lawmaker/countable-message-lawmaker.js"
+                    type="text/javascript">// <![CDATA[
+            // ]]></script>
+        </p>
+
         <p><b>As a cohort-model program, admission into the MS.AT program is highly competitive and limited.</b></p>
         <p>This full-time, intensive program is a rich combination of didactic, hands-on clinical laboratories, and clinical fieldwork providing carefully guided clinical experiences every semester. Clinical fieldwork placements include a variety of colleges, universities, high schools and physician offices.</p>
     </div>
