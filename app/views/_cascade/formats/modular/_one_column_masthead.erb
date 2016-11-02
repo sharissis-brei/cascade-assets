@@ -1,0 +1,10 @@
+<% # These import statements below don't do anything. They just mirror what's in Cascade. %>
+<% #import( "/_cascade/formats/helpers.velocity" ) %>
+<% #import( "/_cascade/formats/modular/mastheads/side_panel_hero" ) %>
+
+<% mastheadType = current_page.get_child_value(:masthead_type) %>
+
+<% if mastheadType == 'Side panel hero' %>
+  <% #outputSidePanelHero($masthead.getChild('sidePanelHero')) %>
+  <%= render "/_cascade/formats/modular/mastheads/side_panel_hero" %>
+<% end %>

@@ -35,7 +35,8 @@ task build_omni_nav: :environment do
     prep_dist
 
     # Setup Rails asset paths for just omni-nav assets & compile them
-    Rails.application.config.assets.paths = [File.join(Rails.root, "/app/assets/javascripts"), File.join(Rails.root, "/app/assets/stylesheets")]
+    Rails.application.config.assets.paths = [File.join(Rails.root, "/app/assets/javascripts"),
+                                             File.join(Rails.root, "/app/assets/stylesheets")]
     Rails.application.config.assets.precompile -= ['master.js', 'master.css']
     Rails.application.config.assets.precompile += ['omni-nav.js', 'omni-nav.css']
 
