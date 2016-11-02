@@ -165,97 +165,6 @@
   }
 }
 
-// footer {
-//   color: $white;
-//   position: relative;
-//   padding: 0 0 106px 0;
-//   .address {
-//     background-color: $black;
-//     position: absolute;
-//     width: 100%;
-//     bottom: 50px;
-//     padding: 10px 0 10px 10px;
-//     border-top: 3px solid $white;
-//     font-weight: bold;
-//     span {
-//       white-space: nowrap;
-//     }
-//     @include bp(m) {
-//       position: static;
-//       float: left;
-//       // width: 400px;
-//       // height: 30px;
-//       margin: 0 30px 0 10px;
-//       padding: 0;
-//       border: none;
-//       width: auto;
-//       height: 30px;
-//     }
-//     @include bp(wildcard-min, 1085px) {
-//       margin: 0 30px 0 25px;
-//     }
-//   }
-//   .footerBefore {
-//     @include bp(m) {
-//       height: 30px;
-//       background-color: $black;
-//       position: absolute;
-//       top: 0;
-//       left: -1000%;
-//       width: 1000%;
-//     }
-//   }
-//   .footerAfter {
-//     @include bp(m) {
-//       position: absolute;
-//       height: 30px;
-//       width: 15px;
-//       top: 0;
-//       right: -15px;
-//       background-image: image-url('ribbon_tails.png');
-//       background-repeat: no-repeat;
-//       background-position: right -42px;
-//     }
-//   }
-//   a {
-//     &:visited {
-//       @include bp(m) {
-//         color: $white;
-//       }
-//     }
-//     &:active, &:hover {
-//       @include bp(m) {
-//         color: $white;
-//         text-decoration: underline;
-//       }
-//     }
-//     @include bp(m) {
-//       font-size: 11px;
-//       font-family: 'Open Sans', Sans-Serif;
-//       font-weight: 600;
-//       color: $white;
-//     }
-//   }
-//   @include bp(m) {
-//     background-color: $black;
-//     color: $white;
-//     height: 30px;
-//     line-height: 30px;
-//     margin: 0 auto 0 auto;
-//     top: 0;
-//     padding: 0;
-//     width: 100%;
-//     z-index: 100;
-//     font-size: 11px;
-//     font-family: 'Open Sans', Sans-Serif;
-//     font-weight: 600;
-//   }
-//   @include bp(wildcard-min, 1085px) {
-//     position: relative;
-//     max-width: 990px;
-//   }
-// }
-
 // ---------- Footer Ribbon ---------- //
 
 .footer-ribbon {
@@ -377,6 +286,11 @@
     padding: 0 20px 20px 20px;
     line-height: 20px;
     display: none;
+
+    // WAVE fix requires background-color setting matching footer background.
+    // For details, see https://github.com/chapmanu/cascade-assets/issues/89.
+    background-color: #eaeaea;
+
     > li {
       @include bp(m) {
         font-size: 14px;
@@ -410,64 +324,6 @@
     float: left;
   }
 }
-
-// .footerLinks {
-//   margin: 60px 0 0 0;
-//   li {
-//     &.maps, &.contact {
-//       @include bp(m) {
-//         display: none;
-//       }
-//       @include bp(wildcard-min, 1085px) {
-//         display: none;
-//       }
-//     }
-//     a {
-//       color: $white;
-//       background-color: $black;
-//       display: block;
-//       padding: 10px 0 10px 10px;
-//       margin: 0 0 1px 0;
-//       background-color: $black;
-//       font-weight: bold;
-//       .bullet {
-//         position: absolute;
-//         right: 10px;
-//         font-weight: normal;
-//         @include bp(m) {
-//           display: none;
-//         }
-//       }
-//       @include bp(m) {
-//         padding: 0;
-//         margin: 0 5px 0 0;
-//       }
-//     }
-//     @include bp(m) {
-//       float: left;
-//       padding: 0 5px 0 0;
-//       list-style-type: none;
-//     }
-//   }
-//   a {
-//     @include bp(m) {
-//       display: inline;
-//       padding: 0;
-//     }
-//   }
-//   @include bp(m) {
-//     float: right;
-//     min-width: 400px;
-//     background-color: $black;
-//     padding: 0 32px 0 0;
-//     margin: 0;
-//     width: 100%;
-//   }
-//   @include bp(wildcard-min, 1085px) {
-//     width: auto;
-//     height: 30px;
-//   }
-// }
 
 .footer-info {
   background-color: $cu-light-grey;
