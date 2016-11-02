@@ -17,41 +17,6 @@ module ContentTypes
     before_action :build_assets_on_fly
     after_action :render_region_tags, :render_system_page_meta_tags
 
-    # TODO: Move this to one_column method and remove this method. There is an Action Item.
-    # GET /modular/spike
-    def spike
-      @configuration_set = ConfigurationSet.one_column
-      @metadata_set = MetadataSet.page(title: 'Modular ContentType Spike')
-
-      # TODO: Model DataDefinition.
-      @dd = nil
-
-      # Define configuration set regions. This mimics the regions section of Configuation Set
-      # properties view in Cascade.
-      @configuration_set.regions = {
-        # TODO: clean these up!
-        'JQUERY' => cascade_block('_cascade/blocks/html/jquery'),
-
-        # We can just set the paths statically because we turned off assets digest and debug in
-        # config/environments/development.rb and are building assets on fly in before_action.
-        'CASCADE ASSETS' => cascade_block('_cascade/blocks/html/cascade_assets'),
-
-        'OMNI-NAV' => render_static_partial('widgets/shared/omninav'),
-        'NAVIGATION' => render_static_partial('widgets/shared/navigation'),
-        'MASTHEAD' => render_velocity('_cascade/formats/modular/one_column_masthead', @dd),
-        'PRIMARY CONTENT' => '<h2>Welcome to the Spike!</h2>',
-        'GLOBAL FOOTER' => render_static_partial('widgets/shared/footer')
-      }
-
-      render @configuration_set.template
-    end
-
-    # GET /modular/one_column
-    # Maps to Content Types/Modular/1 Column in Cascade.
-    def one_column
-      render plain: 'TODO'
-    end
-
     # GET /modular/ad_landing
     # Maps to Content Types/Modular/Ad Landing in Cascade.
     # rubocop:disable Metrics/MethodLength
@@ -86,6 +51,35 @@ module ContentTypes
       render @configuration_set.template
     end
     # rubocop:enable Metrics/MethodLength
+
+    # GET /modular/one_column
+    # Maps to Content Types/Modular/1 Column in Cascade.
+    def one_column
+      @configuration_set = ConfigurationSet.one_column
+      @metadata_set = MetadataSet.page(title: 'Modular ContentType Spike')
+
+      # TODO: Model DataDefinition.
+      @dd = nil
+
+      # Define configuration set regions. This mimics the regions section of Configuation Set
+      # properties view in Cascade.
+      @configuration_set.regions = {
+        # TODO: clean these up!
+        'JQUERY' => cascade_block('_cascade/blocks/html/jquery'),
+
+        # We can just set the paths statically because we turned off assets digest and debug in
+        # config/environments/development.rb and are building assets on fly in before_action.
+        'CASCADE ASSETS' => cascade_block('_cascade/blocks/html/cascade_assets'),
+
+        'OMNI-NAV' => render_static_partial('widgets/shared/omninav'),
+        'NAVIGATION' => render_static_partial('widgets/shared/navigation'),
+        'MASTHEAD' => render_velocity('_cascade/formats/modular/one_column_masthead', @dd),
+        'PRIMARY CONTENT' => '<h2>Welcome to the Spike!</h2>',
+        'GLOBAL FOOTER' => render_static_partial('widgets/shared/footer')
+      }
+
+      render @configuration_set.template
+    end
 
     private
 
