@@ -3,12 +3,12 @@ module DataDefinitions
     # rubocop:disable Metrics/LineLength
     # XML XPath Selectors
     XPATH = {
-      # TODO: See AdLanding DataDefinition
+      masthead_type: '//group[@identifier="masthead"]/text[@identifier="mastheadType"]'
     }.freeze
 
     # Preset Data Values
     DEFAULTS = {
-      # TODO: See AdLanding DataDefinition
+      XPATH[:masthead_type] => 'Side panel hero'
     }.freeze
     # rubocop:enable Metrics/LineLength
 

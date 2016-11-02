@@ -1,9 +1,10 @@
 module DataDefinitions
   class Base
-    attr_accessor :document
+    attr_accessor :name, :document
 
     def initialize
-      xml_file = format('%s.xml', self.class.name.underscore.split('/').last)
+      @name = self.class.name.underscore.split('/').last
+      xml_file = format('%s.xml', @name)
       xml_path = File.join(Rails.root, 'app/data_definitions/from_cascade', xml_file)
       @document = Nokogiri::XML(File.read(xml_path)) if File.exist?(xml_path)
     end
@@ -16,15 +17,19 @@ module DataDefinitions
       end
     end
 
-    # rubocop:disable Rails/OutputSafety
-    def get_child_value(field, unescaped=false)
-      # Mirrors $element.getChild('foo').value used in Cascade Velocity formats
+    def get_child(field)
       xpath = self.class::XPATH[field]
       raise "There is no xpath set for field #{field}." unless xpath
 
       node = document.at_xpath(xpath)
       raise "Node at xpath #{xpath} not found." unless node
 
+      node
+    end
+
+    # rubocop:disable Rails/OutputSafety
+    def get_child_value(field, unescaped=false)
+      node = get_child(field)
       value = node.content
       unescaped ? value.html_safe : value
     end

@@ -70,6 +70,7 @@ module ContentTypes
         'GOOGLE_ANALYTICS' => '',
         'JQUERY' => cascade_block('_cascade/blocks/html/jquery'),
         'JUMP LINK' => cascade_block('_cascade/blocks/html/jump_link'),
+        'MASTHEAD' => cascade_format('_cascade/formats/modular/one_column_masthead'),
         'META VIEWPORT' => cascade_block('_cascade/blocks/html/global_meta_viewport'),
         'NAVIGATION' => '',
         'OG_TAGS' => '',
@@ -77,7 +78,6 @@ module ContentTypes
         'PAGE WRAPPER OPEN' => '',
 
         # TODO: convert these to cascade_format action.
-        'MASTHEAD' => render_static_partial('widgets/shared/header'),
         'PRIMARY CONTENT' => '<h2>PRIMARY CONTENT GOES HERE!</h2>',
         'GLOBAL FOOTER' => render_static_partial('widgets/shared/footer')
       }
@@ -123,7 +123,8 @@ HTML
     end
 
     def cascade_format(format_path)
-      render_to_string(partial: format_path, locals: {ad_landing: @data_definition})
+      # Make data definition a local within partial as variable current_page
+      render_to_string(partial: format_path, locals: {current_page: @data_definition})
     end
 
     def render_velocity(format_path, data)
