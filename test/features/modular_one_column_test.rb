@@ -22,35 +22,34 @@ feature "modular one-column template" do
     # May need to better stub an AJAX response or set up test.
     begin
       visit "/modular/one_column"
+
+      # Open side nav menu.
+      # Assume
+      assert page.has_selector?(hamburger_icon_selector)
+      assert page.has_selector?(side_nav_menu_selector)
+      assert page.has_no_selector?(side_nav_menu_open_selector),
+             "Side menu should NOT be visible in viewport."
+      assert page.has_selector?(close_icon_selector)
+
+      # Act
+      page.find(hamburger_icon_selector).click
+
+      # Assert
+      assert page.has_selector?(side_nav_menu_open_selector),
+             "Side menu should now be visible in viewport."
+
+      # Close side nav menu.
+      # Act
+      find(close_icon_selector).click
+
+      # Assert
+      # Test was consistently failing on first attempt. Upped wait to 10s (default is 2) on theory
+      # that selector was timing out before menu was fully retracted and open class removed.
+      assert page.has_no_selector?(side_nav_menu_open_selector, wait: 10),
+             "Side menu should now NOT be visible in viewport again.\n" \
+             "Sometimes this test fails the first time. Try running it at least twice."
     rescue Capybara::Poltergeist::JavascriptError => e
       puts format("[WARNING] Rescued javascript error:\n%s", e.message)
     end
-
-    # Open side nav menu.
-    # Assume
-    assert page.has_selector?(hamburger_icon_selector)
-    assert page.has_selector?(side_nav_menu_selector)
-    assert page.has_no_selector?(side_nav_menu_open_selector),
-           "Side menu should NOT be visible in viewport."
-    assert page.has_selector?(close_icon_selector)
-
-    # Act
-    page.find(hamburger_icon_selector).click
-
-    # Assert
-    assert page.has_selector?(side_nav_menu_open_selector),
-           "Side menu should now be visible in viewport."
-
-    # Close side nav menu.
-    # Act
-    find(close_icon_selector).click
-
-    # Assert
-    # Test was consistently failing on first attempt. Upped wait to 10s (default is 2) on theory
-    # that selector was timing out before menu was fully retracted and open class removed.
-    save_screenshot('/tmp/ca-screenshot.png')
-    assert page.has_no_selector?(side_nav_menu_open_selector, wait: 10),
-           "Side menu should now NOT be visible in viewport again.\n" \
-           "Sometimes this test fails the first time. Try running it at least twice."
   end
 end
