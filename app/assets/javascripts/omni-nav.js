@@ -24,7 +24,7 @@ this.jQuery && (function ($) {
 				console.log("CU_search cannot initialize because the GSE javascript library has not yet loaded. ");
 				return;
 			}
-			
+
 			// If IE, add class to html
 			if (navigator.userAgent.toLowerCase().indexOf('msie') != -1) {
 				$('html').addClass('ie');
@@ -868,13 +868,20 @@ this.jQuery && (function ($) {
 	var CU_off_canvas_nav = {
 
 		initialize : function() {
+			// TODO: Remove debug calls.
+			console.debug('CU_off_canvas_nav initialize');
+
 			CU_off_canvas_nav.syncLinkWidths();
 
 			$('#js-cu-off-canvas-nav-trigger, #js-cu-close-off-canvas-nav, #js-cu-off-canvas-overlay').on('click', function(event) {
+				console.debug('clicked');
 				event.preventDefault();
 				$('#js-cu-off-canvas-nav-container').toggleClass('open');
 				$('#js-cu-off-canvas-overlay').toggleClass('active');
 				$('body').toggleClass('no-scroll');
+				console.debug('off-canvas-nav should now be open');
+				// Note: if you now call $('#js-cu-off-canvas-nav-container').toggleClass('open');
+				// in Chrome console, it opens! Huh?
 			});
 
 			$('#js-cu-off-canvas-nav-container .toggle').on('click', function() {
