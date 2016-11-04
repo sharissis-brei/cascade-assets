@@ -52,6 +52,7 @@
 			if (typeof(ga) !== 'undefined') ga('send', 'event', category, cta_id, cta_label);
 
 			// Track w/ SMC tracking
+      /*
 			$.ajax({
 			  url 		: smc_cta_tracker.callback_url,
 			  type 		: 'GET',
@@ -69,13 +70,15 @@
 				if (ok_to_navigate_away && !modifierKey) window.location.href = href_url;
 			  }
 			});
-
-			// If we have a URL to navigate to, prevent default
-			if (href_url && !modifierKey) {
-				e.preventDefault();
-				return false;
-			}
+      // If we have a URL to navigate to, prevent default
+      if (href_url && !modifierKey) {
+        e.preventDefault();
+        return false;
+      }
+      
+      */
 		}
+
 	}
 
 	// A class to manage window resizer and scroller functions
