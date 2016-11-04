@@ -19,65 +19,76 @@
 			$('body').on('click', '.smc-cta', smc_cta_tracker.trackAction);
 		}, // end initialize
 
-		trackAction : function(e) {
+    trackAction : function(e) {
+      smc_cta_tracker.trackWithGoogleAnalytics(e);
 
-			var cta_id = $(e.currentTarget).attr('data-cta-id') || 'Unknown Campaign';
-			var cta_label = $(e.currentTarget).attr('data-cta-label') || $(e.currentTarget).html() || 'Clicks';
-			var href_url = $(e.currentTarget).attr('href') || false;
+      //this was calling a meteor app that suddenly stopped working in early Nov. 2016
+      //for details see https://github.com/chapmanu/cascade-assets/issues/93
+      //smc_cta_tracker.trackWithSmcCtaTracker(e);
 
-			var modifierKey = (e.metaKey || e.ctrlKey);
-
-			var ok_to_navigate_away = true;
-
-			// If has quickview html
-			if ($(e.currentTarget).attr('data-quickview-content') !== undefined && (!modifierKey) && (cu_window_manager.windowWidth > 640)) {
-				ok_to_navigate_away = false;
-			}
-
-			// Figure out the category for Google Analytics
-			if ($(e.currentTarget).parents('#hero').length > 0) {
-				var category = 'Home Page Hero CTA';
-			} else if ($(e.currentTarget).parents('#undergraduateAdmission').length > 0) {
-				var category = 'Home Page Undergraduate CTA';
-			} else if ($(e.currentTarget).parents('#graduateAdmission').length > 0) {
-				var category = 'Home Page Graduate CTA';
-			} else if ($(e.currentTarget).parents('#featured_stories').length > 0) {
-				var category = 'Home Page Blog Stories';
-			} else {
-				var category = 'Home Page General Click';
-			}
-
-			// Track Google Analytics
-			// _gaq.push(['_trackEvent', category, cta_id, cta_label]);
-			if (typeof(ga) !== 'undefined') ga('send', 'event', category, cta_id, cta_label);
-
-			// Track w/ SMC tracking
-      /*
-			$.ajax({
-			  url 		: smc_cta_tracker.callback_url,
-			  type 		: 'GET',
-			  cache 	: false,
-			  timeout 	: 350,
-			  // jsonpCallback: "complete",
-			  data: { 
-				'campaign_id' : cta_id,
-				'campaign_label' : cta_label
-			  },
-			  dataType  : 'jsonp',
-			  complete	: function() {
-
-				// Navigate to the URL
-				if (ok_to_navigate_away && !modifierKey) window.location.href = href_url;
-			  }
-			});
       // If we have a URL to navigate to, prevent default
+      var modifierKey = (e.metaKey || e.ctrlKey);
+      var href_url = $(e.currentTarget).attr('href') || false;
+      
       if (href_url && !modifierKey) {
         e.preventDefault();
         return false;
       }
-      
-      */
-		}
+		},
+
+    trackWithSmcCtaTracker : function(e) {
+      var modifierKey = (e.metaKey || e.ctrlKey);
+      var ok_to_navigate_away = true;
+      var href_url = $(e.currentTarget).attr('href') || false;
+      var cta_id = $(e.currentTarget).attr('data-cta-id') || 'Unknown Campaign';
+      var cta_label = $(e.currentTarget).attr('data-cta-label') || $(e.currentTarget).html() || 'Clicks';
+
+      // If has quickview html
+      if ($(e.currentTarget).attr('data-quickview-content') !== undefined && (!modifierKey) && (cu_window_manager.windowWidth > 640)) {
+        ok_to_navigate_away = false;
+      }
+
+      // Track w/ SMC tracking
+      $.ajax({
+        url     : smc_cta_tracker.callback_url,
+        type    : 'GET',
+        cache   : false,
+        timeout   : 350,
+        // jsonpCallback: "complete",
+        data: { 
+        'campaign_id' : cta_id,
+        'campaign_label' : cta_label
+        },
+        dataType  : 'jsonp',
+        complete  : function() {
+          // Navigate to the URL
+          if (ok_to_navigate_away && !modifierKey) {
+            window.location.href = href_url;
+          }
+        }
+      });
+    },
+
+    trackWithGoogleAnalytics : function(e) {
+      var cta_id = $(e.currentTarget).attr('data-cta-id') || 'Unknown Campaign';
+      var cta_label = $(e.currentTarget).attr('data-cta-label') || $(e.currentTarget).html() || 'Clicks';
+
+      // Figure out the category for Google Analytics
+      var category = 'Home Page General Click';
+
+      if ($(e.currentTarget).parents('#hero').length > 0) {
+        category = 'Home Page Hero CTA';
+      } else if ($(e.currentTarget).parents('#undergraduateAdmission').length > 0) {
+        category = 'Home Page Undergraduate CTA';
+      } else if ($(e.currentTarget).parents('#graduateAdmission').length > 0) {
+        category = 'Home Page Graduate CTA';
+      } else if ($(e.currentTarget).parents('#featured_stories').length > 0) {
+        category = 'Home Page Blog Stories';
+      }
+
+      // Track Google Analytics
+      if (typeof(ga) !== 'undefined') ga('send', 'event', category, cta_id, cta_label);
+    }
 
 	}
 
