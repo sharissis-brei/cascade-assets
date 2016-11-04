@@ -24,7 +24,7 @@ this.jQuery && (function ($) {
 				console.log("CU_search cannot initialize because the GSE javascript library has not yet loaded. ");
 				return;
 			}
-			
+
 			// If IE, add class to html
 			if (navigator.userAgent.toLowerCase().indexOf('msie') != -1) {
 				$('html').addClass('ie');
@@ -893,7 +893,6 @@ this.jQuery && (function ($) {
 			$(window).on('resize', function() {
 				CU_off_canvas_nav.syncLinkWidths();
 			});
-
 		},
 
 		syncLinkWidths: function() {

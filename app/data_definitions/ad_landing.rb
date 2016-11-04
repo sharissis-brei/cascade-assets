@@ -37,13 +37,7 @@ module DataDefinitions
     # Class Methods
     def self.default
       ad_landing = DataDefinitions::AdLanding.new
-
-      DataDefinitions::AdLanding::DEFAULTS.each do |xpath, value|
-        node = ad_landing.document.at_xpath(xpath)
-        raise "Node at xpath #{xpath} not found." unless node
-        node.content = value
-      end
-
+      ad_landing.set_defaults
       ad_landing
     end
   end

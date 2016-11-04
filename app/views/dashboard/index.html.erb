@@ -9,6 +9,7 @@
 
 <h2>One Column Sample Pages</h2>
 <ul>
+  <li><%= link_to 'Modular Sample', "/modular/one_column" %></li>
 <% @one_column_pages.each do |page| %>
   <li><%= link_to page.titleize, "/one_column/#{page}" %></li>
 <% end %>
