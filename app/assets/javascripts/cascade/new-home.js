@@ -456,11 +456,10 @@
 
             // Fetch past content
             $.getJSON(cu_hero_area.hero_stories_html_dir+"listing_order.json.txt", function(data){
-
                 cu_hero_area.currentCampaign = 0;
-
                 cu_hero_area.pastCampaigns = [];
-                var keys = Object.keys(data);
+                var keys = ( data ) ? Object.keys(data) : [];
+
                 keys.forEach(function(key){
 
                     /* jshint -W069: ['foo'] is better written in dot notation. */
