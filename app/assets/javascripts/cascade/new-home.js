@@ -9,9 +9,6 @@
             cu_admission_area.initialize();
             smc_cta_tracker.initialize();
             heroModalViewer.initialize();
-
-            // TODO: remove (debug only)
-            window.heroModalView = heroModalViewer;
         }
     });
 
@@ -983,100 +980,6 @@
 
     }; // end cu_admission_area
 
-    /***************************************************
-    * Enables the user to click an image to see a larger version in browser.
-    * TODO: Remove once heroModalViewer tested.
-    ***************************************************/
-    var heroQuickView = {
-        $pageWrapper : jQuery("#heroWrapper"),
-        $container : '',
-        $containerCell : '',
-        isScrollLocked : false,
-
-        initialize : function() {
-
-            // Create container
-            this.$pageWrapper.after('<div id="heroQuickView"><div id="heroQuickViewCell"></div></div>');
-            this.$container = jQuery('#heroQuickView');
-            this.$containerCell = jQuery('#heroQuickViewCell');
-
-            // Attach function to content
-            this.$pageWrapper.delegate("a","click",function(e) {
-
-                var modifierKey = (e.metaKey || e.ctrlKey);
-
-                var $quickviewHTML = jQuery(e.currentTarget).attr('data-quickview-content');
-
-                //Do not intercept URLs that are alt clicked or in small windows
-                if (!modifierKey && (cu_window_manager.windowWidth > 640)) {
-                    heroQuickView.showContent($quickviewHTML);
-                }
-
-            });
-
-            // Close on click
-            this.$container.click(heroQuickView.hide);
-
-            // Close on esc key
-            jQuery('body').keyup(function(e) {
-                if (e.which == 27) heroQuickView.hide();
-            });
-        },
-
-        showContent : function(content) {
-            if (content.length > 0) {
-                heroQuickView.$containerCell.append(content).css('height',jQuery(window).height()+"px").css('width',jQuery(window).width()+"px");
-
-                heroQuickView.$container.fadeIn(500);
-
-                // lock scroll position, but retain settings for later
-                heroQuickView.lockScroll();
-
-                $('body').addClass('heroQuickview');
-            }
-        },
-
-        hide : function() {
-            heroQuickView.$container.fadeOut(40);
-            setTimeout(function(){
-                heroQuickView.$containerCell.empty();
-            },40);
-
-            // un-lock scroll position
-            heroQuickView.unlockScroll();
-
-            $('body').removeClass('heroQuickview');
-        },
-
-        lockScroll : function() {
-            // lock scroll position, but retain settings for later
-            var scrollPosition = [
-              self.pageXOffset || document.documentElement.scrollLeft || document.body.scrollLeft,
-              self.pageYOffset || document.documentElement.scrollTop  || document.body.scrollTop
-            ];
-            var html = jQuery('html'); // it would make more sense to apply this to body, but IE7 won't have that
-            html.data('scroll-position', scrollPosition);
-            html.data('previous-overflow', html.css('overflow'));
-            html.css('overflow', 'hidden');
-            window.scrollTo(scrollPosition[0], scrollPosition[1]);
-            this.isScrollLocked = true;
-        }, // end lockScroll
-
-        unlockScroll : function() {
-            if (!this.isScrollLocked) return false;
-
-            var html = jQuery('html');
-            var scrollPosition = html.data('scroll-position');
-            html.css('overflow', html.data('previous-overflow'));
-            window.scrollTo(scrollPosition[0], scrollPosition[1]);
-        },
-
-        hasImageExtension : function(url) {
-            return(url.match(/\.(jpeg|jpg|gif|png)$/) != null);
-        }
-    };  // end heroQuickView
-    //heroQuickView.initialize();
-
     /*
      * Hero Modal Viewer
      * Creates in-page modal view for videos and images.
@@ -1224,8 +1127,7 @@
         return {
             initialize: initialize
         };
-    })();
-
+    })(); // End heroModalViewer.
 })(jQuery);
 
 // Define Lazybind
