@@ -176,7 +176,7 @@
                     'speed'     : 2000, // speed of transition
                     'pause'     : false, // pause on mouse hover?
                     'slideExpr' : 'img' // only select child elements that match this
-                })
+                });
             });
 
             // Force the height of .imagerotator to be the correct aspect ratio
@@ -394,8 +394,11 @@
             // Find number of decimal places
             var decimalPlaces = (Math.floor(final_num) !== final_num) ? final_num.toString().split(".")[1].length || 0 : 0;
 
+            /* jshint ignore:start */
+            // complains "Do not use Number as a constructor" but maybe that's needed for test?
             // Test for correct EN locale string conversion
             var goodLocaleStringSupport = (new Number(10).toLocaleString() == '10');
+            /* jshint ignore:end */
 
             //Parking count animation
             $({countNum: 0})
@@ -460,6 +463,7 @@
                 var keys = Object.keys(data);
                 keys.forEach(function(key){
 
+                    /* jshint -W069: ['foo'] is better written in dot notation. */
                     // set the slug for this stage
                     data[key]['slug'] = data[key]['filename'].substr(0, data[key]['filename'].indexOf('.'));
 
@@ -474,6 +478,7 @@
                             cu_hero_area.currentCampaign = cu_hero_area.pastCampaigns.length-1;
                         }
                     }
+                    /* jshint -W069 */
 
                 });
 
@@ -547,14 +552,13 @@
             // and center it by scrolling the video viewport
             $('#mastheadBackground').scrollLeft((new_video_width - container_width) / 2);
             $('#mastheadBackground').scrollTop((new_video_height - container_height) / 2);
-
         },
 
         absoluteUrls : function() {
             $("#mastheadVideo source").each(function() {
                 videoUrl = $(this).attr('src').replace('/_files', 'http://www.chapman.edu/_files');
                 $(this).attr('src', videoUrl);
-            })
+            });
 
             imageUrl = $('#mastheadImage').attr('src').replace('../', 'http://www.chapman.edu/');
             $('#mastheadImage').attr('src', imageUrl);
@@ -566,7 +570,7 @@
         setupContent : function($content) {
 
             // This fires if working on a development server to change relative image urls to absolute urls
-            if (document.location.hostname == 'localhost') cu_hero_area.absoluteUrls()
+            if (document.location.hostname == 'localhost') cu_hero_area.absoluteUrls();
 
             // This clears any remaining transitions from the previous content
             if (cu_hero_area.videoTransitionTimeout != null) {
@@ -621,7 +625,7 @@
                 "left"      : "100px",
                 "opacity"   : "0"
             // Apply animations to the old outgoing content
-            })
+            });
 
             setTimeout(function() {
                 $hero.find(".excerpt").addClass("fast_transition").css({
@@ -707,6 +711,7 @@
                 $("#mastheadNavigation").fadeOut();
             }
 
+            /* jshint -W069: ['foo'] is better written in dot notation. */
             // Check for a local cached copy of this HTML
             if (cu_hero_area.pastCampaigns[current_num]['html']) {
                 cu_hero_area.transitionToStory(cu_hero_area.pastCampaigns[current_num]['html'], direction);
@@ -722,6 +727,7 @@
 
             // Update the URL
             location.hash = "#story-"+cu_hero_area.pastCampaigns[current_num]['slug'];
+            /* jshint +W069 */
 
         }, // end processNavigation
 
@@ -800,8 +806,6 @@
                 cu_hero_area.isChanging = false;
 
             }, timeToHideNav);
-
-
         }
 
     }; // end cu_hero_area
@@ -813,7 +817,7 @@
                 $(this).parent(".meta").addClass("share_action");
                 e.preventDefault();
                 return false;
-            })
+            });
 
             $(".meta .shares").lazybind("mouseenter", function(e) {
 
@@ -833,22 +837,15 @@
         },
 
         processShareClick : function(e) {
-            if (e.target.href !== undefined) {
-                var url = e.target.href;
-                var service = $(e.target).attr('service');
-            } else {
-                var url = $(e.target).parents("a").attr("href");
-                var service = $(e.target).parents("a").attr('service');
-            }
+            var url, service;
 
-            // TODO: dead code - remove in future.
-            // if (service == 'Comments') {
-            //  _gaq.push(['_trackEvent', 'Social Engagement', 'Comment Jump Button', service]);
-            //  setTimeout(function() {
-            //      document.location.href = url;
-            //  }, 200);
-            //  return false;
-            // }
+            if (e.target.href !== undefined) {
+                url = e.target.href;
+                service = $(e.target).attr('service');
+            } else {
+                url = $(e.target).parents("a").attr("href");
+                service = $(e.target).parents("a").attr('service');
+            }
 
             if (service != 'Facebook' && service != 'Twitter') {
                 return false;
@@ -858,7 +855,9 @@
             var y = window.screen.height;
 
             newwindow=window.open(url,'name','height=450,width=600,top='+(y/2 - 200)+ ',left=' + (x/2 - 300));
-            if (window.focus) {newwindow.focus()}
+            if (window.focus) {
+                newwindow.focus();
+            }
 
             e.preventDefault();
 
@@ -1182,9 +1181,9 @@ if (!Object.keys) {
         }
       }
       return result;
-    }
-  })()
-};
+    };
+  })();
+}
 
 // Array.forEach pollyfill for older IE
 if (!Array.prototype.forEach) {
@@ -1200,4 +1199,4 @@ if (!Array.prototype.forEach) {
         fun.call(thisp, this[i], i, this);
     }
   };
-};
+}
