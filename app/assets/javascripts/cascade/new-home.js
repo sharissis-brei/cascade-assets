@@ -507,17 +507,6 @@
                     // _gaq.push(['_trackEvent', "Homepage UI Interaction", "Switch hero story", "newer"]);
                     if (typeof(ga) !== 'undefined') ga('send', 'event', "Homepage UI Interaction", "Switch hero story", "newer");
                 });
-
-
-                // TODO: dead code - remove in future.
-                // $("#heroWrapper").hammer().on("swipeleft", function(e) {
-                //  cu_hero_area.processNavigation('older');
-                // });
-
-                // $("#heroWrapper").hammer().on("swiperight", function(e) {
-                //  cu_hero_area.processNavigation('newer');
-                // });
-
             });
 
         },
@@ -1074,7 +1063,6 @@
         };
 
         var closeModal = function() {
-            console.debug('CLOSE heroModalViewer');
             $modal.fadeOut(40, function() {
                 $modalCell.empty();
             });
