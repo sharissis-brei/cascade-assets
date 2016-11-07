@@ -32,10 +32,15 @@
           var modifierKey = (e.metaKey || e.ctrlKey);
           var href_url = $(e.currentTarget).attr('href') || false;
 
-          if (href_url && !modifierKey) {
-            e.preventDefault();
-            return false;
-          }
+          // This code was in the original tracker that worked with meteor tracking site. It
+          // makes no sense because it blocks browser from redirecting to a tags with href. Maybe
+          // the redirect was somehow dependent on the AJAX call, which is still crazy. So I am
+          // disabling this but not removing it because maybe it had some cryptic unexplained
+          // purpose I don't understand.
+          //if (href_url && !modifierKey) {
+          //  e.preventDefault();
+          //  return false;
+          //}
         },
 
         trackWithSmcCtaTracker : function(e) {
@@ -178,15 +183,6 @@
                     'slideExpr' : 'img' // only select child elements that match this
                 });
             });
-
-            // Force the height of .imagerotator to be the correct aspect ratio
-
-            // TODO: dead code - remove in future.
-            // $(".imagerotator").each(function() {
-            //  var ratio = Math.round(($(this).find("img").outerHeight() / $(this).find("img").outerWidth()) * 100);
-            //  $(this).find('.imagerotator_clearfix').css('padding-bottom', ratio + '%');
-            // });
-
         }, // end initialize
 
 
@@ -1045,6 +1041,10 @@
             // Go!
             else {
                 fadeInModal(modalContent, 500);
+
+                // Disable redirect.
+                e.preventDefault();
+                return false;
             }
         };
 
