@@ -1,0 +1,47 @@
+.smallMasthead .masthead, .smallMasthead .masthead-old, .bigMasthead .mastheadPlaceholder, .bigMasthead .masthead, .bigMasthead .masthead-old, .nameBar, .rightColumn .styleTwo {
+background: #002f7c; /* Old browsers */
+}
+.rightColumn .styleTwo .border { background-color: #002663; }
+.styleTwo p {color: #fff;}
+.styleTwo li {color: #fff;}
+.styleTwo div {color: #fff;}
+.styleTwo h2 {color: #fff;}
+.styleTwo h3 {color: #fff;}
+.rightColumn .styleTwo a {color: #d0e2fe; text-decoration: underline;}
+
+.nameBarButtons li a { color: #002f7c;}
+.expandedNameBarContainer h2, .expandedNameBarContainer a, div.styleTwo a { color: #99afda; }
+
+#social_follow_us .banner { 
+    background-image: url('/_files/social_accounts/images/law_follow_us.png'); 
+    }
+#social_follow_us li span.hover_state, #social_follow_us li span.inactive_state {
+    background: url('/_files/social_accounts/images/law_icons.png');
+    }
+
+.rounded-slider .info-container .blue{
+    background-color:#002f7c;
+    background-image: -webkit-gradient(linear, left top, left bottom, from(#002f7c), to(#01235b));
+    background-image: -webkit-linear-gradient(top, #002f7c, #01235b);
+    background-image: -moz-linear-gradient(top, #002f7c, #01235b);
+    background-image: -o-linear-gradient(top, #002f7c, #01235b);
+    background-image: linear-gradient(to bottom, #002f7c, #01235b);
+    filter: progid:DXImageTransform.Microsoft.gradient( startColorstr='#002f7c', endColorstr='#01235b',GradientType=1 );
+}    
+
+.newbutton a, .newbutton a:hover {
+    border: 1px solid #002f7c;
+    background-color: #002f7c;
+    background-image: -webkit-gradient(linear, left top, left bottom, from(#002f7c), to(#022155));
+    background-image: -webkit-linear-gradient(top, #002f7c, #022155);
+    background-image: -moz-linear-gradient(top, #002f7c, #022155);
+    background-image: -o-linear-gradient(top, #002f7c, #022155);
+    background-image: linear-gradient(to bottom, #002f7c, #022155);
+    filter: progid:DXImageTransform.Microsoft.gradient( startColorstr='#002f7c', endColorstr='#022155',GradientType=1 );
+}
+
+.midPhotoCallouts .photoCallout .caption,
+.photoCallouts .caption,
+.photoCallouts .rollover{
+     background-color: #002f7c;   
+}

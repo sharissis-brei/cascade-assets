@@ -31,6 +31,14 @@ class ConfigurationSet < Tableless
     configuration_set
   end
 
+  def self.slideshow(options={})
+    default_template_path = '_cascade/templates/school_home_pages/slideshow.html'
+    configuration_set = ConfigurationSet.new(name: 'Slideshow')
+    configuration_set.set_defaults
+    configuration_set.template = options.fetch(:template, default_template_path)
+    configuration_set
+  end
+
   def set_defaults
     self.template = nil
     self.publishable = true

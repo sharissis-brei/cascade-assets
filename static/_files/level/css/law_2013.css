@@ -1,0 +1,213 @@
+/* ==|== law custom header and footer styles ====================================================== */
+
+/*#cu_nav ul.cu_nav_menu.cu_nav_secondary {display:none !important;}*/
+
+.logo{
+    /* background-image: url("../img/logo_law_alternate.png") !important; */
+    background-image: url("../img/logo_law_alternate.svg") !important;
+    width: 200px;
+    margin: 20px 0 0 10px;
+    height: 57px !important;
+}
+
+.collapsedNav {
+    margin: 115px 0 0 0;
+}
+
+.mainNavLinks > li > a,
+.footerLinks li a {
+    background-color:#002f7c;
+}
+
+.mainNavLinks .mainNavLinksAfter, 
+.mainNavLinks .mainNavLinksAfter:hover {
+    background-color:#002f7c !important;
+}
+
+.footerLogo{
+    padding:10px 0 0 10px;
+    clear:both;
+}
+@media only screen and (min-width: 780px) {
+    .ie8 .subNavLinks {
+        border-right: 1px solid #00307c;
+        border-bottom: 1px solid #00307c;
+        border-left: 1px solid #00307c;
+    }
+
+    /** we don't have icons from the client so move the links over */
+    .mainNav .icon {
+        margin-left: 0;
+    }
+    .mainNav .icon:before {
+        display: none;
+    }    
+
+    .footer-ribbon, .footer-ribbon .footer-ribbon-before {
+        background-color: #00307c;
+    }
+    .footer-ribbon .footer-ribbon-after {
+        background-image: url("../../css/img/ribbon_tails_law.png");    
+    }
+}
+@media only screen and (min-width: 780px) {
+    .footer-links-group > h3 {
+        color: #fff;
+    }
+}
+.nameBarButtons li a {
+    color: #00307c;
+}
+.expandedNameBarContainer h2, 
+.expandedNameBarContainer a, 
+div.styleTwo a {
+    color: #99afda;
+}
+
+.smallMasthead .masthead, 
+.bigMasthead .masthead, 
+.nameBar {
+    background: #00307c;
+}
+
+#social_follow_us .banner {
+    background-image: url('/_files/social_accounts/images/law_follow_us.png');
+}
+#social_follow_us li span.hover_state, 
+#social_follow_us li span.inactive_state {
+    background: url('/_files/social_accounts/images/law_icons.png');
+}
+
+/*.ie8 .slideDescription,
+.ie9 .slideDescription{
+    display: none !important;    
+}*/
+
+.mainNavExpand a { 
+    background-color: #002F7C; 
+}
+
+.mainNavLinks > li {
+    background-color: #353430;
+}
+
+/* ==|== media queries ====================================================== */
+@media only screen and (min-width: 780px) {
+    
+    header{
+        padding: 0;
+    }
+
+    .logo {
+        /*margin:-23px 0 0 10px;*/
+        margin: -13px 5px 0 10px;
+    }
+    
+    .infoFor {
+        width: 600px;
+    }
+
+    .mainNavLinks {
+    }
+    
+    .mainNavLinks > li.noSubNav > a {
+        padding:0 !important;
+    }
+    
+    .mainNavLinks > li:hover{
+        background-color:transparent;
+    }
+
+    .mainNavLinks > li > a > span {
+        padding-left: 12px;
+        padding-right: 12px;
+    }
+    
+    .mainNavLinks,
+    .mainNavLinks > li,
+    .mainNavLinks > li.noSubNav:hover,
+    footer .footerBefore,
+    .footerLinks{
+        background-color:#002f7c;  
+    }
+    
+    .mainNavLinks,
+    footer .footerAfter {
+        background-image:url("../../css/img/ribbon_tails_law.png");   
+    }
+    
+    .footerLinks {
+        padding: 0;
+        text-indent: 10px;
+    }
+    
+    .subFooter{
+        width:780px;
+    }
+    
+    .ie7 .subFooter{
+        width:855px;
+    }
+    
+    .ie8 .subFooter{
+        width:835px;
+    }
+    
+    .subFooter .socialIcons{
+        width: auto;   
+    }
+    
+    .subFooter .copyright {
+        right: 148px;
+    }
+    
+    .footerLinks .switch{
+        display:none;   
+    }
+
+}
+
+@media only screen and (min-width: 1024px) {
+    
+    .logo {
+        margin:-13px 10px 0 10px;
+    }
+
+}
+
+@media only screen and (min-width: 1140px) {
+
+    
+    .subFooter ul {
+        margin: 0 10px 0 -10px;
+    }     
+    
+    .mainNavLinks{
+        background-color: transparent;
+    }
+        
+    .footerLogo{  
+        position: absolute;
+        top: 35px; 
+        left: 20px;   
+        padding:10px 0 0 0;         
+    }
+        
+    .oldie .footerLinks li a{
+        font-size:10px;
+        margin:0;
+    }        
+        
+    .oldie .footerLinks{
+        float:none;   
+    }   
+    
+    .ie7 .subFooter{
+        width:795px;
+    }
+    
+    .ie8 .subFooter{
+        width:780px;
+    }
+
+}
