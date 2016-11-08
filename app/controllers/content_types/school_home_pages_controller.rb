@@ -10,7 +10,7 @@ module ContentTypes
   class SchoolHomePagesController < ApplicationController
     layout false
     before_action :link_static_assets
-    after_action :link_static_assets, :render_region_tags, :render_system_page_meta_tags
+    after_action :render_region_tags, :render_system_page_meta_tags
 
     # GET /school_home_pages/slideshow or /school_home_pages/law
     # Maps to Content Types/School Home Pages/Slideshow in Cascade.
