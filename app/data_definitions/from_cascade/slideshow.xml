@@ -1,0 +1,183 @@
+<system-data-structure>
+    <group identifier="sharing" label="Sharing " collapsed="true">
+        <asset type="file" identifier="og_image" label="OG Image" help-text="Image used for sharing on facebook (130px w, 110px h exactly)"/>
+        <text identifier="og_title" label="OG Title" help-text="Overrides title for when page is shared to facebook (defaults to Display Name)"/>
+        <text identifier="og_description" label="OG Description" help-text="Overrides description when page is shared to facebook"/>
+        <text identifier="twitter_text" label="Twitter Share Text" help-text="The text that prepopulates on twitter (followed by URL and hashtags)"/>
+        <text identifier="twitter_hashtag" label="Twitter Hashtag" multiple="true" maximum-number="3" help-text="Hastags to get appended to tweet (no #!)"/>
+    </group>
+    <group identifier="slides" label="Slides" collapsed="true">
+        <text type="checkbox" identifier="autoRotate" label="Auto Rotate">
+            <checkbox-item value="On"/>
+        </text>
+        <text identifier="startingSlideNumber" label="Starting Slide Number" help-text="Accepts an integer corresponding to slide number"/>
+        <text identifier="speed" label="Speed" help-text="Number of seconds it takes a slide to auto rotate. If no value is entered, slides will rotate every ten seconds."/>
+        <group identifier="slide" label="Slide" multiple="true" maximum-number="10" minimum-number="1">
+            <asset type="file" identifier="image" label="Image (960 x 469)" required="true"/>
+            <text identifier="altText" label="Image Alt Text" required="true"/>
+            <text identifier="description" label="Description" maxlength="75"/>
+            <group identifier="link" label="Link">
+                <text identifier="label" label="Label" maxlength="15"/>
+                <text identifier="link" label="Link"/>
+                <asset type="page" identifier="internalLink" label="Or Internal Link"/>
+            </group>
+        </group>
+    </group>
+    <group identifier="nameBar" label="Name Bar" collapsed="true">
+        <text identifier="collegeName" label="College Name" required="true"/>
+        <text multi-line="true" identifier="collegeDescription" label="College Description" required="true"/>
+        <group identifier="buttons" label="Buttons">
+            <group identifier="button" label="Button" multiple="true" maximum-number="3" minimum-number="3">
+                <text identifier="label" label="Label" required="true" maxlength="50"/>
+                <text identifier="link" label="Link"/>
+                <asset type="page" identifier="internalLink" label="Or Internal Link"/>
+            </group>
+        </group>
+        <group identifier="content" label="content">
+            <text identifier="heading" label="Heading" required="true"/>
+            <text wysiwyg="true" identifier="copy" label="Copy" required="true"/>
+            <group identifier="video" label="Video">
+                <text identifier="link" label="Link"/>
+                <asset type="symlink" identifier="internalLink" label="Or Internal Link"/>
+                <asset type="file" identifier="image" label="Fallback Image"/>
+                <text identifier="altText" label="Image Alt Text"/>
+            </group>
+        </group>
+    </group>
+    <asset type="block" identifier="social_accounts" label="Social Accounts" render-content-depth="10"/>
+    <group identifier="primaryContent" label="Primary Content" collapsed="true">
+        <text identifier="pageTitle" label="Page Title" required="true"/>
+        <text wysiwyg="true" identifier="content" label="Content"/>
+        <group identifier="collapsibleRegions" label="Collapsible Regions">
+            <text type="radiobutton" identifier="show" label="Show" default="Yes" required="true">
+                <radio-item value="Yes"/>
+                <radio-item value="No"/>
+            </text>
+            <group identifier="collapsibleRegion" label="Collapsible Region" multiple="true" minimum-number="0">
+                <text type="radiobutton" identifier="active" label="Active" default="Yes" required="true">
+                    <radio-item value="Yes"/>
+                    <radio-item value="No"/>
+                </text>
+                <text identifier="header" label="Header" default="[header]" required="true"/>
+                <text wysiwyg="true" identifier="copy" label="Copy"/>
+            </group>
+        </group>
+        <group identifier="newsEvents" label="News Events">
+            <text type="dropdown" identifier="options" label="Options" default="Do Not Show" required="true">
+                <dropdown-item value="Featured - News - Events (Featured active)"/>
+                <dropdown-item value="Featured - News - Events (News active)"/>
+                <dropdown-item value="Featured - News - Events (Events active)"/>
+                <dropdown-item value="Featured - News (Featured active)"/>
+                <dropdown-item value="Featured - News (News active)"/>
+                <dropdown-item value="Featured - Events (Featured active)"/>
+                <dropdown-item value="Featured - Events (Events active)"/>
+                <dropdown-item value="News - Events (News active)"/>
+                <dropdown-item value="News - Events (Events active)"/>
+                <dropdown-item value="Featured Only"/>
+                <dropdown-item value="News Only"/>
+                <dropdown-item value="Events Only"/>
+                <dropdown-item value="Do Not Show"/>
+            </text>
+        </group>
+        <group identifier="photoCallouts" label="Photo Callouts">
+            <group identifier="photoCallout" label="Photo Callout" multiple="true" maximum-number="6">
+                <asset type="file" identifier="image" label="Image" required="true"/>
+                <text identifier="altText" label="Image Alt Text" required="true"/>
+                <text identifier="link" label="Link"/>
+                <asset type="page" identifier="internalLink" label="Or Internal Link"/>
+                <text identifier="label" label="Label" required="true"/>
+                <group identifier="rollover" label="Rollover">
+                    <text multi-line="true" identifier="copy" label="Copy" required="true"/>
+                    <text identifier="buttonText" label="Button Text" required="true" maxlength="19"/>
+                </group>
+            </group>
+        </group>
+    </group>
+    <group identifier="leftColumnCallout" label="Left Column Callout" collapsed="true">
+        <text type="radiobutton" identifier="show" label="Show" default="No" required="true">
+            <radio-item value="Yes"/>
+            <radio-item value="No"/>
+        </text>
+        <group identifier="text" label="Text">
+            <text multi-line="true" identifier="headline" label="Headline" default="[headline]"/>
+            <text wysiwyg="true" identifier="copy" label="Copy"/>
+        </group>
+        <group identifier="links" label="Links">
+            <group identifier="link" label="link" multiple="true">
+                <text identifier="link" label="Link"/>
+                <asset type="page" identifier="internalLink" label="Or Internal Link"/>
+                <asset type="file" identifier="fileLink" label="Or File Link"/>
+                <text identifier="label" label="Label"/>
+            </group>
+        </group>
+    </group>
+    <group identifier="leftColumnCallsToAction" label="Left Column Calls to Action" collapsed="true">
+        <group identifier="link" label="Link" multiple="true">
+            <text identifier="link" label="Link"/>
+            <asset type="page" identifier="internalLink" label="Or Internal Link"/>
+            <asset type="file" identifier="fileLink" label="Or File Link"/>
+            <text identifier="label" label="Label"/>
+            <text identifier="onclick" label="Custom Onclick Code" help-text="Javascript code to execute on the click event of this link."/>
+        </group>
+        <asset type="block" identifier="block" label="Block" render-content-depth="unlimited"/>
+    </group>
+    <group identifier="leftColumnNewsEvents" label="Left Column News Events" collapsed="true">
+        <text type="dropdown" identifier="options" label="Options" default="Do Not Show" required="true">
+            <dropdown-item value="Featured - News - Events (Featured active)"/>
+            <dropdown-item value="Featured - News - Events (News active)"/>
+            <dropdown-item value="Featured - News - Events (Events active)"/>
+            <dropdown-item value="Featured - News (Featured active)"/>
+            <dropdown-item value="Featured - News (News active)"/>
+            <dropdown-item value="Featured - Events (Featured active)"/>
+            <dropdown-item value="Featured - Events (Events active)"/>
+            <dropdown-item value="News - Events (News active)"/>
+            <dropdown-item value="News - Events (Events active)"/>
+            <dropdown-item value="Featured Only"/>
+            <dropdown-item value="News Only"/>
+            <dropdown-item value="Events Only"/>
+            <dropdown-item value="Do Not Show"/>
+        </text>
+    </group>
+    <group identifier="featureFeed" label="Feature Feed">
+        <asset type="page" identifier="feature" label="Feature"/>
+    </group>
+    <group identifier="newsFeed" label="News Feed">
+        <text type="dropdown" identifier="options" label="Options" default="Default" required="true">
+            <dropdown-item value="Default"/>
+            <dropdown-item value="Admissions"/>
+            <dropdown-item value="ASBE"/>
+            <dropdown-item value="CES"/>
+            <dropdown-item value="Commencement"/>
+            <dropdown-item value="COPA"/>
+            <dropdown-item value="Crean"/>
+            <dropdown-item value="Dodge"/>
+            <dropdown-item value="Happenings"/>
+            <dropdown-item value="Information Systems"/>
+            <dropdown-item value="Law"/>
+            <dropdown-item value="Pharmacy"/>
+            <dropdown-item value="Schmid"/>
+            <dropdown-item value="Students"/>
+            <dropdown-item value="Wilkinson"/>
+        </text>
+    </group>
+    <group identifier="eventsFeed" label="Events Feed">
+        <text type="dropdown" identifier="options" label="Options" default="Default" required="true">
+            <dropdown-item value="Default"/>
+            <dropdown-item value="ASBE"/>
+            <dropdown-item value="CES"/>
+            <dropdown-item value="COPA"/>
+            <dropdown-item value="CREAN"/>
+            <dropdown-item value="DANCE"/>
+            <dropdown-item value="DODGE"/>
+            <dropdown-item value="Information Systems"/>
+            <dropdown-item value="LAW"/>
+            <dropdown-item value="MUSIC"/>
+            <dropdown-item value="PHARMACY"/>
+            <dropdown-item value="SCHMID"/>
+            <dropdown-item value="STUDENTS"/>
+            <dropdown-item value="THEATRE"/>
+            <dropdown-item value="WILKINSON"/>
+            <dropdown-item value="ESI"/>
+        </text>
+    </group>
+</system-data-structure>
