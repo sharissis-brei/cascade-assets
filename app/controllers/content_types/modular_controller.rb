@@ -87,6 +87,45 @@ module ContentTypes
     end
     # rubocop:enable Metrics/MethodLength
 
+    # GET /modular/two_column
+    # Maps to Content Types/Modular/2 Column in Cascade.
+    # rubocop:disable Metrics/MethodLength
+    def two_column
+      @configuration_set = ConfigurationSet.two_column
+      @metadata_set = MetadataSet.page(title: 'Modular Two Column')
+      @data_definition = DataDefinitions::TwoColumn.default
+
+      @configuration_set.regions = {
+        # Blank Regions
+        'ADDITIONAL BODY AT-END' => '',
+        'ADDITIONAL HEAD' => '',
+
+        # Dynamic Regions
+        'BREADCRUMBS' => 'TODO: _cascade/formats/level/Breadcrumbs',
+        'CASCADE ASSETS' => cascade_block('_cascade/blocks/html/cascade_assets'),
+        'FB_JS_SDK' => cascade_block('_cascade/blocks/html/facebook_javascript_sdk'),
+        'GOOGLE_ANALYTICS' => '<!-- _chapman_common:_cascade/blocks/ANALYTICS-TRACKING -->',
+        'JQUERY' => cascade_block('_cascade/blocks/html/jquery'),
+        'JUMP LINK' => cascade_block('_cascade/blocks/html/jump_link'),
+        'LEFT COLUMN CONTENT' => 'TODO: _cascade/formats/modular/LeftColumnContent',
+        'MASTHEAD' => '<h4>TODO: _cascade/formats/level/Masthead</h4>',
+        'META VIEWPORT' => cascade_block('_cascade/blocks/html/global_meta_viewport'),
+        'OG_TAGS' => '<!-- TODO: _cascade/formats/Open Graph And Canonical Tags -->',
+        'PAGE WRAPPER CLOSE' => 'TODO: _cascade/formats/modular/page-wrapper-close',
+        'PAGE WRAPPER OPEN' => 'TODO: _cascade/formats/modular/page-wrapper-open',
+        'PRIMARY CONTENT' => '<h2>TODO: _cascade/formats/modular/PrimaryContent</h2>',
+        'SOCIAL ACCOUNTS' => 'TODO: _cascade/formats/level/social_accounts',
+
+        # TODO: convert these to cascade_format action.
+        'OMNI-NAV' => render_static_partial('widgets/shared/omninav'),
+        'NAVIGATION' => render_static_partial('widgets/shared/navigation'),
+        'GLOBAL FOOTER' => render_static_partial('widgets/shared/footer')
+      }
+
+      render @configuration_set.template
+    end
+    # rubocop:enable Metrics/MethodLength
+
     private
 
     # rubocop:disable Metrics/MethodLength

@@ -16,7 +16,9 @@ Rails.application.routes.draw do
     get '/modular/spike', to: 'modular#spike'
     get '/modular/ad_landing', to: 'modular#ad_landing'
     get '/modular/one_column', to: 'modular#one_column'
+    get '/modular/two_column', to: 'modular#two_column'
 
+    # Next 2 point to the same action
     get '/school_home_pages/slideshow', to: 'school_home_pages#slideshow'
     get '/cascade/law', to: 'school_home_pages#slideshow'
   end
