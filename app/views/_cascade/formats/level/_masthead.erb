@@ -1,0 +1,53 @@
+<% # These import statements below don't do anything. They just mirror what's in Cascade. %>
+<% #import( "/_cascade/formats/helpers.velocity" ) %>
+
+<% # VTL variables from Data Definition
+   mastheadType = current_page.get_child_value(:masthead_type)
+   showMasthead = 'TODO'
+   showImage = 'TODO'
+
+   # Branded Masthead vars
+   brandedMastheadDisplaysImage = current_page.get_child_value(:branded_masthead_display_image)
+   brandedMastheadHeader = current_page.get_child_value(:branded_masthead_header)
+   brandedMastheadSubtitle = current_page.get_child_value(:branded_masthead_subtitle)
+   brandedMastheadImagePath = current_page.get_child_value(:branded_masthead_image_path)
+   brandedMastheadAltText = 'brandedMastheadAltText'
+   brandedMastheadClass = (brandedMastheadSubtitle != '') ? 'masthead-new captionOnTop' : 'masthead-new'
+
+   # Slider vars
+   displaySlider = 'TODO'
+%>
+
+<% if mastheadType == 'No Masthead' %>
+  <!-- mastheadType: "No Masthead" -->
+
+<% elsif mastheadType == 'Branded Masthead' &&  brandedMastheadDisplaysImage == 'Yes' %>
+  <!-- mastheadType: "Branded Masthead" -->
+  <div class="brandedMastheadContainer">
+    <div class="<%= brandedMastheadClass %>">
+      <img alt="<%= brandedMastheadAltText %>" src="<%= brandedMastheadImagePath %>"/>
+      <div class="caption">
+        <% if brandedMastheadSubtitle != '' %>
+          <p class="subTitle">
+            <%= brandedMastheadSubtitle %>
+          </p>
+        <% end %>
+        <% if brandedMastheadHeader != '' %>
+          <h2><%= brandedMastheadHeader %></h2>
+        <% end %>
+      </div>
+    </div>
+  </div>
+
+<% elsif mastheadType == 'Slider' &&  displaySlider == 'Yes' %>
+  <!-- mastheadType: "Slider" -->
+  <h3>TODO: Render Slider</h3>
+
+<% elsif showMasthead == 'Yes' &&  showImage == 'Yes' %>
+  <!-- mastheadType: "Old Masthead" -->
+  <h3>TODO: Render Old Masthead</h3>
+
+<% else %>
+  <!-- mastheadType: base case (no match, no masthead) -->
+
+<% end %>

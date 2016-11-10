@@ -108,7 +108,7 @@ module ContentTypes
         'JQUERY' => cascade_block('_cascade/blocks/html/jquery'),
         'JUMP LINK' => cascade_block('_cascade/blocks/html/jump_link'),
         'LEFT COLUMN CONTENT' => 'TODO: _cascade/formats/modular/LeftColumnContent',
-        'MASTHEAD' => '<h4>TODO: _cascade/formats/level/Masthead</h4>',
+        'MASTHEAD' => cascade_format('_cascade/formats/level/masthead'),
         'META VIEWPORT' => cascade_block('_cascade/blocks/html/global_meta_viewport'),
         'OG_TAGS' => '<!-- TODO: _cascade/formats/Open Graph And Canonical Tags -->',
         'PAGE WRAPPER CLOSE' => 'TODO: _cascade/formats/modular/page-wrapper-close',
