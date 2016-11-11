@@ -1,25 +1,42 @@
 <% # These import statements below don't do anything. They just mirror what's in Cascade. %>
 <% #import( "/_cascade/formats/helpers.velocity" ) %>
 
-<% # VTL variables from Data Definition
-   mastheadType = current_page.get_child_value(:masthead_type)
-   showMasthead = 'TODO'
-   showImage = 'TODO'
+<%
+# VTL variables from Data Definition
+mastheadType = current_page.get_child_value(:masthead_type)
+showMasthead = 'TODO'
+showImage = 'TODO'
 
-   # Branded Masthead vars
-   brandedMastheadDisplaysImage = current_page.get_child_value(:branded_masthead_display_image)
-   brandedMastheadHeader = current_page.get_child_value(:branded_masthead_header)
-   brandedMastheadSubtitle = current_page.get_child_value(:branded_masthead_subtitle)
-   brandedMastheadImagePath = current_page.get_child_value(:branded_masthead_image_path)
-   brandedMastheadAltText = 'brandedMastheadAltText'
-   brandedMastheadClass = (brandedMastheadSubtitle != '') ? 'masthead-new captionOnTop' : 'masthead-new'
+# Branded - New vars
+brandedNewHeader = current_page.get_child_value(:branded_new_header)
+brandedNewImagePath = current_page.get_child_value(:branded_new_image_path)
+brandedNewAltText = current_page.get_child_value(:branded_new_alt_text)
 
-   # Slider vars
-   displaySlider = 'TODO'
+# Branded Masthead vars
+brandedMastheadDisplaysImage = current_page.get_child_value(:branded_masthead_display_image)
+brandedMastheadHeader = current_page.get_child_value(:branded_masthead_header)
+brandedMastheadSubtitle = current_page.get_child_value(:branded_masthead_subtitle)
+brandedMastheadImagePath = current_page.get_child_value(:branded_masthead_image_path)
+brandedMastheadAltText = 'brandedMastheadAltText'
+brandedMastheadClass = (brandedMastheadSubtitle != '') ? 'masthead-new captionOnTop' : 'masthead-new'
+
+# Slider vars
+displaySlider = 'TODO'
 %>
 
 <% if mastheadType == 'No Masthead' %>
   <!-- mastheadType: "No Masthead" -->
+
+<% elsif mastheadType == 'Branded - New' %>
+  <!-- mastheadType: "Branded - New" -->
+  <div class="branded-new brandedMastheadContainer">
+    <div class="column-container left">
+      <img alt="<%= brandedMastheadAltText %>" src="<%= brandedNewImagePath %>"/>
+    </div>
+    <div class="column-container right">
+      <h2 class="header"><%= brandedNewHeader %></h2>
+    </div>
+  </div>
 
 <% elsif mastheadType == 'Branded Masthead' &&  brandedMastheadDisplaysImage == 'Yes' %>
   <!-- mastheadType: "Branded Masthead" -->

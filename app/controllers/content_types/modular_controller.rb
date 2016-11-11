@@ -94,6 +94,7 @@ module ContentTypes
       @configuration_set = ConfigurationSet.two_column
       @metadata_set = MetadataSet.page(title: 'Modular Two Column')
       @data_definition = DataDefinitions::TwoColumn.default
+      @current_page_path = 'students/services/career-development/employers/index.aspx'
 
       @configuration_set.regions = {
         # Blank Regions
@@ -111,8 +112,8 @@ module ContentTypes
         'MASTHEAD' => cascade_format('_cascade/formats/level/masthead'),
         'META VIEWPORT' => cascade_block('_cascade/blocks/html/global_meta_viewport'),
         'OG_TAGS' => '<!-- TODO: _cascade/formats/Open Graph And Canonical Tags -->',
-        'PAGE WRAPPER CLOSE' => 'TODO: _cascade/formats/modular/page-wrapper-close',
-        'PAGE WRAPPER OPEN' => 'TODO: _cascade/formats/modular/page-wrapper-open',
+        'PAGE WRAPPER CLOSE' => cascade_format('_cascade/formats/modular/page_wrapper_close'),
+        'PAGE WRAPPER OPEN' => cascade_format('_cascade/formats/modular/page_wrapper_open'),
         'PRIMARY CONTENT' => '<h2>TODO: _cascade/formats/modular/PrimaryContent</h2>',
         'SOCIAL ACCOUNTS' => 'TODO: _cascade/formats/level/social_accounts',
 

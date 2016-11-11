@@ -1,12 +1,19 @@
 <system-data-structure>
     <group identifier="masthead" label="Masthead Options" collapsed="true">
         <text type="radiobutton" identifier="mastheadType" label="Masthead Type" help-text="these are the new wider mastheads available">
-            <radio-item value="Branded Masthead" show-fields="masthead/branded-masthead"/>
+            <radio-item value="Branded - New" show-fields="masthead/branded-new"/>
+            <radio-item value="Slider - New" show-fields="masthead/slider-new"/>
             <radio-item value="Boxes" show-fields="masthead/boxes"/>
-            <radio-item value="Slider" show-fields="masthead/slider"/>
             <radio-item value="No Masthead"/>
             <radio-item value="Use OLD Masthead" show-fields="masthead/showMasthead, masthead/showImage, masthead/image, masthead/altText, masthead/description"/>
+            <radio-item value="Branded Masthead" show-fields="masthead/branded-masthead"/>
+            <radio-item value="Slider" show-fields="masthead/slider"/>
         </text>
+        <group identifier="branded-new" label="Branded - New">
+            <text identifier="header" required="true" label="Title"/>
+            <asset type="file" identifier="image" required="true" label="Image (780x260)"/>
+            <text identifier="alt-text" label="Image Alt-Text" required="true" help-text="Alternate text to describe image (required)"/>
+        </group>
         <group identifier="branded-masthead" label="Branded Masthead">
             <text type="radiobutton" identifier="display-image" label="Show" default="No" required="true">
                 <radio-item value="Yes"/>
