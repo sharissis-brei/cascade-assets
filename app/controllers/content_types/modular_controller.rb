@@ -91,16 +91,21 @@ module ContentTypes
     # Maps to Content Types/Modular/2 Column in Cascade.
     # rubocop:disable Metrics/MethodLength
     def two_column
+      # Cascade Data Models
       @configuration_set = ConfigurationSet.two_column
       @metadata_set = MetadataSet.page(title: 'Modular Two Column')
       @data_definition = DataDefinitions::TwoColumn.default
-      @current_page_path = 'students/services/career-development/employers/index.aspx'
 
-      # Set header
+      # Set dynamic values.
       if params[:masthead] == 'branded-new'
         @data_definition.set_value(:masthead_type, 'Branded - New')
       end
 
+      # Set theme dynamically.
+      theme = params.fetch(:theme, 'students')
+      @current_page_path = "#{theme}/path/to/index.aspx"
+
+      # Set regions.
       @configuration_set.regions = {
         # Blank Regions
         'ADDITIONAL BODY AT-END' => '',

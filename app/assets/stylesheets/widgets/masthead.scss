@@ -277,8 +277,6 @@
   .grid {
     margin: 0 auto;
     max-width: 1130px;
-    background-color: $cu-red;
-    color: $white;
 
     &:after {
       content: "";
@@ -291,24 +289,25 @@
       position: relative;
       height: 260px;
       overflow: hidden;
-    }
 
-    .image.column {
-      width: 780px;
-    }
+      &.image {
+        width: 780px;
+      }
 
-    .header.column {
-      width: 350px;
+      &.header {
+        width: 350px;
+        color: $white;
 
-      h2 {
-        position: absolute;
-        bottom: 32px;
-        margin: 0;
-        padding-left: 32px;
-        padding-right: 32px;
-        font-family: $font-stack-heading;
-        font-size: 36px;
-        line-height: 44px;
+        h2 {
+          position: absolute;
+          bottom: 32px;
+          margin: 0;
+          padding-left: 32px;
+          padding-right: 32px;
+          font-family: $font-stack-heading;
+          font-size: 36px;
+          line-height: 44px;
+        }
       }
     }
   }
