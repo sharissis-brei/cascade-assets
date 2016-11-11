@@ -96,6 +96,11 @@ module ContentTypes
       @data_definition = DataDefinitions::TwoColumn.default
       @current_page_path = 'students/services/career-development/employers/index.aspx'
 
+      # Set header
+      if params[:masthead] == 'branded-new'
+        @data_definition.set_value(:masthead_type, 'Branded - New')
+      end
+
       @configuration_set.regions = {
         # Blank Regions
         'ADDITIONAL BODY AT-END' => '',

@@ -20,7 +20,7 @@ module DataDefinitions
 
     # Preset Data Values
     DEFAULTS = {
-      XPATH[:masthead_type] => 'Branded - New',
+      XPATH[:masthead_type] => 'Branded Masthead',
 
       XPATH[:branded_new_header] => 'A Brand New Branded Masthead',
       XPATH[:branded_new_image_path] => '/_assets/mastheads/branded-new.jpg',

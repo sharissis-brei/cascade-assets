@@ -271,3 +271,45 @@
 	  }
 	}
 }
+
+.masthead-branded-new {
+  /* Grid pattern: https://css-tricks.com/dont-overthink-it-grids/ */
+  .grid {
+    margin: 0 auto;
+    max-width: 1130px;
+    background-color: $cu-red;
+    color: $white;
+
+    &:after {
+      content: "";
+      display: table;
+      clear: both;
+    }
+
+    .column {
+      float: left;
+      position: relative;
+      height: 260px;
+      overflow: hidden;
+    }
+
+    .image.column {
+      width: 780px;
+    }
+
+    .header.column {
+      width: 350px;
+
+      h2 {
+        position: absolute;
+        bottom: 32px;
+        margin: 0;
+        padding-left: 32px;
+        padding-right: 32px;
+        font-family: $font-stack-heading;
+        font-size: 36px;
+        line-height: 44px;
+      }
+    }
+  }
+}

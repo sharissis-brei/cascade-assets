@@ -34,5 +34,10 @@ module DataDefinitions
       unescaped ? value.html_safe : value
     end
     # rubocop:enable Rails/OutputSafety
+
+    def set_value(field, value)
+      node = get_child(field)
+      node.content = value
+    end
   end
 end

@@ -29,12 +29,14 @@ displaySlider = 'TODO'
 
 <% elsif mastheadType == 'Branded - New' %>
   <!-- mastheadType: "Branded - New" -->
-  <div class="branded-new brandedMastheadContainer">
-    <div class="column-container left">
-      <img alt="<%= brandedMastheadAltText %>" src="<%= brandedNewImagePath %>"/>
-    </div>
-    <div class="column-container right">
-      <h2 class="header"><%= brandedNewHeader %></h2>
+  <div class="masthead-branded-new">
+    <div class="grid">
+      <div class="column image">
+        <img alt="<%= brandedMastheadAltText %>" src="<%= brandedNewImagePath %>"/>
+      </div>
+      <div class="column header">
+        <h2 class="header"><%= brandedNewHeader %></h2>
+      </div>
     </div>
   </div>
 
