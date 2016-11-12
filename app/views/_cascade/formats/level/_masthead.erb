@@ -22,6 +22,9 @@ brandedMastheadClass = (brandedMastheadSubtitle != '') ? 'masthead-new captionOn
 
 # Slider vars
 displaySlider = 'TODO'
+
+# Boxes vars
+showBoxes = 'Yes'
 %>
 
 <% if mastheadType == 'No Masthead' %>
@@ -58,11 +61,15 @@ displaySlider = 'TODO'
     </div>
   </div>
 
-<% elsif mastheadType == 'Slider' &&  displaySlider == 'Yes' %>
+<% elsif mastheadType == 'Slider' && displaySlider == 'Yes' %>
   <!-- mastheadType: "Slider" -->
   <h3>TODO: Render Slider</h3>
 
-<% elsif showMasthead == 'Yes' &&  showImage == 'Yes' %>
+<% elsif mastheadType == 'Boxes' && showBoxes == 'Yes' %>
+  <!-- mastheadType: "Boxes" -->
+  <h3>TODO: Render Boxes Masthead</h3>
+
+<% elsif showMasthead == 'Yes' && showImage == 'Yes' %>
   <!-- mastheadType: "Old Masthead" -->
   <h3>TODO: Render Old Masthead</h3>
 
