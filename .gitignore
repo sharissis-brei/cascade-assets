@@ -15,22 +15,18 @@
 # Ignore the redis database
 /*.rdb
 
+# Untracked Directories
+.dev/
+.sass-cache/
+dist/
+node_modules
 /tmp/
 /public/_assets
 /public/_files
 
-# Ignore .DS_Store files
+# Miscellaneous Files
 *.DS_Store
-
-node_modules
 *.codekit
-
 db/data.yml
-
 npm-debug.log
-
 *.log
-
-.sass-cache/
-
-dist/

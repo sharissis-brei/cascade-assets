@@ -118,9 +118,11 @@ For full reference, see [the Apache Velocity Project site](http://velocity.apach
 #### If Else
 ```
 #if ($name == 'James')
- <h1>Hello James</h1>
+  <h1>Hello James</h1>
+#elseif ($name == 'Luke')
+  <h1>Hello Luke</h1>
 #else
- <h1>Hello Other Person</h1>
+  <h1>Hello Other Person</h1>
 #end
 ```
 
@@ -179,3 +181,16 @@ If you are linking to interal files, you must wrap the url in [system-asset] tag
 ```html
  #set ($linkUrl = "[system-asset]${content.getChild('fileLink').getChild('path').value}[/system-asset]")
 ```
+
+## Developer Tips
+### Cascade Testing
+To test changes, like adding or updating a Velocity format, the simplest way to test changes is to create a test page in the `test-section` of the folder tree. Recommend practice:
+
+- Create a new folder in `test-section`: New (navbar) > Default > Folder
+- To copy an existing page: in folder tree, click right drop-down menu for page > Copy
+- Save new page copy to your test folder.
+
+To speed up page-loading, and thereby development, disable `Left Nav` and `Omni-Nav` regions of your test page:
+
+- In folder test, click page
+- Edit > Outputs > Uncheck format and block in each region > Submit
