@@ -1,5 +1,6 @@
 module DataDefinitions
-  class TwoColumn < DataDefinitions::Base
+  class ThreeColumn < DataDefinitions::Base
+    # XML XPath Selectors
     # XML XPath Selectors
     XPATH = {
       masthead_type: '//group[@identifier="masthead"]/text[@identifier="mastheadType"]',
@@ -34,9 +35,9 @@ module DataDefinitions
 
     # Class Methods
     def self.default
-      two_column = DataDefinitions::TwoColumn.new
-      two_column.set_defaults
-      two_column
+      three_column = DataDefinitions::ThreeColumn.new
+      three_column.set_defaults
+      three_column
     end
   end
 end

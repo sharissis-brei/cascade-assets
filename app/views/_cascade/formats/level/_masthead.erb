@@ -8,15 +8,15 @@ showMasthead = 'TODO'
 showImage = 'TODO'
 
 # Branded - New vars
-brandedNewHeader = current_page.get_child_value(:branded_new_header)
-brandedNewImagePath = current_page.get_child_value(:branded_new_image_path)
-brandedNewAltText = current_page.get_child_value(:branded_new_alt_text)
+brandedNewHeader = current_page.get_child_value(:branded_header)
+brandedNewImagePath = current_page.get_child_value(:branded_image_path)
+brandedNewAltText = current_page.get_child_value(:branded_alt_text)
 
 # Branded Masthead vars
-brandedMastheadDisplaysImage = current_page.get_child_value(:branded_masthead_display_image)
-brandedMastheadHeader = current_page.get_child_value(:branded_masthead_header)
-brandedMastheadSubtitle = current_page.get_child_value(:branded_masthead_subtitle)
-brandedMastheadImagePath = current_page.get_child_value(:branded_masthead_image_path)
+brandedMastheadDisplaysImage = current_page.get_child_value(:branded_old_display_image)
+brandedMastheadHeader = current_page.get_child_value(:branded_old_header)
+brandedMastheadSubtitle = current_page.get_child_value(:branded_old_subtitle)
+brandedMastheadImagePath = current_page.get_child_value(:branded_old_image_path)
 brandedMastheadAltText = 'brandedMastheadAltText'
 brandedMastheadClass = (brandedMastheadSubtitle != '') ? 'masthead-new captionOnTop' : 'masthead-new'
 

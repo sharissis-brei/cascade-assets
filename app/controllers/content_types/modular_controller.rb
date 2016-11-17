@@ -97,7 +97,9 @@ module ContentTypes
       @data_definition = DataDefinitions::TwoColumn.default
 
       # Set dynamic values.
-      if params[:masthead] == 'branded-new'
+      if params[:masthead] == 'branded-old'
+        @data_definition.set_value(:masthead_type, 'Branded Masthead')
+      else
         @data_definition.set_value(:masthead_type, 'Branded - New')
       end
 
@@ -131,6 +133,62 @@ module ContentTypes
         'OMNI-NAV' => render_static_partial('widgets/shared/omninav'),
         'NAVIGATION' => render_static_partial('widgets/shared/navigation'),
         'GLOBAL FOOTER' => render_static_partial('widgets/shared/footer')
+      }
+
+      render @configuration_set.template
+    end
+    # rubocop:enable Metrics/MethodLength
+
+    # GET /modular/three_column
+    # Maps to Content Types/Modular/3 Column in Cascade.
+    # rubocop:disable Metrics/MethodLength
+    def three_column
+      # Cascade Data Models
+      @configuration_set = ConfigurationSet.three_column
+      @metadata_set = MetadataSet.page(title: 'Modular Three Column')
+      @data_definition = DataDefinitions::ThreeColumn.default
+
+      # Set dynamic values.
+      if params[:masthead] == 'branded-old'
+        @data_definition.set_value(:masthead_type, 'Branded Masthead')
+      else
+        @data_definition.set_value(:masthead_type, 'Branded - New')
+      end
+
+      # Set theme dynamically.
+      theme = params.fetch(:theme, 'students')
+      @current_page_path = "#{theme}/path/to/index.aspx"
+
+      # Set regions.
+      @configuration_set.regions = {
+        # Blank Regions
+        'ADDITIONAL BODY AT-END' => '',
+        'ADDITIONAL HEAD' => '',
+
+        # Dynamic Regions
+        'BREADCRUMBS' => 'TODO: _cascade/formats/level/Breadcrumbs',
+        'CASCADE ASSETS' => cascade_block('_cascade/blocks/html/cascade_assets'),
+        'FB_JS_SDK' => cascade_block('_cascade/blocks/html/facebook_javascript_sdk'),
+        'FEATURED NEWS EVENTS FEEDS' => 'TODO: _cascade/formats/modular/meta/' \
+                                        'Featured News Events Feeds',
+        'GOOGLE_ANALYTICS' => '<!-- _chapman_common:_cascade/blocks/ANALYTICS-TRACKING -->',
+        'JQUERY' => cascade_block('_cascade/blocks/html/jquery'),
+        'JUMP LINK' => cascade_block('_cascade/blocks/html/jump_link'),
+        'LEFT COLUMN CONTENT' => 'TODO: _cascade/formats/modular/LeftColumnContent',
+        'LEFT NAV' => 'TODO: _cascade/formats/level/LeftNav_Velocity',
+        'MASTHEAD' => cascade_format('_cascade/formats/level/masthead'),
+        'META VIEWPORT' => cascade_block('_cascade/blocks/html/global_meta_viewport'),
+        'OG_TAGS' => '<!-- TODO: _cascade/formats/Open Graph And Canonical Tags -->',
+        'PAGE WRAPPER CLOSE' => cascade_format('_cascade/formats/modular/page_wrapper_close'),
+        'PAGE WRAPPER OPEN' => cascade_format('_cascade/formats/modular/page_wrapper_open'),
+        'PRIMARY CONTENT' => '<h2>TODO: _cascade/formats/modular/PrimaryContent</h2>',
+        'RIGHT COLUMN CONTENT' => 'TODO: _cascade/formats/modular/RightColumnContent',
+        'SOCIAL ACCOUNTS' => 'TODO: _cascade/formats/level/social_accounts',
+
+        # TODO: convert these to cascade_format action.
+        'GLOBAL FOOTER' => render_static_partial('widgets/shared/footer'),
+        'NAVIGATION' => render_static_partial('widgets/shared/navigation'),
+        'OMNI-NAV' => render_static_partial('widgets/shared/omninav')
       }
 
       render @configuration_set.template

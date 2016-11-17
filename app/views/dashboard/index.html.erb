@@ -26,6 +26,7 @@
 
 <h2>Three Column Sample Pages</h2>
 <ul>
+  <li><%= link_to 'Modular Sample', "/modular/three_column" %></li>
 <% @three_column_pages.each do |page| %>
   <li><%= link_to page.titleize, "/three_column/#{page}" %></li>
 <% end %>
