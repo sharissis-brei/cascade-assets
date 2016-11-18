@@ -70,6 +70,58 @@ showBoxes = 'Yes'
     </div>
   </div>
 
+<% elsif mastheadType == 'Slider - New' %>
+  <!-- mastheadType: "Slider" -->
+  <%
+    slides = current_page.select_nodes('v201611/slider/slides/slide')
+  %>
+
+  <div class="hidden slideOptions">
+      <div class="autoRotate">On</div>
+  </div>
+
+  <div class="rounded-slider">
+    <div class="rotatorContainer">
+      <div class="flex-container">
+        <div class="flexslider">
+          <ul class="slides">
+            <% slides.each do |slide| %>
+              <%
+                slideHeader = slide.select_single_node_value('header')
+                slideSubtitle = slide.select_single_node_value('subTitle')
+                slideImagePath = slide.select_single_node_value('image/path')
+                slideImageAltText = slide.select_single_node_value('altText')
+                slidePhotoBy = slide.select_single_node_value('photoBy')
+              %>
+
+              <li class="slide version-201611">
+                <div class="grid">
+                  <div class="column image">
+                    <img alt="<%= slideImageAltText %>" src="<%= slideImagePath %>"/>
+
+                    <% if slidePhotoBy != '' %>
+                      <div class="photo-by">
+                        Photo by: <%= slidePhotoBy %>
+                      </div>
+                    <% end %>
+                  </div>
+                  <div class="column header theme-bg-color">
+                    <h2 class="header"><%= slideHeader %></h2>
+
+                    <% if slideSubtitle != '' %>
+                      <hr />
+                      <p><%= slideSubtitle %></p>
+                    <% end %>
+                  </div>
+                </div>
+              </li>
+            <% end %>
+          </ul>
+        </div>
+      </div>
+    </div>
+  </div>
+
 <% elsif mastheadType == 'Slider' && displaySlider == 'Yes' %>
   <!-- mastheadType: "Slider" -->
   <%

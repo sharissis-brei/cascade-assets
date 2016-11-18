@@ -101,6 +101,8 @@ module ContentTypes
         @data_definition.set_value(:masthead_type, 'Branded Masthead')
       elsif params[:masthead] == 'slider-old'
         @data_definition.set_value(:masthead_type, 'Slider')
+      elsif params[:masthead] == 'slider'
+        @data_definition.set_value(:masthead_type, 'Slider - New')
       else
         @data_definition.set_value(:masthead_type, 'Branded - New')
       end

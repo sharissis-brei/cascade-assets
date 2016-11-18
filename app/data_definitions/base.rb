@@ -56,7 +56,9 @@ module DataDefinitions
   module NokogiriExtensions
     module Element
       def select_single_node_value(xpath)
-        at_xpath(xpath).content
+        node = at_xpath(xpath)
+        raise "Node not found for xpath #{xpath}." unless node
+        node.content
       end
     end
   end
