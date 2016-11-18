@@ -46,8 +46,8 @@ module DataDefinitions
             'align' => 'bottom-left',
             'link' => {
               'link' => '/modular/two_column',
-              'internalLink' => { 'path' => '/' },
-              'fileLink' => { 'path' => '/' }
+              'internalLink' => {'path' => '/'},
+              'fileLink' => {'path' => '/'}
             },
             'image' => {
               'path' => '/_assets/mastheads/slider-old.jpg'
@@ -63,8 +63,8 @@ module DataDefinitions
             'align' => 'bottom-left',
             'link' => {
               'link' => '/',
-              'internalLink' => { 'path' => '/modular/two_column' },
-              'fileLink' => { 'path' => '/' }
+              'internalLink' => {'path' => '/modular/two_column'},
+              'fileLink' => {'path' => '/'}
             },
             'image' => {
               'path' => '/_assets/mastheads/slider-old.jpg'

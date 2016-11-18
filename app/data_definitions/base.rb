@@ -2,6 +2,7 @@ module DataDefinitions
   class Base
     attr_accessor :name, :document
 
+    # rubocop:disable Metrics/AbcSize
     def initialize
       @name = self.class.name.underscore.split('/').last
       xml_file = format('%s.xml', @name)
@@ -10,6 +11,7 @@ module DataDefinitions
       @data_document = Nokogiri::XML(self.class::CASCADE_DATA.to_xml) \
         if self.class.const_defined?('CASCADE_DATA')
     end
+    # rubocop:enable Metrics/AbcSize
 
     def set_defaults
       self.class::DEFAULTS.each do |xpath, value|
@@ -46,7 +48,7 @@ module DataDefinitions
       # Mirrors Cascade Velocity helper: $_XPathTool.selectNodes(node, xpath).
       # Returns DataDefinitions:NodeSet array.
       xpath = format('//%s', xpath) unless xpath.start_with?('/')
-      nodes = @data_document.xpath(xpath)
+      @data_document.xpath(xpath)
     end
   end
 

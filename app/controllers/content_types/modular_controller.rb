@@ -89,7 +89,7 @@ module ContentTypes
 
     # GET /modular/two_column
     # Maps to Content Types/Modular/2 Column in Cascade.
-    # rubocop:disable Metrics/MethodLength
+    # rubocop:disable Metrics/MethodLength, Metrics/AbcSize
     def two_column
       # Cascade Data Models
       @configuration_set = ConfigurationSet.two_column
@@ -139,11 +139,11 @@ module ContentTypes
 
       render @configuration_set.template
     end
-    # rubocop:enable Metrics/MethodLength
+    # rubocop:enable Metrics/MethodLength, Metrics/AbcSize
 
     # GET /modular/three_column
     # Maps to Content Types/Modular/3 Column in Cascade.
-    # rubocop:disable Metrics/MethodLength
+    # rubocop:disable Metrics/MethodLength, Metrics/AbcSize
     def three_column
       # Cascade Data Models
       @configuration_set = ConfigurationSet.three_column
@@ -195,7 +195,7 @@ module ContentTypes
 
       render @configuration_set.template
     end
-    # rubocop:enable Metrics/MethodLength
+    # rubocop:enable Metrics/MethodLength, Metrics/AbcSize
 
     private
 
