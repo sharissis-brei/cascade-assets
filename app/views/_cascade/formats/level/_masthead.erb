@@ -1,3 +1,9 @@
+<%#
+  # This file mirrors, or parodies, the Cascade VTL script at /_cascade/formats/level/Masthead
+  #
+  # It uses snakeCase variable to match those used in Cascade as closely as possible.
+  #%>
+
 <% # These import statements below don't do anything. They just mirror what's in Cascade. %>
 <% #import( "/_cascade/formats/helpers.velocity" ) %>
 
@@ -7,21 +13,8 @@ mastheadType = current_page.get_child_value(:masthead_type)
 showMasthead = 'TODO'
 showImage = 'TODO'
 
-# Branded - New vars
-brandedNewHeader = current_page.get_child_value(:branded_header)
-brandedNewImagePath = current_page.get_child_value(:branded_image_path)
-brandedNewAltText = current_page.get_child_value(:branded_alt_text)
-
-# Branded Masthead vars
-brandedMastheadDisplaysImage = current_page.get_child_value(:branded_old_display_image)
-brandedMastheadHeader = current_page.get_child_value(:branded_old_header)
-brandedMastheadSubtitle = current_page.get_child_value(:branded_old_subtitle)
-brandedMastheadImagePath = current_page.get_child_value(:branded_old_image_path)
-brandedMastheadAltText = 'brandedMastheadAltText'
-brandedMastheadClass = (brandedMastheadSubtitle != '') ? 'masthead-new captionOnTop' : 'masthead-new'
-
 # Slider vars
-displaySlider = 'TODO'
+displaySlider = 'Yes'
 
 # Boxes vars
 showBoxes = 'Yes'
@@ -32,10 +25,16 @@ showBoxes = 'Yes'
 
 <% elsif mastheadType == 'Branded - New' %>
   <!-- mastheadType: "Branded - New" -->
+  <%
+  brandedNewHeader = current_page.get_child_value(:branded_header)
+  brandedNewImagePath = current_page.get_child_value(:branded_image_path)
+  brandedNewAltText = current_page.get_child_value(:branded_alt_text)
+  %>
+
   <div class="masthead-branded-new">
     <div class="grid">
       <div class="column image">
-        <img alt="<%= brandedMastheadAltText %>" src="<%= brandedNewImagePath %>"/>
+        <img alt="<%= brandedNewAltText %>" src="<%= brandedNewImagePath %>"/>
       </div>
       <div class="column header theme-bg-color">
         <h2 class="header"><%= brandedNewHeader %></h2>
@@ -45,6 +44,16 @@ showBoxes = 'Yes'
 
 <% elsif mastheadType == 'Branded Masthead' &&  brandedMastheadDisplaysImage == 'Yes' %>
   <!-- mastheadType: "Branded Masthead" -->
+  <%
+  brandedMastheadDisplaysImage = current_page.get_child_value(:branded_old_display_image)
+  brandedMastheadHeader = current_page.get_child_value(:branded_old_header)
+  brandedMastheadSubtitle = current_page.get_child_value(:branded_old_subtitle)
+  brandedMastheadImagePath = current_page.get_child_value(:branded_old_image_path)
+  brandedMastheadAltText = 'brandedMastheadAltText'
+  brandedMastheadClass = (brandedMastheadSubtitle != '') ? 'masthead-new captionOnTop'
+                                                         : 'masthead-new'
+  %>
+
   <div class="brandedMastheadContainer">
     <div class="<%= brandedMastheadClass %>">
       <img alt="<%= brandedMastheadAltText %>" src="<%= brandedMastheadImagePath %>"/>
@@ -63,7 +72,87 @@ showBoxes = 'Yes'
 
 <% elsif mastheadType == 'Slider' && displaySlider == 'Yes' %>
   <!-- mastheadType: "Slider" -->
-  <h3>TODO: Render Slider</h3>
+  <%
+    slides = current_page.select_nodes('slider/slides/slide')
+  %>
+
+  <div class="hidden slideOptions">
+      <div class="autoRotate">On</div>
+  </div>
+
+  <div class="rounded-slider">
+    <div class="rotatorContainer">
+      <div class="flex-container">
+        <div class="flexslider">
+          <ul class="slides">
+            <% slides.each do |slide| %>
+              <%
+                slideHeader = slide.select_single_node_value('header')
+                slideSubtitle = slide.select_single_node_value('sub-title')
+                slideDescription = slide.select_single_node_value('description')
+                slideLinkUrl = slide.select_single_node_value('link/link')
+                slideInternalLinkPath = slide.select_single_node_value('link/internalLink/path')
+                slideFileLinkPath = slide.select_single_node_value('link/fileLink/path')
+                slideImagePath = slide.select_single_node_value('image/path')
+                slideImageAltText = slide.select_single_node_value('altText')
+                slideBackground = slide.select_single_node_value('text-background')
+                slideQuoteAuthor = slide.select_single_node_value('quote-author')
+                slideCaptionAlign = slide.select_single_node_value('align')
+
+                # Set slide href.
+                if slideInternalLinkPath != '/'
+                  slideCaptionHref = slideInternalLinkPath
+                elsif slideInternalLinkPath == '/' && slideLinkUrl != ''
+                  slideCaptionHref = slideLinkUrl
+                elsif slideInternalLinkPath == '/' && slideLinkUrl == '' \
+                  && slideFileLinkPath != '/'
+                  slideCaptionHref = slideFileLinkPath
+                else
+                  slideCaptionHref = ''
+                end
+
+                # Set slide class.
+                if slideBackground == 'Transparent Black'
+                  slideMastheadClass = 'masthead-new quote'
+                elsif slideBackground == 'Solid Red' && slideSubtitle != ''
+                  slideMastheadClass = 'masthead-new captionOnTop'
+                else
+                  slideMastheadClass = 'masthead-new'
+                end
+              %>
+
+              <li class="slide">
+                <div class="<%= slideMastheadClass %>">
+                  <img alt="<%= slideImageAltText %>"
+                       src="<%= slideImagePath %>"/>
+
+                  <div class="caption align-<%= slideCaptionAlign %>">
+                    <% if slideHeader != '' %>
+                      <% if slideCaptionHref != '' %>
+                        <a href="<%= slideCaptionHref %>">
+                          <h2><%= slideHeader %>&#160;»</h2>
+                        </a>
+                      <% else %>
+                        <h2><%= slideHeader %></h2>
+                      <% end %>
+
+                      <% if slideDescription != '' %>
+                        <p><%= slideDescription %></p>
+
+                        <% if slideQuoteAuthor != '' %>
+                          <span class="author"><%= slideQuoteAuthor %></span>
+                        <% end %>
+                      <% end %>
+                    <% end %>
+                  </div>
+                </div>
+              </li>
+            <% end %>
+          </ul>
+        </div>
+      </div>
+    </div>
+  </div>
 
 <% elsif mastheadType == 'Boxes' && showBoxes == 'Yes' %>
   <!-- mastheadType: "Boxes" -->

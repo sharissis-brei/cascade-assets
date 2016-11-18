@@ -32,6 +32,48 @@ module DataDefinitions
       XPATH[:branded_old_image_path] => '/_assets/mastheads/masthead-general-branded.jpg'
     }.freeze
 
+    # Preset data as hash representing Cascade XML data.
+    CASCADE_DATA = {
+      slider: {
+        slides: [
+          {
+            'header' => 'Slider Slide #1',
+            'sub-title' => 'Slide #1 of 2',
+            'description' => 'A slide description',
+            'altText' => 'altText is not alt-right, thank god',
+            'text-background' => 'Solid Red',
+            'quote-author' => 'A.Q. Author',
+            'align' => 'bottom-left',
+            'link' => {
+              'link' => '/modular/two_column',
+              'internalLink' => { 'path' => '/' },
+              'fileLink' => { 'path' => '/' }
+            },
+            'image' => {
+              'path' => '/_assets/mastheads/slider-old.jpg'
+            }
+          },
+          {
+            'header' => 'Slider Slide #2',
+            'sub-title' => 'Slide #2 of 2',
+            'description' => '',
+            'altText' => 'altText is not alt-right, thank god',
+            'text-background' => 'Transparent Black',
+            'quote-author' => '',
+            'align' => 'bottom-left',
+            'link' => {
+              'link' => '/',
+              'internalLink' => { 'path' => '/modular/two_column' },
+              'fileLink' => { 'path' => '/' }
+            },
+            'image' => {
+              'path' => '/_assets/mastheads/slider-old.jpg'
+            }
+          }
+        ]
+      }
+    }.freeze
+
     # Class Methods
     def self.default
       two_column = DataDefinitions::TwoColumn.new

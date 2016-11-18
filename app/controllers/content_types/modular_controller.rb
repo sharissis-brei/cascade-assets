@@ -99,6 +99,8 @@ module ContentTypes
       # Set dynamic values.
       if params[:masthead] == 'branded-old'
         @data_definition.set_value(:masthead_type, 'Branded Masthead')
+      elsif params[:masthead] == 'slider-old'
+        @data_definition.set_value(:masthead_type, 'Slider')
       else
         @data_definition.set_value(:masthead_type, 'Branded - New')
       end
