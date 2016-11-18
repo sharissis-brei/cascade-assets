@@ -34,57 +34,59 @@ module DataDefinitions
 
     # Preset data as hash representing Cascade XML data.
     CASCADE_DATA = {
-      slider: {
-        slides: [
-          {
-            'header' => 'Slider Slide #1',
-            'sub-title' => 'Slide #1 of 2',
-            'description' => 'A slide description',
-            'altText' => 'image alt attribute here',
-            'text-background' => 'Solid Red',
-            'quote-author' => 'A.Q. Author',
-            'align' => 'bottom-left',
-            'link' => {
-              'link' => '/modular/two_column',
-              'internalLink' => {'path' => '/'},
-              'fileLink' => {'path' => '/'}
+      old: {
+        slider: {
+          slides: [
+            {
+              'header' => 'Slider Slide #1',
+              'sub-title' => 'Slide #1 of 2',
+              'description' => 'A slide description',
+              'altText' => 'image alt attribute here',
+              'text-background' => 'Solid Red',
+              'quote-author' => 'A.Q. Author',
+              'align' => 'bottom-left',
+              'link' => {
+                'link' => '/modular/two_column',
+                'internalLink' => {'path' => '/'},
+                'fileLink' => {'path' => '/'}
+              },
+              'image' => {'path' => '/_assets/mastheads/slider-old.jpg'}
             },
-            'image' => {'path' => '/_assets/mastheads/slider-old.jpg'}
-          },
-          {
-            'header' => 'Slider Slide #2',
-            'sub-title' => 'Slide #2 of 2',
-            'description' => '',
-            'altText' => 'image alt attribute here',
-            'text-background' => 'Transparent Black',
-            'quote-author' => '',
-            'align' => 'bottom-left',
-            'link' => {
-              'link' => '/',
-              'internalLink' => {'path' => '/modular/two_column'},
-              'fileLink' => {'path' => '/'}
-            },
-            'image' => {'path' => '/_assets/mastheads/slider-old.jpg'}
-          }
-        ]
+            {
+              'header' => 'Slider Slide #2',
+              'sub-title' => 'Slide #2 of 2',
+              'description' => '',
+              'altText' => 'image alt attribute here',
+              'text-background' => 'Transparent Black',
+              'quote-author' => '',
+              'align' => 'bottom-left',
+              'link' => {
+                'link' => '/',
+                'internalLink' => {'path' => '/modular/two_column'},
+                'fileLink' => {'path' => '/'}
+              },
+              'image' => {'path' => '/_assets/mastheads/slider-old.jpg'}
+            }
+          ]
+        }
       },
 
       v201611: {
         slider: {
           slides: [
             {
-              header: 'Slider Slide #1',
-              subTitle: 'Slide #1 of 2',
+              header: 'Campus Life \n at \n Chapman University',
+              subTitle: 'Optional text can go here',
               altText: 'the altText is not the alt-right',
               photoBy: 'I.M. Photographer',
-              image: {path: '/_assets/mastheads/slider-new.jpg'}
+              image: {path: '/_assets/mastheads/slider-v201611.jpg'}
             },
             {
               header: 'Slider Slide #2',
               subTitle: '',
               altText: 'image alt attribute here',
               photoBy: '',
-              image: {path: '/_assets/mastheads/slider-new.jpg'}
+              image: {path: '/_assets/mastheads/slider-v201611.jpg'}
             }
           ]
         }

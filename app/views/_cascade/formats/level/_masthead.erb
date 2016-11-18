@@ -13,6 +13,9 @@ mastheadType = current_page.get_child_value(:masthead_type)
 showMasthead = 'TODO'
 showImage = 'TODO'
 
+# Branded vars
+brandedMastheadDisplaysImage = current_page.get_child_value(:branded_old_display_image)
+
 # Slider vars
 displaySlider = 'Yes'
 
@@ -31,7 +34,7 @@ showBoxes = 'Yes'
   brandedNewAltText = current_page.get_child_value(:branded_alt_text)
   %>
 
-  <div class="masthead-branded-new">
+  <div class="masthead-branded-v201611">
     <div class="grid">
       <div class="column image">
         <img alt="<%= brandedNewAltText %>" src="<%= brandedNewImagePath %>"/>
@@ -45,7 +48,6 @@ showBoxes = 'Yes'
 <% elsif mastheadType == 'Branded Masthead' &&  brandedMastheadDisplaysImage == 'Yes' %>
   <!-- mastheadType: "Branded Masthead" -->
   <%
-  brandedMastheadDisplaysImage = current_page.get_child_value(:branded_old_display_image)
   brandedMastheadHeader = current_page.get_child_value(:branded_old_header)
   brandedMastheadSubtitle = current_page.get_child_value(:branded_old_subtitle)
   brandedMastheadImagePath = current_page.get_child_value(:branded_old_image_path)
@@ -105,13 +107,16 @@ showBoxes = 'Yes'
                       </div>
                     <% end %>
                   </div>
-                  <div class="column header theme-bg-color">
-                    <h2 class="header"><%= slideHeader %></h2>
 
-                    <% if slideSubtitle != '' %>
-                      <hr />
-                      <p><%= slideSubtitle %></p>
-                    <% end %>
+                  <div class="column header theme-bg-color">
+                    <div class="aligned">
+                      <h2 class="header"><%= slideHeader %></h2>
+
+                      <% if slideSubtitle != '' %>
+                        <hr />
+                        <h4><%= slideSubtitle %></h4>
+                      <% end %>
+                    </div>
                   </div>
                 </div>
               </li>
@@ -125,7 +130,8 @@ showBoxes = 'Yes'
 <% elsif mastheadType == 'Slider' && displaySlider == 'Yes' %>
   <!-- mastheadType: "Slider" -->
   <%
-    slides = current_page.select_nodes('slider/slides/slide')
+    # VTL Format: #set ( $slides = $_XPathTool.selectNodes($masthead, 'slider/slides/slide') )
+    slides = current_page.select_nodes('old/slider/slides/slide')
   %>
 
   <div class="hidden slideOptions">
