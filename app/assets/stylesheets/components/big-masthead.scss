@@ -3,12 +3,13 @@
     max-width: 1130px;
     max-height: none;
     background: transparent;
-    // position: relative;
+
     > img {
       max-height: none;
       position: relative;
       z-index: 1;
     }
+
     .caption {
       display: block;
       top: auto;
@@ -18,13 +19,13 @@
       left: 0;
       box-sizing: border-box;
       height: auto;
-      //background: $cu-red;
-	  background: $cu-red-rgb-transparent;
+      background: rgba(168,36,57,0.95);
       padding: 30px 32px 30px 32px;
       max-width: 100%;
       width: 100%;
       font-style: normal;
       box-shadow: 0px 2px 1px $black;
+
       &.align-top-right {
         @include bp(l) {
           bottom: auto !important;
@@ -33,6 +34,7 @@
           right: 0 !important;
         }
       }
+
       &.align-top-left {
         @include bp(l) {
           bottom: auto !important;
@@ -41,6 +43,7 @@
           right: auto !important;
         }
       }
+
       &.align-bottom-right {
         @include bp(l) {
           top: auto !important;
@@ -49,6 +52,7 @@
           right: 0 !important;
         }
       }
+
       &.align-bottom-left {
         @include bp(l) {
           bottom: 60px !important;
@@ -57,21 +61,25 @@
           right: auto !important;
         }
       }
+
       h2 {
         margin: 0;
         color: $white;
         font-size: 20px;
         text-transform: none;
+
         @include bp(l) {
           font-size: 30px;
         }
       }
+
       p {
         color: $white;
         font-size: 15px !important;
         margin: 0;
         padding: 0 32px 0 32px;
       }
+
       @include bp(l) {
         position: absolute;
         bottom: 60px;
@@ -79,50 +87,55 @@
         max-width: 440px;
       }
     }
+
     &.captionOnTop p.subTitle {
       display: block !important;
       max-width: 100%;
       position: relative;
       width: 100%;
-      //background: none repeat scroll 0 0 $grey;
-	  background: none repeat scroll 0 0 rgba(56, 56, 56, 0.90);
+	    background: none repeat scroll 0 0 rgba(56, 56, 56, 0.90);
       box-sizing: border-box;
-      /*display: none;*/
       font-size: 13px !important;
       left: 0;
       max-width: 75%;
       padding: 10px 30px;
       position: relative;
       top: -30px;
+
       @include bp(l) {
         position: absolute;
         display: none;
         padding: 5px 30px;
-        background: $grey;
+        background: rgba(56,56,56,0.90);
         top: -20px;
         left: 0;
         font-size: 13px !important;
         max-width: 75%;
-        @include vendorize(box-sizing, border-box);
+        box-sizing: border-box;
       }
     }
+
     .caption {
+      padding-left: 0;
+      padding-right: 0;
+
       p.subTitle {
         color: $white;
         font-size: 15px !important;
         margin: 0;
         max-width: 100%;
       }
-      padding-left: 0;
-      padding-right: 0;
+
       @include bp(l) {
         padding-left: 32px;
         padding-right: 32px;
       }
     }
+
     h2 {
       padding: 0 32px 0 32px;
     }
+
     p {
       @include bp(l) {
         padding: 15px 30px;
@@ -130,15 +143,18 @@
         display: block !important;
       }
     }
+
     &.quote {
       .caption {
         background: rgba(56, 56, 56, 1);
         padding-top: 30px;
         font-size: 16px;
+
         @include bp(l) {
           background: rgba(56, 56, 56, 0.85);
         }
       }
+
       p {
         font-family: $font-stack-heading;
         font-size: 18px !important;
@@ -146,6 +162,7 @@
         line-height: 20px;
       }
     }
+
     .author {
       display: block;
       margin-top: 15px;
@@ -155,44 +172,20 @@
       padding-left: 32px;
     }
   }
-	.masthead-old {
-		background-color: $cu-red;
-		max-width: 1024px;
-		min-height: 83px;
-		margin: 5px auto 0;
-		> img {
-			width: 100%;
-	    max-height: 260px;
-		}
-		> div {
-			font-style: italic;
-	    font-size: 19px;
-	    text-align: left;
-	    color: $white;
-	    padding: 5px 5% 5px 5%;
-		}
-		@include bp(l) {
-			position: relative;
-	    //margin: 40px auto 0 auto;
-      margin: 0 auto 0 auto;
-		}
-	}
- 
+
   header, &.smallRotator header {
     @include bp(l) {
       padding: 0 0 0 0;
     }
   }
+
   header {
     @include bp(l) {
-      padding: 0 0 285px 0;
+      margin-top: 30px;
+      margin-bottom: 30px;
     }
   }
-  &.smallRotator header {
-    @include bp(l) {
-      padding: 0 0 260px 0;
-    }
-  }
+
   .mastheadPlaceholder {
     background-color: $cu-red;
     bottom: 30px;
@@ -200,6 +193,7 @@
     min-height: 83px;
     position:relative;
     margin: 50px auto 0 auto;
+
     > div {
       color: $white;
       font-size: 19px;
@@ -207,37 +201,67 @@
       font-style: normal;
       padding: 30px;
       text-align: left;
+
       @include bp(l) {
         padding: 25px 20px 20px 35%;
       }
     }
   }
+
   .brandedMastheadContainer {
     max-width: 1130px;
     max-height: 220px;
-    //overflow: visible !important;
     margin: 0 auto;
     position: relative;
     z-index: 100;
+
     .masthead-new {
       .caption {
         padding: 30px 12px 10px 12px;
       }
+
       &.captionOnTop p.subTitle {
         max-width: 100%;
+
         @include bp(l) {
           max-width: 45%;
         }
       }
+
       > img {
         max-height: 220px;
         width: 100%;
-        //bottom: 20px;
+
         @include bp(l) {
           max-height: 220px;
           width: 1130px;
         }
       }
+    }
+  }
+  
+  .masthead-old {
+    background-color: $cu-red;
+    max-width: 1024px;
+    min-height: 83px;
+    margin: 5px auto 0;
+
+    > img {
+      width: 100%;
+      max-height: 260px;
+    }
+
+    > div {
+      font-style: italic;
+      font-size: 19px;
+      text-align: left;
+      color: $white;
+      padding: 5px 5% 5px 5%;
+    }
+    
+    @include bp(l) {
+      position: relative;
+      margin: 0 auto 0 auto;
     }
   }
 }
