@@ -78,7 +78,6 @@ showBoxes = 'Yes'
     slides = current_page.select_nodes('v201611/slider/slides/slide')
 
     # In VTL: #set( $b = $a.replace("\n", "<br/>") )
-    #header = current_page.get_child_value(:v201611_header).gsub(/\n/, '<br/>')
     header = current_page.select_single_node_value('v201611/slider/header').gsub('\n', '<br/>')
     firstSubtitle = slides.first.select_single_node_value('subTitle').gsub('\n', '<br/>')
 
@@ -107,7 +106,7 @@ showBoxes = 'Yes'
                     <li class="slide">
                       <img alt="<%= slideImageAltText %>" src="<%= slideImagePath %>"/>
 
-                      ## Subtitle will be swapped out dynamically upon slide.
+                      <%## Subtitle will be swapped out dynamically upon slide. %>
                       <input class="slideSubtitle"
                              type="hidden"
                              value="<%= slideSubtitle.html_safe %>"/>
