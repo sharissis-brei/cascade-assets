@@ -1,0 +1,70 @@
+/*
+ * Slider v201611
+ */
+div.slider.version-201611 {
+  margin: 0 auto;
+  width: 1130px;
+  height: 440px;
+
+  div.grid {
+    .column {
+      float: left;
+      position: relative;
+      height: 440px;
+      overflow: hidden;
+      font-family: $font-stack-heading;
+
+      &.image {
+        width: 780px;
+
+        div.photo-by {
+          position: absolute;
+          bottom: 0;
+          left: 0;
+          padding: 16px;
+          font-size: 16px;
+          color: $white;
+          background-color: rgba(56,56,56,0.90);
+        }
+      }
+
+      &.header {
+        width: 350px;
+        color: $white;
+
+        div.aligned {
+          position: absolute;
+          bottom: 12px;
+          padding: 32px;
+
+          h2 {
+            margin: 0px auto 24px;
+            padding: 0px;
+            text-align: center;
+            font-size: 40px;
+            line-height: 52px;
+            font-weight: bold;
+          }
+
+          hr {
+            /* See: http://stackoverflow.com/a/4151770/6763239 */
+            height: 2px;
+            width: 35%;
+            margin:0 auto;
+            color: white;
+            background-color: white;
+            border: none;
+          }
+
+          h4 {
+            margin: 24px auto 0px;
+            text-align: center;
+            font-size: 36px;
+            line-height: 44px;
+            font-weight: normal;
+          }
+        }
+      }
+    }
+  }
+}

@@ -3,8 +3,8 @@
   top: 0;
   left: auto;
   z-index: 1000;
-  // display: none;
   display: block;
+
   a {
     position: absolute;
     height: 56px;
@@ -14,21 +14,21 @@
     cursor: pointer;
     background-image: image-url('gray_arrows.png');
     background-repeat: no-repeat;
+
     &.disabled {
       opacity: .4;
       filter: alpha(opacity = 40);
     }
   }
+
   .prev {
     background-position: left center;
     left: 0;
   }
+
   .next {
     background-position: right center;
     right: 0;
-  }
-  @include bp(wildcard-min, 768px) {
-    // display: block;
   }
 }
 
@@ -39,9 +39,11 @@
   padding: 0;
   margin: 0;
   list-style: none;
+
   &.oldie .inner {
 		word-break: break-all;
   }
+
   ul {
     width: 20000em;
     position: absolute;
@@ -49,37 +51,38 @@
     margin: 0;
     padding: 0;
   }
+
   li {
-    // max-width: 100%;
     max-width: 266px;
     padding: 0;
     margin: 0 21px 0 0;
     list-style: none;
     float: left;
     overflow: hidden;
+
     .no-js & {
       margin: 0 15px 0 0; // Prevents 4th item from overflowing to next line
     }
+
     img {
       position: relative;
       z-index: 1;
     }
+
     .item {
       display: block;
       height: 285px;
       position: relative;
-      background: $cu-red;
-    }
-    @include bp(wildcard-min, 768px) {
-    	// max-width: 266px;
+      background: #a82439;
     }
   }
+
   .caption {
     -webkit-box-sizing: border-box;
     -moz-box-sizing: border-box;
     -ms-box-sizing: border-box;
     box-sizing: border-box;
-    background: $cu-red;
+    background: #a82439;
     top: 220px;
     position: absolute;
     -webkit-transition: all 1s;
@@ -95,10 +98,10 @@
     max-height: 215px;
     width: 100%;
     word-break: break-word;
+
     &:before {
       display: block;
       content: '';
-      // background-image: image-url('pointy_new.png');
       background-repeat: no-repeat;
       background-position: center top;
       position: absolute;
@@ -114,6 +117,7 @@
       transition: all 0.3s;
     }
   }
+
   .item {
   	.inner {
 	    position: absolute;
@@ -131,21 +135,26 @@
 	    transition-delay: 0s;
 	    word-break: break-all;
 	  }
+
 	  .caption:hover {
 	  	top: 50px;
 		  -webkit-transition-delay: 0s;
 		  -moz-transition-delay: 0s;
 		  transition-delay: 0s;
+
 	  	&:before {
 		    opacity: 0;
 		  }
+
 		  .inner {
 		    position: absolute;
 		  }
+
 		  .button {
 		    opacity: 1;
 		    -webkit-transition-delay: 1.3s;
 		  }
+
 		  .copy {
 		    -ms-filter: "progid:DXImageTransform.Microsoft.Alpha(Opacity=100)";
 		    filter: alpha(opacity = 100);
@@ -154,6 +163,7 @@
 		  }
 	  }
   }
+
   .copy {
     -ms-filter: "progid:DXImageTransform.Microsoft.Alpha(Opacity=0)";
     filter: alpha(opacity = 0);
@@ -170,8 +180,9 @@
     margin: 10px 0 0 0;
     line-height: 1.5;
     word-break: normal;
-	word-wrap: break-word;
+    word-wrap: break-word;
   }
+
   .button {
     opacity: 0;
     -webkit-transition: opacity 0.8s;
@@ -184,18 +195,19 @@
     transition-delay: 0s;
     background-color: $white;
     font-weight: 600;
-    color: $cu-red;
+    color: #830c28;
     float: left;
     padding: 5px 10px 5px 10px;
     margin-top: 15px;
   }
+
   .title {
     font-family: $font-stack-heading;
     font-size: 18px;
     font-weight: 600;
     position: relative;
     top: -3px;
-	word-wrap: break-word;
+    word-wrap: break-word;
     word-break: normal;
   }
 }
@@ -207,6 +219,7 @@
   overflow: hidden;
   position: relative;
   z-index: 100;
+
   @include bp(wildcard-min, 600px) {
   	width: 533px;
   }
@@ -222,6 +235,7 @@
   max-height: 440px;
   min-height: 240px !important;
   padding-bottom: 15px;
+
   @include bp(wildcard-min, 786px) {
   	height: auto !important;
     min-height: 340px !important;
@@ -229,160 +243,6 @@
   }
 }
 
-.rounded-slider {
-  .rotatorContainer {
-    max-width: 1130px;
-    max-height: 440px;
-    background: $grey;
-    margin: 0 auto;
-  }
-  .flexslider {
-    overflow: hidden !important;
-  }
-  .flex-control-nav {
-	  background: transparent;
-	  text-align: right;
-	  padding-right: 15px;
-	  bottom: 25px !important;
-	  box-sizing: border-box;
-	  padding-right: 15px;
-	  padding-top: 10px;
-	  right: 0;
-	  left: auto;
-	  li {
-	    display: inline-block;
-	    float: none;
-	    margin: 0 0 0 5px;
-	    a {
-	      width: 13px;
-	      height: 13px;
-	      background: image-url('pager_sprite.png') no-repeat;
-	      background-position: -13px 0;
-	      text-indent: 999px;
-	      overflow: hidden;
-	      &:hover, &.flex-active {
-	        background-position: 0 0;
-	      }
-	    }
-	  }
-	  @include bp(wildcard-min, 768px) {
-	  	position: absolute !important;
-	    padding-top: 0;
-	  }
-	}
-}
-
-/*
- * Branded v201611
- */
-.masthead-branded-v201611 {
-  /* Grid pattern: https://css-tricks.com/dont-overthink-it-grids/ */
-  .grid {
-    margin: 0 auto;
-    max-width: 1130px;
-
-    &:after {
-      content: "";
-      display: table;
-      clear: both;
-    }
-
-    .column {
-      float: left;
-      position: relative;
-      height: 260px;
-      overflow: hidden;
-
-      &.image {
-        width: 780px;
-      }
-
-      &.header {
-        width: 350px;
-        color: $white;
-
-        h2 {
-          position: absolute;
-          bottom: 32px;
-          margin: 0;
-          padding-left: 32px;
-          padding-right: 32px;
-          font-family: $font-stack-heading;
-          font-size: 36px;
-          line-height: 44px;
-        }
-      }
-    }
-  }
-}
-
-/*
- * Slider v201611
- */
-div.slider.version-201611 {
-  margin: 0 auto;
-  width: 1130px;
-  height: 440px;
-
-  div.grid {
-    .column {
-      float: left;
-      position: relative;
-      height: 440px;
-      overflow: hidden;
-      font-family: $font-stack-heading;
-
-      &.image {
-        width: 780px;
-
-        div.photo-by {
-          position: absolute;
-          bottom: 0;
-          left: 0;
-          padding: 16px;
-          font-size: 16px;
-          color: $white;
-          background-color: rgba(56,56,56,0.90);
-        }
-      }
-
-      &.header {
-        width: 350px;
-        color: $white;
-
-        div.aligned {
-          position: absolute;
-          bottom: 12px;
-          padding: 32px;
-
-          h2 {
-            margin: 0px auto 24px;
-            padding: 0px;
-            text-align: center;
-            font-size: 40px;
-            line-height: 52px;
-            font-weight: bold;
-          }
-
-          hr {
-            /* See: http://stackoverflow.com/a/4151770/6763239 */
-            height: 2px;
-            width: 35%;
-            margin:0 auto;
-            color: white;
-            background-color: white;
-            border: none;
-          }
-
-          h4 {
-            margin: 24px auto 0px;
-            text-align: center;
-            font-size: 36px;
-            line-height: 44px;
-            font-weight: normal;
-          }
-        }
-      }
-    }
-  }
+.oldie.miniRotator .inner{
+  word-break: break-all;
 }
