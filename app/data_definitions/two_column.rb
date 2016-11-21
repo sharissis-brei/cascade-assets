@@ -77,24 +77,23 @@ module DataDefinitions
 
       v201611: {
         slider: {
+          header: 'Campus Life \n at \n Chapman University',
+
           slides: [
             {
-              header: 'Campus Life \n at \n Chapman University',
               subTitle: 'Optional text can go here',
               altText: 'the altText is not the alt-right',
               photoBy: 'I.M. Photographer',
               image: {path: '/_assets/mastheads/slider-v201611.jpg'}
             },
             {
-              header: 'Slider Slide #2',
               subTitle: '',
               altText: 'image alt attribute here',
               photoBy: '',
               image: {path: '/_assets/mastheads/slider-v201611.jpg'}
             },
             {
-              header: 'Slider Slide #3',
-              subTitle: 'Slider Slide #3 of 3',
+              subTitle: 'Slider Slide \n #3 of 3',
               altText: 'image alt attribute here',
               photoBy: '',
               image: {path: '/_assets/mastheads/slider-v201611.jpg'}

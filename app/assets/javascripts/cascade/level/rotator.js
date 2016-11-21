@@ -2,23 +2,28 @@ $(function () {
 
     /*
      * Adds additional requested functionality for new (v201611) slider masthead.
+     *
+     * Specifically, coordinates slide changes with changes in other elements.
+     *
      * This isn't necessarily the best approach, but works most cleanly I
      * I think given existing design constraints.
      */
     var SliderMastheadMixins = (function() {
         // Globals
         var SLIDER_CONTAINER_SELECTOR = 'div.slider.version-201611';
-        var SUBHEADER_SELECTOR = SLIDER_CONTAINER_SELECTOR + ' div.column.header div.subheader';
+        var HEADER_SELECTOR = SLIDER_CONTAINER_SELECTOR + ' div.column.header div.aligned';
+        var SUBHEADER_SELECTOR = HEADER_SELECTOR + ' div.subheader';
         var SUBTITLE_SELECTOR = SUBHEADER_SELECTOR + ' h4';
         var isSliderMasthead = $(SLIDER_CONTAINER_SELECTOR).length > 0;
+        var $header = null;
         var $subheader = null;
         var $subtitle = null;
-        var previousSubtitle = '';
 
         // Public Methods
         var onStart = function(slider) {
             if ( !isSliderMasthead ) { return; }
 
+            $header = $(HEADER_SELECTOR);
             $subheader = $(SUBHEADER_SELECTOR);
             $subtitle = $(SUBTITLE_SELECTOR);
         };
@@ -26,7 +31,7 @@ $(function () {
         var beforeSlideChange = function(slider) {
             if ( !isSliderMasthead ) { return; }
 
-            $subheader.fadeOut();
+            $header.fadeOut();
         };
 
         var afterSlideChange = function(slider) {
@@ -34,17 +39,20 @@ $(function () {
 
             var currentSubtitle = currentSlideSubtitle(slider);
 
-            if ( currentSubtitle != '' ) {
-                $subtitle.text(currentSubtitle)
-                $subheader.fadeIn();
+            $subtitle.html(currentSubtitle)
+
+            // Must hide subheader when subtitle empty in order to hide <hr/>.
+            if ( currentSubtitle == '' ) {
+                $subheader.hide();
             }
+            else {
+                $subheader.show();
+            }
+
+            $header.fadeIn();
         };
 
         // Private Methods
-        var slideCount = function(slider) {
-            return slider.slides.length;
-        }
-
         var currentSlideNumber = function(slider) {
             return slider.currentSlide;
         };

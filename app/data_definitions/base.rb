@@ -44,6 +44,14 @@ module DataDefinitions
       node
     end
 
+    def select_single_node_value(xpath)
+      # Mirrors Cascade Velocity helper: $_XPathTool.selectSingleNode(node, xpath).value
+      # Returns string value.
+      xpath = format('//%s', xpath) unless xpath.start_with?('/')
+      node = @data_document.at_xpath(xpath)
+      node.nil? ? '' : node.content
+    end
+
     def select_nodes(xpath)
       # Mirrors Cascade Velocity helper: $_XPathTool.selectNodes(node, xpath).
       # Returns DataDefinitions:NodeSet array.

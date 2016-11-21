@@ -75,9 +75,13 @@ showBoxes = 'Yes'
 <% elsif mastheadType == 'Slider - New' %>
   <!-- mastheadType: "Slider" -->
   <%
-    header = current_page.get_child_value(:v201611_header)
     slides = current_page.select_nodes('v201611/slider/slides/slide')
-    firstSubtitle = slides.first.select_single_node_value('subTitle')
+
+    # In VTL: #set( $b = $a.replace("\n", "<br/>") )
+    #header = current_page.get_child_value(:v201611_header).gsub(/\n/, '<br/>')
+    header = current_page.select_single_node_value('v201611/slider/header').gsub('\n', '<br/>')
+    firstSubtitle = slides.first.select_single_node_value('subTitle').gsub('\n', '<br/>')
+
     subheaderClass = ( firstSubtitle != '' ) ? 'visible' : 'invisible'
   %>
 
@@ -95,7 +99,7 @@ showBoxes = 'Yes'
                 <ul class="slides">
                   <% slides.each do |slide| %>
                     <%
-                      slideSubtitle = slide.select_single_node_value('subTitle')
+                      slideSubtitle = slide.select_single_node_value('subTitle').gsub('\n', '<br/>')
                       slideImagePath = slide.select_single_node_value('image/path')
                       slideImageAltText = slide.select_single_node_value('altText')
                       slidePhotoBy = slide.select_single_node_value('photoBy')
@@ -104,7 +108,9 @@ showBoxes = 'Yes'
                       <img alt="<%= slideImageAltText %>" src="<%= slideImagePath %>"/>
 
                       ## Subtitle will be swapped out dynamically upon slide.
-                      <input class="slideSubtitle" type="hidden" value="<%= slideSubtitle %>"/>
+                      <input class="slideSubtitle"
+                             type="hidden"
+                             value="<%= slideSubtitle.html_safe %>"/>
 
                       <% if slidePhotoBy != '' %>
                         <div class="photo-by">
@@ -122,10 +128,10 @@ showBoxes = 'Yes'
 
       <div class="column header theme-bg-color">
         <div class="aligned">
-          <h2 class="header"><%= header %></h2>
+          <h2 class="header"><%= header.html_safe %></h2>
           <div class="subheader <%= subheaderClass %>">
             <hr />
-            <h4><%= firstSubtitle %></h4>
+            <h4><%= firstSubtitle.html_safe %></h4>
           </div>
 
           <% if firstSubtitle != '' %>
