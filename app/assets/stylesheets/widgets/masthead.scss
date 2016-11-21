@@ -319,7 +319,11 @@
 /*
  * Slider v201611
  */
-li.slide.version-201611 {
+div.slider.version-201611 {
+  margin: 0 auto;
+  width: 1130px;
+  height: 440px;
+
   div.grid {
     .column {
       float: left;
@@ -380,6 +384,5 @@ li.slide.version-201611 {
         }
       }
     }
-
   }
 }

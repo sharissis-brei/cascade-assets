@@ -15,12 +15,12 @@
             <text identifier="altText" label="Image Alt-Text" required="true" help-text="Alternate text to describe image (required)"/>
         </group>
         <group identifier="slider201611" label="Slider - New">
+            <text identifier="header" required="true" label="Title"/>
             <group identifier="slides" label="Slides">
                 <group identifier="slide" label="Slide" multiple="true" maximum-number="10" minimum-number="1">
-                    <text identifier="header" required="true" label="Title"/>
-                    <text identifier="subTitle" label="subTitle"/>
                     <asset identifier="image" required="true" type="file" label="Image (780x440)"/>
                     <text identifier="altText" required="true" label="Image Alt-Text" help-text="Alternate text to describe image (required)"/>
+                    <text identifier="subTitle" label="subTitle"/>
                     <text identifier="photoBy" label="Photographer's Name" help-text="If image requires attribution, input name. Will display 'Photo by: [input].'"/>
                 </group>
             </group>

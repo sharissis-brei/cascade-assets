@@ -75,53 +75,62 @@ showBoxes = 'Yes'
 <% elsif mastheadType == 'Slider - New' %>
   <!-- mastheadType: "Slider" -->
   <%
+    header = current_page.get_child_value(:v201611_header)
     slides = current_page.select_nodes('v201611/slider/slides/slide')
+    firstSubtitle = slides.first.select_single_node_value('subTitle')
+    subheaderClass = ( firstSubtitle != '' ) ? 'visible' : 'invisible'
   %>
 
-  <div class="hidden slideOptions">
-      <div class="autoRotate">On</div>
-  </div>
+  <div class="slider version-201611">
+    <div class="hidden slideOptions">
+        <div class="autoRotate">On</div>
+    </div>
 
-  <div class="rounded-slider">
-    <div class="rotatorContainer">
-      <div class="flex-container">
-        <div class="flexslider">
-          <ul class="slides">
-            <% slides.each do |slide| %>
-              <%
-                slideHeader = slide.select_single_node_value('header')
-                slideSubtitle = slide.select_single_node_value('subTitle')
-                slideImagePath = slide.select_single_node_value('image/path')
-                slideImageAltText = slide.select_single_node_value('altText')
-                slidePhotoBy = slide.select_single_node_value('photoBy')
-              %>
+    <div class="grid">
+      <div class="column image">
+        <div class="rounded-slider">
+          <div class="rotatorContainer">
+            <div class="flex-container">
+              <div class="flexslider">
+                <ul class="slides">
+                  <% slides.each do |slide| %>
+                    <%
+                      slideSubtitle = slide.select_single_node_value('subTitle')
+                      slideImagePath = slide.select_single_node_value('image/path')
+                      slideImageAltText = slide.select_single_node_value('altText')
+                      slidePhotoBy = slide.select_single_node_value('photoBy')
+                    %>
+                    <li class="slide">
+                      <img alt="<%= slideImageAltText %>" src="<%= slideImagePath %>"/>
 
-              <li class="slide version-201611">
-                <div class="grid">
-                  <div class="column image">
-                    <img alt="<%= slideImageAltText %>" src="<%= slideImagePath %>"/>
+                      ## Subtitle will be swapped out dynamically upon slide.
+                      <input class="slideSubtitle" type="hidden" value="<%= slideSubtitle %>"/>
 
-                    <% if slidePhotoBy != '' %>
-                      <div class="photo-by">
-                        Photo by: <%= slidePhotoBy %>
-                      </div>
-                    <% end %>
-                  </div>
-
-                  <div class="column header theme-bg-color">
-                    <div class="aligned">
-                      <h2 class="header"><%= slideHeader %></h2>
-
-                      <% if slideSubtitle != '' %>
-                        <hr />
-                        <h4><%= slideSubtitle %></h4>
+                      <% if slidePhotoBy != '' %>
+                        <div class="photo-by">
+                          Photo by: <%= slidePhotoBy %>
+                        </div>
                       <% end %>
-                    </div>
-                  </div>
-                </div>
-              </li>
-            <% end %>
-          </ul>
+                    </li>
+                  <% end %>
+                </ul>
+              </div>
+            </div>
+          </div>
+        </div>
+      </div>
+
+      <div class="column header theme-bg-color">
+        <div class="aligned">
+          <h2 class="header"><%= header %></h2>
+          <div class="subheader <%= subheaderClass %>">
+            <hr />
+            <h4><%= firstSubtitle %></h4>
+          </div>
+
+          <% if firstSubtitle != '' %>
+
+          <% end %>
         </div>
       </div>
     </div>

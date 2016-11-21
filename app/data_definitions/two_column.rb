@@ -8,6 +8,8 @@ module DataDefinitions
       branded_image_path: '//group[@identifier="branded201611"]/asset[@identifier="image"]',
       branded_alt_text: '//group[@identifier="branded201611"]/text[@identifier="altText"]',
 
+      v201611_header: '//group[@identifier="slider201611"]/text[@identifier="header"]',
+
       branded_old_display_image: '//group[@identifier="branded-masthead"]' \
                                       '/text[@identifier="display-image"]',
       branded_old_header: '//group[@identifier="branded-masthead"]' \
@@ -25,6 +27,8 @@ module DataDefinitions
       XPATH[:branded_header] => 'A Brand New Branded Masthead',
       XPATH[:branded_image_path] => '/_assets/mastheads/branded-new.jpg',
       XPATH[:branded_alt_text] => 'Branded - New alt text',
+
+      XPATH[:v201611_header] => 'Campus Life at Chapman University',
 
       XPATH[:branded_old_display_image] => 'Yes',
       XPATH[:branded_old_header] => 'Branded Masthead Header',
@@ -84,6 +88,13 @@ module DataDefinitions
             {
               header: 'Slider Slide #2',
               subTitle: '',
+              altText: 'image alt attribute here',
+              photoBy: '',
+              image: {path: '/_assets/mastheads/slider-v201611.jpg'}
+            },
+            {
+              header: 'Slider Slide #3',
+              subTitle: 'Slider Slide #3 of 3',
               altText: 'image alt attribute here',
               photoBy: '',
               image: {path: '/_assets/mastheads/slider-v201611.jpg'}

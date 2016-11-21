@@ -1,8 +1,77 @@
 $(function () {
 
+    /*
+     * Adds additional requested functionality for new (v201611) slider masthead.
+     * This isn't necessarily the best approach, but works most cleanly I
+     * I think given existing design constraints.
+     */
+    var SliderMastheadMixins = (function() {
+        // Globals
+        var SLIDER_CONTAINER_SELECTOR = 'div.slider.version-201611';
+        var SUBHEADER_SELECTOR = SLIDER_CONTAINER_SELECTOR + ' div.column.header div.subheader';
+        var SUBTITLE_SELECTOR = SUBHEADER_SELECTOR + ' h4';
+        var isSliderMasthead = $(SLIDER_CONTAINER_SELECTOR).length > 0;
+        var $subheader = null;
+        var $subtitle = null;
+        var previousSubtitle = '';
+
+        // Public Methods
+        var onStart = function(slider) {
+            if ( !isSliderMasthead ) { return; }
+
+            $subheader = $(SUBHEADER_SELECTOR);
+            $subtitle = $(SUBTITLE_SELECTOR);
+        };
+
+        var beforeSlideChange = function(slider) {
+            if ( !isSliderMasthead ) { return; }
+
+            $subheader.fadeOut();
+        };
+
+        var afterSlideChange = function(slider) {
+            if ( !isSliderMasthead ) { return; }
+
+            var currentSubtitle = currentSlideSubtitle(slider);
+
+            if ( currentSubtitle != '' ) {
+                $subtitle.text(currentSubtitle)
+                $subheader.fadeIn();
+            }
+        };
+
+        // Private Methods
+        var slideCount = function(slider) {
+            return slider.slides.length;
+        }
+
+        var currentSlideNumber = function(slider) {
+            return slider.currentSlide;
+        };
+
+        var currentSlide = function(slider) {
+            var currentSlide = slider.slides[currentSlideNumber(slider)];
+            return $(currentSlide);
+        };
+
+        var currentSlideSubtitle = function(slider) {
+            // Returns text of subtitle associated with current slide.
+            var $currentSlide = currentSlide(slider);
+            return $currentSlide.find('input.slideSubtitle').val();
+        }
+
+        // Public API
+        return {
+            onStart: onStart,
+            beforeSlideChange: beforeSlideChange,
+            afterSlideChange: afterSlideChange
+        };
+    })();
+
     /* Rotator
     ------------------------------------------------------------------------------------------------*/
-
+    // FIXME: Please don't use this kind of logic for jQuery elements. This is what
+    // selectors are for.
     if ($(".rotatorContainer").parent(".mosaic").length > 0) {
         $('.flexslider').flexslider({
             animation: "slide",
@@ -73,8 +142,8 @@ $(function () {
     }
     else if ($(".rotatorContainer").parent(".rounded-slider").length > 0) {
 
-        $('.rounded-slider').find('.red').html('<p>' + $(".rounded-slider .slide:first-child").attr('data-red') + '</p>');        
-        
+        $('.rounded-slider').find('.red').html('<p>' + $(".rounded-slider .slide:first-child").attr('data-red') + '</p>');
+
         if($(".rounded-slider .slide:first-child").attr('data-link')){
            $('.rounded-slider').find('.red').append(
                 $("<a>").attr({
@@ -87,11 +156,12 @@ $(function () {
         else{
             $('.rounded-slider').find('.red').addClass("no-link");
         }
-        
+
         if (!$(".rounded-slider .info-container .red p").text()) {
             $(".rounded-slider .info-container .red").hide();
         }
 
+        // FIXME: Code in callback methods below needs cleanup.
         $('.flexslider').flexslider({
             animation: "slide",
             touchSwipe: true,
@@ -141,7 +211,7 @@ $(function () {
                 var link = $currentSlide.attr('data-link');
 
                 red.removeClass('no-link');
-                
+
                 if (caption) {
                     red.html("<p>" + caption + "</p>");
                 }
@@ -161,6 +231,7 @@ $(function () {
                     red.addClass('no-link');
                 }
 
+                SliderMastheadMixins.onStart(slider);
             },
             before: function (slider) {
 
@@ -175,6 +246,7 @@ $(function () {
                 //        opacity: 0
                 //    }, 500);
 
+                SliderMastheadMixins.beforeSlideChange(slider);
             },
             after: function (slider) {
                 g_mySlider = slider;
@@ -215,6 +287,8 @@ $(function () {
                 //blue.find('p').animate({
                 //    opacity: 1
                 //}, 500);
+
+                SliderMastheadMixins.afterSlideChange(slider);
             }
         });
 
