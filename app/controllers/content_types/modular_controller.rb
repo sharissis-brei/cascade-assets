@@ -96,7 +96,10 @@ module ContentTypes
       @metadata_set = MetadataSet.page(title: 'Modular Two Column')
       @data_definition = DataDefinitions::TwoColumn.default
 
-      # Set dynamic values.
+      # Set dynamic values. We need to map URL params (with their parameterized format) to
+      # the values we use in Cascade (which are user-ended English in format).
+      # If these options expand in future, we'll probably want to abstract this into its
+      # own method.
       if params[:masthead] == 'branded-old'
         @data_definition.set_value(:masthead_type, 'Branded Masthead')
       elsif params[:masthead] == 'slider-old'
