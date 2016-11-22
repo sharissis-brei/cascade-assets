@@ -45,35 +45,8 @@ showBoxes = 'Yes'
     </div>
   </div>
 
-<% elsif mastheadType == 'Branded Masthead' &&  brandedMastheadDisplaysImage == 'Yes' %>
-  <!-- mastheadType: "Branded Masthead" -->
-  <%
-  brandedMastheadHeader = current_page.get_child_value(:branded_old_header)
-  brandedMastheadSubtitle = current_page.get_child_value(:branded_old_subtitle)
-  brandedMastheadImagePath = current_page.get_child_value(:branded_old_image_path)
-  brandedMastheadAltText = 'brandedMastheadAltText'
-  brandedMastheadClass = (brandedMastheadSubtitle != '') ? 'masthead-new captionOnTop'
-                                                         : 'masthead-new'
-  %>
-
-  <div class="brandedMastheadContainer">
-    <div class="<%= brandedMastheadClass %>">
-      <img alt="<%= brandedMastheadAltText %>" src="<%= brandedMastheadImagePath %>"/>
-      <div class="caption">
-        <% if brandedMastheadSubtitle != '' %>
-          <p class="subTitle">
-            <%= brandedMastheadSubtitle %>
-          </p>
-        <% end %>
-        <% if brandedMastheadHeader != '' %>
-          <h2><%= brandedMastheadHeader %></h2>
-        <% end %>
-      </div>
-    </div>
-  </div>
-
 <% elsif mastheadType == 'Slider - New' %>
-  <!-- mastheadType: "Slider" -->
+  <!-- mastheadType: "Slider - New" -->
   <%
     slides = current_page.select_nodes('v201611/slider/slides/slide')
 
@@ -81,7 +54,7 @@ showBoxes = 'Yes'
     header = current_page.select_single_node_value('v201611/slider/header').gsub('\n', '<br/>')
     firstSubtitle = slides.first.select_single_node_value('subTitle').gsub('\n', '<br/>')
 
-    subheaderClass = ( firstSubtitle != '' ) ? 'visible' : 'invisible'
+    subheaderClass = ( firstSubtitle != '' ) ? 'present' : 'absent'
   %>
 
   <div class="slider version-201611">
@@ -132,11 +105,34 @@ showBoxes = 'Yes'
             <hr />
             <h4><%= firstSubtitle.html_safe %></h4>
           </div>
-
-          <% if firstSubtitle != '' %>
-
-          <% end %>
         </div>
+      </div>
+    </div>
+  </div>
+
+<% elsif mastheadType == 'Branded Masthead' &&  brandedMastheadDisplaysImage == 'Yes' %>
+  <!-- mastheadType: "Branded Masthead" -->
+  <%
+  brandedMastheadHeader = current_page.get_child_value(:branded_old_header)
+  brandedMastheadSubtitle = current_page.get_child_value(:branded_old_subtitle)
+  brandedMastheadImagePath = current_page.get_child_value(:branded_old_image_path)
+  brandedMastheadAltText = 'brandedMastheadAltText'
+  brandedMastheadClass = (brandedMastheadSubtitle != '') ? 'masthead-new captionOnTop'
+                                                         : 'masthead-new'
+  %>
+
+  <div class="brandedMastheadContainer">
+    <div class="<%= brandedMastheadClass %>">
+      <img alt="<%= brandedMastheadAltText %>" src="<%= brandedMastheadImagePath %>"/>
+      <div class="caption">
+        <% if brandedMastheadSubtitle != '' %>
+          <p class="subTitle">
+            <%= brandedMastheadSubtitle %>
+          </p>
+        <% end %>
+        <% if brandedMastheadHeader != '' %>
+          <h2><%= brandedMastheadHeader %></h2>
+        <% end %>
       </div>
     </div>
   </div>

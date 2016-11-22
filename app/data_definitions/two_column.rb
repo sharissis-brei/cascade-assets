@@ -81,13 +81,13 @@ module DataDefinitions
 
           slides: [
             {
-              subTitle: 'Optional text can go here',
+              subTitle: '',
               altText: 'the altText is not the alt-right',
               photoBy: 'I.M. Photographer',
               image: {path: '/_assets/mastheads/slider-v201611.jpg'}
             },
             {
-              subTitle: '',
+              subTitle: 'Optional text can go here',
               altText: 'image alt attribute here',
               photoBy: '',
               image: {path: '/_assets/mastheads/slider-v201611.jpg'}
