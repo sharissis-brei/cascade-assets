@@ -1,14 +1,22 @@
 <system-data-structure>
     <group identifier="masthead" label="Masthead Options" collapsed="true">
+        <!-- Masthead Options -->
+        <!-- radio-item show-fields map to groups below -->
+        <!-- radio-item values map to Masthead format selectors -->
         <text type="radiobutton" identifier="mastheadType" label="Masthead Type" help-text="these are the new wider mastheads available">
             <radio-item value="Branded - New" show-fields="masthead/branded201611"/>
             <radio-item value="Slider - New" show-fields="masthead/slider201611"/>
             <radio-item value="Boxes" show-fields="masthead/boxes"/>
             <radio-item value="No Masthead"/>
+
+            <!-- Deprecated mastheads. Must be preserved to avoid breaking old pages. -->
             <radio-item value="Use OLD Masthead" show-fields="masthead/showMasthead, masthead/showImage, masthead/image, masthead/altText, masthead/description"/>
             <radio-item value="Branded Masthead" show-fields="masthead/branded-masthead"/>
             <radio-item value="Slider" show-fields="masthead/slider"/>
         </text>
+
+        <!-- New masthead formats (Nov 2016): Branded and Slider -->
+        <!-- These should mirror groups in three_column.xml -->
         <group identifier="branded201611" label="Branded - New">
             <text identifier="header" required="true" label="Title"/>
             <asset identifier="image" type="file" required="true" label="Image (780x260)"/>
@@ -25,6 +33,7 @@
                 </group>
             </group>
         </group>
+
         <group identifier="branded-masthead" label="Branded Masthead">
             <text type="radiobutton" identifier="display-image" label="Show" default="No" required="true">
                 <radio-item value="Yes"/>
