@@ -1,0 +1,23 @@
+<%
+
+# VTL variables
+baseClass = ''
+sectionClasses = ''
+currentPagePath = @current_page_path || '/'
+
+# Code below recreated Cascade VTL code to derive theme from page path. I just
+# want it to work well enough to reproduce the Cascade behavior. It won't be used
+# in production and is not meant to be a model for any production code. Think of
+# it as a test helper.
+currentPagePath.split('/').each do |name|
+  if currentPagePath.split('/').first == name
+    baseClass = name
+    sectionClasses = baseClass
+  elsif currentPagePath.split('/').last != name
+    baseClass = "#{baseClass}__#{name}"
+    sectionClasses = "#{sectionClasses} #{baseClass}"
+  end
+end
+%>
+
+<div id="theme" class="<%= sectionClasses %>">

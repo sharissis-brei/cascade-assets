@@ -31,6 +31,22 @@ class ConfigurationSet < Tableless
     configuration_set
   end
 
+  def self.two_column(options={})
+    default_template_path = '_cascade/templates/modular/two_column.html'
+    configuration_set = ConfigurationSet.new(name: '2 Column')
+    configuration_set.set_defaults
+    configuration_set.template = options.fetch(:template, default_template_path)
+    configuration_set
+  end
+
+  def self.three_column(options={})
+    default_template_path = '_cascade/templates/modular/three_column.html'
+    configuration_set = ConfigurationSet.new(name: '3 Column')
+    configuration_set.set_defaults
+    configuration_set.template = options.fetch(:template, default_template_path)
+    configuration_set
+  end
+
   def self.slideshow(options={})
     default_template_path = '_cascade/templates/school_home_pages/slideshow.html'
     configuration_set = ConfigurationSet.new(name: 'Slideshow')

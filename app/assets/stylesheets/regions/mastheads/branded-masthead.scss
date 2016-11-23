@@ -1,1 +1,43 @@
-/* New branded masthead styles will go here */
+/*
+ * Branded v201611
+ */
+.masthead-branded-v201611 {
+  /* Grid pattern: https://css-tricks.com/dont-overthink-it-grids/ */
+  .grid {
+    margin: 0 auto;
+    max-width: 1130px;
+
+    &:after {
+      content: "";
+      display: table;
+      clear: both;
+    }
+
+    .column {
+      float: left;
+      position: relative;
+      height: 260px;
+      overflow: hidden;
+
+      &.image {
+        width: 780px;
+      }
+
+      &.header {
+        width: 350px;
+        color: $white;
+
+        h2 {
+          position: absolute;
+          bottom: 32px;
+          margin: 0;
+          padding-left: 32px;
+          padding-right: 32px;
+          font-family: $font-stack-heading;
+          font-size: 36px;
+          line-height: 44px;
+        }
+      }
+    }
+  }
+}
