@@ -2,40 +2,57 @@
  * Branded v201611
  */
 .masthead-branded-v201611 {
-  /* Grid pattern: https://css-tricks.com/dont-overthink-it-grids/ */
-  .grid {
-    margin: 0 auto;
-    max-width: 1130px;
+  width: 100%;
 
-    &:after {
-      content: "";
-      display: table;
-      clear: both;
-    }
+  .grid {
+    max-width: 1130px;
+    margin: 0 auto;
+
+    @include media($medium-screen) { display: table; }
 
     .column {
-      float: left;
-      position: relative;
-      height: 260px;
-      overflow: hidden;
+      @include media($medium-screen) {
+        display: table-cell;
+      }
 
       &.image {
-        width: 780px;
+        @include media($medium-screen) {
+          width: 70%;
+        }
+
+        img {
+          display: block;
+          width: 100%;
+          height: auto;
+
+          @include media($medium-screen) { max-height: 280px; }
+
+          @include media($large-screen) { max-height: 400px; }
+        }
       }
 
       &.header {
-        width: 350px;
+        width: 100%;
         color: $white;
 
+        @include media($medium-screen) {
+          vertical-align: bottom;
+          width: 30%;
+        }
+
         h2 {
-          position: absolute;
-          bottom: 32px;
+          padding: 36px 16px;
           margin: 0;
-          padding-left: 32px;
-          padding-right: 32px;
           font-family: $font-stack-heading;
-          font-size: 36px;
-          line-height: 44px;
+          font-size: 22px;
+          line-height: 30px;
+
+          @include media($medium-screen) { padding: 32px; }
+
+          @include media($large-screen) {
+            font-size: 36px;
+            line-height: 44px;
+          }
         }
       }
     }
