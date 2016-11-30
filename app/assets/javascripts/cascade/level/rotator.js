@@ -31,6 +31,8 @@ $(function () {
         var beforeSlideChange = function(slider) {
             if ( !isSliderMasthead ) { return; }
 
+            //using fadeTo because fadeIn/fadeOut will cause entire header to disappear/reappear 
+            //completely from the layout when height is not a fixed value
             $header.fadeTo("slow", 0);
         };
 
