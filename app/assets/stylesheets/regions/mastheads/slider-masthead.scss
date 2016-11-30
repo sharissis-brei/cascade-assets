@@ -2,20 +2,38 @@
  * Slider v201611
  */
 div.slider.version-201611 {
+  max-width: 1130px;
   margin: 0 auto;
-  width: 1130px;
-  height: 440px;
+
+  .rotatorContainer .slide {
+    //!important is used here to override the rule in the old slider masthead which was set as !important
+    min-height: 0 !important; 
+    margin-bottom: 0;
+    padding-bottom: 0;
+  }
 
   div.grid {
-    .column {
-      float: left;
+    width: 100%;
+
+    @include media($medium-screen) { 
+      display: table;
+      table-layout: fixed;
       position: relative;
-      height: 440px;
-      overflow: hidden;
+    }
+
+    .column {
       font-family: $font-stack-heading;
 
+      @include media($medium-screen) { display: table-cell; }
+
       &.image {
-        width: 780px;
+        @include media($medium-screen) { width: 65%; }
+
+        img { 
+          display: block;
+          width: 100%;
+          height: auto;
+        }
 
         div.photo-by {
           position: absolute;
@@ -24,49 +42,74 @@ div.slider.version-201611 {
           padding: 16px;
           font-size: 16px;
           color: $white;
-          background-color: rgba(56,56,56,0.90);
+          background-color: rgba(56,56,56,0.70);
         }
       }
 
       &.header {
-        width: 350px;
+        width: 100%;
+        text-align: left;
         color: $white;
+        
+        @include media($medium-screen) {
+          width: 35%;
+          vertical-align: bottom;
+          text-align: center;
+        }
 
         div.aligned {
-          position: absolute;
-          bottom: 12px;
           padding: 32px;
-          width: 100%;
 
-          div.subheader.absent {
-            display: none;
-          }
+          div.subheader.absent { display: none; }
 
           h2 {
             margin: 0px auto 24px;
             padding: 0px;
-            text-align: center;
-            font-size: 40px;
-            line-height: 52px;
+            font-size: 22px;
+            line-height: 30px;
             font-weight: bold;
+
+            @include media($medium-screen) {
+              font-size: 30px;
+              line-height: 40px;
+            }
+
+            @include media($large-screen) {
+              font-size: 40px;
+              line-height: 52px;
+            }
           }
 
           hr {
+            display: none;
+            
+            @include media($medium-screen) {
             /* See: http://stackoverflow.com/a/4151770/6763239 */
-            height: 2px;
-            width: 35%;
-            margin:0 auto;
-            color: white;
-            background-color: white;
-            border: none;
+              display: block;
+              height: 2px;
+              width: 35%;
+              margin:0 auto;
+              color: white;
+              background-color: white;
+              border: none;
+            }
           }
 
           h4 {
             margin: 24px auto 0px;
-            text-align: center;
-            font-size: 36px;
-            line-height: 44px;
+            font-size: 20px;
+            line-height: 30px;
             font-weight: normal;
+
+            @include media($medium-screen) {
+              font-size: 28px;
+              line-height: 36px;
+            }
+
+            @include media($large-screen) {
+              font-size: 36px;
+              line-height: 44px;
+            }
           }
         }
       }
