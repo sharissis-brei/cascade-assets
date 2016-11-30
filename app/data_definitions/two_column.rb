@@ -77,11 +77,11 @@ module DataDefinitions
 
       v201611: {
         slider: {
-          header: 'Campus Life at Chapman University',
+          header: 'Campus Life \n at \n Chapman University',
 
           slides: [
             {
-              subTitle: 'Subtitle Here',
+              subTitle: '',
               altText: 'the altText is not the alt-right',
               photoBy: 'I.M. Photographer',
               image: {path: '/_assets/mastheads/slider-v201611.jpg'}

@@ -33,10 +33,6 @@ div.slider.version-201611 {
           display: block;
           width: 100%;
           height: auto;
-
-          @include media($medium-screen) { max-height: 280px; }
-
-          @include media($large-screen) { max-height: 400px; }
         }
 
         div.photo-by {
@@ -46,7 +42,7 @@ div.slider.version-201611 {
           padding: 16px;
           font-size: 16px;
           color: $white;
-          background-color: rgba(56,56,56,0.90);
+          background-color: rgba(56,56,56,0.70);
         }
       }
 
