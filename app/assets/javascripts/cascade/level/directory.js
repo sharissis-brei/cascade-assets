@@ -116,7 +116,6 @@ if ( document.getElementById("mainFacultyDirectorySearch") != null ) {
                         image: v_photo,
                         name: $.trim(data[i].FacFullName),
                         title: data[i].Rank,
-                        //additionalTitles: data[i].AdditionalTitles,
                         additionalTitles: splitTitles,
                         affiliation: (function () {
                             var affiliation = [];
@@ -127,19 +126,15 @@ if ( document.getElementById("mainFacultyDirectorySearch") != null ) {
 							var prev_dept = '';
 							var final_school_dept = '';
                             for (var j = 0; j < (data[i].Depts.length); j++) {
-                                //affiliation.push(data[i].Depts[j].SchoolName);
 								cntr = cntr + 1;
 								school = data[i].Depts[j].SchoolName ? data[i].Depts[j].SchoolName : '';
-								//dept = '';
                                 if (data[i].Depts[j].DisplayDeptName != '' && data[i].Depts[j].DisplayDeptName != 'Conservatory of Music') {
                                     dept = data[i].Depts[j].FacGroupName ? data[i].Depts[j].DisplayDeptName + ', ' + data[i].Depts[j].FacGroupName: data[i].Depts[j].DisplayDeptName;
-									//dept = 'dept1';
                                 }
 								else {
                                      dept = data[i].Depts[j].FacGroupName ? data[i].Depts[j].FacGroupName : '';
-									 //dept = 'dept2';
                                 }							                    
-                                //
+
 								if (cntr == 1) {
 									prev_school = data[i].Depts[j].SchoolName ? data[i].Depts[j].SchoolName : '';
 									prev_dept = dept;	 
@@ -280,7 +275,6 @@ if ( document.getElementById("mainFacultyDirectorySearch") != null ) {
 
     $("#allFaculty").click(function () {
         if ($("#allFaculty:checked").length) {
-            //$("select").val($('options:first').val());
             $("#directorySearchBox, #collegeFilter, #departmentFilter").attr("disabled", "disabled");
         }
         else{            
@@ -336,7 +330,6 @@ if ( document.getElementById("mainFacultyDirectorySearch") != null ) {
                 (result.title ? '<div class="title" itemprop="jobTitle">' + result.title + '</div>' : '') +
                 (result.additionalTitles ? '<div class="additionalTitles" itemprop="jobTitle">' + result.additionalTitles + '</div>' : '') +
                 (result.affiliation ? '<div class="affiliation" itemprop="affiliation">' + result.affiliation + '</div>' : '') +
-        //(result.phone ? '<div class="phone" itemprop="telephone">' + result.phone + '</div>' : '') +
                 (result.email ? '<div class="email" itemprop="email"><a class="email" href="mailto:' + result.email + '" itemprop="email">' + result.email + '</a></div>' : '') +
             '</div>';
 

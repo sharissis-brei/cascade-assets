@@ -53,6 +53,9 @@ $(function () {
                     return "";
             }
         })(),
+		//this faculty-law.js was copied from faculty.js. In that version departmentFilter and groupFilter were set thru Case logic.
+		//rather than changing too much in this version of js, just set these two to blank and left rest of function as is.
+		//not ideal. quick fix. should be done better later
         departmentFilter = "",
         groupFilter = "",
         keywords = "",
@@ -221,7 +224,6 @@ $(function () {
                         id: data[i].DatatelId
                     }
 
-                    //$(".facultyList").append(formatResult(result));
 					$(".pagingInfo").before(formatResult(result));
                 }
                 if(data.length){

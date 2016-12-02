@@ -71,8 +71,6 @@ $(function () {
             switch (relativePath) {                
                 case "/research-and-institutions/economic-science-institute/about-us/faculty-directory".toLowerCase():
                     return "ESI";
-                //case "/copa/music/faculty-directory".toLowerCase():
-                //    return "MUSI";
                 case "/copa/dance/faculty-directory".toLowerCase():
                     return "DANC";
                 case "/copa/theatre/faculty-directory".toLowerCase():
@@ -296,7 +294,6 @@ $(function () {
                         id: data[i].DatatelId
                     }
 
-                    //$(".facultyList").append(formatResult(result));
 					$(".pagingInfo").before(formatResult(result));
                 }
                 if(data.length){

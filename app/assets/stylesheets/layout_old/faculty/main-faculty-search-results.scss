@@ -5,20 +5,9 @@
   margin: 0 0 20px 0;
   background-color: $white;
   
-	/*.ie7 & {
-		zoom: 1;
-		
-		.pagingInfo .pagingNavigation {
-			color: $cu-red;
-			margin-top: -17px;
-    	}
-	} // end ie7
-	*/
-  
   .summary {
     border-bottom: 1px dotted #565555;
-    padding: 10px 0 10px 0;
-    
+    padding: 10px 0 10px 0;    
 	.results {
       font-size: 16px;
     } 
@@ -37,8 +26,6 @@
     border-bottom: 1px solid $cu-border;
     min-height: 120px;
     position: relative;
-    /*color: #4a4949;
-    font-size: 14px; */	
     line-height: 1.1;
 	
 	.affiliation {
@@ -51,12 +38,6 @@
 		margin-left: 5px;
 		padding:10px;
 		max-width: 120px;
-			//padding: 5px 15px 5px 15px;
-			//background-color: #8f0c30;
-			//color: $white;
-			// font-family: "Open Sans";
-			//font-size: 11px;
-			//font-weight: 800;
     }
     .profilePicture {
       position: absolute;
