@@ -38,9 +38,9 @@
 
 //= require cascade/level/accordion
 //= require cascade/level/degrees-programs
-// don't require cascade/level/directory
-// don't require cascade/level/faculty
-// don't require cascade/level/faculty-law
+//= require cascade/level/directory
+//= require cascade/level/faculty
+//= require cascade/level/faculty-law
 //= require cascade/level/feature
 //= require cascade/level/flickr-picasa
 //= require cascade/level/funnel

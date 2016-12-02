@@ -1,6 +1,10 @@
 $(function () {
-    //NOTE: this script is for the school or dept specific faculty listing pages eg /copa/faculty-directory.aspx, NOT /our-faculty/index.aspx
+    // NOTE: this script is for the LAW SCHOOL faculty listing page only, 
+	// not /our-faculty/index.aspx or other school/dept listings
+	// this is from level/js/faculty-law.js in Cascade
 
+	if ( document.getElementById("LAWFacultyDirectorySearch") != null ) {
+		
     var devUrl = "//chapmanfaculty.dev.breilabs.com",
         prodUrl = "//" + window.location.hostname,
         page = 0,
@@ -42,101 +46,15 @@ $(function () {
             var extensionStart = window.location.pathname.lastIndexOf("."),
                 relativePath = window.location.pathname.substr(0, extensionStart).toLowerCase();
 
-            switch (relativePath) {
-                case "/business/faculty-research/faculty-directory".toLowerCase():
-                    return "SBE";
-                case "/ces/contact-us/faculty-directory".toLowerCase():
-                    return "SOE";
-                case "/copa/faculty-directory".toLowerCase():
-                    return "COPA";
-                case "/dodge/about/faculty-directory".toLowerCase():
-                    return "CFMA";
-                case "/law/law-faculty/index".toLowerCase():
-                    return "SOL";
-                case "/scst/about/faculty-directory".toLowerCase():
-                    return "COS";
-                case "/pharmacy/faculty-directory/index".toLowerCase():
-                    return "SOP";   
-                case "/crean/faculty-directory".toLowerCase():
-                    return "CHBS";
-                case "/wilkinson/about-wilkinson/faculty/faculty-directory".toLowerCase():
-                    return "CHSS";
-                default:
-                    return "";
-            }
-        })(),
-        departmentFilter = (function () {
-            var extensionStart = window.location.pathname.lastIndexOf("."),
-                relativePath = window.location.pathname.substr(0, extensionStart).toLowerCase();
-
             switch (relativePath) {                
-                case "/research-and-institutions/economic-science-institute/about-us/faculty-directory".toLowerCase():
-                    return "ESI";
-                //case "/copa/music/faculty-directory".toLowerCase():
-                //    return "MUSI";
-                case "/copa/dance/faculty-directory".toLowerCase():
-                    return "DANC";
-                case "/copa/theatre/faculty-directory".toLowerCase():
-                    return "THEA";
-                case "/wilkinson/art/faculty-directory".toLowerCase():
-                    return "ARTS";
-                case "/wilkinson/communication-studies/faculty-directory".toLowerCase():
-                    return "COMM";
-                case "/wilkinson/english/faculty-directory/index".toLowerCase():
-                    return "ENGL";
-                case "/wilkinson/history/faculty-directory".toLowerCase():
-                    return "HIST";
-                case "/crean/academic-programs/undergraduate-programs/bs-health-sciences/faculty".toLowerCase():
-                    return "HSCI";
-                case "/wilkinson/languages/faculty-directory".toLowerCase():
-                    return "LANG";
-                //case "/crean/academic-programs/graduate-programs/ma-marriage-family/faculty-directory".toLowerCase():
-                //    return "MFT";
-                //case "/crean/academic-programs/graduate-programs/physician-assistant/faculty-directory".toLowerCase():
-               //     return "PAS";
-                case "/crean/academic-programs/graduate-programs/ma-marriage-family/faculty".toLowerCase():
-                    return "MFT";
-                case "/crean/academic-programs/graduate-programs/physician-assistant/faculty".toLowerCase():
-                    return "PAS";
-                //case "/scst/crean-school-health/physical-therapy/faculty-directory".toLowerCase():
-                //    return "PHYS";
-                case "/crean/academic-programs/graduate-programs/physical-therapy/faculty".toLowerCase():
-                    return "PHYS";
-                case "/crean/academic-programs/undergraduate-programs/ba-psychology/faculty".toLowerCase():
-                    return "PSYC";
-                case "/crean/academic-programs/undergraduate-programs/bs-kinesiology/faculty".toLowerCase():
-                    return "KINE";
-                case "/wilkinson/peace-studies/faculty-directory".toLowerCase():
-                    return "PCST";
-                case "/wilkinson/philosophy/faculty-directory".toLowerCase():
-                    return "PHIL";
-                case "/wilkinson/political-science/faculty-directory".toLowerCase():
-                    return "POLI";
-                case "/wilkinson/religious-studies/faculty/directory".toLowerCase():
-                    return "RELI";
-                case "/wilkinson/sociology/faculty-directory".toLowerCase():
-                    return "SOCI";
+                case "/law/law-faculty/index".toLowerCase():
+                    return "SOL";                
                 default:
                     return "";
             }
         })(),
-        groupFilter = (function () {
-            var extensionStart = window.location.pathname.lastIndexOf("."),
-                relativePath = window.location.pathname.substr(0, extensionStart).toLowerCase();
-
-            switch (relativePath) {
-                case "/scst/crean-school-health/faculty-directory".toLowerCase():
-                    return "SHLS";
-                case "/scst/about/earth-environmental-sciences/faculty-directory".toLowerCase():
-                    return "SESS";
-                case "/scst/about/computational-sciences/faculty-directory".toLowerCase():
-                    return "SOCS";
-                case "/copa/music/faculty-directory".toLowerCase():
-                    return "MUSI";
-                default:
-                    return "";
-            }
-        })(),
+        departmentFilter = "",
+        groupFilter = "",
         keywords = "",
         facultyFeedUrl = function () {
             return prodUrl + "/" +
@@ -175,9 +93,8 @@ $(function () {
                     //put each title on own line
     				var splitTitles = data[i].AdditionalTitles;
 					if (splitTitles != '' && splitTitles != null) {
-						splitTitles = splitTitles.replace(/;/gi, "<br/>") + "<br/>";					
-					}
-                    
+						splitTitles = splitTitles.replace(/;/gi, "<br/>"); 					
+					}                    
                     var result = {
                         link: data[i].CascadePath ? '/our-faculty/' + data[i].CascadePath : '',
                         image: v_photo,
@@ -185,11 +102,10 @@ $(function () {
                         lastName: $.trim(data[i].FacLastName),
                         name: $.trim(data[i].FacFullName),
                         title: data[i].Rank,
-                        //additionalTitles: data[i].AdditionalTitles,
                         additionalTitles: splitTitles,
                         affiliation: (function () {
                             var affiliation = [];
-    						var cntr = 0;
+							var cntr = 0;
 							var dept = '';
 							var school = '';
 							var prev_school = '';
@@ -305,7 +221,8 @@ $(function () {
                         id: data[i].DatatelId
                     }
 
-                    $(".facultyList").append(formatResult(result));
+                    //$(".facultyList").append(formatResult(result));
+					$(".pagingInfo").before(formatResult(result));
                 }
                 if(data.length){
                     var rangeLower = (data[data.length - 1].CurrentPage * resultsPerPage) + 1,
@@ -397,8 +314,7 @@ $(function () {
             formattedResult =
             '<div class="facultyMember" itemscope itemtype="http://schema.org/Person">' +
                 (result.image ? '<div class="profilePicture"><img width="80px" src="' + result.image + '" itemprop="image" alt="' + imgAlt + '"></div>' : '') +
-                (result.name ? '<h2 class="name" itemprop="name">' + (result.link ? ('<a href="' + result.link) + '">' + result.name + '</a>' : result.name) 
-				+ '</h2>' : '') +
+                (result.name ? '<h2 class="name" itemprop="name">' + (result.link ? ('<a href="' + result.link) + '">' + result.name + '</a>' : result.name) + '</h2>' : '') +
                 (result.title ? '<div class="title" itemprop="jobTitle">' + result.title + '</div>' : '') +
                 (result.additionalTitles ? '<div class="additionalTitles" itemprop="jobTitle">' + result.additionalTitles + '</div>' : '') +
                 (result.specialty ? '<div class="specialty" itemprop="specialty">' + result.specialty + '</div>' : '') +
@@ -408,4 +324,6 @@ $(function () {
 
         return formattedResult;
     }
+
+} // end of IF around test for deptFacultyDirectorySearch on page so only runs on school/dept faculty listing page(s)
 });

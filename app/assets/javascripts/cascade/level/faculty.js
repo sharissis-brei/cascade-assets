@@ -1,6 +1,10 @@
 $(function () {
-    //NOTE: this script is for the school or dept specific faculty listing pages eg /copa/faculty-directory.aspx, NOT /our-faculty/index.aspx
-	//this is from level/js/faculty.js in Cascade
+    // NOTE: this script is for the school or dept specific faculty listing pages 
+	// eg /copa/faculty-directory.aspx, NOT /our-faculty/index.aspx
+	// this is from level/js/faculty.js in Cascade
+	
+	if ( document.getElementById("deptFacultyDirectorySearch") != null ) {
+		
     var devUrl = "//chapmanfaculty.dev.breilabs.com",
         prodUrl = "//" + window.location.hostname,
         page = 0,
@@ -11,14 +15,11 @@ $(function () {
             if (window.sessionStorage) {
                 switch (sessionStorage.scope) {
                     case "_faculty/all":
-
                         $("#showAll").attr("checked", "checked");
                         break;
                     case "_faculty/tenure":
-
                         $("#tenure").attr("checked", "checked");
-                        break;
-						
+                        break;						
                     default:
                         break;
                 }
@@ -88,16 +89,10 @@ $(function () {
                     return "HSCI";
                 case "/wilkinson/languages/faculty-directory".toLowerCase():
                     return "LANG";
-                //case "/crean/academic-programs/graduate-programs/ma-marriage-family/faculty-directory".toLowerCase():
-                //    return "MFT";
-                //case "/crean/academic-programs/graduate-programs/physician-assistant/faculty-directory".toLowerCase():
-               //     return "PAS";
                 case "/crean/academic-programs/graduate-programs/ma-marriage-family/faculty".toLowerCase():
                     return "MFT";
                 case "/crean/academic-programs/graduate-programs/physician-assistant/faculty".toLowerCase():
                     return "PAS";
-                //case "/scst/crean-school-health/physical-therapy/faculty-directory".toLowerCase():
-                //    return "PHYS";
                 case "/crean/academic-programs/graduate-programs/physical-therapy/faculty".toLowerCase():
                     return "PHYS";
                 case "/crean/academic-programs/undergraduate-programs/ba-psychology/faculty".toLowerCase():
@@ -301,7 +296,8 @@ $(function () {
                         id: data[i].DatatelId
                     }
 
-                    $(".facultyList").append(formatResult(result));
+                    //$(".facultyList").append(formatResult(result));
+					$(".pagingInfo").before(formatResult(result));
                 }
                 if(data.length){
                     var rangeLower = (data[data.length - 1].CurrentPage * resultsPerPage) + 1,
@@ -379,12 +375,10 @@ $(function () {
 
     $("#showAll").bind("change", function () {
         scope = "_faculty/all";
-
     });
 
     $("#tenure").bind("change", function () {
         scope = "_facultysearch/tenure";
-
     });
 
     function formatResult(result) {
@@ -403,46 +397,7 @@ $(function () {
         return formattedResult;
     }
 
+} // end of IF around test for deptFacultyDirectorySearch on page so only runs on school/dept faculty listing page(s)
 });
 
 
-$(function () {
-//THIS function was part of old level/js/script_2013.js file 
- 
-	/* Faculty List Old IE styling 
-    ------------------------------------------------------------------------------------------------*/
-    if ($(".facultyList .facultyMember").length && $("html").hasClass("oldie")) {
-        $(".facultyList .facultyMember:nth-child(odd)").css("margin-right", "45px");
-        $(".facultyList .facultyMember:nth-child(even)").css("margin-right", "0");
-    }
-
-
-    /* Faculty Video Fancybox
-    ------------------------------------------------------------------------------------------------*/
-    if ($(".facultySpotlight>.video[href]").length) {
-        if ($("html").outerWidth() >= 780) {
-            $(".facultySpotlight>.video").fancybox({
-                type: 'iframe'
-            });
-
-            $(window).resize(function () {
-                if ($("html").outerWidth() < 780) {
-                    $.fancybox.close();
-                    $(".facultySpotlight>.video").unbind();
-
-
-                } else {
-                    $(".facultySpotlight>.video").fancybox({
-                        type: 'iframe'
-                    });
-                }
-            });
-        }
-
-    } else {
-        $(".facultySpotlight>.video").click(function (event) {
-            event.preventDefault();
-        });
-    }
-
-});
