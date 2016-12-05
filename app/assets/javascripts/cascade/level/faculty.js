@@ -44,8 +44,10 @@ $(function () {
             switch (relativePath) {
                 case "/business/faculty-research/faculty-directory".toLowerCase():
                     return "SBE";
+				case "/communication/faculty-directory".toLowerCase():
+                    return "SOC";
                 case "/ces/contact-us/faculty-directory".toLowerCase():
-                    return "SOE";
+                    return "CES";
                 case "/copa/faculty-directory".toLowerCase():
                     return "COPA";
                 case "/dodge/about/faculty-directory".toLowerCase():
@@ -77,7 +79,7 @@ $(function () {
                     return "THEA";
                 case "/wilkinson/art/faculty-directory".toLowerCase():
                     return "ARTS";
-                case "/wilkinson/communication-studies/faculty-directory".toLowerCase():
+                case "/communication/faculty-directory".toLowerCase():
                     return "COMM";
                 case "/wilkinson/english/faculty-directory/index".toLowerCase():
                     return "ENGL";
