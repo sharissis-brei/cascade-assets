@@ -58,7 +58,7 @@ $(function () {
                     return "SOP";   
                 case "/crean/faculty-directory".toLowerCase():
                     return "CHBS";
-                case "/wilkinson/about-wilkinson/faculty/faculty-directory".toLowerCase():
+                case "/wilkinson/about/faculty/faculty-directory".toLowerCase():
                     return "CHSS";
                 default:
                     return "";
