@@ -18,11 +18,21 @@ var ChapmanImageFeeds = (function() {
     }
 
     var loadFlickrImages = function() {
+        // Don't load if widget not present.
+        if ( $flickr.length < 1 ) {
+            return false;
+        }
+
         var chapmanFeed = CHAPMAN_BASE_FEED + $flickr.data('feed');
         queryYahooApis(chapmanFeed, flickrCallback);
     };
 
     var loadPicasaImages = function() {
+        // Don't load if widget not present.
+        if ( $picasa.length < 1 ) {
+            return false;
+        }
+
         var chapmanFeed = CHAPMAN_BASE_FEED + $picasa.data('feed');
         queryYahooApis(chapmanFeed, picasaCallback);
     };
@@ -71,7 +81,7 @@ var ChapmanImageFeeds = (function() {
             return populatedImages;
         }
 
-        var feed = results.feed; 
+        var feed = results.feed;
         var isPicasaFeed = feed.id.indexOf('picasa') !== -1;
 
         for (var i = 0; i < 4; i += 1) {
@@ -112,7 +122,7 @@ var ChapmanImageFeeds = (function() {
 
         return populatedImages;
     }
- 
+
     // Public API
     return {
         init: initOnDocumentReady,
