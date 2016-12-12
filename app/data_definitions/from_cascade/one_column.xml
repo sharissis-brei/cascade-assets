@@ -245,7 +245,7 @@
                     <radio-item value="Medium"/>
                     <radio-item value="Dark"/>
                 </text>
-                <text identifier="youtubeShareLink" label="Youtube share link" help-text="Example: https://youtu.be/jhz862KOstA"/>
+                <text identifier="videoShareLink" label="Youtube or Vimeo Share Link" help-text="Example: `https://youtu.be/jhz862KOstA` or `https://vimeo.com/194384917`"/>
                 <group identifier="textFields" label="Text Fields" collapsed="true">
                     <text type="radiobutton" identifier="textAlign" label="Text Align" default="Left">
                         <radio-item value="Left"/>
