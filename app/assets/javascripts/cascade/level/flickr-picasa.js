@@ -5,6 +5,7 @@ var ChapmanImageFeeds = (function() {
     // Constants
     var CHAPMAN_BASE_FEED = 'https://www.chapman.edu/getFeed.ashx?name=';
     var YAHOO_API_ENDPOINT = 'https://query.yahooapis.com/v1/public/yql';
+    var DEFAULT_PICASA_GALLERY_URL = 'https://get.google.com/albumarchive/105740368086394902806';
 
     // Global Attrs
     var $flickr = null;     // Need to select after document ready.
@@ -70,6 +71,14 @@ var ChapmanImageFeeds = (function() {
     var picasaCallback = function(data) {
         var $pcul = $picasa.find('ul');
         var images = populateWidgetWithImages($pcul, data);
+        var fullGalleryUrl = DEFAULT_PICASA_GALLERY_URL;
+
+        // Update See Full Gallery Link.
+        if ( data.query.results.feed.link.length >= 2 ) {
+            fullGalleryUrl = data.query.results.feed.link[1].href;
+        }
+
+        $picasa.find(".more-link").attr("href", fullGalleryUrl);
     };
 
     var populateWidgetWithImages = function($parent, feedData) {
