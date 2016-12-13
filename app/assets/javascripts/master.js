@@ -14,7 +14,6 @@
 //= require cascade/plugins/personalize
 //= require cascade/plugins/respond
 //= require cascade/plugins/super-pager
-//= require cascade/plugins/swf-object
 //= require cascade/plugins/touchwipe
 //= require cascade/level/plugins/tipsy
 
