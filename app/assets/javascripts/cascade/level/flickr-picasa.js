@@ -5,6 +5,7 @@ var ChapmanImageFeeds = (function() {
     // Constants
     var CHAPMAN_BASE_FEED = 'https://www.chapman.edu/getFeed.ashx?name=';
     var YAHOO_API_ENDPOINT = 'https://query.yahooapis.com/v1/public/yql';
+    var DEFAULT_PICASA_GALLERY_URL = 'https://get.google.com/albumarchive/105740368086394902806';
 
     // Global Attrs
     var $flickr = null;     // Need to select after document ready.
@@ -18,11 +19,21 @@ var ChapmanImageFeeds = (function() {
     }
 
     var loadFlickrImages = function() {
+        // Don't load if widget not present.
+        if ( $flickr.length < 1 ) {
+            return false;
+        }
+
         var chapmanFeed = CHAPMAN_BASE_FEED + $flickr.data('feed');
         queryYahooApis(chapmanFeed, flickrCallback);
     };
 
     var loadPicasaImages = function() {
+        // Don't load if widget not present.
+        if ( $picasa.length < 1 ) {
+            return false;
+        }
+
         var chapmanFeed = CHAPMAN_BASE_FEED + $picasa.data('feed');
         queryYahooApis(chapmanFeed, picasaCallback);
     };
@@ -60,6 +71,14 @@ var ChapmanImageFeeds = (function() {
     var picasaCallback = function(data) {
         var $pcul = $picasa.find('ul');
         var images = populateWidgetWithImages($pcul, data);
+        var fullGalleryUrl = DEFAULT_PICASA_GALLERY_URL;
+
+        // Update See Full Gallery Link.
+        if ( data.query.results.feed.link.length >= 2 ) {
+            fullGalleryUrl = data.query.results.feed.link[1].href;
+        }
+
+        $picasa.find(".more-link").attr("href", fullGalleryUrl);
     };
 
     var populateWidgetWithImages = function($parent, feedData) {
@@ -71,7 +90,7 @@ var ChapmanImageFeeds = (function() {
             return populatedImages;
         }
 
-        var feed = results.feed; 
+        var feed = results.feed;
         var isPicasaFeed = feed.id.indexOf('picasa') !== -1;
 
         for (var i = 0; i < 4; i += 1) {
@@ -112,7 +131,7 @@ var ChapmanImageFeeds = (function() {
 
         return populatedImages;
     }
- 
+
     // Public API
     return {
         init: initOnDocumentReady,
