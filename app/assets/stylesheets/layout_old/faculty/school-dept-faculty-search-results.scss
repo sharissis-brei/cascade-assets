@@ -80,8 +80,8 @@
 		}
 		
 		.affiliation{
-			font-size:12px;
-			line-height: 13px;
+			font-size:13px;
+			line-height: 14px;
 		}
 		.affiliation .spacer{
 			margin:0 0 5px 0;
@@ -107,7 +107,7 @@
 				cursor: pointer;
       		}
 		  @include bp(m) {
-			float: right;
+				float: right;
 		  }
     	} //end pagingNavigation
   	} // end pagingInfo
