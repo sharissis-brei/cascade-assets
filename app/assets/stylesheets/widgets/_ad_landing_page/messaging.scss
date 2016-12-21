@@ -12,7 +12,7 @@
   .outer-container {
     @include outer-container;
   }
-  
+
   .text-column {
     @include pad(0 24px);
 
@@ -125,7 +125,8 @@
     @include media($medium-screen) {
       display: inline-block;
       padding: 0;
-      width: 50%;
+      width: auto;
+      max-width: 300px;
     }
   }
 
