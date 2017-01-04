@@ -11,14 +11,14 @@
 }
 
 html {
-	background-repeat: repeat-x;
 	margin: 0;
   padding: 0;
-  padding-top: 45px !important;
   font-size: 100%;
   -webkit-text-size-adjust: 100%;
   -ms-text-size-adjust: 100%;
-  background-image: image-url('window-pattern.gif');
+  background-image: image-url('window-pattern.png');
+  background-repeat: repeat-x;
+  background-position-y: 64px;
   background-color: $cu-light-grey;
   font-family: $font-stack-body;
   overflow-x: hidden;

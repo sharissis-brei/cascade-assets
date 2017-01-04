@@ -21,6 +21,10 @@ module ContentTypes
     # Maps to Content Types/Modular/Ad Landing in Cascade.
     # rubocop:disable Metrics/MethodLength
     def ad_landing
+      # Link static assets for test photo.
+      # For https://github.com/chapmanu/cascade-assets/issues/126
+      link_static_assets
+
       @configuration_set = ConfigurationSet.ad_landing(
         template: '_cascade/templates/modular/ad_landing.html'
       )

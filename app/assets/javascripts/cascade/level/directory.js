@@ -1,6 +1,9 @@
 $(function () {
+    // NOTE: this script is used only for the main listing page /our-faculty/index.aspx, 
+	// not for the school/dept specific listing pages. They use faculty.js.
 
-    //NOTE: this script is used only for the main listing page /our-faculty/index.aspx NOT for the school/dept specific listing pages. They use faculty.js.
+if ( document.getElementById("mainFacultyDirectorySearch") != null ) {
+
     var devUrl = "//chapmanfaculty.dev.breilabs.com",
         prodUrl = "//" + window.location.hostname,
         page = 0,
@@ -89,7 +92,7 @@ $(function () {
                 globalData = data;
                 for (var i = 0; i < data.length; i++) {
                     var v_photo;
-                	if (!data[i].ThumbnailPhoto) {
+                    if (!data[i].ThumbnailPhoto) {
 						v_photo = '/_files/level/img/unisex-silhouette.jpg';
 					}
 					else if (data[i].ThumbnailPhoto == '/') {
@@ -113,7 +116,6 @@ $(function () {
                         image: v_photo,
                         name: $.trim(data[i].FacFullName),
                         title: data[i].Rank,
-                        //additionalTitles: data[i].AdditionalTitles,
                         additionalTitles: splitTitles,
                         affiliation: (function () {
                             var affiliation = [];
@@ -124,19 +126,15 @@ $(function () {
 							var prev_dept = '';
 							var final_school_dept = '';
                             for (var j = 0; j < (data[i].Depts.length); j++) {
-                                //affiliation.push(data[i].Depts[j].SchoolName);
 								cntr = cntr + 1;
 								school = data[i].Depts[j].SchoolName ? data[i].Depts[j].SchoolName : '';
-								//dept = '';
                                 if (data[i].Depts[j].DisplayDeptName != '' && data[i].Depts[j].DisplayDeptName != 'Conservatory of Music') {
                                     dept = data[i].Depts[j].FacGroupName ? data[i].Depts[j].DisplayDeptName + ', ' + data[i].Depts[j].FacGroupName: data[i].Depts[j].DisplayDeptName;
-									//dept = 'dept1';
                                 }
 								else {
                                      dept = data[i].Depts[j].FacGroupName ? data[i].Depts[j].FacGroupName : '';
-									 //dept = 'dept2';
                                 }							                    
-                                //
+
 								if (cntr == 1) {
 									prev_school = data[i].Depts[j].SchoolName ? data[i].Depts[j].SchoolName : '';
 									prev_dept = dept;	 
@@ -277,7 +275,6 @@ $(function () {
 
     $("#allFaculty").click(function () {
         if ($("#allFaculty:checked").length) {
-            //$("select").val($('options:first').val());
             $("#directorySearchBox, #collegeFilter, #departmentFilter").attr("disabled", "disabled");
         }
         else{            
@@ -324,17 +321,16 @@ $(function () {
     }
 
     function formatResult(result) {
-        var imgAlt = result.name ? 'Photo of ' + result.name : 'Faculty Member Photo',
-            formattedResult =
+
+        var formattedResult =
             '<div class="result" itemscope itemtype="http://schema.org/Person">' +
-                (result.link ? '<a class="link" href="' + result.link + '" itemprop="url">VIEW PROFILE</a>' : '') +
-                (result.image ? '<div class="profilePicture"><img class="image" width="80px" src="' + result.image + '" itemprop="image" alt="' + imgAlt + '"></div>' : '') +
+                (result.link ? '<a class="directorySearchButton button red" href="' + result.link + '" itemprop="url">View Profile</a>' : '') +
+                (result.image ? '<div class="profilePicture"><img class="image" width="80px" src="' + result.image + '"alt="' + result.name + '" itemprop="image"/></div>' : '') +
                 (result.name ? '<div class="name" itemprop="name">' + result.name + '</div>' : '') +
                 (result.title ? '<div class="title" itemprop="jobTitle">' + result.title + '</div>' : '') +
                 (result.additionalTitles ? '<div class="additionalTitles" itemprop="jobTitle">' + result.additionalTitles + '</div>' : '') +
-                (result.affiliation ? '<div class="affiliation" itemprop="affiliation" style="margin-top:5px;">' + result.affiliation + '</div>' : '') +
-        //(result.phone ? '<div class="phone" itemprop="telephone">' + result.phone + '</div>' : '') +
-                (result.email ? '<a class="email" href="mailto:' + result.email + '" itemprop="email">' + result.email + '</a>' : '') +
+                (result.affiliation ? '<div class="affiliation" itemprop="affiliation">' + result.affiliation + '</div>' : '') +
+                (result.email ? '<div class="email" itemprop="email"><a class="email" href="mailto:' + result.email + '" itemprop="email">' + result.email + '</a></div>' : '') +
             '</div>';
 
         return formattedResult;
@@ -358,5 +354,6 @@ $(function () {
             if (callNow) func.apply(context, args);
         };
     };
-
+	
+} // end of IF around test for mainFacultyDirectorySearch on page so only runs on main faculty listing page
 });

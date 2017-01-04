@@ -1,47 +1,43 @@
+//used by main listing for faculty directory at /our-faculty (NOT the school/dept listing pages)
+
 .searchResults {
   padding: 0 20px 20px 20px;
   margin: 0 0 20px 0;
   background-color: $white;
-  .ie7 & {
-    zoom: 1;
-    .pagingInfo .pagingNavigation {
-      color: $cu-red;
-      margin-top: -17px;
-    }
-  }
+  
   .summary {
     border-bottom: 1px dotted #565555;
-    padding: 10px 0 10px 0;
-    .results {
-      // font-family: "Open Sans";
+    padding: 10px 0 10px 0;    
+	.results {
       font-size: 16px;
-    }
+    } 
+	
     .resultsFor {
-      // font-family: Arial;
       font-style: italic;
       font-size: 14px;
       border-left: 1px solid $black;
       margin: 0 0 0 10px;
       padding: 0 0 0 10px;
     }
-  }
+  } // end summary
+  
   .result {
     padding: 15px 0 15px 85px;
     border-bottom: 1px solid $cu-border;
-    min-height: 80px;
+    min-height: 120px;
     position: relative;
-    color: #4a4949;
-    font-size: 14px;
-    line-height: 1.2;
-    .link {
-      display: block;
-      float: right;
-      padding: 5px 15px 5px 15px;
-      background-color: #8f0c30;
-      color: $white;
-      // font-family: "Open Sans";
-      font-size: 11px;
-      font-weight: 800;
+    line-height: 1.1;
+	
+	.affiliation {
+			margin-top:5px
+	}
+    .button {
+		display: block;
+		float: right;
+		border-bottom: none;
+		margin-left: 5px;
+		padding:10px;
+		max-width: 120px;
     }
     .profilePicture {
       position: absolute;
@@ -53,16 +49,15 @@
     }
     .image {
       position: absolute;
-      top: 15px;
+      top: 10px;
       left: 0;
     }
     .name {
       font-size: 18px;
     }
-    .email {
-      text-decoration: underline;
-    }
-  }
+
+  } // end result
+  
   .pagingInfo {
     margin: 10px 0 0 0;
     .pagingNavigation {
@@ -81,5 +76,6 @@
         float: right;
       }
     }
-  }
+  } // end pagingInfo
+  
 }

@@ -1,195 +1,196 @@
-/* from old profile_2013.css and one class from level_2013.css. For faculty profile page (not listing pages) */
+/* For individual faculty profile pages (not listing pages)
+	from old profile_2013.css and one class from level_2013.css */ 
 
-.facultyProfile  {
-	font-size: 14px;
-}
-.facultyProfile h2 {
-	font-size: 14px;
-}
-
-.facultyProfile .profilePicture {
-    margin:10px 10px 10px 0;
-    overflow:hidden;
-	width: 130px;
-    height:150px;
-    clear:both;
-    position:relative;
-}
-
-.facultyProfile .profilePicture.noPhoto {
-    height: 75px;
-    width: 65px;
-}
-
-.facultyProfile .profilePicture img {
-    position:absolute;
-    max-width:206px;
-	border: 5px solid white;
-    -webkit-box-shadow: 0px 0px 7px #434343;
-    -moz-box-shadow: 0px 0px 7px #434343;
-    box-shadow: 0px 0px 7px #434343;
-}
-
-.facultyProfile .credit {
-	font-size: 12px;
-} 
-
-.facultyProfile .jobTitle{
-    font-weight:normal;
-    font-size:14px;
-    margin: 0;
-		line-height:17px;
-}
-
-.facultyProfile div[itemprop="affiliation"]{
-    font-size:16px;   
-    max-width:600px;
-}
-
-.facultyProfile div[itemprop="affiliation"]:first-child{
-    margin: 15px 0 0 0;
-}
-
-.facultyProfile div[itemprop="college"]{
-	padding-bottom:5px; 
-	font-size:14px;
-}
-
-.facultyProfile .honors{
-    font-size:15px;
-    margin:10px 0 0 0;
-}
-
-.facultyProfile dl{
-    margin:10px 0 10px 0;  
-}
-
-.facultyProfile .noFloat{
-    margin: 10px 0 10px 0;   
-    width: 70%;
-}
-
-.facultyProfile dt{
-    font-weight:bold;
-    float:left;
-    clear:left;
-    margin:0 5px 5px 0;
-}
-
-.facultyProfile dd{
-    padding:0;
-    margin:0;
-    float:left;
-}
-
-.facultyProfile .video {
-    position: relative;
-    padding-bottom: 56.25%;
-    padding-top: 30px;
-    height: 0;
-    overflow: hidden;
-}
-
-.facultyProfile .video iframe, .facultyProfile .video object, .facultyProfile .video embed {
-    position: absolute;
-    top: 50px;
-    left: 0;
-    width: 100%;
-    height: 100%;
-}
-
-.facultyProfile .social{
-    margin:10px 0 0 0;
-}
-
-.facultyProfile .contactInfo {
-     max-width: 500px; 
-}
-
-.facultyProfile dd.scholarlyWork {
-    padding: 10px 15px 10px 30px;
-    text-indent: -15px;
-}
-
-.facultyProfile dd.scholarlyWork div {
-    display: inline;
-}
-
-.facultyProfile dd.scholarlyWork div:after{
-    content: '.';    
-}
-
-.facultyProfile dd.scholarlyWork div:first-child:after{
-    content:'';   
-}
+.facultyProfile  { 
 	
-//copied these social icon classes from level_2013.css. also new name and folder for image:
-.facultyProfile .social a{
-    float:left;
-    margin:0 10px 0 0;
-    text-indent:-999em;
-    height:26px;
-    width:26px;
-    background-image:url("../images/social_icons_faculty_profile.png");
-    background-repeat:no-repeat;
-}
-
-.facultyProfile .social .facebook{
-    background-position:left top;   
-}
-
-.facultyProfile .social .twitter{
-    background-position:-30px top;   
-}
-
-.facultyProfile .social .linkedIn{
-    background-position:-60px top;   
-}
-
-.facultyProfile .social .rss{
-    background-position:-90px top;   
-}
-
-.facultyProfile .social .flickr{
-    background-position:-120px top;   
-}
-
-.facultyProfile .social .youTube{
-    background-position:-150px top;   
-}
-
-.facultyProfile .social .vimeo{
-    background-position:-180px top;   
-}
-
-.facultyProfile .social .googlePlus{
-    background-position:-210px top;   
-}
-
-.facultyProfile .social .instagram{
-    background-position:-240px top;   
-} 
-
-
-@media only screen and (min-width: 780px) {
-	.facultyProfile .profilePicture {
+	h2 {
+		font-size: 14px;
+	}
+	
+	.profilePicture {
+		margin:10px 10px 10px 0;
+		overflow:hidden;
+		width: 130px;
+		height:150px;
+		clear:both;
+		position:relative;
+		
+		.noPhoto {
+			height: 75px;
+			width: 65px;
+		}
+		
+		img {
+			position:absolute;
+			max-width:206px;
+			border: 10px solid #ffffff;
+			-webkit-box-shadow: 1px 1px 2px 1px rgba(0,0,0,0.2);
+			-moz-box-shadow: 1px 1px 2px 1px rgba(0,0,0,0.2);
+			box-shadow: 1px 1px 2px 1px rgba(0,0,0,0.2);  
+		}
+	
+	}
+	 
+	.credit {
+		font-size: 12px;
+	} 
+	
+	.jobTitle{
+		font-weight:normal;
+		font-size:16px; //set because part of h1 with name so need to be smaller
+		margin-top: 3px;
+		line-height:17px;
+	}
+	
+	div[itemprop="affiliation"]{
+		max-width:600px;
+	}
+	
+	div[itemprop="affiliation"]:first-child{
+		margin: 15px 0 0 0;
+	}
+	
+	.college {
+		padding-bottom:5px; 
+		font-size:14px;
+		line-height:15px;
+	}
+	
+	.honors{
+		margin:10px 0 0 0;
+	}
+	
+	dl{
+		margin:10px 0 10px 0;  
+	}
+	
+	.noFloat{
+		margin: 10px 0 10px 0;   
+		width: 70%;
+	}
+	
+	dt{
+		font-weight:bold;
+		float:left;
+		clear:left;
+		margin:0 5px 5px 0;
+	}
+	
+	dd{
+		padding:0;
+		margin:0;
+		float:left;
+	}
+	
+	.video {
+		position: relative;
+		padding-bottom: 56.25%;
+		padding-top: 30px;
+		height: 0;
+		overflow: hidden;
+	}
+	
+	.video iframe, .video object, .video embed {
+		position: absolute;
+		top: 50px;
+		left: 0;
+		width: 100%;
+		height: 100%;
+	}
+	
+	.social{
+		margin:10px 0 0 0;
+	}
+	
+	.contactInfo {
+		 max-width: 500px; 
+	}
+	
+	dd.scholarlyWork {
+		padding: 10px 15px 10px 30px;
+		text-indent: -15px;
+	}
+	
+	dd.scholarlyWork div {
+		display: inline;
+	}
+	
+	dd.scholarlyWork div:after{
+		content: '.';    
+	}
+	
+	dd.scholarlyWork div:first-child:after{
+		content:'';   
+	}
+		
+	//copied these social icon classes from level_2013.css. also new name and folder for image:
+	.social {
+		a {
+			float:left;
+			margin:0 10px 0 0;
+			text-indent:-999em;
+			height:26px;
+			width:26px;
+			background-image: image-url('social_icons_faculty_profile.png');
+			background-repeat:no-repeat;
+		}
+		.facebook{
+			background-position:left top;   
+		}
+		
+		.twitter{
+			background-position:-30px top;   
+		}
+		
+		.linkedIn{
+			background-position:-60px top;   
+		}
+		
+		.rss{
+			background-position:-90px top;   
+		}
+		
+		.flickr{
+			background-position:-120px top;   
+		}
+		
+		.youTube{
+			background-position:-150px top;   
+		}
+		
+		.vimeo{
+			background-position:-180px top;   
+		}
+		
+		.social .googlePlus{
+			background-position:-210px top;   
+		}
+		
+		.instagram{
+			background-position:-240px top;   
+		} 
+	}
+	
+	@include bp(m) {
+		.profilePicture {
 			position: absolute;
 			top: 50px;
 			right: 10px;
 			float: none;
 		}
-}
+	}
+	
+} 
+// end of facultyProfile parent class
 
-
-.large_faculty_photo .profilePicture{
-    height:auto;
-    width:auto;
-	 max-width:206px;    
-}
-
-.large_faculty_photo .noFloat{
-}
-
-.large_faculty_photo .profilePicture img{
-    position:static;    
-}
+.large_faculty_photo {
+	.profilePicture {
+		height:auto;
+		width:auto;
+	 	max-width:206px;
+		
+		img {
+			position:static;    
+		}   
+	}
+} // end of large_faculty_photo override
