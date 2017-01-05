@@ -83,7 +83,7 @@ module ContentTypes
         # TODO: convert these to cascade_format action.
         'OMNI-NAV' => render_static_partial('widgets/shared/omninav'),
         'NAVIGATION' => render_static_partial('widgets/shared/navigation'),
-        'PRIMARY CONTENT' => '<h2>PRIMARY CONTENT GOES HERE!</h2>',
+        'PRIMARY CONTENT' => render_static_one_column_primary_content,
         'GLOBAL FOOTER' => render_static_partial('widgets/shared/footer')
       }
 
@@ -131,13 +131,13 @@ module ContentTypes
         'GOOGLE_ANALYTICS' => '<!-- _chapman_common:_cascade/blocks/ANALYTICS-TRACKING -->',
         'JQUERY' => cascade_block('_cascade/blocks/html/jquery'),
         'JUMP LINK' => cascade_block('_cascade/blocks/html/jump_link'),
-        'LEFT COLUMN CONTENT' => 'TODO: _cascade/formats/modular/LeftColumnContent',
+        'LEFT COLUMN CONTENT' => render_static_two_column_left_column,
         'MASTHEAD' => cascade_format('_cascade/formats/level/masthead'),
         'META VIEWPORT' => cascade_block('_cascade/blocks/html/global_meta_viewport'),
         'OG_TAGS' => '<!-- TODO: _cascade/formats/Open Graph And Canonical Tags -->',
         'PAGE WRAPPER CLOSE' => cascade_format('_cascade/formats/modular/page_wrapper_close'),
         'PAGE WRAPPER OPEN' => cascade_format('_cascade/formats/modular/page_wrapper_open'),
-        'PRIMARY CONTENT' => '<h2>TODO: _cascade/formats/modular/PrimaryContent</h2>',
+        'PRIMARY CONTENT' => render_static_two_column_primary_content,
         'SOCIAL ACCOUNTS' => 'TODO: _cascade/formats/level/social_accounts',
 
         # TODO: convert these to cascade_format action.
@@ -187,15 +187,15 @@ module ContentTypes
         'GOOGLE_ANALYTICS' => '<!-- _chapman_common:_cascade/blocks/ANALYTICS-TRACKING -->',
         'JQUERY' => cascade_block('_cascade/blocks/html/jquery'),
         'JUMP LINK' => cascade_block('_cascade/blocks/html/jump_link'),
-        'LEFT COLUMN CONTENT' => 'TODO: _cascade/formats/modular/LeftColumnContent',
+        'LEFT COLUMN CONTENT' => render_static_three_column_left_column,
         'LEFT NAV' => 'TODO: _cascade/formats/level/LeftNav_Velocity',
         'MASTHEAD' => cascade_format('_cascade/formats/level/masthead'),
         'META VIEWPORT' => cascade_block('_cascade/blocks/html/global_meta_viewport'),
         'OG_TAGS' => '<!-- TODO: _cascade/formats/Open Graph And Canonical Tags -->',
         'PAGE WRAPPER CLOSE' => cascade_format('_cascade/formats/modular/page_wrapper_close'),
         'PAGE WRAPPER OPEN' => cascade_format('_cascade/formats/modular/page_wrapper_open'),
-        'PRIMARY CONTENT' => '<h2>TODO: _cascade/formats/modular/PrimaryContent</h2>',
-        'RIGHT COLUMN CONTENT' => 'TODO: _cascade/formats/modular/RightColumnContent',
+        'PRIMARY CONTENT' => render_static_three_column_primary_content,
+        'RIGHT COLUMN CONTENT' => render_static_three_column_right_column,
         'SOCIAL ACCOUNTS' => 'TODO: _cascade/formats/level/social_accounts',
 
         # TODO: convert these to cascade_format action.
@@ -209,7 +209,6 @@ module ContentTypes
     # rubocop:enable Metrics/MethodLength, Metrics/AbcSize
 
     private
-
     # rubocop:disable Metrics/MethodLength
     # TODO: Replace with more Cascadesque rendering.
     def render_static_ad_landing_primary_content
@@ -229,13 +228,90 @@ module ContentTypes
 </div>
 HTML
 
-      format(primary_content,
-             'Master of Business Administration',
-             render_static_partial('widgets/ad_landing_page/messaging_with_video'),
-             render_static_partial('widgets/ad_landing_page/messaging_with_image'),
-             render_static_partial('widgets/ad_landing_page/feature_points'),
-             render_static_partial('widgets/ad_landing_page/excerpt'),
-             render_static_partial('widgets/ad_landing_page/messaging_only'))
+    format(primary_content,
+           'Master of Business Administration',
+           render_static_partial('widgets/ad_landing_page/messaging_with_video'),
+           render_static_partial('widgets/ad_landing_page/messaging_with_image'),
+           render_static_partial('widgets/ad_landing_page/feature_points'),
+           render_static_partial('widgets/ad_landing_page/excerpt'),
+           render_static_partial('widgets/ad_landing_page/messaging_only'))
+    end
+
+    def render_static_one_column_primary_content
+      # This reproduces content from static sample version
+      format("%s %s %s %s %s",
+             render_static_partial('widgets/single_column/call_to_action_block'),
+             render_static_partial('widgets/single_column/chapman_events_feed'),
+             render_static_partial('widgets/single_column/messaging_1_column_facts'),
+             render_static_partial('widgets/single_column/messaging_2_column_youtube_video'),
+             render_static_partial('widgets/single_column/messaging_2_column_vimeo_video'))
+    end
+
+    def render_static_two_column_primary_content
+      # This reproduces content from static sample version
+      format("%s %s %s %s %s %s %s %s %s %s %s %s",
+             render_static_partial('widgets/primary_content/wysiwyg_editor_3'),
+             render_static_partial('widgets/primary_content/collapsables_1'),
+             render_static_partial('widgets/primary_content/collapsables_2'),
+             render_static_partial('widgets/primary_content/collapsables_3'),
+             render_static_partial('widgets/primary_content/funnel_1up_boxes_1'),
+             render_static_partial('widgets/primary_content/funnel_2up_boxes_1'),
+             render_static_partial('widgets/primary_content/personnel_region_1'),
+             render_static_partial('widgets/primary_content/personnel_region_2'),
+             render_static_partial('widgets/primary_content/form_1'),
+             render_static_partial('widgets/primary_content/logo_image_rotator_1'),
+             render_static_partial('widgets/primary_content/featured_news_events_feed_1'),
+             render_static_partial('widgets/primary_content/wysiwyg_anchor_links'))
+    end
+
+    def render_static_two_column_left_column
+      # This reproduces content from the static sample version
+      format("%s %s",
+        render_static_partial('widgets/left_column/callout_1'),
+        render_static_partial('widgets/left_column/callout_2'))
+    end
+
+    def render_static_three_column_primary_content
+      # This reproduces content from static sample version
+      format("%s %s %s %s %s %s %s %s %s %s %s %s %s %s %s",
+             render_static_partial('widgets/primary_content/wysiwyg_editor_3'),
+             render_static_partial('widgets/primary_content/collapsables_1'),
+             render_static_partial('widgets/primary_content/collapsables_2'),
+             render_static_partial('widgets/primary_content/funnel_1up_boxes_1'),
+             render_static_partial('widgets/primary_content/funnel_2up_boxes_1'),
+             render_static_partial('widgets/primary_content/carousel_1'),
+             render_static_partial('widgets/primary_content/carousel_2'),
+             render_static_partial('widgets/primary_content/form_1'),
+             render_static_partial('widgets/primary_content/personnel_region_1'),
+             render_static_partial('widgets/primary_content/personnel_region_2'),
+             render_static_partial('widgets/primary_content/tabs_1'),
+             render_static_partial('widgets/primary_content/three_photo_callout_1'),
+             render_static_partial('widgets/primary_content/twitter_feed_1'),
+             render_static_partial('widgets/primary_content/logo_image_rotator_1'),
+             render_static_partial('widgets/primary_content/featured_news_events_feed_1'))
+    end
+
+    def render_static_three_column_left_column
+      # This reproduces content from static sample version
+      format("%s %s %s %s %s %s",
+             render_static_partial('widgets/left_column/callout_1'),
+             render_static_partial('widgets/left_column/callout_2'),
+             render_static_partial('widgets/left_column/callout_3'),
+             render_static_partial('widgets/left_column/calls_to_action_1'),
+             render_static_partial('widgets/left_column/calls_to_action_2'),
+             render_static_partial('widgets/left_column/news_events_1'))
+    end
+
+    def render_static_three_column_right_column
+      # This reproduces content from static sample version
+      format("%s %s %s %s %s %s %s",
+             render_static_partial('widgets/right_column/action_buttons'),
+             render_static_partial('widgets/right_column/callout_box_1'),
+             render_static_partial('widgets/right_column/callout_box_2'),
+             render_static_partial('widgets/right_column/flickr_gallery'),
+             render_static_partial('widgets/right_column/picasa_gallery'),
+             render_static_partial('widgets/right_column/simple_form'),
+             render_static_partial('widgets/right_column/logo_image_rotator_1'))
     end
     # rubocop:enable Metrics/MethodLength
   end
