@@ -32,7 +32,6 @@ class ConfigurationSet < Tableless
   end
 
   def self.two_column(options={})
-    # default_template_path = '_cascade/templates/modular/two_column.html'
     configuration_set = ConfigurationSet.new(name: '2 Column')
     configuration_set.set_defaults
     configuration_set.template = options.fetch(:template, 
@@ -41,7 +40,6 @@ class ConfigurationSet < Tableless
   end
 
   def self.three_column(options={})
-    # default_template_path = '_cascade/templates/modular/three_column.html'
     configuration_set = ConfigurationSet.new(name: '3 Column')
     configuration_set.set_defaults
     configuration_set.template = options.fetch(:template, 
