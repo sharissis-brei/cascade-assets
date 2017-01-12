@@ -10,6 +10,10 @@ h1, h2, h3, h4, h5, h6 {
 
 /* Call to action buttons */
 
+.homepage .section {
+  padding: 50px 0;
+}
+
 .homepage {
   a.button {
     display: inline-block;
@@ -63,9 +67,11 @@ h1, h2, h3, h4, h5, h6 {
     -moz-box-sizing: border-box;
     box-sizing: border-box;
   }
+
   .maxWidth {
     margin: 0 15px;
   }
+
   #mastheadNavigationWrapper {
     position: relative;
     height: 0px;
@@ -155,14 +161,13 @@ h1, h2, h3, h4, h5, h6 {
   .section {
     position: relative;
     .heading {
-      font-size: 28px;
-      line-height: 28px;
-      text-transform: none;
-      margin: 0;
+      font-size: 32px;
+      line-height: 38px;
+      margin: 0 15px 15px;
     }
     .subheading {
-      font-size: 18px;
-      line-height: 18px;
+      font-size: 22px;
+      line-height: 28px;
       text-transform: none;
       margin: 0;
     }
@@ -178,14 +183,11 @@ h1, h2, h3, h4, h5, h6 {
         color: $grey;
       }
       .heading {
-        color: $grey;
-        font-size: 18px;
-        line-height: 18px;
-        margin: 40px 0 0 0;
+        font-size: 22px;
+        line-height: 28px;
         text-align: center;
       }
       .subheading {
-        color: $grey;
         font-size: 18px;
         line-height: 18px;
         margin: 0 0 40px 0;
@@ -194,20 +196,6 @@ h1, h2, h3, h4, h5, h6 {
       .heading, .subheading {
         color: $grey;
       }
-      .heading {
-        color: $grey;
-        font-size: 18px;
-        line-height: 18px;
-        margin: 40px 0 0 0;
-        text-align: center;
-      }
-      .subheading {
-        color: $grey;
-        font-size: 18px;
-        line-height: 18px;
-        margin: 0 0 40px 0;
-        text-align: center;
-      }
     }
     .actions {
       text-align: center;
@@ -215,8 +203,8 @@ h1, h2, h3, h4, h5, h6 {
       .button {
         background-size: 15px;
         background-position: 15px center;
-        padding-left: 35px;
-        padding-right: 20px;
+        padding-left: 25px;
+        padding-right: 25px;
         margin: 5px;
         .apply {
           background-image: image-url('file6_white_15.png');
@@ -254,12 +242,12 @@ h1, h2, h3, h4, h5, h6 {
       -moz-box-sizing: border-box;
       box-sizing: border-box;
       h3 {
+        font-family: $font-stack-heading;
         font-weight: 800;
         padding: 0;
-        margin: 0;
-        text-transform: uppercase;
-        font-size: 24px;
-        line-height: 26px;
+        margin: 0 0 10px 0;
+        font-size: 18px;
+        line-height: 24px;
       }
       img {
         width: 100%;
@@ -284,19 +272,17 @@ h1, h2, h3, h4, h5, h6 {
   .homepage {
     .section {
       .heading {
-        font-size: 32px;
-        line-height: 32px;
+        font-size: 42px;
+        line-height: 50px;
       }
       .subheading {
-        font-size: 22px;
-        line-height: 22px;
+        font-size: 26px;
+        line-height: 34px;
       }
       &.light-bg {
         .heading {
-          font-size: 24px;
-          line-height: 24px;
-          margin: 75px 0 0 0;
-          font-weight: 800;
+          font-size: 28px;
+          line-height: 36px;
         }
         .subheading {
           font-size: 24px;
@@ -312,28 +298,32 @@ h1, h2, h3, h4, h5, h6 {
 @media only screen and (min-width: 980px) {
   .homepage {
     .section {
+      padding: 75px 0;
       .heading {
-        font-size: 56px;
-        line-height: 56px;
+        font-size: 52px;
+        line-height: 62px;
       }
       .subheading {
-        font-size: 32px;
-        font-family: $font-stack-heading;
-        line-height: 32px;
+        font-size: 28px;
+        line-height: 40px;
       }
       &.light-bg {
         .heading {
           font-size: 32px;
-          line-height: 32px;
-          margin: 75px 0 0 0;
+          line-height: 42px;
         }
         .subheading {
-          font-size: 32px;
-          line-height: 32px;
+          font-size: 26px;
+          line-height: 38px;
           margin: 0 0 75px 0;
         }
       }
+      .third h3 {
+        font-size: 24px;
+        line-height: 30px;
+      }
     }
+    
   }
 }
 
@@ -342,11 +332,11 @@ h1, h2, h3, h4, h5, h6 {
     .section {
       .heading {
         font-size: 64px;
-        line-height: 64px;
+        line-height: 74px;
       }
       .subheading {
         font-size: 32px;
-        line-height: 32px;
+        line-height: 46px;
       }
     }
   }
@@ -374,6 +364,39 @@ h1, h2, h3, h4, h5, h6 {
         height: auto;
         margin: 0 0 20px 0;
       }
+    }
+  }
+}
+
+/* Column Seconds */
+
+@media only screen and (min-width: 980px) {
+  .homepage {
+    .section .second {
+      float: left;
+      width: 57%;
+      margin: 0 15px;
+    }
+    .section .second:last-child {
+      width: auto;
+      display: block;
+      border-left: 2px solid #ffffff;
+      min-height: 375px;
+    }
+  }    
+}
+
+@media only screen and (min-width: 1180px) {
+  .homepage {
+    .section .second {
+      float: left;
+      margin: 0 25px;
+    }
+    .section .second:last-child {
+      overflow: hidden;
+      bottom: 0;
+      width: auto;
+      min-height: 450px;
     }
   }
 }

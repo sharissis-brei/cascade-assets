@@ -16,14 +16,13 @@
 
   #featured_stories {
     width: 100%;
-    padding: 25px 0;
     position: relative;
     z-index: 30;
     overflow: auto;
     .announcement {
       overflow: auto;
       clear: both;
-      margin: 0 0 25px 0;
+      margin: 0 0 15px 0;
       padding: 10px;
       .details {
         float: none;
@@ -43,8 +42,8 @@
       .title {
         text-transform: none;
         color: #98002e;
-        font-size: 24px;
-        line-height: 24px;
+        font-size: 22px;
+        line-height: 26px;
         margin: 0;
       }
       .source {
@@ -74,7 +73,6 @@
 @media only screen and (min-width: 680px) {
   .homepage {
     #featured_stories {
-      padding: 50px 0;
       .third {
         display: block;
         width: 50%;
@@ -93,9 +91,6 @@
           margin-right: 2%;
           width: 33%;
         }
-      }
-      .actions {
-        padding: 25px 0 0 0;
       }
     }
   }
@@ -202,7 +197,7 @@
       .title {
         margin: 0 20px 0 20px;
         font-size: 18px;
-        line-height: 20px;
+        line-height: 22px;
       }
       .publication_date {
         margin: 5px 0 20px 24px;

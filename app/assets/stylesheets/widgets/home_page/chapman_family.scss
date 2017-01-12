@@ -4,12 +4,11 @@
 
 .homepage {
   #chapmanFamily {
-    margin-bottom: 50px;
-    .heading {
-      margin: 30px auto 0 auto;
-    }
-    .story {
+    .third {
       display: none;
+    }
+    .third:last-of-type {
+      display: block;
     }
     h2 {
       margin-top: 0;
@@ -20,8 +19,8 @@
 @media only screen and (min-width: 680px) {
   .homepage {
     #chapmanFamily {
-      .heading {
-        margin: 50px auto;
+      .third {
+        display: block;
       }
       .story {
         display: block;
