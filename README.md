@@ -194,3 +194,16 @@ To speed up page-loading, and thereby development, disable `Left Nav` and `Omni-
 
 - In folder test, click page
 - Edit > Outputs > Uncheck format and block in each region > Submit
+
+### Static Directory Assets
+At times, in order to build a sample page, you'll want to include assets like images or stylesheets that you do not want to be bundled and deployed with the assets under the `app` directory. You can do this by taking advantage of the `static/_files` directory.
+
+Here's an examples used with the Law School Content Type sample (under Two Column Sample Pages on the home page):
+
+This sample page uses the [slideshow template](https://github.com/chapmanu/cascade-assets/blob/development/app/views/_cascade/templates/school_home_pages/slideshow.html) from Cascade. That includes a [stylesheet link](https://github.com/chapmanu/cascade-assets/blob/development/app/views/_cascade/templates/school_home_pages/slideshow.html#L16), `/_files/css/level_2013.css`. This stylesheet is not part of the Cascade Assets bundle. Still, we want to be able to link to this in our sample page, so that it renders the styling more faithfully.
+
+So we put the stylesheet at [/static/_files/css/level_2013.css](https://github.com/chapmanu/cascade-assets/blob/development/static/_files/css/level_2013.css).
+
+At runtime, the [application controller will move this directory](https://github.com/chapmanu/cascade-assets/blob/development/app/controllers/content_types/school_home_pages_controller.rb#L12) under the `public` directory that is accessible under dev server's document root. And, thus, we can use the [same layout template](https://github.com/chapmanu/cascade-assets/blob/development/app/views/_cascade/templates/school_home_pages/slideshow.html) that Cascade uses without any changes.
+
+This can also be used for other assets that you don't want bundled and deployed to Cascade, like those to style the Cascade Assets dashboard.
