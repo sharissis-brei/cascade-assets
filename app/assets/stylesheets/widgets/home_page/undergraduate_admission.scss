@@ -5,7 +5,7 @@
 .homepage {
   ul.statistics {
     list-style-type: none;
-    margin: 75px 0;
+    margin: 50px 0;
     text-align: center;
     overflow: auto;
     box-sizing: initial;
@@ -40,6 +40,9 @@
 
 @media only screen and (min-width: 680px) {
   .homepage {
+    .subheading {
+      margin: 0 75px;
+    }
     /* Break stats and label onto two lines */
     ul.statistics li {
       .bigstat {
@@ -92,6 +95,9 @@
 
 @media only screen and (min-width: 980px) {
   .homepage {
+    ul.statistics {
+      margin: 75px 0;
+    }
     ul.statistics li {
       .bigstat {
         font-size: 38px;
@@ -137,10 +143,20 @@
   background: #111111 image-url('undergrad-admissions.jpg') no-repeat center;
   background-size: cover;
   color: #FFFFFF;
-  padding: 65px 0 140px 0;
-  text-align: center;
   .maxWidth {
     margin: 0 auto;
+  }
+  .heading {
+    font-weight: 400;
+    text-transform: uppercase;
+    text-align: center;
+  }
+  .subheading {
+    margin: 0 50px;
+    font-family: 'minion-pro', serif;
+    font-style: italic;
+    font-weight: 400;
+    text-align: center;
   }
 }
 
