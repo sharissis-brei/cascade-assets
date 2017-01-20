@@ -77,7 +77,12 @@ $(function () {
               $(".allNews")
                   .attr("href", "http://blogs.chapman.edu/scst");
               break;
-          case "Students":
+          case "SOC":
+              newsFeedUrl = "http://www.chapman.edu/getFeed.ashx?name=newsSOC";
+              $(".allNews")
+                  .attr("href", "http://blogs.chapman.edu/communication");
+              break;
+		  case "Students":
               newsFeedUrl = "http://www.chapman.edu/getFeed.ashx?name=newsStudents";
               $(".allNews")
                   .attr("href", "http://blogs.chapman.edu/happenings");
@@ -164,6 +169,11 @@ $(function () {
                 $(".allEvents")
                     .attr("href", "https://events.chapman.edu/?group_id=11,73,29,92,31,163,10");
                 break;
+			case "CDC":
+                eventsFeedUrl = "http://www.chapman.edu/getFeed.ashx?name=eventCDC";
+                $(".allEvents")
+                    .attr("href", "https://events.chapman.edu/?group_id=14");
+                break;
             case "CES":
                 eventsFeedUrl = "http://www.chapman.edu/getFeed.ashx?name=eventCES";
                 $(".allEvents")
@@ -213,6 +223,11 @@ $(function () {
                 eventsFeedUrl = "http://www.chapman.edu/getFeed.ashx?name=eventSCHMID";
                 $(".allEvents")
                     .attr("href", "https://events.chapman.edu/?group_id=36,101,120,22,123,129,112");
+                break;
+			case "SOC":
+                eventsFeedUrl = "http://www.chapman.edu/getFeed.ashx?name=eventSOC";
+                $(".allEvents")
+                    .attr("href", "https://events.chapman.edu/?group_id=146");
                 break;
             case "STUDENTS":
                 eventsFeedUrl = "http://www.chapman.edu/getFeed.ashx?name=eventSTUDENTS";
