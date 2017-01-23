@@ -21,11 +21,11 @@
 
   #social_follow_us {
     .banner {
-      background-image: image-url('default_follow_us.png');
+      background-image: image-url('communication_follow_us.png');
     }
     li span {
       &.hover_state, &.inactive_state {
-        background-image: image-url('default_icons.png');
+        background-image: image-url('communication_icons.png');
       }
     }
   }
