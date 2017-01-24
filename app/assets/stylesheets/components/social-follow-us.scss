@@ -5,9 +5,7 @@
   z-index: 1000;
   float: right;
   margin-top: 0;
-  background: $cu-light-grey;
   padding-left: 8px;
-  padding-right: 8px;
   @include vendorize(border-radius, 4px);
   ul {
     padding: 0;
@@ -15,11 +13,10 @@
   }
   .banner {
     position: absolute;
-    width: 73px;
+    width: 105px;
     height: 28px;
     background: image-url('default_follow_us.png');
-    margin-left: -8px;
-    left: -57px;
+    left: -93px;
     top: 6px;
   }
   li {
@@ -27,7 +24,7 @@
     height: 25px;
     position: relative;
     padding: 0;
-    margin: 6px 7px 0 0 !important;
+    margin: 6px 0 0 0 !important;
     border: none;
     cursor: pointer;
     span {
@@ -73,7 +70,7 @@
       margin-right: 0 !important;
     }
     &.last {
-      margin-right: 0 !important;
+      margin: 0 0 0 -1px !important;
     }
     &.facebook span {
       &.inactive_state {
@@ -141,6 +138,6 @@
     }
   }
   @include bp(m) {
-    margin-top: -38px;
+    margin-top: -35px;
   }
 }
