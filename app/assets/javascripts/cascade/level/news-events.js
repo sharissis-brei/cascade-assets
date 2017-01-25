@@ -5,7 +5,7 @@ $(function () {
 	var toShortMonthName_fromstring = utils.toShortMonthName_fromstring;
 
 	/* Populate news from Wordpress RSS feed (converted to JSON with YQL)
-  ------------------------------------------------------------------------------------------------*/
+  	------------------------------------------------------------------------------------------------*/
 	if ($(".news").length) {
 
 		var newsFeedUrl = "http://www.chapman.edu/getFeed.ashx?name=newsHappenings",
@@ -410,10 +410,9 @@ $(function () {
   // Show today label if appropriate
   var todayLabel = function () {
       var today = new Date(),
-          tomorrow = new Date(),
-          month = ["JAN", "FEB", "MAR", "APR", "MAY", "JUN", "JUL", "AUG", "SEP", "OCT", "DEC"];
-
-      tomorrow.setDate(tomorrow.getDate() + 1);
+      	tomorrow = new Date(),
+        month = ["JAN", "FEB", "MAR", "APR", "MAY", "JUN", "JUL", "AUG", "SEP", "OCT", "DEC"];
+		tomorrow.setDate(tomorrow.getDate() + 1);
 
       // Today
       $(".newsEvents .date").each(function (index) {
@@ -437,16 +436,12 @@ $(function () {
           }
       });
   };
-  // todayLabel();
 
-	$(".events .copy").each(function (index) {
-	    $(this).html($(this).text());
-	});
+  $(".events .copy").each(function (index) {
+  	$(this).html($(this).text());
+  });
 
-	$ellipsis = $(".ellipsis");
+  $ellipsis = $(".ellipsis");
   if ($ellipsis) $ellipsis.ellipsis();
-
-	// Need to add this after the ellipsis takes effect
-	// $(".newsEventsContent>li, .tabContent>li").css("display", "none");
 
 });
