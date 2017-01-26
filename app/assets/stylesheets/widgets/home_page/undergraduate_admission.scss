@@ -17,6 +17,16 @@
       max-width: 100%;
       padding: 10px;
       background: url('../img/gray_50.png');
+
+      /*
+       * This is required for IE since IE defaults to border-box, which will shrink
+       * content to fit in width. For more info on this setting, see:
+       * http://blog.teamtreehouse.com/box-sizing-secret-simple-css-layouts
+       *
+       * Fixed this issue: https://github.com/chapmanu/cascade-assets/issues/140
+       */
+      box-sizing: content-box;
+
       &:last-of-type {
         margin-right: 0;
       }
