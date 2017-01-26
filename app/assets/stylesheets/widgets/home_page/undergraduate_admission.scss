@@ -9,7 +9,7 @@
     text-align: center;
     overflow: auto;
     box-sizing: initial;
-    /*max-width:50%; */
+    /* max-width:50%; */
     p {
       margin: 0;
     }
@@ -27,12 +27,14 @@
         color: #FFFFFF;
         margin-top: 0px;
         font-weight: 800;
+        white-space: nowrap;
       }
       .label {
         font-size: 18px;
         line-height: 18px;
         font-family: $font-stack-heading;
         color: #FFFFFF;
+        word-wrap: normal;
       }
     }
   }
