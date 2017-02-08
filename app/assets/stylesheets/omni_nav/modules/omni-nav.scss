@@ -249,7 +249,11 @@ a.cu_nav_button {
 	z-index: 99997;
 	background-color: #D9D9D9;
 
-	margin-right: 65px;
+	margin-right: 0;
+
+	@include bp(l) {
+		margin-right: 65px;
+	}
 
 	&.open {
 		display: block;
@@ -263,8 +267,8 @@ a.cu_nav_button {
 		display: none;
 		outline: 0;
 		border: none;
+		background: image-url('select-arrow.png'); // IE 8
 		background-color: $cu-silver-grey;
-		background-image: url('/_files/img/select-arrow.png');
 		background-repeat: no-repeat;
 		background-position: center right;
 		-webkit-appearance: none;
@@ -280,7 +284,7 @@ a.cu_nav_button {
 		@include vendorize(box-shadow, none);
 		@include transition(background-color, 0.125s, ease-in-out);
 
-		.ie8 &, .ie9 & {
+		.ie8 & {
 			background-image: none;
 			padding: 0 0 0 10px;
 		}
@@ -935,10 +939,10 @@ a.cu_nav_button {
 	border: 0;
 	height: 23px;
 	width: 200px;
-	text-indent: -999em;
+	text-indent: -998em;
 	margin: 21px 0 20px 45px;
-	background-image: url('chapman_logo_horizontal_color.png'); // IE 8
-	background-image: url('chapman_logo_horizontal_color.svg'), linear-gradient(transparent, transparent);
+	background: image-url('chapman_logo_horizontal_color.png'); // IE 8
+	background: image-url('chapman_logo_horizontal_color.svg'), linear-gradient(transparent, transparent);
 	background-repeat: no-repeat;
 	background-size: contain;
 
