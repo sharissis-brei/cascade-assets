@@ -273,7 +273,27 @@
 	position: relative;
 	background-color: $cu-off-canvas-nav-background;
 	// padding: 1.5em 1.25em 0.5em;
-	padding: 1.5em 1.8em 0.5em 1.5em; // Client request - BarkleyREI
+	// padding: 1.5em 1.8em 0.5em 1.5em; // Client request - BarkleyREI
+	padding: 1.5em 1.8em 0 1.5em; // 20170210 - CU Build
+
+	.cu-off-canvas-logo {
+		display: block;
+		border: 0;
+		height: 23px;
+		width: 200px;
+		text-indent: -998em;
+		margin: 2px 0 0 0;
+		background: image-url('chapman_logo_horizontal_color.png'); // IE 8
+		background: image-url('chapman_logo_horizontal_color.svg'), linear-gradient(transparent, transparent);
+		background-repeat: no-repeat;
+		background-size: contain;
+
+		@include bp(m) {
+			height: 28px;
+			width: 273px;
+			margin: 0;
+		}
+	}
 
 	.sc-logo {
 		display: block;
@@ -309,7 +329,7 @@
 
 	.cu-off-canvas-links {
 		min-height: 1em;
-		margin-top: 2em;
+		margin-top: 1.25em;
 		position: relative;
 		height: 30px;
 
@@ -339,7 +359,6 @@
 			color: $grey2;
 			position: absolute;
 			height: 30px;
-			line-height: 30px;
 			white-space: nowrap;
 			overflow: hidden;
 			text-overflow: ellipsis;
