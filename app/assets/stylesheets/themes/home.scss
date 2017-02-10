@@ -80,10 +80,13 @@ h1, h2, h3, h4, h5, h6 {
   }
   #mastheadNavigation {
     position: absolute;
-    top: 15px;
+    top: 250px;
     right: 0;
     z-index: 100;
     display: none;
+    @media only screen and (min-width: 500px) {
+      top: 15px;    
+    }
     .smallButton {
       color: #FFFFFF;
       border: none;
