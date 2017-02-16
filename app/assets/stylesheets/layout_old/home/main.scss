@@ -16,10 +16,13 @@
   }
   #mastheadNavigation {
     position: absolute;
-    top: 15px;
+    top: 250px;
     right: 0;
     z-index: 100;
     display: none;
+    @media only screen and (min-width: 480px) {
+      top: 15px;    
+    }
     .smallButton {
       color: $white;
       border: none;
