@@ -117,7 +117,7 @@
 				padding: 0 70px 0 1.25em;
 				position: relative;
 				font-size: 18px;
-				font-family: "proxima-nova-soft", "proxima-nova-soft-n4", sans-serif;
+				font-family: "futura-pt", sans-serif;
 
 				&.has-icon {
 					padding: 0 70px 0 2.75em;
@@ -273,30 +273,113 @@
 	position: relative;
 	background-color: $cu-off-canvas-nav-background;
 	// padding: 1.5em 1.25em 0.5em;
-	padding: 1.5em 1.8em 0.5em 1.5em; // Client request - BarkleyREI
+	// padding: 1.5em 1.8em 0.5em 1.5em; // Client request - BarkleyREI
+	padding: 1.5em 1.8em 0 1.5em; // 20170210 - CU Build
 
+	
+	.asbe {
+		background: image-url('off-canvas-header-asbe.png'); // IE 8
+		background: image-url('off-canvas-header-asbe.svg'), linear-gradient(transparent, transparent);
+		background-repeat: no-repeat;
+		background-size: contain;
+	}
+	.ces {
+		background: image-url('off-canvas-header-ces.png'); // IE 8
+		background: image-url('off-canvas-header-ces.svg'), linear-gradient(transparent, transparent);
+		background-repeat: no-repeat;
+		background-size: contain;
+	}
+	.dodge {
+		background: image-url('off-canvas-header-dodge.png'); // IE 8
+		background: image-url('off-canvas-header-dodge.svg'), linear-gradient(transparent, transparent);
+		background-repeat: no-repeat;
+		background-size: contain;
+	}
+	.crean {
+		background: image-url('off-canvas-header-crean.png'); // IE 8
+		background: image-url('off-canvas-header-crean.svg'), linear-gradient(transparent, transparent);
+		background-repeat: no-repeat;
+		background-size: contain;
+	}
+	.wilkinson {
+		background: image-url('off-canvas-header-wilkinson.png'); // IE 8
+		background: image-url('off-canvas-header-wilkinson.svg'), linear-gradient(transparent, transparent);
+		background-repeat: no-repeat;
+		background-size: contain;
+	}
+	.copa {
+		background: image-url('off-canvas-header-copa.png'); // IE 8
+		background: image-url('off-canvas-header-copa.svg'), linear-gradient(transparent, transparent);
+		background-repeat: no-repeat;
+		background-size: contain;
+	}
+	.cusp {
+		background: image-url('off-canvas-header-cusp.png'); // IE 8
+		background: image-url('off-canvas-header-cusp.svg'), linear-gradient(transparent, transparent);
+		background-repeat: no-repeat;
+		background-size: contain;
+	}
+	.fowler {
+		background: image-url('off-canvas-header-fowler.png'); // IE 8
+		background: image-url('off-canvas-header-fowler.svg'), linear-gradient(transparent, transparent);
+		background-repeat: no-repeat;
+		background-size: contain;
+	}
+	.schmid {
+		background: image-url('off-canvas-header-schmid.png'); // IE 8
+		background: image-url('off-canvas-header-schmid.svg'), linear-gradient(transparent, transparent);
+		background-repeat: no-repeat;
+		background-size: contain;
+	}
+	.soc {
+		background: image-url('off-canvas-header-soc.png'); // IE 8
+		background: image-url('off-canvas-header-soc.svg'), linear-gradient(transparent, transparent);
+		background-repeat: no-repeat;
+		background-size: contain;
+	}
+	
 	.sc-logo {
 		display: block;
-
+		height: 23px; 
+		width: 200px;
+		border: 0;
+		text-indent: -998em;
+		margin: 2px 0 0 0;
+		
+		@include bp(m) {
+			height: 28px;
+			width: 273px;
+			margin: 0;
+		}
 		.shifted & {
 			display: none;
 		}
-
 	}
+
 
 	.default-logo {
 		display: none;
-
-		.shifted & {
+		
+		.shifted & , &-cu {
 			display: block;
+			border: 0;
+			height: 23px;
+			width: 200px;
+			text-indent: -998em;
+			margin: 2px 0 0 0;
+			background: image-url('chapman_logo_horizontal_color.png'); // IE 8
+			background: image-url('chapman_logo_horizontal_color.svg'), linear-gradient(transparent, transparent);
+			background-repeat: no-repeat;
+			background-size: contain;
+
+			@include bp(m) {
+				height: 28px;
+				width: 273px;
+				margin: 0;
+			}
 		}
-
 	}
 
-	img {
-		max-width: 87.5%;
-		max-height: 29px;
-	}
 
 	.close {
 		cursor: pointer;
@@ -309,7 +392,7 @@
 
 	.cu-off-canvas-links {
 		min-height: 1em;
-		margin-top: 2em;
+		margin-top: 1.25em;
 		position: relative;
 		height: 30px;
 
@@ -339,7 +422,6 @@
 			color: $grey2;
 			position: absolute;
 			height: 30px;
-			line-height: 30px;
 			white-space: nowrap;
 			overflow: hidden;
 			text-overflow: ellipsis;
