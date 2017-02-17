@@ -209,6 +209,7 @@ module ContentTypes
     # rubocop:enable Metrics/MethodLength, Metrics/AbcSize
 
     private
+
     # rubocop:disable Metrics/MethodLength
     # TODO: Replace with more Cascadesque rendering.
     def render_static_ad_landing_primary_content
