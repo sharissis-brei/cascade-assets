@@ -275,8 +275,30 @@
 	// padding: 1.5em 1.25em 0.5em;
 	// padding: 1.5em 1.8em 0.5em 1.5em; // Client request - BarkleyREI
 	padding: 1.5em 1.8em 0 1.5em; // 20170210 - CU Build
-
 	
+	
+	.sc-logo {
+		display: block;
+		height: 23px; 
+		width: 200px;
+		border: 0;
+		text-indent: -998em;
+		margin: 2px 0 0 0;
+		background: image-url('chapman_logo_horizontal_color.png'); // IE 8
+		background: image-url('chapman_logo_horizontal_color.svg'), linear-gradient(transparent, transparent);
+		background-repeat: no-repeat;
+		background-size: contain;
+		
+		@include bp(m) {
+			height: 28px;
+			width: 273px;
+			margin: 0;
+		}
+		.shifted & {
+			display: none;
+		}
+	}
+
 	.asbe {
 		background: image-url('off-canvas-header-asbe.png'); // IE 8
 		background: image-url('off-canvas-header-asbe.svg'), linear-gradient(transparent, transparent);
@@ -336,24 +358,6 @@
 		background: image-url('off-canvas-header-soc.svg'), linear-gradient(transparent, transparent);
 		background-repeat: no-repeat;
 		background-size: contain;
-	}
-	
-	.sc-logo {
-		display: block;
-		height: 23px; 
-		width: 200px;
-		border: 0;
-		text-indent: -998em;
-		margin: 2px 0 0 0;
-		
-		@include bp(m) {
-			height: 28px;
-			width: 273px;
-			margin: 0;
-		}
-		.shifted & {
-			display: none;
-		}
 	}
 
 
