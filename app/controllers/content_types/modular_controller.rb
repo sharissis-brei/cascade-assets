@@ -229,13 +229,13 @@ module ContentTypes
 </div>
 HTML
 
-    format(primary_content,
-           'Master of Business Administration',
-           render_static_partial('widgets/ad_landing_page/messaging_with_video'),
-           render_static_partial('widgets/ad_landing_page/messaging_with_image'),
-           render_static_partial('widgets/ad_landing_page/feature_points'),
-           render_static_partial('widgets/ad_landing_page/excerpt'),
-           render_static_partial('widgets/ad_landing_page/messaging_only'))
+      format(primary_content,
+             'Master of Business Administration',
+             render_static_partial('widgets/ad_landing_page/messaging_with_video'),
+             render_static_partial('widgets/ad_landing_page/messaging_with_image'),
+             render_static_partial('widgets/ad_landing_page/feature_points'),
+             render_static_partial('widgets/ad_landing_page/excerpt'),
+             render_static_partial('widgets/ad_landing_page/messaging_only'))
     end
 
     def render_static_one_column_primary_content
