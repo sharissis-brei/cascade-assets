@@ -59,7 +59,7 @@ module ContentTypes
 
     # GET /modular/one_column
     # Maps to Content Types/Modular/1 Column in Cascade.
-    # rubocop:disable Metrics/MethodLength
+    # rubocop:disable Metrics/MethodLength, Metrics/AbcSize
     def one_column
       @configuration_set = ConfigurationSet.one_column
       @metadata_set = MetadataSet.page(title: 'Modular One Column')
@@ -89,7 +89,7 @@ module ContentTypes
 
       render @configuration_set.template
     end
-    # rubocop:enable Metrics/MethodLength
+    # rubocop:enable Metrics/MethodLength, Metrics/AbcSize
 
     # GET /modular/two_column
     # Maps to Content Types/Modular/2 Column in Cascade.
@@ -272,6 +272,7 @@ HTML
              render_static_partial('widgets/left_column/callout_2'))
     end
 
+    # rubocop:disable Metrics/AbcSize
     def render_static_three_column_primary_content
       # This reproduces content from static sample version
       format("%s %s %s %s %s %s %s %s %s %s %s %s %s %s %s",
@@ -291,6 +292,7 @@ HTML
              render_static_partial('widgets/primary_content/logo_image_rotator_1'),
              render_static_partial('widgets/primary_content/featured_news_events_feed_1'))
     end
+    # rubocop:enable Metrics/AbcSize
 
     def render_static_three_column_left_column
       # This reproduces content from static sample version
