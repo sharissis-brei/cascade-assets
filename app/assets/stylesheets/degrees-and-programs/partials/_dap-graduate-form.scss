@@ -1,0 +1,10 @@
+$palettes: map-merge($palettes, (
+    'dap-graduate-form': (
+        'core': $black,
+        'background': $white
+    )
+));
+
+.dap-graduate-form {
+	padding: rem-calc(75 0 55);
+}

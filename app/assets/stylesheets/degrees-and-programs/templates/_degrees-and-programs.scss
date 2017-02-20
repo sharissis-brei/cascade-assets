@@ -1,0 +1,30 @@
+.degrees-and-programs {
+	transition: margin-top 1s;
+
+	@include breakpoint(rem-calc(780)) {
+		margin-top: rem-calc(-93);
+	}
+
+	@include breakpoint(rem-calc(1024)) {
+		margin-top: rem-calc(-153);
+	}
+
+	@include breakpoint(rem-calc(1120)) {
+		margin-top: rem-calc(-106);
+	}
+
+	&.scrolled,
+	.no-js & {
+		margin-top: 0;
+	}
+
+	// .bigMasthead header {
+	// 	margin: 0;
+
+	// 	.maxWidth {
+	// 		display: none;
+	// 	}
+		
+	// }
+	
+}
