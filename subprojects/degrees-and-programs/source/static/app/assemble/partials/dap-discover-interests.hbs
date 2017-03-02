@@ -1,0 +1,33 @@
+<!-- partial:dap-discover-interests -->
+<div id="js-dap-discover-interests" class="dap-discover-interests lighten-background">
+
+	<hr>
+
+	<div class="row">
+		{{#each this}}
+			
+			<div class="interest columns small-6 medium-3" data-category="{{category}}" data-interest="{{id}}">
+				<label for="dap-discover-interest-{{id}}">
+
+					<input id="dap-discover-interest-{{id}}" name="dap-discover-interest" type="radio" value="{{id}}">
+
+					<div class="svg-container">
+						{{#if icon}}
+							{{svg icon}}
+						{{else}}
+							{{svg "star"}} <!-- Temp -->
+						{{/if}}
+					</div>
+
+					<span class="title">{{{title}}}</span>
+
+				</label>
+			</div>
+
+		{{/each}}
+	</div>
+
+	<hr>
+	
+</div>
+<!-- end partial:dap-discover-interests -->

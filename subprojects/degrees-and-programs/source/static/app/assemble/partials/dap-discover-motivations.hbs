@@ -1,0 +1,25 @@
+<!-- partial:dap-discover-motivations -->
+<div id="js-dap-discover-motivations" class="dap-discover-motivations">
+	<div class="row">
+    	<div class="columns small-12">
+			<ul class="clearfix">
+				{{#each this}}
+					<li class="motivation" data-motivation="{{id}}">
+						
+						<label for="dap-discover-motivation-{{id}}">
+							<input id="dap-discover-motivation-{{id}}" name="dap-discover-motivation" type="radio" value="{{id}}">
+							<span class="title">
+								<em>{{line-1}}</em>{{line-2}}
+								<span class="active-indicator">
+									{{svg "check"}}
+								</span>
+							</span>
+						</label>
+
+					</li>
+				{{/each}}
+			</ul>
+		</div>
+    </div>
+</div>
+<!-- end partial:dap-discover-motivations -->

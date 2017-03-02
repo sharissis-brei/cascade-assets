@@ -1,0 +1,816 @@
+#**
+    Name:          Degrees & Programs
+    Author:        BarkleyREI
+    Created:       02/13/2017
+    Modified By:   Sean T. Stacho
+    Last Modified: 02/23/2017
+*#
+
+## Data (JSON)
+#set ( $data = $_XPathTool.selectSingleNode( $contentRoot, "//data[@type='page']/link" ) )
+## Index Block (XML)
+#set ( $block = $_XPathTool.selectSingleNode( $contentRoot, "//block[@type='block']" ) )
+## Background Image
+#set ( $backgroundImage = $_XPathTool.selectSingleNode( $contentRoot, "//backgroundImage[@type='file']/link" ) )
+## Accordion(s)
+#set ( $accordion = $_XPathTool.selectNodes( $contentRoot, "//accordion/section" ) )
+
+## Chapman University Schools & Colleges
+#set ( $schools = ["Wilkinson College of Arts, Humanities, and Social Sciences", "Argyros School of Business and Economics", "School of Communication", "College of Educational Studies", "Dodge College of Film and Media Arts", "Crean College of Health and Behavioral Sciences", "Fowler School of Law", "College of Performing Arts", "School of Pharmacy", "Schmid College of Science and Technology"] )
+
+## SVG Macro
+#macro ( svg $name )
+    <svg class="icon ${name}">
+        <use xmlns:xlink="http://www.w3.org/1999/xlink" xlink:href="#${name}">&#032;</use>
+    </svg>
+#end
+
+## Degrees & Programs
+#macro ( displayPrograms $programs )
+
+    #if ( $programs.size() > 0 )
+
+        #foreach ( $program in $programs )
+
+			## Locate Block
+			#set ( $path = $program.getChild("path").value )
+			#set ( $site = $program.getChild("site").value )
+			#set ( $programObject = $_.locateBlock( $path, $site ) )
+
+			## Title
+    		#set ( $title = $programObject.getStructuredDataNode("title") )
+
+    		## Image
+    		#set ( $img = {} )
+			#set ( $imgSrc = $programObject.getStructuredDataNode("image") )
+			#set ( $imgAlt = $programObject.getStructuredDataNode("altText") )
+
+			#if ( $_PropertyTool.isNull( $imgSrc.asset ) == false )
+				#set ( $img.src = "[system-asset]" + $imgSrc.asset.path + "[/system-asset]" )
+				#if ( $_PropertyTool.isNull( $imgAlt.textValue ) == false )
+					#set ( $img.alt = $_EscapeTool.xml( $imgAlt.textValue ) )
+				#else
+					#set ( $img.alt = $_EscapeTool.xml( $title.textValue ) )
+				#end
+			#end
+
+			## Hyperlink Reference
+			#set ( $link = {} )
+			#set ( $link.linkType = $programObject.getStructuredDataNode("link/linkType") )
+
+			## Internal Link
+			#if ( $link.linkType.textValue == "Internal Link" )
+				#if ( $_PropertyTool.isNull( $programObject.getStructuredDataNode("link/internalLink").asset ) == false )
+					#set ( $link.href = "[system-asset]" + $programObject.getStructuredDataNode("link/internalLink").asset.path + "[/system-asset]" )
+				#end
+			## External Link
+			#elseif ( $link.linkType.textValue == "External Link" )
+				#if ( $_PropertyTool.isNull( $programObject.getStructuredDataNode("link/externalLink").textValue ) == false )
+					#set ( $link.href = $programObject.getStructuredDataNode("link/externalLink").textValue )
+				#end
+			## File Link
+			#elseif ( $link.linkType.textValue == "File Link" )
+				#if ( $_PropertyTool.isNull( $programObject.getStructuredDataNode("link/fileLink").asset ) == false )
+					#set ( $link.href = "[system-asset]" + $programObject.getStructuredDataNode("link/fileLink").textValue + "[/system-asset]" )
+				#end
+			#end			
+
+    		## Description
+    		#set ( $description = "" )
+    		#set ( $desc = $programObject.getStructuredDataNode("desc") )
+
+			#if ( $_PropertyTool.isNull( $desc.textValue ) == false )
+
+				## Strip Tags
+				#set ( $stripTags = $_DisplayTool.stripTags( $desc.textValue ) )
+
+				## Remove White-Space
+				#set ( $whitespace = $stripTags.replace( "&#160;", "" ).replace( "&nbsp;", "" ) )
+
+				## Truncate Text - 150 characters
+				#set ( $truncate = $_DisplayTool.truncate( $whitespace, 200, "...", true ) )
+
+				#set ( $description = $truncate )
+
+			#end
+
+    		## Campus
+    		#set ( $campus = "" )
+    		#set ( $campusID = $programObject.getStructuredDataNode("campus") )
+
+    		#if ( $campusID.textValue == "Orange" )
+    			#set ( $campus = "Main Campus" )
+    		#elseif ( $campusID.textValue == "Rinker" )
+    			#set ( $campus = "Rinker Health Science Campus" )
+    		#end
+
+    		## Degree Title
+    		#set ( $degreeTitle = $programObject.getStructuredDataNode("type") )
+
+			<article class="result columns small-12 clearfix">
+
+				#if ( $_PropertyTool.isNull( $imgSrc.asset ) == false )
+					<div class="image" aria-role="image" style="background-image: url(${img.src});" aria-label="${img.alt}">
+				#else
+					<div class="image" aria-role="image">
+				#end
+					<div class="active-content">
+						<div class="active-content-inner">
+							<p class="desc">$_EscapeTool.xml( $description )</p>
+							#if ( $link.href )
+								<a href="${link.href}" title="View landing page for ${_EscapeTool.xml( $title.textValue )}">
+									Learn More #svg( "icon-double-chevron" )
+								</a>
+							#end
+						</div>
+						<span class="close">
+							#svg( "icon-close" )
+						</span>
+					</div>
+					<div class="active-content-toggle">
+						<span>i</span>
+					</div>
+				</div>
+
+				<div class="result-content">
+
+					<h3 class="title">
+						#if ( $link.href )
+							<a href="${link.href}" title="View landing page for ${_EscapeTool.xml( $title.textValue )}">$_EscapeTool.xml( $title.textValue )</a>
+						#else
+							$_EscapeTool.xml( $title.textValue )
+						#end
+					</h3>
+
+					<span class="campus">$_EscapeTool.xml( $campus )</span>
+
+					<ul class="degree-types clearfix">
+						<li>$_EscapeTool.xml( $degreeTitle.textValue )</li>
+					</ul>
+
+					<p class="desc">$_EscapeTool.xml( $description )</p>
+
+					#if ( $link.href )
+						<a href="${link.href}" title="View landing page for ${_EscapeTool.xml( $title.textValue )}" class="button">
+							Learn More #svg( "icon-double-chevron" )
+						</a>
+					#end
+
+				</div>
+
+			</article>
+
+    	#end
+
+    #end
+
+#end
+
+## No-JS
+#macro ( noJS $indexBlock, $programType )
+
+    #set ( $blocks = $_XPathTool.selectNodes( $indexBlock, "//system-block" ) )
+    #set ( $programs = [] )
+    #set ( $category = "" )
+    
+    #if ( $programType.value == "Discover" || $programType.value == "Undergraduate" )
+        #set ( $category = "Undergraduate" )
+    #elseif ( $programType.value == "Graduate" )
+    	#set ( $category = "Graduate" )
+    #end
+    
+    ## Sort Blocks Alphabetically
+    $_SortTool.addSortCriterion( "system-data-structure/title", "", "text", "ascending", "upper-first" )
+    $_SortTool.sort( $blocks )
+    
+    #foreach ( $block in $blocks )
+        
+        ## Locate Block
+        #set ( $path = $block.getChild("path").value )
+        #set ( $site = $block.getChild("site").value )
+    	#set ( $blockObject = $_.locateBlock( $path, $site ) )
+        
+        ## Type - Undergraduate or Graduate?
+        #set ( $type = $blockObject.getStructuredDataNode("cat") )
+        ## Degree Type
+        #set ( $degreeType = $blockObject.getStructuredDataNode("level") )
+        
+        #if ( $degreeType.textValue == "4+1 and Bridge" )
+            #set ( $dead = $programs.add( $block ) )
+        #else
+            #if ( $category == $type.textValue )
+			    #set ( $dead = $programs.add( $block ) )
+		    #end
+        #end
+        
+    #end
+
+    <noscript>
+
+    	#displayPrograms( $programs )
+
+    </noscript>
+
+#end
+
+## D&P Accordion Header
+#macro ( dapHeader $data )
+
+    <header class="dap-header">
+    	<div class="row">
+			<div class="columns small-12">
+				<h2>$_EscapeTool.xml( $data.title.value )</h2>
+				<h3>$_EscapeTool.xml( $data.subtitle.value )</h3>
+				<span class="dap-section-accordion-trigger">
+					<span class="show-for-sr">Toggle the accordion for the "${_EscapeTool.xml( $data.title.value )}" section</span>
+					#svg( "icon-chevron-down" )
+				</span>
+			</div>
+		</div>
+	</header>
+
+#end
+
+## Discover Accordion
+#macro ( discover $type, $header, $motivations )
+
+	<!-- START DISCOVER SECTION -->
+    <section id="js-dap-section-discover" class="dap-section" data-id="discover">
+
+    	#dapHeader( $header )
+
+    	<div class="dap-body">
+
+    		<div class="dap-form">
+
+				<form id="js-dap-discover-form" class="dap-discover-form" action="">
+				
+					<fieldset>
+
+						<legend class="show-for-sr">Search for Degrees and Programs</legend>
+
+						<input type="hidden" name="type" value="undergraduate" />
+
+						## Motivations
+						<div id="js-dap-discover-motivations" class="dap-discover-motivations">
+						
+							<div class="row">
+						
+								<div class="columns small-12">
+
+									<ul class="clearfix">
+
+										#foreach ( $motivation in $motivations )
+
+											#set ( $title = $_XPathTool.selectSingleNode( $motivation, "title" ) )
+											#set ( $value = $_DisplayTool.stripTags( $title.value ) )
+											#set ( $suffix = $_DisplayTool.stripTags( $title.value ).replace( "&amp;", "and" ).replace( " ", "-" ).toLowerCase() )
+
+											<li class="motivation" data-motivation="${_EscapeTool.xml( $value )}">
+												<label for="dap-discover-motivation-${suffix}">
+													<input id="dap-discover-motivation-${suffix}" name="dap-discover-motivation" type="radio" value="${_EscapeTool.xml( $value )}" />
+													<span class="title">
+														$_SerializerTool.serialize( $title, true )
+														<span class="active-indicator">
+															#svg( "icon-check" )
+														</span>
+													</span>
+												</label>
+											</li>
+
+										#end
+
+									</ul>
+
+								</div>
+							
+							</div>
+						
+						</div>
+
+						## Interests
+						<div id="js-dap-discover-interests" class="dap-discover-interests lighten-background">
+
+							<hr />
+
+							<div class="row">
+
+								#foreach ( $motivation in $motivations )
+
+									#set ( $title = $_XPathTool.selectSingleNode( $motivation, "title" ) )
+									#set ( $category = $_DisplayTool.stripTags( $title.value ) )
+
+									#set ( $interests = $_XPathTool.selectNodes( $motivation, "interests/interest" ) )
+
+									#foreach ( $interest in $interests )
+
+										#set ( $iconClass = $_XPathTool.selectSingleNode( $interest, "icon" ) )
+										#set ( $title = $_XPathTool.selectSingleNode( $interest, "title" ) )
+										#set ( $suffix = $_EscapeTool.xml( $title.value ).replace( "&amp;", "and" ).replace( " ", "-" ).toLowerCase() )
+
+										<div class="interest columns small-6 medium-3" data-category="${_EscapeTool.xml( $category )}" data-interest="${_EscapeTool.xml( $title.value )}">
+											<label for="dap-discover-interest-${suffix}">
+												<input id="dap-discover-interest-${suffix}" name="dap-discover-interest" type="radio" value="${_EscapeTool.xml( $title.value )}" />
+												<div class="svg-container">
+													#svg( "icon-${iconClass.value}" )
+												</div>
+												<span class="title">$_EscapeTool.xml( $title.value )</span>
+											</label>
+										</div>
+
+									#end
+
+								#end
+
+							</div>
+
+						</div>
+
+						## Filters
+						<div id="js-dap-discover-filter-types" class="filter-types">
+    						    
+							<div class="row">
+
+								<div class="columns small-12 large-5">
+									<div class="field-container custom-select-container">
+										<label for="dap-discover-school" class="show-for-sr">Filter by Schools and Colleges</label>
+										<select name="dap-discover-school" id="dap-discover-school">
+											<option disabled="disabled" selected="selected">Filter by Schools and Colleges</option>
+											#foreach ( $school in $schools )
+												<option value="${_EscapeTool.xml( $school )}">$_EscapeTool.xml( $school )</option>
+											#end
+										</select>
+									</div>
+								</div>
+
+								<div class="columns small-12 large-2">
+									<div class="or-separator">
+										<span>Or</span>
+									</div>
+								</div>
+
+								<div class="columns small-12 large-5">
+									<div class="field-container">
+										<label for="dap-discover-keyword" class="show-for-sr">Search for Degrees and Programs</label>
+										<input id="dap-discover-keyword" name="dap-discover-keyword" class="input-with-button" type="text" placeholder="Still can't find your program?" />
+										<button type="submit">
+											<span class="show-for-sr">Search for Degrees and Programs</span>
+											#svg( "icon-search" )
+										</button>
+									</div>
+								</div>
+
+							</div>
+
+						</div>
+
+					</fieldset>
+
+				</form>
+
+    		</div>
+
+    		## Results
+			<div id="js-dap-results-discover" class="dap-results dap-results-discover grid-view">
+
+				<div class="row">
+
+					<div class="columns small-12">
+
+						<header class="dap-results-header">
+
+							<h2>We think you may be interested in:</h2>
+
+							<ul class="results-views clearfix">
+								<li class="active" data-view="grid-view" aria-label="Click to enable grid view of the results">
+									<span class="show-for-sr">Show results in grid view</span>
+									#svg( "icon-grid" )
+								</li>
+								<li data-view="list-view" aria-label="Click to enable list view of the results">
+									<span class="show-for-sr">Show results in list view</span>
+									#svg( "icon-list" )
+								</li>
+							</ul>
+
+						</header>
+
+					</div>
+
+				</div>
+
+				<div class="results-row row">
+					
+					#noJS( $block, $type )
+
+				</div>
+
+			</div>
+
+    	</div>
+
+    </section>
+    <!-- END DISCOVER SECTION -->
+
+#end
+
+## Undergraduate Accordion
+#macro ( undergraduate $type, $header, $interests )
+
+	<!-- START UNDERGRADUATE SECTION -->
+	<section id="js-dap-section-undergraduate" class="dap-section" data-id="undergraduate">
+
+		#dapHeader( $header )
+
+    	<div class="dap-body">
+    						
+			<div class="dap-form">
+
+				<form id="js-dap-undergraduate-form" class="dap-undergraduate-form" action="">
+					
+					<fieldset>
+
+						<legend class="show-for-sr">Search for Undergraduate Degrees and Programs</legend>
+
+						<input type="hidden" name="type" value="undergraduate" />
+
+						<div id="js-dap-undergraduate-program-types" class="program-types">
+
+							<div class="row">
+
+								<div class="columns small-12">
+									<h4 class="subsection-heading">Degrees &amp; Programs:</h4>
+								</div>
+
+								<div class="columns small-12 medium-6">
+									<div class="field-container">
+										<label class="program-type button" for="dap-undergraduate-program-all">
+											<input id="dap-undergraduate-program-all" name="dap-undergraduate-program-all" type="checkbox" value="all" />
+											<div class="inner">
+												#svg( "icon-check" )
+												<span>All Undergraduate Programs</span>
+											</div>
+										</label>
+									</div>
+								</div>
+
+								<div class="columns small-12 medium-6">
+									<div class="field-container">
+										<label class="program-type button" for="dap-undergraduate-program-major">
+											<input id="dap-undergraduate-program-major" name="dap-undergraduate-program-major" type="checkbox" value="major" />
+											<div class="inner">
+												#svg( "icon-check" )
+												<span>Majors</span>
+											</div>
+										</label>
+									</div>
+								</div>
+
+								<div class="columns small-12 medium-6">
+									<div class="field-container">
+										<label class="program-type button" for="dap-undergraduate-program-minor">
+											<input id="dap-undergraduate-program-minor" name="dap-undergraduate-program-minor" type="checkbox" value="minor" />
+											<div class="inner">
+												#svg( "icon-check" )
+												<span>Minors</span>
+											</div>
+										</label>
+									</div>
+								</div>
+
+								<div class="columns small-12 medium-6">
+									<div class="field-container">
+										<label class="program-type button" for="dap-undergraduate-program-bridge">
+											<input id="dap-undergraduate-program-bridge" name="dap-undergraduate-program-bridge" type="checkbox" value="4+1 and bridge" />
+											<div class="inner">
+												#svg( "icon-check" )
+												<span>4+1 Bridge Programs</span>
+											</div>
+										</label>
+									</div>
+								</div>
+
+							</div>
+
+						</div>
+
+						<div class="row">
+    										
+							<div class="columns small-12 clearfix">
+								<a id="js-reset-undergraduate-interests" class="reset" href="javascript:void(0);" title="Reset interests filters">
+									#svg( "icon-reset" ) Reset
+								</a>
+								<h4 class="subsection-heading">I'm Interested In:</h4>
+							</div>
+
+							<div class="columns small-12">
+
+								<ul id="js-dap-undergraduate-interests" class="dap-undergraduate-interests">
+
+									#foreach ( $interest in $interests )
+
+										#set ( $suffix = $_EscapeTool.xml( $interest.value ).replace( "&amp;", "and" ).replace( " ", "-" ).toLowerCase() )
+										
+										<li>
+											<label for="dap-undergraduate-interest-${suffix}">
+												<input id="dap-undergraduate-interest-${suffix}" name="dap-undergraduate-interest-${suffix}" type="checkbox" value="${_EscapeTool.xml( $interest.value )}" />
+    											<span>$_EscapeTool.xml( $interest.value )</span>
+											</label>
+										</li>
+
+									#end
+
+									<li class="show-more">
+										<a href="javascript:void(0);">+ Show More</a>
+									</li>
+
+								</ul>
+
+							</div>
+
+						</div>
+
+						<div id="js-dap-graduate-filter-types" class="filter-types">
+
+							<div class="row">
+
+								<div class="columns small-12 large-5">
+									<div class="field-container custom-select-container">
+										<label for="dap-undergraduate-school" class="show-for-sr">Filter by Schools and Colleges</label>
+										<select name="dap-undergraduate-school" id="dap-undergraduate-school">
+											<option disabled="disabled" selected="selected">Filter by Schools and Colleges</option>
+											#foreach ( $school in $schools )
+												<option value="${_EscapeTool.xml( $school )}">$_EscapeTool.xml( $school )</option>
+											#end
+										</select>
+									</div>
+								</div>
+
+								<div class="columns small-12 large-2">
+									<div class="or-separator">
+										<span>Or</span>
+									</div>
+								</div>
+
+								<div class="columns small-12 large-5">
+									<div class="field-container">
+										<label for="dap-undergraduate-keyword" class="show-for-sr">Search for Degrees and Programs</label>
+										<input id="dap-undergraduate-keyword" name="dap-undergraduate-keyword" class="input-with-button" type="text" placeholder="Search Degrees &amp; Programs" />
+										<button type="submit">
+											<span class="show-for-sr">Search for Degrees and Programs</span>
+											#svg( "icon-search" )
+										</button>
+									</div>
+								</div>
+
+							</div>
+
+						</div>
+
+					</fieldset>
+
+				</form>
+
+			</div>
+
+			<div id="js-dap-results-undergraduate" class="dap-results dap-results-undergraduate grid-view">
+    						
+				<div class="row">
+
+					<div class="columns small-12">
+					
+						<header class="dap-results-header">
+
+							<h2>We think you may be interested in:</h2>
+
+							<ul class="results-views clearfix">
+								<li class="active" data-view="grid-view" aria-label="Click to enable grid view of the results">
+									<span class="show-for-sr">Show results in grid view</span>
+									#svg( "icon-grid" )
+								</li>
+								<li data-view="list-view" aria-label="Click to enable list view of the results">
+									<span class="show-for-sr">Show results in list view</span>
+									#svg( "icon-list" )
+								</li>
+							</ul>
+
+						</header>
+
+					</div>
+				
+				</div>
+
+				<div class="results-row row">
+
+					#noJS( $block, $type )
+
+				</div>
+
+			</div>
+
+    	</div>	
+
+	</section>
+	<!-- END UNDERGRADUATE SECTION -->
+
+#end
+
+## Graduate Accordion
+#macro ( graduate $type, $header )
+
+	<!-- START GRADUATE SECTION -->
+	<section id="js-dap-section-graduate" class="dap-section" data-id="graduate">
+
+		#dapHeader( $header )
+
+    	<div class="dap-body">
+
+			<div class="dap-form">
+
+				<form id="js-dap-graduate-form" class="dap-graduate-form" action="">
+				
+					<fieldset>
+
+						<legend class="show-for-sr">Search for Graduate Degrees and Programs</legend>
+
+						<input type="hidden" name="type" value="graduate" />
+
+						<div id="js-dap-graduate-program-types" class="program-types">
+
+							<div class="row">
+
+								<div class="columns small-12">
+									<h4 class="subsection-heading">Degrees &amp; Programs:</h4>
+								</div>
+
+								<div class="columns small-12 medium-6">
+									<div class="field-container">
+										<label class="program-type button" for="dap-graduate-program-all">
+											<input id="dap-graduate-program-all" name="dap-graduate-program-all" type="checkbox" value="all" />
+											<div class="inner">
+												#svg( "icon-check" )
+												<span>All Graduate Programs</span>
+											</div>
+										</label>
+									</div>
+								</div>
+
+								<div class="columns small-12 medium-6">
+									<div class="field-container">
+										<label class="program-type button" for="dap-graduate-program-master">
+											<input id="dap-graduate-program-master" name="dap-graduate-program-master" type="checkbox" value="masters" />
+											<div class="inner">
+												#svg( "icon-check" )
+												<span>Masters Programs</span>
+											</div>
+										</label>
+									</div>
+								</div>
+
+								<div class="columns small-12 medium-6">
+									<div class="field-container">
+										<label class="program-type button" for="dap-graduate-program-doctoral">
+											<input id="dap-graduate-program-doctoral" name="dap-graduate-program-doctoral" type="checkbox" value="doctorate" />
+											<div class="inner">
+												#svg( "icon-check" )
+												<span>Doctoral Programs</span>
+											</div>
+										</label>
+									</div>
+								</div>
+
+								<div class="columns small-12 medium-6">
+									<div class="field-container">
+										<label class="program-type button" for="dap-graduate-program-bridge">
+											<input id="dap-graduate-program-bridge" name="dap-graduate-program-bridge" type="checkbox" value="4+1 and bridge" />
+											<div class="inner">
+												#svg( "icon-check" )
+												<span>4+1 Bridge Programs</span>
+											</div>
+										</label>
+									</div>
+								</div>
+
+							</div>
+
+						</div>
+
+						<div id="js-dap-graduate-filter-types" class="filter-types">
+
+							<div class="row">
+
+								<div class="columns small-12 large-5">
+									<div class="field-container custom-select-container">
+										<label for="dap-graduate-school" class="show-for-sr">Filter by Schools and Colleges</label>
+										<select name="dap-graduate-school" id="dap-graduate-school">
+											<option disabled="disabled" selected="selected">Filter by Schools and Colleges</option>
+											#foreach ( $school in $schools )
+												<option value="${_EscapeTool.xml( $school )}">$_EscapeTool.xml( $school )</option>
+											#end
+										</select>
+									</div>
+								</div>
+
+								<div class="columns small-12 large-2">
+									<div class="or-separator">
+										<span>Or</span>
+									</div>
+								</div>
+
+								<div class="columns small-12 large-5">
+									<div class="field-container">
+										<label for="dap-graduate-keyword" class="show-for-sr">Search for Degrees and Programs</label>
+										<input id="dap-graduate-keyword" name="dap-graduate-keyword" class="input-with-button" type="text" placeholder="Search Degrees &amp; Programs" />
+										<button type="submit">
+											<span class="show-for-sr">Search for Degrees and Programs</span>
+											#svg( "icon-search" )
+										</button>
+									</div>
+								</div>
+
+							</div>
+
+						</div>
+
+					</fieldset>
+
+				</form>
+
+			</div>
+
+			<div id="js-dap-results-graduate" class="dap-results dap-results-graduate grid-view">
+
+				<div class="row">
+
+					<div class="columns small-12">
+
+						<header class="dap-results-header">
+
+							<h2>We think you may be interested in:</h2>
+
+							<ul class="results-views clearfix">
+								<li class="active" data-view="grid-view" aria-label="Click to enable grid view of the results">
+									<span class="show-for-sr">Show results in grid view</span>
+									#svg( "icon-grid" )
+								</li>
+								<li data-view="list-view" aria-label="Click to enable list view of the results">
+									<span class="show-for-sr">Show results in list view</span>
+									#svg( "icon-list" )
+								</li>
+							</ul>
+
+						</header>
+
+					</div>
+
+				</div>
+
+				<div class="results-row row">
+
+					#noJS( $block, $type )
+
+				</div>
+
+			</div>
+
+    	</div>	
+
+	</section>
+	<!-- END GRADUATE SECTION -->
+
+#end
+
+<div id="js-dap-feature" class="dap-feature" data-json-url="[system-asset]${data.value}[/system-asset]" style="background-image: url([system-asset]${backgroundImage.value}[/system-asset]);">
+
+    <div class="dap-feature-inner">
+    
+        #foreach ( $section in $accordion )
+            
+            #set ( $type = $_XPathTool.selectSingleNode( $section, "type" ) )
+            
+            #set ( $header = {} )
+            #set ( $header.title = $_XPathTool.selectSingleNode( $section, "title" ) )
+            #set ( $header.subtitle = $_XPathTool.selectSingleNode( $section, "subtitle" ) )
+            
+            #if ( $type.value == "Discover" )
+            
+                #set ( $motivations = $_XPathTool.selectNodes( $section, "motivations/motivation" ) )
+            
+                #discover( $type, $header, $motivations )
+            
+            #elseif ( $type.value == "Undergraduate" )          
+                
+                #set ( $interests = $_XPathTool.selectNodes( $section, "interests/interest" ) )
+            
+                #undergraduate( $type, $header, $interests )
+            
+            #elseif ( $type.value == "Graduate" )        
+            
+                #graduate( $type, $header )
+            
+            #end
+            
+        #end
+    
+    </div>
+
+</div>
