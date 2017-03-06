@@ -4,6 +4,10 @@
 
 This subproject contains the BarkleyREI project version of Degrees and Programs, including a grunt build system to produce web-ready files. We use an in-house open-source app generator, found here: https://github.com/BarkleyREI/generator-brei-app.
 
+The file structure includes two top level folders, `build` and `source`. The `source` folder contains all precompiled and uncompressed source files, and the `build` folder is where the web-ready files deploy to (see instructions in the Deployment section below).
+
+Within the `source` folder, there are two subdirectories, `cascade` and `static`. The `cascade` folder contains copies of the most recent Chapman Cascade Server assets, such as templates and formats. The `static` folder contains the original source code, including static HTML of the site that can be run locally.
+
 ## Dependancies
 
 A few dependancies are required to run the app generator, including:
@@ -32,4 +36,9 @@ The following commands can be used to run, build, and finally, deploy your proje
 
 - `grunt server` – Runs the project on a local server, shows any changes made using livereload
 - `grunt` – Builds the project once all your changes have been made
-- `grunt deploy` – Deploys the built version of the project to the build directory, which is the web-ready version of the site
+- `grunt deploy` – Deploys the built version of the project from `source/static/dist` into the `build` directory, which is the web-ready version of the site
+
+
+Sarah Harissis
+BarkleyREI
+sharissis@barkleyrei.com
