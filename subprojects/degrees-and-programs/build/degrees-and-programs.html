@@ -13,14 +13,9 @@
 	<title>Degrees and Programs</title>
 
 
-	<!-- Chapman's CSS -->
-	<link rel="stylesheet" href="https://cse.google.com/cse/style/look/default.css"/>
-	<link rel="stylesheet" href="https://www.google.com/uds/api/search/1.0/0c3990ce7a056ed50667fe0c3873c9b6/default+en.css"/>
-	<link rel="stylesheet" href="http://www.chapman.edu/_assets/master-8f17a2ae4ca84d4b9ce85ac5b956e268880495fc956b5ae1f045e3187b8fd9bb.css"/>
 
 	<link rel="stylesheet" href="css/main.css"/>
 
-	<script src="js/plugins/modernizr.js"></script>
 
 </head>
 
@@ -29,6 +24,7 @@
 	<div class="container">
 
 		
+<!-- Set cascade-build to false if developing locally -->
 
 <div class="bigMasthead smallRotator" id="container">
     <header>
@@ -1126,17 +1122,18 @@
     						    					<div class="field-container custom-select-container">
     						    						<label for="dap-discover-school" class="show-for-sr">Filter by Schools and Colleges</label>
     						    						<select name="dap-discover-school" id="dap-discover-school">
-    						    							<option disabled="disabled" selected="selected">Filter by Schools and Colleges</option>
-    						    						    		<option value="wilkinson">Wilkinson College of Arts, Humanities, and Social Sciences</option>
+    						    							<option disabled="disabled" selected="selected" value="none">Filter by Schools and Colleges</option>
+    						    							<option value="all">All Schools and Colleges</option>
     						    						    		<option value="business">Argyros School of Business &amp; Economics</option>
-    						    						    		<option value="communication">School of Communication</option>
-    						    						    		<option value="ces">College of Educational Studies</option>
-    						    						    		<option value="dodge">Dodge College of Film and Media Arts</option>
-    						    						    		<option value="crean">Crean College of Health and Behavioral Sciences</option>
-    						    						    		<option value="law">Fowler School of Law</option>
     						    						    		<option value="copa">College of Performing Arts</option>
-    						    						    		<option value="pharmacy">School of Pharmacy</option>
+    						    						    		<option value="ces">College of Educational Studies</option>
+    						    						    		<option value="crean">Crean College of Health and Behavioral Sciences</option>
+    						    						    		<option value="dodge">Dodge College of Film and Media Arts</option>
+    						    						    		<option value="law">Fowler School of Law</option>
     						    						    		<option value="scst">Schmid College of Science &amp; Technology</option>
+    						    						    		<option value="communication">School of Communication</option>
+    						    						    		<option value="pharmacy">School of Pharmacy</option>
+    						    						    		<option value="wilkinson">Wilkinson College of Arts, Humanities, and Social Sciences</option>
     						    						</select>
     						    					</div>
     						    				</div>
@@ -1176,7 +1173,7 @@
     						    		<!-- partial:dap-results-header -->
     						    		<header class="dap-results-header">
     						    		
-    						    			<h2>We think you may be interested in:</h2>
+    						    			<h2 class="results-count">You are seeing all Undergraduate Degrees and Programs</h2>
     						    		
     						    			<ul class="results-views clearfix">
     						    				<li class="active" data-view="grid-view" aria-label="Click to enable grid view of the results">
@@ -2034,17 +2031,18 @@
     												<div class="field-container custom-select-container">
     													<label for="dap-undergraduate-school" class="show-for-sr">Filter by Schools and Colleges</label>
     													<select name="dap-undergraduate-school" id="dap-undergraduate-school">
-    														<option disabled="disabled" selected="selected">Filter by Schools and Colleges</option>
-    													    		<option value="wilkinson">Wilkinson College of Arts, Humanities, and Social Sciences</option>
+    														<option disabled="disabled" selected="selected" value="none">Filter by Schools and Colleges</option>
+    														<option value="all">All Schools and Colleges</option>
     													    		<option value="business">Argyros School of Business &amp; Economics</option>
-    													    		<option value="communication">School of Communication</option>
-    													    		<option value="ces">College of Educational Studies</option>
-    													    		<option value="dodge">Dodge College of Film and Media Arts</option>
-    													    		<option value="crean">Crean College of Health and Behavioral Sciences</option>
-    													    		<option value="law">Fowler School of Law</option>
     													    		<option value="copa">College of Performing Arts</option>
-    													    		<option value="pharmacy">School of Pharmacy</option>
+    													    		<option value="ces">College of Educational Studies</option>
+    													    		<option value="crean">Crean College of Health and Behavioral Sciences</option>
+    													    		<option value="dodge">Dodge College of Film and Media Arts</option>
+    													    		<option value="law">Fowler School of Law</option>
     													    		<option value="scst">Schmid College of Science &amp; Technology</option>
+    													    		<option value="communication">School of Communication</option>
+    													    		<option value="pharmacy">School of Pharmacy</option>
+    													    		<option value="wilkinson">Wilkinson College of Arts, Humanities, and Social Sciences</option>
     													</select>
     												</div>
     											</div>
@@ -2084,7 +2082,7 @@
     						    		<!-- partial:dap-results-header -->
     						    		<header class="dap-results-header">
     						    		
-    						    			<h2>We think you may be interested in:</h2>
+    						    			<h2 class="results-count">You are seeing all Undergraduate Degrees and Programs</h2>
     						    		
     						    			<ul class="results-views clearfix">
     						    				<li class="active" data-view="grid-view" aria-label="Click to enable grid view of the results">
@@ -2805,17 +2803,18 @@
     												<div class="field-container custom-select-container">
     													<label for="dap-graduate-school" class="show-for-sr">Filter by Schools and Colleges</label>
     													<select name="dap-graduate-school" id="dap-graduate-school">
-    														<option disabled="disabled" selected="selected">Filter by Schools and Colleges</option>
-    													    		<option value="wilkinson">Wilkinson College of Arts, Humanities, and Social Sciences</option>
+    														<option disabled="disabled" selected="selected" value="none">Filter by Schools and Colleges</option>
+    														<option value="all">All Schools and Colleges</option>
     													    		<option value="business">Argyros School of Business &amp; Economics</option>
-    													    		<option value="communication">School of Communication</option>
-    													    		<option value="ces">College of Educational Studies</option>
-    													    		<option value="dodge">Dodge College of Film and Media Arts</option>
-    													    		<option value="crean">Crean College of Health and Behavioral Sciences</option>
-    													    		<option value="law">Fowler School of Law</option>
     													    		<option value="copa">College of Performing Arts</option>
-    													    		<option value="pharmacy">School of Pharmacy</option>
+    													    		<option value="ces">College of Educational Studies</option>
+    													    		<option value="crean">Crean College of Health and Behavioral Sciences</option>
+    													    		<option value="dodge">Dodge College of Film and Media Arts</option>
+    													    		<option value="law">Fowler School of Law</option>
     													    		<option value="scst">Schmid College of Science &amp; Technology</option>
+    													    		<option value="communication">School of Communication</option>
+    													    		<option value="pharmacy">School of Pharmacy</option>
+    													    		<option value="wilkinson">Wilkinson College of Arts, Humanities, and Social Sciences</option>
     													</select>
     												</div>
     											</div>
@@ -2855,7 +2854,7 @@
     						    		<!-- partial:dap-results-header -->
     						    		<header class="dap-results-header">
     						    		
-    						    			<h2>We think you may be interested in:</h2>
+    						    			<h2 class="results-count">You are seeing all Graduate Degrees and Programs</h2>
     						    		
     						    			<ul class="results-views clearfix">
     						    				<li class="active" data-view="grid-view" aria-label="Click to enable grid view of the results">
@@ -3561,12 +3560,9 @@
 
 	</div>
 
+
 	<script src="js/degreesAndPrograms.js"></script>
 
-	<!-- Chapman's JS -->
-	<script src="//www.chapman.edu/_assets/master-2f24a0ba5fff4e63fb1d17d9f81df538062e9e7940fdaf3fcdd5694f7f24a031.js"></script>
-	<script src="//use.typekit.net/eyn5jyy.js" type="text/javascript"></script>
-	<script type="text/javascript">try{Typekit.load();}catch(e){}</script>
 
 </body>
 </html>

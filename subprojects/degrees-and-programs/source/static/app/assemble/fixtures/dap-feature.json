@@ -4,6 +4,7 @@
 		{
 			"index": 1,
 			"type": "discover",
+			"title": "Undergraduate",
 			"heading": {
 				"title": "What motivates you?",
 				"subtitle": "Discover Your Path"
@@ -39,6 +40,7 @@
 		{
 			"index": 2,
 			"type": "undergraduate",
+			"title": "Undergraduate",
 			"heading": {
 				"title": "Already know what major you want?",
 				"subtitle": "Search Undergraduate Degrees and Programs"
@@ -47,6 +49,7 @@
 		{
 			"index": 3,
 			"type": "graduate",
+			"title": "Graduate",
 			"heading": {
 				"title": "Want Graduate Programs?",
 				"subtitle": "View All Advanced Degrees"
@@ -177,44 +180,44 @@
 	],
 	"schools": [
 		{
-			"title": "Wilkinson College of Arts, Humanities, and Social Sciences",
-			"id": "wilkinson"
-		},
-		{
 			"title": "Argyros School of Business &amp; Economics",
 			"id": "business"
-		},
-		{
-			"title": "School of Communication",
-			"id": "communication"
-		},
-		{
-			"title": "College of Educational Studies",
-			"id": "ces"
-		},
-		{
-			"title": "Dodge College of Film and Media Arts",
-			"id": "dodge"
-		},
-		{
-			"title": "Crean College of Health and Behavioral Sciences",
-			"id": "crean"
-		},
-		{
-			"title": "Fowler School of Law",
-			"id": "law"
 		},
 		{
 			"title": "College of Performing Arts",
 			"id": "copa"
 		},
 		{
-			"title": "School of Pharmacy",
-			"id": "pharmacy"
+			"title": "College of Educational Studies",
+			"id": "ces"
+		},
+		{
+			"title": "Crean College of Health and Behavioral Sciences",
+			"id": "crean"
+		},
+		{
+			"title": "Dodge College of Film and Media Arts",
+			"id": "dodge"
+		},
+		{
+			"title": "Fowler School of Law",
+			"id": "law"
 		},
 		{
 			"title": "Schmid College of Science &amp; Technology",
 			"id": "scst"
+		},
+		{
+			"title": "School of Communication",
+			"id": "communication"
+		},
+		{
+			"title": "School of Pharmacy",
+			"id": "pharmacy"
+		},
+		{
+			"title": "Wilkinson College of Arts, Humanities, and Social Sciences",
+			"id": "wilkinson"
 		}
 	],
 	"results": [

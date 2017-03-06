@@ -2,8 +2,8 @@
     Name:          Degrees & Programs
     Author:        BarkleyREI
     Created:       02/13/2017
-    Modified By:   Sean T. Stacho
-    Last Modified: 02/23/2017
+    Modified By:   Sarah Harissis
+    Last Modified: 03/03/2017
 *#
 
 ## Data (JSON)
@@ -16,7 +16,7 @@
 #set ( $accordion = $_XPathTool.selectNodes( $contentRoot, "//accordion/section" ) )
 
 ## Chapman University Schools & Colleges
-#set ( $schools = ["Wilkinson College of Arts, Humanities, and Social Sciences", "Argyros School of Business and Economics", "School of Communication", "College of Educational Studies", "Dodge College of Film and Media Arts", "Crean College of Health and Behavioral Sciences", "Fowler School of Law", "College of Performing Arts", "School of Pharmacy", "Schmid College of Science and Technology"] )
+#set ( $schools = ["Argyros School of Business and Economics", "College of Educational Studies", "College of Performing Arts", "Crean College of Health and Behavioral Sciences", "Dodge College of Film and Media Arts", "Fowler School of Law", "Schmid College of Science and Technology", "School of Communication", "School of Pharmacy", "Wilkinson College of Arts, Humanities, and Social Sciences"] )
 
 ## SVG Macro
 #macro ( svg $name )
@@ -335,7 +335,8 @@
 									<div class="field-container custom-select-container">
 										<label for="dap-discover-school" class="show-for-sr">Filter by Schools and Colleges</label>
 										<select name="dap-discover-school" id="dap-discover-school">
-											<option disabled="disabled" selected="selected">Filter by Schools and Colleges</option>
+											<option disabled="disabled" selected="selected" value="none">Filter by Schools and Colleges</option>
+                                            <option value="all">All Schools and Colleges</option>
 											#foreach ( $school in $schools )
 												<option value="${_EscapeTool.xml( $school )}">$_EscapeTool.xml( $school )</option>
 											#end
@@ -379,7 +380,7 @@
 
 						<header class="dap-results-header">
 
-							<h2>We think you may be interested in:</h2>
+							<h2 class="results-count">You are seeing all Undergraduate Degrees and Programs</h2>
 
 							<ul class="results-views clearfix">
 								<li class="active" data-view="grid-view" aria-label="Click to enable grid view of the results">
@@ -537,7 +538,8 @@
 									<div class="field-container custom-select-container">
 										<label for="dap-undergraduate-school" class="show-for-sr">Filter by Schools and Colleges</label>
 										<select name="dap-undergraduate-school" id="dap-undergraduate-school">
-											<option disabled="disabled" selected="selected">Filter by Schools and Colleges</option>
+											<option disabled="disabled" selected="selected" value="none">Filter by Schools and Colleges</option>
+                                            <option value="all">All Schools and Colleges</option>
 											#foreach ( $school in $schools )
 												<option value="${_EscapeTool.xml( $school )}">$_EscapeTool.xml( $school )</option>
 											#end
@@ -580,7 +582,7 @@
 					
 						<header class="dap-results-header">
 
-							<h2>We think you may be interested in:</h2>
+							<h2 class="results-count">You are seeing all Undergraduate Degrees and Programs</h2>
 
 							<ul class="results-views clearfix">
 								<li class="active" data-view="grid-view" aria-label="Click to enable grid view of the results">
@@ -702,7 +704,8 @@
 									<div class="field-container custom-select-container">
 										<label for="dap-graduate-school" class="show-for-sr">Filter by Schools and Colleges</label>
 										<select name="dap-graduate-school" id="dap-graduate-school">
-											<option disabled="disabled" selected="selected">Filter by Schools and Colleges</option>
+											<option disabled="disabled" selected="selected" value="none">Filter by Schools and Colleges</option>
+                                            <option value="all">All Schools and Colleges</option>
 											#foreach ( $school in $schools )
 												<option value="${_EscapeTool.xml( $school )}">$_EscapeTool.xml( $school )</option>
 											#end
@@ -745,7 +748,7 @@
 
 						<header class="dap-results-header">
 
-							<h2>We think you may be interested in:</h2>
+							<h2 class="results-count">You are seeing all Graduate Degrees and Programs</h2>
 
 							<ul class="results-views clearfix">
 								<li class="active" data-view="grid-view" aria-label="Click to enable grid view of the results">

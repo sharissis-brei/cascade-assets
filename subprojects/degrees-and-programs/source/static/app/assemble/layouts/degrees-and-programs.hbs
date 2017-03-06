@@ -12,11 +12,15 @@
 
 	{{> _fonts}}
 
-	{{> _css-legacy}}
+	{{#unless cascade-build}}
+		{{> _css-legacy}}
+	{{/unless}}
 
 	{{> _css-main}}
 
-	{{> _js-modernizr}}
+	{{#unless cascade-build}}
+		{{> _js-modernizr}}
+	{{/unless}}
 
 </head>
 
@@ -28,9 +32,15 @@
 
 	</div>
 
+	{{#unless cascade-build}}
+		{{> _js-jquery}}
+	{{/unless}}
+
 	{{> _js-main}}
 
-	{{> _js-legacy}}
+	{{#unless cascade-build}}
+		{{> _js-legacy}}
+	{{/unless}}
 
 </body>
 </html>

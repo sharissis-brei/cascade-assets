@@ -68,7 +68,8 @@
 					<div class="field-container custom-select-container">
 						<label for="dap-graduate-school" class="show-for-sr">Filter by Schools and Colleges</label>
 						<select name="dap-graduate-school" id="dap-graduate-school">
-							<option disabled="disabled" selected="selected">Filter by Schools and Colleges</option>
+							<option disabled="disabled" selected="selected" value="none">Filter by Schools and Colleges</option>
+							<option value="all">All Schools and Colleges</option>
 							{{#parseFixture 'dap-feature.json'}}
 						    	{{#each schools}}
 						    		<option value="{{id}}">{{{title}}}</option>

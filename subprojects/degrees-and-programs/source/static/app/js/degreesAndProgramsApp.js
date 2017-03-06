@@ -21,6 +21,7 @@ var chapman = chapman || {};
 		urlTypeQuery = '',
 		$chapmanHeader = $('.bigMasthead header:first-of-type'),
 		$dapFeature = $('#js-dap-feature'),
+		$resultsCount = $('.results-count'),
 
 		dap = {
 
@@ -150,7 +151,7 @@ var chapman = chapman || {};
 				resultsSetHTML = ''; // Reset markup variable
 				resultsSetCount = 0; // Reset result counter
 				_this.getActiveFilters(form);
-				_this.getResultsSet(form);
+				_this.getResultsSet();
 
 			}
 
@@ -283,10 +284,10 @@ var chapman = chapman || {};
 
 			isTransitioning = true;
 
-			// Reset all filters of the previously opened section
+			// Reset the previously opened section
 			if (activeSection !== undefined && activeSection !== '' && $('#js-dap-' + activeSection + '-form').length > 0) {
 				form = $('#js-dap-' + activeSection + '-form');
-				_this.resetFiltering(form);
+				// _this.resetFiltering(form);
 				_this.resetForm(form);
 			}
 			
@@ -317,6 +318,7 @@ var chapman = chapman || {};
 				// Close old section
 				$('.dap-section.active .dap-body').slideUp(500);
 				$('.dap-section.active').removeClass('active');
+				$resultsCount.removeClass('faded-in');
 
 				// Open new section
 				section.addClass('active');
@@ -356,7 +358,7 @@ var chapman = chapman || {};
 					} else {
 						isTransitioning = false;
 					}
-
+					
 					_this.resetFiltering(form); // Check for filters preset (potentially from query string)
 				
 				}, openTransitionTime);
@@ -488,12 +490,24 @@ var chapman = chapman || {};
 
 				formattedName = name.replace(dap[activeSection].fieldNamePrefix, ''); // Remove form name prefixes
 
-				if (formattedName.includes('program-') || formattedName === 'program') {
-					degreeTypeArray.push(value);
-				} else if (formattedName.includes('interest-') || formattedName === 'interest') {
-					interestsArray.push(value);
-				} else {
-					activeFilters[formattedName] = value;
+				// If there is a value
+				if (value.length > 0) {
+
+					if (formattedName.includes('program')) { // Push to array if a program
+						degreeTypeArray.push(value);
+					} else if (formattedName.includes('interest')) { // Push to array if an interest
+						interestsArray.push(value);
+					} else if (formattedName.includes('school')) {
+
+						// Make sure the school value is a valid school name
+						if (value !== 'all' && value !== 'none') {
+							activeFilters[formattedName] = value;
+						}
+						
+					} else {
+						activeFilters[formattedName] = value;
+					}
+
 				}
 
 			}
@@ -516,7 +530,8 @@ var chapman = chapman || {};
 				interests,
 				motivations,
 				degreeType,
-				schools;
+				schools,
+				resultsCountText;
 
 			if (activeSection === 'discover' || activeSection === 'undergraduate') {
 
@@ -558,13 +573,22 @@ var chapman = chapman || {};
 
 			}
 
-			if (resultsSetCount === 0) {
-				var noResultsHTML = '<div class="no-results columns small-12"><p>No results matched your search.</p></div>';
-				$('#js-dap-results-' + activeSection + ' .results-row').append(noResultsHTML);
-			} else {
-				$('#js-dap-results-' + activeSection + ' .results-row').append(resultsSetHTML); // Append results set HTML
-				_this.lazyloadResults(); // Lazyload results in view
+			// Set the results count text
+			if (activeSection === 'discover' || activeSection === 'undergraduate') {
+				resultsCountText = 'You are seeing ' + resultsSetCount + ' out of ' + undergraduateResults.length + ' Undergraduate Degrees and Programs';
+			} else if (activeSection === 'graduate') {
+				resultsCountText = 'You are seeing ' + resultsSetCount + ' out of ' + graduateResults.length + ' Graduate Degrees and Programs';
 			}
+
+			$resultsCount.removeClass('faded-in');
+
+			setTimeout(function () {
+				$resultsCount.text(resultsCountText).addClass('faded-in');
+			}, 375);
+
+			// Append results set HTML and lazyload results in view
+			$('#js-dap-results-' + activeSection + ' .results-row').append(resultsSetHTML);
+			_this.lazyloadResults();
 
 		},
 

@@ -11,9 +11,17 @@ $palettes: map-merge($palettes, (
 	justify-content: space-between;
 	
 	h2 {
+		opacity: 0;
 		color: $dark-gray;
 		font-size: rem-calc(24);
 		font-family: $proxima-nova;
+		transition: opacity 0.375s;
+
+		&.faded-in,
+		.no-js & {
+			opacity: 1;
+		}
+
 	}
 
 	.results-views {
