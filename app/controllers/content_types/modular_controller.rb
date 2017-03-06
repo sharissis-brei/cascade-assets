@@ -267,9 +267,10 @@ HTML
 
     def render_static_two_column_left_column
       # This reproduces content from the static sample version
-      format("%s %s",
+      format("%s %s %s",
              render_static_partial('widgets/left_column/callout_1'),
-             render_static_partial('widgets/left_column/callout_2'))
+             render_static_partial('widgets/left_column/callout_2'),
+             render_static_partial('widgets/left_column/news_event_left_col'))
     end
 
     # rubocop:disable Metrics/AbcSize
