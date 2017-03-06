@@ -1,8 +1,47 @@
 $(function () {
 	// Make it work with old code.
 	var pad2 = utils.pad2;
-	var toShortMonthName_fromstring = utils.toShortMonthName_fromstring;
-	var toShortMonthName_fromstring = utils.toShortMonthName_fromstring;
+
+	// Convert feed category element to date object.
+	// The newsfeed wants a datestamp that it can display in the feed. The feed provides one
+	// as a category element. The problem is that sometimes category is a string with timestamp
+	// value and sometimes an array where one of items is timestamp value. For more info, see
+	// https://github.com/chapmanu/cascade-assets/issues/160
+	var categoryToDatestamp = function(category) {
+		// Sample category datestamp: "2017/03/06 (Mon)"
+		var datestamp = null;
+
+		// Type checking.
+		var categoryIsArray = category instanceof Array;
+		var categoryIsString = typeof(category) === 'string';
+
+		// Convert to date object. If value is not in expected format, it will result in
+		// invalid date object.
+		if ( categoryIsString ) {
+			var dateStr = category.substring(0,10);
+			datestamp = new Date(dateStr);
+		}
+		else if ( categoryIsArray ) {
+			// In the samples I looked at in production, the timestamp was always the first
+			// element of the array. If not, will produce an invalid date object which
+			// will be caught as invalid below.
+			var dateStr = category[0].substring(0,10);
+			datestamp = new Date(dateStr);
+		}
+		else {
+			console.warn('Feed did not provide category as string or array as expected.');
+			return null;
+		}
+
+		// Make sure we got a valid date object: https://stackoverflow.com/a/1353711/6763239
+		var datestampIsValid = !(isNaN(datestamp.getTime()));
+		if ( datestampIsValid ) {
+			return datestamp;
+		}
+		else {
+			return null;
+		}
+	};
 
 	/* Populate news from Wordpress RSS feed (converted to JSON with YQL)
 	------------------------------------------------------------------------------------------------*/
@@ -30,7 +69,7 @@ $(function () {
 				newsFeedUrl = "http://www.chapman.edu/getFeed.ashx?name=newsCommencement";
 				$(".allNews").attr("href", "http://blogs.chapman.edu/commencement");
 				break;
-			case "COPA":	
+			case "COPA":
 				newsFeedUrl = "http://www.chapman.edu/getFeed.ashx?name=newsCOPA";
 				$(".allNews").attr("href", "http://blogs.chapman.edu/copa");
 				break;
@@ -80,7 +119,7 @@ $(function () {
 				break;
 			default:
 				$(".allNews").attr("href", "http://blogs.chapman.edu/happenings");
-				break;			
+				break;
 		}
 
 		$(".news .loading").siblings(".story").css("visibility", "hidden");
@@ -108,7 +147,7 @@ $(function () {
 						$(".news .loading").hide().siblings(".story").css("visibility", "visible");
 					});
 				});
-			} 
+			}
 			else {
 				$(".news").html("<p>Oops, <a href='" + newsFeedUrl + "'>" + newsFeedUrl + "</a> appears to be unresponsive or is not returning anything to display at the moment.</p>");
 			}
@@ -223,23 +262,27 @@ $(function () {
 							maxloop = eventsData.item.length;
 						}
 
-						if (rssitem){
-							//pubdate sometimes contained original but not current event date; use category field instead (has yyyy/mm/dd format):
-							//Month
-							//$this.find(".date .month").html(rssitem.pubDate.split(' ')[1].toUpperCase());
-							$this.find(".date .month").html(toShortMonthName_fromstring(rssitem.category.split('/')[1].toUpperCase()));
-							//Day
-							//$this.find(".date .day").html(pad2(parseInt((rssitem.pubDate.split(' ')[0]), 10)));
-							$this.find(".date .day").html(pad2(parseInt((rssitem.category.split('/')[2]), 10)));
-							//Year
-							//$this.find(".date .year").html(rssitem.pubDate.split(' ')[2]);
-							$this.find(".date .year").html(rssitem.category.split('/')[0]);
-							//Title
+						if ( rssitem ) {
+							// Title
 							$this.find("h3>a").html(rssitem.title);
-							//Links
+
+							// Links
 							$this.find("h3>a, .readMore").each(function () {
 								$(this).attr('href', rssitem.link);
 							});
+
+							// Datestamp: pubdate sometimes contained original but not current
+							// event date; use category field instead (has yyyy/mm/dd format)
+							var datestamp = categoryToDatestamp(rssitem.category);
+							if ( datestamp ) {
+								var shortMonthName = utils.toShortMonthName(datestamp.getMonth() + 1);
+								$this.find(".date .month").html(shortMonthName);
+								$this.find(".date .day").html(pad2(datestamp.getDate()));
+								$this.find(".date .year").html(datestamp.getFullYear());
+							}
+							else {
+								console.warn('Feed did not provide valid datestamp.');
+							}
 						}
 						else{
 							$(this).hide();
@@ -252,7 +295,7 @@ $(function () {
 						}
 					});
 				});
-			} 
+			}
 			else {
 				$(".events").html("<p>There are no events found (or <a href='" + eventsFeedUrl + "'>" + eventsFeedUrl + "</a> is temporarily down).</p>");
 				//$(".events").html("<p>No events found at this time.</p>");
