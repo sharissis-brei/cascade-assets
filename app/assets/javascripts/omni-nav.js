@@ -183,7 +183,6 @@ this.jQuery && (function ($) {
 				$('.gsc-tabsArea .gsc-tabHeader').each(function() {
 					if ($(this).text() == CU_search.searchRefinement) {
 						$(this).trigger('click');
-						console.log($(this));
 					}
 				});
 				CU_search.$container.fadeIn(200);
@@ -243,6 +242,7 @@ this.jQuery && (function ($) {
 			CU_user.updateDisplay();
 			CU_user.checkStatus();
 
+			// TODO: Why is this code commented out but not deleted? Remove after Apr 2017.
 			// Bind show login
 			// $("#login_button").on('click', function(e) {
 			// 	$("#cu_nav").toggleClass("show-login");

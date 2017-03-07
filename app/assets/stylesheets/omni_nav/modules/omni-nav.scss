@@ -558,9 +558,13 @@ a.cu_nav_button {
 			width: 100%;
 			max-height: 90%;
 			z-index: 99081;
-			// CENTER ALIGNED
 			right: 0;
-			
+
+			// Make sure this bg is white. This block is also styled by a Google stylesheet,
+			// but that stylesheet stopped getting loaded in production all of the sudden.
+			// See https://github.com/chapmanu/cascade-assets/issues/162.
+			background-color: $white;
+
 			.gsc-control-cse {
 				position: relative;
 			}
@@ -571,7 +575,7 @@ a.cu_nav_button {
 			}
 
 			@include bp(l) {
-				
+
 			}
 
 		}
@@ -908,7 +912,7 @@ a.cu_nav_button {
 			&:before {
 				display: none;
 			}
-		}	
+		}
 		@include bp(m) {
 			&:before {
 				font-size: 24px;
