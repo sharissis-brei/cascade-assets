@@ -6,6 +6,23 @@ namespace :build do
     task test: :environment do
       # generate_omninav_assets
       # generate_omninav_markup
+
+      # Prep output directory.
+      output_dir = Rails.root.join('dist', 'omninav')
+      FileUtils::mkdir_p output_dir unless File.exists?(output_dir)
+      output_file = Rails.root.join(output_dir, 'omninav-test.html')
+
+      # Build
+      builder = Omninav::Builder.new
+      omninav_html = builder.build
+
+      # Write to file
+      File.open(output_file, 'w') { |file| file.write(omninav_html) }
+      puts format('Output to %s', output_dir)
+    end
+
+    task render_widget: :environment do
+      # This is a reference for dev.
       # Source: http://stackoverflow.com/a/18266486/6763239
       controller = ApplicationController.new
       controller.request = ActionDispatch::TestRequest.new
@@ -13,11 +30,6 @@ namespace :build do
       omninav_partial = 'widgets/shared/omninav'
       result = renderer.render(partial: omninav_partial, locals: {})
       puts result
-
-      # Build
-
-      builder = Omninav::Builder.build
-      puts format('Output to %s', builder.output_dir)
     end
   end
 end

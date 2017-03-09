@@ -8,24 +8,39 @@
 #
 module Omninav
     class Builder
-        def self.build()
-            builder = Omninav::Builder.new
-            output_file = Rails.root.join(builder.output_dir, 'omninav-test.html')
+        #
+        # Class Methods
+        #
 
-            File.open(output_file, 'w') { |file| file.write('Success.') }
-
-            builder
-        end
-
+        #
+        # Instance Methods
+        #
         def initialize
         end
 
-        def output_dir
-            dir_path = Rails.root.join('dist', Rails.env)
-            FileUtils::mkdir_p dir_path unless File.exists?(dir_path)
-            dir_path
+        def build
+            # TODO: Format using named parameters.
+            # See http://stackoverflow.com/questions/196841
+            format(navbar_template)
         end
 
         private
+
+        #
+        # Markup Methods
+        #
+        # Note: when updating navbar markup, you will most likely be changing one of these
+        # methods.
+        #
+        def navbar_template
+            <<-NAVBAR
+
+<!-- OmniNav NavBar -->
+<div id="cu_nav" class="use-transitions">
+</div>
+<!-- End OmniNav NavBar -->
+
+NAVBAR
+        end
     end
 end
