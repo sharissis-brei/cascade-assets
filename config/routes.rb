@@ -24,6 +24,9 @@ Rails.application.routes.draw do
     get '/cascade/law', to: 'school_home_pages#slideshow'
   end
 
+  # Omninav Controller
+  get 'omninav', to: 'omninav#demo'
+
   # The priority is based upon order of creation: first created -> highest priority.
   # See how all your routes lay out with "rake routes".
 

@@ -1,5 +1,28 @@
 require 'zip_file_generator'
 
+namespace :build do
+  namespace :omninav do
+    desc "Build OmniNav navbar assets for various Chapman websites."
+    task test: :environment do
+      # generate_omninav_assets
+      # generate_omninav_markup
+      # Source: http://stackoverflow.com/a/18266486/6763239
+      controller = ApplicationController.new
+      controller.request = ActionDispatch::TestRequest.new
+      renderer = ActionView::Base.new(Rails.root.join('app', 'views'), {}, controller)
+      omninav_partial = 'widgets/shared/omninav'
+      result = renderer.render(partial: omninav_partial, locals: {})
+      puts result
+
+      # Build
+
+      builder = Omninav::Builder.build
+      puts format('Output to %s', builder.output_dir)
+    end
+  end
+end
+
+desc "Build assets for deployment to Cascade."
 task build: :environment do
   if Rails.env.development?
     puts "Please specify build environment"
@@ -43,6 +66,7 @@ task build_omni_nav: :environment do
     Rake::Task['assets:precompile'].invoke
 
     zip rails_asset_path, dist_assets_path
+    puts "Assets saved to public/_assets"
   end
 end
 
@@ -85,3 +109,8 @@ def zip(input_folder, output_name)
   zf = ZipFileGenerator.new(input_folder, output_name)
   zf.write
 end
+
+def generate_omninav_markup
+
+end
+
