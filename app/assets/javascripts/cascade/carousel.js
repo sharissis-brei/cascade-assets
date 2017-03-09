@@ -12,21 +12,6 @@ function removeClass(el, removeClassName){
     el.className = elClass;
 }
 
-// go home old browsers
-if (/MSIE [0-8]\b/.test(navigator.userAgent)) {
-    if (location.pathname !== '/upgrade-browser.aspx') {
-		var node;
-
-		'article aside details figcaption figure footer header hgroup main nav section summary'.replace(/\w+/g, function (nodeName) {
-			node = document.createElement(nodeName);
-		});
-
-		// document.location = '//www.chapman.edu/upgrade-browser.aspx';
-	}
-} else {
-	
-	
-
 // you get an svg
 (function (document, uses, requestAnimationFrame, CACHE) {
 	function embed(svg, g) {
@@ -296,5 +281,3 @@ if (/MSIE [0-8]\b/.test(navigator.userAgent)) {
 	Carousel.initAll();
 	updateDataImages.initAll();
 })();
-
-}
