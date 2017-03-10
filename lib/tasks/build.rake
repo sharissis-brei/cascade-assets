@@ -2,23 +2,25 @@ require 'zip_file_generator'
 
 namespace :build do
   namespace :omninav do
-    desc "Build OmniNav navbar assets for various Chapman websites."
-    task test: :environment do
+    desc "Build static OmniNav navbar assets and markup."
+    task static: :environment do
+      target = 'static'
+
       # generate_omninav_assets
       # generate_omninav_markup
 
       # Prep output directory.
-      output_dir = Rails.root.join('dist', 'omninav')
+      output_dir = Rails.root.join('build', 'omninav', 'static')
       FileUtils::mkdir_p output_dir unless File.exists?(output_dir)
-      output_file = Rails.root.join(output_dir, 'omninav-test.html')
+      output_file = Rails.root.join(output_dir, 'omninav.html')
 
       # Build
-      builder = Omninav::Builder.new
+      builder = Omninav::Builder.new(target: target)
       omninav_html = builder.build
 
       # Write to file
       File.open(output_file, 'w') { |file| file.write(omninav_html) }
-      puts format('Output to %s', output_dir)
+      puts format('Output static version to %s', output_dir)
     end
 
     task render_widget: :environment do
@@ -31,6 +33,11 @@ namespace :build do
       result = renderer.render(partial: omninav_partial, locals: {})
       puts result
     end
+  end
+
+  desc "Build OmniNav navbar assets and markup for various Chapman websites."
+  task omninav: :environment do
+    Rake::Task['build:omninav:static'].invoke
   end
 end
 
