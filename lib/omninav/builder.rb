@@ -29,7 +29,8 @@ module Omninav
       sections = {
         logo_html: build_logo,
         search_html: build_search,
-        login_html: build_login
+        login_html: build_login,
+        off_canvas_nav_html: build_off_canvas_nav
       }
       format(navbar_template, sections)
     end
@@ -51,6 +52,7 @@ module Omninav
 %<logo_html>s
 %<search_html>s
 %<login_html>s
+%<off_canvas_nav_html>s
 
 </div>
 <!-- End OmniNav NavBar -->
@@ -205,6 +207,112 @@ LOGIN_HTML
         chapman_svg: svg_tag_for_chapman_window
       }
       format(template, params)
+    end
+
+    def build_off_canvas_nav
+      template = <<-OFF_CANVAS_HTML
+  <!-- Off Canvas Nav Trigger -->
+  <a id="js-cu-off-canvas-nav-trigger"
+     class="cu-off-canvas-nav-trigger"
+     href="#"
+     title="Access links to the pages within this section of the website and to other sections of the website">
+    <span class="icon icon-menu7"></span>
+  </a>
+
+  <!-- Off Canvas Nav -->
+  <div class="cu-off-canvas-overlay" id="js-cu-off-canvas-overlay"></div>
+
+  <div class="cu-off-canvas-nav-container" id="js-cu-off-canvas-nav-container">
+    %<off_canvas_header>s
+  </div>
+  <!-- End Off Canvas Nav -->
+
+OFF_CANVAS_HTML
+      params = {
+        off_canvas_header: build_off_canvas_nav_header
+      }
+      format(template, params)
+    end
+
+    def build_off_canvas_nav_header(target='default')
+      # TODO: need to map output to target.
+      if target == 'cascade'
+        off_canvas_nav_header_for_cascade
+      else
+        off_canvas_nav_header_default
+      end
+    end
+
+    #
+    # Off-Canvas Nav Headers
+    #
+    def off_canvas_nav_header_default
+      <<-OFF_CANVAS_HEADER_HTML
+    <div class="cu-off-canvas-header">
+      <a class="default-logo-cu" href="#" title="Chapman University">
+        <span itemprop="name">Chapman University</span>
+      </a>
+      <span id="js-cu-close-off-canvas-nav" class="close">X</span>
+      <div class="cu-off-canvas-links clearfix">
+        <span id="js-main-menu" class="main-menu">Main Menu</span>
+      </div>
+    </div>
+OFF_CANVAS_HEADER_HTML
+    end
+
+    def off_canvas_nav_header_for_cascade
+      template = <<-OFF_CANVAS_HEADER_HTML
+  <div class="cu-off-canvas-header">
+    #if ( $displaySecondaryMenu )
+      #if ( $umbrellaCatsPaths.get($counter) == "/" )
+        <a class="sc-logo"
+           href="site://Chapman.edu/index"
+           title="Link to Chapman University Homepage">
+          <span itemprop="name">Chapman University</span>
+        </a>
+      #else
+        <a class="sc-logo ${umbrellaCatsClasses.get($counter)}"
+           href="${site}${umbrellaCatsPaths.get($counter)}"
+           title="Link to ${umbrellaCats.get($counter)}">
+          <span itemprop="name">${umbrellaCats.get($counter)} Logo</span>
+        </a>
+      #end
+
+      <a class="default-logo"
+         href="site://Chapman.edu/index"
+         title="Link to Chapman University Homepage">
+        <span itemprop="name">Chapman University</span>
+      </a>
+
+    #else
+      <a href="site://Chapman.edu/index"
+         class="default-logo-cu"
+         title="Link to Chapman University Homepage">
+        <span itemprop="name">Chapman University</span>
+      </a>
+    #end
+
+    <span class="close" id="js-cu-close-off-canvas-nav">X</span>
+
+    <div class="cu-off-canvas-links clearfix">
+      #if ( $displaySecondaryMenu )
+        <span id="js-main-menu" class="main-menu">$umbrellaCats.get($counter)</span>
+      #else
+        <span id="js-main-menu" class="main-menu">Main Menu</span>
+      #end
+
+      ## If an umbrella category, display toggle links
+      #if ( $displaySecondaryMenu )
+        <a id="js-level-2-link" href="#" class="level-2-link">
+          &#8592; Go to <span class="accent">$umbrellaCats.get($counter) Menu</span>
+        </a>
+        <a id="js-level-1-link" href="#" class="level-1-link">
+          Go to <span class="accent">Main Menu</span> &#8594;
+        </a>
+      #end
+    </div>
+  </div>
+OFF_CANVAS_HEADER_HTML
     end
 
     #
