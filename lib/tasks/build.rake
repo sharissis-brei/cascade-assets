@@ -48,17 +48,6 @@ namespace :build do
       # Report
       puts format("\nBuild complete. Find files in %s.", output_dir)
     end
-
-    task render_widget: :environment do
-      # This is a reference for dev.
-      # Source: http://stackoverflow.com/a/18266486/6763239
-      controller = ApplicationController.new
-      controller.request = ActionDispatch::TestRequest.new
-      renderer = ActionView::Base.new(Rails.root.join('app', 'views'), {}, controller)
-      omninav_partial = 'widgets/shared/omninav'
-      result = renderer.render(partial: omninav_partial, locals: {})
-      puts result
-    end
   end
 
   desc "Build OmniNav navbar assets and markup for various Chapman websites."
