@@ -67,12 +67,13 @@ NAVBAR_HTML
       template = <<-LOGO_HTML
   <!-- Logo Block -->
   <a class="cu-logo" href="%<domain>s" title="Chapman University Website Home Page">
-    <span itemprop="name">Chapman University</span>
+    %<logo>s
   </a>
 LOGO_HTML
 
       params = {
-        domain: DOMAIN
+        domain: DOMAIN,
+        logo: SvgImage.chapman_horizontal_color_logo
       }
       format(template, params)
     end
@@ -260,10 +261,10 @@ OFF_CANVAS_HTML
     # Off-Canvas Nav Headers
     #
     def off_canvas_nav_header_default
-      <<-OFF_CANVAS_HEADER_HTML
+      template = <<-OFF_CANVAS_HEADER_HTML
     <div class="cu-off-canvas-header">
       <a class="default-logo-cu" href="#" title="Chapman University">
-        <span itemprop="name">Chapman University</span>
+        %<logo>s
       </a>
       <span id="js-cu-close-off-canvas-nav" class="close">X</span>
       <div class="cu-off-canvas-links clearfix">
@@ -271,6 +272,11 @@ OFF_CANVAS_HTML
       </div>
     </div>
 OFF_CANVAS_HEADER_HTML
+
+      params = {
+        logo: SvgImage.chapman_horizontal_color_logo
+      }
+      format(template, params)
     end
 
     def off_canvas_nav_header_for_cascade
