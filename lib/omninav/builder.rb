@@ -144,32 +144,7 @@ SEARCH_HTML
         <span class="cu_name">Log In</span>
       </div>
     </div>
-    <div id="cu_login_form"
-         class="cu_dropdown_menu"
-         data-show-domain="blogs.chapman.edu"
-         style="display: none;">
-      <form action="https://blogs.chapman.edu/wp-login.php" method="post">
-        <label for="cu_username" style="display: none;">ChapmanU User ID</label>
-        <input id="cu_username"
-               name="log"
-               class="username"
-               onblur="if (this.value == '') {this.value = 'ChapmanU User ID';}"
-               onfocus="if (this.value == 'ChapmanU User ID') { this.value = ''; }"
-               type="text"
-               value="ChapmanU User ID" />
-        <label for="cu_password" style="display: none;">Password</label>
-        <input id="cu_password"
-               name="pwd"
-               class="password"
-               onblur="if (this.value == '') { this.value = 'Password'; }"
-               onfocus="if (this.value == 'Password') { this.value = ''; }"
-               type="password"
-               value="Password" />
-        <input id="cu_submit" name="submit" type="submit" value="Log In" />
-        <input class="persist" id="cu_persist" name="rememberme" type="checkbox" value="forever" />
-        <label for="cu_persist">Remember Me</label>
-      </form>
-    </div>
+    %<login_form>s
     <ul class="cu_dropdown_menu">
       <li>
         <a class="cu_nav_button" href="https://blackboard.chapman.edu/">
@@ -206,11 +181,50 @@ SEARCH_HTML
 LOGIN_HTML
 
       params = {
+        login_form: build_login_form,
         blackboard_svg: SvgImage.blackboard_icon,
         email_svg: SvgImage.email_icon,
         chapman_svg: SvgImage.chapman_window_icon
       }
       format(template, params)
+    end
+
+    def build_login_form
+      if @target == 'blogs'
+        login_form_for_blogs
+      else
+        '<!-- No login form for this site -->'
+      end
+    end
+
+    def login_form_for_blogs
+      <<-LOGIN_FORM
+    <div id="cu_login_form"
+         class="cu_dropdown_menu"
+         data-show-domain="blogs.chapman.edu">
+      <form action="https://blogs.chapman.edu/wp-login.php" method="post">
+        <label for="cu_username" style="display: none;">ChapmanU User ID</label>
+        <input id="cu_username"
+               name="log"
+               class="username"
+               onblur="if (this.value == '') {this.value = 'ChapmanU User ID';}"
+               onfocus="if (this.value == 'ChapmanU User ID') { this.value = ''; }"
+               type="text"
+               value="ChapmanU User ID" />
+        <label for="cu_password" style="display: none;">Password</label>
+        <input id="cu_password"
+               name="pwd"
+               class="password"
+               onblur="if (this.value == '') { this.value = 'Password'; }"
+               onfocus="if (this.value == 'Password') { this.value = ''; }"
+               type="password"
+               value="Password" />
+        <input id="cu_submit" name="submit" type="submit" value="Log In" />
+        <input class="persist" id="cu_persist" name="rememberme" type="checkbox" value="forever" />
+        <label for="cu_persist">Remember Me</label>
+      </form>
+    </div>
+LOGIN_FORM
     end
 
     def build_off_canvas_nav
@@ -242,7 +256,7 @@ OFF_CANVAS_HTML
 
     def build_off_canvas_nav_header
       # TODO: need to map output to target.
-      if target == 'cascade'
+      if @target == 'cascade'
         off_canvas_nav_header_for_cascade
       else
         off_canvas_nav_header_default
@@ -250,7 +264,7 @@ OFF_CANVAS_HTML
     end
 
     def build_off_canvas_nav_body
-      if target == 'cascade'
+      if @target == 'cascade'
         off_canvas_nav_body_for_cascade
       else
         off_canvas_nav_body_default
