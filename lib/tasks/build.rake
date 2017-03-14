@@ -2,6 +2,9 @@ require 'zip_file_generator'
 
 namespace :build do
   namespace :omninav do
+    #
+    # Build static version: rake build:omninav:static
+    #
     desc "Build static OmniNav navbar assets and markup."
     task static: :environment do
       target = 'static'
@@ -15,8 +18,10 @@ namespace :build do
       puts format("\nBuilding OmniNav %s version.\n", target)
       staging_dir = Rails.root.join('build', 'omninav', 'staging')
       output_dir = Rails.root.join('build', 'omninav', 'static')
-      FileUtils.rm_rf output_dir
-      [staging_dir, output_dir].each{ |d| FileUtils::mkdir_p d unless File.exists?(d) }
+      [staging_dir, output_dir].each do |dir|
+        FileUtils.rm_rf dir
+        FileUtils::mkdir_p dir
+      end
 
       # Build Asset files.
       Rails.application.config.assets.prefix = "../build/omninav/staging"
@@ -24,6 +29,7 @@ namespace :build do
       Rails.application.config.assets.paths = [Rails.root.join('/app/assets/javascripts'),
                                                Rails.root.join('/app/assets/stylesheets/omni_nav')]
       Rails.application.config.assets.precompile = ['omni-nav.js', 'omni-nav.css']
+      Rake::Task['assets:clean'].invoke
       Rake::Task['assets:precompile'].invoke
 
       # Build HTML file.
@@ -48,10 +54,80 @@ namespace :build do
       # Report
       puts format("\nBuild complete. Find files in %s.", output_dir)
     end
+
+    #
+    # Build blogs version: rake build:omninav:blogs
+    #
+    # Blogs expects files here:
+    # https://github.com/chapmanu/blogs/tree/development/content/plugins/cu-wp-customization/omni-nav
+    #
+    # Loaded at runtime here:
+    # https://github.com/chapmanu/blogs/blob/development/content/plugins/cu-wp-customization/cu-wp-customization.php#L243
+    #
+    desc "Build OmniNav navbar assets and markup for Blogs site."
+    task blogs: :environment do
+      target = 'blogs'
+      deploy_file_mapping = {
+        'omni-nav.css' => 'omni-nav.min.css',
+        'omni-nav.js' => 'omni-nav.min.js',
+        'omni-nav.php' => 'omni-nav.php'
+      }
+
+      # Prep staging and output directories.
+      puts format("\nBuilding OmniNav %s version.\n", target)
+      staging_dir = Rails.root.join('build', 'omninav', 'staging')
+      output_dir = Rails.root.join('build', 'omninav', target)
+      [staging_dir, output_dir].each do |dir|
+        FileUtils.rm_rf dir
+        FileUtils::mkdir_p dir
+      end
+
+      # Build minified Asset files.
+      # TODO: This does not currently build minified versions of css and js files. I've googled
+      # this to death but can't get it to work. Blogs expects min versions of files but will work
+      # with unminified versions.
+      puts format("Compiling assets to staging: %s", staging_dir)
+      Rails.application.config.assets.prefix = "../build/omninav/staging"
+      Rails.application.config.assets.digest = false
+      Rails.application.config.assets.compress = true
+      Rails.application.config.assets.debug = false
+      Rails.application.config.assets.paths = [Rails.root.join('/app/assets/javascripts'),
+                                               Rails.root.join('/app/assets/stylesheets/omni_nav')]
+      Rails.application.config.assets.precompile = ['omni-nav.js', 'omni-nav.css']
+      Rake::Task['assets:clean'].invoke
+      Rake::Task['assets:precompile'].invoke
+
+      # Build HTML file.
+      php_file = staging_dir.join 'omni-nav.php'
+      builder = Omninav::Builder.new(target: target)
+      omninav_html = builder.build
+
+      # Write to file
+      File.open(php_file, 'w') { |file| file.write(omninav_html) }
+
+      # Move selected files from staging to output directory.
+      deploy_file_mapping.each do |staging_name, deploy_name|
+        staging_file = staging_dir.join(staging_name)
+        deploy_file = output_dir.join(deploy_name)
+        FileUtils.mv staging_file, deploy_file
+        puts format('Writing %s.', deploy_file)
+      end
+
+      # Clean Up
+      FileUtils.rm_rf staging_dir
+
+      # Report
+      puts format("\nBuild complete. Find files in %s.", output_dir)
+    end
   end
 
+  #
+  # Build all versions: rake build:omninav
+  #
   desc "Build OmniNav navbar assets and markup for various Chapman websites."
   task omninav: :environment do
+    # FIXME: Fails after first build task is run. Whyyyy????
+    Rake::Task['build:omninav:blogs'].invoke
     Rake::Task['build:omninav:static'].invoke
   end
 end

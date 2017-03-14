@@ -10,7 +10,9 @@ module Omninav
   class Builder
     #
     # Constants
+    # On versioning, see http://semver.org/.
     #
+    VERSION = '2.0.0'
     DOMAIN = 'https://www.chapman.edu/'.freeze
 
     attr_accessor :target
@@ -27,9 +29,9 @@ module Omninav
     end
 
     def build
-      # TODO: Format using named parameters.
-      # See http://stackoverflow.com/questions/196841
+      # To make updates, see methods below for individual sections.
       sections = {
+        header: build_header,
         logo_html: build_logo,
         search_html: build_search,
         login_html: build_login,
@@ -40,6 +42,10 @@ module Omninav
 
     private
 
+    def build_version
+      format('%s.%s', VERSION, Time.zone.now.strftime('%Y%m%d.%H%M%S'))
+    end
+
     #
     # Markup Methods
     #
@@ -48,6 +54,7 @@ module Omninav
     #
     def navbar_template
       <<-NAVBAR_HTML
+%<header>s
 
 <!-- OmniNav NavBar -->
 <div id="cu_nav" class="use-transitions">
@@ -61,6 +68,34 @@ module Omninav
 <!-- End OmniNav NavBar -->
 
 NAVBAR_HTML
+    end
+
+    def build_header
+      if @target == 'blogs'
+        header_for_blogs
+      else
+        format('<!-- OmniNav Build Version: %s -->', build_version)
+      end
+    end
+
+    def header_for_blogs
+      template = <<-HEADER_PHP
+<?php
+// OmniNav Build Version: %<version>s
+
+// If logged in
+if (is_user_logged_in()) {
+
+    global $current_user;
+    get_currentuserinfo();
+}
+?>
+HEADER_PHP
+
+      params = {
+        version: build_version
+      }
+      format(template, params)
     end
 
     def build_logo
@@ -137,13 +172,8 @@ SEARCH_HTML
       # TODO: Remove div#cu_login_form or only include it conditionally for the Blogs version,
       # as it appears that's the only site it's used on.
       template = <<-LOGIN_HTML
-  <div class="cu_nav_menu" id="cu_login_container">
-    <div id="cu_identity">
-      <div id="omni-login">
-        <span class="icon icon-user3"></span>
-        <span class="cu_name">Log In</span>
-      </div>
-    </div>
+  <div id="cu_login_container" class="cu_nav_menu">
+    %<identity_block>s
     %<login_form>s
     <ul class="cu_dropdown_menu">
       <li>
@@ -181,10 +211,49 @@ SEARCH_HTML
 LOGIN_HTML
 
       params = {
+        identity_block: build_identity_block,
         login_form: build_login_form,
         blackboard_svg: SvgImage.blackboard_icon,
         email_svg: SvgImage.email_icon,
         chapman_svg: SvgImage.chapman_window_icon
+      }
+      format(template, params)
+    end
+
+    def build_identity_block
+      if @target == 'blogs'
+        identity_block_for_blogs
+      else
+        <<-IDENTITY_BLOCK_HTML
+    <div id="cu_identity">
+      <div id="omni-login">
+        <span class="icon icon-user3"></span>
+        <span class="cu_name">Log In</span>
+      </div>
+    </div>
+IDENTITY_BLOCK_HTML
+      end
+    end
+
+    def identity_block_for_blogs
+      template = <<-IDENTITY_BLOCK_PHP
+    <div id="cu_identity">
+        <?php if (is_user_logged_in()) : ?>
+            <span class="circle-border">
+                <?php echo get_avatar($current_user->user_email); ?>
+            </span>
+            <span class="cu_name"><?php echo $current_user->user_firstname; ?></span>
+        <?php else: ?>
+            <span class="circle-border">
+                %<user_svg>s
+            </span>
+            <span class="cu_name">Log In</span>
+        <?php endif; ?>
+    </div>
+IDENTITY_BLOCK_PHP
+
+      params = {
+        user_svg: SvgImage.user_icon
       }
       format(template, params)
     end
@@ -199,9 +268,17 @@ LOGIN_HTML
 
     def login_form_for_blogs
       <<-LOGIN_FORM
-    <div id="cu_login_form"
-         class="cu_dropdown_menu"
-         data-show-domain="blogs.chapman.edu">
+    <?php if (is_user_logged_in()) : ?>
+    <div id="cu_logged_in" class="cu_dropdown_menu">
+        <?php echo get_avatar($current_user->user_email) ?>
+        <p class="label">Welcome</p>
+        <p class="cu_display_name boxfit"><?php echo $current_user->display_name; ?></p>
+        <a href="<?php echo get_home_url( 1, 'profile', (FORCE_SSL_ADMIN) ? 'https' : 'http' ); ?>">Edit Profile</a> |
+        <a href="<?php echo wp_logout_url('http://'.$_SERVER['HTTP_HOST'].$_SERVER['PHP_SELF']); ?>" id="cu_logout" title="Logout">Logout</a>
+    </div>
+
+    <?php else: ?>
+    <div id="cu_login_form" class="cu_dropdown_menu">
       <form action="https://blogs.chapman.edu/wp-login.php" method="post">
         <label for="cu_username" style="display: none;">ChapmanU User ID</label>
         <input id="cu_username"
@@ -224,6 +301,7 @@ LOGIN_HTML
         <label for="cu_persist">Remember Me</label>
       </form>
     </div>
+    <?php endif; ?>
 LOGIN_FORM
     end
 
