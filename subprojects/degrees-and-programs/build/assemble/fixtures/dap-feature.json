@@ -229,16 +229,10 @@
 				"alt": "Image alt goes here"
 			},
 			"href": "#",
-			"degreeTypes": [
-				{
-					"title": "4+1",
-					"type": "4+1 and bridge"
-				},
-				{
-					"title": "Testing",
-					"type": "major"
-				}
-			],
+			"degreeTypes": {
+				"title": ["4+1", "Testing"],
+				"type": ["4+1 and bridge", "major"]
+			},
 			"desc": "Short program description lorem ipsum dolor sit amet, consectetur adipisicing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua. Ut enim ad minim veniam, quis nostrud exercitation ullamco laboris nisi ut aliquip.",
 			"motivations": ["innovating", "expressing", "helping", "experiencing", "making"],
 			"interests": ["innovating-interest-d", "writing", "helping-interest-d", "experiencing-interest-d", "making-interest-d"],
@@ -256,12 +250,10 @@
 				"alt": "Image alt goes here"
 			},
 			"href": "#",
-			"degreeTypes": [
-				{
-					"title": "B.S.",
-					"type": "major"
-				}
-			],
+			"degreeTypes": {
+				"title": ["B.S."],
+				"type": ["major"]
+			},
 			"desc": "Short program description lorem ipsum dolor sit amet, consectetur adipisicing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua. Ut enim ad minim veniam, quis nostrud exercitation ullamco laboris nisi ut aliquip.",
 			"motivations": ["innovating", "helping", "making"],
 			"interests": ["innovating-interest-a", "helping-interest-b", "making-interest-c"],
@@ -279,12 +271,10 @@
 				"alt": "Image alt goes here"
 			},
 			"href": "#",
-			"degreeTypes": [
-				{
-					"title": "Minor",
-					"type": "minor"
-				}
-			],
+			"degreeTypes": {
+				"title": ["Minor"],
+				"type": ["minor"]
+			},
 			"desc": "Short program description lorem ipsum dolor sit amet, consectetur adipisicing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua. Ut enim ad minim veniam, quis nostrud exercitation ullamco laboris nisi ut aliquip.",
 			"motivations": ["innovating", "expressing", "experiencing"],
 			"interests": ["innovating-interest-d", "visual-studio-arts", "experiencing-interest-c"],
@@ -302,12 +292,10 @@
 				"alt": "Image alt goes here"
 			},
 			"href": "#",
-			"degreeTypes": [
-				{
-					"title": "Minor",
-					"type": "minor"
-				}
-			],
+			"degreeTypes": {
+				"title": ["Minor"],
+				"type": ["minor"]
+			},
 			"desc": "Short program description lorem ipsum dolor sit amet, consectetur adipisicing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua. Ut enim ad minim veniam, quis nostrud exercitation ullamco laboris nisi ut aliquip.",
 			"motivations": ["innovating", "helping", "experiencing"],
 			"interests": ["innovating-interest-c", "helping-interest-b", "experiencing-interest-c"],
@@ -325,12 +313,10 @@
 				"alt": "Image alt goes here"
 			},
 			"href": "#",
-			"degreeTypes": [
-				{
-					"title": "B.F.A.",
-					"type": "major"
-				}
-			],
+			"degreeTypes": {
+				"title": ["B.F.A."],
+				"type": ["major"]
+			},
 			"desc": "Short program description lorem ipsum dolor sit amet, consectetur adipisicing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua. Ut enim ad minim veniam, quis nostrud exercitation ullamco laboris nisi ut aliquip.",
 			"motivations": ["expressing", "experiencing"],
 			"interests": ["visual-studio-arts", "experiencing-interest-d"],
@@ -348,12 +334,10 @@
 				"alt": "Image alt goes here"
 			},
 			"href": "#",
-			"degreeTypes": [
-				{
-					"title": "B.S.",
-					"type": "major"
-				}
-			],
+			"degreeTypes": {
+				"title": ["B.S."],
+				"type": ["major"]
+			},
 			"desc": "Short program description lorem ipsum dolor sit amet, consectetur adipisicing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua. Ut enim ad minim veniam, quis nostrud exercitation ullamco laboris nisi ut aliquip.",
 			"motivations": ["innovating", "helping"],
 			"interests": ["innovating-interest-b", "helping-interest-a"],
@@ -371,12 +355,10 @@
 				"alt": "Image alt goes here"
 			},
 			"href": "#",
-			"degreeTypes": [
-				{
-					"title": "4+1",
-					"type": "4+1 and bridge"
-				}
-			],
+			"degreeTypes": {
+				"title": ["4+1"],
+				"type": ["4+1 and bridge"]
+			},
 			"desc": "Short program description lorem ipsum dolor sit amet, consectetur adipisicing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua. Ut enim ad minim veniam, quis nostrud exercitation ullamco laboris nisi ut aliquip.",
 			"motivations": ["innovating", "helping", "making"],
 			"interests": ["innovating-interest-a", "helping-interest-a", "making-interest-b"],
@@ -394,12 +376,10 @@
 				"alt": "Image alt goes here"
 			},
 			"href": "#",
-			"degreeTypes": [
-				{
-					"title": "B.F.A.",
-					"type": "major"
-				}
-			],
+			"degreeTypes": {
+				"title": ["B.F.A."],
+				"type": ["major"]
+			},
 			"desc": "Short program description lorem ipsum dolor sit amet, consectetur adipisicing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua. Ut enim ad minim veniam, quis nostrud exercitation ullamco laboris nisi ut aliquip.",
 			"motivations": ["expressing", "experiencing"],
 			"interests": ["performing-arts", "experiencing-interest-b"],
@@ -417,12 +397,10 @@
 				"alt": "Image alt goes here"
 			},
 			"href": "#",
-			"degreeTypes": [
-				{
-					"title": "Major",
-					"type": "major"
-				}
-			],
+			"degreeTypes": {
+				"title": ["Major"],
+				"type": ["major"]
+			},
 			"desc": "Short program description lorem ipsum dolor sit amet, consectetur adipisicing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua. Ut enim ad minim veniam, quis nostrud exercitation ullamco laboris nisi ut aliquip.",
 			"motivations": [],
 			"interests": [],
@@ -440,12 +418,10 @@
 				"alt": "Image alt goes here"
 			},
 			"href": "#",
-			"degreeTypes": [
-				{
-					"title": "PhD",
-					"type": "doctorate"
-				}
-			],
+			"degreeTypes": {
+				"title": ["PhD"],
+				"type": ["doctorate"]
+			},
 			"desc": "Short program description lorem ipsum dolor sit amet, consectetur adipisicing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua. Ut enim ad minim veniam, quis nostrud exercitation ullamco laboris nisi ut aliquip.",
 			"motivations": ["innovating", "expressing", "making"],
 			"interests": ["innovating-interest-a", "writing", "making-interest-b"],
@@ -463,12 +439,10 @@
 				"alt": "Image alt goes here"
 			},
 			"href": "#",
-			"degreeTypes": [
-				{
-					"title": "M.S.",
-					"type": "masters"
-				}
-			],
+			"degreeTypes": {
+				"title": ["M.S."],
+				"type": ["masters"]
+			},
 			"desc": "Short program description lorem ipsum dolor sit amet, consectetur adipisicing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua. Ut enim ad minim veniam, quis nostrud exercitation ullamco laboris nisi ut aliquip.",
 			"motivations": ["innovating", "helping", "making"],
 			"interests": ["innovating-interest-a", "helping-interest-b", "making-interest-c"],
@@ -486,12 +460,10 @@
 				"alt": "Image alt goes here"
 			},
 			"href": "#",
-			"degreeTypes": [
-				{
-					"title": "Minor",
-					"type": "minor"
-				}
-			],
+			"degreeTypes": {
+				"title": ["Minor"],
+				"type": ["minor"]
+			},
 			"desc": "Short program description lorem ipsum dolor sit amet, consectetur adipisicing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua. Ut enim ad minim veniam, quis nostrud exercitation ullamco laboris nisi ut aliquip.",
 			"motivations": ["expressing", "experiencing"],
 			"interests": ["performing-arts", "experiencing-interest-b"],
@@ -509,12 +481,10 @@
 				"alt": "Image alt goes here"
 			},
 			"href": "#",
-			"degreeTypes": [
-				{
-					"title": "M.F.A.",
-					"type": "masters"
-				}
-			],
+			"degreeTypes": {
+				"title": ["M.F.A."],
+				"type": ["masters"]
+			},
 			"desc": "Short program description lorem ipsum dolor sit amet, consectetur adipisicing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua. Ut enim ad minim veniam, quis nostrud exercitation ullamco laboris nisi ut aliquip.",
 			"motivations": ["innovating", "expressing", "helping", "experiencing"],
 			"interests": ["innovating-interest-c", "movies-television", "helping-interest-c", "experiencing-interest-c"],
@@ -532,12 +502,10 @@
 				"alt": "Image alt goes here"
 			},
 			"href": "#",
-			"degreeTypes": [
-				{
-					"title": "4+1",
-					"type": "4+1 and bridge"
-				}
-			],
+			"degreeTypes": {
+				"title": ["4+1"],
+				"type": ["4+1 and bridge"]
+			},
 			"desc": "Short program description lorem ipsum dolor sit amet, consectetur adipisicing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua. Ut enim ad minim veniam, quis nostrud exercitation ullamco laboris nisi ut aliquip.",
 			"motivations": ["innovating", "making"],
 			"interests": ["innovating-interest-a", "making-interest-a"],
@@ -555,12 +523,10 @@
 				"alt": "Image alt goes here"
 			},
 			"href": "#",
-			"degreeTypes": [
-				{
-					"title": "M.A.",
-					"type": "masters"
-				}
-			],
+			"degreeTypes": {
+				"title": ["M.A."],
+				"type": ["masters"]
+			},
 			"desc": "Short program description lorem ipsum dolor sit amet, consectetur adipisicing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua. Ut enim ad minim veniam, quis nostrud exercitation ullamco laboris nisi ut aliquip.",
 			"motivations": ["helping", "experiencing"],
 			"interests": ["helping-interest-b", "experiencing-interest-b"],
@@ -578,12 +544,10 @@
 				"alt": "Image alt goes here"
 			},
 			"href": "#",
-			"degreeTypes": [
-				{
-					"title": "M.A.",
-					"type": "masters"
-				}
-			],
+			"degreeTypes": {
+				"title": ["M.A."],
+				"type": ["masters"]
+			},
 			"desc": "Short program description lorem ipsum dolor sit amet, consectetur adipisicing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua. Ut enim ad minim veniam, quis nostrud exercitation ullamco laboris nisi ut aliquip.",
 			"motivations": ["helping"],
 			"interests": ["helping-interest-d", "helping-interest-b"],
@@ -601,12 +565,10 @@
 				"alt": "Image alt goes here"
 			},
 			"href": "#",
-			"degreeTypes": [
-				{
-					"title": "Minor",
-					"type": "minor"
-				}
-			],
+			"degreeTypes": {
+				"title": ["Minor"],
+				"type": ["minor"]
+			},
 			"desc": "Short program description lorem ipsum dolor sit amet, consectetur adipisicing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua. Ut enim ad minim veniam, quis nostrud exercitation ullamco laboris nisi ut aliquip.",
 			"motivations": ["expressing", "experiencing"],
 			"interests": ["visual-studio-arts", "experiencing-interest-d"],

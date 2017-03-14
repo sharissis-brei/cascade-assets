@@ -196,8 +196,8 @@ var chapman = chapman || {};
 						if (result.degreeTypes !== undefined) {
 
 							// Check if this result is a bridge program
-							for (var j = 0; j < result.degreeTypes.length; j++) {
-								var degreeType = result.degreeTypes[j].type;
+							for (var j = 0; j < result.degreeTypes.type.length; j++) {
+								var degreeType = result.degreeTypes[j];
 
 								if (degreeType === '4+1 and bridge') {
 									isBridge = true;
@@ -666,8 +666,8 @@ var chapman = chapman || {};
 						degreeTypesMatch = true;
 					} else if (degreeTypes !== undefined) {
 
-						for (var k = 0; k < degreeTypes.length; k++) {
-							var degreeType = degreeTypes[k].type;
+						for (var k = 0; k < degreeTypes.type.length; k++) {
+							var degreeType = degreeTypes.type[k];
 
 							if (activeFilters.degreeTypes.indexOf(degreeType) > -1) {
 								degreeTypesMatch = true;
@@ -737,12 +737,12 @@ var chapman = chapman || {};
 			}
 
 			// Only show this field if it's defined
-			if (degreeTypes.length > 0) {
+			if (degreeTypes.title) {
 
 				degreeTypesHTML = '<ul class="degree-types clearfix">';
 
-				for (var i = 0; i < degreeTypes.length; i++) {
-					degreeTypesHTML = degreeTypesHTML + '<li>' + degreeTypes[i].title + '</li>';
+				for (var i = 0; i < degreeTypes.title.length; i++) {
+					degreeTypesHTML = degreeTypesHTML + '<li>' + degreeTypes.title[i] + '</li>';
 				}
 
 				degreeTypesHTML = degreeTypesHTML + '</ul>';

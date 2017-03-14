@@ -37,8 +37,8 @@
                             <span class="campus">{{{campus.id}}}</span>
 
                             <ul class="degree-types clearfix">
-                                {{#each degreeTypes}}
-                                    <li>{{{title}}}</li>
+                                {{#each degreeTypes.title}}
+                                    <li>{{{this}}}</li>
                                 {{/each}}
                             </ul>
 
