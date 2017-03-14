@@ -197,9 +197,9 @@ var chapman = chapman || {};
 
 							// Check if this result is a bridge program
 							for (var j = 0; j < result.degreeTypes.type.length; j++) {
-								var degreeType = result.degreeTypes[j];
+								var degreeType = result.degreeTypes.type[j];
 
-								if (degreeType === '4+1 and bridge') {
+								if (degreeType && degreeType.toLowerCase() === '4+1 and bridge') {
 									isBridge = true;
 									break;
 								}
