@@ -3,33 +3,34 @@
         <radio-item value="Undergraduate"/>
         <radio-item value="Graduate"/>
     </text>
-    <text type="dropdown" identifier="level" label="Degree Level" default="Bachelors" required="true">
-        <dropdown-item value="Bachelors"/>
-        <dropdown-item value="Masters"/>
-        <dropdown-item value="Doctorate"/>
-        <dropdown-item value="Certificate"/>
-        <dropdown-item value="4+1 and Bridge"/>
-        <dropdown-item value="Major"/>
-        <dropdown-item value="Minor"/>
+    <text type="multi-selector" identifier="level" label="Degree Level" required="true">
+        <selector-item value="Bachelors"/>
+        <selector-item value="Masters"/>
+        <selector-item value="Doctorate"/>
+        <selector-item value="Certificate"/>
+        <selector-item value="4+1 and Bridge"/>
+        <selector-item value="Major"/>
+        <selector-item value="Minor"/>
     </text>
-    <text type="dropdown" identifier="type" label="Degree Type" default="BS" required="true">
-        <dropdown-item value="BA"/>
-        <dropdown-item value="BS"/>
-        <dropdown-item value="BFA"/>
-        <dropdown-item value="MS"/>
-        <dropdown-item value="MS/MBA"/>
-        <dropdown-item value="MA"/>
-        <dropdown-item value="MBA"/>
-        <dropdown-item value="EMBA"/>
-        <dropdown-item value="MFA"/>
-        <dropdown-item value="Ed.S/MA. LL.M."/>
-        <dropdown-item value="MM"/>
-        <dropdown-item value="MLD"/>
-        <dropdown-item value="JD"/>
-        <dropdown-item value="JD/MBA"/>
-        <dropdown-item value="DPT"/>
-        <dropdown-item value="Credential"/>
-        <dropdown-item value="Ph.D"/>
+    <text type="multi-selector" identifier="type" label="Degree Type" required="true">
+        <selector-item value="BA"/>
+        <selector-item value="BS"/>
+        <selector-item value="BFA"/>
+        <selector-item value="MS"/>
+        <selector-item value="MS/MBA"/>
+        <selector-item value="MA"/>
+        <selector-item value="MBA"/>
+        <selector-item value="EMBA"/>
+        <selector-item value="MFA"/>
+        <selector-item value="Ed.S/MA. LL.M."/>
+        <selector-item value="MM"/>
+        <selector-item value="MLD"/>
+        <selector-item value="JD"/>
+        <selector-item value="JD/MBA"/>
+        <selector-item value="DPT"/>
+        <selector-item value="Credential"/>
+        <selector-item value="Ph.D"/>
+        <selector-item value="Minor"/>
     </text>
     <text identifier="title" label="Degree Title" required="true"/>
     <text type="checkbox" identifier="school" label="School Affiliation" required="true">

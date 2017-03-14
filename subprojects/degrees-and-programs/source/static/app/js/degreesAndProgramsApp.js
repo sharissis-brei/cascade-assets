@@ -189,11 +189,27 @@ var chapman = chapman || {};
 
 					for (var i = 0; i < allResults.length; i++) {
 						var result = allResults[i],
-							type = result.type,
-							degreeType = result.degreeType.type;						
+							type = result.type || '',
+							isBridge = false;
+
+						// Fallback in case no degree type is specified
+						if (result.degreeTypes !== undefined) {
+
+							// Check if this result is a bridge program
+							for (var j = 0; j < result.degreeTypes.length; j++) {
+								var degreeType = result.degreeTypes[j].type;
+
+								if (degreeType === '4+1 and bridge') {
+									isBridge = true;
+									break;
+								}
+
+							}
+
+						}
 
 						// If it's a bridge program, it's both undergraduate and graduate
-						if (degreeType === '4+1 and bridge') {
+						if (isBridge) {
 							undergraduateResults.push(result);
 							graduateResults.push(result);
 							undergraduateProgramNames.push(result.title);
@@ -479,7 +495,7 @@ var chapman = chapman || {};
 		getActiveFilters: function (el) {
 			var form = el.closest('form'),
 				formData = form.serializeArray(),
-				degreeTypeArray = [], // Used for storing degree types
+				degreeTypesArray = [], // Used for storing degree types
 				interestsArray = [];
 
 			for (var i = 0; i < formData.length; i++) {
@@ -494,7 +510,7 @@ var chapman = chapman || {};
 				if (value.length > 0) {
 
 					if (formattedName.includes('program')) { // Push to array if a program
-						degreeTypeArray.push(value);
+						degreeTypesArray.push(value);
 					} else if (formattedName.includes('interest')) { // Push to array if an interest
 						interestsArray.push(value);
 					} else if (formattedName.includes('school')) {
@@ -512,8 +528,8 @@ var chapman = chapman || {};
 
 			}
 
-			if (degreeTypeArray.length) {
-				activeFilters.degreeTypes = degreeTypeArray;
+			if (degreeTypesArray.length) {
+				activeFilters.degreeTypes = degreeTypesArray;
 			}
 
 			if (interestsArray.length) {
@@ -529,7 +545,7 @@ var chapman = chapman || {};
 				title,
 				interests,
 				motivations,
-				degreeType,
+				degreeTypes,
 				schools,
 				resultsCountText;
 
@@ -544,13 +560,13 @@ var chapman = chapman || {};
 					if (activeSection === 'discover') {
 						motivations = result.motivations;
 					} else if (activeSection === 'undergraduate') {
-						degreeType = result.degreeType;
+						degreeTypes = result.degreeTypes;
 					}
 
 					// Filter the result unless there's a motivation without interests chosen
 					// Interests must be chosen if a motivation is chosen
 					if (!motivationWithoutInterest) {
-						_this.filterResult(result, title, interests, motivations, degreeType, schools);
+						_this.filterResult(result, title, interests, motivations, degreeTypes, schools);
 					}
 
 				}
@@ -560,13 +576,13 @@ var chapman = chapman || {};
 				for (var j = 0; j < graduateResults.length; j++) {
 					result = graduateResults[j];
 					title = result.title;
-					degreeType = result.degreeType;
+					degreeTypes = result.degreeTypes;
 					schools = result.schools;
 
 					// Filter the result unless there's a motivation without interests chosen
 					// Interests must be chosen if a motivation is chosen
 					if (!motivationWithoutInterest) {
-						_this.filterResult(result, title, interests, motivations, degreeType, schools);
+						_this.filterResult(result, title, interests, motivations, degreeTypes, schools);
 					}
 
 				}
@@ -593,7 +609,7 @@ var chapman = chapman || {};
 		},
 
 		// Compares properties of a single result to the active filters set
-		filterResult: function(result, title, interests, motivations, degreeType, schools) {
+		filterResult: function(result, title, interests, motivations, degreeTypes, schools) {
 			var _this = this;
 
 			// Keyword search is separate
@@ -609,17 +625,21 @@ var chapman = chapman || {};
 			} else {
 				var interestMatch = false,
 					motivationMatch = false,
-					degreeTypeMatch = false,
+					degreeTypesMatch = false,
 					schoolsMatch = false;
 
 				// Interests
-				if (interests !== undefined && activeFilters.interests !== undefined) {
+				if (activeFilters.interests !== undefined) {
 
-					for (var i = 0; i < interests.length; i++) {
-						var interest = interests[i];
-						
-						if (activeFilters.interests.indexOf(interest) > -1) {
-							interestMatch = true;
+					if (interests !== undefined) {
+
+						for (var i = 0; i < interests.length; i++) {
+							var interest = interests[i];
+							
+							if (activeFilters.interests.indexOf(interest) > -1) {
+								interestMatch = true;
+							}
+
 						}
 
 					}
@@ -629,9 +649,9 @@ var chapman = chapman || {};
 				}
 
 				// Motivations
-				if (motivations !== undefined && activeFilters.motivation !== undefined) {
+				if (activeFilters.motivation !== undefined) {
 
-					if (motivations.indexOf(activeFilters.motivation) > -1) {
+					if (motivations !== undefined && motivations.indexOf(activeFilters.motivation) > -1) {
 						motivationMatch = true;
 					}
 					
@@ -639,25 +659,40 @@ var chapman = chapman || {};
 					motivationMatch = true;
 				}
 
-				// Degree Type
-				if (degreeType !== undefined && activeFilters.degreeTypes !== undefined) {
+				// Degree Types
+				if (activeFilters.degreeTypes !== undefined) {
 
-					if (activeFilters.degreeTypes.indexOf(degreeType.type) > -1 || activeFilters.degreeTypes.indexOf('all') > -1) {
-						degreeTypeMatch = true;
+					if (activeFilters.degreeTypes.indexOf('all') > -1) {
+						degreeTypesMatch = true;
+					} else if (degreeTypes !== undefined) {
+
+						for (var k = 0; k < degreeTypes.length; k++) {
+							var degreeType = degreeTypes[k].type;
+
+							if (activeFilters.degreeTypes.indexOf(degreeType) > -1) {
+								degreeTypesMatch = true;
+							}
+
+						}
+
 					}
-
+					
 				} else {
-					degreeTypeMatch = true;
+					degreeTypesMatch = true;
 				}
 
 				// Schools
-				if (schools !== undefined && activeFilters.school !== undefined) {
+				if (activeFilters.school !== undefined) {
 
-					for (var j = 0; j < schools.length; j++) {
-						var school = schools[j];
-						
-						if (activeFilters.school.indexOf(school) > -1) {
-							schoolsMatch = true;
+					if (schools !== undefined) {
+
+						for (var j = 0; j < schools.length; j++) {
+							var school = schools[j];
+							
+							if (activeFilters.school.indexOf(school) > -1) {
+								schoolsMatch = true;
+							}
+
 						}
 
 					}
@@ -667,7 +702,7 @@ var chapman = chapman || {};
 				}
 
 				// If it's a match, add the result HTML to the results set
-				if (interestMatch && motivationMatch && degreeTypeMatch && schoolsMatch) {
+				if (interestMatch && motivationMatch && degreeTypesMatch && schoolsMatch) {
 					_this.addResultHTML(result);
 				}
 
@@ -681,8 +716,10 @@ var chapman = chapman || {};
 				imgAlt,
 				desc = result.desc || '',
 				href = result.href || '#',
-				campus = result.campus.title || '',
-				degreeType = result.degreeType || '',
+				campus,
+				degreeTypes = result.degreeTypes || '',
+				degreeTypesHTML = '',
+				campusHTML = '',
 				resultHTML;
 
 			if (result.img) {
@@ -691,6 +728,25 @@ var chapman = chapman || {};
 			} else {
 				imgSrc = '';
 				imgAlt = '';
+			}
+
+			// Only show this field if it's defined
+			if (result.campus) {
+				campus = result.campus.title || '';
+				campusHTML = '<span class="campus">' + campus + '</span>';
+			}
+
+			// Only show this field if it's defined
+			if (degreeTypes.length > 0) {
+
+				degreeTypesHTML = '<ul class="degree-types clearfix">';
+
+				for (var i = 0; i < degreeTypes.length; i++) {
+					degreeTypesHTML = degreeTypesHTML + '<li>' + degreeTypes[i].title + '</li>';
+				}
+
+				degreeTypesHTML = degreeTypesHTML + '</ul>';
+
 			}
 
 			resultHTML = '<article class="result columns small-12 clearfix">' +
@@ -706,10 +762,8 @@ var chapman = chapman || {};
 		                    '</div>' +
 		                    '<div class="result-content">' +
 		                        '<h3 class="title"><a href="' + href + '" title="View landing page for ' + title + ' program">' + title + '</a></h3>' +
-		                        '<span class="campus">' + campus + '</span>' +
-		                        '<ul class="degree-types clearfix">' +
-		                        	'<li>' + degreeType.title + '</li>' +
-		                        '</ul>' +
+		                        campusHTML +
+		                        degreeTypesHTML +
 		                        '<p class="desc">' + desc + '</p>' +
 		                        '<a href="' + href + '" title="View landing page for ' + title + ' program" class="button">Learn More <svg class="icon icon-double-chevron"><use xmlns:xlink="http://www.w3.org/1999/xlink" xlink:href="#icon-double-chevron"></use></svg></span></a>' +
 		                    '</div>';

@@ -3,7 +3,7 @@
     Author:        BarkleyREI
     Created:       02/13/2017
     Modified By:   Sean T. Stacho
-    Last Modified: 02/23/2017
+    Last Modified: 03/10/2017
 *#
 
 ## Trim white space
@@ -16,7 +16,7 @@ ${output.replaceAll( $trimSpacingRegExp, "" )}
 
     ## Array Macro
     #macro ( generateArray $arr, $items )
-		#foreach ( $item in $items )
+        #foreach ( $item in $items )
 			#if ( $item != "" )
 				#set ( $tmp = '"' + $_EscapeTool.xml( $item ).replace( "&amp;", "&" ) + '"' )
 				#set ( $dead = $arr.add( $tmp ) )
@@ -37,8 +37,8 @@ ${output.replaceAll( $trimSpacingRegExp, "" )}
 			#end
 			#if ( $props.link.href )"href": "${props.link.href}",#end
 			"degreeType": {
-				"title": "${props.degreeTypes.title}",
-				"type": "${props.degreeTypes.type}"
+				"title": $props.degreeTypes.title,
+				"type": $props.degreeTypes.type
 			},
 			"desc": "${props.desc}",
 			#if ( $props.motivations.size() > 0 )"motivations": $props.motivations,#end
@@ -117,8 +117,22 @@ ${output.replaceAll( $trimSpacingRegExp, "" )}
 
 					## Degree Types
 					#set ( $props.degreeTypes = {} )
-					#set ( $props.degreeTypes.title = $blockObject.getStructuredDataNode("type").textValue )
-					#set ( $props.degreeTypes.type = $blockObject.getStructuredDataNode("level").textValue.toLowerCase() )
+					#set ( $props.degreeTypes.title = [] )
+					#set ( $props.degreeTypes.type = [] )
+
+					#set ( $degreeTypes = {} )
+					#set ( $degreeTypes.title = $blockObject.getStructuredDataNode("type").textValues )
+					#set ( $degreeTypes.type = $blockObject.getStructuredDataNode("level").textValues )
+                    
+					## Degree Level
+					#generateArray( $props.degreeTypes.title, $degreeTypes.title )
+
+                    ## Degree Type
+                    #foreach ( $type in $degreeTypes.type )
+                        #set ( $degreeTypes.type[$foreach.index] = $type.toLowerCase() )
+                    #end
+                    
+					#generateArray( $props.degreeTypes.type, $degreeTypes.type )
 
 					## Description
 					#set ( $desc = $blockObject.getStructuredDataNode("desc") )
