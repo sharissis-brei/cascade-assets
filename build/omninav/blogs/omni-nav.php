@@ -1,5 +1,5 @@
 <?php
-// OmniNav Build Version: 2.0.0.20170315.183921
+// OmniNav Build Version: 2.0.0.20170315.185123
 
 // If logged in
 if (is_user_logged_in()) {
@@ -11,7 +11,7 @@ if (is_user_logged_in()) {
 
 
 <!-- OmniNav NavBar -->
-<div id="cu_nav" class="use-transitions">
+<div id="cu_nav" class="omninav-builder use-transitions">
 
   <!-- Logo Block -->
   <a class="cu-logo" href="https://www.chapman.edu/" title="Chapman University Website Home Page">

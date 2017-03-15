@@ -1012,6 +1012,21 @@ a.cu_nav_button {
 ***************************************************/
 
 #cu_nav.omninav-builder {
+
+	#cu_login_container #cu_identity {
+		// User Icon
+		svg {
+			position: relative;
+		}
+
+		// CUI Name
+		span.cu_name {
+			vertical-align: bottom;
+			margin: 0px;
+		}
+	}
+
+	// Override large negative value in default version that hides logo in off-canvas nav.
 	a.default-logo-cu {
 		text-indent: 0px;
 	}

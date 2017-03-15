@@ -237,7 +237,7 @@ a.cu_nav_button:hover svg * {
 /***************************************************
 * SEARCH
 ***************************************************/
-/* line 240, /Users/atwell/projects/cascade-assets/app/assets/stylesheets/omni_nav/modules/omni-nav.scss */
+/* line 242, /Users/atwell/projects/cascade-assets/app/assets/stylesheets/omni_nav/modules/omni-nav.scss */
 #cu_search {
   display: block;
   margin: 0;
@@ -255,20 +255,20 @@ a.cu_nav_button:hover svg * {
   margin-right: 0;
 }
 @media (min-width: 1024px) {
-  /* line 240, /Users/atwell/projects/cascade-assets/app/assets/stylesheets/omni_nav/modules/omni-nav.scss */
+  /* line 242, /Users/atwell/projects/cascade-assets/app/assets/stylesheets/omni_nav/modules/omni-nav.scss */
   #cu_search {
     margin-right: 65px;
   }
 }
-/* line 258, /Users/atwell/projects/cascade-assets/app/assets/stylesheets/omni_nav/modules/omni-nav.scss */
+/* line 260, /Users/atwell/projects/cascade-assets/app/assets/stylesheets/omni_nav/modules/omni-nav.scss */
 #cu_search.open {
   display: block;
 }
-/* line 262, /Users/atwell/projects/cascade-assets/app/assets/stylesheets/omni_nav/modules/omni-nav.scss */
+/* line 264, /Users/atwell/projects/cascade-assets/app/assets/stylesheets/omni_nav/modules/omni-nav.scss */
 #cu_search select.search-type::-ms-expand {
   display: none;
 }
-/* line 266, /Users/atwell/projects/cascade-assets/app/assets/stylesheets/omni_nav/modules/omni-nav.scss */
+/* line 268, /Users/atwell/projects/cascade-assets/app/assets/stylesheets/omni_nav/modules/omni-nav.scss */
 #cu_search .search-type {
   display: none;
   outline: 0;
@@ -293,13 +293,13 @@ a.cu_nav_button:hover svg * {
   -webkit-transition: background-color 0.125s ease-in-out;
   transition: background-color 0.125s ease-in-out;
 }
-/* line 287, /Users/atwell/projects/cascade-assets/app/assets/stylesheets/omni_nav/modules/omni-nav.scss */
+/* line 289, /Users/atwell/projects/cascade-assets/app/assets/stylesheets/omni_nav/modules/omni-nav.scss */
 .ie8 #cu_search .search-type {
   background-image: none;
   padding: 0 0 0 10px;
 }
 @media (min-width: 1024px) {
-  /* line 266, /Users/atwell/projects/cascade-assets/app/assets/stylesheets/omni_nav/modules/omni-nav.scss */
+  /* line 268, /Users/atwell/projects/cascade-assets/app/assets/stylesheets/omni_nav/modules/omni-nav.scss */
   #cu_search .search-type {
     display: block;
     width: 35%;
@@ -307,20 +307,20 @@ a.cu_nav_button:hover svg * {
   }
 }
 @media (min-width: 1024px) {
-  /* line 299, /Users/atwell/projects/cascade-assets/app/assets/stylesheets/omni_nav/modules/omni-nav.scss */
+  /* line 301, /Users/atwell/projects/cascade-assets/app/assets/stylesheets/omni_nav/modules/omni-nav.scss */
   #cu_search #cu_search_box {
     width: 65%;
     float: right;
   }
 }
-/* line 306, /Users/atwell/projects/cascade-assets/app/assets/stylesheets/omni_nav/modules/omni-nav.scss */
+/* line 308, /Users/atwell/projects/cascade-assets/app/assets/stylesheets/omni_nav/modules/omni-nav.scss */
 #cu_search .gsc-search-box {
   margin: 0;
   position: relative;
   width: 100%;
   z-index: 99100;
 }
-/* line 314, /Users/atwell/projects/cascade-assets/app/assets/stylesheets/omni_nav/modules/omni-nav.scss */
+/* line 316, /Users/atwell/projects/cascade-assets/app/assets/stylesheets/omni_nav/modules/omni-nav.scss */
 #cu_search input.gsc-input {
   display: block;
   margin: 0;
@@ -343,19 +343,19 @@ a.cu_nav_button:hover svg * {
   -o-appearance: none;
   appearance: none;
 }
-/* line 329, /Users/atwell/projects/cascade-assets/app/assets/stylesheets/omni_nav/modules/omni-nav.scss */
+/* line 331, /Users/atwell/projects/cascade-assets/app/assets/stylesheets/omni_nav/modules/omni-nav.scss */
 #cu_search input.gsc-input::-webkit-input-placeholder {
   font-size: 13px;
   color: #000;
   font-family: "proxima-nova-soft", "proxima-nova", "futura-pt", Arial, Verdana, "Sans Serif";
 }
-/* line 335, /Users/atwell/projects/cascade-assets/app/assets/stylesheets/omni_nav/modules/omni-nav.scss */
+/* line 337, /Users/atwell/projects/cascade-assets/app/assets/stylesheets/omni_nav/modules/omni-nav.scss */
 #cu_search input.gsc-input:focus, #cu_search input.gsc-input:hover {
   -webkit-transition: background-color 0.1s ease-out;
   transition: background-color 0.1s ease-out;
 }
 @media (min-width: 1024px) {
-  /* line 314, /Users/atwell/projects/cascade-assets/app/assets/stylesheets/omni_nav/modules/omni-nav.scss */
+  /* line 316, /Users/atwell/projects/cascade-assets/app/assets/stylesheets/omni_nav/modules/omni-nav.scss */
   #cu_search input.gsc-input {
     padding: 3px 0;
     height: 34px;
@@ -365,68 +365,68 @@ a.cu_nav_button:hover svg * {
     border-radius: 0px 4px 4px 0px;
   }
 }
-/* line 351, /Users/atwell/projects/cascade-assets/app/assets/stylesheets/omni_nav/modules/omni-nav.scss */
+/* line 353, /Users/atwell/projects/cascade-assets/app/assets/stylesheets/omni_nav/modules/omni-nav.scss */
 #cu_search td.gsc-input {
   width: 100%;
   padding: 0 30px;
 }
 @media (min-width: 780px) {
-  /* line 351, /Users/atwell/projects/cascade-assets/app/assets/stylesheets/omni_nav/modules/omni-nav.scss */
+  /* line 353, /Users/atwell/projects/cascade-assets/app/assets/stylesheets/omni_nav/modules/omni-nav.scss */
   #cu_search td.gsc-input {
     padding: 0;
   }
 }
-/* line 362, /Users/atwell/projects/cascade-assets/app/assets/stylesheets/omni_nav/modules/omni-nav.scss */
+/* line 364, /Users/atwell/projects/cascade-assets/app/assets/stylesheets/omni_nav/modules/omni-nav.scss */
 #cu_search .gsc-result-info {
   font-size: 12px;
   color: #AAAAAA;
 }
-/* line 369, /Users/atwell/projects/cascade-assets/app/assets/stylesheets/omni_nav/modules/omni-nav.scss */
+/* line 371, /Users/atwell/projects/cascade-assets/app/assets/stylesheets/omni_nav/modules/omni-nav.scss */
 #cu_search .gs-spelling a {
   color: #407892;
 }
-/* line 373, /Users/atwell/projects/cascade-assets/app/assets/stylesheets/omni_nav/modules/omni-nav.scss */
+/* line 375, /Users/atwell/projects/cascade-assets/app/assets/stylesheets/omni_nav/modules/omni-nav.scss */
 #cu_search .gs-title {
   height: auto;
   color: #98002e;
   text-decoration: none;
 }
-/* line 378, /Users/atwell/projects/cascade-assets/app/assets/stylesheets/omni_nav/modules/omni-nav.scss */
+/* line 380, /Users/atwell/projects/cascade-assets/app/assets/stylesheets/omni_nav/modules/omni-nav.scss */
 #cu_search .gs-title a {
   display: block;
   padding-bottom: 5px;
 }
-/* line 379, /Users/atwell/projects/cascade-assets/app/assets/stylesheets/omni_nav/modules/omni-nav.scss */
+/* line 381, /Users/atwell/projects/cascade-assets/app/assets/stylesheets/omni_nav/modules/omni-nav.scss */
 #cu_search .gs-title b {
   color: #890029;
   text-decoration: none;
 }
-/* line 380, /Users/atwell/projects/cascade-assets/app/assets/stylesheets/omni_nav/modules/omni-nav.scss */
+/* line 382, /Users/atwell/projects/cascade-assets/app/assets/stylesheets/omni_nav/modules/omni-nav.scss */
 #cu_search .gs-title:hover {
   text-decoration: underline;
 }
-/* line 382, /Users/atwell/projects/cascade-assets/app/assets/stylesheets/omni_nav/modules/omni-nav.scss */
+/* line 384, /Users/atwell/projects/cascade-assets/app/assets/stylesheets/omni_nav/modules/omni-nav.scss */
 #cu_search .gs-title a:visited {
   color: #407892;
 }
-/* line 384, /Users/atwell/projects/cascade-assets/app/assets/stylesheets/omni_nav/modules/omni-nav.scss */
+/* line 386, /Users/atwell/projects/cascade-assets/app/assets/stylesheets/omni_nav/modules/omni-nav.scss */
 #cu_search .gs-title a:visited b {
   color: #3b6f87;
 }
-/* line 389, /Users/atwell/projects/cascade-assets/app/assets/stylesheets/omni_nav/modules/omni-nav.scss */
+/* line 391, /Users/atwell/projects/cascade-assets/app/assets/stylesheets/omni_nav/modules/omni-nav.scss */
 #cu_search .gs-visibleUrl {
   color: #AAAAAA;
   font-size: 12px;
   line-height: 16px;
   margin: 4px 0;
 }
-/* line 397, /Users/atwell/projects/cascade-assets/app/assets/stylesheets/omni_nav/modules/omni-nav.scss */
+/* line 399, /Users/atwell/projects/cascade-assets/app/assets/stylesheets/omni_nav/modules/omni-nav.scss */
 #cu_search .gs-snippet {
   color: #666666;
   font-size: 12px;
   line-height: 16px;
 }
-/* line 404, /Users/atwell/projects/cascade-assets/app/assets/stylesheets/omni_nav/modules/omni-nav.scss */
+/* line 406, /Users/atwell/projects/cascade-assets/app/assets/stylesheets/omni_nav/modules/omni-nav.scss */
 #cu_search .more-results {
   display: block;
   padding: 14px;
@@ -438,51 +438,51 @@ a.cu_nav_button:hover svg * {
   text-align: center;
   text-decoration: none;
 }
-/* line 416, /Users/atwell/projects/cascade-assets/app/assets/stylesheets/omni_nav/modules/omni-nav.scss */
+/* line 418, /Users/atwell/projects/cascade-assets/app/assets/stylesheets/omni_nav/modules/omni-nav.scss */
 #cu_search .more-results:hover {
   color: #404040;
   background: #CCCCCC;
 }
-/* line 423, /Users/atwell/projects/cascade-assets/app/assets/stylesheets/omni_nav/modules/omni-nav.scss */
+/* line 425, /Users/atwell/projects/cascade-assets/app/assets/stylesheets/omni_nav/modules/omni-nav.scss */
 #cu_search .gsc-clear-button {
   display: none;
 }
-/* line 424, /Users/atwell/projects/cascade-assets/app/assets/stylesheets/omni_nav/modules/omni-nav.scss */
+/* line 426, /Users/atwell/projects/cascade-assets/app/assets/stylesheets/omni_nav/modules/omni-nav.scss */
 #cu_search .gsc-selected-option-container {
   min-width: 95px !important;
   cursor: pointer;
 }
-/* line 425, /Users/atwell/projects/cascade-assets/app/assets/stylesheets/omni_nav/modules/omni-nav.scss */
+/* line 427, /Users/atwell/projects/cascade-assets/app/assets/stylesheets/omni_nav/modules/omni-nav.scss */
 #cu_search .gsc-option-menu-item {
   padding: 0 15px;
 }
-/* line 426, /Users/atwell/projects/cascade-assets/app/assets/stylesheets/omni_nav/modules/omni-nav.scss */
+/* line 428, /Users/atwell/projects/cascade-assets/app/assets/stylesheets/omni_nav/modules/omni-nav.scss */
 #cu_search .gsc-above-wrapper-area {
   padding-top: 0;
   margin-bottom: 15px;
 }
-/* line 427, /Users/atwell/projects/cascade-assets/app/assets/stylesheets/omni_nav/modules/omni-nav.scss */
+/* line 429, /Users/atwell/projects/cascade-assets/app/assets/stylesheets/omni_nav/modules/omni-nav.scss */
 #cu_search .gsc-control-cse {
   padding: 18px 23px 15px 20px;
 }
-/* line 428, /Users/atwell/projects/cascade-assets/app/assets/stylesheets/omni_nav/modules/omni-nav.scss */
+/* line 430, /Users/atwell/projects/cascade-assets/app/assets/stylesheets/omni_nav/modules/omni-nav.scss */
 #cu_search .gsc-table-cell-thumbnail {
   padding-right: 8px;
 }
-/* line 429, /Users/atwell/projects/cascade-assets/app/assets/stylesheets/omni_nav/modules/omni-nav.scss */
+/* line 431, /Users/atwell/projects/cascade-assets/app/assets/stylesheets/omni_nav/modules/omni-nav.scss */
 #cu_search .gsc-webResult {
   margin-bottom: 7px;
 }
-/* line 438, /Users/atwell/projects/cascade-assets/app/assets/stylesheets/omni_nav/modules/omni-nav.scss */
+/* line 440, /Users/atwell/projects/cascade-assets/app/assets/stylesheets/omni_nav/modules/omni-nav.scss */
 #cu_search .gsc-cursor-box {
   display: none;
 }
-/* line 444, /Users/atwell/projects/cascade-assets/app/assets/stylesheets/omni_nav/modules/omni-nav.scss */
+/* line 446, /Users/atwell/projects/cascade-assets/app/assets/stylesheets/omni_nav/modules/omni-nav.scss */
 #cu_search .gsc-results .gsc-cursor-box {
   margin: 20px 0;
   text-align: center;
 }
-/* line 448, /Users/atwell/projects/cascade-assets/app/assets/stylesheets/omni_nav/modules/omni-nav.scss */
+/* line 450, /Users/atwell/projects/cascade-assets/app/assets/stylesheets/omni_nav/modules/omni-nav.scss */
 #cu_search .gsc-results .gsc-cursor-box .gsc-cursor-page {
   display: inline-block;
   padding: 8px 10px;
@@ -490,15 +490,15 @@ a.cu_nav_button:hover svg * {
   text-decoration: none;
   border-radius: 3px;
 }
-/* line 457, /Users/atwell/projects/cascade-assets/app/assets/stylesheets/omni_nav/modules/omni-nav.scss */
+/* line 459, /Users/atwell/projects/cascade-assets/app/assets/stylesheets/omni_nav/modules/omni-nav.scss */
 #cu_search .gsc-results .gsc-cursor-box .gsc-cursor-page:hover {
   background: #CCCCCC;
 }
-/* line 461, /Users/atwell/projects/cascade-assets/app/assets/stylesheets/omni_nav/modules/omni-nav.scss */
+/* line 463, /Users/atwell/projects/cascade-assets/app/assets/stylesheets/omni_nav/modules/omni-nav.scss */
 #cu_search .gsc-results .gsc-cursor-box .gsc-cursor-page.gsc-cursor-current-page, #cu_search .gsc-results .gsc-cursor-box .gsc-cursor-page.gsc-cursor-current-page:hover {
   background: white;
 }
-/* line 470, /Users/atwell/projects/cascade-assets/app/assets/stylesheets/omni_nav/modules/omni-nav.scss */
+/* line 472, /Users/atwell/projects/cascade-assets/app/assets/stylesheets/omni_nav/modules/omni-nav.scss */
 #cu_search td.gsc-search-button {
   display: block;
   width: 30px;
@@ -508,13 +508,13 @@ a.cu_nav_button:hover svg * {
   font-size: 18px;
 }
 @media (min-width: 780px) {
-  /* line 470, /Users/atwell/projects/cascade-assets/app/assets/stylesheets/omni_nav/modules/omni-nav.scss */
+  /* line 472, /Users/atwell/projects/cascade-assets/app/assets/stylesheets/omni_nav/modules/omni-nav.scss */
   #cu_search td.gsc-search-button {
     left: auto;
     right: 0;
   }
 }
-/* line 484, /Users/atwell/projects/cascade-assets/app/assets/stylesheets/omni_nav/modules/omni-nav.scss */
+/* line 486, /Users/atwell/projects/cascade-assets/app/assets/stylesheets/omni_nav/modules/omni-nav.scss */
 #cu_search input.gsc-search-button {
   display: block;
   border: none;
@@ -531,12 +531,12 @@ a.cu_nav_button:hover svg * {
   background-position: center;
   background-image: url(data:image/svg+xml;base64,PD94bWwgdmVyc2lvbj0iMS4wIiBlbmNvZGluZz0idXRmLTgiPz4NCjwhLS0gR2VuZXJhdG9yOiBBZG9iZSBJbGx1c3RyYXRvciAxNi4wLjQsIFNWRyBFeHBvcnQgUGx1Zy1JbiAuIFNWRyBWZXJzaW9uOiA2LjAwIEJ1aWxkIDApICAtLT4NCjwhRE9DVFlQRSBzdmcgUFVCTElDICItLy9XM0MvL0RURCBTVkcgMS4xLy9FTiIgImh0dHA6Ly93d3cudzMub3JnL0dyYXBoaWNzL1NWRy8xLjEvRFREL3N2ZzExLmR0ZCI+DQo8c3ZnIHZlcnNpb249IjEuMSIgaWQ9IkxheWVyXzEiIHhtbG5zPSJodHRwOi8vd3d3LnczLm9yZy8yMDAwL3N2ZyIgeG1sbnM6eGxpbms9Imh0dHA6Ly93d3cudzMub3JnLzE5OTkveGxpbmsiIHg9IjBweCIgeT0iMHB4Ig0KCSB3aWR0aD0iNzYwLjVweCIgaGVpZ2h0PSI1MTJweCIgdmlld0JveD0iMCAwIDc2MC41IDUxMiIgZW5hYmxlLWJhY2tncm91bmQ9Im5ldyAwIDAgNzYwLjUgNTEyIiB4bWw6c3BhY2U9InByZXNlcnZlIj4NCjxwYXRoIGQ9Ik00OTYuMTMxLDQzNS42OThMMzc0Ljg1NSwzMzIuNTUxYy0xMi41MzctMTEuMjgzLTI1Ljk0My0xNi40NjMtMzYuNzc0LTE1Ljk2M0MzNjYuNzA3LDI4My4wNTUsMzg0LDIzOS41NDksMzg0LDE5Mg0KCUMzODQsODUuOTYxLDI5OC4wMzksMCwxOTIsMEM4NS45NjIsMCwwLDg1Ljk2MSwwLDE5MnM4NS45NjEsMTkyLDE5MiwxOTJjNDcuNTQ5LDAsOTEuMDU0LTE3LjI5MywxMjQuNTg4LTQ1LjkyMg0KCWMtMC41LDEwLjgzMSw0LjY4LDI0LjIzOSwxNS45NjMsMzYuNzc0TDQzNS42OTgsNDk2LjEzYzE3LjY2MSwxOS42MjMsNDYuNTEzLDIxLjI3Nyw2NC4xMSwzLjY3OA0KCUM1MTcuNDA2LDQ4Mi4yMDksNTE1Ljc1NCw0NTMuMzU5LDQ5Ni4xMzEsNDM1LjY5OHogTTE5MiwzMjBjLTcwLjY5MiwwLTEyOC01Ny4zMDktMTI4LTEyOGMwLTcwLjY5Miw1Ny4zMDgtMTI4LDEyOC0xMjgNCgljNzAuNjksMCwxMjgsNTcuMzA4LDEyOCwxMjhDMzIwLDI2Mi42OTEsMjYyLjY5MywzMjAsMTkyLDMyMHoiLz4NCjwvc3ZnPg0K);
 }
-/* line 496, /Users/atwell/projects/cascade-assets/app/assets/stylesheets/omni_nav/modules/omni-nav.scss */
+/* line 498, /Users/atwell/projects/cascade-assets/app/assets/stylesheets/omni_nav/modules/omni-nav.scss */
 #cu_search input.gsc-search-button:focus {
   outline: none;
 }
 @media (min-width: 1024px) {
-  /* line 240, /Users/atwell/projects/cascade-assets/app/assets/stylesheets/omni_nav/modules/omni-nav.scss */
+  /* line 242, /Users/atwell/projects/cascade-assets/app/assets/stylesheets/omni_nav/modules/omni-nav.scss */
   #cu_search {
     background-color: transparent;
     display: block;
@@ -547,20 +547,20 @@ a.cu_nav_button:hover svg * {
   }
 }
 
-/* line 523, /Users/atwell/projects/cascade-assets/app/assets/stylesheets/omni_nav/modules/omni-nav.scss */
+/* line 525, /Users/atwell/projects/cascade-assets/app/assets/stylesheets/omni_nav/modules/omni-nav.scss */
 .gssb_c[style] {
   position: fixed !important;
   top: 44px !important;
   z-index: 99200;
 }
 @media (min-width: 780px) {
-  /* line 523, /Users/atwell/projects/cascade-assets/app/assets/stylesheets/omni_nav/modules/omni-nav.scss */
+  /* line 525, /Users/atwell/projects/cascade-assets/app/assets/stylesheets/omni_nav/modules/omni-nav.scss */
   .gssb_c[style] {
     top: 48px !important;
   }
 }
 
-/* line 535, /Users/atwell/projects/cascade-assets/app/assets/stylesheets/omni_nav/modules/omni-nav.scss */
+/* line 537, /Users/atwell/projects/cascade-assets/app/assets/stylesheets/omni_nav/modules/omni-nav.scss */
 #cu_search_results {
   display: none;
   width: 100%;
@@ -572,7 +572,7 @@ a.cu_nav_button:hover svg * {
   top: 64px;
   left: 0;
 }
-/* line 547, /Users/atwell/projects/cascade-assets/app/assets/stylesheets/omni_nav/modules/omni-nav.scss */
+/* line 549, /Users/atwell/projects/cascade-assets/app/assets/stylesheets/omni_nav/modules/omni-nav.scss */
 #cu_search_results #cu_search_results_cell {
   display: table-cell;
   vertical-align: middle;
@@ -580,7 +580,7 @@ a.cu_nav_button:hover svg * {
   width: 100%;
   height: 100%;
 }
-/* line 554, /Users/atwell/projects/cascade-assets/app/assets/stylesheets/omni_nav/modules/omni-nav.scss */
+/* line 556, /Users/atwell/projects/cascade-assets/app/assets/stylesheets/omni_nav/modules/omni-nav.scss */
 #cu_search_results #cu_search_results_cell #cu_search_results_ui {
   position: fixed;
   overflow-y: scroll;
@@ -591,12 +591,12 @@ a.cu_nav_button:hover svg * {
   right: 0;
   background-color: #FFF;
 }
-/* line 568, /Users/atwell/projects/cascade-assets/app/assets/stylesheets/omni_nav/modules/omni-nav.scss */
+/* line 570, /Users/atwell/projects/cascade-assets/app/assets/stylesheets/omni_nav/modules/omni-nav.scss */
 #cu_search_results #cu_search_results_cell #cu_search_results_ui .gsc-control-cse {
   position: relative;
 }
 @media (min-width: 780px) {
-  /* line 554, /Users/atwell/projects/cascade-assets/app/assets/stylesheets/omni_nav/modules/omni-nav.scss */
+  /* line 556, /Users/atwell/projects/cascade-assets/app/assets/stylesheets/omni_nav/modules/omni-nav.scss */
   #cu_search_results #cu_search_results_cell #cu_search_results_ui {
     width: 495px;
     right: 0;
@@ -606,7 +606,7 @@ a.cu_nav_button:hover svg * {
 /***************************************************
 * LOGIN
 ***************************************************/
-/* line 590, /Users/atwell/projects/cascade-assets/app/assets/stylesheets/omni_nav/modules/omni-nav.scss */
+/* line 592, /Users/atwell/projects/cascade-assets/app/assets/stylesheets/omni_nav/modules/omni-nav.scss */
 #cu_login_container {
   display: block;
   margin: 0;
@@ -616,7 +616,7 @@ a.cu_nav_button:hover svg * {
   top: 0;
   right: 0;
 }
-/* line 597, /Users/atwell/projects/cascade-assets/app/assets/stylesheets/omni_nav/modules/omni-nav.scss */
+/* line 599, /Users/atwell/projects/cascade-assets/app/assets/stylesheets/omni_nav/modules/omni-nav.scss */
 #cu_login_container #cu_identity {
   font-family: 'proxima-nova', sans-serif;
   font-size: 14px;
@@ -631,7 +631,7 @@ a.cu_nav_button:hover svg * {
   height: 64px;
   padding: 21px;
 }
-/* line 612, /Users/atwell/projects/cascade-assets/app/assets/stylesheets/omni_nav/modules/omni-nav.scss */
+/* line 614, /Users/atwell/projects/cascade-assets/app/assets/stylesheets/omni_nav/modules/omni-nav.scss */
 #cu_login_container #cu_identity .circle-border {
   display: inline-block;
   border: 1px solid #CCC;
@@ -641,17 +641,17 @@ a.cu_nav_button:hover svg * {
   overflow: hidden;
   position: relative;
 }
-/* line 622, /Users/atwell/projects/cascade-assets/app/assets/stylesheets/omni_nav/modules/omni-nav.scss */
+/* line 624, /Users/atwell/projects/cascade-assets/app/assets/stylesheets/omni_nav/modules/omni-nav.scss */
 #cu_login_container #cu_identity .icon {
   font-size: 18px;
   bottom: 0;
 }
-/* line 627, /Users/atwell/projects/cascade-assets/app/assets/stylesheets/omni_nav/modules/omni-nav.scss */
+/* line 629, /Users/atwell/projects/cascade-assets/app/assets/stylesheets/omni_nav/modules/omni-nav.scss */
 #cu_login_container #cu_identity .cu_name {
   display: none;
 }
 @media (min-width: 1024px) {
-  /* line 627, /Users/atwell/projects/cascade-assets/app/assets/stylesheets/omni_nav/modules/omni-nav.scss */
+  /* line 629, /Users/atwell/projects/cascade-assets/app/assets/stylesheets/omni_nav/modules/omni-nav.scss */
   #cu_login_container #cu_identity .cu_name {
     display: inline;
     font-size: 14px;
@@ -659,7 +659,7 @@ a.cu_nav_button:hover svg * {
     border: 0px solid #000;
   }
 }
-/* line 637, /Users/atwell/projects/cascade-assets/app/assets/stylesheets/omni_nav/modules/omni-nav.scss */
+/* line 639, /Users/atwell/projects/cascade-assets/app/assets/stylesheets/omni_nav/modules/omni-nav.scss */
 #cu_login_container #cu_identity svg,
 #cu_login_container #cu_identity img {
   width: 20px;
@@ -670,42 +670,42 @@ a.cu_nav_button:hover svg * {
   top: 2px;
   left: 0;
 }
-/* line 647, /Users/atwell/projects/cascade-assets/app/assets/stylesheets/omni_nav/modules/omni-nav.scss */
+/* line 649, /Users/atwell/projects/cascade-assets/app/assets/stylesheets/omni_nav/modules/omni-nav.scss */
 #cu_login_container #cu_identity svg *,
 #cu_login_container #cu_identity img * {
   -webkit-transition: fill 0.1s ease-out;
   transition: fill 0.1s ease-out;
   fill: #4d4d4d;
 }
-/* line 655, /Users/atwell/projects/cascade-assets/app/assets/stylesheets/omni_nav/modules/omni-nav.scss */
+/* line 657, /Users/atwell/projects/cascade-assets/app/assets/stylesheets/omni_nav/modules/omni-nav.scss */
 #cu_login_container .cu_avatar {
   display: inline-block;
   vertical-align: middle;
   width: 20px;
   border-radius: 50%;
 }
-/* line 663, /Users/atwell/projects/cascade-assets/app/assets/stylesheets/omni_nav/modules/omni-nav.scss */
+/* line 665, /Users/atwell/projects/cascade-assets/app/assets/stylesheets/omni_nav/modules/omni-nav.scss */
 #cu_login_container #cu_login_form {
   clear: both;
 }
-/* line 666, /Users/atwell/projects/cascade-assets/app/assets/stylesheets/omni_nav/modules/omni-nav.scss */
+/* line 668, /Users/atwell/projects/cascade-assets/app/assets/stylesheets/omni_nav/modules/omni-nav.scss */
 .logged-in #cu_login_container #cu_login_form {
   display: none !important;
 }
-/* line 668, /Users/atwell/projects/cascade-assets/app/assets/stylesheets/omni_nav/modules/omni-nav.scss */
+/* line 670, /Users/atwell/projects/cascade-assets/app/assets/stylesheets/omni_nav/modules/omni-nav.scss */
 #cu_login_container #cu_login_form input {
   color: #9a9996;
 }
-/* line 669, /Users/atwell/projects/cascade-assets/app/assets/stylesheets/omni_nav/modules/omni-nav.scss */
+/* line 671, /Users/atwell/projects/cascade-assets/app/assets/stylesheets/omni_nav/modules/omni-nav.scss */
 #cu_login_container #cu_login_form input:focus {
   color: #353430;
 }
-/* line 670, /Users/atwell/projects/cascade-assets/app/assets/stylesheets/omni_nav/modules/omni-nav.scss */
+/* line 672, /Users/atwell/projects/cascade-assets/app/assets/stylesheets/omni_nav/modules/omni-nav.scss */
 #cu_login_container #cu_login_form label {
   font-size: 11px;
   opacity: 0.8;
 }
-/* line 672, /Users/atwell/projects/cascade-assets/app/assets/stylesheets/omni_nav/modules/omni-nav.scss */
+/* line 674, /Users/atwell/projects/cascade-assets/app/assets/stylesheets/omni_nav/modules/omni-nav.scss */
 #cu_login_container #cu_login_form #cu_submit {
   display: block;
   height: 27px;
@@ -719,11 +719,11 @@ a.cu_nav_button:hover svg * {
   padding: 0 10px;
   cursor: pointer;
 }
-/* line 686, /Users/atwell/projects/cascade-assets/app/assets/stylesheets/omni_nav/modules/omni-nav.scss */
+/* line 688, /Users/atwell/projects/cascade-assets/app/assets/stylesheets/omni_nav/modules/omni-nav.scss */
 #cu_login_container #cu_login_form #cu_submit:hover {
   background: #C92741;
 }
-/* line 688, /Users/atwell/projects/cascade-assets/app/assets/stylesheets/omni_nav/modules/omni-nav.scss */
+/* line 690, /Users/atwell/projects/cascade-assets/app/assets/stylesheets/omni_nav/modules/omni-nav.scss */
 #cu_login_container #cu_login_form #cu_username,
 #cu_login_container #cu_login_form #cu_password {
   width: 100%;
@@ -739,14 +739,14 @@ a.cu_nav_button:hover svg * {
   -o-box-shadow: none;
   box-shadow: none;
 }
-/* line 702, /Users/atwell/projects/cascade-assets/app/assets/stylesheets/omni_nav/modules/omni-nav.scss */
+/* line 704, /Users/atwell/projects/cascade-assets/app/assets/stylesheets/omni_nav/modules/omni-nav.scss */
 #cu_login_container #cu_login_form #cu_username:focus,
 #cu_login_container #cu_login_form #cu_password:focus {
   outline: none;
   border-color: #d3a6ae;
   color: #353430;
 }
-/* line 705, /Users/atwell/projects/cascade-assets/app/assets/stylesheets/omni_nav/modules/omni-nav.scss */
+/* line 707, /Users/atwell/projects/cascade-assets/app/assets/stylesheets/omni_nav/modules/omni-nav.scss */
 #cu_login_container #cu_login_form input.persist[type="radio"], #cu_login_container #cu_login_form input.persist[type="checkbox"] {
   border-color: #D8D6D0;
   background: #fbfbfb;
@@ -769,11 +769,11 @@ a.cu_nav_button:hover svg * {
   -o-box-shadow: none;
   box-shadow: none;
 }
-/* line 726, /Users/atwell/projects/cascade-assets/app/assets/stylesheets/omni_nav/modules/omni-nav.scss */
+/* line 728, /Users/atwell/projects/cascade-assets/app/assets/stylesheets/omni_nav/modules/omni-nav.scss */
 #cu_login_container #cu_login_form .persist label {
   color: #9a9996;
 }
-/* line 730, /Users/atwell/projects/cascade-assets/app/assets/stylesheets/omni_nav/modules/omni-nav.scss */
+/* line 732, /Users/atwell/projects/cascade-assets/app/assets/stylesheets/omni_nav/modules/omni-nav.scss */
 #cu_login_container #cu_login_form input.persist {
   border-color: #D8D6D0;
   color: #98002e;
@@ -781,7 +781,7 @@ a.cu_nav_button:hover svg * {
   -o-box-shadow: none;
   box-shadow: none;
 }
-/* line 736, /Users/atwell/projects/cascade-assets/app/assets/stylesheets/omni_nav/modules/omni-nav.scss */
+/* line 738, /Users/atwell/projects/cascade-assets/app/assets/stylesheets/omni_nav/modules/omni-nav.scss */
 #cu_login_container #cu_login_form input.persist[type="radio"]:checked:before, #cu_login_container #cu_login_form input.persist[type="checkbox"]:checked:before {
   content: '\f147';
   margin: -3px 0 0 -4px;
@@ -795,7 +795,7 @@ a.cu_nav_button:hover svg * {
   -moz-osx-font-smoothing: grayscale;
   color: #98002e;
 }
-/* line 752, /Users/atwell/projects/cascade-assets/app/assets/stylesheets/omni_nav/modules/omni-nav.scss */
+/* line 754, /Users/atwell/projects/cascade-assets/app/assets/stylesheets/omni_nav/modules/omni-nav.scss */
 #cu_login_container .cu_dropdown_menu {
   display: block;
   margin: 0;
@@ -806,34 +806,34 @@ a.cu_nav_button:hover svg * {
   background: #FFF;
   color: #404040;
 }
-/* line 759, /Users/atwell/projects/cascade-assets/app/assets/stylesheets/omni_nav/modules/omni-nav.scss */
+/* line 761, /Users/atwell/projects/cascade-assets/app/assets/stylesheets/omni_nav/modules/omni-nav.scss */
 #cu_login_container .cu_dropdown_menu li {
   display: block;
   margin: 0;
   padding: 0;
   box-sizing: border-box;
 }
-/* line 761, /Users/atwell/projects/cascade-assets/app/assets/stylesheets/omni_nav/modules/omni-nav.scss */
+/* line 763, /Users/atwell/projects/cascade-assets/app/assets/stylesheets/omni_nav/modules/omni-nav.scss */
 .cu_nav_menu.expanded #cu_login_container .cu_dropdown_menu {
   padding: 10px;
 }
-/* line 766, /Users/atwell/projects/cascade-assets/app/assets/stylesheets/omni_nav/modules/omni-nav.scss */
+/* line 768, /Users/atwell/projects/cascade-assets/app/assets/stylesheets/omni_nav/modules/omni-nav.scss */
 #cu_login_container .cu_dropdown_menu.if-logged-in {
   display: none;
 }
-/* line 770, /Users/atwell/projects/cascade-assets/app/assets/stylesheets/omni_nav/modules/omni-nav.scss */
+/* line 772, /Users/atwell/projects/cascade-assets/app/assets/stylesheets/omni_nav/modules/omni-nav.scss */
 .logged-out #cu_login_container .cu_dropdown_menu.if-logged-in {
   display: none;
 }
-/* line 771, /Users/atwell/projects/cascade-assets/app/assets/stylesheets/omni_nav/modules/omni-nav.scss */
+/* line 773, /Users/atwell/projects/cascade-assets/app/assets/stylesheets/omni_nav/modules/omni-nav.scss */
 .logged-out #cu_login_container .cu_dropdown_menu.if-logged-out {
   display: block;
 }
-/* line 776, /Users/atwell/projects/cascade-assets/app/assets/stylesheets/omni_nav/modules/omni-nav.scss */
+/* line 778, /Users/atwell/projects/cascade-assets/app/assets/stylesheets/omni_nav/modules/omni-nav.scss */
 .logged-in #cu_login_container .cu_dropdown_menu.if-logged-in {
   display: block;
 }
-/* line 777, /Users/atwell/projects/cascade-assets/app/assets/stylesheets/omni_nav/modules/omni-nav.scss */
+/* line 779, /Users/atwell/projects/cascade-assets/app/assets/stylesheets/omni_nav/modules/omni-nav.scss */
 .logged-in #cu_login_container .cu_dropdown_menu.if-logged-out {
   display: none;
 }
@@ -844,12 +844,12 @@ a.cu_nav_button:hover svg * {
 /***************************************************
 * User Area
 ***************************************************/
-/* line 830, /Users/atwell/projects/cascade-assets/app/assets/stylesheets/omni_nav/modules/omni-nav.scss */
+/* line 832, /Users/atwell/projects/cascade-assets/app/assets/stylesheets/omni_nav/modules/omni-nav.scss */
 #wp-admin-bar-top-secondary {
   display: none;
 }
 
-/* line 832, /Users/atwell/projects/cascade-assets/app/assets/stylesheets/omni_nav/modules/omni-nav.scss */
+/* line 834, /Users/atwell/projects/cascade-assets/app/assets/stylesheets/omni_nav/modules/omni-nav.scss */
 #cu_nav #cu_logged_in .avatar {
   border-radius: 50%;
   float: left;
@@ -858,7 +858,7 @@ a.cu_nav_button:hover svg * {
   height: auto;
 }
 
-/* line 833, /Users/atwell/projects/cascade-assets/app/assets/stylesheets/omni_nav/modules/omni-nav.scss */
+/* line 835, /Users/atwell/projects/cascade-assets/app/assets/stylesheets/omni_nav/modules/omni-nav.scss */
 #cu_nav #cu_logged_in .label {
   font-size: 12px;
   line-height: 12px;
@@ -866,12 +866,12 @@ a.cu_nav_button:hover svg * {
   opacity: 0.5;
 }
 
-/* line 834, /Users/atwell/projects/cascade-assets/app/assets/stylesheets/omni_nav/modules/omni-nav.scss */
+/* line 836, /Users/atwell/projects/cascade-assets/app/assets/stylesheets/omni_nav/modules/omni-nav.scss */
 #cu_nav #cu_logged_in .label:after {
   content: ",";
 }
 
-/* line 835, /Users/atwell/projects/cascade-assets/app/assets/stylesheets/omni_nav/modules/omni-nav.scss */
+/* line 837, /Users/atwell/projects/cascade-assets/app/assets/stylesheets/omni_nav/modules/omni-nav.scss */
 #cu_nav #cu_logged_in .cu_display_name {
   font-size: 16px;
   font-weight: bold;
@@ -883,7 +883,7 @@ a.cu_nav_button:hover svg * {
 /***************************************************
 * COMPANION BAR
 ***************************************************/
-/* line 842, /Users/atwell/projects/cascade-assets/app/assets/stylesheets/omni_nav/modules/omni-nav.scss */
+/* line 844, /Users/atwell/projects/cascade-assets/app/assets/stylesheets/omni_nav/modules/omni-nav.scss */
 #cu_companion_bar {
   font-family: "futura-pt", Arial, Verdana, "Sans Serif";
   font-family: "futura-pt", Arial, Verdana, "Sans Serif";
@@ -900,11 +900,11 @@ a.cu_nav_button:hover svg * {
   width: 100%;
   z-index: 99000;
 }
-/* line 861, /Users/atwell/projects/cascade-assets/app/assets/stylesheets/omni_nav/modules/omni-nav.scss */
+/* line 863, /Users/atwell/projects/cascade-assets/app/assets/stylesheets/omni_nav/modules/omni-nav.scss */
 #cu_companion_bar.nav-down {
   top: 64px;
 }
-/* line 865, /Users/atwell/projects/cascade-assets/app/assets/stylesheets/omni_nav/modules/omni-nav.scss */
+/* line 867, /Users/atwell/projects/cascade-assets/app/assets/stylesheets/omni_nav/modules/omni-nav.scss */
 #cu_companion_bar.nav-up {
   top: 34px;
 }
@@ -912,35 +912,35 @@ a.cu_nav_button:hover svg * {
 /***************************************************
 * NEW NAV ELEMENTS - added by sharissis
 ***************************************************/
-/* line 875, /Users/atwell/projects/cascade-assets/app/assets/stylesheets/omni_nav/modules/omni-nav.scss */
+/* line 877, /Users/atwell/projects/cascade-assets/app/assets/stylesheets/omni_nav/modules/omni-nav.scss */
 .cu-off-canvas-nav-trigger, .cu-logo {
   display: block;
   position: absolute;
   top: 0;
 }
-/* line 880, /Users/atwell/projects/cascade-assets/app/assets/stylesheets/omni_nav/modules/omni-nav.scss */
+/* line 882, /Users/atwell/projects/cascade-assets/app/assets/stylesheets/omni_nav/modules/omni-nav.scss */
 .cu-off-canvas-nav-trigger img, .cu-off-canvas-nav-trigger svg, .cu-logo img, .cu-logo svg {
   display: block;
 }
 
-/* line 886, /Users/atwell/projects/cascade-assets/app/assets/stylesheets/omni_nav/modules/omni-nav.scss */
+/* line 888, /Users/atwell/projects/cascade-assets/app/assets/stylesheets/omni_nav/modules/omni-nav.scss */
 .cu-off-canvas-nav-trigger {
   outline: none;
   border: 0;
   padding: 23px 14px;
   left: 0;
 }
-/* line 892, /Users/atwell/projects/cascade-assets/app/assets/stylesheets/omni_nav/modules/omni-nav.scss */
+/* line 894, /Users/atwell/projects/cascade-assets/app/assets/stylesheets/omni_nav/modules/omni-nav.scss */
 .cu-off-canvas-nav-trigger img, .cu-off-canvas-nav-trigger svg {
   cursor: pointer;
 }
 @media (min-width: 780px) {
-  /* line 886, /Users/atwell/projects/cascade-assets/app/assets/stylesheets/omni_nav/modules/omni-nav.scss */
+  /* line 888, /Users/atwell/projects/cascade-assets/app/assets/stylesheets/omni_nav/modules/omni-nav.scss */
   .cu-off-canvas-nav-trigger {
     padding: 20px 16px;
   }
 }
-/* line 903, /Users/atwell/projects/cascade-assets/app/assets/stylesheets/omni_nav/modules/omni-nav.scss */
+/* line 905, /Users/atwell/projects/cascade-assets/app/assets/stylesheets/omni_nav/modules/omni-nav.scss */
 .cu-off-canvas-nav-trigger .icon:before {
   font-size: 18px;
   text-align: center;
@@ -948,16 +948,16 @@ a.cu_nav_button:hover svg * {
   float: left;
   display: block;
 }
-/* line 910, /Users/atwell/projects/cascade-assets/app/assets/stylesheets/omni_nav/modules/omni-nav.scss */
+/* line 912, /Users/atwell/projects/cascade-assets/app/assets/stylesheets/omni_nav/modules/omni-nav.scss */
 .ie8 .cu-off-canvas-nav-trigger .icon {
   margin-left: 0;
 }
-/* line 912, /Users/atwell/projects/cascade-assets/app/assets/stylesheets/omni_nav/modules/omni-nav.scss */
+/* line 914, /Users/atwell/projects/cascade-assets/app/assets/stylesheets/omni_nav/modules/omni-nav.scss */
 .ie8 .cu-off-canvas-nav-trigger .icon:before {
   display: none;
 }
 @media (min-width: 780px) {
-  /* line 917, /Users/atwell/projects/cascade-assets/app/assets/stylesheets/omni_nav/modules/omni-nav.scss */
+  /* line 919, /Users/atwell/projects/cascade-assets/app/assets/stylesheets/omni_nav/modules/omni-nav.scss */
   .cu-off-canvas-nav-trigger .icon:before {
     font-size: 24px;
   }
@@ -979,7 +979,7 @@ a.cu_nav_button:hover svg * {
 	}
 
 }*/
-/* line 941, /Users/atwell/projects/cascade-assets/app/assets/stylesheets/omni_nav/modules/omni-nav.scss */
+/* line 943, /Users/atwell/projects/cascade-assets/app/assets/stylesheets/omni_nav/modules/omni-nav.scss */
 .cu-logo {
   display: block;
   border: 0;
@@ -994,7 +994,7 @@ a.cu_nav_button:hover svg * {
   background-size: contain;
 }
 @media (min-width: 780px) {
-  /* line 941, /Users/atwell/projects/cascade-assets/app/assets/stylesheets/omni_nav/modules/omni-nav.scss */
+  /* line 943, /Users/atwell/projects/cascade-assets/app/assets/stylesheets/omni_nav/modules/omni-nav.scss */
   .cu-logo {
     height: 28px;
     width: 273px;
@@ -1002,7 +1002,7 @@ a.cu_nav_button:hover svg * {
   }
 }
 
-/* line 960, /Users/atwell/projects/cascade-assets/app/assets/stylesheets/omni_nav/modules/omni-nav.scss */
+/* line 962, /Users/atwell/projects/cascade-assets/app/assets/stylesheets/omni_nav/modules/omni-nav.scss */
 .cu-search-open-trigger {
   padding: 20px 12px;
   position: absolute;
@@ -1010,7 +1010,7 @@ a.cu_nav_button:hover svg * {
   top: 0;
   z-index: 99996;
 }
-/* line 967, /Users/atwell/projects/cascade-assets/app/assets/stylesheets/omni_nav/modules/omni-nav.scss */
+/* line 969, /Users/atwell/projects/cascade-assets/app/assets/stylesheets/omni_nav/modules/omni-nav.scss */
 .cu-search-open-trigger span {
   text-indent: -9999px;
   display: block;
@@ -1024,13 +1024,13 @@ a.cu_nav_button:hover svg * {
   background-image: url(data:image/svg+xml;base64,PD94bWwgdmVyc2lvbj0iMS4wIiBlbmNvZGluZz0idXRmLTgiPz4NCjwhLS0gR2VuZXJhdG9yOiBBZG9iZSBJbGx1c3RyYXRvciAxNi4wLjQsIFNWRyBFeHBvcnQgUGx1Zy1JbiAuIFNWRyBWZXJzaW9uOiA2LjAwIEJ1aWxkIDApICAtLT4NCjwhRE9DVFlQRSBzdmcgUFVCTElDICItLy9XM0MvL0RURCBTVkcgMS4xLy9FTiIgImh0dHA6Ly93d3cudzMub3JnL0dyYXBoaWNzL1NWRy8xLjEvRFREL3N2ZzExLmR0ZCI+DQo8c3ZnIHZlcnNpb249IjEuMSIgaWQ9IkxheWVyXzEiIHhtbG5zPSJodHRwOi8vd3d3LnczLm9yZy8yMDAwL3N2ZyIgeG1sbnM6eGxpbms9Imh0dHA6Ly93d3cudzMub3JnLzE5OTkveGxpbmsiIHg9IjBweCIgeT0iMHB4Ig0KCSB3aWR0aD0iNzYwLjVweCIgaGVpZ2h0PSI1MTJweCIgdmlld0JveD0iMCAwIDc2MC41IDUxMiIgZW5hYmxlLWJhY2tncm91bmQ9Im5ldyAwIDAgNzYwLjUgNTEyIiB4bWw6c3BhY2U9InByZXNlcnZlIj4NCjxwYXRoIGQ9Ik00OTYuMTMxLDQzNS42OThMMzc0Ljg1NSwzMzIuNTUxYy0xMi41MzctMTEuMjgzLTI1Ljk0My0xNi40NjMtMzYuNzc0LTE1Ljk2M0MzNjYuNzA3LDI4My4wNTUsMzg0LDIzOS41NDksMzg0LDE5Mg0KCUMzODQsODUuOTYxLDI5OC4wMzksMCwxOTIsMEM4NS45NjIsMCwwLDg1Ljk2MSwwLDE5MnM4NS45NjEsMTkyLDE5MiwxOTJjNDcuNTQ5LDAsOTEuMDU0LTE3LjI5MywxMjQuNTg4LTQ1LjkyMg0KCWMtMC41LDEwLjgzMSw0LjY4LDI0LjIzOSwxNS45NjMsMzYuNzc0TDQzNS42OTgsNDk2LjEzYzE3LjY2MSwxOS42MjMsNDYuNTEzLDIxLjI3Nyw2NC4xMSwzLjY3OA0KCUM1MTcuNDA2LDQ4Mi4yMDksNTE1Ljc1NCw0NTMuMzU5LDQ5Ni4xMzEsNDM1LjY5OHogTTE5MiwzMjBjLTcwLjY5MiwwLTEyOC01Ny4zMDktMTI4LTEyOGMwLTcwLjY5Miw1Ny4zMDgtMTI4LDEyOC0xMjgNCgljNzAuNjksMCwxMjgsNTcuMzA4LDEyOCwxMjhDMzIwLDI2Mi42OTEsMjYyLjY5MywzMjAsMTkyLDMyMHoiLz4NCjwvc3ZnPg0K);
 }
 @media (min-width: 1024px) {
-  /* line 960, /Users/atwell/projects/cascade-assets/app/assets/stylesheets/omni_nav/modules/omni-nav.scss */
+  /* line 962, /Users/atwell/projects/cascade-assets/app/assets/stylesheets/omni_nav/modules/omni-nav.scss */
   .cu-search-open-trigger {
     display: none;
   }
 }
 
-/* line 986, /Users/atwell/projects/cascade-assets/app/assets/stylesheets/omni_nav/modules/omni-nav.scss */
+/* line 988, /Users/atwell/projects/cascade-assets/app/assets/stylesheets/omni_nav/modules/omni-nav.scss */
 .cu-search-close-trigger {
   cursor: pointer;
   position: absolute;
@@ -1041,15 +1041,25 @@ a.cu_nav_button:hover svg * {
   font-size: 12px;
   z-index: 99997;
 }
-/* line 996, /Users/atwell/projects/cascade-assets/app/assets/stylesheets/omni_nav/modules/omni-nav.scss */
+/* line 998, /Users/atwell/projects/cascade-assets/app/assets/stylesheets/omni_nav/modules/omni-nav.scss */
 .cu-search-close-trigger span {
   display: none;
 }
 @media (min-width: 780px) {
-  /* line 986, /Users/atwell/projects/cascade-assets/app/assets/stylesheets/omni_nav/modules/omni-nav.scss */
+  /* line 988, /Users/atwell/projects/cascade-assets/app/assets/stylesheets/omni_nav/modules/omni-nav.scss */
   .cu-search-close-trigger {
     display: none;
   }
+}
+
+/***************************************************
+* OmniNav Builder Variations
+* This is for versions built by builder for
+* sites other than WWW.
+***************************************************/
+/* line 1015, /Users/atwell/projects/cascade-assets/app/assets/stylesheets/omni_nav/modules/omni-nav.scss */
+#cu_nav.omninav-builder a.default-logo-cu {
+  text-indent: 0px;
 }
 
 /* line 3, /Users/atwell/projects/cascade-assets/app/assets/stylesheets/omni_nav/modules/off-canvas-nav.scss */

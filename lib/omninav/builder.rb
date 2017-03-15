@@ -224,15 +224,20 @@ LOGIN_HTML
       if @target == 'blogs'
         identity_block_for_blogs
       else
-        <<-IDENTITY_BLOCK_HTML
+        template = <<-IDENTITY_BLOCK_HTML
     <div id="cu_identity">
       <div id="omni-login">
-        <span class="icon icon-user3"></span>
+        %<user_svg>s
         <span class="cu_name">Log In</span>
       </div>
     </div>
 IDENTITY_BLOCK_HTML
       end
+
+      params = {
+        user_svg: SvgImage.user_icon
+      }
+      format(template, params)
     end
 
     def identity_block_for_blogs
@@ -244,9 +249,7 @@ IDENTITY_BLOCK_HTML
             </span>
             <span class="cu_name"><?php echo $current_user->user_firstname; ?></span>
         <?php else: ?>
-            <span class="circle-border">
-                %<user_svg>s
-            </span>
+            %<user_svg>s
             <span class="cu_name">Log In</span>
         <?php endif; ?>
     </div>
