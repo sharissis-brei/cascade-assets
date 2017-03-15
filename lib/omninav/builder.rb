@@ -267,6 +267,8 @@ IDENTITY_BLOCK_PHP
     end
 
     def login_form_for_blogs
+      # TODO: Notice different wp methods used to constructs url (e.g. get_home_url vs
+      # home_url). Can this be made more consistent?
       <<-LOGIN_FORM
     <?php if (is_user_logged_in()) : ?>
     <div id="cu_logged_in" class="cu_dropdown_menu">
@@ -279,7 +281,8 @@ IDENTITY_BLOCK_PHP
 
     <?php else: ?>
     <div id="cu_login_form" class="cu_dropdown_menu">
-      <form action="https://blogs.chapman.edu/wp-login.php" method="post">
+      <form action="<?php echo (FORCE_SSL_LOGIN === true) ? home_url(null, 'https') : home_url(null, 'http'); ?>/wp-login.php"
+            method="post">
         <label for="cu_username" style="display: none;">ChapmanU User ID</label>
         <input id="cu_username"
                name="log"
