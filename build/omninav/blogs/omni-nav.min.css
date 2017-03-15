@@ -1052,7 +1052,22 @@ a.cu_nav_button:hover svg * {
   }
 }
 
-/* line 1, /Users/atwell/projects/cascade-assets/app/assets/stylesheets/omni_nav/modules/off-canvas-nav.scss */
+/* line 3, /Users/atwell/projects/cascade-assets/app/assets/stylesheets/omni_nav/modules/off-canvas-nav.scss */
+.cu-off-canvas-nav-trigger svg {
+  width: 24px;
+  height: 24px;
+  margin-right: 8px;
+  background-size: contain;
+  vertical-align: middle;
+}
+/* line 10, /Users/atwell/projects/cascade-assets/app/assets/stylesheets/omni_nav/modules/off-canvas-nav.scss */
+.cu-off-canvas-nav-trigger svg * {
+  -webkit-transition: fill 0.1s ease-out;
+  transition: fill 0.1s ease-out;
+  fill: #4d4d4d;
+}
+
+/* line 17, /Users/atwell/projects/cascade-assets/app/assets/stylesheets/omni_nav/modules/off-canvas-nav.scss */
 .cu-off-canvas-nav {
   width: 200%;
   position: relative;
@@ -1060,17 +1075,17 @@ a.cu_nav_button:hover svg * {
   -webkit-transition: all 0.375s ease-in-out;
   transition: all 0.375s ease-in-out;
 }
-/* line 7, /Users/atwell/projects/cascade-assets/app/assets/stylesheets/omni_nav/modules/off-canvas-nav.scss */
+/* line 23, /Users/atwell/projects/cascade-assets/app/assets/stylesheets/omni_nav/modules/off-canvas-nav.scss */
 .shifted .cu-off-canvas-nav {
   left: -100%;
 }
-/* line 11, /Users/atwell/projects/cascade-assets/app/assets/stylesheets/omni_nav/modules/off-canvas-nav.scss */
+/* line 27, /Users/atwell/projects/cascade-assets/app/assets/stylesheets/omni_nav/modules/off-canvas-nav.scss */
 .cu-off-canvas-nav li {
   border-top: 1px solid #CFCFCF;
   list-style: none;
   margin: 0;
 }
-/* line 17, /Users/atwell/projects/cascade-assets/app/assets/stylesheets/omni_nav/modules/off-canvas-nav.scss */
+/* line 33, /Users/atwell/projects/cascade-assets/app/assets/stylesheets/omni_nav/modules/off-canvas-nav.scss */
 .cu-off-canvas-nav a {
   color: #444444;
   font-weight: normal;
@@ -1081,11 +1096,11 @@ a.cu_nav_button:hover svg * {
   -webkit-transition: all 0.175s ease-in-out;
   transition: all 0.175s ease-in-out;
 }
-/* line 26, /Users/atwell/projects/cascade-assets/app/assets/stylesheets/omni_nav/modules/off-canvas-nav.scss */
+/* line 42, /Users/atwell/projects/cascade-assets/app/assets/stylesheets/omni_nav/modules/off-canvas-nav.scss */
 .cu-off-canvas-nav a:hover {
   left: 5px;
 }
-/* line 32, /Users/atwell/projects/cascade-assets/app/assets/stylesheets/omni_nav/modules/off-canvas-nav.scss */
+/* line 48, /Users/atwell/projects/cascade-assets/app/assets/stylesheets/omni_nav/modules/off-canvas-nav.scss */
 .cu-off-canvas-nav > ul {
   width: 50%;
   float: left;
@@ -1094,76 +1109,76 @@ a.cu_nav_button:hover svg * {
   -o-box-sizing: border-box;
   box-sizing: border-box;
 }
-/* line 38, /Users/atwell/projects/cascade-assets/app/assets/stylesheets/omni_nav/modules/off-canvas-nav.scss */
+/* line 54, /Users/atwell/projects/cascade-assets/app/assets/stylesheets/omni_nav/modules/off-canvas-nav.scss */
 .cu-off-canvas-nav > ul.level-1 {
   border-right: 1px solid #CFCFCF;
 }
-/* line 42, /Users/atwell/projects/cascade-assets/app/assets/stylesheets/omni_nav/modules/off-canvas-nav.scss */
+/* line 58, /Users/atwell/projects/cascade-assets/app/assets/stylesheets/omni_nav/modules/off-canvas-nav.scss */
 .cu-off-canvas-nav > ul.level-2 {
   position: relative;
   left: -1px;
   border-left: 1px solid #CFCFCF;
 }
-/* line 48, /Users/atwell/projects/cascade-assets/app/assets/stylesheets/omni_nav/modules/off-canvas-nav.scss */
+/* line 64, /Users/atwell/projects/cascade-assets/app/assets/stylesheets/omni_nav/modules/off-canvas-nav.scss */
 .cu-off-canvas-nav > ul > li {
   display: block;
   position: relative;
   width: 100%;
 }
-/* line 53, /Users/atwell/projects/cascade-assets/app/assets/stylesheets/omni_nav/modules/off-canvas-nav.scss */
+/* line 69, /Users/atwell/projects/cascade-assets/app/assets/stylesheets/omni_nav/modules/off-canvas-nav.scss */
 .cu-off-canvas-nav > ul > li > ul {
   display: none;
 }
-/* line 56, /Users/atwell/projects/cascade-assets/app/assets/stylesheets/omni_nav/modules/off-canvas-nav.scss */
+/* line 72, /Users/atwell/projects/cascade-assets/app/assets/stylesheets/omni_nav/modules/off-canvas-nav.scss */
 .cu-off-canvas-nav > ul > li > ul:empty {
   display: none;
 }
-/* line 60, /Users/atwell/projects/cascade-assets/app/assets/stylesheets/omni_nav/modules/off-canvas-nav.scss */
+/* line 76, /Users/atwell/projects/cascade-assets/app/assets/stylesheets/omni_nav/modules/off-canvas-nav.scss */
 .cu-off-canvas-nav > ul > li > ul > li {
   background-color: #f5f5f5;
 }
-/* line 64, /Users/atwell/projects/cascade-assets/app/assets/stylesheets/omni_nav/modules/off-canvas-nav.scss */
+/* line 80, /Users/atwell/projects/cascade-assets/app/assets/stylesheets/omni_nav/modules/off-canvas-nav.scss */
 .cu-off-canvas-nav > ul > li > ul > li a {
   display: block;
   font-size: 16px;
   padding: 0.5em 1.325em;
   color: #676767;
 }
-/* line 70, /Users/atwell/projects/cascade-assets/app/assets/stylesheets/omni_nav/modules/off-canvas-nav.scss */
+/* line 86, /Users/atwell/projects/cascade-assets/app/assets/stylesheets/omni_nav/modules/off-canvas-nav.scss */
 .cu-off-canvas-nav > ul > li > ul > li a:hover {
   color: #407892;
 }
-/* line 75, /Users/atwell/projects/cascade-assets/app/assets/stylesheets/omni_nav/modules/off-canvas-nav.scss */
+/* line 91, /Users/atwell/projects/cascade-assets/app/assets/stylesheets/omni_nav/modules/off-canvas-nav.scss */
 .cu-off-canvas-nav > ul > li > ul > li a:active {
   color: #98002e;
 }
-/* line 87, /Users/atwell/projects/cascade-assets/app/assets/stylesheets/omni_nav/modules/off-canvas-nav.scss */
+/* line 103, /Users/atwell/projects/cascade-assets/app/assets/stylesheets/omni_nav/modules/off-canvas-nav.scss */
 .cu-off-canvas-nav > ul > li.open:empty {
   display: none;
 }
-/* line 91, /Users/atwell/projects/cascade-assets/app/assets/stylesheets/omni_nav/modules/off-canvas-nav.scss */
+/* line 107, /Users/atwell/projects/cascade-assets/app/assets/stylesheets/omni_nav/modules/off-canvas-nav.scss */
 .cu-off-canvas-nav > ul > li.open > a {
   color: #98002e;
 }
-/* line 95, /Users/atwell/projects/cascade-assets/app/assets/stylesheets/omni_nav/modules/off-canvas-nav.scss */
+/* line 111, /Users/atwell/projects/cascade-assets/app/assets/stylesheets/omni_nav/modules/off-canvas-nav.scss */
 .cu-off-canvas-nav > ul > li.open > a:before {
   color: #98002e;
 }
-/* line 99, /Users/atwell/projects/cascade-assets/app/assets/stylesheets/omni_nav/modules/off-canvas-nav.scss */
+/* line 115, /Users/atwell/projects/cascade-assets/app/assets/stylesheets/omni_nav/modules/off-canvas-nav.scss */
 .cu-off-canvas-nav > ul > li.open > a svg {
   fill: #98002e;
 }
-/* line 104, /Users/atwell/projects/cascade-assets/app/assets/stylesheets/omni_nav/modules/off-canvas-nav.scss */
+/* line 120, /Users/atwell/projects/cascade-assets/app/assets/stylesheets/omni_nav/modules/off-canvas-nav.scss */
 .cu-off-canvas-nav > ul > li.open .toggle > span {
   -webkit-transform: rotate(45deg);
   -ms-transform: rotate(45deg);
   transform: rotate(45deg);
 }
-/* line 110, /Users/atwell/projects/cascade-assets/app/assets/stylesheets/omni_nav/modules/off-canvas-nav.scss */
+/* line 126, /Users/atwell/projects/cascade-assets/app/assets/stylesheets/omni_nav/modules/off-canvas-nav.scss */
 .cu-off-canvas-nav > ul > li > a, .cu-off-canvas-nav > ul > li .toggle {
   height: 60px;
 }
-/* line 114, /Users/atwell/projects/cascade-assets/app/assets/stylesheets/omni_nav/modules/off-canvas-nav.scss */
+/* line 130, /Users/atwell/projects/cascade-assets/app/assets/stylesheets/omni_nav/modules/off-canvas-nav.scss */
 .cu-off-canvas-nav > ul > li > a {
   display: table-cell;
   vertical-align: middle;
@@ -1172,35 +1187,35 @@ a.cu_nav_button:hover svg * {
   font-size: 18px;
   font-family: "futura-pt", sans-serif;
 }
-/* line 122, /Users/atwell/projects/cascade-assets/app/assets/stylesheets/omni_nav/modules/off-canvas-nav.scss */
+/* line 138, /Users/atwell/projects/cascade-assets/app/assets/stylesheets/omni_nav/modules/off-canvas-nav.scss */
 .cu-off-canvas-nav > ul > li > a.has-icon {
   padding: 0 70px 0 2.75em;
   text-indent: -28px;
 }
-/* line 131, /Users/atwell/projects/cascade-assets/app/assets/stylesheets/omni_nav/modules/off-canvas-nav.scss */
+/* line 147, /Users/atwell/projects/cascade-assets/app/assets/stylesheets/omni_nav/modules/off-canvas-nav.scss */
 .cu-off-canvas-nav > ul > li > a:before, .cu-off-canvas-nav > ul > li > a svg {
   position: relative;
   top: 2px;
   -webkit-transition: all 0.175s ease-in-out;
   transition: all 0.175s ease-in-out;
 }
-/* line 138, /Users/atwell/projects/cascade-assets/app/assets/stylesheets/omni_nav/modules/off-canvas-nav.scss */
+/* line 154, /Users/atwell/projects/cascade-assets/app/assets/stylesheets/omni_nav/modules/off-canvas-nav.scss */
 .cu-off-canvas-nav > ul > li > a:before {
   margin-right: 10px;
 }
-/* line 142, /Users/atwell/projects/cascade-assets/app/assets/stylesheets/omni_nav/modules/off-canvas-nav.scss */
+/* line 158, /Users/atwell/projects/cascade-assets/app/assets/stylesheets/omni_nav/modules/off-canvas-nav.scss */
 .cu-off-canvas-nav > ul > li > a:hover {
   color: #353430;
 }
-/* line 145, /Users/atwell/projects/cascade-assets/app/assets/stylesheets/omni_nav/modules/off-canvas-nav.scss */
+/* line 161, /Users/atwell/projects/cascade-assets/app/assets/stylesheets/omni_nav/modules/off-canvas-nav.scss */
 .cu-off-canvas-nav > ul > li > a:hover:before {
   color: #98002e;
 }
-/* line 149, /Users/atwell/projects/cascade-assets/app/assets/stylesheets/omni_nav/modules/off-canvas-nav.scss */
+/* line 165, /Users/atwell/projects/cascade-assets/app/assets/stylesheets/omni_nav/modules/off-canvas-nav.scss */
 .cu-off-canvas-nav > ul > li > a:hover svg {
   fill: #98002e;
 }
-/* line 155, /Users/atwell/projects/cascade-assets/app/assets/stylesheets/omni_nav/modules/off-canvas-nav.scss */
+/* line 171, /Users/atwell/projects/cascade-assets/app/assets/stylesheets/omni_nav/modules/off-canvas-nav.scss */
 .cu-off-canvas-nav > ul > li > a svg {
   fill: #313131;
   display: inline-block;
@@ -1208,7 +1223,7 @@ a.cu_nav_button:hover svg * {
   width: 18px;
   height: 18px;
 }
-/* line 165, /Users/atwell/projects/cascade-assets/app/assets/stylesheets/omni_nav/modules/off-canvas-nav.scss */
+/* line 181, /Users/atwell/projects/cascade-assets/app/assets/stylesheets/omni_nav/modules/off-canvas-nav.scss */
 .cu-off-canvas-nav > ul > li .toggle {
   width: 60px;
   line-height: 60px;
@@ -1224,7 +1239,7 @@ a.cu_nav_button:hover svg * {
   font-weight: 400;
   cursor: pointer;
 }
-/* line 179, /Users/atwell/projects/cascade-assets/app/assets/stylesheets/omni_nav/modules/off-canvas-nav.scss */
+/* line 195, /Users/atwell/projects/cascade-assets/app/assets/stylesheets/omni_nav/modules/off-canvas-nav.scss */
 .cu-off-canvas-nav > ul > li .toggle > span {
   display: block;
   font-family: 'Helvetica Neue', Helvetica, Arial, sans-serif;
@@ -1232,7 +1247,7 @@ a.cu_nav_button:hover svg * {
   transition: all 0.175s ease-in-out;
 }
 
-/* line 193, /Users/atwell/projects/cascade-assets/app/assets/stylesheets/omni_nav/modules/off-canvas-nav.scss */
+/* line 209, /Users/atwell/projects/cascade-assets/app/assets/stylesheets/omni_nav/modules/off-canvas-nav.scss */
 .cu-off-canvas-nav-container {
   position: fixed;
   top: 0;
@@ -1246,7 +1261,7 @@ a.cu_nav_button:hover svg * {
   -webkit-transition: all 0.375s ease-in-out;
   transition: all 0.375s ease-in-out;
 }
-/* line 205, /Users/atwell/projects/cascade-assets/app/assets/stylesheets/omni_nav/modules/off-canvas-nav.scss */
+/* line 221, /Users/atwell/projects/cascade-assets/app/assets/stylesheets/omni_nav/modules/off-canvas-nav.scss */
 .cu-off-canvas-nav-container * {
   -webkit-user-select: none;
   -moz-user-select: none;
@@ -1254,32 +1269,32 @@ a.cu_nav_button:hover svg * {
   -o-user-select: none;
   user-select: none;
 }
-/* line 209, /Users/atwell/projects/cascade-assets/app/assets/stylesheets/omni_nav/modules/off-canvas-nav.scss */
+/* line 225, /Users/atwell/projects/cascade-assets/app/assets/stylesheets/omni_nav/modules/off-canvas-nav.scss */
 .cu-off-canvas-nav-container.open {
   left: 0;
 }
-/* line 221, /Users/atwell/projects/cascade-assets/app/assets/stylesheets/omni_nav/modules/off-canvas-nav.scss */
+/* line 237, /Users/atwell/projects/cascade-assets/app/assets/stylesheets/omni_nav/modules/off-canvas-nav.scss */
 .cu-off-canvas-nav-container ul, .cu-off-canvas-nav-container ol {
   margin: 0;
   padding: 0;
 }
-/* line 226, /Users/atwell/projects/cascade-assets/app/assets/stylesheets/omni_nav/modules/off-canvas-nav.scss */
+/* line 242, /Users/atwell/projects/cascade-assets/app/assets/stylesheets/omni_nav/modules/off-canvas-nav.scss */
 .cu-off-canvas-nav-container a {
   text-decoration: none;
 }
-/* line 228, /Users/atwell/projects/cascade-assets/app/assets/stylesheets/omni_nav/modules/off-canvas-nav.scss */
+/* line 244, /Users/atwell/projects/cascade-assets/app/assets/stylesheets/omni_nav/modules/off-canvas-nav.scss */
 .cu-off-canvas-nav-container a:hover, .cu-off-canvas-nav-container a:focus {
   text-decoration: none;
 }
 @media (min-width: 780px) {
-  /* line 193, /Users/atwell/projects/cascade-assets/app/assets/stylesheets/omni_nav/modules/off-canvas-nav.scss */
+  /* line 209, /Users/atwell/projects/cascade-assets/app/assets/stylesheets/omni_nav/modules/off-canvas-nav.scss */
   .cu-off-canvas-nav-container {
     left: -400px;
     width: 400px;
   }
 }
 
-/* line 240, /Users/atwell/projects/cascade-assets/app/assets/stylesheets/omni_nav/modules/off-canvas-nav.scss */
+/* line 256, /Users/atwell/projects/cascade-assets/app/assets/stylesheets/omni_nav/modules/off-canvas-nav.scss */
 .cu-off-canvas-overlay {
   background-color: #000;
   z-index: 99998;
@@ -1295,19 +1310,19 @@ a.cu_nav_button:hover svg * {
   -webkit-transition: all 0.375s ease-in-out;
   transition: all 0.375s ease-in-out;
 }
-/* line 254, /Users/atwell/projects/cascade-assets/app/assets/stylesheets/omni_nav/modules/off-canvas-nav.scss */
+/* line 270, /Users/atwell/projects/cascade-assets/app/assets/stylesheets/omni_nav/modules/off-canvas-nav.scss */
 .cu-off-canvas-overlay.active {
   visibility: visible;
   opacity: 0.5;
 }
 
-/* line 272, /Users/atwell/projects/cascade-assets/app/assets/stylesheets/omni_nav/modules/off-canvas-nav.scss */
+/* line 288, /Users/atwell/projects/cascade-assets/app/assets/stylesheets/omni_nav/modules/off-canvas-nav.scss */
 .cu-off-canvas-header {
   position: relative;
   background-color: #EAEAEA;
   padding: 1.5em 1.8em 0 1.5em;
 }
-/* line 280, /Users/atwell/projects/cascade-assets/app/assets/stylesheets/omni_nav/modules/off-canvas-nav.scss */
+/* line 296, /Users/atwell/projects/cascade-assets/app/assets/stylesheets/omni_nav/modules/off-canvas-nav.scss */
 .cu-off-canvas-header .sc-logo {
   display: block;
   height: 23px;
@@ -1322,18 +1337,18 @@ a.cu_nav_button:hover svg * {
   background-size: contain;
 }
 @media (min-width: 780px) {
-  /* line 280, /Users/atwell/projects/cascade-assets/app/assets/stylesheets/omni_nav/modules/off-canvas-nav.scss */
+  /* line 296, /Users/atwell/projects/cascade-assets/app/assets/stylesheets/omni_nav/modules/off-canvas-nav.scss */
   .cu-off-canvas-header .sc-logo {
     height: 28px;
     width: 273px;
     margin: 0;
   }
 }
-/* line 297, /Users/atwell/projects/cascade-assets/app/assets/stylesheets/omni_nav/modules/off-canvas-nav.scss */
+/* line 313, /Users/atwell/projects/cascade-assets/app/assets/stylesheets/omni_nav/modules/off-canvas-nav.scss */
 .shifted .cu-off-canvas-header .sc-logo {
   display: none;
 }
-/* line 302, /Users/atwell/projects/cascade-assets/app/assets/stylesheets/omni_nav/modules/off-canvas-nav.scss */
+/* line 318, /Users/atwell/projects/cascade-assets/app/assets/stylesheets/omni_nav/modules/off-canvas-nav.scss */
 .cu-off-canvas-header .asbe {
   background: url(/_assets/off-canvas-header-asbe.png);
   background: url(/_assets/off-canvas-header-asbe.svg), -webkit-linear-gradient(transparent, transparent);
@@ -1341,7 +1356,7 @@ a.cu_nav_button:hover svg * {
   background-repeat: no-repeat;
   background-size: contain;
 }
-/* line 308, /Users/atwell/projects/cascade-assets/app/assets/stylesheets/omni_nav/modules/off-canvas-nav.scss */
+/* line 324, /Users/atwell/projects/cascade-assets/app/assets/stylesheets/omni_nav/modules/off-canvas-nav.scss */
 .cu-off-canvas-header .ces {
   background: url(/_assets/off-canvas-header-ces.png);
   background: url(/_assets/off-canvas-header-ces.svg), -webkit-linear-gradient(transparent, transparent);
@@ -1349,7 +1364,7 @@ a.cu_nav_button:hover svg * {
   background-repeat: no-repeat;
   background-size: contain;
 }
-/* line 314, /Users/atwell/projects/cascade-assets/app/assets/stylesheets/omni_nav/modules/off-canvas-nav.scss */
+/* line 330, /Users/atwell/projects/cascade-assets/app/assets/stylesheets/omni_nav/modules/off-canvas-nav.scss */
 .cu-off-canvas-header .dodge {
   background: url(/_assets/off-canvas-header-dodge.png);
   background: url(/_assets/off-canvas-header-dodge.svg), -webkit-linear-gradient(transparent, transparent);
@@ -1357,7 +1372,7 @@ a.cu_nav_button:hover svg * {
   background-repeat: no-repeat;
   background-size: contain;
 }
-/* line 320, /Users/atwell/projects/cascade-assets/app/assets/stylesheets/omni_nav/modules/off-canvas-nav.scss */
+/* line 336, /Users/atwell/projects/cascade-assets/app/assets/stylesheets/omni_nav/modules/off-canvas-nav.scss */
 .cu-off-canvas-header .crean {
   background: url(/_assets/off-canvas-header-crean.png);
   background: url(/_assets/off-canvas-header-crean.svg), -webkit-linear-gradient(transparent, transparent);
@@ -1365,7 +1380,7 @@ a.cu_nav_button:hover svg * {
   background-repeat: no-repeat;
   background-size: contain;
 }
-/* line 326, /Users/atwell/projects/cascade-assets/app/assets/stylesheets/omni_nav/modules/off-canvas-nav.scss */
+/* line 342, /Users/atwell/projects/cascade-assets/app/assets/stylesheets/omni_nav/modules/off-canvas-nav.scss */
 .cu-off-canvas-header .wilkinson {
   background: url(/_assets/off-canvas-header-wilkinson.png);
   background: url(/_assets/off-canvas-header-wilkinson.svg), -webkit-linear-gradient(transparent, transparent);
@@ -1373,7 +1388,7 @@ a.cu_nav_button:hover svg * {
   background-repeat: no-repeat;
   background-size: contain;
 }
-/* line 332, /Users/atwell/projects/cascade-assets/app/assets/stylesheets/omni_nav/modules/off-canvas-nav.scss */
+/* line 348, /Users/atwell/projects/cascade-assets/app/assets/stylesheets/omni_nav/modules/off-canvas-nav.scss */
 .cu-off-canvas-header .copa {
   background: url(/_assets/off-canvas-header-copa.png);
   background: url(/_assets/off-canvas-header-copa.svg), -webkit-linear-gradient(transparent, transparent);
@@ -1381,7 +1396,7 @@ a.cu_nav_button:hover svg * {
   background-repeat: no-repeat;
   background-size: contain;
 }
-/* line 338, /Users/atwell/projects/cascade-assets/app/assets/stylesheets/omni_nav/modules/off-canvas-nav.scss */
+/* line 354, /Users/atwell/projects/cascade-assets/app/assets/stylesheets/omni_nav/modules/off-canvas-nav.scss */
 .cu-off-canvas-header .cusp {
   background: url(/_assets/off-canvas-header-cusp.png);
   background: url(/_assets/off-canvas-header-cusp.svg), -webkit-linear-gradient(transparent, transparent);
@@ -1389,7 +1404,7 @@ a.cu_nav_button:hover svg * {
   background-repeat: no-repeat;
   background-size: contain;
 }
-/* line 344, /Users/atwell/projects/cascade-assets/app/assets/stylesheets/omni_nav/modules/off-canvas-nav.scss */
+/* line 360, /Users/atwell/projects/cascade-assets/app/assets/stylesheets/omni_nav/modules/off-canvas-nav.scss */
 .cu-off-canvas-header .fowler {
   background: url(/_assets/off-canvas-header-fowler.png);
   background: url(/_assets/off-canvas-header-fowler.svg), -webkit-linear-gradient(transparent, transparent);
@@ -1397,7 +1412,7 @@ a.cu_nav_button:hover svg * {
   background-repeat: no-repeat;
   background-size: contain;
 }
-/* line 350, /Users/atwell/projects/cascade-assets/app/assets/stylesheets/omni_nav/modules/off-canvas-nav.scss */
+/* line 366, /Users/atwell/projects/cascade-assets/app/assets/stylesheets/omni_nav/modules/off-canvas-nav.scss */
 .cu-off-canvas-header .schmid {
   background: url(/_assets/off-canvas-header-schmid.png);
   background: url(/_assets/off-canvas-header-schmid.svg), -webkit-linear-gradient(transparent, transparent);
@@ -1405,7 +1420,7 @@ a.cu_nav_button:hover svg * {
   background-repeat: no-repeat;
   background-size: contain;
 }
-/* line 356, /Users/atwell/projects/cascade-assets/app/assets/stylesheets/omni_nav/modules/off-canvas-nav.scss */
+/* line 372, /Users/atwell/projects/cascade-assets/app/assets/stylesheets/omni_nav/modules/off-canvas-nav.scss */
 .cu-off-canvas-header .soc {
   background: url(/_assets/off-canvas-header-soc.png);
   background: url(/_assets/off-canvas-header-soc.svg), -webkit-linear-gradient(transparent, transparent);
@@ -1413,11 +1428,11 @@ a.cu_nav_button:hover svg * {
   background-repeat: no-repeat;
   background-size: contain;
 }
-/* line 364, /Users/atwell/projects/cascade-assets/app/assets/stylesheets/omni_nav/modules/off-canvas-nav.scss */
+/* line 380, /Users/atwell/projects/cascade-assets/app/assets/stylesheets/omni_nav/modules/off-canvas-nav.scss */
 .cu-off-canvas-header .default-logo {
   display: none;
 }
-/* line 367, /Users/atwell/projects/cascade-assets/app/assets/stylesheets/omni_nav/modules/off-canvas-nav.scss */
+/* line 383, /Users/atwell/projects/cascade-assets/app/assets/stylesheets/omni_nav/modules/off-canvas-nav.scss */
 .shifted .cu-off-canvas-header .default-logo, .cu-off-canvas-header .default-logo-cu {
   display: block;
   border: 0;
@@ -1432,14 +1447,14 @@ a.cu_nav_button:hover svg * {
   background-size: contain;
 }
 @media (min-width: 780px) {
-  /* line 367, /Users/atwell/projects/cascade-assets/app/assets/stylesheets/omni_nav/modules/off-canvas-nav.scss */
+  /* line 383, /Users/atwell/projects/cascade-assets/app/assets/stylesheets/omni_nav/modules/off-canvas-nav.scss */
   .shifted .cu-off-canvas-header .default-logo, .cu-off-canvas-header .default-logo-cu {
     height: 28px;
     width: 273px;
     margin: 0;
   }
 }
-/* line 388, /Users/atwell/projects/cascade-assets/app/assets/stylesheets/omni_nav/modules/off-canvas-nav.scss */
+/* line 404, /Users/atwell/projects/cascade-assets/app/assets/stylesheets/omni_nav/modules/off-canvas-nav.scss */
 .cu-off-canvas-header .close {
   cursor: pointer;
   position: absolute;
@@ -1447,30 +1462,30 @@ a.cu_nav_button:hover svg * {
   right: 0;
   padding: 1.75em 1.8em 1.75em 1.25em;
 }
-/* line 397, /Users/atwell/projects/cascade-assets/app/assets/stylesheets/omni_nav/modules/off-canvas-nav.scss */
+/* line 413, /Users/atwell/projects/cascade-assets/app/assets/stylesheets/omni_nav/modules/off-canvas-nav.scss */
 .cu-off-canvas-header .cu-off-canvas-links {
   min-height: 1em;
   margin-top: 1.25em;
   position: relative;
   height: 30px;
 }
-/* line 405, /Users/atwell/projects/cascade-assets/app/assets/stylesheets/omni_nav/modules/off-canvas-nav.scss */
+/* line 421, /Users/atwell/projects/cascade-assets/app/assets/stylesheets/omni_nav/modules/off-canvas-nav.scss */
 .shifted .cu-off-canvas-header .cu-off-canvas-links .level-1-link, .shifted .cu-off-canvas-header .cu-off-canvas-links .main-menu {
   opacity: 0;
   z-index: 1;
 }
-/* line 410, /Users/atwell/projects/cascade-assets/app/assets/stylesheets/omni_nav/modules/off-canvas-nav.scss */
+/* line 426, /Users/atwell/projects/cascade-assets/app/assets/stylesheets/omni_nav/modules/off-canvas-nav.scss */
 .shifted .cu-off-canvas-header .cu-off-canvas-links .level-2-link {
   opacity: 1;
   z-index: 2;
 }
-/* line 417, /Users/atwell/projects/cascade-assets/app/assets/stylesheets/omni_nav/modules/off-canvas-nav.scss */
+/* line 433, /Users/atwell/projects/cascade-assets/app/assets/stylesheets/omni_nav/modules/off-canvas-nav.scss */
 .cu-off-canvas-header .cu-off-canvas-links .level-1-link, .cu-off-canvas-header .cu-off-canvas-links .main-menu {
   opacity: 1;
   z-index: 2;
   max-width: 49%;
 }
-/* line 423, /Users/atwell/projects/cascade-assets/app/assets/stylesheets/omni_nav/modules/off-canvas-nav.scss */
+/* line 439, /Users/atwell/projects/cascade-assets/app/assets/stylesheets/omni_nav/modules/off-canvas-nav.scss */
 .cu-off-canvas-header .cu-off-canvas-links .level-1-link, .cu-off-canvas-header .cu-off-canvas-links .level-2-link, .cu-off-canvas-header .cu-off-canvas-links .main-menu {
   font-size: 13px;
   text-transform: uppercase;
@@ -1483,27 +1498,27 @@ a.cu_nav_button:hover svg * {
   -webkit-transition: opacity 0.375s ease-in-out;
   transition: opacity 0.375s ease-in-out;
 }
-/* line 434, /Users/atwell/projects/cascade-assets/app/assets/stylesheets/omni_nav/modules/off-canvas-nav.scss */
+/* line 450, /Users/atwell/projects/cascade-assets/app/assets/stylesheets/omni_nav/modules/off-canvas-nav.scss */
 .cu-off-canvas-header .cu-off-canvas-links .level-1-link .accent, .cu-off-canvas-header .cu-off-canvas-links .level-2-link .accent, .cu-off-canvas-header .cu-off-canvas-links .main-menu .accent {
   color: #006080;
 }
-/* line 438, /Users/atwell/projects/cascade-assets/app/assets/stylesheets/omni_nav/modules/off-canvas-nav.scss */
+/* line 454, /Users/atwell/projects/cascade-assets/app/assets/stylesheets/omni_nav/modules/off-canvas-nav.scss */
 .cu-off-canvas-header .cu-off-canvas-links .level-1-link.hidden, .cu-off-canvas-header .cu-off-canvas-links .level-2-link.hidden, .cu-off-canvas-header .cu-off-canvas-links .main-menu.hidden {
   display: none;
 }
-/* line 442, /Users/atwell/projects/cascade-assets/app/assets/stylesheets/omni_nav/modules/off-canvas-nav.scss */
+/* line 458, /Users/atwell/projects/cascade-assets/app/assets/stylesheets/omni_nav/modules/off-canvas-nav.scss */
 .cu-off-canvas-header .cu-off-canvas-links .level-1-link:hover, .cu-off-canvas-header .cu-off-canvas-links .level-2-link:hover, .cu-off-canvas-header .cu-off-canvas-links .main-menu:hover {
   text-decoration: none;
 }
-/* line 448, /Users/atwell/projects/cascade-assets/app/assets/stylesheets/omni_nav/modules/off-canvas-nav.scss */
+/* line 464, /Users/atwell/projects/cascade-assets/app/assets/stylesheets/omni_nav/modules/off-canvas-nav.scss */
 .cu-off-canvas-header .cu-off-canvas-links .level-1-link, .cu-off-canvas-header .cu-off-canvas-links .level-2-link {
   right: 0;
 }
-/* line 452, /Users/atwell/projects/cascade-assets/app/assets/stylesheets/omni_nav/modules/off-canvas-nav.scss */
+/* line 468, /Users/atwell/projects/cascade-assets/app/assets/stylesheets/omni_nav/modules/off-canvas-nav.scss */
 .cu-off-canvas-header .cu-off-canvas-links .main-menu {
   left: 0;
 }
-/* line 456, /Users/atwell/projects/cascade-assets/app/assets/stylesheets/omni_nav/modules/off-canvas-nav.scss */
+/* line 472, /Users/atwell/projects/cascade-assets/app/assets/stylesheets/omni_nav/modules/off-canvas-nav.scss */
 .cu-off-canvas-header .cu-off-canvas-links .level-2-link {
   opacity: 0;
   z-index: 1;

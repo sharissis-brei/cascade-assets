@@ -57,7 +57,7 @@ module Omninav
 %<header>s
 
 <!-- OmniNav NavBar -->
-<div id="cu_nav" class="use-transitions">
+<div id="cu_nav" class="omninav-builder use-transitions">
 
 %<logo_html>s
 %<search_html>s

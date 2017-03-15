@@ -233,6 +233,8 @@ a.cu_nav_button {
 }
 
 
+
+
 /***************************************************
 * SEARCH
 ***************************************************/
@@ -1003,4 +1005,14 @@ a.cu_nav_button {
 
 }
 
+/***************************************************
+* OmniNav Builder Variations
+* This is for versions built by builder for
+* sites other than WWW.
+***************************************************/
 
+#cu_nav.omninav-builder {
+	a.default-logo-cu {
+		text-indent: 0px;
+	}
+}

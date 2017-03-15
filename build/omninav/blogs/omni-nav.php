@@ -1,5 +1,5 @@
 <?php
-// OmniNav Build Version: 2.0.0.20170314.191317
+// OmniNav Build Version: 2.0.0.20170315.183921
 
 // If logged in
 if (is_user_logged_in()) {
@@ -135,7 +135,8 @@ if (is_user_logged_in()) {
 
     <?php else: ?>
     <div id="cu_login_form" class="cu_dropdown_menu">
-      <form action="https://blogs.chapman.edu/wp-login.php" method="post">
+      <form action="<?php echo (FORCE_SSL_LOGIN === true) ? home_url(null, 'https') : home_url(null, 'http'); ?>/wp-login.php"
+            method="post">
         <label for="cu_username" style="display: none;">ChapmanU User ID</label>
         <input id="cu_username"
                name="log"
@@ -198,7 +199,7 @@ if (is_user_logged_in()) {
      class="cu-off-canvas-nav-trigger"
      href="#"
      title="Access links to the pages within this section of the website and to other sections of the website">
-    <span class="icon icon-menu7"></span>
+    <svg class="hamburger svg-icon" viewbox="0 0 32 32"><path d="M4,10h24c1.104,0,2-0.896,2-2s-0.896-2-2-2H4C2.896,6,2,6.896,2,8S2.896,10,4,10z M28,14H4c-1.104,0-2,0.896-2,2  s0.896,2,2,2h24c1.104,0,2-0.896,2-2S29.104,14,28,14z M28,22H4c-1.104,0-2,0.896-2,2s0.896,2,2,2h24c1.104,0,2-0.896,2-2  S29.104,22,28,22z"></path></svg>
   </a>
 
   <!-- Off Canvas Nav -->
