@@ -315,7 +315,7 @@ LOGIN_FORM
      class="cu-off-canvas-nav-trigger"
      href="#"
      title="Access links to the pages within this section of the website and to other sections of the website">
-    <span class="icon icon-menu7"></span>
+    %<hamburger_icon>s
   </a>
 
   <!-- Off Canvas Nav -->
@@ -329,6 +329,7 @@ LOGIN_FORM
 
 OFF_CANVAS_HTML
       params = {
+        hamburger_icon: SvgImage.hamburger_icon,
         off_canvas_header: build_off_canvas_nav_header,
         off_canvas_body: build_off_canvas_nav_body
       }

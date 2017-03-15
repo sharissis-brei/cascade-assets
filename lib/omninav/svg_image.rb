@@ -16,7 +16,7 @@ module Omninav
     #
     # Constants
     #
-    ICON_FORMAT = '<svg %<class_attr>sviewbox="0 0 512 512"><path d="%<d>s"></path></svg>'.freeze
+    ICON_FORMAT = '<svg %<class_attr>sviewbox="0 0 %<px>s %<px>s"><path d="%<d>s"></path></svg>'.freeze
 
     #
     # Logo Class Methods
@@ -78,9 +78,11 @@ SVG_TAG
       # Default params
       path_descriptions = params.fetch(:path_descriptions, [])
       classes = params.fetch(:classes, []) + ['svg-icon']
+      px_size = params.fetch(:size, 512)
 
       attrs = {
         class_attr: format('class="%s" ', classes.uniq.join(' ')),
+        px: px_size,
         d: path_descriptions.join('')
       }
       format(ICON_FORMAT, attrs)
@@ -232,6 +234,16 @@ SVG_TAG
         ".7,415.4   L442.7,415.4z"
       ]
       icon(path_descriptions: path_descriptions, classes: ['chat'])
+    end
+
+    def self.hamburger_icon
+      path_descriptions = [
+        "M4,10h24c1.104,0,2-0.896,2-2s-0.896-2-2-2H4C2.896,6,2,6.896,2,8S2.896,10,4,10z M",
+        "28,14H4c-1.104,0-2,0.896-2,2  s0.896,2,2,2h24c1.104,0,2-0.896,2-2S29.104,14,28,1",
+        "4z M28,22H4c-1.104,0-2,0.896-2,2s0.896,2,2,2h24c1.104,0,2-0.896,2-2  S29.104,22,",
+        "28,22z"
+      ]
+      icon(path_descriptions: path_descriptions, classes: ['hamburger'], size: 32)
     end
   end
 end
