@@ -82,12 +82,18 @@ namespace :build do
         FileUtils::mkdir_p dir
       end
 
+      # Set environment to production so pipeline will minify assets.
+      Rails.env = "production"
+
       # Build minified Asset files.
       # TODO: This does not currently build minified versions of css and js files. I've googled
       # this to death but can't get it to work. Blogs expects min versions of files but will work
       # with unminified versions.
       puts format("Compiling assets to staging: %s", staging_dir)
+      Rails.application.config.assets.raise_runtime_errors = true
       Rails.application.config.assets.prefix = "../build/omninav/staging"
+      Rails.application.config.assets.js_compressor = :uglifier
+      Rails.application.config.assets.css_compressor = :sass
       Rails.application.config.assets.digest = false
       Rails.application.config.assets.compress = true
       Rails.application.config.assets.debug = false
@@ -96,6 +102,7 @@ namespace :build do
       Rails.application.config.assets.precompile = ['omni-nav.js', 'omni-nav.css']
       Rake::Task['assets:clean'].invoke
       Rake::Task['assets:precompile'].invoke
+      puts format('min file? %s', File.exists?(staging_dir.join('omni-nav.min.css')))
 
       # Build HTML file.
       php_file = staging_dir.join 'omni-nav.php'
