@@ -1057,7 +1057,27 @@ a.cu_nav_button:hover svg * {
 * This is for versions built by builder for
 * sites other than WWW.
 ***************************************************/
-/* line 1015, /Users/atwell/projects/cascade-assets/app/assets/stylesheets/omni_nav/modules/omni-nav.scss */
+/* line 1018, /Users/atwell/projects/cascade-assets/app/assets/stylesheets/omni_nav/modules/omni-nav.scss */
+#cu_nav.omninav-builder #cu_login_container #cu_identity svg {
+  position: relative;
+}
+/* line 1023, /Users/atwell/projects/cascade-assets/app/assets/stylesheets/omni_nav/modules/omni-nav.scss */
+#cu_nav.omninav-builder #cu_login_container #cu_identity img {
+  top: 0px;
+}
+/* line 1028, /Users/atwell/projects/cascade-assets/app/assets/stylesheets/omni_nav/modules/omni-nav.scss */
+#cu_nav.omninav-builder #cu_login_container #cu_identity span.cu_name {
+  vertical-align: bottom;
+  margin: 0px;
+}
+/* line 1035, /Users/atwell/projects/cascade-assets/app/assets/stylesheets/omni_nav/modules/omni-nav.scss */
+#cu_nav.omninav-builder #cu_login_container #cu_identity span.cu_name.logged-in {
+  display: inline-block;
+  height: 22px;
+  overflow: hidden;
+  position: relative;
+}
+/* line 1044, /Users/atwell/projects/cascade-assets/app/assets/stylesheets/omni_nav/modules/omni-nav.scss */
 #cu_nav.omninav-builder a.default-logo-cu {
   text-indent: 0px;
 }

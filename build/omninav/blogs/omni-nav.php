@@ -1,5 +1,5 @@
 <?php
-// OmniNav Build Version: 2.0.0.20170315.185123
+// OmniNav Build Version: 2.0.0.20170316.152829
 
 // If logged in
 if (is_user_logged_in()) {
@@ -113,13 +113,13 @@ if (is_user_logged_in()) {
         <div id="cu_identity">
         <?php if (is_user_logged_in()) : ?>
             <span class="circle-border">
-                <?php echo get_avatar($current_user->user_email); ?>
+              <?php echo get_avatar($current_user->user_email); ?>
             </span>
-            <span class="cu_name"><?php echo $current_user->user_firstname; ?></span>
+            <span class="cu_name logged-in">
+              <?php echo $current_user->user_firstname; ?>
+            </span>
         <?php else: ?>
-            <span class="circle-border">
-                <svg class="user svg-icon" viewbox="0 0 512 512"><path d="M311.4,351.4c-11.1-1.8-11.3-32.2-11.3-32.2s32.5-32.2,39.6-75.4c19,0,30.8-46,11.8-62.1C352.2,164.6,375.9,48,256,48   s-96.2,116.6-95.4,133.7c-19,16.2-7.3,62.1,11.8,62.1c7.1,43.2,39.6,75.4,39.6,75.4s-0.3,30.4-11.3,32.2C165,357,32,415.7,32,480   h224h224C480,415.7,347,357,311.4,351.4z"></path></svg>
-            </span>
+            <svg class="user svg-icon" viewbox="0 0 512 512"><path d="M311.4,351.4c-11.1-1.8-11.3-32.2-11.3-32.2s32.5-32.2,39.6-75.4c19,0,30.8-46,11.8-62.1C352.2,164.6,375.9,48,256,48   s-96.2,116.6-95.4,133.7c-19,16.2-7.3,62.1,11.8,62.1c7.1,43.2,39.6,75.4,39.6,75.4s-0.3,30.4-11.3,32.2C165,357,32,415.7,32,480   h224h224C480,415.7,347,357,311.4,351.4z"></path></svg>
             <span class="cu_name">Log In</span>
         <?php endif; ?>
     </div>

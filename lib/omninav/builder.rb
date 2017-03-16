@@ -232,12 +232,12 @@ LOGIN_HTML
       </div>
     </div>
 IDENTITY_BLOCK_HTML
-      end
 
-      params = {
-        user_svg: SvgImage.user_icon
-      }
-      format(template, params)
+        params = {
+          user_svg: SvgImage.user_icon
+        }
+        format(template, params)
+      end
     end
 
     def identity_block_for_blogs
@@ -245,9 +245,11 @@ IDENTITY_BLOCK_HTML
     <div id="cu_identity">
         <?php if (is_user_logged_in()) : ?>
             <span class="circle-border">
-                <?php echo get_avatar($current_user->user_email); ?>
+              <?php echo get_avatar($current_user->user_email); ?>
             </span>
-            <span class="cu_name"><?php echo $current_user->user_firstname; ?></span>
+            <span class="cu_name logged-in">
+              <?php echo $current_user->user_firstname; ?>
+            </span>
         <?php else: ?>
             %<user_svg>s
             <span class="cu_name">Log In</span>
@@ -548,13 +550,13 @@ OFF_CANVAS_HEADER_HTML
           </ul>
         </li>
         <li>
-          <a class="has-icon" href="http://inside.chapman.edu/" title="Inside Chapman">
+          <a class="has-icon" href="https://inside.chapman.edu/" title="Inside Chapman">
             %<chapman_monogram_svg>s
             Inside Chapman
           </a>
         </li>
         <li>
-          <a class="has-icon" href="http://social.chapman.edu/" title="Social">
+          <a class="has-icon" href="https://social.chapman.edu/" title="Social">
             %<chat_svg>s
             Social
           </a>

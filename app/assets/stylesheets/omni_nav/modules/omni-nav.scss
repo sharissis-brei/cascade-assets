@@ -1019,10 +1019,24 @@ a.cu_nav_button {
 			position: relative;
 		}
 
-		// CUI Name
+		// Used for gravatar image when logged in in Blogs.
+		img {
+		  	top: 0px;
+		}
+
+		// User Name
 		span.cu_name {
 			vertical-align: bottom;
 			margin: 0px;
+		}
+
+		// Hard to get name aligned with logged-in image. This magic concoction of settings
+		// seems to work.
+		span.cu_name.logged-in {
+			display: inline-block;
+		    height: 22px;
+		    overflow: hidden;
+		    position: relative;
 		}
 	}
 
