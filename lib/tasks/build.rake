@@ -87,9 +87,8 @@ namespace :build do
   #
   desc "Build OmniNav navbar assets and markup for various Chapman websites."
   task omninav: :environment do
-    # FIXME: Fails after first build task is run. Whyyyy????
-    Rake::Task['build:omninav:blogs'].invoke
     Rake::Task['build:omninav:static'].invoke
+    Rake::Task['build:omninav:blogs'].invoke
   end
 end
 
