@@ -74,6 +74,7 @@
     <text type="multi-selector" identifier="interests" label="Interests">
         <selector-item value="Analytical Thinking"/>
         <selector-item value="Art &amp; Culture"/>
+        <selector-item value="Arts &amp; Education"/>
         <selector-item value="Business Leaders"/>
         <selector-item value="Global Leadership"/>
         <selector-item value="Humanities &amp; Education"/>
@@ -83,7 +84,6 @@
         <selector-item value="Mind &amp; Body"/>
         <selector-item value="Movies &amp; Television"/>
         <selector-item value="Performing Arts"/>
-        <selector-item value="Science &amp; Tech"/>
         <selector-item value="Science &amp; Technology"/>
         <selector-item value="Science in Action"/>
         <selector-item value="Social Change"/>

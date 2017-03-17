@@ -3,7 +3,7 @@
     Author:        BarkleyREI
     Created:       02/13/2017
     Modified By:   Sean T. Stacho
-    Last Modified: 03/10/2017
+    Last Modified: 03/14/2017
 *#
 
 ## Trim white space
@@ -36,7 +36,7 @@ ${output.replaceAll( $trimSpacingRegExp, "" )}
 			},
 			#end
 			#if ( $props.link.href )"href": "${props.link.href}",#end
-			"degreeType": {
+			"degreeTypes": {
 				"title": $props.degreeTypes.title,
 				"type": $props.degreeTypes.type
 			},

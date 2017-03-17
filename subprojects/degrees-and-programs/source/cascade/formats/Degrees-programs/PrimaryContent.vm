@@ -2,8 +2,8 @@
     Name:          Degrees & Programs
     Author:        BarkleyREI
     Created:       02/13/2017
-    Modified By:   Sarah Harissis
-    Last Modified: 03/03/2017
+    Modified By:   Sean Stacho
+    Last Modified: 03/15/2017
 *#
 
 ## Data (JSON)
@@ -32,7 +32,7 @@
 
         #foreach ( $program in $programs )
 
-			## Locate Block
+        	## Locate Block
 			#set ( $path = $program.getChild("path").value )
 			#set ( $site = $program.getChild("site").value )
 			#set ( $programObject = $_.locateBlock( $path, $site ) )
@@ -104,8 +104,8 @@
     			#set ( $campus = "Rinker Health Science Campus" )
     		#end
 
-    		## Degree Title
-    		#set ( $degreeTitle = $programObject.getStructuredDataNode("type") )
+    		## Degree Title(s)
+    		#set ( $degreeTitles = $programObject.getStructuredDataNode("type") )
 
 			<article class="result columns small-12 clearfix">
 
@@ -145,7 +145,11 @@
 					<span class="campus">$_EscapeTool.xml( $campus )</span>
 
 					<ul class="degree-types clearfix">
-						<li>$_EscapeTool.xml( $degreeTitle.textValue )</li>
+						#foreach ( $degreeTitle in $degreeTitles.textValues )
+							#if ( $degreeTitle != "" )
+								<li>$_EscapeTool.xml( $degreeTitle )</li>
+							#end
+						#end
 					</ul>
 
 					<p class="desc">$_EscapeTool.xml( $description )</p>
@@ -193,14 +197,20 @@
         ## Type - Undergraduate or Graduate?
         #set ( $type = $blockObject.getStructuredDataNode("cat") )
         ## Degree Type
-        #set ( $degreeType = $blockObject.getStructuredDataNode("level") )
+        #set ( $degreeTypes = $blockObject.getStructuredDataNode("level") )
         
-        #if ( $degreeType.textValue == "4+1 and Bridge" )
-            #set ( $dead = $programs.add( $block ) )
-        #else
-            #if ( $category == $type.textValue )
-			    #set ( $dead = $programs.add( $block ) )
-		    #end
+        #foreach ( $degreeType in $degreeTypes.textValues )
+        	#if ( $degreeType != "" )
+	            #if ( $degreeType == "4+1 and Bridge" )
+	                #set ( $dead = $programs.add( $block ) )
+	                #break
+	            #else
+	                #if ( $category == $type.textValue )
+	        		    #set ( $dead = $programs.add( $block ) )
+	                    #break
+	    		    #end
+	            #end
+            #end
         #end
         
     #end
@@ -304,7 +314,7 @@
 
 									#foreach ( $interest in $interests )
 
-										#set ( $iconClass = $_XPathTool.selectSingleNode( $interest, "icon" ) )
+										#set ( $iconClass = $_XPathTool.selectSingleNode( $interest, "icon" ).value.replace( " ", "-" ).toLowerCase() )
 										#set ( $title = $_XPathTool.selectSingleNode( $interest, "title" ) )
 										#set ( $suffix = $_EscapeTool.xml( $title.value ).replace( "&amp;", "and" ).replace( " ", "-" ).toLowerCase() )
 
@@ -312,7 +322,7 @@
 											<label for="dap-discover-interest-${suffix}">
 												<input id="dap-discover-interest-${suffix}" name="dap-discover-interest" type="radio" value="${_EscapeTool.xml( $title.value )}" />
 												<div class="svg-container">
-													#svg( "icon-${iconClass.value}" )
+													#svg( "icon-${iconClass}" )
 												</div>
 												<span class="title">$_EscapeTool.xml( $title.value )</span>
 											</label>
