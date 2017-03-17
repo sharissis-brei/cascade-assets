@@ -30,25 +30,25 @@ $cu-viewport-l:   980px;
 $cu-viewport-xl: 1200px;
 
 @mixin reset-box-model($display: block) {
-	display: $display;
-	margin: 0;
-	padding: 0;
+    display: $display;
+    margin: 0;
+    padding: 0;
 
-	-webkit-box-sizing: border-box;
-	-moz-box-sizing: border-box;
-	box-sizing: border-box;
+    -webkit-box-sizing: border-box;
+    -moz-box-sizing: border-box;
+    box-sizing: border-box;
 }
 
 @mixin font-stack-for-headings() {
-	font-family: "futura-pt", Arial, Verdana, "Sans Serif";
-	font-family: "futura-pt", Arial, Verdana, "Sans Serif";
+    font-family: "futura-pt", Arial, Verdana, "Sans Serif";
+    font-family: "futura-pt", Arial, Verdana, "Sans Serif";
 }
 
 @mixin wordpress-admin-bar-spacing() {
-	.logged-in.admin-bar & { margin-top:32px; }
-	@media screen and (max-width: 782px) {
-		.logged-in.admin-bar & { margin-top:46px; }
-	}
+    .logged-in.admin-bar & { margin-top:32px; }
+    @media screen and (max-width: 782px) {
+        .logged-in.admin-bar & { margin-top:46px; }
+    }
 }
 
 /***************************************************
@@ -65,32 +65,32 @@ html, body { margin:0; padding: 0;}
 
 
 #cu_nav.use-transitions {
-	-webkit-transition: top 0.15s 0s ease-out;
-	   -moz-transition: top 0.15s 0s ease-out;
-	     -o-transition: top 0.15s 0s ease-out;
-	        transition: top 0.15s 0s ease-out;
+    -webkit-transition: top 0.15s 0s ease-out;
+       -moz-transition: top 0.15s 0s ease-out;
+         -o-transition: top 0.15s 0s ease-out;
+            transition: top 0.15s 0s ease-out;
 
 
-	div.dropdown_menu {
-		-webkit-transition: padding 0.2s 0s ease-out, height 0.2s 0s ease-out;
-		   -moz-transition: padding 0.2s 0s ease-out, height 0.2s 0s ease-out;
-		     -o-transition: padding 0.2s 0s ease-out, height 0.2s 0s ease-out;
-		        transition: padding 0.2s 0s ease-out, height 0.2s 0s ease-out;
-	}
+    div.dropdown_menu {
+        -webkit-transition: padding 0.2s 0s ease-out, height 0.2s 0s ease-out;
+           -moz-transition: padding 0.2s 0s ease-out, height 0.2s 0s ease-out;
+             -o-transition: padding 0.2s 0s ease-out, height 0.2s 0s ease-out;
+                transition: padding 0.2s 0s ease-out, height 0.2s 0s ease-out;
+    }
 
-	a.cu_nav_button {
-		-webkit-transition: height 0.15s 0s ease-out, border 0.15s 0s ease-out, padding 0.15s 0s ease-out, opacity 0.15s 0s ease-out, filter 0s 0s ease-out;
-		   -moz-transition: height 0.15s 0s ease-out, border 0.15s 0s ease-out, padding 0.15s 0s ease-out, opacity 0.15s 0s ease-out, filter 0s 0s ease-out;
-		     -o-transition: height 0.15s 0s ease-out, border 0.15s 0s ease-out, padding 0.15s 0s ease-out, opacity 0.15s 0s ease-out, filter 0s 0s ease-out;
-		        transition: height 0.15s 0s ease-out, border 0.15s 0s ease-out, padding 0.15s 0s ease-out, opacity 0.15s 0s ease-out, filter 0s 0s ease-out;
-	}
+    a.cu_nav_button {
+        -webkit-transition: height 0.15s 0s ease-out, border 0.15s 0s ease-out, padding 0.15s 0s ease-out, opacity 0.15s 0s ease-out, filter 0s 0s ease-out;
+           -moz-transition: height 0.15s 0s ease-out, border 0.15s 0s ease-out, padding 0.15s 0s ease-out, opacity 0.15s 0s ease-out, filter 0s 0s ease-out;
+             -o-transition: height 0.15s 0s ease-out, border 0.15s 0s ease-out, padding 0.15s 0s ease-out, opacity 0.15s 0s ease-out, filter 0s 0s ease-out;
+                transition: height 0.15s 0s ease-out, border 0.15s 0s ease-out, padding 0.15s 0s ease-out, opacity 0.15s 0s ease-out, filter 0s 0s ease-out;
+    }
 }
 
 #cu_companion_bar {
-	-webkit-transition: top 0.15s 0s ease-out;
-	   -moz-transition: top 0.15s 0s ease-out;
-	     -o-transition: top 0.15s 0s ease-out;
-	        transition: top 0.15s 0s ease-out;
+    -webkit-transition: top 0.15s 0s ease-out;
+       -moz-transition: top 0.15s 0s ease-out;
+         -o-transition: top 0.15s 0s ease-out;
+            transition: top 0.15s 0s ease-out;
 }
 
 
@@ -99,136 +99,136 @@ html, body { margin:0; padding: 0;}
 ***************************************************/
 
 #cu_nav {
-	@include reset-box-model();
-	@include font-stack-for-headings();
-	// @include wordpress-admin-bar-spacing();
+    @include reset-box-model();
+    @include font-stack-for-headings();
+    // @include wordpress-admin-bar-spacing();
 
-	width: 100%;
-	height: $cu-nav-height;
-	position: fixed;
-	top: 0;
+    width: 100%;
+    height: $cu-nav-height;
+    position: fixed;
+    top: 0;
 
-	z-index: 99100;
+    z-index: 99100;
 
-	background-color: $cu-nav-background;
-	border-bottom: 1px solid $cu-nav-border;
+    background-color: $cu-nav-background;
+    border-bottom: 1px solid $cu-nav-border;
 
-	* {
-		-webkit-box-sizing: border-box;
-		-moz-box-sizing: border-box;
-		box-sizing: border-box;
-		-webkit-font-smoothing: antialiased;
-	}
+    * {
+        -webkit-box-sizing: border-box;
+        -moz-box-sizing: border-box;
+        box-sizing: border-box;
+        -webkit-font-smoothing: antialiased;
+    }
 
-	ul.cu_nav_menu {
-		@include reset-box-model();
-		position: relative;
-		z-index: 99090;
-		float: left;
-		min-height: $cu-nav-height;
+    ul.cu_nav_menu {
+        @include reset-box-model();
+        position: relative;
+        z-index: 99090;
+        float: left;
+        min-height: $cu-nav-height;
 
-		&.expanded {
-			padding-top: $cu-nav-height;
-		}
+        &.expanded {
+            padding-top: $cu-nav-height;
+        }
 
-		li {
-			@include reset-box-model();
-			list-style-type: none;
-			width: $cu-domain-width;
+        li {
+            @include reset-box-model();
+            list-style-type: none;
+            width: $cu-domain-width;
 
-			&.selected {
-				z-index: 1;
-				position: absolute;
-				top: 0;
-			}
+            &.selected {
+                z-index: 1;
+                position: absolute;
+                top: 0;
+            }
 
-			&.hidden-unless-default { display: none; }
-			&.hidden-unless-default.selected { display: block; }
-		}
+            &.hidden-unless-default { display: none; }
+            &.hidden-unless-default.selected { display: block; }
+        }
 
-	}
+    }
 
-	div.cu_nav_menu {
-		min-height: $cu-nav-height;
-		z-index: 99090;
+    div.cu_nav_menu {
+        min-height: $cu-nav-height;
+        z-index: 99090;
 
-		div.cu_dropdown_menu {
-			max-height: 0px;
-			padding: 0 20px;
-			overflow: hidden;
-		}
+        div.cu_dropdown_menu {
+            max-height: 0px;
+            padding: 0 20px;
+            overflow: hidden;
+        }
 
 
-		&.expanded {
+        &.expanded {
 
-			div.cu_dropdown_menu {
-				max-height: 200px;
-				padding: 20px;
-			}
-		}
-	}
+            div.cu_dropdown_menu {
+                max-height: 200px;
+                padding: 20px;
+            }
+        }
+    }
 }
 
 a.cu_nav_button {
-	@include reset-box-model();
+    @include reset-box-model();
 
-	background: #faf9f6;
-	display: block;
-	text-decoration: none;
-	overflow: hidden;
+    background: #faf9f6;
+    display: block;
+    text-decoration: none;
+    overflow: hidden;
 
-	transition: color 0.1s ease-out;
+    transition: color 0.1s ease-out;
 
-	&:link,
-	&:visited { color: $cu-nav-text; }
+    &:link,
+    &:visited { color: $cu-nav-text; }
 
-	svg {
-		width: 20px;
-		height: 20px;
-		margin-right: 8px;
-		background-size: contain;
-		vertical-align: middle;
+    svg {
+        width: 20px;
+        height: 20px;
+        margin-right: 8px;
+        background-size: contain;
+        vertical-align: middle;
 
-		* {
-			transition: fill 0.1s ease-out;
-			fill: lighten($cu-nav-text, 5%);
-		}
-	}
+        * {
+            transition: fill 0.1s ease-out;
+            fill: lighten($cu-nav-text, 5%);
+        }
+    }
 
-	////////////////
-	// Hidden state
-	.cu_nav_menu & {
-		height: 0;
-		opacity: 0;
-		padding: 0 $cu-button-padding 0 $cu-button-padding;
-	}
+    ////////////////
+    // Hidden state
+    .cu_nav_menu & {
+        height: 0;
+        opacity: 0;
+        padding: 0 $cu-button-padding 0 $cu-button-padding;
+    }
 
-	////////////////
-	// Expanded state
-	.cu_nav_menu.expanded &,
-	.cu_nav_selectable .selected > & {
-		height: $cu-nav-height;
-		opacity: 1;
-		padding: $cu-button-padding;
-		border-bottom: 1px solid #D6D5CF;
-		font-size: 14px;
-		font-weight: normal;
-		font-weight: 400;
-	}
+    ////////////////
+    // Expanded state
+    .cu_nav_menu.expanded &,
+    .cu_nav_selectable .selected > & {
+        height: $cu-nav-height;
+        opacity: 1;
+        padding: $cu-button-padding;
+        border-bottom: 1px solid #D6D5CF;
+        font-size: 14px;
+        font-weight: normal;
+        font-weight: 400;
+    }
 
-	////////////////
-	// Hover state
-	&:hover {
-		background: #FFFFFF;
-		color: $chapman-red;
-		text-decoration: none;
+    ////////////////
+    // Hover state
+    &:hover {
+        background: #FFFFFF;
+        color: $chapman-red;
+        text-decoration: none;
 
-		transition: color 0.1s ease-out;
+        transition: color 0.1s ease-out;
 
-		svg * {
-			fill: $chapman-red;
-		}
-	}
+        svg * {
+            fill: $chapman-red;
+        }
+    }
 
 }
 
@@ -240,87 +240,87 @@ a.cu_nav_button {
 ***************************************************/
 
 #cu_search {
-	@include reset-box-model();
-	display: none;
-	position: absolute;
-	top: 0;
-	right: 0;
-	width: 100%;
-	height: 100%;
-	padding: 15px;
-	z-index: 99997;
-	background-color: #D9D9D9;
+    @include reset-box-model();
+    display: none;
+    position: absolute;
+    top: 0;
+    right: 0;
+    width: 100%;
+    height: 100%;
+    padding: 15px;
+    z-index: 99997;
+    background-color: #D9D9D9;
 
-	margin-right: 0;
+    margin-right: 0;
 
-	@include bp(l) {
-		margin-right: 65px;
-	}
+    @include bp(l) {
+        margin-right: 65px;
+    }
 
-	&.open {
-		display: block;
-	}
+    &.open {
+        display: block;
+    }
 
-	select.search-type::-ms-expand {
-	    display: none;
-	}
+    select.search-type::-ms-expand {
+        display: none;
+    }
 
-	.search-type {
-		display: none;
-		outline: 0;
-		border: none;
-		background: image-url('select-arrow.png'); // IE 8
-		background-color: $cu-silver-grey;
-		background-repeat: no-repeat;
-		background-position: center right;
-		-webkit-appearance: none;
-		-moz-appearance: none;
-		-ms-appearance: none;
-		appearance: none;
-		font-size: 13px;
-		padding: 0 34px 0 10px;
-		height: 34px;
-		line-height: 34px;
-		cursor: pointer;
-		@include vendorize(border-radius, 4px 0px 0px 4px);
-		@include vendorize(box-shadow, none);
-		@include transition(background-color, 0.125s, ease-in-out);
+    .search-type {
+        display: none;
+        outline: 0;
+        border: none;
+        background: image-url('select-arrow.png'); // IE 8
+        background-color: $cu-silver-grey;
+        background-repeat: no-repeat;
+        background-position: center right;
+        -webkit-appearance: none;
+        -moz-appearance: none;
+        -ms-appearance: none;
+        appearance: none;
+        font-size: 13px;
+        padding: 0 34px 0 10px;
+        height: 34px;
+        line-height: 34px;
+        cursor: pointer;
+        @include vendorize(border-radius, 4px 0px 0px 4px);
+        @include vendorize(box-shadow, none);
+        @include transition(background-color, 0.125s, ease-in-out);
 
-		.ie8 & {
-			background-image: none;
-			padding: 0 0 0 10px;
-		}
+        .ie8 & {
+            background-image: none;
+            padding: 0 0 0 10px;
+        }
 
-		@include bp(l) {
-			display: block;
-			width: 35%;
-			float: left;
-		}
-	}
+        @include bp(l) {
+            display: block;
+            width: 35%;
+            float: left;
+        }
+    }
 
-	#cu_search_box {
-		@include bp(l) {
-			width: 65%;
-			float: right;
-		}
-	}
+    #cu_search_box {
+        @include bp(l) {
+            width: 65%;
+            float: right;
+        }
+    }
 
-	.gsc-search-box {
-		margin: 0;
-		position: relative;
-		width: 100%;
-		z-index: 99100;
-	}
+    .gsc-search-box {
+        margin: 0;
+        position: relative;
+        width: 100%;
+        z-index: 99100;
+    }
 
-	// The query input box
-	input.gsc-input {
-		@include reset-box-model();
+    // The query input box
+    input.gsc-input {
+        @include reset-box-model();
 
-		width: 100%;
-		padding: 6px 0 3px;
-		border-bottom: 1px solid $grey2;
-		background-image: none !important;
-		background-color: transparent;
+        width: 100%;
+        padding: 6px 0 3px;
+        border-bottom: 1px solid $grey2;
+        background-image: none !important;
+        background-color: transparent;
         transition: background-color 0.5s ease-out;
         position: relative;
         line-height: 16px;
@@ -329,259 +329,259 @@ a.cu_nav_button {
         @include vendorize(appearance, none);
 
         &::-webkit-input-placeholder {
-        	font-size: 13px;
-        	color: $black;
-        	font-family: "proxima-nova-soft", "proxima-nova", "futura-pt", Arial, Verdana, "Sans Serif";
+            font-size: 13px;
+            color: $black;
+            font-family: "proxima-nova-soft", "proxima-nova", "futura-pt", Arial, Verdana, "Sans Serif";
         }
 
-		&:focus,
-		&:hover {
-	        transition: background-color 0.1s ease-out;
-		}
+        &:focus,
+        &:hover {
+            transition: background-color 0.1s ease-out;
+        }
 
-		@include bp(l) {
-			padding: 3px 0;
-			height: 34px;
-			padding: 5px 10px;
-			color: $black;
-			border: 1px solid $cu-silver-grey;
-			@include vendorize(border-radius, 0px 4px 4px 0px);
-		}
+        @include bp(l) {
+            padding: 3px 0;
+            height: 34px;
+            padding: 5px 10px;
+            color: $black;
+            border: 1px solid $cu-silver-grey;
+            @include vendorize(border-radius, 0px 4px 4px 0px);
+        }
 
-	}
+    }
 
-	td.gsc-input {
-		width: 100%;
-		padding: 0 30px;
+    td.gsc-input {
+        width: 100%;
+        padding: 0 30px;
 
-		@include bp(m) {
-			padding: 0;
-		}
+        @include bp(m) {
+            padding: 0;
+        }
 
-	}
+    }
 
-	// The description at the top: "About 3,760 results (0.42 seconds)"
-	.gsc-result-info {
-		font-size: 12px;
-		color: #AAAAAA;
-	}
+    // The description at the top: "About 3,760 results (0.42 seconds)"
+    .gsc-result-info {
+        font-size: 12px;
+        color: #AAAAAA;
+    }
 
-	// The spelling suggestions
-	.gs-spelling {
-		a { color: $chapman-link-hover; }
-	}
+    // The spelling suggestions
+    .gs-spelling {
+        a { color: $chapman-link-hover; }
+    }
 
-	// The main title for each result
-	.gs-title {
-		height: auto;
-		color: $chapman-red;
-		text-decoration: none;
+    // The main title for each result
+    .gs-title {
+        height: auto;
+        color: $chapman-red;
+        text-decoration: none;
 
-		a { display: block; padding-bottom: 5px; }
-		b { color: darken($chapman-red, 3%); text-decoration: none; }
-		&:hover { text-decoration: underline; }
+        a { display: block; padding-bottom: 5px; }
+        b { color: darken($chapman-red, 3%); text-decoration: none; }
+        &:hover { text-decoration: underline; }
 
-		a:visited {
-			color: $chapman-link-hover;
-			b { color: darken($chapman-link-hover, 3%); }
-		}
-	}
+        a:visited {
+            color: $chapman-link-hover;
+            b { color: darken($chapman-link-hover, 3%); }
+        }
+    }
 
-	// The URL underneath each result
-	.gs-visibleUrl {
-		color: #AAAAAA;
-		font-size: 12px;
-		line-height: 16px;
-		margin: 4px 0;
-	}
+    // The URL underneath each result
+    .gs-visibleUrl {
+        color: #AAAAAA;
+        font-size: 12px;
+        line-height: 16px;
+        margin: 4px 0;
+    }
 
-	// The description of each result
-	.gs-snippet {
-		color: #666666;
-		font-size: 12px;
-		line-height: 16px;
-	}
+    // The description of each result
+    .gs-snippet {
+        color: #666666;
+        font-size: 12px;
+        line-height: 16px;
+    }
 
-	// Custom hacky more results link
-	.more-results {
-		display: block;
-		padding: 14px;
-		margin: 0 auto;
-		background: $page-bg-color;
-		border-radius: 3px;
+    // Custom hacky more results link
+    .more-results {
+        display: block;
+        padding: 14px;
+        margin: 0 auto;
+        background: $page-bg-color;
+        border-radius: 3px;
 
-		font-size: 12px;
-		color: lighten($cu-nav-text, 25%);
-		text-align: center;
-		text-decoration: none;
+        font-size: 12px;
+        color: lighten($cu-nav-text, 25%);
+        text-align: center;
+        text-decoration: none;
 
-		&:hover {
-			color: $cu-nav-text;
-			background: $cu-nav-border-color;
-		}
-	}
+        &:hover {
+            color: $cu-nav-text;
+            background: $cu-nav-border-color;
+        }
+    }
 
-	// Misc. Appearance tweaks
-	.gsc-clear-button { display: none; }
-	.gsc-selected-option-container { min-width: 95px !important; cursor: pointer; }
-	.gsc-option-menu-item { padding: 0 15px; }
-	.gsc-above-wrapper-area { padding-top:0; margin-bottom: 15px; }
-	.gsc-control-cse { padding: 18px 23px 15px 20px; }
-	.gsc-table-cell-thumbnail { padding-right: 8px; }
-	.gsc-webResult { margin-bottom: 7px; }
+    // Misc. Appearance tweaks
+    .gsc-clear-button { display: none; }
+    .gsc-selected-option-container { min-width: 95px !important; cursor: pointer; }
+    .gsc-option-menu-item { padding: 0 15px; }
+    .gsc-above-wrapper-area { padding-top:0; margin-bottom: 15px; }
+    .gsc-control-cse { padding: 18px 23px 15px 20px; }
+    .gsc-table-cell-thumbnail { padding-right: 8px; }
+    .gsc-webResult { margin-bottom: 7px; }
 
-	// Thumbnail sizes
-	// @media only screen and (min-width:480px) {
-	// 	.gs-web-image-box, .gs-promotion-image-box { width: 85px; }
-	// 	.gs-web-image-box img.gs-image { max-width: 80px; }
-	// }
+    // Thumbnail sizes
+    // @media only screen and (min-width:480px) {
+    //  .gs-web-image-box, .gs-promotion-image-box { width: 85px; }
+    //  .gs-web-image-box img.gs-image { max-width: 80px; }
+    // }
 
-	// The pagination block
-	.gsc-cursor-box {
-		display: none;
-	}
+    // The pagination block
+    .gsc-cursor-box {
+        display: none;
+    }
 
-	// Pagination buttons
-	.gsc-results {
-		.gsc-cursor-box {
-			margin:20px 0;
-			text-align: center;
+    // Pagination buttons
+    .gsc-results {
+        .gsc-cursor-box {
+            margin:20px 0;
+            text-align: center;
 
-			.gsc-cursor-page {
-				display: inline-block;
-				padding: 8px 10px;
-				background: $page-bg-color;
+            .gsc-cursor-page {
+                display: inline-block;
+                padding: 8px 10px;
+                background: $page-bg-color;
 
-				text-decoration: none;
+                text-decoration: none;
 
-				border-radius: 3px;
+                border-radius: 3px;
 
-				&:hover {
-					background: $cu-nav-border-color;
-				}
+                &:hover {
+                    background: $cu-nav-border-color;
+                }
 
-				&.gsc-cursor-current-page,
-				&.gsc-cursor-current-page:hover {
-					background: lighten($page-bg-color, 10%);
-				}
-			}
-		}
-	}
+                &.gsc-cursor-current-page,
+                &.gsc-cursor-current-page:hover {
+                    background: lighten($page-bg-color, 10%);
+                }
+            }
+        }
+    }
 
-	// The search icon itself
-	td.gsc-search-button {
-		display: block;
-		width: 30px;
-		height: 34px;
-		position: absolute;
-		left: 0;
-		font-size: 18px;
+    // The search icon itself
+    td.gsc-search-button {
+        display: block;
+        width: 30px;
+        height: 34px;
+        position: absolute;
+        left: 0;
+        font-size: 18px;
 
-		@include bp(m) {
-			left: auto;
-			right: 0;
-		}
-	}
+        @include bp(m) {
+            left: auto;
+            right: 0;
+        }
+    }
 
-	input.gsc-search-button {
-		display: block;
-		border: none;
-		background: none;
-		text-indent: -9999px;
-		width: 30px;
-		min-width: 30px;
-		height: 34px;
-		padding: 0;
-		cursor: pointer;
-		margin-left: 0;
+    input.gsc-search-button {
+        display: block;
+        border: none;
+        background: none;
+        text-indent: -9999px;
+        width: 30px;
+        min-width: 30px;
+        height: 34px;
+        padding: 0;
+        cursor: pointer;
+        margin-left: 0;
 
-		&:focus { outline: none; }
+        &:focus { outline: none; }
 
-		background-size: 25px;
-		background-repeat: no-repeat;
-		background-position: center;
-		background-image: url(data:image/svg+xml;base64,PD94bWwgdmVyc2lvbj0iMS4wIiBlbmNvZGluZz0idXRmLTgiPz4NCjwhLS0gR2VuZXJhdG9yOiBBZG9iZSBJbGx1c3RyYXRvciAxNi4wLjQsIFNWRyBFeHBvcnQgUGx1Zy1JbiAuIFNWRyBWZXJzaW9uOiA2LjAwIEJ1aWxkIDApICAtLT4NCjwhRE9DVFlQRSBzdmcgUFVCTElDICItLy9XM0MvL0RURCBTVkcgMS4xLy9FTiIgImh0dHA6Ly93d3cudzMub3JnL0dyYXBoaWNzL1NWRy8xLjEvRFREL3N2ZzExLmR0ZCI+DQo8c3ZnIHZlcnNpb249IjEuMSIgaWQ9IkxheWVyXzEiIHhtbG5zPSJodHRwOi8vd3d3LnczLm9yZy8yMDAwL3N2ZyIgeG1sbnM6eGxpbms9Imh0dHA6Ly93d3cudzMub3JnLzE5OTkveGxpbmsiIHg9IjBweCIgeT0iMHB4Ig0KCSB3aWR0aD0iNzYwLjVweCIgaGVpZ2h0PSI1MTJweCIgdmlld0JveD0iMCAwIDc2MC41IDUxMiIgZW5hYmxlLWJhY2tncm91bmQ9Im5ldyAwIDAgNzYwLjUgNTEyIiB4bWw6c3BhY2U9InByZXNlcnZlIj4NCjxwYXRoIGQ9Ik00OTYuMTMxLDQzNS42OThMMzc0Ljg1NSwzMzIuNTUxYy0xMi41MzctMTEuMjgzLTI1Ljk0My0xNi40NjMtMzYuNzc0LTE1Ljk2M0MzNjYuNzA3LDI4My4wNTUsMzg0LDIzOS41NDksMzg0LDE5Mg0KCUMzODQsODUuOTYxLDI5OC4wMzksMCwxOTIsMEM4NS45NjIsMCwwLDg1Ljk2MSwwLDE5MnM4NS45NjEsMTkyLDE5MiwxOTJjNDcuNTQ5LDAsOTEuMDU0LTE3LjI5MywxMjQuNTg4LTQ1LjkyMg0KCWMtMC41LDEwLjgzMSw0LjY4LDI0LjIzOSwxNS45NjMsMzYuNzc0TDQzNS42OTgsNDk2LjEzYzE3LjY2MSwxOS42MjMsNDYuNTEzLDIxLjI3Nyw2NC4xMSwzLjY3OA0KCUM1MTcuNDA2LDQ4Mi4yMDksNTE1Ljc1NCw0NTMuMzU5LDQ5Ni4xMzEsNDM1LjY5OHogTTE5MiwzMjBjLTcwLjY5MiwwLTEyOC01Ny4zMDktMTI4LTEyOGMwLTcwLjY5Miw1Ny4zMDgtMTI4LDEyOC0xMjgNCgljNzAuNjksMCwxMjgsNTcuMzA4LDEyOCwxMjhDMzIwLDI2Mi42OTEsMjYyLjY5MywzMjAsMTkyLDMyMHoiLz4NCjwvc3ZnPg0K);
-	}
+        background-size: 25px;
+        background-repeat: no-repeat;
+        background-position: center;
+        background-image: url(data:image/svg+xml;base64,PD94bWwgdmVyc2lvbj0iMS4wIiBlbmNvZGluZz0idXRmLTgiPz4NCjwhLS0gR2VuZXJhdG9yOiBBZG9iZSBJbGx1c3RyYXRvciAxNi4wLjQsIFNWRyBFeHBvcnQgUGx1Zy1JbiAuIFNWRyBWZXJzaW9uOiA2LjAwIEJ1aWxkIDApICAtLT4NCjwhRE9DVFlQRSBzdmcgUFVCTElDICItLy9XM0MvL0RURCBTVkcgMS4xLy9FTiIgImh0dHA6Ly93d3cudzMub3JnL0dyYXBoaWNzL1NWRy8xLjEvRFREL3N2ZzExLmR0ZCI+DQo8c3ZnIHZlcnNpb249IjEuMSIgaWQ9IkxheWVyXzEiIHhtbG5zPSJodHRwOi8vd3d3LnczLm9yZy8yMDAwL3N2ZyIgeG1sbnM6eGxpbms9Imh0dHA6Ly93d3cudzMub3JnLzE5OTkveGxpbmsiIHg9IjBweCIgeT0iMHB4Ig0KCSB3aWR0aD0iNzYwLjVweCIgaGVpZ2h0PSI1MTJweCIgdmlld0JveD0iMCAwIDc2MC41IDUxMiIgZW5hYmxlLWJhY2tncm91bmQ9Im5ldyAwIDAgNzYwLjUgNTEyIiB4bWw6c3BhY2U9InByZXNlcnZlIj4NCjxwYXRoIGQ9Ik00OTYuMTMxLDQzNS42OThMMzc0Ljg1NSwzMzIuNTUxYy0xMi41MzctMTEuMjgzLTI1Ljk0My0xNi40NjMtMzYuNzc0LTE1Ljk2M0MzNjYuNzA3LDI4My4wNTUsMzg0LDIzOS41NDksMzg0LDE5Mg0KCUMzODQsODUuOTYxLDI5OC4wMzksMCwxOTIsMEM4NS45NjIsMCwwLDg1Ljk2MSwwLDE5MnM4NS45NjEsMTkyLDE5MiwxOTJjNDcuNTQ5LDAsOTEuMDU0LTE3LjI5MywxMjQuNTg4LTQ1LjkyMg0KCWMtMC41LDEwLjgzMSw0LjY4LDI0LjIzOSwxNS45NjMsMzYuNzc0TDQzNS42OTgsNDk2LjEzYzE3LjY2MSwxOS42MjMsNDYuNTEzLDIxLjI3Nyw2NC4xMSwzLjY3OA0KCUM1MTcuNDA2LDQ4Mi4yMDksNTE1Ljc1NCw0NTMuMzU5LDQ5Ni4xMzEsNDM1LjY5OHogTTE5MiwzMjBjLTcwLjY5MiwwLTEyOC01Ny4zMDktMTI4LTEyOGMwLTcwLjY5Miw1Ny4zMDgtMTI4LDEyOC0xMjgNCgljNzAuNjksMCwxMjgsNTcuMzA4LDEyOCwxMjhDMzIwLDI2Mi42OTEsMjYyLjY5MywzMjAsMTkyLDMyMHoiLz4NCjwvc3ZnPg0K);
+    }
 
-	@include bp(l) {
-		background-color: transparent;
-		display: block;
-		//width: 510px;
-		width: 500px;
-		//left: 50%;
-		text-align: right;
-		right: 0%;
-		//margin-left: -160px;
-		padding: 14px 30px;
-	}
+    @include bp(l) {
+        background-color: transparent;
+        display: block;
+        //width: 510px;
+        width: 500px;
+        //left: 50%;
+        text-align: right;
+        right: 0%;
+        //margin-left: -160px;
+        padding: 14px 30px;
+    }
 
-	@include bp(l) {
-		//margin-left: -255px;
-	}
+    @include bp(l) {
+        //margin-left: -255px;
+    }
 
 }
 
 // Search Autocomplete Suggestion box
 .gssb_c[style] {
-	position: fixed !important;
-	top: 44px !important;
-	z-index: 99200;
-	// @include wordpress-admin-bar-spacing();
+    position: fixed !important;
+    top: 44px !important;
+    z-index: 99200;
+    // @include wordpress-admin-bar-spacing();
 
-	@include bp(m) {
-		top: 48px !important;
-	}
+    @include bp(m) {
+        top: 48px !important;
+    }
 
 }
 
 #cu_search_results {
-	display:none;
-	width: 100%;
-	height: 100%;
-	background: #333333;
-	background: rgba(0,0,0,0.4);
-	z-index: 99080;
-	position: fixed;
-	top: $cu-nav-height;
-	left: 0;
-	// @include wordpress-admin-bar-spacing();
+    display:none;
+    width: 100%;
+    height: 100%;
+    background: #333333;
+    background: rgba(0,0,0,0.4);
+    z-index: 99080;
+    position: fixed;
+    top: $cu-nav-height;
+    left: 0;
+    // @include wordpress-admin-bar-spacing();
 
-	#cu_search_results_cell {
-		display:table-cell;
-		vertical-align: middle;
-		text-align: center;
-		width: 100%;
-		height: 100%;
+    #cu_search_results_cell {
+        display:table-cell;
+        vertical-align: middle;
+        text-align: center;
+        width: 100%;
+        height: 100%;
 
-		#cu_search_results_ui {
-			position: fixed;
-			overflow-y: scroll;
-			top: $cu-nav-height;
-			width: 100%;
-			max-height: 90%;
-			z-index: 99081;
-			right: 0;
+        #cu_search_results_ui {
+            position: fixed;
+            overflow-y: scroll;
+            top: $cu-nav-height;
+            width: 100%;
+            max-height: 90%;
+            z-index: 99081;
+            right: 0;
 
-			// Make sure this bg is white. This block is also styled by a Google stylesheet,
-			// but that stylesheet stopped getting loaded in production all of the sudden.
-			// See https://github.com/chapmanu/cascade-assets/issues/162.
-			background-color: $white;
+            // Make sure this bg is white. This block is also styled by a Google stylesheet,
+            // but that stylesheet stopped getting loaded in production all of the sudden.
+            // See https://github.com/chapmanu/cascade-assets/issues/162.
+            background-color: $white;
 
-			.gsc-control-cse {
-				position: relative;
-			}
+            .gsc-control-cse {
+                position: relative;
+            }
 
-			@include bp(m) {
-				width: 495px;
-				right: 0;
-			}
+            @include bp(m) {
+                width: 495px;
+                right: 0;
+            }
 
-			@include bp(l) {
+            @include bp(l) {
 
-			}
+            }
 
-		}
-	}
+        }
+    }
 }
 
 
@@ -590,195 +590,195 @@ a.cu_nav_button {
 ***************************************************/
 
 #cu_login_container {
-	@include reset-box-model();
+    @include reset-box-model();
 
-	position: absolute;
-	top: 0;
-	right:0;
+    position: absolute;
+    top: 0;
+    right:0;
 
-	#cu_identity {
-		font-family: 'proxima-nova', sans-serif;
-		font-size: 14px;
-		@include reset-box-model();
+    #cu_identity {
+        font-family: 'proxima-nova', sans-serif;
+        font-size: 14px;
+        @include reset-box-model();
 
-		display: block;
-		cursor: pointer;
+        display: block;
+        cursor: pointer;
 
-		text-align: right;
+        text-align: right;
 
-		width: $cu-login-width;
-		height: $cu-nav-height;
+        width: $cu-login-width;
+        height: $cu-nav-height;
 
-		padding: $cu-button-padding;
+        padding: $cu-button-padding;
 
-		.circle-border {
-			display: inline-block;
-			border: 1px solid #CCC;
-			border-radius: 22px;
-			width: 22px;
-			height: 22px;
-			overflow: hidden;
-			position: relative;
-		}
+        .circle-border {
+            display: inline-block;
+            border: 1px solid #CCC;
+            border-radius: 22px;
+            width: 22px;
+            height: 22px;
+            overflow: hidden;
+            position: relative;
+        }
 
-		.icon {
-			font-size: 18px;
-			bottom: 0;
-		}
+        .icon {
+            font-size: 18px;
+            bottom: 0;
+        }
 
-		.cu_name {
-			display: none;
-			@include bp(l) {
-				display: inline;
-				font-size: 14px;
-				margin: -10px 0 0 5px;
-				border: 0px solid #000;
-			}
-		}
+        .cu_name {
+            display: none;
+            @include bp(l) {
+                display: inline;
+                font-size: 14px;
+                margin: -10px 0 0 5px;
+                border: 0px solid #000;
+            }
+        }
 
-		svg,
-		img {
-			width: 20px;
-			height: 20px;
-			background-size: contain;
-			vertical-align: middle;
-			position: absolute;
-			top: 2px;
-			left: 0;
+        svg,
+        img {
+            width: 20px;
+            height: 20px;
+            background-size: contain;
+            vertical-align: middle;
+            position: absolute;
+            top: 2px;
+            left: 0;
 
-			* {
-				transition: fill 0.1s ease-out;
-				fill: lighten($cu-nav-text, 5%);
-			}
-		}
+            * {
+                transition: fill 0.1s ease-out;
+                fill: lighten($cu-nav-text, 5%);
+            }
+        }
 
-	}
+    }
 
-	.cu_avatar {
-		display: inline-block;
-		vertical-align: middle;
-		width: 20px;
-		border-radius: 50%;
+    .cu_avatar {
+        display: inline-block;
+        vertical-align: middle;
+        width: 20px;
+        border-radius: 50%;
 
-	}
+    }
 
-	#cu_login_form {
-		clear: both;
+    #cu_login_form {
+        clear: both;
 
-		.logged-in & { display: none !important; }
+        .logged-in & { display: none !important; }
 
-		input { color:#9a9996; }
-		input:focus { color:#353430;}
-		label { font-size:11px; opacity:0.8; }
+        input { color:#9a9996; }
+        input:focus { color:#353430;}
+        label { font-size:11px; opacity:0.8; }
 
-		#cu_submit {
-			display: block;
-			height:27px;
-			width: 100%;
-			background:#98002e;
-			color:#ffffff;
-			border:none;
-			border-left:none;
-			border-radius: 2px;
-			margin:9px 0;
-			padding:0 10px;
-			cursor: pointer;
-		}
+        #cu_submit {
+            display: block;
+            height:27px;
+            width: 100%;
+            background:#98002e;
+            color:#ffffff;
+            border:none;
+            border-left:none;
+            border-radius: 2px;
+            margin:9px 0;
+            padding:0 10px;
+            cursor: pointer;
+        }
 
-		#cu_submit:hover { background:#C92741; }
+        #cu_submit:hover { background:#C92741; }
 
-		#cu_username,
-		#cu_password {
-			width:100%;
-			padding:7px;
-			font-family:"RooneySans","proxima-nova-soft", "futura-pt", Arial, Verdana, "Sans Serif";
-			font-size:12px;
-			border:1px solid #D8D6D0;
-			border-radius: 2px;
-			box-sizing: border-box;
-			color:#9a9996;
-			margin: 4px 0px;
-			@include vendorize(box-shadow, none);
-		}
+        #cu_username,
+        #cu_password {
+            width:100%;
+            padding:7px;
+            font-family:"RooneySans","proxima-nova-soft", "futura-pt", Arial, Verdana, "Sans Serif";
+            font-size:12px;
+            border:1px solid #D8D6D0;
+            border-radius: 2px;
+            box-sizing: border-box;
+            color:#9a9996;
+            margin: 4px 0px;
+            @include vendorize(box-shadow, none);
+        }
 
-		#cu_username:focus,
-		#cu_password:focus { outline: none; border-color:#d3a6ae; color:#353430; }
+        #cu_username:focus,
+        #cu_password:focus { outline: none; border-color:#d3a6ae; color:#353430; }
 
-		input.persist[type="radio"], input.persist[type="checkbox"] {
-			border-color: #D8D6D0;
-			background: #fbfbfb;
-			border-style:solid;
-			border-width: 1px;
-			cursor: pointer;
-			box-sizing: border-box;
-			outline: 0;
-			-webkit-appearance:none;
-			display: inline-block;
-			line-height: 0;
-			height: 14px;
-			margin: -1px 3px 0 0;
-			padding: 0!important;
-			text-align: center;
-			vertical-align: middle;
-			width: 14px;
-			min-width: 14px;
-			@include vendorize(box-shadow, none);
-		}
+        input.persist[type="radio"], input.persist[type="checkbox"] {
+            border-color: #D8D6D0;
+            background: #fbfbfb;
+            border-style:solid;
+            border-width: 1px;
+            cursor: pointer;
+            box-sizing: border-box;
+            outline: 0;
+            -webkit-appearance:none;
+            display: inline-block;
+            line-height: 0;
+            height: 14px;
+            margin: -1px 3px 0 0;
+            padding: 0!important;
+            text-align: center;
+            vertical-align: middle;
+            width: 14px;
+            min-width: 14px;
+            @include vendorize(box-shadow, none);
+        }
 
-		.persist label {
-			color: #9a9996;
-		}
+        .persist label {
+            color: #9a9996;
+        }
 
-		input.persist {
-			border-color: #D8D6D0;
-			color: #98002e;
-			@include vendorize(box-shadow, none);
-		}
+        input.persist {
+            border-color: #D8D6D0;
+            color: #98002e;
+            @include vendorize(box-shadow, none);
+        }
 
-		input.persist[type="radio"]:checked:before, input.persist[type="checkbox"]:checked:before {
-			content: '\f147';
-			margin: -3px 0 0 -4px;
-			float: left;
-			display: inline-block;
-			vertical-align: middle;
-			width: 14px;
-			font: 400 19px/1 dashicons;
-			speak: none;
-			-webkit-font-smoothing: antialiased;
-			-moz-osx-font-smoothing: grayscale;
-			color: #98002e;
-		}
+        input.persist[type="radio"]:checked:before, input.persist[type="checkbox"]:checked:before {
+            content: '\f147';
+            margin: -3px 0 0 -4px;
+            float: left;
+            display: inline-block;
+            vertical-align: middle;
+            width: 14px;
+            font: 400 19px/1 dashicons;
+            speak: none;
+            -webkit-font-smoothing: antialiased;
+            -moz-osx-font-smoothing: grayscale;
+            color: #98002e;
+        }
 
-	}
+    }
 
-	.cu_dropdown_menu {
-		@include reset-box-model();
-		display: block;
-		width: $cu-login-width;
-		background: $white;
-		color: $cu-nav-text;
+    .cu_dropdown_menu {
+        @include reset-box-model();
+        display: block;
+        width: $cu-login-width;
+        background: $white;
+        color: $cu-nav-text;
 
-		li { @include reset-box-model(); }
+        li { @include reset-box-model(); }
 
-		.cu_nav_menu.expanded & {
-			padding: 10px;
-		}
+        .cu_nav_menu.expanded & {
+            padding: 10px;
+        }
 
-		// Default
-		&.if-logged-in  { display: none; }
+        // Default
+        &.if-logged-in  { display: none; }
 
-		.logged-out & {
+        .logged-out & {
 
-			&.if-logged-in  { display: none; }
-			&.if-logged-out { display: block; }
-		}
+            &.if-logged-in  { display: none; }
+            &.if-logged-out { display: block; }
+        }
 
-		.logged-in & {
+        .logged-in & {
 
-			&.if-logged-in  { display: block; }
-			&.if-logged-out { display: none; }
-		}
-	}
+            &.if-logged-in  { display: block; }
+            &.if-logged-out { display: none; }
+        }
+    }
 }
 
 /***************************************************
@@ -786,42 +786,42 @@ a.cu_nav_button {
 ***************************************************/
 
 // @media only screen and (min-width: $cu-viewport-ml) {
-// 	#cu_search {
+//  #cu_search {
 
-// 		.gsc-control-cse {
+//      .gsc-control-cse {
 
-// 			width: $cu-search-results-width;
+//          width: $cu-search-results-width;
 
-// 			// CENTER ALIGNED
-// 			left: 50%;
-// 			right: auto;
-// 			margin-left: -($cu-search-results-width / 2);
-// 		}
-// 	}
+//          // CENTER ALIGNED
+//          left: 50%;
+//          right: auto;
+//          margin-left: -($cu-search-results-width / 2);
+//      }
+//  }
 
 // }
 
 
 // @media only screen and (min-width: $cu-viewport-l) {
 
-// 	#cu_login_container #cu_identity {
-// 		padding-right: 30px;
-// 	}
+//  #cu_login_container #cu_identity {
+//      padding-right: 30px;
+//  }
 
-// 	#cu_login_container #cu_identity .cu_name {
-// 		// display: inline-block;
-// 	}
+//  #cu_login_container #cu_identity .cu_name {
+//      // display: inline-block;
+//  }
 
-// 	#cu_search {
+//  #cu_search {
 
-// 		.gsc-control-cse {
-// 			// RIGHT ALIGNED
-// 			float: right !important;
-// 			right: 105px !important;
-// 			left: auto !important;
-// 			margin-left: auto !important;
-// 		}
-// 	}
+//      .gsc-control-cse {
+//          // RIGHT ALIGNED
+//          float: right !important;
+//          right: 105px !important;
+//          left: auto !important;
+//          margin-left: auto !important;
+//      }
+//  }
 
 // }
 
@@ -842,31 +842,31 @@ a.cu_nav_button {
 ***************************************************/
 
 #cu_companion_bar {
-	@include font-stack-for-headings();
-	// @include wordpress-admin-bar-spacing();
+    @include font-stack-for-headings();
+    // @include wordpress-admin-bar-spacing();
 
-	background: rgba(150,150,150,1);
-	color: #DDD;
-	left: 0;
-	font-size: 14px;
-	height: $cu-companion-height;
-	line-height: 30px;
-	position: fixed;
-	text-align: center;
-	text-transform: uppercase;
-	top: $cu-nav-height;
-	width: 100%;
-	z-index: 99000;
+    background: rgba(150,150,150,1);
+    color: #DDD;
+    left: 0;
+    font-size: 14px;
+    height: $cu-companion-height;
+    line-height: 30px;
+    position: fixed;
+    text-align: center;
+    text-transform: uppercase;
+    top: $cu-nav-height;
+    width: 100%;
+    z-index: 99000;
 
 
 
-	&.nav-down {
-		top: $cu-nav-height;
-	}
+    &.nav-down {
+        top: $cu-nav-height;
+    }
 
-	&.nav-up {
-		top: $cu-nav-height - $cu-companion-height;
-	}
+    &.nav-up {
+        top: $cu-nav-height - $cu-companion-height;
+    }
 
 }
 
@@ -875,133 +875,133 @@ a.cu_nav_button {
 ***************************************************/
 
 .cu-off-canvas-nav-trigger, .cu-logo {
-	display: block;
-	position: absolute;
-	top: 0;
+    display: block;
+    position: absolute;
+    top: 0;
 
-	img, svg {
-		display: block;
-	}
+    img, svg {
+        display: block;
+    }
 
 }
 
 .cu-off-canvas-nav-trigger {
-	outline: none;
-	border: 0;
-	padding: ($cu-button-padding + 2px) ($cu-button-padding - 7px);
-	left: 0;
+    outline: none;
+    border: 0;
+    padding: ($cu-button-padding + 2px) ($cu-button-padding - 7px);
+    left: 0;
 
-	img, svg {
-		cursor: pointer;
-	}
+    img, svg {
+        cursor: pointer;
+    }
 
-	@include bp(m) {
-		padding: ($cu-button-padding - 1px) ($cu-button-padding - 5px);
-	}
+    @include bp(m) {
+        padding: ($cu-button-padding - 1px) ($cu-button-padding - 5px);
+    }
 
-	//icomoon
+    //icomoon
 
-	.icon {
-		&:before {
-			font-size: 18px;
-			text-align: center;
-			color: $grey;
-			float: left;
-			display: block;
-    	}
-    	.ie8 & {
-			margin-left: 0;
-			&:before {
-				display: none;
-			}
-		}
-		@include bp(m) {
-			&:before {
-				font-size: 24px;
-			}
-		}
+    .icon {
+        &:before {
+            font-size: 18px;
+            text-align: center;
+            color: $grey;
+            float: left;
+            display: block;
+        }
+        .ie8 & {
+            margin-left: 0;
+            &:before {
+                display: none;
+            }
+        }
+        @include bp(m) {
+            &:before {
+                font-size: 24px;
+            }
+        }
     }
 }
 
 /*.cu-logo {
-	z-index: 99091;
-	left: 62px;
+    z-index: 99091;
+    left: 62px;
 
-	img, svg {
-		margin: 18px 0;
-		max-height: 29px;
-		max-width: 155px;
+    img, svg {
+        margin: 18px 0;
+        max-height: 29px;
+        max-width: 155px;
 
-		@include bp(m) {
-			margin: 18px 0 18px 12px;
-		}
+        @include bp(m) {
+            margin: 18px 0 18px 12px;
+        }
 
-	}
+    }
 
 }*/
 
 .cu-logo {
-	display: block;
-	border: 0;
-	height: 23px;
-	width: 200px;
-	text-indent: -998em;
-	margin: 21px 0 20px 45px;
-	background: image-url('chapman_logo_horizontal_color.png'); // IE 8
-	background: image-url('chapman_logo_horizontal_color.svg'), linear-gradient(transparent, transparent);
-	background-repeat: no-repeat;
-	background-size: contain;
+    display: block;
+    border: 0;
+    height: 23px;
+    width: 200px;
+    text-indent: -998em;
+    margin: 21px 0 20px 45px;
+    background: image-url('chapman_logo_horizontal_color.png'); // IE 8
+    background: image-url('chapman_logo_horizontal_color.svg'), linear-gradient(transparent, transparent);
+    background-repeat: no-repeat;
+    background-size: contain;
 
-	@include bp(m) {
-		height: 28px;
-		width: 273px;
-		margin: 18px 0 0 55px;
-	}
+    @include bp(m) {
+        height: 28px;
+        width: 273px;
+        margin: 18px 0 0 55px;
+    }
 }
 
 .cu-search-open-trigger {
-	padding: ($cu-button-padding - 1px) 12px;
-	position: absolute;
-	right: 25px;
-	top: 0;
-	z-index: 99996;
+    padding: ($cu-button-padding - 1px) 12px;
+    position: absolute;
+    right: 25px;
+    top: 0;
+    z-index: 99996;
 
-	span {
-		text-indent: -9999px;
-		display: block;
-		width: 25px;
-		min-width: 30px;
-		height: 22px;
-		cursor: pointer;
-		background-size: 25px;
-		background-repeat: no-repeat;
-		background-position: center;
-		background-image: url(data:image/svg+xml;base64,PD94bWwgdmVyc2lvbj0iMS4wIiBlbmNvZGluZz0idXRmLTgiPz4NCjwhLS0gR2VuZXJhdG9yOiBBZG9iZSBJbGx1c3RyYXRvciAxNi4wLjQsIFNWRyBFeHBvcnQgUGx1Zy1JbiAuIFNWRyBWZXJzaW9uOiA2LjAwIEJ1aWxkIDApICAtLT4NCjwhRE9DVFlQRSBzdmcgUFVCTElDICItLy9XM0MvL0RURCBTVkcgMS4xLy9FTiIgImh0dHA6Ly93d3cudzMub3JnL0dyYXBoaWNzL1NWRy8xLjEvRFREL3N2ZzExLmR0ZCI+DQo8c3ZnIHZlcnNpb249IjEuMSIgaWQ9IkxheWVyXzEiIHhtbG5zPSJodHRwOi8vd3d3LnczLm9yZy8yMDAwL3N2ZyIgeG1sbnM6eGxpbms9Imh0dHA6Ly93d3cudzMub3JnLzE5OTkveGxpbmsiIHg9IjBweCIgeT0iMHB4Ig0KCSB3aWR0aD0iNzYwLjVweCIgaGVpZ2h0PSI1MTJweCIgdmlld0JveD0iMCAwIDc2MC41IDUxMiIgZW5hYmxlLWJhY2tncm91bmQ9Im5ldyAwIDAgNzYwLjUgNTEyIiB4bWw6c3BhY2U9InByZXNlcnZlIj4NCjxwYXRoIGQ9Ik00OTYuMTMxLDQzNS42OThMMzc0Ljg1NSwzMzIuNTUxYy0xMi41MzctMTEuMjgzLTI1Ljk0My0xNi40NjMtMzYuNzc0LTE1Ljk2M0MzNjYuNzA3LDI4My4wNTUsMzg0LDIzOS41NDksMzg0LDE5Mg0KCUMzODQsODUuOTYxLDI5OC4wMzksMCwxOTIsMEM4NS45NjIsMCwwLDg1Ljk2MSwwLDE5MnM4NS45NjEsMTkyLDE5MiwxOTJjNDcuNTQ5LDAsOTEuMDU0LTE3LjI5MywxMjQuNTg4LTQ1LjkyMg0KCWMtMC41LDEwLjgzMSw0LjY4LDI0LjIzOSwxNS45NjMsMzYuNzc0TDQzNS42OTgsNDk2LjEzYzE3LjY2MSwxOS42MjMsNDYuNTEzLDIxLjI3Nyw2NC4xMSwzLjY3OA0KCUM1MTcuNDA2LDQ4Mi4yMDksNTE1Ljc1NCw0NTMuMzU5LDQ5Ni4xMzEsNDM1LjY5OHogTTE5MiwzMjBjLTcwLjY5MiwwLTEyOC01Ny4zMDktMTI4LTEyOGMwLTcwLjY5Miw1Ny4zMDgtMTI4LDEyOC0xMjgNCgljNzAuNjksMCwxMjgsNTcuMzA4LDEyOCwxMjhDMzIwLDI2Mi42OTEsMjYyLjY5MywzMjAsMTkyLDMyMHoiLz4NCjwvc3ZnPg0K);
-	}
+    span {
+        text-indent: -9999px;
+        display: block;
+        width: 25px;
+        min-width: 30px;
+        height: 22px;
+        cursor: pointer;
+        background-size: 25px;
+        background-repeat: no-repeat;
+        background-position: center;
+        background-image: url(data:image/svg+xml;base64,PD94bWwgdmVyc2lvbj0iMS4wIiBlbmNvZGluZz0idXRmLTgiPz4NCjwhLS0gR2VuZXJhdG9yOiBBZG9iZSBJbGx1c3RyYXRvciAxNi4wLjQsIFNWRyBFeHBvcnQgUGx1Zy1JbiAuIFNWRyBWZXJzaW9uOiA2LjAwIEJ1aWxkIDApICAtLT4NCjwhRE9DVFlQRSBzdmcgUFVCTElDICItLy9XM0MvL0RURCBTVkcgMS4xLy9FTiIgImh0dHA6Ly93d3cudzMub3JnL0dyYXBoaWNzL1NWRy8xLjEvRFREL3N2ZzExLmR0ZCI+DQo8c3ZnIHZlcnNpb249IjEuMSIgaWQ9IkxheWVyXzEiIHhtbG5zPSJodHRwOi8vd3d3LnczLm9yZy8yMDAwL3N2ZyIgeG1sbnM6eGxpbms9Imh0dHA6Ly93d3cudzMub3JnLzE5OTkveGxpbmsiIHg9IjBweCIgeT0iMHB4Ig0KCSB3aWR0aD0iNzYwLjVweCIgaGVpZ2h0PSI1MTJweCIgdmlld0JveD0iMCAwIDc2MC41IDUxMiIgZW5hYmxlLWJhY2tncm91bmQ9Im5ldyAwIDAgNzYwLjUgNTEyIiB4bWw6c3BhY2U9InByZXNlcnZlIj4NCjxwYXRoIGQ9Ik00OTYuMTMxLDQzNS42OThMMzc0Ljg1NSwzMzIuNTUxYy0xMi41MzctMTEuMjgzLTI1Ljk0My0xNi40NjMtMzYuNzc0LTE1Ljk2M0MzNjYuNzA3LDI4My4wNTUsMzg0LDIzOS41NDksMzg0LDE5Mg0KCUMzODQsODUuOTYxLDI5OC4wMzksMCwxOTIsMEM4NS45NjIsMCwwLDg1Ljk2MSwwLDE5MnM4NS45NjEsMTkyLDE5MiwxOTJjNDcuNTQ5LDAsOTEuMDU0LTE3LjI5MywxMjQuNTg4LTQ1LjkyMg0KCWMtMC41LDEwLjgzMSw0LjY4LDI0LjIzOSwxNS45NjMsMzYuNzc0TDQzNS42OTgsNDk2LjEzYzE3LjY2MSwxOS42MjMsNDYuNTEzLDIxLjI3Nyw2NC4xMSwzLjY3OA0KCUM1MTcuNDA2LDQ4Mi4yMDksNTE1Ljc1NCw0NTMuMzU5LDQ5Ni4xMzEsNDM1LjY5OHogTTE5MiwzMjBjLTcwLjY5MiwwLTEyOC01Ny4zMDktMTI4LTEyOGMwLTcwLjY5Miw1Ny4zMDgtMTI4LDEyOC0xMjgNCgljNzAuNjksMCwxMjgsNTcuMzA4LDEyOCwxMjhDMzIwLDI2Mi42OTEsMjYyLjY5MywzMjAsMTkyLDMyMHoiLz4NCjwvc3ZnPg0K);
+    }
 
-	@include bp(l) {
-		display: none;
-	}
+    @include bp(l) {
+        display: none;
+    }
 
 }
 
 .cu-search-close-trigger {
-	cursor: pointer;
-	position: absolute;
-	top: 0;
-	right: 0;
-	padding: $cu-button-padding;
-	line-height: 22px;
-	font-size: 12px;
-	z-index: 99997;
+    cursor: pointer;
+    position: absolute;
+    top: 0;
+    right: 0;
+    padding: $cu-button-padding;
+    line-height: 22px;
+    font-size: 12px;
+    z-index: 99997;
 
-	span {
-		display: none;
-	}
+    span {
+        display: none;
+    }
 
-	@include bp(m) {
-		display: none;
-	}
+    @include bp(m) {
+        display: none;
+    }
 
 }
 
@@ -1013,35 +1013,35 @@ a.cu_nav_button {
 
 #cu_nav.omninav-builder {
 
-	#cu_login_container #cu_identity {
-		// User Icon
-		svg {
-			position: relative;
-		}
+    #cu_login_container #cu_identity {
+        // User Icon
+        svg {
+            position: relative;
+        }
 
-		// Used for gravatar image when logged in in Blogs.
-		img {
-		  	top: 0px;
-		}
+        // Used for gravatar image when logged in in Blogs.
+        img {
+            top: 0px;
+        }
 
-		// User Name
-		span.cu_name {
-			vertical-align: bottom;
-			margin: 0px;
-		}
+        // User Name
+        span.cu_name {
+            vertical-align: bottom;
+            margin: 0px;
+        }
 
-		// Hard to get name aligned with logged-in image. This magic concoction of settings
-		// seems to work.
-		span.cu_name.logged-in {
-			display: inline-block;
-		    height: 22px;
-		    overflow: hidden;
-		    position: relative;
-		}
-	}
+        // Hard to get name aligned with logged-in image. This magic concoction of settings
+        // seems to work.
+        span.cu_name.logged-in {
+            display: inline-block;
+            height: 22px;
+            overflow: hidden;
+            position: relative;
+        }
+    }
 
-	// Override large negative value in default version that hides logo in off-canvas nav.
-	a.default-logo-cu {
-		text-indent: 0px;
-	}
+    // Override large negative value in default version that hides logo in off-canvas nav.
+    a.default-logo-cu {
+        text-indent: 0px;
+    }
 }
