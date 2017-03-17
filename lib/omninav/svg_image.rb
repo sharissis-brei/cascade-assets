@@ -114,6 +114,7 @@ SVG_TAG
       icon(path_descriptions: path_descriptions, classes: ['chapman_window'])
     end
 
+    # rubocop:disable Metrics/MethodLength
     def self.chapman_monogram_icon
       path_descriptions = [
         "M423,230h89c-0.6-3.9-1.4-11.7-2.5-17.9c-5.5-31.9-16.9-60.1-33-87.4h-86.7v85.8H41",
@@ -138,7 +139,9 @@ SVG_TAG
       ]
       icon(path_descriptions: path_descriptions, classes: ['chapman_monogram'])
     end
+    # rubocop:enable Metrics/MethodLength
 
+    # rubocop:disable Metrics/MethodLength
     def self.blackboard_icon
       large_b_path_descriptions = [
         "M50.397,174.237c-3.241-62.081-49.365-34.905-50.363-56.097c-0.499-8.228,4.488-6.7",
@@ -163,14 +166,16 @@ SVG_TAG
         "986-1.246-5.235-4.737c-0.25-3.241,2.493-13.214,1.246-36.151L321.908,138.085L321.",
         "908,138.085z M380.748,350.756c1.994,37.398,36.65,43.881,49.864,43.133c37.398-1.9",
         "94,43.631-38.396,42.136-67.566c-1.745-34.156-19.946-65.82-62.331-63.577c-12.964,",
-        "0.749-33.658,9.973-32.91,26.429L380.748,350.756L380.748,350.756z"]
+        "0.749-33.658,9.973-32.91,26.429L380.748,350.756L380.748,350.756z"
+      ]
       large_b_path = large_b_path_descriptions.join('')
       small_b_path = small_b_path_descriptions.join('')
 
-      template = '<svg class="blackboard svg-icon" viewbox="0 0 512 512"><path d="%s">' +
+      template = '<svg class="blackboard svg-icon" viewbox="0 0 512 512"><path d="%s">' \
                  '</path><path d="%s"></svg>'
       format(template, small_b_path, large_b_path)
     end
+    # rubocop:enable Metrics/MethodLength
 
     def self.user_icon
       path_descriptions = [

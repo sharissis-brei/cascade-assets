@@ -20,7 +20,7 @@ namespace :build do
       output_dir = Rails.root.join('build', 'omninav', 'static')
       [staging_dir, output_dir].each do |dir|
         FileUtils.rm_rf dir
-        FileUtils::mkdir_p dir
+        FileUtils.mkdir_p dir
       end
 
       # Build Asset files.
@@ -83,7 +83,7 @@ namespace :build do
       output_dir = Rails.root.join('build', 'omninav', target)
       [staging_dir, output_dir].each do |dir|
         FileUtils.rm_rf dir
-        FileUtils::mkdir_p dir
+        FileUtils.mkdir_p dir
       end
 
       # Why this? Setting Rails.env or ENV['RAILS_ENV'] didn't work.
@@ -95,8 +95,7 @@ namespace :build do
       omninav_html = builder.build
       File.open(php_file, 'w') { |file| file.write(omninav_html) }
 
-      # Move selected files from staging to output directory.
-      # build.generate_markup_file
+      # Move selected files from staging to target directory.
       deploy_file_mapping.each do |staging_name, deploy_name|
         staging_file = staging_dir.join(staging_name)
         deploy_file = output_dir.join(deploy_name)

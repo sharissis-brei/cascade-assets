@@ -37,7 +37,11 @@ module Omninav
         login_html: build_login,
         off_canvas_nav_html: build_off_canvas_nav
       }
-      format(navbar_template, sections)
+
+      # rubocop:disable Rails/OutputSafety
+      # App controls this string so we know it's safe. Is there better way to do this?
+      format(navbar_template, sections).html_safe
+      # rubocop:enable Rails/OutputSafety
     end
 
     def build_version
