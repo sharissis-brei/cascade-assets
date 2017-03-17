@@ -12,7 +12,7 @@ module Omninav
     # Constants
     # On versioning, see http://semver.org/.
     #
-    VERSION = '2.0.0'
+    VERSION = '2.0.0'.freeze
     DOMAIN = 'https://www.chapman.edu/'.freeze
 
     attr_accessor :target
@@ -24,7 +24,7 @@ module Omninav
     #
     # Instance Methods
     #
-    def initialize(params = {})
+    def initialize(params={})
       @target = params.fetch(:target, 'static')
     end
 
@@ -40,11 +40,11 @@ module Omninav
       format(navbar_template, sections)
     end
 
-    private
-
     def build_version
       format('%s.%s', VERSION, Time.zone.now.strftime('%Y%m%d.%H%M%S'))
     end
+
+    private
 
     #
     # Markup Methods
@@ -52,6 +52,7 @@ module Omninav
     # Note: when updating navbar markup, you will most likely be changing one of these
     # methods.
     #
+    # rubocop:disable Metrics/MethodLength
     def navbar_template
       <<-NAVBAR_HTML
 %<header>s
@@ -381,7 +382,7 @@ OFF_CANVAS_HEADER_HTML
     end
 
     def off_canvas_nav_header_for_cascade
-      template = <<-OFF_CANVAS_HEADER_HTML
+      <<-OFF_CANVAS_HEADER_HTML
     <div class="cu-off-canvas-header">
       #if ( $displaySecondaryMenu )
         #if ( $umbrellaCatsPaths.get($counter) == "/" )
@@ -577,5 +578,6 @@ OFF_CANVAS_NAV_BODY_HTML
       }
       format(template, params)
     end
+    # rubocop:enable Metrics/MethodLength
   end
 end

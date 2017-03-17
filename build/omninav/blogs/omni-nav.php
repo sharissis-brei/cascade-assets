@@ -1,5 +1,5 @@
 <?php
-// OmniNav Build Version: 2.0.0.20170316.172946
+// OmniNav Build Version: 2.0.0.20170317.000024
 
 // If logged in
 if (is_user_logged_in()) {
@@ -15,7 +15,10 @@ if (is_user_logged_in()) {
 
   <!-- Logo Block -->
   <a class="cu-logo" href="https://www.chapman.edu/" title="Chapman University Website Home Page">
-    <svg xmlns="http://www.w3.org/2000/svg" id="chapman_logo" data-name="Layer 1" viewBox="0 0 273.58 28.08">
+    <svg xmlns="http://www.w3.org/2000/svg"
+     id="chapman_logo"
+     data-name="Layer 1"
+     viewBox="0 0 273.58 28.08">
   <defs>
     <style>
       .cls-1 {
@@ -208,7 +211,10 @@ if (is_user_logged_in()) {
   <div class="cu-off-canvas-nav-container" id="js-cu-off-canvas-nav-container">
         <div class="cu-off-canvas-header">
       <a class="default-logo-cu" href="#" title="Chapman University">
-        <svg xmlns="http://www.w3.org/2000/svg" id="chapman_logo" data-name="Layer 1" viewBox="0 0 273.58 28.08">
+        <svg xmlns="http://www.w3.org/2000/svg"
+     id="chapman_logo"
+     data-name="Layer 1"
+     viewBox="0 0 273.58 28.08">
   <defs>
     <style>
       .cls-1 {

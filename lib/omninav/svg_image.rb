@@ -12,18 +12,23 @@
 #
 module Omninav
   class SvgImage
-
     #
     # Constants
     #
+    # rubocop:disable Metrics/LineLength
     ICON_FORMAT = '<svg %<class_attr>sviewbox="0 0 %<px>s %<px>s"><path d="%<d>s"></path></svg>'.freeze
+    # rubocop:enable Metrics/LineLength
 
     #
     # Logo Class Methods
     #
+    # rubocop:disable Metrics/MethodLength
     def self.chapman_horizontal_color_logo
       <<-SVG_TAG
-<svg xmlns="http://www.w3.org/2000/svg" id="chapman_logo" data-name="Layer 1" viewBox="0 0 273.58 28.08">
+<svg xmlns="http://www.w3.org/2000/svg"
+     id="chapman_logo"
+     data-name="Layer 1"
+     viewBox="0 0 273.58 28.08">
   <defs>
     <style>
       .cls-1 {
@@ -70,11 +75,12 @@ module Omninav
 </svg>
 SVG_TAG
     end
+    # rubocop:enable Metrics/MethodLength
 
     #
     # Icon Class Methods
     #
-    def self.icon(params = {})
+    def self.icon(params={})
       # Default params
       path_descriptions = params.fetch(:path_descriptions, [])
       classes = params.fetch(:classes, []) + ['svg-icon']

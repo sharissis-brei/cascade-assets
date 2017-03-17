@@ -66,15 +66,19 @@ namespace :build do
     #
     desc "Build OmniNav navbar assets and markup for Blogs site."
     task blogs: :environment do
+      # Params
       target = 'blogs'
       deploy_file_mapping = {
-        'omni-nav.css' => 'omni-nav.min.css',
-        'omni-nav.js' => 'omni-nav.min.js',
+        'omni-nav-*.css' => 'omni-nav.min.css',
+        'omni-nav-*.js' => 'omni-nav.min.js',
         'omni-nav.php' => 'omni-nav.php'
       }
 
-      # Prep staging and output directories.
-      puts format("\nBuilding OmniNav %s version.\n", target)
+      # Prep Builder
+      builder = Omninav::Builder.new(target: target)
+      puts format("\nBuilding OmniNav %s version:%s\n", target, builder.build_version)
+
+      # Prep build staging and output directories.
       staging_dir = Rails.root.join('build', 'omninav', 'staging')
       output_dir = Rails.root.join('build', 'omninav', target)
       [staging_dir, output_dir].each do |dir|
@@ -82,42 +86,30 @@ namespace :build do
         FileUtils::mkdir_p dir
       end
 
-      # Set environment to production so pipeline will minify assets.
-      Rails.env = "production"
+      # Why this? Setting Rails.env or ENV['RAILS_ENV'] didn't work.
+      # See http://stackoverflow.com/a/1090319/6763239.
+      system("rake build:omninav:assets RAILS_ENV=production")
 
-      # Build minified Asset files.
-      # TODO: This does not currently build minified versions of css and js files. I've googled
-      # this to death but can't get it to work. Blogs expects min versions of files but will work
-      # with unminified versions.
-      puts format("Compiling assets to staging: %s", staging_dir)
-      Rails.application.config.assets.raise_runtime_errors = true
-      Rails.application.config.assets.prefix = "../build/omninav/staging"
-      Rails.application.config.assets.js_compressor = :uglifier
-      Rails.application.config.assets.css_compressor = :sass
-      Rails.application.config.assets.digest = false
-      Rails.application.config.assets.compress = true
-      Rails.application.config.assets.debug = false
-      Rails.application.config.assets.paths = [Rails.root.join('/app/assets/javascripts'),
-                                               Rails.root.join('/app/assets/stylesheets/omni_nav')]
-      Rails.application.config.assets.precompile = ['omni-nav.js', 'omni-nav.css']
-      Rake::Task['assets:clean'].invoke
-      Rake::Task['assets:precompile'].invoke
-      puts format('min file? %s', File.exists?(staging_dir.join('omni-nav.min.css')))
-
-      # Build HTML file.
+      # Generate markup file.
       php_file = staging_dir.join 'omni-nav.php'
-      builder = Omninav::Builder.new(target: target)
       omninav_html = builder.build
-
-      # Write to file
       File.open(php_file, 'w') { |file| file.write(omninav_html) }
 
       # Move selected files from staging to output directory.
+      # build.generate_markup_file
       deploy_file_mapping.each do |staging_name, deploy_name|
         staging_file = staging_dir.join(staging_name)
         deploy_file = output_dir.join(deploy_name)
-        FileUtils.mv staging_file, deploy_file
-        puts format('Writing %s.', deploy_file)
+
+        if staging_file.to_s.include? '*'
+          Dir.glob(staging_file).each do |path|
+            FileUtils.mv path, deploy_file
+            puts format('Writing %s to %s.', path, deploy_file)
+          end
+        else
+          FileUtils.mv staging_file, deploy_file
+          puts format('Writing %s to %s.', staging_file, deploy_file)
+        end
       end
 
       # Clean Up
@@ -125,6 +117,22 @@ namespace :build do
 
       # Report
       puts format("\nBuild complete. Find files in %s.", output_dir)
+    end
+
+    desc "Build OmniNav navbar assets."
+    task assets: :environment do
+      # Configure the asset pipeline to compile minified files.
+      # NOTE: Sprockets only minifies files in production environment so this assumes
+      # RAILS_ENV is set to production on the command line.
+      Rails.application.config.assets.prefix = "../build/omninav/staging"
+      Rails.application.config.assets.paths = [Rails.root.join('app/assets/javascripts'),
+                                               Rails.root.join('app/assets/stylesheets')]
+      Rails.application.config.assets.precompile -= ['master.js', 'master.css']
+      Rails.application.config.assets.precompile += ['omni-nav.js', 'omni-nav.css']
+
+      # Let it rip.
+      Rake::Task['assets:clobber'].invoke
+      Rake::Task['assets:precompile'].invoke
     end
   end
 
