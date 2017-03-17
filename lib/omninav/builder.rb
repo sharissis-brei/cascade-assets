@@ -200,7 +200,7 @@ SEARCH_HTML
         </a>
       </li>
       <li>
-        <a class="cu_nav_button" href="http://www.chapman.edu/panthermail">
+        <a class="cu_nav_button" href="https://www.chapman.edu/panthermail">
           %<email_svg>s
           PantherMail
         </a>
