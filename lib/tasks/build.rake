@@ -59,7 +59,7 @@ namespace :build do
     # Build static version: rake build:omninav:static
     #
     desc "Build static OmniNav navbar assets and markup."
-    task deprecated_static: :environment do
+    task static: :environment do
       # Params
       target = 'static'
 

@@ -83,7 +83,6 @@ module Omninav
 
     def move_output_files_to_build_directory
       @deploy_map.each do |staging_name, deploy_name|
-        p staging_name, deploy_name
         staging_file = @staging_dir.join(staging_name)
         deploy_file = @output_dir.join(deploy_name)
 
