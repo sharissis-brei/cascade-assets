@@ -1010,9 +1010,23 @@ a.cu_nav_button {
 * This is for versions built by builder for
 * sites other than WWW.
 ***************************************************/
-
 #cu_nav.omninav-builder {
+    // Override large negative value in default version that hides logo in off-canvas nav.
+    a.default-logo-cu {
+        text-indent: 0px;
+    }
 
+    // Search Form
+    #cu_search {
+        // Use SVG image for dropdown arrow.
+        .search-type {
+            background-size: 12px;
+            background-position: right 8px center;
+            background-image: url("data:image/svg+xml;base64,PD94bWwgdmVyc2lvbj0iMS4wIiA/PjwhRE9DVFlQRSBzdmcgIFBVQkxJQyAnLS8vVzNDLy9EVEQgU1ZHIDEuMC8vRU4nICAnaHR0cDovL3d3dy53My5vcmcvVFIvMjAwMS9SRUMtU1ZHLTIwMDEwOTA0L0RURC9zdmcxMC5kdGQnPjxzdmcgZW5hYmxlLWJhY2tncm91bmQ9Im5ldyAwIDAgMjQgMjQiIGlkPSJMYXllcl8xIiB2ZXJzaW9uPSIxLjAiIHZpZXdCb3g9IjAgMCAyNCAyNCIgeG1sOnNwYWNlPSJwcmVzZXJ2ZSIgeG1sbnM9Imh0dHA6Ly93d3cudzMub3JnLzIwMDAvc3ZnIiB4bWxuczp4bGluaz0iaHR0cDovL3d3dy53My5vcmcvMTk5OS94bGluayI+PHBvbHlsaW5lIGZpbGw9Im5vbmUiIHBvaW50cz0iMjEsOC41IDEyLDE3LjUgMyw4LjUgIiBzdHJva2U9IiMwMDAwMDAiIHN0cm9rZS1taXRlcmxpbWl0PSIxMCIgc3Ryb2tlLXdpZHRoPSIyIi8+PC9zdmc+");
+        }
+    }
+
+    // Login Component
     #cu_login_container #cu_identity {
         // User Icon
         svg {
@@ -1038,10 +1052,5 @@ a.cu_nav_button {
             overflow: hidden;
             position: relative;
         }
-    }
-
-    // Override large negative value in default version that hides logo in off-canvas nav.
-    a.default-logo-cu {
-        text-indent: 0px;
     }
 }
