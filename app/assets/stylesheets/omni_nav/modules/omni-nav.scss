@@ -1026,8 +1026,18 @@ a.cu_nav_button {
         }
     }
 
+    @media screen and (max-width: 782px) {
+        // Need to tweaking top/bottom padding to align hamburger icon in mobile versions.
+        a#js-cu-off-canvas-nav-trigger {
+            padding: 20px 14px;
+        }
+    }
+
     // Login Component
     #cu_login_container #cu_identity {
+        // Tweak padding to align user icon.
+        padding: 18px;
+
         // User Icon
         svg {
             position: relative;
