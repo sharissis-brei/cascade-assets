@@ -6,59 +6,6 @@ namespace :build do
     # Build static version: rake build:omninav:static
     #
     desc "Build static OmniNav navbar assets and markup."
-    task deprecated_static: :environment do
-      target = 'static'
-      deploy_files = ['omni-nav.css',
-                      'omni-nav.css.gz',
-                      'omni-nav.js',
-                      'omni-nav.js.gz',
-                      'omninav.html']
-
-      # Prep staging and output directories.
-      puts format("\nBuilding OmniNav %s version.\n", target)
-      staging_dir = Rails.root.join('build', 'omninav', 'staging')
-      output_dir = Rails.root.join('build', 'omninav', 'static')
-      [staging_dir, output_dir].each do |dir|
-        FileUtils.rm_rf dir
-        FileUtils.mkdir_p dir
-      end
-
-      # Build Asset files.
-      Rails.application.config.assets.prefix = "../build/omninav/staging"
-      Rails.application.config.assets.digest = false
-      Rails.application.config.assets.paths = [Rails.root.join('/app/assets/javascripts'),
-                                               Rails.root.join('/app/assets/stylesheets/omni_nav')]
-      Rails.application.config.assets.precompile = ['omni-nav.js', 'omni-nav.css']
-      Rake::Task['assets:clean'].invoke
-      Rake::Task['assets:precompile'].invoke
-
-      # Build HTML file.
-      html_file = staging_dir.join 'omninav.html'
-      builder = Omninav::Builder.new(target: target)
-      omninav_html = builder.build
-
-      # Write to file
-      File.open(html_file, 'w') { |file| file.write(omninav_html) }
-
-      # Move selected files from staging to output directory.
-      deploy_files.each do |file|
-        staging_file = staging_dir.join(file)
-        deploy_file = output_dir.join(file)
-        FileUtils.mv staging_file, deploy_file
-        puts format('Writing %s.', deploy_file)
-      end
-
-      # Clean Up
-      FileUtils.rm_rf staging_dir
-
-      # Report
-      puts format("\nBuild complete. Find files in %s.", output_dir)
-    end
-
-    #
-    # Build static version: rake build:omninav:static
-    #
-    desc "Build static OmniNav navbar assets and markup."
     task static: :environment do
       # Params
       target = 'static'
