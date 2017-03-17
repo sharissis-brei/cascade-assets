@@ -15,7 +15,7 @@ module Omninav
     VERSION = '2.0.0'.freeze
     DOMAIN = 'https://www.chapman.edu/'.freeze
 
-    attr_accessor :target
+    attr_accessor :target, :output_dir, :deploy_map
 
     #
     # Class Methods
@@ -26,9 +26,28 @@ module Omninav
     #
     def initialize(params={})
       @target = params.fetch(:target, 'static')
+      @staging_dir = Rails.root.join('build', 'omninav', 'staging')
+      @output_dir = Rails.root.join('build', 'omninav', @target)
+
+      # Set markup file name according to target. (Also validates target.)
+      if @target == 'blogs'
+        @markup_file = 'omni-nav.php'
+      elsif @target == 'static'
+        @markup_file = 'omni-nav.html'
+      else
+        raise format('Invalid omninav target: %s', @target)
+      end
+
+      # Default deploy map. Maps file name in staging folder to name desired for output in
+      # build folder. This can also be overridden in calling script.
+      @deploy_map = {
+        'omni-nav-*.css' => 'omni-nav.min.css',
+        'omni-nav-*.js' => 'omni-nav.min.js',
+        @markup_file => @markup_file
+      }
     end
 
-    def build
+    def build_html
       # To make updates, see methods below for individual sections.
       sections = {
         header: build_header,
@@ -46,6 +65,42 @@ module Omninav
 
     def build_version
       format('%s.%s', VERSION, Time.zone.now.strftime('%Y%m%d.%H%M%S'))
+    end
+
+    def prep_build
+      # Prep staging/output directories.
+      [@staging_dir, @output_dir].each do |dir|
+        FileUtils.rm_rf dir
+        FileUtils.mkdir_p dir
+      end
+    end
+
+    def generate_markup_file
+      markup_file_path = @staging_dir.join(@markup_file)
+      omninav_html = build_html
+      File.open(markup_file_path, 'w') { |file| file.write(omninav_html) }
+    end
+
+    def move_output_files_to_build_directory
+      @deploy_map.each do |staging_name, deploy_name|
+        p staging_name, deploy_name
+        staging_file = @staging_dir.join(staging_name)
+        deploy_file = @output_dir.join(deploy_name)
+
+        if staging_file.to_s.include? '*'
+          Dir.glob(staging_file).each do |path|
+            FileUtils.mv path, deploy_file
+            puts format('Writing %s to %s.', path, deploy_file)
+          end
+        else
+          FileUtils.mv staging_file, deploy_file
+          puts format('Writing %s to %s.', staging_file, deploy_file)
+        end
+      end
+    end
+
+    def cleanup
+      FileUtils.rm_rf @staging_dir
     end
 
     private

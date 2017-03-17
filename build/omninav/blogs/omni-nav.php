@@ -1,5 +1,5 @@
 <?php
-// OmniNav Build Version: 2.0.0.20170317.154228
+// OmniNav Build Version: 2.0.0.20170317.175138
 
 // If logged in
 if (is_user_logged_in()) {
@@ -183,7 +183,7 @@ if (is_user_logged_in()) {
         </a>
       </li>
       <li>
-        <a class="cu_nav_button" href="http://www.chapman.edu/panthermail">
+        <a class="cu_nav_button" href="https://www.chapman.edu/panthermail">
           <svg class="email svg-icon" viewbox="0 0 512 512"><path d="M480,64H32C14.4,64,0,78.4,0,96v320c0,17.6,14.399,32,32,32h448c17.6,0,32-14.4,32-32V96C512,78.4,497.6,64,480,64zM448,128v23L256,264.143L64,151v-23H448z M64,384V206.714l192,113.144l192-113.144V384H64z"></path></svg>
           PantherMail
         </a>

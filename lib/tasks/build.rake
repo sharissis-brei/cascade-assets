@@ -6,7 +6,7 @@ namespace :build do
     # Build static version: rake build:omninav:static
     #
     desc "Build static OmniNav navbar assets and markup."
-    task static: :environment do
+    task deprecated_static: :environment do
       target = 'static'
       deploy_files = ['omni-nav.css',
                       'omni-nav.css.gz',
@@ -56,6 +56,38 @@ namespace :build do
     end
 
     #
+    # Build static version: rake build:omninav:static
+    #
+    desc "Build static OmniNav navbar assets and markup."
+    task deprecated_static: :environment do
+      # Params
+      target = 'static'
+
+      # Prep Builder
+      builder = Omninav::Builder.new(target: target)
+      builder.prep_build
+      builder.deploy_map = {
+        'omni-nav-*.css' => 'omni-nav.min.css',
+        'omni-nav-*.js' => 'omni-nav.min.js',
+        'omni-nav-*.css.gz' => 'omni-nav.css.gz',
+        'omni-nav-*.js.gz' => 'omni-nav.js.gz',
+        'omni-nav.html' => 'omni-nav.html'
+      }
+      puts format("\nBuilding OmniNav %s version:%s\n", target, builder.build_version)
+
+      # Why this? Setting Rails.env or ENV['RAILS_ENV'] didn't work.
+      # See http://stackoverflow.com/a/1090319/6763239.
+      system("rake build:omninav:assets RAILS_ENV=production")
+
+      builder.generate_markup_file
+      builder.move_output_files_to_build_directory
+      builder.cleanup
+
+      # Report
+      puts format("\nBuild complete. Find files in %s.", builder.output_dir)
+    end
+
+    #
     # Build blogs version: rake build:omninav:blogs
     #
     # Blogs expects files here:
@@ -68,54 +100,22 @@ namespace :build do
     task blogs: :environment do
       # Params
       target = 'blogs'
-      deploy_file_mapping = {
-        'omni-nav-*.css' => 'omni-nav.min.css',
-        'omni-nav-*.js' => 'omni-nav.min.js',
-        'omni-nav.php' => 'omni-nav.php'
-      }
 
       # Prep Builder
       builder = Omninav::Builder.new(target: target)
+      builder.prep_build
       puts format("\nBuilding OmniNav %s version:%s\n", target, builder.build_version)
-
-      # Prep build staging and output directories.
-      staging_dir = Rails.root.join('build', 'omninav', 'staging')
-      output_dir = Rails.root.join('build', 'omninav', target)
-      [staging_dir, output_dir].each do |dir|
-        FileUtils.rm_rf dir
-        FileUtils.mkdir_p dir
-      end
 
       # Why this? Setting Rails.env or ENV['RAILS_ENV'] didn't work.
       # See http://stackoverflow.com/a/1090319/6763239.
       system("rake build:omninav:assets RAILS_ENV=production")
 
-      # Generate markup file.
-      php_file = staging_dir.join 'omni-nav.php'
-      omninav_html = builder.build
-      File.open(php_file, 'w') { |file| file.write(omninav_html) }
-
-      # Move selected files from staging to target directory.
-      deploy_file_mapping.each do |staging_name, deploy_name|
-        staging_file = staging_dir.join(staging_name)
-        deploy_file = output_dir.join(deploy_name)
-
-        if staging_file.to_s.include? '*'
-          Dir.glob(staging_file).each do |path|
-            FileUtils.mv path, deploy_file
-            puts format('Writing %s to %s.', path, deploy_file)
-          end
-        else
-          FileUtils.mv staging_file, deploy_file
-          puts format('Writing %s to %s.', staging_file, deploy_file)
-        end
-      end
-
-      # Clean Up
-      FileUtils.rm_rf staging_dir
+      builder.generate_markup_file
+      builder.move_output_files_to_build_directory
+      builder.cleanup
 
       # Report
-      puts format("\nBuild complete. Find files in %s.", output_dir)
+      puts format("\nBuild complete. Find files in %s.", builder.output_dir)
     end
 
     desc "Build OmniNav navbar assets."
