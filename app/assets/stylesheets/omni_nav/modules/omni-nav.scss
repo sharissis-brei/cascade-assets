@@ -52,6 +52,22 @@ $cu-viewport-xl: 1200px;
 }
 
 /***************************************************
+* Accessbility Settings
+***************************************************/
+// Show only to screen readers.
+// Source: http://stackoverflow.com/a/39919878/6763239
+.sr-only {
+    position: absolute;
+    width: 1px;
+    height: 1px;
+    padding: 0;
+    margin: -1px;
+    overflow: hidden;
+    clip: rect(0,0,0,0);
+    border: 0;
+}
+
+/***************************************************
 * Make room for our nav bar
 ***************************************************/
 html { padding-top: $cu-nav-height !important; }
