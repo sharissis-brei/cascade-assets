@@ -1,0 +1,60 @@
+<!-- partial:dap-results -->
+<div id="js-dap-results-{{type}}" class="dap-results dap-results-{{type}} grid-view">
+
+	<div class="row">
+    	<div class="columns small-12">
+    		{{> dap-results-header this }}
+    	</div>
+    </div>
+
+    <div class="results-row row">
+    	
+    	<noscript>
+            {{#parseFixture 'dap-feature.json'}}
+                {{#each results}}
+
+                    <article class="result columns small-12 clearfix">
+                            
+                        <div class="image" aria-role="image" style="background-image: url({{img}});">
+                            <div class="active-content">
+                                <div class="active-content-inner">
+                                    <p class="desc">{{desc}}</p>
+                                    <a href="{{href}}" title="View landing page for {{{title}}} program">Learn More {{svg "double-chevron"}}</a>
+                                </div>
+                                <span class="close">
+                                    {{svg "close"}}
+                                </span>
+                            </div>
+                            <div class="active-content-toggle">
+                                <span>i</span>
+                            </div>
+                        </div>
+
+                        <div class="result-content">
+
+                            <h3 class="title"><a href="{{href}}" title="View landing page for {{{title}}} program">{{{title}}}</a></h3>
+
+                            <span class="campus">{{{campus.id}}}</span>
+
+                            <ul class="degree-types clearfix">
+                                {{#each degreeTypes.title}}
+                                    <li>{{{this}}}</li>
+                                {{/each}}
+                            </ul>
+
+                            <p class="desc">{{desc}}</p>
+
+                            <a href="{{href}}" title="View landing page for {{{title}}} program" class="button">Learn More {{svg "double-chevron"}}</span></a>
+
+                        </div>
+
+                    </article>
+
+                {{/each}}
+            {{/parseFixture}}
+        </noscript>
+
+    </div>
+
+</div>
+<!-- end partial:dap-results -->

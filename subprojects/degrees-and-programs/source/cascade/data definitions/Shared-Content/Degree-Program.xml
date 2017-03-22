@@ -1,0 +1,96 @@
+<system-data-structure>
+    <text type="radiobutton" identifier="cat" label="Category" default="Undergraduate" required="true">
+        <radio-item value="Undergraduate"/>
+        <radio-item value="Graduate"/>
+    </text>
+    <text type="multi-selector" identifier="level" label="Degree Level" required="true">
+        <selector-item value="Bachelors"/>
+        <selector-item value="Masters"/>
+        <selector-item value="Doctorate"/>
+        <selector-item value="Certificate"/>
+        <selector-item value="4+1 and Bridge"/>
+        <selector-item value="Major"/>
+        <selector-item value="Minor"/>
+    </text>
+    <text type="multi-selector" identifier="type" label="Degree Type" required="true">
+        <selector-item value="BA"/>
+        <selector-item value="BS"/>
+        <selector-item value="BFA"/>
+        <selector-item value="MS"/>
+        <selector-item value="MS/MBA"/>
+        <selector-item value="MA"/>
+        <selector-item value="MBA"/>
+        <selector-item value="EMBA"/>
+        <selector-item value="MFA"/>
+        <selector-item value="Ed.S/MA. LL.M."/>
+        <selector-item value="MM"/>
+        <selector-item value="MLD"/>
+        <selector-item value="JD"/>
+        <selector-item value="JD/MBA"/>
+        <selector-item value="DPT"/>
+        <selector-item value="Credential"/>
+        <selector-item value="Ph.D"/>
+        <selector-item value="Minor"/>
+    </text>
+    <text identifier="title" label="Degree Title" required="true"/>
+    <text type="checkbox" identifier="school" label="School Affiliation" required="true">
+        <checkbox-item value="Argyros School of Business and Economics"/>
+        <checkbox-item value="College of Educational Studies"/>
+        <checkbox-item value="Dodge College of Film and Media Arts"/>
+        <checkbox-item value="Crean College of Health and Behavioral Sciences"/>
+        <checkbox-item value="Wilkinson College of Arts, Humanities, and Social Sciences"/>
+        <checkbox-item value="College of Performing Arts"/>
+        <checkbox-item value="School of Pharmacy"/>
+        <checkbox-item value="Fowler School of Law"/>
+        <checkbox-item value="Schmid College of Science and Technology"/>
+        <checkbox-item value="School of Communication"/>
+    </text>
+    <text type="dropdown" identifier="campus" label="Campus" default="Orange">
+        <dropdown-item value="Orange"/>
+        <dropdown-item value="Rinker"/>
+    </text>
+    <group identifier="link" label="Link">
+        <text type="radiobutton" identifier="linkType" label="Link Type" default="Internal Link">
+            <radio-item value="Internal Link" show-fields="link/internalLink"/>
+            <radio-item value="External Link" show-fields="link/externalLink"/>
+            <radio-item value="File Link" show-fields="link/fileLink"/>
+        </text>
+        <text identifier="externalLink" label="External Link"/>
+        <asset type="page" identifier="internalLink" label="Internal Link"/>
+        <asset type="file" identifier="fileLink" label="File Link"/>
+        <text identifier="label" label="Label"/>
+    </group>
+    <text identifier="keywords" label="Additional Keywords"/>
+    <asset type="file" identifier="image" label="Image (optional)"/>
+    <text identifier="altText" label="Image Alt-Text" help-text="Alternate text to describe image (required)"/>
+    <text wysiwyg="true" identifier="desc" label="Short Description"/>
+    <text type="checkbox" identifier="motivations" label="Motivations">
+        <checkbox-item value="Innovating New Solutions"/>
+        <checkbox-item value="Expressing Myself Creatively"/>
+        <checkbox-item value="Helping Other People"/>
+        <checkbox-item value="Experiencing New Places"/>
+        <checkbox-item value="Making Business Decisions"/>
+    </text>
+    <text type="multi-selector" identifier="interests" label="Interests">
+        <selector-item value="Analytical Thinking"/>
+        <selector-item value="Art &amp; Culture"/>
+        <selector-item value="Arts &amp; Education"/>
+        <selector-item value="Business Leaders"/>
+        <selector-item value="Global Leadership"/>
+        <selector-item value="Humanities &amp; Education"/>
+        <selector-item value="Health &amp; Human Services"/>
+        <selector-item value="Liberal Arts"/>
+        <selector-item value="Marketing &amp; Communication"/>
+        <selector-item value="Mind &amp; Body"/>
+        <selector-item value="Movies &amp; Television"/>
+        <selector-item value="Performing Arts"/>
+        <selector-item value="Science &amp; Technology"/>
+        <selector-item value="Science in Action"/>
+        <selector-item value="Social Change"/>
+        <selector-item value="Social Good"/>
+        <selector-item value="Tech Innovators"/>
+        <selector-item value="The Business World"/>
+        <selector-item value="Visual &amp; Studio Arts"/>
+        <selector-item value="Writing"/>
+    </text>
+</system-data-structure>

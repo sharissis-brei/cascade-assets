@@ -1,0 +1,85 @@
+---
+title: "Degrees And-programs-feature"
+layout: module.hbs
+module: true
+---
+
+<!-- module:dap-feature -->
+{{#parseFixture 'dap-feature.json'}}
+<div id="js-dap-feature" class="dap-feature" data-json-url="assemble/fixtures/dap-feature.json" style="background-image: url(css/i/background-image-with-fade.jpg);">
+
+	{{> _svg }}
+
+	<div class="dap-feature-inner">
+		
+		<!-- START DISCOVER SECTION -->
+		<section id="js-dap-section-discover" class="dap-section" data-id="discover">
+
+			{{#with sections.[0]}}
+
+				{{> dap-header heading}}
+
+				<div class="dap-body">
+					
+					<div class="dap-form">
+					    {{> dap-discover-form }}
+					</div>
+
+					{{> dap-results this }}
+
+				</div>
+
+			{{/with}}
+
+		</section>
+		<!-- END DISCOVER SECTION -->
+
+		<!-- START UNDERGRADUATE SECTION -->
+		<section id="js-dap-section-undergraduate" class="dap-section" data-id="undergraduate">
+			
+			{{#with sections.[1]}}
+
+				{{> dap-header heading}}
+
+				<div class="dap-body">
+					
+					<div class="dap-form">
+						{{> dap-undergraduate-form this }}
+					</div>
+
+					{{> dap-results this }}
+
+				</div>
+
+			{{/with}}
+
+		</section>
+		<!-- END UNDERGRADUATE SECTION -->
+
+		<!-- START GRADUATE SECTION -->
+		<section id="js-dap-section-graduate" class="dap-section" data-id="graduate">
+			
+			{{#with sections.[2]}}
+
+				{{> dap-header heading}}
+
+				<div class="dap-body">
+
+					<div class="dap-form">
+						{{> dap-graduate-form }}
+					</div>
+
+					{{> dap-results this }}
+
+				</div>
+
+			{{/with}}
+
+		</section>
+		<!-- END GRADUATE SECTION -->
+
+	</div>
+
+</div>
+{{/parseFixture}}
+<!-- end module:dap-feature -->

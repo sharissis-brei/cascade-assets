@@ -1,0 +1,592 @@
+{
+	"title": "Degrees And-programs-feature",
+	"sections": [
+		{
+			"index": 1,
+			"type": "discover",
+			"title": "Undergraduate",
+			"heading": {
+				"title": "What motivates you?",
+				"subtitle": "Discover Your Path"
+			},
+			"motivations": [
+				{
+					"id": "innovating",
+					"line-1": "Innovating",
+					"line-2": "New Solutions"
+				},
+				{
+					"id": "expressing",
+					"line-1": "Expressing",
+					"line-2": "Myself Creatively"
+				},
+				{
+					"id": "helping",
+					"line-1": "Helping",
+					"line-2": "Other People"
+				},
+				{
+					"id": "experiencing",
+					"line-1": "Experiencing",
+					"line-2": "New Places"
+				},
+				{
+					"id": "making",
+					"line-1": "Making",
+					"line-2": "Business Decisions"
+				}
+			]
+		},
+		{
+			"index": 2,
+			"type": "undergraduate",
+			"title": "Undergraduate",
+			"heading": {
+				"title": "Already know what major you want?",
+				"subtitle": "Search Undergraduate Degrees and Programs"
+			}
+		},
+		{
+			"index": 3,
+			"type": "graduate",
+			"title": "Graduate",
+			"heading": {
+				"title": "Want Graduate Programs?",
+				"subtitle": "View All Advanced Degrees"
+			}
+		}
+	],
+	"interests": [
+		{
+			"category": "innovating",
+			"title": "Innovating Interest A",
+			"id": "innovating-interest-a",
+			"icon": ""
+		},
+		{
+			"category": "innovating",
+			"title": "Innovating Interest B",
+			"id": "innovating-interest-b",
+			"icon": ""
+		},
+		{
+			"category": "innovating",
+			"title": "Innovating Interest C",
+			"id": "innovating-interest-c",
+			"icon": ""
+		},
+		{
+			"category": "innovating",
+			"title": "Innovating Interest D",
+			"id": "innovating-interest-d",
+			"icon": ""
+		},
+		{
+			"category": "expressing",
+			"title": "Movies &amp; Television",
+			"id": "movies-television",
+			"icon": "tv"
+		},
+		{
+			"category": "expressing",
+			"title": "Writing",
+			"id": "writing",
+			"icon": "pencil"
+		},
+		{
+			"category": "expressing",
+			"title": "Visual &amp; Studio Arts",
+			"id": "visual-studio-arts",
+			"icon": "palette"
+		},
+		{
+			"category": "expressing",
+			"title": "Performing Arts",
+			"id": "performing-arts",
+			"icon": "drama"
+		},
+		{
+			"category": "helping",
+			"title": "Helping Interest A",
+			"id": "helping-interest-a",
+			"icon": ""
+		},
+		{
+			"category": "helping",
+			"title": "Helping Interest B",
+			"id": "helping-interest-b",
+			"icon": ""
+		},
+		{
+			"category": "helping",
+			"title": "Helping Interest C",
+			"id": "helping-interest-c",
+			"icon": ""
+		},
+		{
+			"category": "helping",
+			"title": "Helping Interest D",
+			"id": "helping-interest-d",
+			"icon": ""
+		},
+		{
+			"category": "experiencing",
+			"title": "Experiencing Interest A",
+			"id": "experiencing-interest-a",
+			"icon": ""
+		},
+		{
+			"category": "experiencing",
+			"title": "Experiencing Interest B",
+			"id": "experiencing-interest-b",
+			"icon": ""
+		},
+		{
+			"category": "experiencing",
+			"title": "Experiencing Interest C",
+			"id": "experiencing-interest-c",
+			"icon": ""
+		},
+		{
+			"category": "experiencing",
+			"title": "Experiencing Interest D",
+			"id": "experiencing-interest-d",
+			"icon": ""
+		},
+		{
+			"category": "making",
+			"title": "Making Interest A",
+			"id": "making-interest-a",
+			"icon": ""
+		},
+		{
+			"category": "making",
+			"title": "Making Interest B",
+			"id": "making-interest-b",
+			"icon": ""
+		},
+		{
+			"category": "making",
+			"title": "Making Interest C",
+			"id": "making-interest-c",
+			"icon": ""
+		},
+		{
+			"category": "making",
+			"title": "Making Interest D",
+			"id": "making-interest-d",
+			"icon": ""
+		}
+	],
+	"schools": [
+		{
+			"title": "Argyros School of Business &amp; Economics",
+			"id": "business"
+		},
+		{
+			"title": "College of Performing Arts",
+			"id": "copa"
+		},
+		{
+			"title": "College of Educational Studies",
+			"id": "ces"
+		},
+		{
+			"title": "Crean College of Health and Behavioral Sciences",
+			"id": "crean"
+		},
+		{
+			"title": "Dodge College of Film and Media Arts",
+			"id": "dodge"
+		},
+		{
+			"title": "Fowler School of Law",
+			"id": "law"
+		},
+		{
+			"title": "Schmid College of Science &amp; Technology",
+			"id": "scst"
+		},
+		{
+			"title": "School of Communication",
+			"id": "communication"
+		},
+		{
+			"title": "School of Pharmacy",
+			"id": "pharmacy"
+		},
+		{
+			"title": "Wilkinson College of Arts, Humanities, and Social Sciences",
+			"id": "wilkinson"
+		}
+	],
+	"results": [
+		{
+			"type": "undergraduate",
+			"title": "Integrated Undergraduate/MA in English",
+			"img": {
+				"src": "img/temp/program-image-1.jpg",
+				"alt": "Image alt goes here"
+			},
+			"href": "#",
+			"degreeTypes": {
+				"title": ["4+1", "Testing"],
+				"type": ["4+1 and bridge", "major"]
+			},
+			"desc": "Short program description lorem ipsum dolor sit amet, consectetur adipisicing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua. Ut enim ad minim veniam, quis nostrud exercitation ullamco laboris nisi ut aliquip.",
+			"motivations": ["innovating", "expressing", "helping", "experiencing", "making"],
+			"interests": ["innovating-interest-d", "writing", "helping-interest-d", "experiencing-interest-d", "making-interest-d"],
+			"schools": ["ces"],
+			"campus": {
+				"title": "Main Campus",
+				"id": "orange"
+			}
+		},
+		{
+			"type": "undergraduate",
+			"title": "Accounting",
+			"img": {
+				"src": "img/temp/program-image-1.jpg",
+				"alt": "Image alt goes here"
+			},
+			"href": "#",
+			"degreeTypes": {
+				"title": ["B.S."],
+				"type": ["major"]
+			},
+			"desc": "Short program description lorem ipsum dolor sit amet, consectetur adipisicing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua. Ut enim ad minim veniam, quis nostrud exercitation ullamco laboris nisi ut aliquip.",
+			"motivations": ["innovating", "helping", "making"],
+			"interests": ["innovating-interest-a", "helping-interest-b", "making-interest-c"],
+			"schools": ["business"],
+			"campus": {
+				"title": "Main Campus",
+				"id": "orange"
+			}
+		},
+		{
+			"type": "undergraduate",
+			"title": "Advertising",
+			"img": {
+				"src": "img/temp/program-image-1.jpg",
+				"alt": "Image alt goes here"
+			},
+			"href": "#",
+			"degreeTypes": {
+				"title": ["Minor"],
+				"type": ["minor"]
+			},
+			"desc": "Short program description lorem ipsum dolor sit amet, consectetur adipisicing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua. Ut enim ad minim veniam, quis nostrud exercitation ullamco laboris nisi ut aliquip.",
+			"motivations": ["innovating", "expressing", "experiencing"],
+			"interests": ["innovating-interest-d", "visual-studio-arts", "experiencing-interest-c"],
+			"schools": ["dodge"],
+			"campus": {
+				"title": "Main Campus",
+				"id": "orange"
+			}
+		},
+		{
+			"type": "undergraduate",
+			"title": "Anthropology",
+			"img": {
+				"src": "img/temp/program-image-1.jpg",
+				"alt": "Image alt goes here"
+			},
+			"href": "#",
+			"degreeTypes": {
+				"title": ["Minor"],
+				"type": ["minor"]
+			},
+			"desc": "Short program description lorem ipsum dolor sit amet, consectetur adipisicing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua. Ut enim ad minim veniam, quis nostrud exercitation ullamco laboris nisi ut aliquip.",
+			"motivations": ["innovating", "helping", "experiencing"],
+			"interests": ["innovating-interest-c", "helping-interest-b", "experiencing-interest-c"],
+			"schools": ["wilkinson"],
+			"campus": {
+				"title": "Rinker Health Science Campus",
+				"id": "rinker"
+			}
+		},
+		{
+			"type": "undergraduate",
+			"title": "Art",
+			"img": {
+				"src": "img/temp/program-image-1.jpg",
+				"alt": "Image alt goes here"
+			},
+			"href": "#",
+			"degreeTypes": {
+				"title": ["B.F.A."],
+				"type": ["major"]
+			},
+			"desc": "Short program description lorem ipsum dolor sit amet, consectetur adipisicing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua. Ut enim ad minim veniam, quis nostrud exercitation ullamco laboris nisi ut aliquip.",
+			"motivations": ["expressing", "experiencing"],
+			"interests": ["visual-studio-arts", "experiencing-interest-d"],
+			"schools": ["dodge"],
+			"campus": {
+				"title": "Main Campus",
+				"id": "orange"
+			}
+		},
+		{
+			"type": "undergraduate",
+			"title": "Biochemistry and Molecular Biology",
+			"img": {
+				"src": "img/temp/program-image-1.jpg",
+				"alt": "Image alt goes here"
+			},
+			"href": "#",
+			"degreeTypes": {
+				"title": ["B.S."],
+				"type": ["major"]
+			},
+			"desc": "Short program description lorem ipsum dolor sit amet, consectetur adipisicing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua. Ut enim ad minim veniam, quis nostrud exercitation ullamco laboris nisi ut aliquip.",
+			"motivations": ["innovating", "helping"],
+			"interests": ["innovating-interest-b", "helping-interest-a"],
+			"schools": ["scst"],
+			"campus": {
+				"title": "Main Campus",
+				"id": "orange"
+			}
+		},
+		{
+			"type": "undergraduate",
+			"title": "BS Chemistry to MS Food Science",
+			"img": {
+				"src": "img/temp/program-image-1.jpg",
+				"alt": "Image alt goes here"
+			},
+			"href": "#",
+			"degreeTypes": {
+				"title": ["4+1"],
+				"type": ["4+1 and bridge"]
+			},
+			"desc": "Short program description lorem ipsum dolor sit amet, consectetur adipisicing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua. Ut enim ad minim veniam, quis nostrud exercitation ullamco laboris nisi ut aliquip.",
+			"motivations": ["innovating", "helping", "making"],
+			"interests": ["innovating-interest-a", "helping-interest-a", "making-interest-b"],
+			"schools": ["scst"],
+			"campus": {
+				"title": "Rinker Health Science Campus",
+				"id": "rinker"
+			}
+		},
+		{
+			"type": "undergraduate",
+			"title": "Dance Performance",
+			"img": {
+				"src": "img/temp/program-image-1.jpg",
+				"alt": "Image alt goes here"
+			},
+			"href": "#",
+			"degreeTypes": {
+				"title": ["B.F.A."],
+				"type": ["major"]
+			},
+			"desc": "Short program description lorem ipsum dolor sit amet, consectetur adipisicing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua. Ut enim ad minim veniam, quis nostrud exercitation ullamco laboris nisi ut aliquip.",
+			"motivations": ["expressing", "experiencing"],
+			"interests": ["performing-arts", "experiencing-interest-b"],
+			"schools": ["copa"],
+			"campus": {
+				"title": "Main Campus",
+				"id": "orange"
+			}
+		},
+		{
+			"type": "undergraduate",
+			"title": "Undeclared",
+			"img": {
+				"src": "img/temp/program-image-1.jpg",
+				"alt": "Image alt goes here"
+			},
+			"href": "#",
+			"degreeTypes": {
+				"title": ["Major"],
+				"type": ["major"]
+			},
+			"desc": "Short program description lorem ipsum dolor sit amet, consectetur adipisicing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua. Ut enim ad minim veniam, quis nostrud exercitation ullamco laboris nisi ut aliquip.",
+			"motivations": [],
+			"interests": [],
+			"schools": [],
+			"campus": {
+				"title": "Main Campus",
+				"id": "orange"
+			}
+		},
+		{
+			"type": "graduate",
+			"title": "Computational and Data Sciences",
+			"img": {
+				"src": "img/temp/program-image-1.jpg",
+				"alt": "Image alt goes here"
+			},
+			"href": "#",
+			"degreeTypes": {
+				"title": ["PhD"],
+				"type": ["doctorate"]
+			},
+			"desc": "Short program description lorem ipsum dolor sit amet, consectetur adipisicing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua. Ut enim ad minim veniam, quis nostrud exercitation ullamco laboris nisi ut aliquip.",
+			"motivations": ["innovating", "expressing", "making"],
+			"interests": ["innovating-interest-a", "writing", "making-interest-b"],
+			"schools": ["scst"],
+			"campus": {
+				"title": "Main Campus",
+				"id": "orange"
+			}
+		},
+		{
+			"type": "graduate",
+			"title": "Accounting",
+			"img": {
+				"src": "img/temp/program-image-1.jpg",
+				"alt": "Image alt goes here"
+			},
+			"href": "#",
+			"degreeTypes": {
+				"title": ["M.S."],
+				"type": ["masters"]
+			},
+			"desc": "Short program description lorem ipsum dolor sit amet, consectetur adipisicing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua. Ut enim ad minim veniam, quis nostrud exercitation ullamco laboris nisi ut aliquip.",
+			"motivations": ["innovating", "helping", "making"],
+			"interests": ["innovating-interest-a", "helping-interest-b", "making-interest-c"],
+			"schools": ["business"],
+			"campus": {
+				"title": "Main Campus",
+				"id": "orange"
+			}
+		},
+		{
+			"type": "undergraduate",
+			"title": "Dance",
+			"img": {
+				"src": "img/temp/program-image-1.jpg",
+				"alt": "Image alt goes here"
+			},
+			"href": "#",
+			"degreeTypes": {
+				"title": ["Minor"],
+				"type": ["minor"]
+			},
+			"desc": "Short program description lorem ipsum dolor sit amet, consectetur adipisicing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua. Ut enim ad minim veniam, quis nostrud exercitation ullamco laboris nisi ut aliquip.",
+			"motivations": ["expressing", "experiencing"],
+			"interests": ["performing-arts", "experiencing-interest-b"],
+			"schools": ["copa"],
+			"campus": {
+				"title": "Rinker Health Science Campus",
+				"id": "rinker"
+			}
+		},
+		{
+			"type": "graduate",
+			"title": "Documentary Filmmaking",
+			"img": {
+				"src": "img/temp/program-image-1.jpg",
+				"alt": "Image alt goes here"
+			},
+			"href": "#",
+			"degreeTypes": {
+				"title": ["M.F.A."],
+				"type": ["masters"]
+			},
+			"desc": "Short program description lorem ipsum dolor sit amet, consectetur adipisicing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua. Ut enim ad minim veniam, quis nostrud exercitation ullamco laboris nisi ut aliquip.",
+			"motivations": ["innovating", "expressing", "helping", "experiencing"],
+			"interests": ["innovating-interest-c", "movies-television", "helping-interest-c", "experiencing-interest-c"],
+			"schools": ["dodge"],
+			"campus": {
+				"title": "Rinker Health Science Campus",
+				"id": "rinker"
+			}
+		},
+		{
+			"type": "graduate",
+			"title": "Integrated MS in Economic Systems Design",
+			"img": {
+				"src": "img/temp/program-image-1.jpg",
+				"alt": "Image alt goes here"
+			},
+			"href": "#",
+			"degreeTypes": {
+				"title": ["4+1"],
+				"type": ["4+1 and bridge"]
+			},
+			"desc": "Short program description lorem ipsum dolor sit amet, consectetur adipisicing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua. Ut enim ad minim veniam, quis nostrud exercitation ullamco laboris nisi ut aliquip.",
+			"motivations": ["innovating", "making"],
+			"interests": ["innovating-interest-a", "making-interest-a"],
+			"schools": ["business"],
+			"campus": {
+				"title": "Main Campus",
+				"id": "orange"
+			}
+		},
+		{
+			"type": "graduate",
+			"title": "International Studies",
+			"img": {
+				"src": "img/temp/program-image-1.jpg",
+				"alt": "Image alt goes here"
+			},
+			"href": "#",
+			"degreeTypes": {
+				"title": ["M.A."],
+				"type": ["masters"]
+			},
+			"desc": "Short program description lorem ipsum dolor sit amet, consectetur adipisicing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua. Ut enim ad minim veniam, quis nostrud exercitation ullamco laboris nisi ut aliquip.",
+			"motivations": ["helping", "experiencing"],
+			"interests": ["helping-interest-b", "experiencing-interest-b"],
+			"schools": ["wilkinson"],
+			"campus": {
+				"title": "Main Campus",
+				"id": "orange"
+			}
+		},
+		{
+			"type": "graduate",
+			"title": "Marriage & Family Therapy",
+			"img": {
+				"src": "img/temp/program-image-1.jpg",
+				"alt": "Image alt goes here"
+			},
+			"href": "#",
+			"degreeTypes": {
+				"title": ["M.A."],
+				"type": ["masters"]
+			},
+			"desc": "Short program description lorem ipsum dolor sit amet, consectetur adipisicing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua. Ut enim ad minim veniam, quis nostrud exercitation ullamco laboris nisi ut aliquip.",
+			"motivations": ["helping"],
+			"interests": ["helping-interest-d", "helping-interest-b"],
+			"schools": ["wilkinson"],
+			"campus": {
+				"title": "Main Campus",
+				"id": "orange"
+			}
+		},
+		{
+			"type": "undergraduate",
+			"title": "Art",
+			"img": {
+				"src": "img/temp/program-image-1.jpg",
+				"alt": "Image alt goes here"
+			},
+			"href": "#",
+			"degreeTypes": {
+				"title": ["Minor"],
+				"type": ["minor"]
+			},
+			"desc": "Short program description lorem ipsum dolor sit amet, consectetur adipisicing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua. Ut enim ad minim veniam, quis nostrud exercitation ullamco laboris nisi ut aliquip.",
+			"motivations": ["expressing", "experiencing"],
+			"interests": ["visual-studio-arts", "experiencing-interest-d"],
+			"schools": ["dodge"],
+			"campus": {
+				"title": "Main Campus",
+				"id": "orange"
+			}
+		},
+		{
+			"type": "undergraduate",
+			"title": "Result with some values missing for testing purposes",
+			"img": {
+				"src": "img/temp/program-image-1.jpg",
+				"alt": "Image alt goes here"
+			},
+			"href": "#",
+			"desc": "Short program description lorem ipsum dolor sit amet, consectetur adipisicing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua. Ut enim ad minim veniam, quis nostrud exercitation ullamco laboris nisi ut aliquip."
+		}
+	]
+}

@@ -1,0 +1,58 @@
+<!-- partial:dap-discover-form -->
+<form id="js-dap-discover-form" class="dap-discover-form" action="">
+	<legend class="show-for-sr">Search for Degrees and Programs</legend>
+	<fieldset>
+
+		<input type="hidden" name="type" value="undergraduate">
+
+		{{> dap-discover-motivations motivations }}
+		
+		{{#parseFixture 'dap-feature.json'}}
+	    	{{> dap-discover-interests interests }}
+	    {{/parseFixture}}
+
+		<div id="js-dap-discover-filter-types" class="filter-types">
+
+			<div class="row">
+
+				<!-- Filter by Schools and Colleges -->
+				<div class="columns small-12 large-5">
+					<div class="field-container custom-select-container">
+						<label for="dap-discover-school" class="show-for-sr">Filter by Schools and Colleges</label>
+						<select name="dap-discover-school" id="dap-discover-school">
+							<option disabled="disabled" selected="selected" value="none">Filter by Schools and Colleges</option>
+							<option value="all">All Schools and Colleges</option>
+							{{#parseFixture 'dap-feature.json'}}
+						    	{{#each schools}}
+						    		<option value="{{id}}">{{{title}}}</option>
+					    		{{/each}}
+						    {{/parseFixture}}
+						</select>
+					</div>
+				</div>
+				
+				<!-- Or Separator -->
+				<div class="columns small-12 large-2">
+					<div class="or-separator">
+						<span>Or</span>
+					</div>
+				</div>
+
+				<!-- Search for Degrees and Programs -->
+				<div class="columns small-12 large-5">
+					<div class="field-container">
+						<label for="dap-discover-keyword" class="show-for-sr">Search for Degrees and Programs</label>
+						<input id="dap-discover-keyword" name="dap-discover-keyword" class="input-with-button" type="text" placeholder="Still can't find your program?">
+						<button type="submit">
+							<span class="show-for-sr">Search for Degrees and Programs</span>
+							{{svg "search"}}
+						</button>
+					</div>
+				</div>
+
+			</div>
+		</div>
+
+	</fieldset>
+</form>
+<!-- end partial:dap-discover-form -->

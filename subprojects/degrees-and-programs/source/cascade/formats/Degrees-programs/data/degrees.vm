@@ -1,0 +1,204 @@
+#**
+    Name:          Degrees (JSON)
+    Author:        BarkleyREI
+    Created:       02/13/2017
+    Modified By:   Sean T. Stacho
+    Last Modified: 03/14/2017
+*#
+
+## Trim white space
+#set ( $trimSpacingRegExp = "([\t\r\n]|(\s{2,}))" )
+#set ( $output = "#generateResults" )
+## Remove whitespace from document
+${output.replaceAll( $trimSpacingRegExp, "" )}
+## Generate results macro
+#macro ( generateResults )
+
+    ## Array Macro
+    #macro ( generateArray $arr, $items )
+        #foreach ( $item in $items )
+			#if ( $item != "" )
+				#set ( $tmp = '"' + $_EscapeTool.xml( $item ).replace( "&amp;", "&" ) + '"' )
+				#set ( $dead = $arr.add( $tmp ) )
+			#end
+		#end
+	#end
+
+	## Object Macro
+	#macro ( object $props )
+		{
+			"type": "${props.type}",
+			"title": "${props.title}",
+			#if ( $props.img.src )
+			"img": {
+				"src": "${props.img.src}",
+				"alt": "${props.img.alt}"
+			},
+			#end
+			#if ( $props.link.href )"href": "${props.link.href}",#end
+			"degreeTypes": {
+				"title": $props.degreeTypes.title,
+				"type": $props.degreeTypes.type
+			},
+			"desc": "${props.desc}",
+			#if ( $props.motivations.size() > 0 )"motivations": $props.motivations,#end
+			#if ( $props.interests.size() > 0 )"interests": $props.interests,#end
+			#if ( $props.schools.size() > 0 )"schools": $props.schools,#end
+			"campus": {
+				"title": "${props.campus.title}",
+				"id": "${props.campus.id}"
+			}
+		#if ( $foreach.last )}#else},#end
+	#end
+
+	## Blocks
+	#set ( $blocks = $_XPathTool.selectNodes( $contentRoot, "//system-index-block/system-block[site='Chapman.edu']" ) )
+
+    ## Sort Criterion
+    $_SortTool.addSortCriterion( "system-data-structure/title", "", "text", "ascending", "upper-first" )
+    $_SortTool.sort( $blocks )
+
+	<!--#protect-top{
+		"results": [
+
+			#if ( $blocks.size() > 0 )
+
+				#foreach ( $block in $blocks )
+
+					## Locate Block
+					#set ( $path = $block.getChild("path").value )
+					#set ( $site = $block.getChild("site").value )
+					#set ( $blockObject = $_.locateBlock( $path, $site ) )
+
+					## Object Properties
+					#set ( $props = {} )
+
+					## Type
+					#set ( $props.type = $blockObject.getStructuredDataNode("cat").textValue.toLowerCase() )
+
+					## Title
+					#set ( $props.title = $blockObject.getStructuredDataNode("title").textValue.replace( "${_EscapeTool.backslash}", "\\${_EscapeTool.backslash}" ).replace( "-", "&ndash;" ).replace( '"', '\"' ) )
+
+					## Image
+					#set ( $props.img = {} )
+
+					#set ( $imgSrc = $blockObject.getStructuredDataNode("image") )
+					#set ( $imgAlt = $blockObject.getStructuredDataNode("altText") )
+
+					#if ( $_PropertyTool.isNull( $imgSrc.asset ) == false )
+						#set ( $props.img.src = "/" + $imgSrc.asset.path )
+                        #if ( $_PropertyTool.isNull( $imgAlt.textValue ) == false )
+                            #set ( $props.img.alt = $imgAlt.textValue.replace( "${_EscapeTool.backslash}", "\\${_EscapeTool.backslash}" ).replace( "-", "&ndash;" ).replace( '"', '\"' ) )
+                        #else
+                            #set ( $props.img.alt = $props.title )
+                        #end
+                    #end
+
+					## Hyperlink Reference
+					#set ( $props.link = {} )
+					#set ( $props.link.linkType = $blockObject.getStructuredDataNode("link/linkType") )
+
+					## Internal Link
+					#if ( $props.link.linkType.textValue == "Internal Link" )
+						#if ( $_PropertyTool.isNull( $blockObject.getStructuredDataNode("link/internalLink").asset ) == false )
+							#set ( $props.link.href = "/" + $blockObject.getStructuredDataNode("link/internalLink").asset.path + ".aspx" )
+						#end
+					## External Link
+					#elseif ( $props.link.linkType.textValue == "External Link" )
+						#if ( $_PropertyTool.isNull( $blockObject.getStructuredDataNode("link/externalLink").textValue ) == false )
+							#set ( $props.link.href = $blockObject.getStructuredDataNode("link/externalLink").textValue )
+						#end
+					## File Link
+					#elseif ( $props.link.linkType.textValue == "File Link" )
+						#if ( $_PropertyTool.isNull( $blockObject.getStructuredDataNode("link/fileLink").asset ) == false )
+							#set ( $props.link.href = $blockObject.getStructuredDataNode("link/fileLink").textValue )
+						#end
+					#end
+
+					## Degree Types
+					#set ( $props.degreeTypes = {} )
+					#set ( $props.degreeTypes.title = [] )
+					#set ( $props.degreeTypes.type = [] )
+
+					#set ( $degreeTypes = {} )
+					#set ( $degreeTypes.title = $blockObject.getStructuredDataNode("type").textValues )
+					#set ( $degreeTypes.type = $blockObject.getStructuredDataNode("level").textValues )
+                    
+					## Degree Level
+					#generateArray( $props.degreeTypes.title, $degreeTypes.title )
+
+                    ## Degree Type
+                    #foreach ( $type in $degreeTypes.type )
+                        #set ( $degreeTypes.type[$foreach.index] = $type.toLowerCase() )
+                    #end
+                    
+					#generateArray( $props.degreeTypes.type, $degreeTypes.type )
+
+					## Description
+					#set ( $desc = $blockObject.getStructuredDataNode("desc") )
+
+					#if ( $_PropertyTool.isNull( $desc.textValue ) == false )
+
+						## Strip Tags
+						#set ( $stripTags = $_DisplayTool.stripTags( $desc.textValue ) )
+
+						## Escape Backslash
+						#set ( $backslash = $stripTags.replace( "${_EscapeTool.backslash}", "\\${_EscapeTool.backslash}" ) )
+
+						## Escape Double Dashes
+						#set ( $dash = $backslash.replace( "-", "&ndash;" ) )
+
+						## Escape Double Quotes
+						#set ( $doubleQuotes = $dash.replace( '"', '\"' ) )
+
+						## Remove White-Space
+						#set ( $whitespace = $doubleQuotes.replace( "&#160;", "" ).replace( "&nbsp;", "" ) )
+
+						## Truncate Text - 150 characters
+						#set ( $truncate = $_DisplayTool.truncate( $whitespace, 200, "...", true ) )
+
+						#set ( $props.desc = $truncate )
+                    
+                    #else
+						#set ( $props.desc = "" )
+					#end
+
+					## Motivations
+					#set ( $props.motivations = [] )
+					#set ( $motivations = $blockObject.getStructuredDataNode("motivations").textValues )
+
+					#generateArray( $props.motivations, $motivations )
+
+					## Interests
+					#set ( $props.interests = [] )
+					#set ( $interests = $blockObject.getStructuredDataNode("interests").textValues )
+
+					#generateArray( $props.interests, $interests )
+					
+					## School(s)
+					#set ( $props.schools = [] )
+					#set ( $schools = $blockObject.getStructuredDataNode("school").textValues )
+
+					#generateArray( $props.schools, $schools )
+
+					## Campus
+					#set ( $props.campus = {} )
+					#set ( $props.campus.id = $blockObject.getStructuredDataNode("campus").textValue )
+
+					#if ( $props.campus.id == "Orange" )
+						#set ( $props.campus.title = "Main Campus" )
+					#elseif ( $props.campus.id == "Rinker" )
+						#set ( $props.campus.title = "Rinker Health Science Campus" )
+					#end
+
+					#object( $props )
+
+				#end
+
+			#end
+
+		]
+
+	}#protect-top-->         
+
+#end

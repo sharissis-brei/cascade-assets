@@ -1,0 +1,371 @@
+$palettes: map-merge($palettes, (
+    'dap-feature': (
+        'core': $black,
+        'background': $white
+    )
+));
+
+$dap-feature-background-image-width: rem-calc(1396);
+
+.dap-feature {
+	color: $dark-gray;
+	line-height: 1;
+	position: relative;
+	background-color: $mine-shaft;
+	// background-size: cover;
+	// background-position: 50% 50%;
+	background-size: auto;
+	background-position: top center;
+	background-repeat: no-repeat;
+
+	@include breakpoint($dap-feature-background-image-width) {
+		background-size: 100% auto;
+	}
+
+	&:before {
+		content: '';
+		background-color: rgba($black, 0.5);
+		position: absolute;
+		width: 100%;
+		height: 100%;
+	}
+
+	.dap-feature-inner {
+		position: relative;
+	}
+
+	.dap-section {
+		border-bottom: $transparent-white-border;
+
+		&:last-of-type {
+			border-bottom: 0;
+		}
+
+	}
+
+	.dap-body {
+		border-top: $transparent-white-border;
+		display: none;
+
+		.no-js & {
+			display: block;
+		}
+		
+	}
+
+	//-------- Defaults for this page --------//
+
+	* {
+		word-break: break-word;
+		word-wrap: break-word;
+	}
+
+	h1,
+	h2,
+	h3,
+	h4,
+	h5,
+	h6 {
+		margin: 0;
+	}
+
+	p,
+	li {
+		font-size: inherit;
+		line-height: inherit;
+		margin: 0;
+	}
+
+	svg {
+		max-width: 100%;
+		max-height: 100%;
+		transition: fill $transition-time;
+	}
+
+	hr {
+		border-top: $transparent-white-border;
+		width: calc(100% - #{rem-calc(20)});
+		max-width: ($global-width - $grid-column-gutter);
+		margin: 0 auto;
+	}
+
+	section li {
+		max-width: none;
+	}
+
+	ul {
+		list-style: none;
+		margin: 1rem 0;
+	}
+
+	button,
+	.button {
+		box-shadow: none;
+		border-radius: 0;
+		color: $white;
+		fill: $white;
+		text-align: center;
+		border: 0;
+		font-size: rem-calc(15);
+		background-color: $burgundy;
+		line-height: rem-calc(43);
+		height: rem-calc(44);
+		margin: 0;
+		padding: rem-calc(0 18);
+		max-width: 100%;
+		width: 100%;
+
+		&:hover {
+
+			.no-touch &,
+			.no-js & {
+				background-color: $paprika;
+			}
+
+		}
+
+	}
+	
+	button,
+	.button,
+	a {
+		transition: color $transition-time, background-color $transition-time;
+
+		&:hover {
+
+			.no-touch &,
+			.no-js & {
+
+				.icon-double-chevron {
+					left: 0.175em;
+				}
+
+			}
+
+		}
+
+		svg {
+			vertical-align: middle;
+			width: rem-calc(18);
+			height: rem-calc(18);
+
+			&.icon-double-chevron {
+				width: 0.75em;
+				height: 0.75em;
+				position: relative;
+				margin-left: 0.125em;
+				top: -0.05em;
+				left: 0;
+				transition: left $transition-time;
+			}
+
+		}
+
+	}
+
+	select,
+	.custom-select-input,
+	textarea,
+	input {
+		color: $white;
+		background-color: transparent;
+		border: 1px solid $dusty-gray;
+		font-size: rem-calc(16);
+		box-shadow: none;
+		border-radius: 0;
+		max-width: 100%;
+		width: 100%;
+		margin: 0;
+
+		&[placeholder] {
+			color: $white;
+		}
+
+	}
+
+	select,
+	input {
+		white-space: nowrap;
+		text-overflow: ellipsis;
+		line-height: rem-calc(47);
+		height: $input-height;
+	}
+
+	select,
+	input,
+	.custom-select-input {
+		overflow: hidden;
+		transition: background-color $transition-time, border-color $transition-time, color $transition-time;
+	}
+
+	select {
+		padding: rem-calc(0 48 0 12);
+	}
+
+	input {
+		padding: rem-calc(0 12);
+
+		&[type="checkbox"],
+		&[type="radio"] {
+			line-height: 1;
+			padding: 0;
+			height: auto;
+		}
+		
+		&[type="text"],
+		&[type="search"] {
+
+			&:focus {
+				color: $dark-gray;
+				background-color: $white;
+			}
+
+		}
+
+		&[type='text'],
+		&[type='email'],
+		&[type='url'],
+		&[type='password'],
+		&[type='search'] {
+			word-break: normal;
+		}
+
+	}
+
+	select,
+	.custom-select-input {
+		appearance: none;
+		background-image: url('i/select-arrow.png');
+		background-repeat: no-repeat;
+		background-position: right 18px center;
+		background-size: rem-calc(12 7);
+		padding-right: rem-calc(48);
+
+		&.open {
+			background-image: url('i/select-close.png');
+			background-repeat: no-repeat;
+			background-size: rem-calc(11 11);
+		}
+
+	}
+
+	.input-with-button {
+		padding-right: rem-calc(60);
+
+		~ button,
+		~ .button {
+			width: rem-calc(48);
+			height: rem-calc(48);
+			position: absolute;
+			top: 1px;
+			right: 1px;
+			padding: 0;
+		}
+
+	}
+	
+	// scss-lint:disable VendorPrefix
+	::-webkit-input-placeholder {
+		color: $white;
+	}
+
+	:-moz-placeholder {
+		color: $white;
+	}
+
+	::-moz-placeholder {
+		color: $white;
+	}
+
+	:-ms-input-placeholder {
+		color: $white;
+	}
+
+	input::-webkit-calendar-picker-indicator:hover {
+		cursor: pointer;
+		color: rgba($white, 0.9);
+		background: transparent;
+	}
+	// scss-lint:enable VendorPrefix
+
+	.custom-select-container {
+		position: relative;
+
+		&.custom-select-options-active {
+			
+			// scss-lint:disable ImportantRule
+			select,
+			option {
+				opacity: 0;
+				visibility: hidden;
+				display: none !important;
+			}
+			// scss-lint:enable ImportantRule
+
+		}
+
+		select,
+		.custom-select-input {
+			z-index: 1;
+		}
+
+	}
+
+	.custom-select-input {
+		padding: rem-calc(15 48 15 12);
+
+		&.open {
+			color: $burgundy;
+			border-color: $white;
+			background-color: $white;
+		}
+
+		span {
+			line-height: 1.125;
+		}
+
+	}
+
+	.custom-select-options {
+		z-index: 2;
+		background-color: $white;
+		box-shadow: 0 4px 6px 0 rgba($black, 0.5);
+		position: absolute;
+		display: none;
+		width: 100%;
+		padding: rem-calc(0 12);
+
+		&.open {
+			z-index: 3;
+		}
+
+		ul,
+		li {
+			display: block;
+			width: 100%;
+		}
+
+		ul {
+			border-top: 1px solid $burgundy;
+			margin: 0;
+			padding: rem-calc(12 0);
+		}
+
+		li {
+			color: $dark-gray;
+			cursor: pointer;
+			line-height: 1.25;
+			padding: rem-calc(6 0);
+			transition: color $transition-time;
+
+			&:hover,
+			&:active,
+			&.selected {
+				color: $burgundy;
+			}
+
+		}
+
+	}
+
+}

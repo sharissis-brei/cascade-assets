@@ -1,0 +1,52 @@
+<system-data-structure>
+    <asset type="page" identifier="data" label="Data" required="true" help-text="i.e. JSON"/>
+    <asset type="block" identifier="block" label="Index Block" render-content-depth="4" required="true" help-text="i.e. XML"/>
+    <asset type="file" identifier="backgroundImage" label="Background Image" required="true" help-text="Dimensions W x H (1400x1200)"/>
+    <group identifier="accordion" label="Accordion">
+        <group identifier="section" label="Section" multiple="true" maximum-number="3" minimum-number="3" collapsed="true">
+            <text type="radiobutton" identifier="type" label="Type" default="Discover">
+                <radio-item value="Discover" show-fields="accordion/section/motivations"/>
+                <radio-item value="Undergraduate" show-fields="accordion/section/interests"/>
+                <radio-item value="Graduate"/>
+            </text>
+            <text identifier="title" label="Title" required="true"/>
+            <text identifier="subtitle" label="Subtitle" required="true"/>
+            <group identifier="motivations" label="Motivations" collapsed="true">
+                <group identifier="motivation" label="Motivation" multiple="true" maximum-number="5" minimum-number="1" collapsed="true">
+                    <text wysiwyg="true" identifier="title" label="Title" required="true"/>
+                    <group identifier="interests" label="Interests" collapsed="true">
+                        <group identifier="interest" label="Interest" multiple="true" maximum-number="4" minimum-number="4" collapsed="true">
+                            <text type="dropdown" identifier="icon" label="Icon" required="true">
+                                <dropdown-item value="Book"/>
+                                <dropdown-item value="Brain"/>
+                                <dropdown-item value="Briefcase"/>
+                                <dropdown-item value="Digital"/>
+                                <dropdown-item value="Drama"/>
+                                <dropdown-item value="Education"/>
+                                <dropdown-item value="Film Reel"/>
+                                <dropdown-item value="Global"/>
+                                <dropdown-item value="Handshake"/>
+                                <dropdown-item value="Health Care"/>
+                                <dropdown-item value="Marketing Campaign"/>
+                                <dropdown-item value="Microscope"/>
+                                <dropdown-item value="Mind Map"/>
+                                <dropdown-item value="Palette"/>
+                                <dropdown-item value="Pencil"/>
+                                <dropdown-item value="Science"/>
+                                <dropdown-item value="Sociology"/>
+                                <dropdown-item value="Stage"/>
+                                <dropdown-item value="Star"/>
+                                <dropdown-item value="Team"/>
+                                <dropdown-item value="TV"/>
+                            </text>
+                            <text identifier="title" label="Title" required="true"/>
+                        </group>
+                    </group>
+                </group>
+            </group>
+            <group identifier="interests" label="Interests" collapsed="true">
+                <text identifier="interest" label="Interest" multiple="true" minimum-number="1" required="true"/>
+            </group>
+        </group>
+    </group>
+</system-data-structure>
