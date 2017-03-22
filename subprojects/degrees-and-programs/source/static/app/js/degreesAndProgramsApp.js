@@ -604,6 +604,7 @@ var chapman = chapman || {};
 
 			// Append results set HTML and lazyload results in view
 			$('#js-dap-results-' + activeSection + ' .results-row').append(resultsSetHTML);
+			chapman.degreesAndPrograms.initTruncations();
 			_this.lazyloadResults();
 
 		},
