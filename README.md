@@ -42,11 +42,21 @@ To run a single test:
 
 To deploy changes in this repository to Cascade, please see the [Cascade Accept Testing page](https://kb-smc.chapman.edu/?p=1860) in the Knowledge Base, which includes links to the pages on [Deploying Assets](https://kb-smc.chapman.edu/?p=1894) and [Deploying HTML](https://kb-smc.chapman.edu/?p=1887).
 
-## Deploying the Omni-Nav
 
-After updating the omni-nav, you can specifically compile those assets with the `bin/build_omni_nav` command.
+## OmniNav
 
-The compiled assets will be located in the `public/_assets` folder. You can deploy them to any website that utilizes the omni-nav from there.
+This project includes an OmniNav builder that builds versions of the OmniNav navbar for other projects.
+
+To build assets and markup, run the following rake command:
+
+    rake build:omninav
+
+It will output the generated OmniNav asset and markup files under the `build` directory.
+
+To update the OmniNav markup, you'll want to update the appropriate method in the OmniNav Builder class found in the `lib` directory.
+
+For more information on the OmniNav, see [the OmniNav page](https://kb-smc.chapman.edu/?p=2425) in the knowledge base.
+
 
 ## CSS Conventions
 

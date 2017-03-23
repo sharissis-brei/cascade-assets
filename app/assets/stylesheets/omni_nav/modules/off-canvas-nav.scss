@@ -1,3 +1,19 @@
+.cu-off-canvas-nav-trigger {
+	// This should be similar to settings for a.cu_nav_button in omni-nav.scss.
+	svg {
+		width: 24px;
+		height: 24px;
+		margin-right: 8px;
+		background-size: contain;
+		vertical-align: middle;
+
+		* {
+			transition: fill 0.1s ease-out;
+			fill: lighten($cu-nav-text, 5%);
+		}
+	}
+}
+
 .cu-off-canvas-nav {
 	width: 200%;
 	position: relative;
@@ -34,7 +50,7 @@
 		float: left;
 		border-bottom: 1px solid $cu-off-canvas-nav-border-color;
 		@include vendorize(box-sizing, border-box);
-		
+
 		&.level-1 {
 			border-right: 1px solid $cu-off-canvas-nav-border-color;
 		}
@@ -60,7 +76,7 @@
 				> li {
 					// background-color: lighten($cu-light-grey, 5%);
 					background-color: #f5f5f5; // Client request - BarkleyREI
-					
+
 					a {
 						display: block;
 						font-size: 16px;
@@ -275,11 +291,11 @@
 	// padding: 1.5em 1.25em 0.5em;
 	// padding: 1.5em 1.8em 0.5em 1.5em; // Client request - BarkleyREI
 	padding: 1.5em 1.8em 0 1.5em; // 20170210 - CU Build
-	
-	
+
+
 	.sc-logo {
 		display: block;
-		height: 23px; 
+		height: 23px;
 		width: 200px;
 		border: 0;
 		text-indent: -998em;
@@ -288,7 +304,7 @@
 		background: image-url('chapman_logo_horizontal_color.svg'), linear-gradient(transparent, transparent);
 		background-repeat: no-repeat;
 		background-size: contain;
-		
+
 		@include bp(m) {
 			height: 28px;
 			width: 273px;
@@ -363,7 +379,7 @@
 
 	.default-logo {
 		display: none;
-		
+
 		.shifted & , &-cu {
 			display: block;
 			border: 0;

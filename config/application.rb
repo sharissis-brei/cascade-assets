@@ -22,6 +22,12 @@ module CascadeAssetsRails
     # Need to include this to autoload data_definitions directory (even in Rails 4.2).
     config.autoload_paths += %W(#{config.root}/app)
 
+    # Autoload lib libraries: http://stackoverflow.com/a/19650564/6763239
+    config.autoload_paths << Rails.root.join('lib')
+
+    # Auto reload code on change: http://stackoverflow.com/a/16625210/6763239
+    config.eager_load_paths << Rails.root.join('lib')
+
     # Settings in config/environments/* take precedence over those specified here.
     # Application configuration should go into files in config/initializers
     # -- all .rb files in that directory are automatically loaded.

@@ -143,6 +143,8 @@ GEM
     nokogiri (1.6.8.rc3-x64-mingw32)
       mini_portile2 (~> 2.1.0)
       pkg-config (~> 1.1.7)
+    non-stupid-digest-assets (1.0.9)
+      sprockets (>= 2.0)
     notiffany (0.1.0)
       nenv (~> 0.1)
       shellany (~> 0.0)
@@ -268,6 +270,7 @@ DEPENDENCIES
   jquery-rails
   minitest-rails-capybara
   nokogiri (>= 1.6.7.rc)
+  non-stupid-digest-assets
   poltergeist
   rails (= 4.2.3)
   render_anywhere

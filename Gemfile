@@ -35,6 +35,10 @@ gem 'sdoc', '~> 0.4.0', group: :doc
 # Use Capistrano for deployment
 # gem 'capistrano-rails', group: :development
 
+# Rails 4 ignores assets.digest = false. This makes non-digested assets possible. For
+# Omninav build tasks.
+gem "non-stupid-digest-assets", group: :development
+
 # Access an IRB console on exception pages or by using <%= console %> in views
 gem 'web-console', '~> 2.0', group: :development
 
