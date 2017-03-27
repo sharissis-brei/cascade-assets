@@ -36,7 +36,7 @@ you can use the generic selector below, but it's slower:
     -webkit-font-smoothing: antialiased;
 }
 
-.icon-menu7:before, .icon-arrow-down2:before, .icon-search:before, .icon-user3:before {
+.icon-menu7:before, .icon-arrow-down2:before, .icon-search:before, .icon-user3:before, .icon-youtube2:before, .icon-rss:before, .icon-vimeo:before, .icon-snapchat-ghost:before, .icon-download2:before, .icon-checkmark:before, .icon-android:before, .icon-appleinc:before, .icon-mobile:before, .icon-phone2:before, .icon-envelop3:before {
     font-family: 'icomoon-ultimate';
     speak: none;
     font-style: normal;
@@ -273,7 +273,7 @@ you can use the generic selector below, but it's slower:
     content: "\e039";
 }
 
-//NEW AS OF 2/2017
+//NEW AS OF 2/2017 (ultimate)
 
 .icon-menu7:before {
     content: "\ec71";
@@ -286,4 +286,39 @@ you can use the generic selector below, but it's slower:
 }
 .icon-user3:before {
     content: "\eb08";
+}
+
+// new march 2017 (ultimate) - for social follow-us in leftcol and faculty profile page
+.icon-youtube2:before {
+    content: "\eefc";
+}
+.icon-rss:before {
+    content: "\eefa";
+}
+.icon-vimeo:before {
+  content: "\eeff";
+}
+.icon-snapchat-ghost:before {
+  content: "\e901";
+}
+.icon-download2:before {
+  content: "\ec7d";
+}
+.icon-checkmark:before {
+  content: "\ed6f";
+}
+.icon-android:before {
+  content: "\ef1f";
+}
+.icon-appleinc:before {
+  content: "\ef1d";
+}
+.icon-mobile:before {
+  content: "\ea78";
+}
+.icon-phone2:before {
+  content: "\ea1d";
+}
+.icon-envelop3:before {
+  content: "\ea32";
 }

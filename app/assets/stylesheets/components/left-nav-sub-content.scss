@@ -23,6 +23,47 @@
 			background-color: #c1c1c1;
 		}
 
+
+		.editableContent ul.left-social-icons {
+			background-color: transparent;
+			display: block;
+			width: 100%;			
+			padding: 0;
+			margin-top: 0;
+			margin: 0 0 0 0;
+			float: left;
+			position: relative;
+			list-style: none;
+		}
+		.editableContent ul.left-social-icons li {
+			float: left;
+			position: relative;
+			padding-right: 12px;
+			font-size: 16px;
+		}
+		.editableContent ul.left-social-icons li.last {
+			padding-right:0;
+		}
+		.editableContent ul.left-social-icons li a {
+			text-decoration: none;
+			border-bottom: none;
+		}
+		
+		.view-more {
+			background-color: $cu-red;
+			color: white;
+			font-weight: 600;
+			text-align:center;			
+			margin: 40px 0 00;
+			padding: 5px 5px 10px 5px;
+		}
+		.view-more a {			
+			color: $white;
+		}
+		.view-more a:hover  {			
+			color: $cu-warm-light-grey;
+		}
+		
 		.editableContent {
   		a {
   			display: inline;
