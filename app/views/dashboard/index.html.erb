@@ -1,41 +1,66 @@
-<h1>Sample Cascade Pages</h1>
+<nav class="navbar navbar-inverse navbar-fixed-top">
+  <div class="container">
+    <div class="navbar-header">
+      <button type="button" class="navbar-toggle collapsed" data-toggle="collapse" data-target="#navbar" aria-expanded="false" aria-controls="navbar">
+        <span class="sr-only">Toggle navigation</span>
+        <span class="icon-bar"></span>
+        <span class="icon-bar"></span>
+        <span class="icon-bar"></span>
+      </button>
+      <a class="navbar-brand" href="#">Cascade Assets</a>
+    </div>
+    <div id="navbar" class="navbar-collapse collapse">
+    </div><!--/.navbar-collapse -->
+  </div>
+</nav>
 
-<h2>Home Page Sample Pages</h2>
-<ul>
-<% @home_page_pages.each do |page| %>
-  <li><%= link_to page.titleize, "/home_page/#{page}" %></li>
-<% end %>
-</ul>
+<div class="container">
+  <h1>Sample Cascade Pages</h1>
+</div>
 
-<h2>One Column Sample Pages</h2>
-<ul>
-  <li><%= link_to 'Modular Sample', "/modular/one_column" %></li>
-<% @one_column_pages.each do |page| %>
-  <li><%= link_to page.titleize, "/one_column/#{page}" %></li>
-<% end %>
-</ul>
+<div class="container">
+  <!-- Example row of columns -->
+  <div class="row">
+    <div class="col-md-4">
+      <h2>Static</h2>
+      <p>Static samples use static views to simulate content from the production WWW site. </p>
+      <ul>
+        <li><%= link_to 'Home Page', '/home_page/sample' %></li>
+        <li><%= link_to 'Ad Landing Page', '/ad_landing_page/sample' %></li>
+        <li><%= link_to 'One Column Hero Side Panel', '/one_column/hero_side_panel' %></li>
+        <li><%= link_to 'One Column Landing Page', '/one_column/landing_page' %></li>
+        <li><%= link_to 'Two Column Page', '/two_column/sample' %></li>
+        <li><%= link_to 'Two Column Form', '/two_column/form' %></li>
+        <li><%= link_to 'Two Column Law Theme', '/two_column/law_theme' %></li>
+        <li><%= link_to 'Three Column Page', '/three_column/sample' %></li>
+        <li><%= link_to 'Three Column College', '/three_column/sample-college' %></li>
+        <li><%= link_to 'Three Column Form on Right', '/three_column/form_on_the_right' %></li>
+        <li><%= link_to 'Three Column Law Theme', '/three_column/law_theme' %></li>
+      </ul>
+    </div>
+    <div class="col-md-4">
+      <h2>Modular</h2>
+      <p>Modular samples use Content Type controllers and Data Definition objects to more closely emulate the data structures and organization in Cascade.</p>
+      <ul>
+        <li><%= link_to 'Ad Landing Page', '/modular/ad_landing' %></li>
+        <li><%= link_to 'One Column Page', '/modular/one_column' %></li>
+        <li><%= link_to 'Two Column Page', '/modular/two_column' %></li>
+        <li><%= link_to 'Two Column Law School', '/cascade/law' %></li>
+        <li><%= link_to 'Three Column Page', '/modular/three_column' %></li>
+      </ul>
+   </div>
+    <div class="col-md-4">
+      <h2>OmniNav</h2>
+      <p>The OmniNav navbar is built and distributed from Cascade Assets.</p>
+      <ul>
+        <li><%= link_to 'Static Sample', '/omninav' %></li>
+      </ul>
+    </div>
+  </div>
 
-<h2>Two Column Sample Pages</h2>
-<ul>
-  <li><%= link_to 'Modular Sample', "/modular/two_column" %></li>
-<% @two_column_pages.each do |page| %>
-  <li><%= link_to page.titleize, "/two_column/#{page}" %></li>
-<% end %>
-  <li><%= link_to 'Law School ContentType Sample', "/cascade/law" %></li>
-</ul>
+  <hr>
 
-<h2>Three Column Sample Pages</h2>
-<ul>
-  <li><%= link_to 'Modular Sample', "/modular/three_column" %></li>
-<% @three_column_pages.each do |page| %>
-  <li><%= link_to page.titleize, "/three_column/#{page}" %></li>
-<% end %>
-</ul>
-
-<h2>Ad Landing Sample Pages</h2>
-<ul>
-  <li><%= link_to 'Modular Sample', "/modular/ad_landing" %></li>
-  <% @ad_landing_pages.each do |page| %>
-    <li><%= link_to page.titleize, "ad_landing_page/#{page}" %></li>
-  <% end %>
-</ul>
+  <footer>
+    <p>&copy; Chapman University</p>
+  </footer>
+</div> <!-- /container -->
