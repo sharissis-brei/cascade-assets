@@ -1027,9 +1027,24 @@ a.cu_nav_button {
 * sites other than WWW.
 ***************************************************/
 #cu_nav.omninav-builder {
+    // Logo
+    a.cu-logo {
+        // In Discover Chapman, Cascade appears to be commenting out the internal styles.
+        svg polygon.cls-1 { fill: #98002e; }
+        svg path.cls-2 { fill: #231f20; }
+    }
+
+    // Off-Canvas Nav
     // Override large negative value in default version that hides logo in off-canvas nav.
     a.default-logo-cu {
         text-indent: 0px;
+    }
+
+    @media screen and (max-width: 782px) {
+        // Need to tweaking top/bottom padding to align hamburger icon in mobile versions.
+        a#js-cu-off-canvas-nav-trigger {
+            padding: 20px 14px;
+        }
     }
 
     // Search Form
@@ -1040,12 +1055,13 @@ a.cu_nav_button {
             background-position: right 8px center;
             background-image: url("data:image/svg+xml;base64,PD94bWwgdmVyc2lvbj0iMS4wIiA/PjwhRE9DVFlQRSBzdmcgIFBVQkxJQyAnLS8vVzNDLy9EVEQgU1ZHIDEuMC8vRU4nICAnaHR0cDovL3d3dy53My5vcmcvVFIvMjAwMS9SRUMtU1ZHLTIwMDEwOTA0L0RURC9zdmcxMC5kdGQnPjxzdmcgZW5hYmxlLWJhY2tncm91bmQ9Im5ldyAwIDAgMjQgMjQiIGlkPSJMYXllcl8xIiB2ZXJzaW9uPSIxLjAiIHZpZXdCb3g9IjAgMCAyNCAyNCIgeG1sOnNwYWNlPSJwcmVzZXJ2ZSIgeG1sbnM9Imh0dHA6Ly93d3cudzMub3JnLzIwMDAvc3ZnIiB4bWxuczp4bGluaz0iaHR0cDovL3d3dy53My5vcmcvMTk5OS94bGluayI+PHBvbHlsaW5lIGZpbGw9Im5vbmUiIHBvaW50cz0iMjEsOC41IDEyLDE3LjUgMyw4LjUgIiBzdHJva2U9IiMwMDAwMDAiIHN0cm9rZS1taXRlcmxpbWl0PSIxMCIgc3Ryb2tlLXdpZHRoPSIyIi8+PC9zdmc+");
         }
-    }
 
-    @media screen and (max-width: 782px) {
-        // Need to tweaking top/bottom padding to align hamburger icon in mobile versions.
-        a#js-cu-off-canvas-nav-trigger {
-            padding: 20px 14px;
+        // Because sociopaths (like the Discover Chapman devs) will sometimes apply borders
+        // to naked table elements.
+        form.gsc-search-box {
+            table, tbody, tr, td {
+                border: none;
+            }
         }
     }
 
