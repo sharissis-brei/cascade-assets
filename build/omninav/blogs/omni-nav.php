@@ -1,5 +1,5 @@
 <?php
-// OmniNav Build Version: 2.0.0.20170330.202243
+// OmniNav Build Version: 2.0.0.20170331.184736
 
 // If logged in
 if (is_user_logged_in()) {
@@ -122,7 +122,7 @@ if (is_user_logged_in()) {
               <?php echo $current_user->user_firstname; ?>
             </span>
         <?php else: ?>
-            <svg class="user svg-icon" viewbox="0 0 512 512"><path d="M311.4,351.4c-11.1-1.8-11.3-32.2-11.3-32.2s32.5-32.2,39.6-75.4c19,0,30.8-46,11.8-62.1C352.2,164.6,375.9,48,256,48   s-96.2,116.6-95.4,133.7c-19,16.2-7.3,62.1,11.8,62.1c7.1,43.2,39.6,75.4,39.6,75.4s-0.3,30.4-11.3,32.2C165,357,32,415.7,32,480   h224h224C480,415.7,347,357,311.4,351.4z"></path></svg>
+            <svg class="user svg-icon" viewbox="0 0 16 16"><path d="M4 5c0-2.209 1.791-4 4-4s4 1.791 4 4c0 2.209-1.791 4-4 4s-4-1.791-4-4zM12 10h-8c-2.209 0-4 1.791-4 4v1h16v-1c0-2.209-1.791-4-4-4z"></path></svg>
             <span class="cu_name">Log In</span>
         <?php endif; ?>
     </div>
@@ -202,7 +202,7 @@ if (is_user_logged_in()) {
      class="cu-off-canvas-nav-trigger"
      href="#"
      title="Access links to the pages within this section of the website and to other sections of the website">
-    <svg class="hamburger svg-icon" viewbox="0 0 32 32"><path d="M4,10h24c1.104,0,2-0.896,2-2s-0.896-2-2-2H4C2.896,6,2,6.896,2,8S2.896,10,4,10z M28,14H4c-1.104,0-2,0.896-2,2  s0.896,2,2,2h24c1.104,0,2-0.896,2-2S29.104,14,28,14z M28,22H4c-1.104,0-2,0.896-2,2s0.896,2,2,2h24c1.104,0,2-0.896,2-2  S29.104,22,28,22z"></path></svg>
+    <svg class="hamburger svg-icon" viewbox="0 0 16 16"><path d="M1 3h14v2h-14v-2z"></path><path d="M1 7h14v2h-14v-2z"></path><path d="M1 11h14v2h-14v-2z"></path></svg>
     <span class="sr-only">Open Main Menu</span>
   </a>
 
@@ -288,7 +288,7 @@ if (is_user_logged_in()) {
         </li>
         <li>
           <a class="has-icon" href="https://www.chapman.edu/audiences/" title="Find information for...">
-            <svg class="user svg-icon" viewbox="0 0 512 512"><path d="M311.4,351.4c-11.1-1.8-11.3-32.2-11.3-32.2s32.5-32.2,39.6-75.4c19,0,30.8-46,11.8-62.1C352.2,164.6,375.9,48,256,48   s-96.2,116.6-95.4,133.7c-19,16.2-7.3,62.1,11.8,62.1c7.1,43.2,39.6,75.4,39.6,75.4s-0.3,30.4-11.3,32.2C165,357,32,415.7,32,480   h224h224C480,415.7,347,357,311.4,351.4z"></path></svg>
+            <svg class="user svg-icon" viewbox="0 0 16 16"><path d="M4 5c0-2.209 1.791-4 4-4s4 1.791 4 4c0 2.209-1.791 4-4 4s-4-1.791-4-4zM12 10h-8c-2.209 0-4 1.791-4 4v1h16v-1c0-2.209-1.791-4-4-4z"></path></svg>
             Find information for...
           </a>
           <span class="toggle"><span>+</span></span>
