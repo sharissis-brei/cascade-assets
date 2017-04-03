@@ -1028,7 +1028,7 @@ a.cu_nav_button {
 ***************************************************/
 #cu_nav.omninav-builder {
     // Logo
-    a.cu-logo {
+    a.cu-logo, a.default-logo-cu {
         // In Discover Chapman, Cascade appears to be commenting out the internal styles.
         svg polygon.cls-1 { fill: #98002e; }
         svg path.cls-2 { fill: #231f20; }
