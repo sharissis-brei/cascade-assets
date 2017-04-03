@@ -179,12 +179,10 @@ SVG_TAG
 
     def self.user_icon
       path_descriptions = [
-        "M311.4,351.4c-11.1-1.8-11.3-32.2-11.3-32.2s32.5-32.2,39.6-75.4c19,0,30.8-46,11.8",
-        "-62.1C352.2,164.6,375.9,48,256,48   s-96.2,116.6-95.4,133.7c-19,16.2-7.3,62.1,11",
-        ".8,62.1c7.1,43.2,39.6,75.4,39.6,75.4s-0.3,30.4-11.3,32.2C165,357,32,415.7,32,480",
-        "   h224h224C480,415.7,347,357,311.4,351.4z"
+        "M4 5c0-2.209 1.791-4 4-4s4 1.791 4 4c0 2.209-1.791 4-4 4s-4-1.791-4-4zM12 10h-8c" \
+        "-2.209 0-4 1.791-4 4v1h16v-1c0-2.209-1.791-4-4-4z"
       ]
-      icon(path_descriptions: path_descriptions, classes: ['user'])
+      icon(path_descriptions: path_descriptions, classes: ['user'], size: 16)
     end
 
     def self.graduation_cap_icon
@@ -248,6 +246,18 @@ SVG_TAG
     end
 
     def self.hamburger_icon
+      path_descriptions = [
+        "M1 3h14v2h-14v-2z",
+        "M1 7h14v2h-14v-2z",
+        "M1 11h14v2h-14v-2z"
+      ]
+      template = '<svg class="hamburger svg-icon" viewbox="0 0 16 16"><path d="%s">' \
+                 '</path><path d="%s"></path><path d="%s"></path></svg>'
+      format(template, path_descriptions[0], path_descriptions[1], path_descriptions[2])
+    end
+
+    def self.big_mac_icon
+      # This is a rounder version of hamburger_icon.
       path_descriptions = [
         "M4,10h24c1.104,0,2-0.896,2-2s-0.896-2-2-2H4C2.896,6,2,6.896,2,8S2.896,10,4,10z M",
         "28,14H4c-1.104,0-2,0.896-2,2  s0.896,2,2,2h24c1.104,0,2-0.896,2-2S29.104,14,28,1",

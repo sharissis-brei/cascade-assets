@@ -1,10 +1,6 @@
 class DashboardController < ApplicationController
   def index
-    @one_column_pages   = html_files_in '1_column'
-    @two_column_pages   = html_files_in '2_column'
-    @three_column_pages = html_files_in '3_column'
-    @home_page_pages    = html_files_in 'home_page'
-    @ad_landing_pages   = html_files_in 'ad_landing_page'
+    render layout: 'dashboard'
   end
 
   def one_column
