@@ -1058,7 +1058,7 @@ a.cu_nav_button {
 
         // Because sociopaths (like the Discover Chapman devs) will sometimes apply borders
         // to naked table elements.
-        form.gsc-search-box {
+        form.gsc-search-box, div#cu_search_results {
             table, tbody, tr, td {
                 border: none;
             }
@@ -1095,4 +1095,10 @@ a.cu_nav_button {
             position: relative;
         }
     }
+}
+
+// This is for the search form autocomplete results which are dynamically attached to
+// the body, so can't be nested within navbar selector.
+table.gssb_c table, tbody, tr, td {
+    border: none;
 }
