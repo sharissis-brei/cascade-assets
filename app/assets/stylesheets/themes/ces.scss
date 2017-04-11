@@ -60,4 +60,15 @@
       background-color: $ces-primary;
     }
   }
+
+  .leftNavSubContent .callout .view-more-expander {
+    background-color: $ces-primary;
+    .icon-triangle-down {
+      background-color: $ces-primary;
+    }
+    .icon-triangle-up {
+      background-color: #d8d8d8;
+      color: $ces-primary;
+    }
+  }
 }

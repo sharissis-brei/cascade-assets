@@ -58,4 +58,15 @@
       background-color: $crean-primary;
     }
   }
+
+  .leftNavSubContent .callout .view-more-expander {
+    background-color: $crean-primary;
+    .icon-triangle-down {
+      background-color: $crean-primary;
+    }
+    .icon-triangle-up {
+      background-color: #d8d8d8;
+      color: $crean-primary;
+    }
+  }
 }

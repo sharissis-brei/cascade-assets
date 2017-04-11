@@ -70,4 +70,15 @@
       background-color: $dodge-primary;
     }
   }
+
+  .leftNavSubContent .callout .view-more-expander {
+    background-color: $dodge-primary;
+    .icon-triangle-down {
+      background-color: $dodge-primary;
+    }
+    .icon-triangle-up {
+      background-color: #d8d8d8;
+      color: $dodge-primary;
+    }
+  }
 }

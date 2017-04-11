@@ -21,13 +21,7 @@
 			background-color: #c1c1c1;
 		}
 
-		.contact-widget {
-			.show-more {
-				display:block;
-			}
-			.hide-more {
-				display:none;
-			}
+		.contact-widget {				
 			ul.left-social-icons {
 				background-color: transparent;
 				display: block;
@@ -51,56 +45,83 @@
 						border-bottom: none;
 					}
 				}
-				/*li.last {
-					padding-right:0;
-				}*/
-			}			
-		} 
-
-		.view-more-button   {
-			background-color: $cu-red;
-			text-align:center;							
-			padding: 0;
-			height: 45px;	
-			margin: 65px 0 0 0;
-			cursor: pointer;			
-			@include bp(l) {
-				margin: 38px 0 0 0;
 			}
-			.show-more {
-				display:block;
-			}
-			.hide-more {
-				display:none;
-			}
-			a {			
-				color: $white;
-				font-size: 13px;
-				font-weight: 500;
-				line-spacing:8px;
-				text-transform:uppercase;
-				padding: 0;
-				&:hover  {			
-					color: $cu-warm-light-grey;
-				}
-			}
-			.icon-solid-arrow-down {
+			.view-more-expander {
+				line-height: 10px;
 				background-color: $cu-red;
-				color: #d8d8d8;
-				text-align:center;
-				font-size:24px;
+				text-align:center;							
 				padding: 0;
-			}
-			.icon-solid-arrow-up {
-				background-color: #d8d8d8;
-				color: $cu-red;
-				text-align:center;
-				font-size:24px;
-				padding: 0; 
-			}
-		}
+				min-height: 35px;				
+				cursor: pointer;	
+				/*margin: 65px 0 0 0;		
+				@include bp(l) {
+					margin: 38px 0 0 0;					
+				}
+				*/
+				.active {
+					display:block;
+				}
+				.inactive {
+					display: none;
+				}
+				.view-more-link {
+					height: 15px;
+					padding: 0 0 5px 0; 
+					margin: 0;
+				}
+				.view-less-link {
+					height: 25px;
+					padding: 8px 0 0 0;
+				}
+				a {			
+					color: $white;
+					font-size: 13px;
+					font-weight: 500;
+					line-spacing:8px;
+					text-transform:uppercase;
+					padding: 0;
+					&:hover  {			
+						color: $cu-warm-light-grey;
+					}
+				}
+				.icon {
+					display: inline-block;
+					color: #444444;
+					width: 1em;
+					height: 1em;
+					fill: currentColor;
+				}
+				.icon-triangle-down {
+				  color: #d8d8d8;
+				  font-size: 18px;
+				}
+				.icon-triangle-up {
+				  color: $cu-red;
+				  width:100%;
+				  padding: 0;
+				  background-color:#d8d8d8;
+				  font-size: 18px;
+				  width:100%;
+				  padding: 0;
+				}
+			}			
+		} 	
 
-		.editableContent {
+		.editableContent {	
+			.inactive {
+				display: none;
+			}	
+			.active {
+				display: block;
+			}
+			.social-follow-us {
+				margin-bottom: 65px;		
+				@include bp(l) {
+					margin-bottom: 38px;					
+				}
+
+			}
+
 			a {
 				display: inline;
 			}

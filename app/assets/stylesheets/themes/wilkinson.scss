@@ -1,10 +1,8 @@
-
 #theme.wilkinson {
   @include theme-color-classes($wilkinson-primary);
   
   .smallMasthead .masthead, .smallMasthead .masthead-old, .bigMasthead .mastheadPlaceholder, .bigMasthead .masthead, .bigMasthead .masthead-old, .nameBar, .rightColumn .styleTwo {
-  	background: $wilkinson-primary; /* Old browsers */
-  	
+    background: $wilkinson-primary; /* Old browsers */
   }
 
   .rightColumn .styleTwo .border {
@@ -53,9 +51,20 @@
     background-color: $wilkinson-primary;
   }
 
-  .photoCallouts {
-    .caption, .rollover {
+    .photoCallouts {
+      .caption, .rollover {
       background-color: $wilkinson-primary;
+    }
+  }
+
+  .leftNavSubContent .callout .view-more-expander {
+    background-color: $wilkinson-primary;
+    .icon-triangle-down {
+      background-color: $wilkinson-primary;
+    }
+    .icon-triangle-up {
+      background-color: #d8d8d8;
+      color: $wilkinson-primary;
     }
   }
 }

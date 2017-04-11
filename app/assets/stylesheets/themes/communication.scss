@@ -53,4 +53,15 @@
       background-color: $communication-primary;
     }
   }
+
+  .leftNavSubContent .callout .view-more-expander {
+    background-color: $communication-primary;
+    .icon-triangle-down {
+      background-color: $communication-primary;
+    }
+    .icon-triangle-up {
+      background-color: #d8d8d8;
+      color: $communication-primary;
+    }
+  }
 }
