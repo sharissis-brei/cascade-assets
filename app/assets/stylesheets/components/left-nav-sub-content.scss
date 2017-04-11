@@ -48,36 +48,35 @@
 			}
 			.view-more-expander {
 				line-height: 10px;
-				background-color: $cu-red;
 				text-align:center;							
 				padding: 0;
 				min-height: 35px;				
 				cursor: pointer;	
-				/*margin: 65px 0 0 0;		
-				@include bp(l) {
-					margin: 38px 0 0 0;					
-				}
-				*/
 				.active {
 					display:block;
 				}
 				.inactive {
 					display: none;
 				}
+				.view-more {
+					background-color: $cu-red;
+				}
 				.view-more-link {
-					height: 15px;
+					height: 21px;
 					padding: 0 0 5px 0; 
 					margin: 0;
+					background-color: $cu-red;
 				}
 				.view-less-link {
-					height: 25px;
-					padding: 8px 0 0 0;
+					height: 30px;
+					padding: 10px 0 0 0;
+					margin-bottom: -4px;
+					background-color: $cu-red;
 				}
 				a {			
 					color: $white;
 					font-size: 13px;
 					font-weight: 500;
-					line-spacing:8px;
 					text-transform:uppercase;
 					padding: 0;
 					&:hover  {			
@@ -90,19 +89,21 @@
 					width: 1em;
 					height: 1em;
 					fill: currentColor;
+					padding: 0;
+
 				}
 				.icon-triangle-down {
-				  color: #d8d8d8;
-				  font-size: 18px;
+					color: #d8d8d8;
+					font-size: 18px;
+					margin-top: -4px;					
 				}
 				.icon-triangle-up {
-				  color: $cu-red;
-				  width:100%;
-				  padding: 0;
-				  background-color:#d8d8d8;
-				  font-size: 18px;
-				  width:100%;
-				  padding: 0;
+					color: $cu-red;
+					width:100%;
+					padding: 0;
+					font-size: 18px;
+					width:100%;
+					margin-bottom: -8px;
 				}
 			}			
 		} 	
