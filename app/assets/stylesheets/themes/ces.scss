@@ -62,12 +62,16 @@
   }
 
   .leftNavSubContent .callout .view-more-expander {
-    background-color: $ces-primary;
-    .icon-triangle-down {
+    .view-more {
+      background-color: $ces-primary;
+    }
+    .view-more-link {
+      background-color: $ces-primary;
+    }
+    .view-less-link {
       background-color: $ces-primary;
     }
     .icon-triangle-up {
-      background-color: #d8d8d8;
       color: $ces-primary;
     }
   }

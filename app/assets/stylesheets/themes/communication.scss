@@ -55,12 +55,16 @@
   }
 
   .leftNavSubContent .callout .view-more-expander {
-    background-color: $communication-primary;
-    .icon-triangle-down {
+    .view-more {
+      background-color: $communication-primary;
+    }
+    .view-more-link {
+      background-color: $communication-primary;
+    }
+    .view-less-link {
       background-color: $communication-primary;
     }
     .icon-triangle-up {
-      background-color: #d8d8d8;
       color: $communication-primary;
     }
   }

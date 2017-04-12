@@ -72,12 +72,16 @@
   }
 
   .leftNavSubContent .callout .view-more-expander {
-    background-color: $dodge-primary;
-    .icon-triangle-down {
+    .view-more {
+      background-color: $dodge-primary;
+    }
+    .view-more-link {
+      background-color: $dodge-primary;
+    }
+    .view-less-link {
       background-color: $dodge-primary;
     }
     .icon-triangle-up {
-      background-color: #d8d8d8;
       color: $dodge-primary;
     }
   }

@@ -256,15 +256,19 @@
     .photoCallouts .rollover{
          background-color: #002f7c;
     }
-
+    
     .leftNavSubContent .callout .view-more-expander {
-    background-color: #002f7c;
-    .icon-triangle-down {
-      background-color: #002f7c;
+        .view-more {
+            background-color: #002f7c;;
+        }
+        .view-more-link {
+            background-color: #002f7c;;
+        }
+        .view-less-link {
+            background-color: #002f7c;;
+        }
+        .icon-triangle-up {
+            color: #002f7c;;
+        }
     }
-    .icon-triangle-up {
-      background-color: #d8d8d8;
-      color: #002f7c;
-    }
-  }
 }

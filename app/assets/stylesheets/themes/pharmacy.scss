@@ -67,12 +67,16 @@
   }
 
   .leftNavSubContent .callout .view-more-expander {
-    background-color: $pharmacy-primary;
-    .icon-triangle-down {
+    .view-more {
+      background-color: $pharmacy-primary;
+    }
+    .view-more-link {
+      background-color: $pharmacy-primary;
+    }
+    .view-less-link {
       background-color: $pharmacy-primary;
     }
     .icon-triangle-up {
-      background-color: #d8d8d8;
       color: $pharmacy-primary;
     }
   }
