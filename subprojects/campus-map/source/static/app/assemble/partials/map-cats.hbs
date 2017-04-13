@@ -1,0 +1,17 @@
+<div id="virtualTour-categories" class="map-cats" data-partial="map-cats">
+
+	{{#each categories }}
+
+		<a class="virtualTour-category virtualTour-{{name}} virtualTour-categoryButton icon {{icon}}" href="#" title="{{{ title }}}">
+
+			{{{ title }}}
+
+			<span class="icon-toggle"></span>
+
+		</a>
+
+		{{> map-subcats}}
+
+	{{/each}}
+
+</div>
