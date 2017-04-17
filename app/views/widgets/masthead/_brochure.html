@@ -17,13 +17,17 @@
       <ul class="cd-hero-slider autoplay">
         <li class="selected" >
           <div class="background-video-wrapper">
-            <video id="background-video" class="background-video" autoplay loop poster="http://www.chapman.edu/_files/img/hero-panels/fallback-images/welcome-2015.jpg">
+            <video id="background-video" class="background-video" muted="muted" aria-label="Welcome to Chapman montage" autoplay loop poster="http://www.chapman.edu/_files/img/hero-panels/fallback-images/welcome-2015.jpg">
               <source src="http://www.chapman.edu/_files/img/hero-panels/html5-videos/welcome-2016.mp4" type="video/mp4">
             </video>
           </div>
         </li>
-        <li style="background-image: url(<%= image_url 'placeholder/chapman.jpg' %>)"></li>
-        <li style="background-image: url(<%= image_url 'placeholder/musco.jpg' %>)"></li>
+        <li>
+          <div class="background-image" role="img" aria-label="Memorial Lawn" style="background-image: url(<%= image_url 'placeholder/chapman.jpg' %>)"></div>
+        </li>
+        <li>
+          <div class="background-image" role="img" aria-label="Musco Center" style="background-image: url(<%= image_url 'placeholder/musco.jpg' %>)"></div>
+        </li>
       </ul>
     </div>
     <div class="gradient-overlay"></div>
