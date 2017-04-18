@@ -4,7 +4,13 @@
             <dropdown-item value="None"/>
             <dropdown-item value="Side panel hero" show-fields="masthead/sidePanelHero"/>
         </text>
-        <group identifier="sidePanelHero" label="Side panel hero">
+        <!-- (April 2017) Product owners request that only web coordinators be able to select new Brochure Masthead (temporarily) -->
+        <!-- This an ugly work around for selecting restricted mastheads.It can be removed when the type is available to all content creators -->
+        <text type="dropdown" identifier="privateMastheadTypes" label="Private Masthead Types" restrict-to-groups="Web Coordinators, Administrators" default="None" help-text="Mastheads only Web coordinators can select">
+            <dropdown-item value="None"/>
+            <dropdown-item value="Brochure Masthead" show-fields="masthead/brochureMasthead"/>
+        </text>
+        <group identifier="sidePanelHero" label="Side panel hero" collapsed="true">
             <group identifier="panel" label="Panel" collapsed="true">
                 <text identifier="title" label="Title"/>
                 <text identifier="subtitle" label="Subtitle"/>
@@ -69,6 +75,24 @@
                         <asset type="file" identifier="fileLink" label="File Link"/>
                         <text identifier="label" label="Label"/>
                     </group>
+                </group>
+            </group>
+        </group>
+        <group identifier="brochureMasthead" label="Brochure Masthead" restrict-to-groups="Web Coordinators, Administrators" collapsed="true">
+            <group identifier="headline" label="Headline" collapsed="true">
+                <text identifier="primary" label="Primary" required="true"/>
+                <text identifier="secondary" label="Secondary" help-text="Optional text displayed above primary text"/>
+            </group>
+            <group identifier="slides" label="Slides" collapsed="true">
+                <group identifier="slide" label="Slide" multiple="true" collapsed="true">
+                    <text type="radiobutton" identifier="type" label="Type" default="Image">
+                        <radio-item value="Image" show-fields="masthead/brochureMasthead/slides/slide/imageFile"/>
+                        <radio-item value="Video" show-fields="masthead/brochureMasthead/slides/slide/videoFile, masthead/brochureMasthead/slides/slide/fallbackImageFile"/>
+                    </text>
+                    <asset type="file" identifier="videoFile" label="Video File"/>
+                    <asset type="file" identifier="fallbackImageFile" label="Fallback Image File (Around 1600px by 1200px)"/>
+                    <asset type="file" identifier="imageFile" label="Image File (Around 1600px by 1200px)"/>
+                    <text identifier="alternateText" label="Alternate Text" required="true"/>
                 </group>
             </group>
         </group>
