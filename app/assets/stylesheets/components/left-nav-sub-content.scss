@@ -44,6 +44,15 @@
 						text-decoration: none;
 						border-bottom: none;
 					}
+					.icon {
+						display: inline-block;
+						color: $cu-red;
+						width: 1em;
+						height: 1em;
+						fill: currentColor;
+						padding: 0;
+					}	
+
 				}
 			}
 			.view-more-expander {
@@ -103,8 +112,7 @@
 					width:100%;
 					padding: 0;
 					font-size: 18px;
-					width:100%;
-					margin-bottom: -8px;
+					margin-bottom: -9px;
 				}
 			}			
 		} 	
@@ -189,7 +197,7 @@
 							margin-top: -12px;
 						}
 					}
-				}   
+				}
 
 			} // end redleftbutton
 		} // end editableContent
