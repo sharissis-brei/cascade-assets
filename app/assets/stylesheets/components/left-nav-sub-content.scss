@@ -21,7 +21,13 @@
 			background-color: #c1c1c1;
 		}
 
-		.contact-widget {				
+		.contact-widget {		
+			h3, h4 {
+				margin: 5px 0;
+				font-size: 14px;
+				font-weight: 600;
+				line-height: 16px;
+			}				
 			ul.left-social-icons {
 				background-color: transparent;
 				display: block;
