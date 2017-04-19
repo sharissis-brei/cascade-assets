@@ -146,8 +146,19 @@ chapman.virtualtour.MissionControl = (function ($, updateLocation, document, win
 				}
 			}, 1000);
 		// Find Attraction Detail/Marker
-		} else {
+		} else if (hash !== "") {
 			$.History.go(id);
+		// Default
+		} else {
+			if (_isDesktop()) {
+				setTimeout(function (e) {
+					if (!$('#virtualTour-mapBtn').hasClass('primary')) {
+						$('#virtualTour-mapBtn').trigger('click', function (e) {
+							chapman.virtualtour.VirtualTourPanel.switchPanels(e);
+						});
+					}
+				}, 1000);
+			}		
 		}
 
 	};
