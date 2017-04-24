@@ -76,7 +76,7 @@ namespace :build do
     # https://github.com/chapmanu/inside/blob/development/app/assets/stylesheets/inside.css.scss#L2
     #
     desc "Build OmniNav navbar assets and markup for Inside site."
-    task blogs: :environment do
+    task inside: :environment do
       # Params
       target = 'inside'
 
