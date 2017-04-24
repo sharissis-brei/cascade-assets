@@ -65,4 +65,19 @@
       background-color: $pharmacy-primary;
     }
   }
+
+  .leftNavSubContent .callout .view-more-expander {
+    .view-more {
+      background-color: $pharmacy-primary;
+    }
+    .view-more-link {
+      background-color: $pharmacy-primary;
+    }
+    .view-less-link {
+      background-color: $pharmacy-primary;
+    }
+    .icon-triangle-up {
+      color: $pharmacy-primary;
+    }
+  }
 }

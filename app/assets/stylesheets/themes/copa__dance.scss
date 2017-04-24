@@ -57,4 +57,19 @@
       background-color: $dance-primary;
     }
   }
+
+  .leftNavSubContent .callout .view-more-expander {
+    .view-more {
+      background-color: $dance-primary;
+    }
+    .view-more-link {
+      background-color: $dance-primary;
+    }
+    .view-less-link {
+      background-color: $dance-primary;
+    }
+    .icon-triangle-up {
+      color: $dance-primary;
+    }
+  }
 }

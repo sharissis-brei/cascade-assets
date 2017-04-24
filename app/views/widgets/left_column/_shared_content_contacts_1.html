@@ -1,57 +1,95 @@
-<!--- this version has the optional Individual Contacts at the bottom --->
+<!--- this version has the optional Individual Contacts at the bottom; had NO social icons --->
 <div class="callout-box-widget--left callout">
 	<div class="border"> </div>
     <h2>Contact Information</h2>
-    <div class="editableContent">
-        <p>Strategic Marketing &amp; Communication</p> 
+    
+    <div class="contact-widget">
+    	<div class="editableContent">
+            <h3>Strategic Marketing &amp; Communication</h3> 
+            
+            <p>Main:
+                <br/><a href="tel:7149976661">(714) 997-6661</a>
+                <br/><a href="mailto:smc@chapman.edu">smc@chapman.edu</a>
+            </p>
+            
+            <div>Hours:</div>
+            <!--- note the Hours field is a wysiwyg so don't know if they'll have P tag around it or not. Use div so not embedded P tags --->
+            <div><p>8 a.m. to 5 p.m.</p></div>
+                                
+            <h4>Location</h4>            
+            <p>633 West Palm
+               <br/>Suite 118A 
+               <br/>Orange, CA 92866
+            </p>
+    
+            <div class="more-content inactive">
+                <h4>Mailing Address</h4>
+                
+                <p>Strategic Marketing &amp; Communication
+                   <br/>Chapman University
+                   <br/>One University Drive 
+                   <br/>Orange, CA 92866
+                </p>
         
-        <p>Main:
-            <br/><a href="tel:7149976661">(714) 997-6661</a>
-            <br/><a href="mailto:smc@chapman.edu">smc@chapman.edu</a>
-        </p>
-        <p>Hours:
-                <br/>8 a.m. to 5 p.m.
-        </p>
-                            
-        <h3>Location</h3>
-        
-        <p>633 West Palm
-           <br/>Suite 118A 
-           <br/>Orange, CA 92866
-        </p>
-
-        <h3>Mailing Address</h3>
-        
-        <p>Strategic Marketing &amp; Communication
-           <br/>Chapman University
-           <br/>One University Drive 
-           <br/>Orange, CA 92866
-        </p>
-
-		<h3>Individual Contact(s)</h3> 
-        <p>
+                <h4>Individual Contact(s)</h4> 
+                <p>
                     Esther Choi
                     <br/>Account Manager
                     <br/><a href="tel:7149976582">(714) 997-6582</a> 
                     <br/><a href="mailto:echoi@chapman.edu">echoi@chapman.edu</a>                                  
-        </p>
-        <p>
+                </p>
+                <p>
                     Drew Farrington
                     <br/>Account Manager
                     <br/><a href="tel:7142893142">(714) 289-3142</a> 
                     <br/><a href="mailto:afarring@chapman.edu">afarring@chapman.edu</a>                                  
-        </p>
-        <p>
+                </p>
+                <p>
                     Carl Minor
                     <br/>Account Manager
                     <br/><a href="tel:7146287214">(714) 628-7214</a> 
                     <br/><a href="mailto:cminor@chapman.edu">cminor@chapman.edu</a>                                  
-        </p>
-        <p>
+                </p>
+                <p>
                     Gina Madson
                     <br/>Account Manager
                     <br/><a href="tel:7147447961">(714) 744-7961</a> 
                     <br/><a href="mailto:madson@chapman.edu">madson@chapman.edu</a>                                  
-        </p>
-	</div>
-</div>
+                </p>
+            </div>  
+    	
+        </div> <!-- end editableContent -->
+    	
+        <div class="view-more-expander"> 
+            <a class="view-more active">
+                <span class="icon icon-triangle-down">
+                	<svg style="position: absolute; width: 0; height: 0; overflow: hidden" version="1.1" xmlns="http://www.w3.org/2000/svg" xmlns:xlink="http://www.w3.org/1999/xlink">
+						<defs>
+							<symbol id="icon-triangle-down" viewBox="0 0 12 16">
+								<title>triangle-down</title>
+								<path d="M0,7l6,4l6-4C12,7,0,7,0,7z"></path>
+							</symbol>
+						</defs>
+					</svg>
+					<svg class="icon icon-triangle-down"><use xlink:href="#icon-triangle-down"></use></svg>
+                </span>
+                <div class="view-more-link">View More</div>
+            </a>
+            
+            <a class="view-less inactive">
+                <span class="icon icon-triangle-up">
+                	<svg style="position: absolute; width: 0; height: 0; overflow: hidden" version="1.1" xmlns="http://www.w3.org/2000/svg" xmlns:xlink="http://www.w3.org/1999/xlink">
+						<defs>
+						<symbol id="icon-triangle-up" viewBox="0 0 12 16">
+							<title>triangle-up</title>
+							<path d="M6,6l-6,4h12L6,6z"></path>
+						</symbol>
+						</defs>
+					</svg>
+					<svg class="icon icon-triangle-up"><use xlink:href="#icon-triangle-up"></use></svg>
+                </span>
+                <div class="view-less-link">View Less</div>
+            </a>
+        </div>
+	</div> <!-- end contact-widget -->
+</div> <!-- end callout-box-widget--left -->

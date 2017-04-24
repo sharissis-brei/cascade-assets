@@ -57,4 +57,19 @@
       background-color: $copa-primary;
     }
   }
+
+  .leftNavSubContent .callout .view-more-expander {
+    .view-more {
+      background-color: $copa-primary;
+    }
+    .view-more-link {
+      background-color: $copa-primary;
+    }
+    .view-less-link {
+      background-color: $copa-primary;
+    }
+    .icon-triangle-up {
+      color: $copa-primary;
+    }
+  }
 }
