@@ -70,4 +70,19 @@
       background-color: $scst-primary;
     }
   }
+
+  .leftNavSubContent .callout .view-more-expander {
+    .view-more {
+      background-color: $scst-primary;
+    }
+    .view-more-link {
+      background-color: $scst-primary;
+    }
+    .view-less-link {
+      background-color: $scst-primary;
+    }
+    .icon-triangle-up {
+      color: $scst-primary;
+    }
+  }
 }

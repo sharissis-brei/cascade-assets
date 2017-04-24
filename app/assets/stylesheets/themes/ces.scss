@@ -60,4 +60,19 @@
       background-color: $ces-primary;
     }
   }
+
+  .leftNavSubContent .callout .view-more-expander {
+    .view-more {
+      background-color: $ces-primary;
+    }
+    .view-more-link {
+      background-color: $ces-primary;
+    }
+    .view-less-link {
+      background-color: $ces-primary;
+    }
+    .icon-triangle-up {
+      color: $ces-primary;
+    }
+  }
 }
