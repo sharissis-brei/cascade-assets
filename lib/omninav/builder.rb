@@ -32,6 +32,8 @@ module Omninav
       # Set markup file name according to target. (Also validates target.)
       if @target == 'blogs'
         @markup_file = 'omni-nav.php'
+      elsif @target == 'inside'
+        @markup_file = 'omni-nav.html'
       elsif @target == 'static'
         @markup_file = 'omni-nav.html'
       else
@@ -132,6 +134,8 @@ NAVBAR_HTML
     def build_header
       if @target == 'blogs'
         header_for_blogs
+      elsif @target == 'inside'
+        header_for_inside
       else
         format('<!-- OmniNav Build Version: %s -->', build_version)
       end
@@ -150,6 +154,21 @@ if (is_user_logged_in()) {
 }
 ?>
 HEADER_PHP
+
+      params = {
+        version: build_version
+      }
+      format(template, params)
+    end
+
+    def header_for_inside
+      template = <<-HEADER_ERB
+<%
+# OmniNav Build Version: %<version>s
+#
+# See Cascade Assets for more information.
+%>
+HEADER_ERB
 
       params = {
         version: build_version
@@ -325,6 +344,8 @@ IDENTITY_BLOCK_PHP
     def build_login_form
       if @target == 'blogs'
         login_form_for_blogs
+      elsif @target == 'inside'
+        login_form_for_inside
       else
         '<!-- No login form for this site -->'
       end
@@ -369,6 +390,11 @@ IDENTITY_BLOCK_PHP
       </form>
     </div>
     <?php endif; ?>
+LOGIN_FORM
+    end
+
+    def login_form_for_inside
+      <<-LOGIN_FORM
 LOGIN_FORM
     end
 
