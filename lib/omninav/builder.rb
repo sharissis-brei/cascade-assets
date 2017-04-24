@@ -163,11 +163,11 @@ HEADER_PHP
 
     def header_for_inside
       template = <<-HEADER_ERB
-<%
+<%%
 # OmniNav Build Version: %<version>s
 #
 # See Cascade Assets for more information.
-%>
+%%>
 HEADER_ERB
 
       params = {
@@ -395,6 +395,30 @@ LOGIN_FORM
 
     def login_form_for_inside
       <<-LOGIN_FORM
+    <% if current_user %>
+    <div id="cu_logged_in" class="cu_dropdown_menu">
+        <?php echo get_avatar($current_user->user_email) ?>
+        <p class="label">Welcome</p>
+        <p class="cu_display_name boxfit"><%= "\#{current_user.first_name} \#{current_user.last_name}" %></p>
+        <%= link_to "Log Out", destroy_user_session_path, method: :delete, class: 'logout' %>
+    </div>
+
+    <% else %>
+    <div id="cu_login_form" class="cu_dropdown_menu">
+      <%= form_for(:user, :url => new_session_path(:user)) do |f| %>
+        <%= f.label :user_name, style: "display: none;"%>
+        <%= f.text_field :user_name, autofocus: true, class: 'username', placeholder: 'ChapmanU User ID' %>
+
+        <%= f.label :password, style: "display: none;" %>
+        <%= f.password_field :password, class: 'password', placeholder: 'Password' %>
+
+        <%= f.submit 'Sign in', class: 'submit-button' %>
+
+        <%= f.check_box :remember_me %>
+        <%= f.label :remember_me %>
+      <% end %>
+    </div>
+    <% end %>
 LOGIN_FORM
     end
 
