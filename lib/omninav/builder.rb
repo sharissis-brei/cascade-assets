@@ -52,6 +52,7 @@ module Omninav
     def build_html
       # To make updates, see methods below for individual sections.
       sections = {
+        target: @target,
         header: build_header,
         logo_html: build_logo,
         search_html: build_search,
@@ -118,7 +119,7 @@ module Omninav
 %<header>s
 
 <!-- OmniNav NavBar -->
-<div id="cu_nav" class="omninav-builder use-transitions">
+<div id="cu_nav" class="omninav-builder use-transitions %<target>s">
 
 %<logo_html>s
 %<search_html>s
@@ -301,6 +302,8 @@ LOGIN_HTML
     def build_identity_block
       if @target == 'blogs'
         identity_block_for_blogs
+      elsif @target == 'inside'
+        identity_block_for_inside
       else
         template = <<-IDENTITY_BLOCK_HTML
     <div id="cu_identity">
@@ -332,6 +335,25 @@ IDENTITY_BLOCK_HTML
             %<user_svg>s
             <span class="cu_name">Log In</span>
         <?php endif; ?>
+    </div>
+IDENTITY_BLOCK_PHP
+
+      params = {
+        user_svg: SvgImage.user_icon
+      }
+      format(template, params)
+    end
+
+    def identity_block_for_inside
+      template = <<-IDENTITY_BLOCK_PHP
+    <div id="cu_identity">
+      <%% if current_user %%>
+        <span class="circle-border">%<user_svg>s</span>
+        <span class="cu_name logged-in"><%%= current_user.first_name %%></span>
+      <%% else %%>
+        %<user_svg>s
+        <span class="cu_name">Log In</span>
+      <%% end %%>
     </div>
 IDENTITY_BLOCK_PHP
 

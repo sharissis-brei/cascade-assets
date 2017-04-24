@@ -1,12 +1,12 @@
 <%
-# OmniNav Build Version: 2.0.0.20170424.181348
+# OmniNav Build Version: 2.0.0.20170424.212934
 #
 # See Cascade Assets for more information.
 %>
 
 
 <!-- OmniNav NavBar -->
-<div id="cu_nav" class="omninav-builder use-transitions">
+<div id="cu_nav" class="omninav-builder use-transitions inside">
 
   <!-- Logo Block -->
   <a class="cu-logo" href="https://www.chapman.edu/" title="Chapman University Website Home Page">
@@ -109,10 +109,13 @@
 
   <div id="cu_login_container" class="cu_nav_menu">
         <div id="cu_identity">
-      <div id="omni-login">
+      <% if current_user %>
+        <span class="circle-border"><svg class="user svg-icon" viewbox="0 0 16 16"><path d="M4 5c0-2.209 1.791-4 4-4s4 1.791 4 4c0 2.209-1.791 4-4 4s-4-1.791-4-4zM12 10h-8c-2.209 0-4 1.791-4 4v1h16v-1c0-2.209-1.791-4-4-4z"></path></svg></span>
+        <span class="cu_name logged-in"><%= current_user.first_name %></span>
+      <% else %>
         <svg class="user svg-icon" viewbox="0 0 16 16"><path d="M4 5c0-2.209 1.791-4 4-4s4 1.791 4 4c0 2.209-1.791 4-4 4s-4-1.791-4-4zM12 10h-8c-2.209 0-4 1.791-4 4v1h16v-1c0-2.209-1.791-4-4-4z"></path></svg>
         <span class="cu_name">Log In</span>
-      </div>
+      <% end %>
     </div>
 
         <% if current_user %>

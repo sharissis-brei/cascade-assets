@@ -1094,6 +1094,18 @@ a.cu_nav_button {
             overflow: hidden;
             position: relative;
         }
+
+        // Except for with login
+    }
+}
+
+// Inside has its own special needs
+#cu_nav.omninav-builder.inside {
+    // Login Component
+    #cu_login_container #cu_identity {
+        span.cu_name.logged-in {
+            padding-top: 4px;
+        }
     }
 }
 
