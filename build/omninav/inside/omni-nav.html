@@ -117,7 +117,6 @@
 
         <% if current_user %>
     <div id="cu_logged_in" class="cu_dropdown_menu">
-        <?php echo get_avatar($current_user->user_email) ?>
         <p class="label">Welcome</p>
         <p class="cu_display_name boxfit"><%= "#{current_user.first_name} #{current_user.last_name}" %></p>
         <%= link_to "Log Out", destroy_user_session_path, method: :delete, class: 'logout' %>
