@@ -32,6 +32,8 @@ module Omninav
       # Set markup file name according to target. (Also validates target.)
       if @target == 'blogs'
         @markup_file = 'omni-nav.php'
+      elsif @target == 'inside'
+        @markup_file = 'omni-nav.html'
       elsif @target == 'static'
         @markup_file = 'omni-nav.html'
       else
@@ -50,6 +52,7 @@ module Omninav
     def build_html
       # To make updates, see methods below for individual sections.
       sections = {
+        target: @target,
         header: build_header,
         logo_html: build_logo,
         search_html: build_search,
@@ -116,7 +119,7 @@ module Omninav
 %<header>s
 
 <!-- OmniNav NavBar -->
-<div id="cu_nav" class="omninav-builder use-transitions">
+<div id="cu_nav" class="omninav-builder use-transitions %<target>s">
 
 %<logo_html>s
 %<search_html>s
@@ -132,6 +135,8 @@ NAVBAR_HTML
     def build_header
       if @target == 'blogs'
         header_for_blogs
+      elsif @target == 'inside'
+        header_for_inside
       else
         format('<!-- OmniNav Build Version: %s -->', build_version)
       end
@@ -150,6 +155,21 @@ if (is_user_logged_in()) {
 }
 ?>
 HEADER_PHP
+
+      params = {
+        version: build_version
+      }
+      format(template, params)
+    end
+
+    def header_for_inside
+      template = <<-HEADER_ERB
+<%%
+# OmniNav Build Version: %<version>s
+#
+# See Cascade Assets for more information.
+%%>
+HEADER_ERB
 
       params = {
         version: build_version
@@ -282,6 +302,8 @@ LOGIN_HTML
     def build_identity_block
       if @target == 'blogs'
         identity_block_for_blogs
+      elsif @target == 'inside'
+        identity_block_for_inside
       else
         template = <<-IDENTITY_BLOCK_HTML
     <div id="cu_identity">
@@ -322,9 +344,30 @@ IDENTITY_BLOCK_PHP
       format(template, params)
     end
 
+    def identity_block_for_inside
+      template = <<-IDENTITY_BLOCK_PHP
+    <div id="cu_identity">
+      <%% if current_user %%>
+        <span class="circle-border">%<user_svg>s</span>
+        <span class="cu_name logged-in"><%%= current_user.first_name %%></span>
+      <%% else %%>
+        %<user_svg>s
+        <span class="cu_name">Log In</span>
+      <%% end %%>
+    </div>
+IDENTITY_BLOCK_PHP
+
+      params = {
+        user_svg: SvgImage.user_icon
+      }
+      format(template, params)
+    end
+
     def build_login_form
       if @target == 'blogs'
         login_form_for_blogs
+      elsif @target == 'inside'
+        login_form_for_inside
       else
         '<!-- No login form for this site -->'
       end
@@ -369,6 +412,34 @@ IDENTITY_BLOCK_PHP
       </form>
     </div>
     <?php endif; ?>
+LOGIN_FORM
+    end
+
+    def login_form_for_inside
+      <<-LOGIN_FORM
+    <% if current_user %>
+    <div id="cu_logged_in" class="cu_dropdown_menu">
+        <p class="label">Welcome</p>
+        <p class="cu_display_name boxfit"><%= "\#{current_user.first_name} \#{current_user.last_name}" %></p>
+        <%= link_to "Log Out", destroy_user_session_path, method: :delete, class: 'logout' %>
+    </div>
+
+    <% else %>
+    <div id="cu_login_form" class="cu_dropdown_menu">
+      <%= form_for(:user, :url => new_session_path(:user)) do |f| %>
+        <%= f.label :user_name, style: "display: none;"%>
+        <%= f.text_field :user_name, autofocus: true, class: 'username', placeholder: 'ChapmanU User ID' %>
+
+        <%= f.label :password, style: "display: none;" %>
+        <%= f.password_field :password, class: 'password', placeholder: 'Password' %>
+
+        <%= f.submit 'Sign in', class: 'submit-button' %>
+
+        <%= f.check_box :remember_me %>
+        <%= f.label :remember_me %>
+      <% end %>
+    </div>
+    <% end %>
 LOGIN_FORM
     end
 
