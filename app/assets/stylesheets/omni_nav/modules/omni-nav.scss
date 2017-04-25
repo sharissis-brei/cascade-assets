@@ -1094,8 +1094,6 @@ a.cu_nav_button {
             overflow: hidden;
             position: relative;
         }
-
-        // Except for with login
     }
 }
 
@@ -1103,8 +1101,23 @@ a.cu_nav_button {
 #cu_nav.omninav-builder.inside {
     // Login Component
     #cu_login_container #cu_identity {
+        // Shrink right border so search trigger doesn't block user trigger.
+        padding: 18px 6px 18px 18px;
+
         span.cu_name.logged-in {
             padding-top: 4px;
+            display: none;
+        }
+
+        // Adjustments for medium+ (non-phone) screens. Mobile first!
+        @include bp(m) {
+            // More room for padding on right.
+            padding: 18px;
+
+            // Show user name on medium and larger devices (i.e. hide on phones).
+            span.cu_name.logged-in {
+                display: inline-block;
+            }
         }
     }
 }
