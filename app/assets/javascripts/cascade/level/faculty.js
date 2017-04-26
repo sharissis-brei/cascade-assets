@@ -86,7 +86,7 @@ $(function () {
                 case "/wilkinson/history/faculty-directory".toLowerCase():
                     return "HIST";
                 case "/crean/academic-programs/undergraduate-programs/bs-health-sciences/faculty".toLowerCase():
-                    return "HSCI";
+                    return "HSK";
                 case "/wilkinson/languages/faculty-directory".toLowerCase():
                     return "LANG";
                 case "/crean/academic-programs/graduate-programs/ma-marriage-family/faculty".toLowerCase():
@@ -95,6 +95,10 @@ $(function () {
                     return "PAS";
                 case "/crean/academic-programs/graduate-programs/physical-therapy/faculty".toLowerCase():
                     return "PHYS";
+				case "/crean/academic-programs/graduate-programs/ms-communication-sciences-and-disorders/faculty".toLowerCase():
+                    return "CSD";
+				case "/crean/academic-programs/graduate-programs/ms-athletic-training/faculty".toLowerCase():
+                    return "ATPE";	
                 case "/crean/academic-programs/undergraduate-programs/ba-psychology/faculty".toLowerCase():
                     return "PSYC";
                 case "/crean/academic-programs/undergraduate-programs/bs-kinesiology/faculty".toLowerCase():
