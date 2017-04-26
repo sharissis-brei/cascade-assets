@@ -1,5 +1,5 @@
 $(function () {
-    // NOTE: this script is for the school or dept specific faculty listing pages 
+    // NOTE: this script is for the school or dept-specific faculty listing pages 
 	// eg /copa/faculty-directory.aspx, NOT /our-faculty/index.aspx
 	// this is from level/js/faculty.js in Cascade
 	
