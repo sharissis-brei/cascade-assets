@@ -109,6 +109,11 @@
                     <asset type="file" identifier="videoFile" label="Video File (.mp4 no larger than 10mb)"/>
                     <asset type="file" identifier="fallbackImageFile" label="Fallback Image File (Around 1600px by 1200px)"/>
                     <asset type="file" identifier="imageFile" label="Image File (Around 1600px by 1200px)"/>
+                    <text type="radiobutton" identifier="alignY" label="Image Align" default="Center">
+                        <radio-item value="Top"/>
+                        <radio-item value="Center"/>
+                        <radio-item value="Bottom"/>
+                    </text>
                     <text identifier="alternateText" label="Alternate Text" required="true"/>
                 </group>
             </group>
