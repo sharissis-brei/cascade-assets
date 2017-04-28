@@ -1,8 +1,13 @@
 <system-data-structure>
     <group identifier="masthead" label="Masthead" collapsed="true">
-        <!-- Web coordinators want the ability to restrict mastheads to specific page types (corresponding to cascade 'groups'). Web coordinators have access to all mastheads -->
-        <!-- (April 2017) School and brochure groups do not exist yet. Until the new brochure layout is complete, users(except for web coordinators) are assumed to be in the "Schools and Colleges" group
-    and can only select the side panel hero -->
+        <!--
+            Web coordinators want the ability to restrict mastheads to specific page types
+            (corresponding to cascade 'groups'). Web coordinators have access to all mastheads.
+
+            (April 2017) School and brochure groups do not exist yet. Until the new brochure
+            layout is complete, users (except for web coordinators) are assumed to be in the
+            "Schools and Colleges" group and can only select the side panel hero.
+         -->
         <text type="radiobutton" identifier="userGroup" label="For" default="Schools and Colleges">
             <radio-item value="Schools and Colleges" show-fields="masthead/schoolMastheadTypes"/>
             <radio-item value="Brochure" show-fields="masthead/brochureMastheadTypes"/>
@@ -15,12 +20,12 @@
         <!-- (April 2017) Product owners request that only web coordinators be able to select the new Brochure Masthead (temporarily) -->
         <text type="dropdown" identifier="brochureMastheadTypes" label="Type of Masthead" default="None" restrict-to-groups="Web-Coordinators, Administrators" help-text="Choose which masthead you would like on your page.">
             <dropdown-item value="None"/>
-            <dropdown-item value="Brochure Masthead" show-fields="masthead/brochureMasthead"/>
+            <dropdown-item value="Brochure Page Masthead" show-fields="masthead/brochureMasthead"/>
         </text>
         <text type="dropdown" identifier="allMastheadTypes" label="Type of Masthead" default="None" restrict-to-groups="Web-Coordinators, Administrators" help-text="Choose which masthead you would like on your page.">
             <dropdown-item value="None"/>
             <dropdown-item value="Side panel hero" show-fields="masthead/sidePanelHero"/>
-            <dropdown-item value="Brochure Masthead" show-fields="masthead/brochureMasthead"/>
+            <dropdown-item value="Brochure Page Masthead" show-fields="masthead/brochureMasthead"/>
         </text>
         <group identifier="sidePanelHero" label="Side panel hero" collapsed="true">
             <group identifier="panel" label="Panel" collapsed="true">
@@ -61,7 +66,7 @@
                         <radio-item value="Image" show-fields="masthead/sidePanelHero/featuredContent/featuredBackgroundMedia/imageFile, masthead/sidePanelHero/featuredContent/featuredBackgroundMedia/alignY"/>
                         <radio-item value="Video" show-fields="masthead/sidePanelHero/featuredContent/featuredBackgroundMedia/videoFile, masthead/sidePanelHero/featuredContent/featuredBackgroundMedia/fallbackImageFile"/>
                     </text>
-                    <asset type="file" identifier="videoFile" label="Video File"/>
+                    <asset type="file" identifier="videoFile" label="Video File (.mp4 no larger than 10mb)"/>
                     <asset type="file" identifier="fallbackImageFile" label="Fallback Image File (Around 1600px by 1200px)"/>
                     <asset type="file" identifier="imageFile" label="Image File (Around 1600px by 1200px)"/>
                     <text type="radiobutton" identifier="alignY" label="Image Align" default="Bottom">
@@ -90,7 +95,7 @@
                 </group>
             </group>
         </group>
-        <group identifier="brochureMasthead" label="Brochure Masthead" restrict-to-groups="Web-Coordinators, Administrators" collapsed="true">
+        <group identifier="brochureMasthead" label="Brochure Page Masthead" restrict-to-groups="Web-Coordinators, Administrators" collapsed="true">
             <group identifier="headline" label="Headline" collapsed="true">
                 <text identifier="primary" label="Primary" required="true"/>
                 <text identifier="secondary" label="Secondary" help-text="Optional text displayed above primary text"/>
@@ -101,9 +106,14 @@
                         <radio-item value="Image" show-fields="masthead/brochureMasthead/slides/slide/imageFile"/>
                         <radio-item value="Video" show-fields="masthead/brochureMasthead/slides/slide/videoFile, masthead/brochureMasthead/slides/slide/fallbackImageFile"/>
                     </text>
-                    <asset type="file" identifier="videoFile" label="Video File"/>
+                    <asset type="file" identifier="videoFile" label="Video File (.mp4 no larger than 10mb)"/>
                     <asset type="file" identifier="fallbackImageFile" label="Fallback Image File (Around 1600px by 1200px)"/>
                     <asset type="file" identifier="imageFile" label="Image File (Around 1600px by 1200px)"/>
+                    <text type="radiobutton" identifier="alignY" label="Image Align" default="Center">
+                        <radio-item value="Top"/>
+                        <radio-item value="Center"/>
+                        <radio-item value="Bottom"/>
+                    </text>
                     <text identifier="alternateText" label="Alternate Text" required="true"/>
                 </group>
             </group>
