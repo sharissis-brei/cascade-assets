@@ -166,7 +166,7 @@ html, body { margin:0; padding: 0;}
 
     div.cu_nav_menu {
         min-height: $cu-nav-height;
-        z-index: 99999;
+        z-index: 99090;
 
         div.cu_dropdown_menu {
             max-height: 0px;
@@ -176,7 +176,7 @@ html, body { margin:0; padding: 0;}
 
 
         &.expanded {
-
+            z-index: 99999;
             div.cu_dropdown_menu {
                 max-height: 200px;
                 padding: 20px;
@@ -492,6 +492,7 @@ a.cu_nav_button {
         position: absolute;
         left: 0;
         font-size: 18px;
+
 
         @include bp(m) {
             left: auto;
