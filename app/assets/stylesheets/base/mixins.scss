@@ -159,18 +159,11 @@
 @mixin content_label() {
 	margin-bottom: 0px;
 	font-family: $font-stack-heading;
-	font-size: 20px;
-	line-height: 26px;
-	font-weight: 300;
-
-	@include media($medium-screen) {
-		font-size: 22px;
-		line-height: 22px;
-	}
-
-	@include media($large-screen) {
-		font-size: 24px;
-	}
+	font-size: 18px;
+	line-height: 10px;
+	font-weight: 800;
+	color: $color-medium-gray;
+	text-transform: uppercase;
 }
 
 //Paragraphs
