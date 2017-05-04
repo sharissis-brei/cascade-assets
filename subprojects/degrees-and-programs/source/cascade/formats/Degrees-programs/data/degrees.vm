@@ -3,7 +3,7 @@
     Author:        BarkleyREI
     Created:       02/13/2017
     Modified By:   Sean T. Stacho
-    Last Modified: 03/14/2017
+    Last Modified: 03/22/2017
 *#
 
 ## Trim white space
@@ -17,7 +17,7 @@ ${output.replaceAll( $trimSpacingRegExp, "" )}
     ## Array Macro
     #macro ( generateArray $arr, $items )
         #foreach ( $item in $items )
-			#if ( $item != "" )
+    		#if ( $item != "" )
 				#set ( $tmp = '"' + $_EscapeTool.xml( $item ).replace( "&amp;", "&" ) + '"' )
 				#set ( $dead = $arr.add( $tmp ) )
 			#end
@@ -153,11 +153,8 @@ ${output.replaceAll( $trimSpacingRegExp, "" )}
 
 						## Remove White-Space
 						#set ( $whitespace = $doubleQuotes.replace( "&#160;", "" ).replace( "&nbsp;", "" ) )
-
-						## Truncate Text - 150 characters
-						#set ( $truncate = $_DisplayTool.truncate( $whitespace, 200, "...", true ) )
-
-						#set ( $props.desc = $truncate )
+                        
+						#set ( $props.desc = $whitespace )
                     
                     #else
 						#set ( $props.desc = "" )

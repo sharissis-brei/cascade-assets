@@ -61,25 +61,25 @@
 			"category": "innovating",
 			"title": "Innovating Interest A",
 			"id": "innovating-interest-a",
-			"icon": ""
+			"icon": "briefcase"
 		},
 		{
 			"category": "innovating",
 			"title": "Innovating Interest B",
 			"id": "innovating-interest-b",
-			"icon": ""
+			"icon": "science"
 		},
 		{
 			"category": "innovating",
 			"title": "Innovating Interest C",
 			"id": "innovating-interest-c",
-			"icon": ""
+			"icon": "book"
 		},
 		{
 			"category": "innovating",
 			"title": "Innovating Interest D",
 			"id": "innovating-interest-d",
-			"icon": ""
+			"icon": "brain"
 		},
 		{
 			"category": "expressing",
@@ -95,87 +95,87 @@
 		},
 		{
 			"category": "expressing",
+			"title": "Performing Arts",
+			"id": "performing-arts",
+			"icon": "stage"
+		},		
+		{
+			"category": "expressing",
 			"title": "Visual &amp; Studio Arts",
 			"id": "visual-studio-arts",
 			"icon": "palette"
 		},
 		{
-			"category": "expressing",
-			"title": "Performing Arts",
-			"id": "performing-arts",
-			"icon": "drama"
-		},
-		{
 			"category": "helping",
 			"title": "Helping Interest A",
 			"id": "helping-interest-a",
-			"icon": ""
+			"icon": "health-care"
 		},
 		{
 			"category": "helping",
 			"title": "Helping Interest B",
 			"id": "helping-interest-b",
-			"icon": ""
+			"icon": "science"
 		},
 		{
 			"category": "helping",
 			"title": "Helping Interest C",
 			"id": "helping-interest-c",
-			"icon": ""
+			"icon": "education"
 		},
 		{
 			"category": "helping",
 			"title": "Helping Interest D",
 			"id": "helping-interest-d",
-			"icon": ""
+			"icon": "handshake"
 		},
 		{
 			"category": "experiencing",
 			"title": "Experiencing Interest A",
 			"id": "experiencing-interest-a",
-			"icon": ""
+			"icon": "global"
 		},
 		{
 			"category": "experiencing",
 			"title": "Experiencing Interest B",
 			"id": "experiencing-interest-b",
-			"icon": ""
+			"icon": "film-reel"
 		},
 		{
 			"category": "experiencing",
 			"title": "Experiencing Interest C",
 			"id": "experiencing-interest-c",
-			"icon": ""
+			"icon": "microscope"
 		},
 		{
 			"category": "experiencing",
 			"title": "Experiencing Interest D",
 			"id": "experiencing-interest-d",
-			"icon": ""
+			"icon": "sociology"
 		},
 		{
 			"category": "making",
 			"title": "Making Interest A",
 			"id": "making-interest-a",
-			"icon": ""
+			"icon": "marketing-campaign"
 		},
 		{
 			"category": "making",
 			"title": "Making Interest B",
 			"id": "making-interest-b",
-			"icon": ""
+			"icon": "team"
 		},
 		{
 			"category": "making",
 			"title": "Making Interest C",
 			"id": "making-interest-c",
-			"icon": ""
+			"icon": "mind-map"
 		},
 		{
 			"category": "making",
 			"title": "Making Interest D",
 			"id": "making-interest-d",
-			"icon": ""
+			"icon": "digital"
 		}
 	],
 	"schools": [
@@ -233,7 +233,7 @@
 				"title": ["4+1", "Testing"],
 				"type": ["4+1 and bridge", "major"]
 			},
-			"desc": "Short program description lorem ipsum dolor sit amet, consectetur adipisicing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua. Ut enim ad minim veniam, quis nostrud exercitation ullamco laboris nisi ut aliquip.",
+			"desc": "Short program description lorem ipsum dolor sit amet, consectetur adipisicing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua. Ut enim ad minim veniam, quis nostrud exercitation ullamco laboris nisi ut aliquip. Short program description lorem ipsum dolor sit amet, consectetur adipisicing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua. Ut enim ad minim veniam, quis nostrud exercitation ullamco laboris nisi ut aliquip.",
 			"motivations": ["innovating", "expressing", "helping", "experiencing", "making"],
 			"interests": ["innovating-interest-d", "writing", "helping-interest-d", "experiencing-interest-d", "making-interest-d"],
 			"schools": ["ces"],
@@ -254,7 +254,7 @@
 				"title": ["B.S."],
 				"type": ["major"]
 			},
-			"desc": "Short program description lorem ipsum dolor sit amet, consectetur adipisicing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua. Ut enim ad minim veniam, quis nostrud exercitation ullamco laboris nisi ut aliquip.",
+			"desc": "Short program description lorem ipsum dolor sit amet, consectetur adipisicing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua. Ut enim ad minim veniam, quis nostrud exercitation ullamco laboris nisi ut aliquip. Short program description lorem ipsum dolor sit amet, consectetur adipisicing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua. Ut enim ad minim veniam, quis nostrud exercitation ullamco laboris nisi ut aliquip.",
 			"motivations": ["innovating", "helping", "making"],
 			"interests": ["innovating-interest-a", "helping-interest-b", "making-interest-c"],
 			"schools": ["business"],
@@ -275,7 +275,7 @@
 				"title": ["Minor"],
 				"type": ["minor"]
 			},
-			"desc": "Short program description lorem ipsum dolor sit amet, consectetur adipisicing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua. Ut enim ad minim veniam, quis nostrud exercitation ullamco laboris nisi ut aliquip.",
+			"desc": "Short program description lorem ipsum dolor sit amet, consectetur adipisicing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua. Ut enim ad minim veniam, quis nostrud exercitation ullamco laboris nisi ut aliquip. Short program description lorem ipsum dolor sit amet, consectetur adipisicing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua. Ut enim ad minim veniam, quis nostrud exercitation ullamco laboris nisi ut aliquip.",
 			"motivations": ["innovating", "expressing", "experiencing"],
 			"interests": ["innovating-interest-d", "visual-studio-arts", "experiencing-interest-c"],
 			"schools": ["dodge"],
@@ -296,7 +296,7 @@
 				"title": ["Minor"],
 				"type": ["minor"]
 			},
-			"desc": "Short program description lorem ipsum dolor sit amet, consectetur adipisicing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua. Ut enim ad minim veniam, quis nostrud exercitation ullamco laboris nisi ut aliquip.",
+			"desc": "Short program description lorem ipsum dolor sit amet, consectetur adipisicing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua. Ut enim ad minim veniam, quis nostrud exercitation ullamco laboris nisi ut aliquip. Short program description lorem ipsum dolor sit amet, consectetur adipisicing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua. Ut enim ad minim veniam, quis nostrud exercitation ullamco laboris nisi ut aliquip.",
 			"motivations": ["innovating", "helping", "experiencing"],
 			"interests": ["innovating-interest-c", "helping-interest-b", "experiencing-interest-c"],
 			"schools": ["wilkinson"],
@@ -317,7 +317,7 @@
 				"title": ["B.F.A."],
 				"type": ["major"]
 			},
-			"desc": "Short program description lorem ipsum dolor sit amet, consectetur adipisicing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua. Ut enim ad minim veniam, quis nostrud exercitation ullamco laboris nisi ut aliquip.",
+			"desc": "Short program description lorem ipsum dolor sit amet, consectetur adipisicing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua. Ut enim ad minim veniam, quis nostrud exercitation ullamco laboris nisi ut aliquip. Short program description lorem ipsum dolor sit amet, consectetur adipisicing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua. Ut enim ad minim veniam, quis nostrud exercitation ullamco laboris nisi ut aliquip.",
 			"motivations": ["expressing", "experiencing"],
 			"interests": ["visual-studio-arts", "experiencing-interest-d"],
 			"schools": ["dodge"],
@@ -338,7 +338,7 @@
 				"title": ["B.S."],
 				"type": ["major"]
 			},
-			"desc": "Short program description lorem ipsum dolor sit amet, consectetur adipisicing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua. Ut enim ad minim veniam, quis nostrud exercitation ullamco laboris nisi ut aliquip.",
+			"desc": "Short program description lorem ipsum dolor sit amet, consectetur adipisicing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua. Ut enim ad minim veniam, quis nostrud exercitation ullamco laboris nisi ut aliquip. Short program description lorem ipsum dolor sit amet, consectetur adipisicing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua. Ut enim ad minim veniam, quis nostrud exercitation ullamco laboris nisi ut aliquip.",
 			"motivations": ["innovating", "helping"],
 			"interests": ["innovating-interest-b", "helping-interest-a"],
 			"schools": ["scst"],
@@ -359,7 +359,7 @@
 				"title": ["4+1"],
 				"type": ["4+1 and bridge"]
 			},
-			"desc": "Short program description lorem ipsum dolor sit amet, consectetur adipisicing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua. Ut enim ad minim veniam, quis nostrud exercitation ullamco laboris nisi ut aliquip.",
+			"desc": "Short program description lorem ipsum dolor sit amet, consectetur adipisicing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua. Ut enim ad minim veniam, quis nostrud exercitation ullamco laboris nisi ut aliquip. Short program description lorem ipsum dolor sit amet, consectetur adipisicing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua. Ut enim ad minim veniam, quis nostrud exercitation ullamco laboris nisi ut aliquip.",
 			"motivations": ["innovating", "helping", "making"],
 			"interests": ["innovating-interest-a", "helping-interest-a", "making-interest-b"],
 			"schools": ["scst"],
@@ -380,7 +380,7 @@
 				"title": ["B.F.A."],
 				"type": ["major"]
 			},
-			"desc": "Short program description lorem ipsum dolor sit amet, consectetur adipisicing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua. Ut enim ad minim veniam, quis nostrud exercitation ullamco laboris nisi ut aliquip.",
+			"desc": "Short program description lorem ipsum dolor sit amet, consectetur adipisicing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua. Ut enim ad minim veniam, quis nostrud exercitation ullamco laboris nisi ut aliquip. Short program description lorem ipsum dolor sit amet, consectetur adipisicing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua. Ut enim ad minim veniam, quis nostrud exercitation ullamco laboris nisi ut aliquip.",
 			"motivations": ["expressing", "experiencing"],
 			"interests": ["performing-arts", "experiencing-interest-b"],
 			"schools": ["copa"],
@@ -401,7 +401,7 @@
 				"title": ["Major"],
 				"type": ["major"]
 			},
-			"desc": "Short program description lorem ipsum dolor sit amet, consectetur adipisicing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua. Ut enim ad minim veniam, quis nostrud exercitation ullamco laboris nisi ut aliquip.",
+			"desc": "Short program description lorem ipsum dolor sit amet, consectetur adipisicing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua. Ut enim ad minim veniam, quis nostrud exercitation ullamco laboris nisi ut aliquip. Short program description lorem ipsum dolor sit amet, consectetur adipisicing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua. Ut enim ad minim veniam, quis nostrud exercitation ullamco laboris nisi ut aliquip.",
 			"motivations": [],
 			"interests": [],
 			"schools": [],
@@ -422,7 +422,7 @@
 				"title": ["PhD"],
 				"type": ["doctorate"]
 			},
-			"desc": "Short program description lorem ipsum dolor sit amet, consectetur adipisicing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua. Ut enim ad minim veniam, quis nostrud exercitation ullamco laboris nisi ut aliquip.",
+			"desc": "Short program description lorem ipsum dolor sit amet, consectetur adipisicing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua. Ut enim ad minim veniam, quis nostrud exercitation ullamco laboris nisi ut aliquip. Short program description lorem ipsum dolor sit amet, consectetur adipisicing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua. Ut enim ad minim veniam, quis nostrud exercitation ullamco laboris nisi ut aliquip.",
 			"motivations": ["innovating", "expressing", "making"],
 			"interests": ["innovating-interest-a", "writing", "making-interest-b"],
 			"schools": ["scst"],
@@ -443,7 +443,7 @@
 				"title": ["M.S."],
 				"type": ["masters"]
 			},
-			"desc": "Short program description lorem ipsum dolor sit amet, consectetur adipisicing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua. Ut enim ad minim veniam, quis nostrud exercitation ullamco laboris nisi ut aliquip.",
+			"desc": "Short program description lorem ipsum dolor sit amet, consectetur adipisicing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua. Ut enim ad minim veniam, quis nostrud exercitation ullamco laboris nisi ut aliquip. Short program description lorem ipsum dolor sit amet, consectetur adipisicing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua. Ut enim ad minim veniam, quis nostrud exercitation ullamco laboris nisi ut aliquip.",
 			"motivations": ["innovating", "helping", "making"],
 			"interests": ["innovating-interest-a", "helping-interest-b", "making-interest-c"],
 			"schools": ["business"],
@@ -464,7 +464,7 @@
 				"title": ["Minor"],
 				"type": ["minor"]
 			},
-			"desc": "Short program description lorem ipsum dolor sit amet, consectetur adipisicing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua. Ut enim ad minim veniam, quis nostrud exercitation ullamco laboris nisi ut aliquip.",
+			"desc": "Short program description lorem ipsum dolor sit amet, consectetur adipisicing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua. Ut enim ad minim veniam, quis nostrud exercitation ullamco laboris nisi ut aliquip. Short program description lorem ipsum dolor sit amet, consectetur adipisicing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua. Ut enim ad minim veniam, quis nostrud exercitation ullamco laboris nisi ut aliquip.",
 			"motivations": ["expressing", "experiencing"],
 			"interests": ["performing-arts", "experiencing-interest-b"],
 			"schools": ["copa"],
@@ -485,7 +485,7 @@
 				"title": ["M.F.A."],
 				"type": ["masters"]
 			},
-			"desc": "Short program description lorem ipsum dolor sit amet, consectetur adipisicing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua. Ut enim ad minim veniam, quis nostrud exercitation ullamco laboris nisi ut aliquip.",
+			"desc": "Short program description lorem ipsum dolor sit amet, consectetur adipisicing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua. Ut enim ad minim veniam, quis nostrud exercitation ullamco laboris nisi ut aliquip. Short program description lorem ipsum dolor sit amet, consectetur adipisicing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua. Ut enim ad minim veniam, quis nostrud exercitation ullamco laboris nisi ut aliquip.",
 			"motivations": ["innovating", "expressing", "helping", "experiencing"],
 			"interests": ["innovating-interest-c", "movies-television", "helping-interest-c", "experiencing-interest-c"],
 			"schools": ["dodge"],
@@ -506,7 +506,7 @@
 				"title": ["4+1"],
 				"type": ["4+1 and bridge"]
 			},
-			"desc": "Short program description lorem ipsum dolor sit amet, consectetur adipisicing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua. Ut enim ad minim veniam, quis nostrud exercitation ullamco laboris nisi ut aliquip.",
+			"desc": "Short program description lorem ipsum dolor sit amet, consectetur adipisicing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua. Ut enim ad minim veniam, quis nostrud exercitation ullamco laboris nisi ut aliquip. Short program description lorem ipsum dolor sit amet, consectetur adipisicing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua. Ut enim ad minim veniam, quis nostrud exercitation ullamco laboris nisi ut aliquip.",
 			"motivations": ["innovating", "making"],
 			"interests": ["innovating-interest-a", "making-interest-a"],
 			"schools": ["business"],
@@ -527,7 +527,7 @@
 				"title": ["M.A."],
 				"type": ["masters"]
 			},
-			"desc": "Short program description lorem ipsum dolor sit amet, consectetur adipisicing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua. Ut enim ad minim veniam, quis nostrud exercitation ullamco laboris nisi ut aliquip.",
+			"desc": "Short program description lorem ipsum dolor sit amet, consectetur adipisicing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua. Ut enim ad minim veniam, quis nostrud exercitation ullamco laboris nisi ut aliquip. Short program description lorem ipsum dolor sit amet, consectetur adipisicing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua. Ut enim ad minim veniam, quis nostrud exercitation ullamco laboris nisi ut aliquip.",
 			"motivations": ["helping", "experiencing"],
 			"interests": ["helping-interest-b", "experiencing-interest-b"],
 			"schools": ["wilkinson"],
@@ -548,7 +548,7 @@
 				"title": ["M.A."],
 				"type": ["masters"]
 			},
-			"desc": "Short program description lorem ipsum dolor sit amet, consectetur adipisicing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua. Ut enim ad minim veniam, quis nostrud exercitation ullamco laboris nisi ut aliquip.",
+			"desc": "Short program description lorem ipsum dolor sit amet, consectetur adipisicing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua. Ut enim ad minim veniam, quis nostrud exercitation ullamco laboris nisi ut aliquip. Short program description lorem ipsum dolor sit amet, consectetur adipisicing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua. Ut enim ad minim veniam, quis nostrud exercitation ullamco laboris nisi ut aliquip.",
 			"motivations": ["helping"],
 			"interests": ["helping-interest-d", "helping-interest-b"],
 			"schools": ["wilkinson"],
@@ -569,7 +569,7 @@
 				"title": ["Minor"],
 				"type": ["minor"]
 			},
-			"desc": "Short program description lorem ipsum dolor sit amet, consectetur adipisicing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua. Ut enim ad minim veniam, quis nostrud exercitation ullamco laboris nisi ut aliquip.",
+			"desc": "Short program description lorem ipsum dolor sit amet, consectetur adipisicing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua. Ut enim ad minim veniam, quis nostrud exercitation ullamco laboris nisi ut aliquip. Short program description lorem ipsum dolor sit amet, consectetur adipisicing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua. Ut enim ad minim veniam, quis nostrud exercitation ullamco laboris nisi ut aliquip.",
 			"motivations": ["expressing", "experiencing"],
 			"interests": ["visual-studio-arts", "experiencing-interest-d"],
 			"schools": ["dodge"],
@@ -586,7 +586,7 @@
 				"alt": "Image alt goes here"
 			},
 			"href": "#",
-			"desc": "Short program description lorem ipsum dolor sit amet, consectetur adipisicing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua. Ut enim ad minim veniam, quis nostrud exercitation ullamco laboris nisi ut aliquip."
+			"desc": "Short program description lorem ipsum dolor sit amet, consectetur adipisicing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua. Ut enim ad minim veniam, quis nostrud exercitation ullamco laboris nisi ut aliquip. Short program description lorem ipsum dolor sit amet, consectetur adipisicing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua. Ut enim ad minim veniam, quis nostrud exercitation ullamco laboris nisi ut aliquip."
 		}
 	]
 }

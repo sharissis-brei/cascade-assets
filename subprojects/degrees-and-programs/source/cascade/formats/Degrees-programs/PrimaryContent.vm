@@ -3,7 +3,7 @@
     Author:        BarkleyREI
     Created:       02/13/2017
     Modified By:   Sean Stacho
-    Last Modified: 03/15/2017
+    Last Modified: 05/03/2017
 *#
 
 ## Data (JSON)
@@ -32,7 +32,7 @@
 
         #foreach ( $program in $programs )
 
-        	## Locate Block
+            ## Locate Block
 			#set ( $path = $program.getChild("path").value )
 			#set ( $site = $program.getChild("site").value )
 			#set ( $programObject = $_.locateBlock( $path, $site ) )
@@ -87,10 +87,7 @@
 				## Remove White-Space
 				#set ( $whitespace = $stripTags.replace( "&#160;", "" ).replace( "&nbsp;", "" ) )
 
-				## Truncate Text - 150 characters
-				#set ( $truncate = $_DisplayTool.truncate( $whitespace, 200, "...", true ) )
-
-				#set ( $description = $truncate )
+				#set ( $description = $whitespace )
 
 			#end
 
@@ -110,9 +107,9 @@
 			<article class="result columns small-12 clearfix">
 
 				#if ( $_PropertyTool.isNull( $imgSrc.asset ) == false )
-					<div class="image" aria-role="image" style="background-image: url(${img.src});" aria-label="${img.alt}">
+					<div class="image" role="img" style="background-image: url('${img.src}');" aria-label="${img.alt}">
 				#else
-					<div class="image" aria-role="image">
+					<div class="image">
 				#end
 					<div class="active-content">
 						<div class="active-content-inner">
@@ -272,13 +269,15 @@
 
 										#foreach ( $motivation in $motivations )
 
+											#set ( $rand = $_MathTool.floor( $_MathTool.mul( $_MathTool.getRandom(), 10000 ) ) )
+
 											#set ( $title = $_XPathTool.selectSingleNode( $motivation, "title" ) )
 											#set ( $value = $_DisplayTool.stripTags( $title.value ) )
 											#set ( $suffix = $_DisplayTool.stripTags( $title.value ).replace( "&amp;", "and" ).replace( " ", "-" ).toLowerCase() )
 
 											<li class="motivation" data-motivation="${_EscapeTool.xml( $value )}">
-												<label for="dap-discover-motivation-${suffix}">
-													<input id="dap-discover-motivation-${suffix}" name="dap-discover-motivation" type="radio" value="${_EscapeTool.xml( $value )}" />
+												<label for="dap-discover-motivation-${rand}-${suffix}">
+													<input id="dap-discover-motivation-${rand}-${suffix}" name="dap-discover-motivation" type="radio" value="${_EscapeTool.xml( $value )}" />
 													<span class="title">
 														$_SerializerTool.serialize( $title, true )
 														<span class="active-indicator">
@@ -314,13 +313,15 @@
 
 									#foreach ( $interest in $interests )
 
+										#set ( $rand = $_MathTool.floor( $_MathTool.mul( $_MathTool.getRandom(), 10000 ) ) )
+
 										#set ( $iconClass = $_XPathTool.selectSingleNode( $interest, "icon" ).value.replace( " ", "-" ).toLowerCase() )
 										#set ( $title = $_XPathTool.selectSingleNode( $interest, "title" ) )
 										#set ( $suffix = $_EscapeTool.xml( $title.value ).replace( "&amp;", "and" ).replace( " ", "-" ).toLowerCase() )
 
 										<div class="interest columns small-6 medium-3" data-category="${_EscapeTool.xml( $category )}" data-interest="${_EscapeTool.xml( $title.value )}">
-											<label for="dap-discover-interest-${suffix}">
-												<input id="dap-discover-interest-${suffix}" name="dap-discover-interest" type="radio" value="${_EscapeTool.xml( $title.value )}" />
+											<label for="dap-discover-interest-${rand}-${suffix}">
+												<input id="dap-discover-interest-${rand}-${suffix}" name="dap-discover-interest" type="radio" value="${_EscapeTool.xml( $title.value )}" />
 												<div class="svg-container">
 													#svg( "icon-${iconClass}" )
 												</div>
@@ -540,7 +541,7 @@
 
 						</div>
 
-						<div id="js-dap-graduate-filter-types" class="filter-types">
+						<div id="js-dap-undergraduate-filter-types" class="filter-types">
 
 							<div class="row">
 
