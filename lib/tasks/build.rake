@@ -65,6 +65,38 @@ namespace :build do
       puts format("\nBuild complete. Find files in %s.", builder.output_dir)
     end
 
+    #
+    # Build inside version: rake build:omninav:inside
+    #
+    # Inside expects files here:
+    # https://github.com/chapmanu/inside/tree/development/lib/assets/omni-nav
+    #
+    # Loaded at runtime here:
+    # https://github.com/chapmanu/inside/blob/development/app/assets/javascripts/inside.js#L23
+    # https://github.com/chapmanu/inside/blob/development/app/assets/stylesheets/inside.css.scss#L2
+    #
+    desc "Build OmniNav navbar assets and markup for Inside site."
+    task inside: :environment do
+      # Params
+      target = 'inside'
+
+      # Prep Builder
+      builder = Omninav::Builder.new(target: target)
+      builder.prep_build
+      puts format("\nBuilding OmniNav %s version:%s\n", target, builder.build_version)
+
+      # Why this? Setting Rails.env or ENV['RAILS_ENV'] didn't work.
+      # See http://stackoverflow.com/a/1090319/6763239.
+      system("rake build:omninav:assets RAILS_ENV=production")
+
+      builder.generate_markup_file
+      builder.move_output_files_to_build_directory
+      builder.cleanup
+
+      # Report
+      puts format("\nBuild complete. Find files in %s.", builder.output_dir)
+    end
+
     desc "Build OmniNav navbar assets."
     task assets: :environment do
       # Configure the asset pipeline to compile minified files.

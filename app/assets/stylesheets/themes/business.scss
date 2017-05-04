@@ -60,4 +60,18 @@
     }
   }
 
+  .leftNavSubContent .callout .view-more-expander {
+    .view-more {
+      background-color: $asbe-primary;
+    }
+    .view-more-link {
+      background-color: $asbe-primary;
+    }
+    .view-less-link {
+      background-color: $asbe-primary;
+    }
+    .icon-triangle-up {
+      color: $asbe-primary;
+    }
+  }
 }

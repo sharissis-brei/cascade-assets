@@ -45,6 +45,7 @@
 //= require cascade/level/flickr-picasa
 //= require cascade/level/funnel
 //= require cascade/level/left-nav
+//= require cascade/level/shared-content-dept-contacts
 //= require cascade/level/level
 //= require cascade/level/masthead
 //= require cascade/level/mosaic

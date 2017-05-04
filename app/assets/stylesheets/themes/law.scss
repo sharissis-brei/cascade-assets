@@ -250,11 +250,25 @@
             background-color: #002562;
         }
     }
-
     
     .midPhotoCallouts .photoCallout .caption,
     .photoCallouts .caption,
     .photoCallouts .rollover{
          background-color: #002f7c;
+    }
+    
+    .leftNavSubContent .callout .view-more-expander {
+        .view-more {
+            background-color: #002f7c;;
+        }
+        .view-more-link {
+            background-color: #002f7c;;
+        }
+        .view-less-link {
+            background-color: #002f7c;;
+        }
+        .icon-triangle-up {
+            color: #002f7c;;
+        }
     }
 }

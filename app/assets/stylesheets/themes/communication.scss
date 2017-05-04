@@ -53,4 +53,19 @@
       background-color: $communication-primary;
     }
   }
+
+  .leftNavSubContent .callout .view-more-expander {
+    .view-more {
+      background-color: $communication-primary;
+    }
+    .view-more-link {
+      background-color: $communication-primary;
+    }
+    .view-less-link {
+      background-color: $communication-primary;
+    }
+    .icon-triangle-up {
+      color: $communication-primary;
+    }
+  }
 }

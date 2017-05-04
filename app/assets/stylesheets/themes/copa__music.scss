@@ -58,4 +58,19 @@
       background-color: $music-primary;
     }
   }
+
+  .leftNavSubContent .callout .view-more-expander {
+    .view-more {
+      background-color: $music-primary;
+    }
+    .view-more-link {
+      background-color: $music-primary;
+    }
+    .view-less-link {
+      background-color: $music-primary;
+    }
+    .icon-triangle-up {
+      color: $music-primary;
+    }
+  }
 }

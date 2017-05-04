@@ -22,6 +22,7 @@
             <%= render 'widgets/shared/header' %>
             <div id="main" role="main">
                 <div class="primary-content one-column">
+                    <%= yield(:masthead) %>
                     <%= yield(:primary_content) %>
                 </div>
             </div>

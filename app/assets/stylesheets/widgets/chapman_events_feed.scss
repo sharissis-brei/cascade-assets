@@ -1,402 +1,135 @@
 .chapman-events-feed-widget {
-  background-color: #eaeaea;
+  background-color: $bg-light-gray;
   padding: $one-column-widget-spacing 0;
   text-align: center;
 
-  .outer-container {
-    @include outer-container;
-    @include pad(0 $base-spacing * 3);
+  h2 {
+    margin-top: 0;
+    text-align: left;
+    font-weight: 800;
+    font-size: 32px;
+    line-height: 32px;
+
+    @include media($medium-screen) {
+      margin-bottom: 36px;
+      font-size: 38px;
+      line-height: 38px;
+    }
+
+    @include media($large-screen) {
+      margin-bottom: 32px;
+      font-size: 48px;
+      line-height: 48px;
+    }
   }
 
-  .events-feed-url {
-    @include button;
-    padding: $base-spacing $base-spacing*2;
+  .outer-container {
+    @include outer-container;
+    @include pad(0 $base-spacing);
+    width: 100%;
+  }
+
+  .column {
+    width:100%;
+    text-align: left;
+
+    @include media($medium-screen) {
+      @include media($medium-screen) { @include span-columns(9); }
+      width:50%;
+      &.right { padding-left: 60px; }
+    }
+  }
+
+  .event-card {
+    margin-bottom: 42px;
+
+    h3 {
+      margin: 0 0 16px;
+      font-size: 18px;
+      line-height: 24px;
+      color: $red;
+
+      @include media($medium-screen) { margin: 0 0 16px; }
+    }
+
+    p {
+      text-transform: capitalize;
+      margin: 0;
+    }
+
+    .event-date {
+      .date-wrapper {
+        display: table;
+        height: 32px;
+      }
+
+      .date-column {
+        display: table-cell;
+        vertical-align: middle;
+
+        &.left p {
+          padding-right: 4px;
+          font-size: 32px;
+        }
+
+        &.right p {
+          font-weight: 700;
+        }
+      }
+
+      p {
+        text-transform: uppercase;
+        color: $red;
+        font-weight: 800;
+        line-height: 1;
+      }
+    } 
+  }
+
+  .feed-column {
+    @include media($medium-screen){ margin-bottom: 48px; }
+
+    .event-date {
+      width: 140px;
+      margin-bottom: 32px;
+      padding-bottom: 16px;
+      border-bottom: 2px solid $red;
+    }
+  }
+
+  .featured-event {
+    &.event-card {
+      @include media($medium-screen) { margin-bottom: 0; }
+    }
+
+    .event-date {
+      margin-bottom: 28px;
+      @include media($large-screen){ margin-bottom: 16px; }
+    }
+
+    .featured-image {
+      margin-bottom: 28px;
+      width: 100%;
+      height: 144px;
+      background-position: center;
+      background-size: cover;
+      background-repeat: no-repeat;
+
+      @include media($medium-screen){
+        height: 188px;
+        margin-bottom: 36px;
+      }
+      @include media($large-screen){ height: 254px; }
+    }
   }
 
   .actions {
-    margin-top: $base-spacing*3;
-  }
-
-  .section-message {
-    margin-bottom: $base-spacing*3;
-  }
-
-  @include media($medium-screen) {
-    .section-message {
-      margin-bottom: 0;
-      text-align: left;
-      width: 55%;
-      float: left;
-    }
-
-    .feed-column {
-      float: right;
-      width: 40%;
-    }
-
-    .featured-column {
-      float: none;
-      width: 100%;
-      margin-bottom: 50px;
-    }
-
-    .actions {
-      float: left;
-      margin-top: $base-spacing*3;
-    }
-
-    // When there is a featured event and a feed.
-    .contains-featured.contains-feed {
-      .section-message {
-        text-align: center;
-        float: none;
-        margin: 0 auto;
-        width: 60%;
-        margin-bottom: $base-spacing*4;
-      }
-    }
-
-    .contains-featured.contains-feed + .actions {
-      margin-top: 12px;
-      float: right;
-      width: 35%;
-    }
-  }
-}
-
-/*
- * Based but slightly modified from https://github.com/chapmanu/events-feed
- *
- * ----------------- Starting below this line -----------------
- */
-
-
-
-/* Variables & Mixins */
-
-$cef_blue: #407892;
-$cef_black: #353430;
-$cef_red: #98002e;
-$cef_gray-slate: #62605a;
-$cef_small_screen: $medium-screen;
-$cef_headings-font: $font-stack-body;
-$cef_body-font: $font-stack-body;
-
-@mixin clearfix() {
-  &::after {
-    clear: both;
-    content: "";
-    display: table;
-  }
-}
-
-
-
-/* Parent Class */
-
-.chapman-events-feed {
-  a { text-decoration: none; }
-  .day-divider { display: none; }
-  .pagination  { display: none; }
-
-  &.contains-featured.contains-feed {
-    .featured-column {
-      @media(min-width: $cef_small_screen) {
-        float: left;
-        width: 60%;
-      }
-    }
-    .feed-column {
-      @media(min-width: $cef_small_screen) {
-        float: right;
-        width: 35%;
-      }
-    }
-  }
-
-  .browse-link {
-    display: block;
-    color: $cef_red;
-    font-size: 14px;
-    margin-top: 32px;
-  }
-}
-
-/* Base Feed Styles */
-.chapman-event-card {
-  font-family: $cef_body-font;
-  color: $cef_black;
-  margin: 0 0 $base-spacing 0;
-  position: relative;
-  background-color: white;
-  transition: transform 100ms;
-  text-align: left;
-
-  &:hover, &:focus {
-    transform: scale(1.01);
-    z-index: 2;
-    .title { color: $cef_blue; }
-  }
-
-  .date {
-    color: #9B9B9B;
-    font-size: 10px;
-    line-height: 14px;
-    margin: 0;
-  }
-
-  .title {
-    font-family: $cef_headings-font;
-    font-size: 14px;
-    line-height: 18px;
-    margin: 0;
-  }
-
-  .time {
-    font-size: 14px;
-    line-height: 18px;
-    margin: 0;
-  }
-
-  .subtitle {
-    font-size: 12px;
-    line-height: 16px;
-    margin: 0;
-  }
-
-  .primary-column, .secondary-column {
-    padding: 12px 24px;
-  }
-}
-
-/* Two Column Variation */
-
-.chapman-event-card.display-two-column {
-  display: table;
-  width: 100%;
-
-  .primary-column {
-    display: table-cell;
-    width: 100%;
-    @media(min-width: $cef_small_screen) { width: 60%; }
-  }
-
-  .secondary-column {
-    width: 40%;
-    border-left: 1px solid rgba(151, 151, 151, 0.18);
-    display: none;
-    @media(min-width: $cef_small_screen) { display: table-cell; }
-  }
-}
-
-/* Cover Photo Variation */
-
-.chapman-event-card.cover-photo {
-  background-size: cover;
-  background-position: 50% 10%;
-  background-repeat: no-repeat;
-  background-color: transparent;
-  display: block;
-  padding: 24px 0;
-
-  .cover-photo-overlay {
-    position: absolute;
-    top: 0px;
-    left: 0px;
-    width: 100%;
-    height: 100%;
-    background: #000;
-    opacity: 0.6;
-  }
-
-  .primary-column {
-    position: relative;
-    width: 100%;
-    border: none;
-    display: block;
-  }
-
-  .date, .title, .groups, .time, .subtitle {
-    color: white;
-  }
-
-  .secondary-column {
-    display: block;
-    position: relative;
-    width: 100%;
-    border-left: none;
-  }
-}
-
-.chapman-event-card::after {
-  display: block;
-  content: "";
-  clear: both;
-}
-
-/* Featured Variation */
-.chapman-event-card.featured {
-  background-color: transparent;
-  .primary-column {
-    .title, .time {
-      font-size:   18px;
-      line-height: 20px;
-    }
-
-    .subtitle {
-      font-size:   14px;
-      line-height: 16px;
-    }
-
-    .date {
-      line-height: 12px;
-    }
-  }
-
-  .icons {
-    position: relative;
     text-align: center;
-    padding: 12px 0 0 0;
-    img { box-shadow: 1px 1px 10px #eaeaea; }
-  }
-}
-
-/* Featured Event Styles */
-
-.chapman-featured-event-card {
-  text-align: left;
-
-  a { color: $cef_black; }
-  .photo {
-    width: 100%;
-    height: 300px;
-    display: block;
-    background-size: cover;
-    background-repeat: no-repeat;
-    background-position: center top;
-  }
-
-  .primary-event-info {
-    @include clearfix;
-    position: relative;
-    padding: 16px 0;
-    background: white;
-    min-height: 155px;
-  }
-
-  .calendar-card {
-    display: none;
-    @media($medium-screen) {
-      display: block;
-      position: absolute;
-      top: 16px;
-      left: 16px;
-    }
-  }
-
-  .primary-event-info-content {
-    padding: 12px 24px;
-    @media($medium-screen) {
-      margin-left: 135px + 16px;
-      padding: 0 16px;
-    }
-  }
-
-  .title {
-    margin: 0;
-    font-size: 24px;
-    line-height: 28px;
-    font-weight: bold;
-    font-family: $cef_headings-font;
-  }
-
-  .subtitle {
-    margin: 8px 0 0 0;
-    font-family: $cef_headings-font;
-    font-size: 18px;
-    line-height: 24px;
-    font-weight: 100;
-  }
-
-  .time_horizontal {
-    margin: 16px 0 0 0;
-    display: block;
-
-    text-align: left;
-    color: $cef_gray-slate;
-
-    .past & {
-      color: #ADADAD;
-      .icon {
-        fill: #ADADAD;
-      }
-    }
-
-    .label {
+    margin-top: 48px;
+    @include media($medium-screen){
+      margin-top: 0px;
       text-align: left;
     }
-
-    svg {
-      width: 1em;
-      height: 1em;
-      fill: $cef_gray-slate;
-      vertical-align: baseline;
-    }
-
-    .date {
-      display: inline-block;
-      min-width: 250px;
-    }
-
-    .time {
-      display: inline-block;
-    }
-
-    .note {
-      display: block;
-      margin-top: 6px;
-      color: #61605b;
-    }
-  }
-}
-
-
-/* Calendar Cards */
-
-.calendar-day {
-  width: 125px;
-  border-radius: 10px 10px 0 0;
-  text-align: center;
-  font-family: $cef_headings-font;
-  background: white;
-  box-shadow: 0px 1px 0px 0px rgba(0,0,0,0.1),0px 1px 1px 1px rgba(0,0,0,.08);
-
-  &.dark {
-    color: white;
-    background: $cef_black;
-  }
-
-  .weekday {
-      display: block;
-      color: white;
-      background: $cef_red;
-      padding: 6px;
-      border-radius: 5px 5px 0 0;
-      font-size: 14px;
-      font-weight: 500;
-  }
-  .day-num {
-      display: block;
-      padding: 8px 0 0 0;
-      font-size: 48px;
-      line-height: 48px;
-      font-weight: bold;
-  }
-  .month-year {
-      display: block;
-      padding: 6px 0 16px 0;
-      font-size: 12px;
-      font-weight: 100;
   }
 }
 
@@ -407,4 +140,12 @@ $cef_body-font: $font-stack-body;
 .chapman-events-feed-widget__dark-bg {
   background-color: $black;
   color: white;
+
+  .event-card {
+    a, p, .event-date p {color: white;}
+  }
+
+  .feed-column .event-date {
+    border-bottom: 2px solid white;
+  }
 }

@@ -58,4 +58,19 @@
       background-color: $theatre-primary;
     }
   }
+
+  .leftNavSubContent .callout .view-more-expander {
+    .view-more {
+      background-color: $theatre-primary;
+    }
+    .view-more-link {
+      background-color: $theatre-primary;
+    }
+    .view-less-link {
+      background-color: $theatre-primary;
+    }
+    .icon-triangle-up {
+      color: $theatre-primary;
+    }
+  }
 }
