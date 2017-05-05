@@ -538,6 +538,17 @@ a.cu_nav_button {
         //margin-left: -255px;
     }
 
+    
+    // Don't show clear button in search box unless on mobile
+    div.gsc-clear-button {
+        @media (min-width: 780px) {
+            display: none;
+        }
+    }
+    
+
+
+
 }
 
 // Search Autocomplete Suggestion box
@@ -590,19 +601,20 @@ a.cu_nav_button {
                 position: relative;
             }
 
-            .gsc-clear-button {
+            div.gsc-clear-button {
                 display: block;
                 width: 30px;
                 height: 34px;
                 position: absolute;
                 left: 0;
                 font-size: 18px;
-                z-index: 9999999;
+                z-index: 999999;
 
 
                 @include bp(m) {
                     left: auto;
                     right: 10px;
+                    padding: 10px 0px 10px 0px;
                 }
                 @media (max-width: 780px) {
                     display: none;
