@@ -14,10 +14,10 @@ ${output.replaceAll( $trimSpacingRegExp, "" )}
 ## Generate results macro
 #macro ( generateResults )
 
-    ## Array Macro
-    #macro ( generateArray $arr, $items )
-        #foreach ( $item in $items )
-		#if ( $item != "" )
+	## Array Macro
+	#macro ( generateArray $arr, $items )
+		#foreach ( $item in $items )
+			#if ( $item != "" )
 				#set ( $tmp = '"' + $_EscapeTool.xml( $item ).replace( "&amp;", "&" ) + '"' )
 				#set ( $dead = $arr.add( $tmp ) )
 			#end
@@ -54,9 +54,9 @@ ${output.replaceAll( $trimSpacingRegExp, "" )}
 	## Blocks
 	#set ( $blocks = $_XPathTool.selectNodes( $contentRoot, "//system-index-block/system-block[site='Chapman.edu']" ) )
 
-    ## Sort Criterion
-    $_SortTool.addSortCriterion( "system-data-structure/title", "", "text", "ascending", "upper-first" )
-    $_SortTool.sort( $blocks )
+	## Sort Criterion
+	$_SortTool.addSortCriterion( "system-data-structure/title", "", "text", "ascending", "upper-first" )
+	$_SortTool.sort( $blocks )
 
 	<!--#protect-top{
 		"results": [
