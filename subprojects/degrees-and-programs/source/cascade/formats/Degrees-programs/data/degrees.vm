@@ -17,7 +17,7 @@ ${output.replaceAll( $trimSpacingRegExp, "" )}
     ## Array Macro
     #macro ( generateArray $arr, $items )
         #foreach ( $item in $items )
-    		#if ( $item != "" )
+		#if ( $item != "" )
 				#set ( $tmp = '"' + $_EscapeTool.xml( $item ).replace( "&amp;", "&" ) + '"' )
 				#set ( $dead = $arr.add( $tmp ) )
 			#end
