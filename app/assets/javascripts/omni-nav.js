@@ -93,7 +93,7 @@ this.jQuery && (function ($) {
 			});
 
 			// Appends close button because the search plugin removes it if it's in the template
-			$('#cu_search_box').append('<div id="js-cu-search-close-trigger" class="cu-search-close-trigger">X<span>Close</span></div>');
+			$('#cu_search_box').append('<div id="js-cu-search-close-trigger" class="cu-search-close-trigger"><span>Close</span></div>');
 
 			// CU_search.cleanHash();
 

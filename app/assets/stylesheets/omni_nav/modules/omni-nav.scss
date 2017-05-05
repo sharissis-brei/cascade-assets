@@ -499,23 +499,7 @@ a.cu_nav_button {
         }
     }
 
-    .gsc-clear-button {
-        display: block;
-        width: 30px;
-        height: 34px;
-        position: absolute;
-        left: 0;
-        font-size: 18px;
-
-
-        @include bp(m) {
-            left: auto;
-            right: 10px;
-        }
-        @media (max-width: 780px) {
-            display: none;
-        }
-    }
+    
 
     input.gsc-search-button {
         display: block;
@@ -604,6 +588,25 @@ a.cu_nav_button {
 
             .gsc-control-cse {
                 position: relative;
+            }
+
+            .gsc-clear-button {
+                display: block;
+                width: 30px;
+                height: 34px;
+                position: absolute;
+                left: 0;
+                font-size: 18px;
+                z-index: 9999999;
+
+
+                @include bp(m) {
+                    left: auto;
+                    right: 10px;
+                }
+                @media (max-width: 780px) {
+                    display: none;
+                }
             }
 
             @include bp(m) {
