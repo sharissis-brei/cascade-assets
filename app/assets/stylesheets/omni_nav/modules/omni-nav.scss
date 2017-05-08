@@ -175,6 +175,7 @@ html, body { margin:0; padding: 0;}
 
 
         &.expanded {
+            // value is related to cu-search-open-trigger so search icon overlaps login on mobile
             z-index: 99998;
             div.cu_dropdown_menu {
                 max-height: 200px;
@@ -1009,6 +1010,7 @@ a.cu_nav_button {
 }
 
 .cu-search-open-trigger {
+    // z-indexes in this file are in the 99900-range, eventually need to be changed to lower values
     z-index: 99999;
     padding: ($cu-button-padding - 1px) 12px;
     position: absolute;
