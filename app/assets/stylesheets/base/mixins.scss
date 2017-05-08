@@ -80,8 +80,8 @@
 //Headings
 @mixin main_heading($weight: 800) {
 	font-family: $font-stack-heading;
-	font-size: 22px;
-	line-height: 26px;
+	font-size: 26px;
+	line-height: 30px;
 	margin-top: 12px;
 	margin-bottom: 24px;
 
@@ -92,12 +92,13 @@
 	}
 
 	@include media($medium-screen) {
-		font-size: 28px;
-		line-height: 36px;
+		font-size: 32px;
+		line-height: 38px;
 	}
 
 	@include media($large-screen) {
-		font-size: 32px;
+		font-size: 36px;
+		line-height: 40px;
 	}
 }
 
@@ -159,11 +160,15 @@
 @mixin content_label() {
 	margin-bottom: 0px;
 	font-family: $font-stack-heading;
-	font-size: 18px;
+	font-size: 16px;
 	line-height: 10px;
 	font-weight: 800;
 	color: $color-medium-gray;
 	text-transform: uppercase;
+
+	@include media($large-screen) {
+		font-size: 18px;
+	}
 }
 
 //Paragraphs
