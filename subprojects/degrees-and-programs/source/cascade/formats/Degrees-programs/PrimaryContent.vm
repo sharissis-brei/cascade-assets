@@ -269,6 +269,7 @@
 
 										#foreach ( $motivation in $motivations )
 
+											## Random number helps create a unique ID for each motivation's corresponding label and input field.
 											#set ( $rand = $_MathTool.floor( $_MathTool.mul( $_MathTool.getRandom(), 10000 ) ) )
 
 											#set ( $title = $_XPathTool.selectSingleNode( $motivation, "title" ) )
@@ -313,6 +314,7 @@
 
 									#foreach ( $interest in $interests )
 
+										## Random number helps create a unique ID for each motivation's corresponding label and input field.
 										#set ( $rand = $_MathTool.floor( $_MathTool.mul( $_MathTool.getRandom(), 10000 ) ) )
 
 										#set ( $iconClass = $_XPathTool.selectSingleNode( $interest, "icon" ).value.replace( " ", "-" ).toLowerCase() )
