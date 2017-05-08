@@ -175,7 +175,7 @@ html, body { margin:0; padding: 0;}
 
 
         &.expanded {
-            z-index: 99999;
+            z-index: 99998;
             div.cu_dropdown_menu {
                 max-height: 200px;
                 padding: 20px;
@@ -269,7 +269,7 @@ a.cu_nav_button {
     margin-right: 0;
 
     @include bp(l) {
-        margin-right: 80px;
+        margin-right: 65px;
     }
 
     &.open {
@@ -490,7 +490,6 @@ a.cu_nav_button {
         position: absolute;
         left: 0;
         font-size: 18px;
-        z-index: 99999;
 
 
         @include bp(m) {
@@ -531,7 +530,7 @@ a.cu_nav_button {
         text-align: right;
         right: 0%;
         //margin-left: -160px;
-        padding: 14px 25px;
+        padding: 14px 30px;
     }
 
     @include bp(l) {
@@ -1010,6 +1009,7 @@ a.cu_nav_button {
 }
 
 .cu-search-open-trigger {
+    z-index: 99999;
     padding: ($cu-button-padding - 1px) 12px;
     position: absolute;
     right: 25px;
@@ -1038,7 +1038,7 @@ a.cu_nav_button {
     cursor: pointer;
     position: absolute;
     top: 0;
-    right: 10px;
+    right: 0;
     padding: $cu-button-padding;
     line-height: 22px;
     font-size: 12px;
