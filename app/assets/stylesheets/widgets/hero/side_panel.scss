@@ -48,6 +48,10 @@
     pointer-events:all;
     background-color: white;
     opacity: .7;
+    @include media($medium-screen) {
+      top: 0;
+      bottom: 0;
+    }
 
     a {
       display: inline-block;
