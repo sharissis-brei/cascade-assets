@@ -751,7 +751,7 @@ var chapman = chapman || {};
 			}
 
 			resultHTML = '<article class="result columns small-12 clearfix">' +
-		                    '<div class="image" aria-role="image" data-src="' + imgSrc + '" aria-label="' + imgAlt + '">' +
+		                    '<div class="image" role="img" data-src="' + imgSrc + '" aria-label="' + imgAlt + '">' +
 		                        '<div class="active-content">' +
 		                            '<div class="active-content-inner">' +
 		                                '<p class="desc">' + desc + '</p>' +
