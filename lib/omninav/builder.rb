@@ -449,7 +449,8 @@ LOGIN_FORM
   <a id="js-cu-off-canvas-nav-trigger"
      class="cu-off-canvas-nav-trigger"
      href="#"
-     title="Access links to the pages within this section of the website and to other sections of the website">
+     title="Access links to the pages within this section of the website and to other sections of the website"
+     aria-label="Access links to the pages within this section of the website and to other sections of the website">
     %<hamburger_icon>s
     <span class="sr-only">Open Main Menu</span>
   </a>

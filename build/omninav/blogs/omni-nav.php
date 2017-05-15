@@ -1,5 +1,5 @@
 <?php
-// OmniNav Build Version: 2.0.0.20170403.164422
+// OmniNav Build Version: 2.0.0.20170515.193330
 
 // If logged in
 if (is_user_logged_in()) {
@@ -11,7 +11,7 @@ if (is_user_logged_in()) {
 
 
 <!-- OmniNav NavBar -->
-<div id="cu_nav" class="omninav-builder use-transitions">
+<div id="cu_nav" class="omninav-builder use-transitions blogs">
 
   <!-- Logo Block -->
   <a class="cu-logo" href="https://www.chapman.edu/" title="Chapman University Website Home Page">
@@ -201,7 +201,8 @@ if (is_user_logged_in()) {
   <a id="js-cu-off-canvas-nav-trigger"
      class="cu-off-canvas-nav-trigger"
      href="#"
-     title="Access links to the pages within this section of the website and to other sections of the website">
+     title="Access links to the pages within this section of the website and to other sections of the website"
+     aria-label="Access links to the pages within this section of the website and to other sections of the website">
     <svg class="hamburger svg-icon" viewbox="0 0 16 16"><path d="M1 3h14v2h-14v-2z"></path><path d="M1 7h14v2h-14v-2z"></path><path d="M1 11h14v2h-14v-2z"></path></svg>
     <span class="sr-only">Open Main Menu</span>
   </a>
