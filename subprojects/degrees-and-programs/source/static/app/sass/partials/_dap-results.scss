@@ -312,28 +312,17 @@ $dap-result-breakpoint: rem-calc(600);
 
 		}
 
-		.campus,
-		.degree-types li {
-			font-size: rem-calc(16);
-			font-weight: 700;
-		}
-
-		.campus {
-			color: $dark-gray;
-			display: block;
-			margin: rem-calc(4 0 0);
-		}
-
+		.campuses,
 		.degree-types {
 			margin: rem-calc(5 0 0);
 
 			li {
-				color: $scorpion;
-				float: left;
+				font-weight: 700;
+				display: inline;
 
 				&:after {
 					content: '|';
-					display: inline-block;
+					display: inline;
 					margin: rem-calc(0 8);
 				}
 
@@ -343,6 +332,17 @@ $dap-result-breakpoint: rem-calc(600);
 
 			}
 
+		}
+
+		.campuses li {
+			color: $dark-gray;
+			font-size: rem-calc(14);
+			line-height: 1.2;
+		}
+
+		.degree-types li {
+			color: $boulder;
+			font-size: rem-calc(16);
 		}
 
 		.desc,
