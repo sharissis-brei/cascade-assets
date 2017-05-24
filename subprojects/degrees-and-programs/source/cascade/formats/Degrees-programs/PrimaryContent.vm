@@ -3,7 +3,7 @@
     Author:        BarkleyREI
     Created:       02/13/2017
     Modified By:   Sean Stacho
-    Last Modified: 05/03/2017
+    Last Modified: 05/22/2017
 *#
 
 ## Data (JSON)
@@ -33,7 +33,7 @@
         #foreach ( $program in $programs )
 
             ## Locate Block
-			#set ( $path = $program.getChild("path").value )
+    		#set ( $path = $program.getChild("path").value )
 			#set ( $site = $program.getChild("site").value )
 			#set ( $programObject = $_.locateBlock( $path, $site ) )
 
@@ -91,15 +91,8 @@
 
 			#end
 
-    		## Campus
-    		#set ( $campus = "" )
-    		#set ( $campusID = $programObject.getStructuredDataNode("campus") )
-
-    		#if ( $campusID.textValue == "Orange" )
-    			#set ( $campus = "Main Campus" )
-    		#elseif ( $campusID.textValue == "Rinker" )
-    			#set ( $campus = "Rinker Health Science Campus" )
-    		#end
+			## Campuses
+			#set ( $campuses = $programObject.getStructuredDataNode("campus").textValues )
 
     		## Degree Title(s)
     		#set ( $degreeTitles = $programObject.getStructuredDataNode("type") )
@@ -139,7 +132,19 @@
 						#end
 					</h3>
 
-					<span class="campus">$_EscapeTool.xml( $campus )</span>
+					#if ( $campuses.size() > 0 )
+						<ul class="campuses">
+							#foreach ( $campus in $campuses )
+								#if ( $campus != "" )
+									#if ( $campus == "Orange" )
+										<li>$_EscapeTool.xml( "Main Campus" )</li>
+									#elseif ( $campus == "Rinker" )
+										<li>$_EscapeTool.xml( "Rinker Health Science Campus" )</li>
+									#end
+								#end
+							#end
+						</ul>
+					#end
 
 					<ul class="degree-types clearfix">
 						#foreach ( $degreeTitle in $degreeTitles.textValues )
@@ -198,7 +203,7 @@
         
         #foreach ( $degreeType in $degreeTypes.textValues )
         	#if ( $degreeType != "" )
-	            #if ( $degreeType == "4+1 and Bridge" )
+	            #if ( $degreeType == "Integrated/4+1" )
 	                #set ( $dead = $programs.add( $block ) )
 	                #break
 	            #else
@@ -269,7 +274,7 @@
 
 										#foreach ( $motivation in $motivations )
 
-											## Random number helps create a unique ID for each motivation's corresponding label and input field.
+                                            ## Random number helps create a unique ID for each motivation's corresponding label and input field.
 											#set ( $rand = $_MathTool.floor( $_MathTool.mul( $_MathTool.getRandom(), 10000 ) ) )
 
 											#set ( $title = $_XPathTool.selectSingleNode( $motivation, "title" ) )
@@ -314,7 +319,7 @@
 
 									#foreach ( $interest in $interests )
 
-										## Random number helps create a unique ID for each motivation's corresponding label and input field.
+                                        ## Random number helps create a unique ID for each interest's corresponding label and input field.
 										#set ( $rand = $_MathTool.floor( $_MathTool.mul( $_MathTool.getRandom(), 10000 ) ) )
 
 										#set ( $iconClass = $_XPathTool.selectSingleNode( $interest, "icon" ).value.replace( " ", "-" ).toLowerCase() )
@@ -470,7 +475,7 @@
 								<div class="columns small-12 medium-6">
 									<div class="field-container">
 										<label class="program-type button" for="dap-undergraduate-program-major">
-											<input id="dap-undergraduate-program-major" name="dap-undergraduate-program-major" type="checkbox" value="major" />
+											<input id="dap-undergraduate-program-major" name="dap-undergraduate-program-major" type="checkbox" value="major,integrated/4+1,accelerated 3+2" />
 											<div class="inner">
 												#svg( "icon-check" )
 												<span>Majors</span>
@@ -494,10 +499,10 @@
 								<div class="columns small-12 medium-6">
 									<div class="field-container">
 										<label class="program-type button" for="dap-undergraduate-program-bridge">
-											<input id="dap-undergraduate-program-bridge" name="dap-undergraduate-program-bridge" type="checkbox" value="4+1 and bridge" />
+											<input id="dap-undergraduate-program-bridge" name="dap-undergraduate-program-bridge" type="checkbox" value="bridge,integrated/4+1,accelerated 3+2" />
 											<div class="inner">
 												#svg( "icon-check" )
-												<span>4+1 Bridge Programs</span>
+												<span>Accelerated &amp; Bridge Programs</span>
 											</div>
 										</label>
 									</div>
@@ -672,7 +677,7 @@
 								<div class="columns small-12 medium-6">
 									<div class="field-container">
 										<label class="program-type button" for="dap-graduate-program-master">
-											<input id="dap-graduate-program-master" name="dap-graduate-program-master" type="checkbox" value="masters" />
+											<input id="dap-graduate-program-master" name="dap-graduate-program-master" type="checkbox" value="masters,dual/joint,integrated/4+1,accelerated 3+2" />
 											<div class="inner">
 												#svg( "icon-check" )
 												<span>Masters Programs</span>
@@ -696,10 +701,10 @@
 								<div class="columns small-12 medium-6">
 									<div class="field-container">
 										<label class="program-type button" for="dap-graduate-program-bridge">
-											<input id="dap-graduate-program-bridge" name="dap-graduate-program-bridge" type="checkbox" value="4+1 and bridge" />
+											<input id="dap-graduate-program-bridge" name="dap-graduate-program-bridge" type="checkbox" value="bridge,integrated/4+1,accelerated 3+2,post-baccalaureate,certificate,dual/joint,credential,transitional" />
 											<div class="inner">
 												#svg( "icon-check" )
-												<span>4+1 Bridge Programs</span>
+												<span>Accelerated, Bridge &amp; Special Programs</span>
 											</div>
 										</label>
 									</div>

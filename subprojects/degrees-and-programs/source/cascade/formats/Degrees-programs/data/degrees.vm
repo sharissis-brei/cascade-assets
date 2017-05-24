@@ -3,7 +3,7 @@
     Author:        BarkleyREI
     Created:       02/13/2017
     Modified By:   Sean T. Stacho
-    Last Modified: 03/22/2017
+    Last Modified: 05/19/2017
 *#
 
 ## Trim white space
@@ -14,10 +14,10 @@ ${output.replaceAll( $trimSpacingRegExp, "" )}
 ## Generate results macro
 #macro ( generateResults )
 
-	## Array Macro
-	#macro ( generateArray $arr, $items )
-		#foreach ( $item in $items )
-			#if ( $item != "" )
+    ## Array Macro
+    #macro ( generateArray $arr, $items )
+        #foreach ( $item in $items )
+        	#if ( $item != "" )
 				#set ( $tmp = '"' + $_EscapeTool.xml( $item ).replace( "&amp;", "&" ) + '"' )
 				#set ( $dead = $arr.add( $tmp ) )
 			#end
@@ -44,19 +44,16 @@ ${output.replaceAll( $trimSpacingRegExp, "" )}
 			#if ( $props.motivations.size() > 0 )"motivations": $props.motivations,#end
 			#if ( $props.interests.size() > 0 )"interests": $props.interests,#end
 			#if ( $props.schools.size() > 0 )"schools": $props.schools,#end
-			"campus": {
-				"title": "${props.campus.title}",
-				"id": "${props.campus.id}"
-			}
+            #if ( $props.campus.size() > 0 )"campus": $props.campus#end
 		#if ( $foreach.last )}#else},#end
 	#end
 
 	## Blocks
 	#set ( $blocks = $_XPathTool.selectNodes( $contentRoot, "//system-index-block/system-block[site='Chapman.edu']" ) )
 
-	## Sort Criterion
-	$_SortTool.addSortCriterion( "system-data-structure/title", "", "text", "ascending", "upper-first" )
-	$_SortTool.sort( $blocks )
+    ## Sort Criterion
+    $_SortTool.addSortCriterion( "system-data-structure/title", "", "text", "ascending", "upper-first" )
+    $_SortTool.sort( $blocks )
 
 	<!--#protect-top{
 		"results": [
@@ -129,7 +126,7 @@ ${output.replaceAll( $trimSpacingRegExp, "" )}
 
                     ## Degree Type
                     #foreach ( $type in $degreeTypes.type )
-                        #set ( $degreeTypes.type[$foreach.index] = $type.toLowerCase() )
+						#set ( $degreeTypes.type[$foreach.index] = $type.toLowerCase() )
                     #end
                     
 					#generateArray( $props.degreeTypes.type, $degreeTypes.type )
@@ -179,14 +176,20 @@ ${output.replaceAll( $trimSpacingRegExp, "" )}
 					#generateArray( $props.schools, $schools )
 
 					## Campus
-					#set ( $props.campus = {} )
-					#set ( $props.campus.id = $blockObject.getStructuredDataNode("campus").textValue )
+                    #set ( $props.campus = [] )
+                    #set ( $campuses = $blockObject.getStructuredDataNode("campus").textValues )
 
-					#if ( $props.campus.id == "Orange" )
-						#set ( $props.campus.title = "Main Campus" )
-					#elseif ( $props.campus.id == "Rinker" )
-						#set ( $props.campus.title = "Rinker Health Science Campus" )
-					#end
+                    #foreach ( $campus in $campuses )
+						#if ( $campus != "" )
+							#if ( $campus == "Orange" )
+                                #set ( $tmp = '"' + $_EscapeTool.xml( "Main Campus" ) + '"' )
+                                #set ( $dead = $props.campus.add( $tmp ) )
+                            #elseif ( $campus == "Rinker" )
+                                #set ( $tmp = '"' + $_EscapeTool.xml( "Rinker Health Science Campus" ) + '"' )
+                                #set ( $dead = $props.campus.add( $tmp ) )
+                            #end
+						#end
+                    #end
 
 					#object( $props )
 
