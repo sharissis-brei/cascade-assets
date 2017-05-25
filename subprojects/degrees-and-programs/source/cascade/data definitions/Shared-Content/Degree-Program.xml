@@ -4,20 +4,24 @@
         <radio-item value="Graduate"/>
     </text>
     <text type="multi-selector" identifier="level" label="Degree Level" required="true">
-        <selector-item value="Bachelors"/>
-        <selector-item value="Masters"/>
-        <selector-item value="Doctorate"/>
-        <selector-item value="Certificate"/>
-        <selector-item value="4+1 and Bridge"/>
-        <selector-item value="Major"/>
         <selector-item value="Minor"/>
+        <selector-item value="Major"/>
+        <selector-item value="Integrated/4+1"/>
+        <selector-item value="Accelerated 3+2"/>
+        <selector-item value="Post-Baccalaureate"/>
+        <selector-item value="Certificate"/>
+        <selector-item value="Masters"/> 
+        <selector-item value="Bridge"/>
+        <selector-item value="Dual/Joint"/>
+        <selector-item value="Doctorate"/>
+        <selector-item value="Credential"/>
+        <selector-item value="Transitional"/>
     </text>
     <text type="multi-selector" identifier="type" label="Degree Type" required="true">
         <selector-item value="BA"/>
         <selector-item value="BS"/>
         <selector-item value="BFA"/>
         <selector-item value="MS"/>
-        <selector-item value="MS/MBA"/>
         <selector-item value="MA"/>
         <selector-item value="MBA"/>
         <selector-item value="EMBA"/>
@@ -26,11 +30,15 @@
         <selector-item value="MM"/>
         <selector-item value="MLD"/>
         <selector-item value="JD"/>
-        <selector-item value="JD/MBA"/>
         <selector-item value="DPT"/>
         <selector-item value="Credential"/>
         <selector-item value="Ph.D"/>
         <selector-item value="Minor"/>
+        <selector-item value="Integrated/4+1"/>
+        <selector-item value="Accelerated 3+2"/>
+        <selector-item value="Certificate"/>
+        <selector-item value="Bridge"/>
+        <selector-item value="Post-Baccalaureate"/>
     </text>
     <text identifier="title" label="Degree Title" required="true"/>
     <text type="checkbox" identifier="school" label="School Affiliation" required="true">
@@ -45,9 +53,9 @@
         <checkbox-item value="Schmid College of Science and Technology"/>
         <checkbox-item value="School of Communication"/>
     </text>
-    <text type="dropdown" identifier="campus" label="Campus" default="Orange">
-        <dropdown-item value="Orange"/>
-        <dropdown-item value="Rinker"/>
+    <text type="multi-selector" identifier="campus" label="Campus">
+        <selector-item value="Orange"/>
+        <selector-item value="Rinker"/>
     </text>
     <group identifier="link" label="Link">
         <text type="radiobutton" identifier="linkType" label="Link Type" default="Internal Link">
@@ -74,7 +82,6 @@
     <text type="multi-selector" identifier="interests" label="Interests">
         <selector-item value="Analytical Thinking"/>
         <selector-item value="Art &amp; Culture"/>
-        <selector-item value="Arts &amp; Education"/>
         <selector-item value="Business Leaders"/>
         <selector-item value="Global Leadership"/>
         <selector-item value="Humanities &amp; Education"/>

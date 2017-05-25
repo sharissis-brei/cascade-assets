@@ -166,7 +166,6 @@ html, body { margin:0; padding: 0;}
 
     div.cu_nav_menu {
         min-height: $cu-nav-height;
-        z-index: 99090;
 
         div.cu_dropdown_menu {
             max-height: 0px;
@@ -176,7 +175,8 @@ html, body { margin:0; padding: 0;}
 
 
         &.expanded {
-
+            // value is related to cu-search-open-trigger so search icon overlaps login on mobile
+            z-index: 99998;
             div.cu_dropdown_menu {
                 max-height: 200px;
                 padding: 20px;
@@ -275,6 +275,8 @@ a.cu_nav_button {
 
     &.open {
         display: block;
+        // value related to cu-search-open-trigger so search icon doesn't show on right when search results are open
+        z-index: 100000;
     }
 
     select.search-type::-ms-expand {
@@ -438,7 +440,6 @@ a.cu_nav_button {
     }
 
     // Misc. Appearance tweaks
-    .gsc-clear-button { display: none; }
     .gsc-selected-option-container { min-width: 95px !important; cursor: pointer; }
     .gsc-option-menu-item { padding: 0 15px; }
     .gsc-above-wrapper-area { padding-top:0; margin-bottom: 15px; }
@@ -493,11 +494,14 @@ a.cu_nav_button {
         left: 0;
         font-size: 18px;
 
+
         @include bp(m) {
             left: auto;
             right: 0;
         }
     }
+
+    
 
     input.gsc-search-button {
         display: block;
@@ -517,7 +521,9 @@ a.cu_nav_button {
         background-repeat: no-repeat;
         background-position: center;
         background-image: url(data:image/svg+xml;base64,PD94bWwgdmVyc2lvbj0iMS4wIiBlbmNvZGluZz0idXRmLTgiPz4NCjwhLS0gR2VuZXJhdG9yOiBBZG9iZSBJbGx1c3RyYXRvciAxNi4wLjQsIFNWRyBFeHBvcnQgUGx1Zy1JbiAuIFNWRyBWZXJzaW9uOiA2LjAwIEJ1aWxkIDApICAtLT4NCjwhRE9DVFlQRSBzdmcgUFVCTElDICItLy9XM0MvL0RURCBTVkcgMS4xLy9FTiIgImh0dHA6Ly93d3cudzMub3JnL0dyYXBoaWNzL1NWRy8xLjEvRFREL3N2ZzExLmR0ZCI+DQo8c3ZnIHZlcnNpb249IjEuMSIgaWQ9IkxheWVyXzEiIHhtbG5zPSJodHRwOi8vd3d3LnczLm9yZy8yMDAwL3N2ZyIgeG1sbnM6eGxpbms9Imh0dHA6Ly93d3cudzMub3JnLzE5OTkveGxpbmsiIHg9IjBweCIgeT0iMHB4Ig0KCSB3aWR0aD0iNzYwLjVweCIgaGVpZ2h0PSI1MTJweCIgdmlld0JveD0iMCAwIDc2MC41IDUxMiIgZW5hYmxlLWJhY2tncm91bmQ9Im5ldyAwIDAgNzYwLjUgNTEyIiB4bWw6c3BhY2U9InByZXNlcnZlIj4NCjxwYXRoIGQ9Ik00OTYuMTMxLDQzNS42OThMMzc0Ljg1NSwzMzIuNTUxYy0xMi41MzctMTEuMjgzLTI1Ljk0My0xNi40NjMtMzYuNzc0LTE1Ljk2M0MzNjYuNzA3LDI4My4wNTUsMzg0LDIzOS41NDksMzg0LDE5Mg0KCUMzODQsODUuOTYxLDI5OC4wMzksMCwxOTIsMEM4NS45NjIsMCwwLDg1Ljk2MSwwLDE5MnM4NS45NjEsMTkyLDE5MiwxOTJjNDcuNTQ5LDAsOTEuMDU0LTE3LjI5MywxMjQuNTg4LTQ1LjkyMg0KCWMtMC41LDEwLjgzMSw0LjY4LDI0LjIzOSwxNS45NjMsMzYuNzc0TDQzNS42OTgsNDk2LjEzYzE3LjY2MSwxOS42MjMsNDYuNTEzLDIxLjI3Nyw2NC4xMSwzLjY3OA0KCUM1MTcuNDA2LDQ4Mi4yMDksNTE1Ljc1NCw0NTMuMzU5LDQ5Ni4xMzEsNDM1LjY5OHogTTE5MiwzMjBjLTcwLjY5MiwwLTEyOC01Ny4zMDktMTI4LTEyOGMwLTcwLjY5Miw1Ny4zMDgtMTI4LDEyOC0xMjgNCgljNzAuNjksMCwxMjgsNTcuMzA4LDEyOCwxMjhDMzIwLDI2Mi42OTEsMjYyLjY5MywzMjAsMTkyLDMyMHoiLz4NCjwvc3ZnPg0K);
+
     }
+
 
     @include bp(l) {
         background-color: transparent;
@@ -535,6 +541,14 @@ a.cu_nav_button {
         //margin-left: -255px;
     }
 
+    
+    // Don't show clear button in search box unless on mobile
+    div.gsc-clear-button {
+        @include bp(m) {
+            display: none;
+        }
+    }
+    
 }
 
 // Search Autocomplete Suggestion box
@@ -585,6 +599,26 @@ a.cu_nav_button {
 
             .gsc-control-cse {
                 position: relative;
+            }
+
+            div.gsc-clear-button {
+                display: block;
+                width: 30px;
+                height: 34px;
+                position: absolute;
+                left: 0;
+                font-size: 18px;
+                z-index: 999999;
+
+
+                @include bp(m) {
+                    left: auto;
+                    right: 10px;
+                    padding: 10px 0px 10px 0px;
+                }
+                @include bp(wildcard-max, 780px) {
+                    display: none;
+                }
             }
 
             @include bp(m) {
@@ -956,6 +990,8 @@ a.cu_nav_button {
 
 }*/
 
+
+
 .cu-logo {
     display: block;
     border: 0;
@@ -976,11 +1012,13 @@ a.cu_nav_button {
 }
 
 .cu-search-open-trigger {
+    // z-indexes in this file are in the 99900-range, eventually need to be changed to lower values
+    z-index: 99999;
+    
     padding: ($cu-button-padding - 1px) 12px;
     position: absolute;
     right: 25px;
     top: 0;
-    z-index: 99996;
 
     span {
         text-indent: -9999px;

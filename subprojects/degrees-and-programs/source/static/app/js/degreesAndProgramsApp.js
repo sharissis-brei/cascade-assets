@@ -510,7 +510,19 @@ var chapman = chapman || {};
 				if (value.length > 0) {
 
 					if (formattedName.includes('program')) { // Push to array if a program
-						degreeTypesArray.push(value);
+						var valuesArray = value.split(',');
+						
+						// Loop through all values associated with the filter
+						for (var j = 0; j < valuesArray.length; j++) {
+							var programType = valuesArray[j];
+
+							// Add each to the degree types array
+							if (degreeTypesArray.indexOf(programType) === -1) {
+								degreeTypesArray.push(programType);
+							}
+
+						}
+
 					} else if (formattedName.includes('interest')) { // Push to array if an interest
 						interestsArray.push(value);
 					} else if (formattedName.includes('school')) {
@@ -664,12 +676,14 @@ var chapman = chapman || {};
 				if (activeFilters.degreeTypes !== undefined) {
 
 					if (activeFilters.degreeTypes.indexOf('all') > -1) {
-						degreeTypesMatch = true;
+						degreeTypesMatch = true; // If all, it's a match by default
 					} else if (degreeTypes !== undefined) {
 
+						// Loop through the result's degree types
 						for (var k = 0; k < degreeTypes.type.length; k++) {
 							var degreeType = degreeTypes.type[k];
 
+							// If any of the result's degree types match a filter, it's a match
 							if (activeFilters.degreeTypes.indexOf(degreeType) > -1) {
 								degreeTypesMatch = true;
 							}
@@ -717,7 +731,6 @@ var chapman = chapman || {};
 				imgAlt,
 				desc = result.desc || '',
 				href = result.href || '#',
-				campus,
 				degreeTypes = result.degreeTypes || '',
 				degreeTypesHTML = '',
 				campusHTML = '',
@@ -733,8 +746,15 @@ var chapman = chapman || {};
 
 			// Only show this field if it's defined
 			if (result.campus) {
-				campus = result.campus.title || '';
-				campusHTML = '<span class="campus">' + campus + '</span>';
+
+				campusHTML += '<ul class="campuses">';
+
+				for (var i = 0; i < result.campus.length; i++) {
+					campusHTML += '<li>' + result.campus[i] + '</li>';
+				}
+
+				campusHTML += '</ul>';
+				
 			}
 
 			// Only show this field if it's defined
@@ -742,8 +762,8 @@ var chapman = chapman || {};
 
 				degreeTypesHTML = '<ul class="degree-types clearfix">';
 
-				for (var i = 0; i < degreeTypes.title.length; i++) {
-					degreeTypesHTML = degreeTypesHTML + '<li>' + degreeTypes.title[i] + '</li>';
+				for (var j = 0; j < degreeTypes.title.length; j++) {
+					degreeTypesHTML = degreeTypesHTML + '<li>' + degreeTypes.title[j] + '</li>';
 				}
 
 				degreeTypesHTML = degreeTypesHTML + '</ul>';
@@ -751,7 +771,7 @@ var chapman = chapman || {};
 			}
 
 			resultHTML = '<article class="result columns small-12 clearfix">' +
-		                    '<div class="image" aria-role="image" data-src="' + imgSrc + '" aria-label="' + imgAlt + '">' +
+		                    '<div class="image" role="img" data-src="' + imgSrc + '" aria-label="' + imgAlt + '">' +
 		                        '<div class="active-content">' +
 		                            '<div class="active-content-inner">' +
 		                                '<p class="desc">' + desc + '</p>' +
