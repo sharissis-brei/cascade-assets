@@ -300,7 +300,9 @@ chapman.virtualtour.ManagePanels = (function ($, window) {
 
 			// Delay
 			setTimeout(function () {
-				return (!tourDetail.hasClass('is-open')) ? tourDetail.addClass('is-active') : null;
+				
+				return (chapman.virtualtour.MissionControl.isDesktop()) ? tourDetail.addClass('is-open') : (!tourDetail.hasClass('is-open')) ? tourDetail.addClass('is-active') : null;
+
 			}, 500);
 
 		});

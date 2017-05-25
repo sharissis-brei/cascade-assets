@@ -12,6 +12,15 @@ module.exports = function(grunt, options){
       '!' + yeoman.app + '/js/map/mapOverlays.js',
       '!' + yeoman.app + '/js/mapOverlays.js',
       '!' + yeoman.app + '/js/lib/modernizr.js',
+      '!' + yeoman.app + '/js/map/categoryMenu.js',
+      '!' + yeoman.app + '/js/map/mainNavigation.js',
+      '!' + yeoman.app + '/js/map/managePanels.js',
+      '!' + yeoman.app + '/js/map/map.js',
+      '!' + yeoman.app + '/js/map/mapBar.js',
+      '!' + yeoman.app + '/js/map/missionControl.js',
+      '!' + yeoman.app + '/js/map/omniNav.js',
+      '!' + yeoman.app + '/js/map/overlays.js',
+      '!' + yeoman.app + '/js/map/tourPanel.js',
       'test/spec/{,*/}*.js'
     ]
   }

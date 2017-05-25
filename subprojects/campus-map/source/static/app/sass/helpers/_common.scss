@@ -109,7 +109,8 @@ input[type='radio'],
 input[type='checkbox'] { margin: 0 0.4em; }
 
 // Opinion: This is basically what responsive design is.
-img { max-width: 100%; }
+// img { max-width: 100%; }
+img { max-width: none; }
 
 // Opinion: Black borders around tables because sometimes IE doesn't draw borders at all.
 table,

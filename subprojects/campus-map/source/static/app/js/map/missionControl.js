@@ -180,10 +180,10 @@ chapman.virtualtour.MissionControl = (function ($, updateLocation, document, win
 			_screenSize = 'big';
 
 			chapman.virtualtour.Map.init();
+			chapman.virtualtour.Overlays.init();
 
 			if (!$('.bx-wrapper').length) {
 				chapman.virtualtour.StreetViewBar.init();
-				chapman.virtualtour.Overlays.init();
 				$('.street-view').show();
 			} else {
 				$('.street-view').show();
@@ -200,6 +200,7 @@ chapman.virtualtour.MissionControl = (function ($, updateLocation, document, win
 			_screenSize = 'small';
 
 			chapman.virtualtour.Map.init();
+			chapman.virtualtour.Overlays.init();
 
 			$('.street-view').hide();
 
