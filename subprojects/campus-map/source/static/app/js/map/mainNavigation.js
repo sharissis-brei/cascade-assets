@@ -62,7 +62,8 @@ chapman.virtualtour.MainNavigation = (function ($, window) {
 	var _updateMainMenu = function(action) {
 
 		if (!enabled) {
-			$('#virtualTour-mainNavigation').show();
+			$('#virtualTour-mainNavigation').addClass('is-active');
+			// $('#virtualTour-mainNavigation').show();
 			enabled = true;
 		}
 

@@ -76,10 +76,10 @@ chapman.virtualtour.Map = (function ($, document, window) {
 		scaleControl: true
 	};
 
-  var _map;
+	var _map;
 
-  var openMarkerName = '';
-  var knownMarkers = [];
+	var openMarkerName = '';
+	var knownMarkers = [];
 
 	/**
 	 * private functions
@@ -355,7 +355,7 @@ chapman.virtualtour.Map = (function ($, document, window) {
 								opacity: 1
 							},
 							name: markerObject.title,
-							position: new google.maps.LatLng(markerObject.latitude, markerObject.longitude),
+							position: new google.maps.LatLng(markerObject.latitude, markerObject.longitude)
 						});
 
 					}
@@ -431,8 +431,18 @@ chapman.virtualtour.Map = (function ($, document, window) {
 						// Center on the pin if there's only one
 						chapman.virtualtour.Map.chapmanMap.setCenter(pinCoordinates);
 					} else {
+
 						// If there's more than one pin, center on Chapman
-						chapman.virtualtour.Map.chapmanMap.setCenter(chapmanCoordinates);
+						// chapman.virtualtour.Map.chapmanMap.setCenter(chapmanCoordinates);
+
+						// http://stackoverflow.com/questions/2818984/google-map-api-v3-center-zoom-on-displayed-markers
+						var bounds = _markers.reduce(function (bounds, marker) {
+							return bounds.extend(marker.getPosition());
+						}, new google.maps.LatLngBounds());
+
+						chapman.virtualtour.Map.chapmanMap.setCenter(bounds.getCenter());
+						chapman.virtualtour.Map.chapmanMap.fitBounds(bounds);
+
 					}
 
 					return marker;
