@@ -84,6 +84,7 @@ module Omninav
       File.open(markup_file_path, 'w') { |file| file.write(omninav_html) }
     end
 
+    # rubocop:disable Rails/Output
     def move_output_files_to_build_directory
       @deploy_map.each do |staging_name, deploy_name|
         staging_file = @staging_dir.join(staging_name)
@@ -100,6 +101,7 @@ module Omninav
         end
       end
     end
+    # rubocop:enable Rails/Output
 
     def cleanup
       FileUtils.rm_rf @staging_dir
