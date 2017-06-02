@@ -121,6 +121,7 @@ namespace :build do
   task omninav: :environment do
     Rake::Task['build:omninav:static'].invoke
     Rake::Task['build:omninav:blogs'].invoke
+    Rake::Task['build:omninav:inside'].invoke
   end
 end
 

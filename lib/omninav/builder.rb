@@ -84,6 +84,7 @@ module Omninav
       File.open(markup_file_path, 'w') { |file| file.write(omninav_html) }
     end
 
+    # rubocop:disable Rails/Output
     def move_output_files_to_build_directory
       @deploy_map.each do |staging_name, deploy_name|
         staging_file = @staging_dir.join(staging_name)
@@ -100,6 +101,7 @@ module Omninav
         end
       end
     end
+    # rubocop:enable Rails/Output
 
     def cleanup
       FileUtils.rm_rf @staging_dir
@@ -669,6 +671,9 @@ OFF_CANVAS_HEADER_HTML
             </li>
             <li>
               <a href="https://blogs.chapman.edu/scst/" title="Schmid College of Science and Technology">Schmid College of Science and Technology</a>
+            </li>
+            <li>
+              <a href="https://blogs.chapman.edu/communication/" title="School of Communication">School of Communication</a>
             </li>
             <li>
               <a href="https://blogs.chapman.edu/pharmacy/" title="School of Pharmacy">School of Pharmacy</a>

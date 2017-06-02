@@ -1,5 +1,5 @@
 <?php
-// OmniNav Build Version: 2.0.0.20170515.193330
+// OmniNav Build Version: 2.0.0.20170601.214922
 
 // If logged in
 if (is_user_logged_in()) {
@@ -365,6 +365,9 @@ if (is_user_logged_in()) {
             </li>
             <li>
               <a href="https://blogs.chapman.edu/scst/" title="Schmid College of Science and Technology">Schmid College of Science and Technology</a>
+            </li>
+            <li>
+              <a href="https://blogs.chapman.edu/communication/" title="School of Communication">School of Communication</a>
             </li>
             <li>
               <a href="https://blogs.chapman.edu/pharmacy/" title="School of Pharmacy">School of Pharmacy</a>
