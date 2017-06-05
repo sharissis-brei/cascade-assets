@@ -190,26 +190,32 @@ var chapman = chapman || {};
 					for (var i = 0; i < allResults.length; i++) {
 						var result = allResults[i],
 							type = result.type || '',
-							isBridge = false;
+							isUndergradAndGrad = false;
 
 						// Fallback in case no degree type is specified
 						if (result.degreeTypes !== undefined) {
 
-							// Check if this result is a bridge program
+							// Check if this result is an accelerated or bridge program
 							for (var j = 0; j < result.degreeTypes.type.length; j++) {
 								var degreeType = result.degreeTypes.type[j];
 
-								if (degreeType && degreeType.toLowerCase() === '4+1 and bridge') {
-									isBridge = true;
-									break;
+								if (degreeType) {
+									var degreeTypeFormatted = degreeType.toLowerCase();
+
+									// Any of the following count as bridge/accelerated
+									if (degreeTypeFormatted === 'bridge' || degreeTypeFormatted === 'integrated/4+1' || degreeTypeFormatted === 'accelerated 3+2') {
+										isUndergradAndGrad = true;
+										break;
+									}
+
 								}
 
 							}
 
 						}
 
-						// If it's a bridge program, it's both undergraduate and graduate
-						if (isBridge) {
+						// If it's a bridge or accelerated program, it's both undergraduate and graduate
+						if (isUndergradAndGrad) {
 							undergraduateResults.push(result);
 							graduateResults.push(result);
 							undergraduateProgramNames.push(result.title);
