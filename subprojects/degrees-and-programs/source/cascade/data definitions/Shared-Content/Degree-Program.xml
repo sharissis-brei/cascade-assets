@@ -10,7 +10,7 @@
         <selector-item value="Accelerated 3+2"/>
         <selector-item value="Post-Baccalaureate"/>
         <selector-item value="Certificate"/>
-        <selector-item value="Masters"/> 
+        <selector-item value="Masters"/>
         <selector-item value="Bridge"/>
         <selector-item value="Dual/Joint"/>
         <selector-item value="Doctorate"/>
@@ -26,7 +26,11 @@
         <selector-item value="MBA"/>
         <selector-item value="EMBA"/>
         <selector-item value="MFA"/>
-        <selector-item value="Ed.S/MA. LL.M."/>
+        <selector-item value="Ed.S/Ed.S + LPCC"/>
+        <selector-item value="LL.M."/>
+        <selector-item value="MMS"/>
+        <selector-item value="PharmD"/>
+        <selector-item value="MA/MA+PPS/MA+LPCC"/>
         <selector-item value="MM"/>
         <selector-item value="MLD"/>
         <selector-item value="JD"/>
