@@ -1,22 +1,21 @@
 .form-widget {
-  /*moved to responsiveForm class: border: 1px solid #c1c1c1;*/
   margin: 0 0 20px 0;
 }
 
 /* New Form Styles */
 
-  .text-input {
-    width: 100%;
-    padding: $base-spacing / 2;
-    border-radius: 3px;
-    border: 1px solid rgba(0,0,0,0.1);
-    box-shadow: inset 0px 0px 1px 0px rgba(0,0,0,0.1);
-    transition: border 150ms;
-    &:focus {
-      outline: none;
-      border: 1px solid $blue;
-    }
+.text-input {
+  width: 100%;
+  padding: $base-spacing / 2;
+  border-radius: 3px;
+  border: 1px solid rgba(0,0,0,0.1);
+  box-shadow: inset 0px 0px 1px 0px rgba(0,0,0,0.1);
+  transition: border 150ms;
+  &:focus {
+    outline: none;
+    border: 1px solid $blue;
   }
+}
 
 /* Old form styles */
 .form {
@@ -56,10 +55,10 @@
 }
 
 .responsiveForm {
-    background-color: #f5f5f5;
-    color: #313131;
-    padding: 25px 45px 45px; 
-	border: 1px solid #c1c1c1;
+  background-color: #f5f5f5;
+  color: #313131;
+  padding: 25px 45px 45px; 
+  border: 1px solid #c1c1c1;
 }
 
 /************ these responsiveForm used in surrounding DIV for all full page forms ************/
@@ -97,46 +96,57 @@
 }
 
 .responsiveForm label{
-    display:block;
-    font-weight: bold;
+  display:block;
+  font-weight: bold;
 }
 
-.responsiveForm input[type=text],
-.responsiveForm input[type=password],
+.responsiveForm input[type="text"],
+.responsiveForm input[type="password"],
 .responsiveForm textarea,
 .responsiveForm select{
-    max-width:100%;
-    margin:5px 0 15px 0;
+  max-width:100%;
+  margin:5px 0 15px 0;
 }
 
-.responsiveForm input[type=checkbox],
-.responsiveForm input[type=radio]{
-    margin: 5px 0 3px 15px;
+.responsiveForm input[type="checkbox"],
+.responsiveForm input[type="radio"]{
+  margin: 5px 0 3px 15px;
 }
 
-.responsiveForm input[type=submit],
-.responsiveForm a.button{
+.responsiveForm input[type="submit"], .responsiveForm a.button {
   @include button;
-  display: block;
+  display: block; 
   margin-top: 12px;
+  &.white {
+    background: #eaeaea no-repeat center;
+    color: #313131;
+    &:hover {
+      background-color: #ffffff;
+      text-decoration: none;
+    }
+    &:active {
+      background-color: #d8d8d8;
+      text-decoration: none;
+    }
+  }
 }
 
 .responsiveForm fieldset {
-    margin:10px 0 10px 0;
+  margin:10px 0 10px 0;
 }
 .responsiveForm fieldset.showBorder {
-    border: thin solid #D2D1CD;
-    padding: 5px;
+  border: thin solid #D2D1CD;
+  padding: 5px;
 }
 
 .responsiveForm fieldset legend{
-    margin:0 0 10px 0;
-    font-weight: bold;
+  margin:0 0 10px 0;
+  font-weight: bold;
 }
 
-.responsiveForm input[type=radio]+label,
-.responsiveForm input[type=checkbox]+label {
-    display:block;
-    margin-top:-19px; margin-left: 40px;
-    font-weight: normal;
+.responsiveForm input[type="radio"]+label,
+.responsiveForm input[type="checkbox"]+label {
+  display:block;
+  margin-top:-19px; margin-left: 40px;
+  font-weight: normal;
 }
