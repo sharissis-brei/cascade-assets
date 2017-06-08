@@ -3,10 +3,10 @@
     <meta content="IE=edge,chrome=1" http-equiv="X-UA-Compatible" />
     <title><%= params[:page].to_s.titleize %></title>
 
-    <meta property="og:title" content="$ogTitle" />
-    <meta property="og:description" content="$ogDescription" />
-    <meta property="og:url" content="http://www.chapman.edu/test-section/modular/3-column-modular-mandy-test.aspx" />
-    <meta property="og:image" content="http://www.chapman.edu$ogImage" />
+    <meta property="og:title" content="Sample Page" />
+    <meta property="og:description" content="Description of sample page" />
+    <meta property="og:url" content="https://www.chapman.edu/sample-page.aspx" />
+    <meta property="og:image" content="https://www.chapman.edu/_files/img/open-graph-cu-logo.png" />
 
     <meta content="width=device-width, initial-scale=1, minimum-scale=1" name="viewport" />
 
@@ -77,22 +77,15 @@
         });
     }
     </script>
-    <script type="text/javascript">
-    var _elqQ = _elqQ || [];
-    _elqQ.push(['elqSetSiteId', ' 163452048']);
-    _elqQ.push(['elqTrackPageView']);
-    (function() {
-        function async_load() {
-            var s = document.createElement('script');
-            s.type = 'text/javascript';
-            s.async = true;
-            s.src = '//img.en25.com/i/elqCfg.min.js';
-            var x = document.getElementsByTagName('script')[0];
-            x.parentNode.insertBefore(s, x);
-        }
-        if (window.addEventListener) window.addEventListener('DOMContentLoaded',
-            async_load, false);
-        else if (window.attachEvent) window.attachEvent('onload', async_load);
-    })();
+
+    <noscript>
+        <iframe src="//www.googletagmanager.com/ns.html?id=GTM-MSC27D" height="0" width="0" style="display:none;visibility:hidden"></iframe>
+    </noscript>
+
+    <script>
+        (function(w,d,s,l,i){w[l]=w[l]||[];w[l].push({'gtm.start':
+        new Date().getTime(),event:'gtm.js'});var f=d.getElementsByTagName(s)[0],j=d.createElement(s),dl=l!='dataLayer'?'&l='+l:'';j.async=true;j.src='//www.googletagmanager.com/gtm.js?id='+i+dl;f.parentNode.insertBefore(j,f);
+        })
+        (window,document,'script','dataLayer','GTM-MSC27D');
     </script>
 </head>
