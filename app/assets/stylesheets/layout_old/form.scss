@@ -101,38 +101,24 @@
     font-weight: bold;
 }
 
-.responsiveForm input[type="text"],
-.responsiveForm input[type="password"],
+.responsiveForm input[type=text],
+.responsiveForm input[type=password],
 .responsiveForm textarea,
 .responsiveForm select{
     max-width:100%;
     margin:5px 0 15px 0;
 }
 
-.responsiveForm input[type="checkbox"],
-.responsiveForm input[type="radio"]{
+.responsiveForm input[type=checkbox],
+.responsiveForm input[type=radio]{
     margin: 5px 0 3px 15px;
 }
 
-.responsiveForm input[type="submit"],
+.responsiveForm input[type=submit],
 .responsiveForm a.button{
   @include button;
-	/* test removing this: 
-  		display: block; 
-	*/
+  display: block;
   margin-top: 12px;
-  &.white {
-  background: #eaeaea no-repeat center;
-  color: #313131;
-  &:hover {
-	background-color: #ffffff;
-	text-decoration: none;
-  }
-  &:active {
-	background-color: #d8d8d8;
-	text-decoration: none;
-  }
-}
 }
 
 .responsiveForm fieldset {
@@ -148,8 +134,8 @@
     font-weight: bold;
 }
 
-.responsiveForm input[type="radio"]+label,
-.responsiveForm input[type="checkbox"]+label {
+.responsiveForm input[type=radio]+label,
+.responsiveForm input[type=checkbox]+label {
     display:block;
     margin-top:-19px; margin-left: 40px;
     font-weight: normal;
