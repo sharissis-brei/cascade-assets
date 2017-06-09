@@ -1,4 +1,5 @@
 .subNavLinks {
+  font-family: $font-stack-heading;
 	display: none;
   .csstransitions & {
     @include bp(m) {
@@ -31,7 +32,7 @@
       // float: left;
       // margin: 0 0 10px 0;
       // width: 240px;
-      background-color: $cu-light-grey;
+      background-color: $white;
       list-style-type: none;
     }
   }
@@ -44,7 +45,7 @@
       }
       @include bp(m) {
         // background-color: #6e7277;
-        background-color: $white;
+        background-color: $cu-light-grey;
         // font-weight: 600;
         color: $cu-red;
       }
@@ -123,8 +124,6 @@
     }
   }
   @include bp(m) {
-    // background-color: #555a5e;
-    background-color: #faf9f6;
     -webkit-box-shadow: 0px 10px 10px 1px rgba(0, 0, 0, 0.2);
     box-shadow: 0px 10px 10px 1px rgba(0, 0, 0, 0.2);
     @include vendorize(box-sizing, border-box);
