@@ -129,14 +129,35 @@
   }
   .icon-graduation {
     &:before {
-      font-size: 1.25em;
-      margin-top: -7px;
+      font-size: 1.2em;
+      margin-top: -5px;
     }
   }
   .icon-books {
     &:before {
       font-size: 1.1em;
       margin-top: -5px;
+    }
+  }
+  .icon-bookmark2 {
+    &:before {
+      font-weight: 600;
+    }
+  }
+  .icon-calculate {
+    &:before {
+      font-weight: 600;
+    }
+  }
+  .icon-medal {
+    &:before {
+      font-size: 1.2em;
+    }
+  }
+  .icon-lamp8 {
+    &:before {
+      font-size: 1.1em;
+      font-weight: 600;
     }
   }
 
