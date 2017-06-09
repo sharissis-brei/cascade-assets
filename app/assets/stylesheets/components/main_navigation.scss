@@ -92,7 +92,7 @@
       line-height: 1.4em;
       color: $grey;
       padding: 0.1em;
-      margin-top: -4px;
+      margin: -4px 5px 10px 0;
       width: 24px;
       height: 24px;
       float: left;
@@ -100,7 +100,6 @@
     }
     &:hover:before {
       color: $cu-red;
-      background-color: $white;
     }
     .ie8 & {
       margin-left: 0;
@@ -109,7 +108,57 @@
       }
     }
   }
-
+  .icon-california {
+    &:before {
+      font-size: 1.2em;
+      margin-top: -5px;
+    }
+  }
+  .icon-cu-monogram {
+    &:before {
+      font-size: 1.3em;
+      margin-top: -7px;
+    }
+  }
+  .icon-cu-window {
+    &:before {
+      font-size: 1.25em;
+      margin-top: -7px;
+    }
+  }
+  .icon-graduation {
+    &:before {
+      font-size: 1.2em;
+      margin-top: -5px;
+    }
+  }
+  .icon-books {
+    &:before {
+      font-size: 1.1em;
+      margin-top: -5px;
+    }
+  }
+  .icon-bookmark2 {
+    &:before {
+      font-weight: 600;
+    }
+  }
+  .icon-calculate {
+    &:before {
+      font-weight: 600;
+    }
+  }
+  .icon-medal {
+    &:before {
+      font-size: 1.2em;
+    }
+  }
+  .icon-lamp8 {
+    &:before {
+      font-size: 1.1em;
+      font-weight: 600;
+    }
+  }
 
   &.active {
     @include bp(m) {
