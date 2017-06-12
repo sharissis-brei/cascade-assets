@@ -36,7 +36,7 @@ you can use the generic selector below, but it's slower:
     -webkit-font-smoothing: antialiased;
 }
 
-.icon-menu7:before, .icon-arrow-down2:before, .icon-search:before, .icon-user3:before  {
+.icon-menu7:before, .icon-arrow-down2:before, .icon-search:before, .icon-user3:before, .icon-certificate:before, .icon-medal:before, .icon-clipboard5:before, .icon-library4:before, .icon-lamp8:before, .icon-microscope:before {
     font-family: 'icomoon-ultimate';
     speak: none;
     font-style: normal;
@@ -286,4 +286,22 @@ you can use the generic selector below, but it's slower:
 }
 .icon-user3:before {
     content: "\eb08";
+}
+.icon-certificate:before {
+    content: "\e9eb";
+}
+.icon-medal:before {
+    content: "\eba0";
+}
+.icon-clipboard5:before {
+    content: "\ec54";
+}
+.icon-library4:before {
+    content: "\e999";
+}
+.icon-lamp8:before {
+    content: "\ebfa";
+}
+.icon-microscope:before {
+    content: "\eb2d";
 }

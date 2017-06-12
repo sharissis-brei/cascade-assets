@@ -125,24 +125,14 @@
 			> a {
 				display: table-cell;
 				vertical-align: middle;
-				padding: 0 70px 0 1.25em;
+				padding: 0 70px 0 22px;
 				position: relative;
 				font-size: 18px;
 				font-family: "futura-pt", sans-serif;
 
-				&.has-icon {
-					padding: 0 70px 0 2.75em;
-					text-indent: -28px;
-				}
-
-				// &.the-university {
-				// 	pointer-events: none;
-				// }
-
 				&:before, svg {
 					// vertical-align: top;
 					position: relative;
-					top: 2px;
 					@include transition(all, 0.175s, ease-in-out);
 				}
 
@@ -166,9 +156,22 @@
 				svg {
 					fill: $grey2;
 					display: inline-block;
-					margin-right: 10px;
 					width: 18px;
 					height: 18px;
+					top: 2px;
+					margin-right: 10px;
+					
+					&.icon-graduation {
+						width: 21px;
+						height: 21px;
+						top: 5px;
+						margin-right: 7px;
+					}
+					&.icon-calendar {
+						width: 20px;
+						height: 20px;
+						margin-right: 8px;
+					}
 				}
 
 			}
