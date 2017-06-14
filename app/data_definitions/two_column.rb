@@ -77,7 +77,7 @@ module DataDefinitions
 
       v201611: {
         slider: {
-          header: 'Campus Life \n at \n Chapman University',
+          header: 'Campus Life at Chapman University',
 
           slides: [
             {
