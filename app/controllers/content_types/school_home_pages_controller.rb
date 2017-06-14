@@ -51,7 +51,7 @@ module ContentTypes
 
         # TODO: convert these to cascade_format action.
         'OMNI-NAV' => render_static_partial('widgets/shared/omninav'),
-        'NAVIGATION' => render_static_partial('widgets/shared/navigation'),
+        'NAVIGATION' => render_static_partial('_cascade/blocks/html/law_header'),
         'PRIMARY CONTENT' => '<h2>PRIMARY CONTENT GOES HERE!</h2>'
       }
 
