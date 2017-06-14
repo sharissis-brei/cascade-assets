@@ -6,12 +6,6 @@
   overflow: auto;
   background-color: #eaeaea;
 
-  .home & {
-  	@include bp(m) {
-  		margin-top: -20px;
-  	}
-  }
-
   .inner-container {
     position: relative;
     max-width: 1130px;
