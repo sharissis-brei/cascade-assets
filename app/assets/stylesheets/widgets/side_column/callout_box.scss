@@ -1,4 +1,8 @@
 .callout-box-widget {
-  width: 200px;
   @include bp(l) { width: 100%; }
+  width: 100%;
+
+  @include media($large-screen) {
+    width: 200px;
+  }
 }

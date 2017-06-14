@@ -6,10 +6,16 @@
     border: none;
     box-shadow: none;
     padding: 0;
-    width: 200px;
-    text-align: right;
+    width: 100%;
+    text-align: center;
+
+    @include media($large-screen){
+      width: 200px;
+      text-align: right;
+    }
   }
   ul {
+    display: inline-block;
     list-style: none;
     position: relative;
     @extend .clearfix; // Added by SH
@@ -38,6 +44,7 @@
     }
   }
   .more-link {
+    display: block;
     color: #98002e;
     font-weight: bold;
     .arrow {

@@ -1,6 +1,10 @@
 .rightColumn {
-  float: left;
   margin: 20px 0 0 0;
+
+  @include media($large-screen) {
+    float: left;
+  }
+
   .oldie & {
   	margin: 15px 0 0 0;
   }
