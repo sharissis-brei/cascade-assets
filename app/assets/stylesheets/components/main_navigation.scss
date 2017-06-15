@@ -320,13 +320,10 @@
         color: $white;
         display: block;
         height: 45px;
-        font-size: 17px;
+        font-size: 20px;
         font-family: $font-stack-heading;
         position: relative;
         padding: 0;
-      }
-      @include bp(wildcard-min, 1120px) {
-        font-size: 20px;
       }
     }
     @include bp(m) {
