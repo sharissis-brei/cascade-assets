@@ -227,7 +227,7 @@ LOGO_HTML
                        style="outline: none;" />
               </td>
               <td class="gsc-search-button">
-                <input class="gsc-search-button" title="search" type="button" value="Search" />
+                <input class="gsc-search-button" type="button" value="Search" />
               </td>
             </tr>
           </tbody>
@@ -385,7 +385,7 @@ IDENTITY_BLOCK_PHP
         <p class="label">Welcome</p>
         <p class="cu_display_name boxfit"><?php echo $current_user->display_name; ?></p>
         <a href="<?php echo get_home_url( 1, 'profile', (FORCE_SSL_ADMIN) ? 'https' : 'http' ); ?>">Edit Profile</a> |
-        <a href="<?php echo wp_logout_url('http://'.$_SERVER['HTTP_HOST'].$_SERVER['PHP_SELF']); ?>" id="cu_logout" title="Logout">Logout</a>
+        <a href="<?php echo wp_logout_url('http://'.$_SERVER['HTTP_HOST'].$_SERVER['PHP_SELF']); ?>" id="cu_logout">Logout</a>
     </div>
 
     <?php else: ?>
@@ -584,27 +584,27 @@ OFF_CANVAS_HEADER_HTML
           </a>
           <span class="toggle"><span>+</span></span>
           <ul>
-            <li><a href="https://www.chapman.edu/about/" title="About">About</a></li>
-            <li><a href="https://www.chapman.edu/academics/" title="Academics">Academics</a></li>
-            <li><a href="https://www.chapman.edu/admission/" title="Admission">Admission</a></li>
-            <li><a href="https://www.chapman.edu/arts/" title="Arts">Arts</a></li>
-            <li><a href="https://www.chapman.edu/campus-life/" title="Campus Life">Campus Life</a></li>
-            <li><a href="https://www.chapman.edu/research-and-institutions/" title="Research">Research</a></li>
-            <li><a href="https://www.chapman.edu/support-chapman/" title="Support">Support</a></li>
+            <li><a href="https://www.chapman.edu/about/">About</a></li>
+            <li><a href="https://www.chapman.edu/academics/">Academics</a></li>
+            <li><a href="https://www.chapman.edu/admission/">Admission</a></li>
+            <li><a href="https://www.chapman.edu/arts/">Arts</a></li>
+            <li><a href="https://www.chapman.edu/campus-life/">Campus Life</a></li>
+            <li><a href="https://www.chapman.edu/research-and-institutions/">Research</a></li>
+            <li><a href="https://www.chapman.edu/support-chapman/">Support</a></li>
           </ul>
         </li>
         <li>
-          <a class="has-icon" href="https://www.chapman.edu/audiences/" title="Find information for...">
+          <a class="has-icon" href="https://www.chapman.edu/audiences/">
             %<user_svg>s
             Find information for...
           </a>
           <span class="toggle"><span>+</span></span>
           <ul>
-            <li><a href="https://www.chapman.edu/future-students/" title="Prospective Students">Prospective Students</a></li>
-            <li><a href="https://www.chapman.edu/students/" title="Current Students">Current Students</a></li>
-            <li><a href="https://www.chapman.edu/alumni/" title="Alumni">Alumni</a></li>
-            <li><a href="https://www.chapman.edu/faculty-staff/" title="Faculty &amp; Staff">Faculty &amp; Staff</a></li>
-            <li><a href="https://www.chapman.edu/families/" title="Parents &amp; Families">Parents &amp; Families</a></li>
+            <li><a href="https://www.chapman.edu/future-students/">Prospective Students</a></li>
+            <li><a href="https://www.chapman.edu/students/">Current Students</a></li>
+            <li><a href="https://www.chapman.edu/alumni/">Alumni</a></li>
+            <li><a href="https://www.chapman.edu/faculty-staff/">Faculty &amp; Staff</a></li>
+            <li><a href="https://www.chapman.edu/families/">Parents &amp; Families</a></li>
           </ul>
         </li>
         <li>
@@ -620,66 +620,66 @@ OFF_CANVAS_HEADER_HTML
           </a>
           <span class="toggle"><span>+</span></span>
           <ul>
-            <li><a href="https://www.chapman.edu/business/" title="Argyros School of Business &amp; Economics">Argyros School of Business &amp; Economics</a></li>
-            <li><a href="https://www.chapman.edu/ces/" title="College of Educational Studies">College of Educational Studies</a></li>
-            <li><a href="https://www.chapman.edu/copa/" title="College of Performing Arts">College of Performing Arts</a></li>
-            <li><a href="https://www.chapman.edu/crean/" title="Crean College of Health &amp; Behavioral Sciences">Crean College of Health &amp; Behavioral Sciences</a></li>
-            <li><a href="https://www.chapman.edu/dodge/" title="Dodge College of Film &amp; Media Arts">Dodge College of Film &amp; Media Arts</a></li>
-            <li><a href="https://www.chapman.edu/law/" title="Fowler School of Law">Fowler School of Law</a></li>
-            <li><a href="https://www.chapman.edu/scst/" title="Schmid College of Science &amp; Technology">Schmid College of Science &amp; Technology</a></li>
-            <li><a href="https://www.chapman.edu/communication/" title="School of Communication">School of Communication</a></li>
-            <li><a href="https://www.chapman.edu/pharmacy/" title="School of Pharmacy">School of Pharmacy</a></li>
-            <li><a href="https://www.chapman.edu/wilkinson/" title="Wilkinson College of Arts, Humanities, &amp; Social Sciences">Wilkinson College of Arts, Humanities, &amp; Social Sciences</a></li>
+            <li><a href="https://www.chapman.edu/business/">Argyros School of Business &amp; Economics</a></li>
+            <li><a href="https://www.chapman.edu/ces/">College of Educational Studies</a></li>
+            <li><a href="https://www.chapman.edu/copa/">College of Performing Arts</a></li>
+            <li><a href="https://www.chapman.edu/crean/">Crean College of Health &amp; Behavioral Sciences</a></li>
+            <li><a href="https://www.chapman.edu/dodge/">Dodge College of Film &amp; Media Arts</a></li>
+            <li><a href="https://www.chapman.edu/law/">Fowler School of Law</a></li>
+            <li><a href="https://www.chapman.edu/scst/">Schmid College of Science &amp; Technology</a></li>
+            <li><a href="https://www.chapman.edu/communication/">School of Communication</a></li>
+            <li><a href="https://www.chapman.edu/pharmacy/">School of Pharmacy</a></li>
+            <li><a href="https://www.chapman.edu/wilkinson/">Wilkinson College of Arts, Humanities, &amp; Social Sciences</a></li>
           </ul>
         </li>
         <li>
-          <a class="has-icon" href="https://events.chapman.edu/" title="Events">
+          <a class="has-icon" href="https://events.chapman.edu/">
             %<calendar_svg>s
             Events
           </a>
         </li>
         <li>
-          <a class="has-icon" href="https://blogs.chapman.edu/" title="Blogs">
+          <a class="has-icon" href="https://blogs.chapman.edu/">
             %<newspaper_svg>s
             Blogs
           </a>
           <span class="toggle"><span>+</span></span>
           <ul>
             <li>
-              <a href="https://blogs.chapman.edu/happenings/" title="Happenings">Happenings</a>
+              <a href="https://blogs.chapman.edu/happenings/" title="Blog for Happenings">Happenings</a>
             </li>
             <li>
-              <a href="https://blogs.chapman.edu/alumni/" title="Chapman Alumni">Chapman Alumni</a>
+              <a href="https://blogs.chapman.edu/alumni/" title="Blog for Chapman Alumni">Chapman Alumni</a>
             </li>
             <li>
-              <a href="https://blogs.chapman.edu/business/" title="Argyros School of Business &amp; Economics">Argyros School of Business &amp; Economics</a>
+              <a href="https://blogs.chapman.edu/business/" title="Blog for Argyros School of Business &amp; Economics">Argyros School of Business &amp; Economics</a>
             </li>
             <li>
-              <a href="https://blogs.chapman.edu/ces/" title="College of Educational Studies">College of Educational Studies</a>
+              <a href="https://blogs.chapman.edu/ces/" title="Blog for College of Educational Studies">College of Educational Studies</a>
             </li>
             <li>
-              <a href="https://blogs.chapman.edu/copa/" title="College of Performing Arts">College of Performing Arts</a>
+              <a href="https://blogs.chapman.edu/copa/" title="Blog for College of Performing Arts">College of Performing Arts</a>
             </li>
             <li>
-              <a href="https://blogs.chapman.edu/crean/" title="Crean College of Health and Behavioral Sciences">Crean College of Health and Behavioral Sciences</a>
+              <a href="https://blogs.chapman.edu/crean/" title="Blog for Crean College of Health and Behavioral Sciences">Crean College of Health and Behavioral Sciences</a>
             </li>
             <li>
-              <a href="https://blogs.chapman.edu/dodge/" title="Dodge College of Film and Media Arts">Dodge College of Film and Media Arts</a>
+              <a href="https://blogs.chapman.edu/dodge/" title="Blog for Dodge College of Film and Media Arts">Dodge College of Film and Media Arts</a>
             </li>
             <li>
-              <a href="https://blogs.chapman.edu/law/" title="Fowler School of Law">Fowler School of Law</a>
+              <a href="https://blogs.chapman.edu/law/" title="Blog for Fowler School of Law">Fowler School of Law</a>
             </li>
             <li>
-              <a href="https://blogs.chapman.edu/scst/" title="Schmid College of Science and Technology">Schmid College of Science and Technology</a>
+              <a href="https://blogs.chapman.edu/scst/" title="Blog for Schmid College of Science and Technology">Schmid College of Science and Technology</a>
             </li>
             <li>
-              <a href="https://blogs.chapman.edu/communication/" title="School of Communication">School of Communication</a>
+              <a href="https://blogs.chapman.edu/communication/" title="Blog for School of Communication">School of Communication</a>
             </li>
             <li>
-              <a href="https://blogs.chapman.edu/pharmacy/" title="School of Pharmacy">School of Pharmacy</a>
+              <a href="https://blogs.chapman.edu/pharmacy/" title="Blog for School of Pharmacy">School of Pharmacy</a>
             </li>
             <li>
-              <a href="https://blogs.chapman.edu/wilkinson/" title="Wilkinson College of Arts, Humanities, and Social Sciences">Wilkinson College of Arts, Humanities, and Social Sciences</a>
+              <a href="https://blogs.chapman.edu/wilkinson/" title="Blog for Wilkinson College of Arts, Humanities, and Social Sciences">Wilkinson College of Arts, Humanities, and Social Sciences</a>
             </li>
             <li>
               <a href="https://blogs.chapman.edu/" title="View more Blogs">View More Blogs</a>
