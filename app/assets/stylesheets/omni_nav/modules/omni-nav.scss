@@ -501,7 +501,7 @@ a.cu_nav_button {
         }
     }
 
-    
+
 
     input.gsc-search-button {
         display: block;
@@ -541,14 +541,14 @@ a.cu_nav_button {
         //margin-left: -255px;
     }
 
-    
+
     // Don't show clear button in search box unless on mobile
     div.gsc-clear-button {
         @include bp(m) {
             display: none;
         }
     }
-    
+
 }
 
 // Search Autocomplete Suggestion box
@@ -1014,7 +1014,7 @@ a.cu_nav_button {
 .cu-search-open-trigger {
     // z-indexes in this file are in the 99900-range, eventually need to be changed to lower values
     z-index: 99999;
-    
+
     padding: ($cu-button-padding - 1px) 12px;
     position: absolute;
     right: 25px;
@@ -1162,6 +1162,8 @@ a.cu_nav_button {
 
 // This is for the search form autocomplete results which are dynamically attached to
 // the body, so can't be nested within navbar selector.
-table.gssb_c table, tbody, tr, td {
-    border: none;
+table.gssb_c {
+    table, tbody, tr, td {
+        border: none;
+    }
 }
