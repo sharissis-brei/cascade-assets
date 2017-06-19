@@ -4,6 +4,8 @@
   max-width: 1130px;
   padding: 0 16px;
 
+  .content h3 { margin-top: 0; }
+
   @media (min-width: 1120px) {
     padding: 0;
   }

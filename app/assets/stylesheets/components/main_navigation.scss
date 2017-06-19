@@ -2,7 +2,12 @@
 /* The Container of the main navigation element */
 .main-nav-container {
   width: 100%;
+  margin: 0 auto;
   display: none;
+
+  @include media(1130px) {
+    max-width: 1130px;
+  }
 
   @include media($large-screen) {
     display: block;
@@ -65,7 +70,8 @@
 
 
 .logo {
-  display: block;
+  display: none;
+  float: left;
   height: 38px;
   width: 200px;
   text-indent: -999em;
@@ -75,23 +81,21 @@
   background: image-url('chapman_logo_horizonal_stacked.svg'), linear-gradient(transparent, transparent);
   background-repeat: no-repeat;
   background-size: contain;
-
-  @include bp(m) {
-    margin-bottom: 0;
-    float: left;
-    display: block;
-    position: static;
-    height: 38px;
-    width: 200px;
-  }
-  @media (min-width: 1120px) {
     margin: 3px 20px 0 0;
-  }
+
+  @media (min-width: 1130px) { display: block; }
 }
 
 .mainNavLinks {
   background-color: $black;
   display: none;
+
+  @include media(1130px){
+    background-image: url(//www.chapman.edu/_assets/ribbon_tails-b7f0694bd5d3c96acc5d6cd44d0bf1b864b2a3bbe2f3d3f27291694ecb4371dc.png);
+    background-repeat: no-repeat;
+    background-position: -2px 0;
+    padding: 0 0 0 10px;
+  }
   .open & { display: block; }
 
   /* The little icons on the menu */
