@@ -1,8 +1,10 @@
 module DataDefinitions
   class OneColumn < DataDefinitions::Base
     # XML XPath Selectors
+
+    # TODO: configure this to for brochure masthead and schools/colleges masthead
     XPATH = {
-      masthead_type: '//group[@identifier="masthead"]/text[@identifier="mastheadType"]'
+      masthead_type: '//group[@identifier="masthead"]/text[@identifier="schoolMastheadTypes"]'
     }.freeze
 
     # Preset Data Values
