@@ -4,56 +4,28 @@
 }
 
 .collapsibles-widget .summaryText {
-	margin-bottom:10px;
+  margin-bottom:10px;
   line-height: 20px;
 }
 
 .collapsibles-widget .accordion {
-	background-color: $white;
+  background-color: $white;
   border: 1px solid #c1c1c1;
   border-radius: 2px;
   margin-bottom: 2px;
-	.ie7 & {
-		zoom: normal;
-		&.active header {
-			background-color: $white;
-		}
-    h3 {
-      zoom: normal;
-    }
-    .header {
-		  background-color: #d8d8d8;
-		  overflow: hidden;
-		  width: 100%;
-		}
-	}
-  .ie9 & {
-    .header {
-      filter: none;
-    }
-  }
-	&.active {
-		header {
-			background-color: $white;
-		}
-		.header {
-			font-weight: 800;
-      background: $white;
 
-			.show {
-	      display: none;
-	    }
-	    .hide {
-	      display: block;
-	    }
-		}
-	}
-	&.first {
+  &.first {
     margin-top: 20px;
   }
   table {
     width: 100%;
   }
+
+  .content {
+    margin: 0 20px 18px 20px;
+    overflow: hidden;
+  }
+
   .header {
     background-color: #d8d8d8;
     font-size: 16px;
@@ -64,6 +36,7 @@
     font-family: $font-stack-body;
     font-weight: 600;
     text-transform: none;
+
     .show, .hide {
       background-image: image-url('miscButtons.png');
       background-position: -23px 0;
@@ -93,8 +66,50 @@
       }
     }
   }
-  .content {
-    margin: 0 20px 18px 20px;
-    overflow: hidden;
+
+  &.active {
+    header {
+      background-color: $white;
+    }
+    .header {
+      font-weight: 800;
+      background: $white;
+
+      .show {
+        display: none;
+      }
+      .hide {
+        display: block;
+      }
+    }
   }
+
+  .ie7 & {
+    zoom: normal;
+    &.active header {
+      background-color: $white;
+    }
+    h3 {
+      zoom: normal;
+    }
+    .header {
+      background-color: #d8d8d8;
+      overflow: hidden;
+      width: 100%;
+    }
+  }
+
+  .ie9 & {
+    .header {
+      filter: none;
+    }
+  }
+}
+
+/*
+ * Fixes Safari issue where +/- buttons were not working as expected.
+ * For details, see https://github.com/chapmanu/cascade-assets/issues/205
+ */
+.collapsibles-widget .accordion:active h3.header {
+  z-index: 1;
 }
