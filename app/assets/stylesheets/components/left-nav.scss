@@ -1,19 +1,26 @@
 .leftNav {
+  text-align: left;
+
   .currentPage {
     font-weight: 800;
   }
-	.callout {
-		@include bp(l) {
-  		-moz-box-sizing: border-box;
-	    -webkit-box-sizing: border-box;
-	    box-sizing: border-box;
-	    width: 100%;
-  	}
-	}
-	@include bp(l) {
+  .callout {
+    @include bp(l) {
+      -moz-box-sizing: border-box;
+      -webkit-box-sizing: border-box;
+      box-sizing: border-box;
+      width: 100%;
+    }
+  }
+  @include media($medium-screen) {
     width: 25%;
     margin: 0 0 15px 0;
-	}
+  }
+
+  @include media($large-screen) {
+    float: left;
+    display: inline-block;
+  }
 }
 
 .leftNav-sub {

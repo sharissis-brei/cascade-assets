@@ -65,6 +65,9 @@ module ContentTypes
       @metadata_set = MetadataSet.page(title: 'Modular One Column')
       @data_definition = DataDefinitions::OneColumn.default
 
+      theme = params.fetch(:theme, 'students')
+      @current_page_path = "#{theme}/path/to/index.aspx"
+
       # Define configuration set regions.
       @configuration_set.regions = {
         'ADDITIONAL BODY AT-END' => '',
@@ -77,14 +80,14 @@ module ContentTypes
         'MASTHEAD' => cascade_format('_cascade/formats/modular/one_column_masthead'),
         'META VIEWPORT' => cascade_block('_cascade/blocks/html/global_meta_viewport'),
         'OG_TAGS' => '',
-        'PAGE WRAPPER CLOSE' => '',
-        'PAGE WRAPPER OPEN' => '',
+        'PAGE WRAPPER CLOSE' => cascade_format('_cascade/formats/modular/page_wrapper_close'),
+        'PAGE WRAPPER OPEN' => cascade_format('_cascade/formats/modular/page_wrapper_open'),
 
         # TODO: convert these to cascade_format action.
         'OMNI-NAV' => render_static_partial('widgets/shared/omninav'),
-        'NAVIGATION' => render_static_partial('widgets/shared/navigation'),
+        'NAVIGATION' => render_static_partial(navigation_path),
         'PRIMARY CONTENT' => render_static_one_column_primary_content,
-        'GLOBAL FOOTER' => render_static_partial('widgets/shared/footer')
+        'GLOBAL FOOTER' => render_static_partial(footer_path)
       }
 
       render @configuration_set.template
@@ -142,8 +145,8 @@ module ContentTypes
 
         # TODO: convert these to cascade_format action.
         'OMNI-NAV' => render_static_partial('widgets/shared/omninav'),
-        'NAVIGATION' => render_static_partial('widgets/shared/navigation'),
-        'GLOBAL FOOTER' => render_static_partial('widgets/shared/footer')
+        'NAVIGATION' => render_static_partial(navigation_path),
+        'GLOBAL FOOTER' => render_static_partial(footer_path)
       }
 
       render @configuration_set.template
@@ -210,24 +213,40 @@ module ContentTypes
 
     private
 
+    def footer_path
+      if params['theme'] == 'law'
+        '_cascade/blocks/html/law_footer'
+      else
+        'widgets/shared/footer'
+      end
+    end
+
+    def navigation_path
+      if params['theme'] == 'law'
+        '_cascade/blocks/html/law_header'
+      else
+        'widgets/shared/navigation'
+      end
+    end
+
     # rubocop:disable Metrics/MethodLength
     # TODO: Replace with more Cascadesque rendering.
     def render_static_ad_landing_primary_content
       # This reproduces content from static sample version.
       primary_content = <<-HTML
-<div id="column-container" class="ad-landing-column-container">
-  <div id="left-column" class="ad-landing-left-column">
-    <h2 class="ad-landing-title">%s</h2>
-    %s
-    %s
-  </div>
-  <div id="right-column" class="ad-landing-right-column">
-    %s
-    %s
-    %s
-  </div>
-</div>
-HTML
+      <div id="column-container" class="ad-landing-column-container">
+        <div id="left-column" class="ad-landing-left-column">
+          <h2 class="ad-landing-title">%s</h2>
+          %s
+          %s
+        </div>
+        <div id="right-column" class="ad-landing-right-column">
+          %s
+          %s
+          %s
+        </div>
+      </div>
+      HTML
 
       format(primary_content,
              'Master of Business Administration',

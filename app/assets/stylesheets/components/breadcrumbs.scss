@@ -1,13 +1,11 @@
 .breadcrumbs {
   clear: both;
-  // margin: 0 0 10px 50px;
-  margin: 0 0 30px 10px;
+  margin: 10px 0 10px 0;
 
-  // Hotfix for Social media icon overlap
-  @media only screen and (min-width: 780px) {
-    > ul {
-      padding-right: 225px;
-    }
+  > ul {
+    width: 60%;
+    float: left;
+    text-align: left;
   }
 
   .virtualTour & {
@@ -32,7 +30,6 @@
     border-bottom: 2px dotted #c1c1c1;
   }
   .home {
-    // display: block;
     display: inline-block;
     vertical-align: text-top;
     border-bottom: none;
@@ -46,11 +43,6 @@
   ul li {
     list-style-type: none;
     display: inline-block;
-    // list-style-type: none;
-    // display: inline-block;
-    // margin: 0 0 10px 7px;
-    // padding: 0 0 0 7px;
-    // border-left: 1px solid $black;
     &:first-child {
       margin-left: 0;
       padding-left: 0;
@@ -59,9 +51,5 @@
   }
   .bullet {
     margin: 0 6px;
-  }
-  @include bp(l) {
-    // margin: 10px 0 10px 50px;
-    margin: 10px 0 10px 10px;
   }
 }

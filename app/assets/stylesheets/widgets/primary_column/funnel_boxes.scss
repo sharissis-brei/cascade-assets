@@ -3,18 +3,24 @@
 }
 
 .funnel {
-	.ie7 & {
-		.funnelBlock {
-		  zoom: 1;
-		  display: inline;
-		}
-	}
-	.funnelBlock {
-	  display: inline-block;
-	  vertical-align: top;
-	  width: 300px;
-	  margin: 0 $base-spacing $base-spacing*2 $base-spacing;
-	  .featureImage {
+  .ie7 & {
+    .funnelBlock {
+      zoom: 1;
+      display: inline;
+    }
+  }
+  .funnelBlock {
+    display: inline-block;
+    vertical-align: top;
+    width: 100%;
+    margin: 0 0 $base-spacing*2 0;
+
+    @include media($large-screen) {
+      width: 300px;
+      margin: 0 $base-spacing $base-spacing*2 $base-spacing;
+    }
+
+    .featureImage {
       text-align: center;
       line-height: 0;
     }
@@ -54,8 +60,8 @@
     .copy {
       @include paragraph;
     }
-	}
-	.more {
+  }
+  .more {
     color: $black;
     font-weight: 800;
     font-size: 11px;

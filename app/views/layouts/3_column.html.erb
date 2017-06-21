@@ -1,79 +1,67 @@
 <!DOCTYPE html>
 <html xmlns="http://www.w3.org/1999/xhtml" class="no-js" lang="en">
 
-<%= render 'widgets/shared/head' %>
+  <%= render 'widgets/shared/head' %>
 
-<!--[if lt IE 7]> <body class="ie6 oldie phaseFour"> <![endif]-->
-<!--[if IE 7]>    <body class="ie7 oldie phaseFour"> <![endif]-->
-<!--[if IE 8]>    <body class="ie8 oldie phaseFour"> <![endif]-->
-<!--[if gt IE 8]><!-->
-<body>
- <!--<![endif]-->
+  <!--[if lt IE 7]> <body class="ie6 oldie phaseFour"> <![endif]-->
+  <!--[if IE 7]>    <body class="ie7 oldie phaseFour"> <![endif]-->
+  <!--[if IE 8]>    <body class="ie8 oldie phaseFour"> <![endif]-->
+  <!--[if gt IE 8]><!-->
+  <body>
+   <!--<![endif]-->
 
     <div id="theme" class="<%= yield(:theme) %>">
+      <span class="hidden"><a href="#main" title="Skip navigation and jump directly to the main content of this page">Jump to the main content of this page</a></span>
+      <div id="fb-root"></div>
+      <div class="noscript">
+        <p>Some of the content on this website requires JavaScript to be enabled in your web browser to function as intended. This includes, but is not limited to: navigation, video, image galleries, etc. While the website is still usable without JavaScript, it should be enabled to enjoy the full interactive experience.</p>
+      </div>
+      <div class="bigMasthead smallRotator" id="container">
+        <%= render 'widgets/shared/header' %>
+        <div id="main" role="main">
+          <%= yield(:masthead) %>
+          <div class="subRotator">
+            <div class="primaryContent threeColumns clearfix">
+              <div class="breadcrumbs clearfix">
+                  <%= render 'widgets/shared/breadcrumbs' %>
+                  <%= render 'widgets/shared/social_media_icons' %>
+              </div>
 
-        <a class="skip-link" href="#main" tabindex="-1" title="Skip navigation and jump directly to the main content of this page">Jump to the main content of this page</a>
-
-        <div id="fb-root"></div>
-
-        <div class="noscript">
-            <p>Some of the content on this website requires JavaScript to be enabled in your web browser to function as intended. This includes, but is not limited to: navigation, video, image galleries, etc. While the website is still usable without JavaScript, it should be enabled to enjoy the full interactive experience.</p>
-        </div>
-
-        <div class="bigMasthead smallRotator" id="container">
-
-            <%= render 'widgets/shared/header' %>
-
-            <div id="main" role="main">
-
-                <%= yield(:masthead) %>
-
-                <div class="subRotator">
-                    <div class="primaryContent threeColumns clearfix">
-
-                        <div class="breadcrumbs clearfix">
-                            <%= render 'widgets/shared/breadcrumbs' %>
-                            <%= render 'widgets/shared/social_media_icons' %>
-                        </div>
-
-                        <div class="middleRightContainer">
-                            <div class="main">
-                                <h1><span class="bullet">»</span><%= yield(:title) %></h1>
-                                <div class="hidden">
-                                    <div class="featureFeed">/_featured/Default.xml</div>
-                                    <div class="newsFeed">Default</div>
-                                    <div class="eventsFeed">Default</div>
-                                    <div class="newsEventsOptions">$tabOptions</div>
-                                </div>
-                                <%= yield(:primary_content) %>
-                            </div>
-                            <div class="rightColumn">
-                                <%= yield(:right_column) %>
-                            </div>
-                        </div>
-
-                        <div class="leftNav">
-                            <%= render 'widgets/shared/left_nav' %>
-                            <div class="leftNavSubContent">
-                                <%= yield(:left_column) %>
-                            </div>
-                        </div>
-                    </div>
+              <div class="middleRightContainer">
+                <div class="main">
+                  <h1><span class="bullet">»</span><%= yield(:title) %></h1>
+                  <div class="hidden">
+                      <div class="featureFeed">/_featured/Default.xml</div>
+                      <div class="newsFeed">Default</div>
+                      <div class="eventsFeed">Default</div>
+                      <div class="newsEventsOptions">$tabOptions</div>
+                  </div>
+                  <%= yield(:primary_content) %>
                 </div>
+              </div>
+              <div class="leftNav">
+                  <%= render 'widgets/shared/left_nav' %>
+                  <div class="leftNavSubContent">
+                      <%= yield(:left_column) %>
+                  </div>
+              </div>
+              <div class="rightColumn">
+                  <%= yield(:right_column) %>
+              </div>
             </div>
-            <%= render 'widgets/shared/footer' %>
+          </div>
         </div>
-
-
-        <div class="hidden">
-            <div class="featureFeed">/_featured/Default.xml</div>
-            <div class="newsFeed">Default</div>
-            <div class="eventsFeed">Default</div>
-            <div class="newsEventsOptions">$newsEventsOptions</div>
-            <div class="leftColumnNewsEventsOptions">$leftColumnnewsEventsOptions</div>
-        </div>
+        <%= render 'widgets/shared/footer' %>
+      </div>
+      <div class="hidden">
+        <div class="featureFeed">/_featured/Default.xml</div>
+        <div class="newsFeed">Default</div>
+        <div class="eventsFeed">Default</div>
+        <div class="newsEventsOptions">$newsEventsOptions</div>
+        <div class="leftColumnNewsEventsOptions">$leftColumnnewsEventsOptions</div>
+      </div>
     </div>
-</body>
+  </body>
 </html>
 
 

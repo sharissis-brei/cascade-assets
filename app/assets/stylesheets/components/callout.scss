@@ -4,11 +4,8 @@
   border: 1px solid #c1c1c1;
   line-height: 20px;
   margin: 0 0 20px 0;
-  width: 195px;
+  width: 100%;
   position: relative;
-  @include bp(l) {
-    width: 100%;
-  }
 
   .editableContent, h2 {
     padding: 0 $base-spacing;

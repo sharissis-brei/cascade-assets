@@ -17,14 +17,14 @@
     height: 28px;
     background: image-url('default_follow_us.png');
     left: -93px;
-    top: 6px;
+    top: 0px;
   }
   li {
     width: 24px;
     height: 25px;
     position: relative;
     padding: 0;
-    margin: 6px 0 0 0 !important;
+    margin: 0 !important;
     border: none;
     cursor: pointer;
     span {
@@ -136,8 +136,5 @@
         background-position: -176px -27px;
       }
     }
-  }
-  @include bp(m) {
-    margin-top: -35px;
   }
 }
