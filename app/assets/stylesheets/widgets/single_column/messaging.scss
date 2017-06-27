@@ -40,7 +40,7 @@
 /* One Column Variation */
 .messaging-widget__1-column {
 	background-color: #eaeaea;
-	
+
 	.text-column {
 		text-align: center;
 	}
@@ -71,7 +71,7 @@
 					margin-bottom: 0;
 				}
 			}
-		}		
+		}
 	}
 
 	@include media($medium-screen) {
@@ -211,6 +211,14 @@
 .messaging-widget__dark-bg {
 	background-color: $black;
 	.title, .category, .body { color: white; }
+
+	/* Updated for accessibility. See:
+	   https://github.com/chapmanu/cascade-assets/issues/207 */
+	a {
+		/* Indeed, neither white or #adadad is defined in colors.scss. */
+		color: white;
+		border-bottom: 2px dotted #adadad;
+	}
 }
 
 /* Fact Card Media */
