@@ -18,6 +18,8 @@
             <text identifier="header" label="School or Dept Name" required="true" help-text="title that appears in masthead to the side of the photo"/>
             <asset type="file" identifier="image" label="Image (780x260)" required="true"/>
             <text identifier="altText" label="Image Alt-Text" required="true" help-text="Alternate text to describe image (required)"/>
+            <text identifier="photoCaption" label="Caption (optional. 70 chars max)" maxlength="70"
+                  help-text="short caption (70 chars max including blanks) to show on photo eg. Photo By: or other text"/>
         </group>
         <group identifier="slider201611" label="Slider - New">
             <text identifier="header" label="School or Dept Name" required="true" help-text="title that appears in masthead to the side of the photo"/>
