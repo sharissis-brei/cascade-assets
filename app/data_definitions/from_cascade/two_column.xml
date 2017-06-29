@@ -8,32 +8,30 @@
             <radio-item value="Slider - New" show-fields="masthead/slider201611"/>
             <radio-item value="Boxes" show-fields="masthead/boxes"/>
             <radio-item value="No Masthead"/>
-
-            <!-- Deprecated mastheads. Must be preserved to avoid breaking old pages. -->
             <radio-item value="Use OLD Masthead" show-fields="masthead/showMasthead, masthead/showImage, masthead/image, masthead/altText, masthead/description"/>
             <radio-item value="Branded Masthead" show-fields="masthead/branded-masthead"/>
             <radio-item value="Slider" show-fields="masthead/slider"/>
         </text>
-
         <!-- New masthead formats (Nov 2016): Branded and Slider -->
         <!-- These should mirror groups in three_column.xml -->
         <group identifier="branded201611" label="Branded - New">
-            <text identifier="header" required="true" label="Title"/>
-            <asset identifier="image" type="file" required="true" label="Image (780x260)"/>
+            <text identifier="header" label="School or Dept Name" required="true" help-text="title that appears in masthead to the side of the photo"/>
+            <asset type="file" identifier="image" label="Image (780x260)" required="true"/>
             <text identifier="altText" label="Image Alt-Text" required="true" help-text="Alternate text to describe image (required)"/>
+            <text identifier="photoCaption" label="Caption (optional. 70 chars max)" maxlength="70"
+                  help-text="short caption (70 chars max including blanks) to show on photo eg. Photo By: or other text"/>
         </group>
         <group identifier="slider201611" label="Slider - New">
-            <text identifier="header" required="true" label="Title"/>
+            <text identifier="header" label="School or Dept Name" required="true" help-text="title that appears in masthead to the side of the photo"/>
             <group identifier="slides" label="Slides">
                 <group identifier="slide" label="Slide" multiple="true" maximum-number="10" minimum-number="1">
-                    <asset identifier="image" required="true" type="file" label="Image (780x440)"/>
-                    <text identifier="altText" required="true" label="Image Alt-Text" help-text="Alternate text to describe image (required)"/>
+                    <asset type="file" identifier="image" label="Image (780x440)" required="true"/>
+                    <text identifier="altText" label="Image Alt-Text" required="true" help-text="Alternate text to describe image (required)"/>
                     <text identifier="subTitle" label="subTitle"/>
-                    <text identifier="photoBy" label="Photographer's Name" help-text="If image requires attribution, input name. Will display 'Photo by: [input].'"/>
+                    <text identifier="photoCaption" label="Caption (optional. 70 chars max)" maxlength="70" help-text="short caption (70 chars max including blanks) to show on photo eg. Photo By: or other text"/>
                 </group>
             </group>
         </group>
-
         <group identifier="branded-masthead" label="Branded Masthead">
             <text type="radiobutton" identifier="display-image" label="Show" default="No" required="true">
                 <radio-item value="Yes"/>
@@ -183,15 +181,7 @@
                     <radio-item value="Yes"/>
                     <radio-item value="No"/>
                 </text>
-                <text identifier="heading" label="Heading"/>
-                <text wysiwyg="true" identifier="copy" label="Copy"/>
                 <asset type="block" identifier="info" label="Contact Block" render-content-depth="2" required="true"/>
-                <text type="dropdown" identifier="display" label="Information to Display" default="Basic Address">
-                    <dropdown-item value="Basic Address"/>
-                    <dropdown-item value="Basic Location"/>
-                    <dropdown-item value="Main / People"/>
-                    <dropdown-item value="People Only"/>
-                </text>
             </group>
         </group>
     </group>
@@ -487,7 +477,7 @@
                     <radio-item value="Yes"/>
                     <radio-item value="No"/>
                 </text>
-                <text identifier="header" label="Header" default=""/>
+                <text identifier="header" label="Header"/>
                 <text wysiwyg="true" identifier="copy" label="Copy"/>
                 <asset type="block" identifier="formBlock" label="Form Block" render-content-depth="unlimited" help-text="link to _cascade/blocks/html/Forms-primary-content"/>
             </group>
@@ -634,7 +624,7 @@
                     <dropdown-item value="FILM - Film and Media Arts "/>
                     <dropdown-item value="FOOD - Food Science "/>
                     <dropdown-item value="HCOM - Health and Strategic Communication "/>
-                    <dropdown-item value="HSK - Health Sciences and Kinesiology "/>
+                    <dropdown-item value="HSCI - Health Sciences and Kinesiology "/>
                     <dropdown-item value="HIST - History "/>
                     <dropdown-item value="INTS - International Studies "/>
                     <dropdown-item value="LANG - Languages "/>
@@ -723,6 +713,7 @@
                 <dropdown-item value="Law"/>
                 <dropdown-item value="Pharmacy"/>
                 <dropdown-item value="Schmid"/>
+                <dropdown-item value="SOC"/>
                 <dropdown-item value="Students"/>
                 <dropdown-item value="Thompson Policy Institute"/>
                 <dropdown-item value="Wilkinson"/>
@@ -730,6 +721,7 @@
             <text type="dropdown" identifier="eventsFeed" label="Events Feed" default="Default">
                 <dropdown-item value="Default"/>
                 <dropdown-item value="ASBE"/>
+                <dropdown-item value="CDC"/>
                 <dropdown-item value="CES"/>
                 <dropdown-item value="COPA"/>
                 <dropdown-item value="CREAN"/>
@@ -740,6 +732,7 @@
                 <dropdown-item value="MUSIC"/>
                 <dropdown-item value="PHARMACY"/>
                 <dropdown-item value="SCHMID"/>
+                <dropdown-item value="SOC"/>
                 <dropdown-item value="STUDENTS"/>
                 <dropdown-item value="THEATRE"/>
                 <dropdown-item value="Thompson Policy Institute"/>
