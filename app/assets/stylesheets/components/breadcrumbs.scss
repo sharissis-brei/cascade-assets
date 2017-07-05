@@ -3,9 +3,14 @@
   margin: 10px 0 10px 0;
 
   > ul {
-    width: 60%;
+    width: 100%;
     float: left;
     text-align: left;
+
+    // Tablet (> 780px) Media Breakpoint
+    @include bp(m) {
+      width: 60%;
+    }
   }
 
   .virtualTour & {
