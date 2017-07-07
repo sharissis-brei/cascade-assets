@@ -73,6 +73,8 @@
 @media only screen and (min-width: 1250px) {
   #graduateAdmission { 
     .actions {
+      // hardcoded width so buttons stay stacked in desktop view instead of 100%
+      width: 470px;
       margin-left: 50px;
     }
   }
