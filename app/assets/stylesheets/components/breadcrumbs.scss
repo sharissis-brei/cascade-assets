@@ -7,8 +7,7 @@
     float: left;
     text-align: left;
 
-    // Tablet (> 780px) Media Breakpoint
-    @include bp(m) {
+    @include bp(wildcard-min, 767px) {
       width: 60%;
     }
   }

@@ -1,5 +1,16 @@
+// Breakpoint mixin
+//
+// There are some obvious problems with this. For example, we have a breakpoint defined
+// at 780px for m(edium). But our designs target 768px and in neat/_settings_grid.scss,
+// you'll find this setting: $medium-screen: 768px;
+//
+// In the future, let's clarify our device targets and try to adopt something more like this:
+// https://stackoverflow.com/a/13550716/6763239
 @mixin bp($point, $val: 0) {
 
+  // This should probably not be used (see note above). Leaving it as is because
+  // not sure what changing it would break.
+  // Use this instead: bp(wildcard-min, 767px)
 	@if $point == m { // Medium
 		@media (min-width: 780px) { @content; }
 	}
@@ -8,7 +19,7 @@
 		@media (min-width: 1024px) { @content; }
 	}
 
-	@if $point == xl { // Large
+	@if $point == xl { // Extra-Large
 		@media (min-width: 1200px) { @content; }
 	}
 
