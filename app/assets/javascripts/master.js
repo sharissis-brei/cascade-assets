@@ -60,3 +60,4 @@
 
 //= require_tree ./widgets
 //= require_tree ./components
+//= require_tree ./regions

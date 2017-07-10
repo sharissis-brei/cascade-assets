@@ -22,6 +22,9 @@
           <%= yield(:masthead) %>
           <div class="subRotator">
             <div class="primaryContent threeColumns clearfix">
+
+              <%= render 'regions/mobile_nav' %>
+
               <div class="breadcrumbs clearfix">
                   <%= render 'widgets/shared/breadcrumbs' %>
                   <%= render 'widgets/shared/social_media_icons' %>
@@ -63,5 +66,3 @@
     </div>
   </body>
 </html>
-
-

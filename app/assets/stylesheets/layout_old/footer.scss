@@ -2,9 +2,15 @@
 .footer {
   position: relative;
   height: auto;
-  padding-bottom: 140px;
+  padding-bottom: $base-spacing;
   overflow: auto;
   background-color: #eaeaea;
+
+  // Tablet (> 780px) Media Breakpoint
+  @include bp(m) {
+    // Why so big? Not sure. It was like that when I got here.
+    padding-bottom: 140px;
+  }
 
   .inner-container {
     position: relative;

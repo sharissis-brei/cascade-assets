@@ -1,0 +1,25 @@
+div#mobile-nav {
+  padding: 25px;
+
+  // Tablet (> 780px) Media Breakpoint
+  @include bp(m) {
+    display: none;
+  }
+
+  a.button {
+    width: 100%;
+    font-size: 14px;
+    font-family: futura-pt, sans-serif;
+    font-weight: bold;
+    color: $red;
+    background-color: inherit;
+    border: 2px solid $red;
+    text-transform: uppercase;
+    text-align: center;
+  }
+
+  a.button:hover {
+    background: $red;
+    color: white;
+  }
+}
