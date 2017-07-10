@@ -1,7 +1,7 @@
 .middleRightContainer {
   @include media($medium-screen) {
     float: right;
-    width: 70%;
+    width: 65%;
     position: relative;
   }
 }
