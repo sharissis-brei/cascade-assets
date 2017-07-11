@@ -1,8 +1,8 @@
 div#mobile-nav {
   padding: 25px;
 
-  // Tablet (> 780px) Media Breakpoint
-  @include bp(m) {
+  // This needs to be coordinated with the left-nav menu shift.
+  @include bp(wildcard-min, 768px) {
     display: none;
   }
 

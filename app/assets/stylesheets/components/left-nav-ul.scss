@@ -3,16 +3,18 @@
     float: left;
     width: 100%;
     background-color: #d8d8d8;
-	border-right: 1px solid #c1c1c1;
-	border-bottom: 1px solid #c1c1c1;
-	border-left: 1px solid #c1c1c1;
+    border-right: 1px solid #c1c1c1;
+    border-bottom: 1px solid #c1c1c1;
+    border-left: 1px solid #c1c1c1;
     position: relative;
     margin-bottom: 20px;
-    li { 
+
+    li {
       list-style-type: none;
       margin: 0;
     }
-		> li {
+
+    > li {
 			&.active > {
 				a {
 	        background-color: $white;
@@ -25,6 +27,7 @@
 	        }
 	      }
 			}
+
 			> {
 				ul {
 					display: none;
@@ -41,12 +44,10 @@
 	        }
 				}
 				a {
-					//border-top: 1px solid $cu-light-grey;
 					border-top: 1px solid #c1c1c1;
 	        font-size: 16px;
-	        //color: $grey;
-			color: #383838;
-	        padding: 7px 40px 7px 20px;
+          color: #383838;
+	        padding: 7px 40px 7px 15px;
 	        position: relative;
 	        &:hover {
 	        	background-color: $white;
@@ -90,6 +91,7 @@
 			}
 		}
 	}
+
 	ul.is-open {
 	  background: $white;
 	}
@@ -106,7 +108,7 @@
       display: none;
       color: $cu-red;
     }
-  }  
+  }
 }
 
 .leftTitle {
@@ -114,15 +116,15 @@
     float: left;
     width: 100%;
     background-color: #2f2f2f;
-	
+
 	position: relative;
     margin-bottom: 0px;
-    li { 
+    li {
       list-style-type: none;
       margin: 0;
 
-      a {	
-      	padding: 7px 40px 7px 20px;
+      a {
+      	padding: 7px 40px 7px 15px;
       	font-size:16px;
       	color: $white;
       	font-weight: 600;
@@ -139,5 +141,3 @@
     	}
     }
 }
-
-
