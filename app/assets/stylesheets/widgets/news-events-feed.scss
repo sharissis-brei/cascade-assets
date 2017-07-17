@@ -77,7 +77,7 @@ $tab-content-border-color: #c1c1c1;
   background-color: #cfcfcf;
   color: #383838;
   font-size: 1.1em;
-  padding: 0 13px;
+  padding: 0 17px 0 17px;
   line-height: 35px;
   height: 35px;
   cursor: pointer;
@@ -136,7 +136,7 @@ $tab-content-border-color: #c1c1c1;
   //color: $text-color;
   color: #383838;
   clear: both;
-  padding: 15px;
+  padding: 20px;
   div { margin: 0; }
   > li { display: none; }
   > li.active {
