@@ -82,7 +82,7 @@
   .text-column {
     text-align: left;
 
-    h2, p {
+    h2, p, ul {
       padding: 0 24px;
 
       @include media($medium-screen) { padding: 0; }
