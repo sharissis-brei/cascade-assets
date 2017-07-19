@@ -79,7 +79,7 @@
     }
 
     .address {
-      width: 200px;
+      width: auto;
       margin: 0 auto 20px auto;
 
       @include media($medium-screen){
@@ -185,6 +185,16 @@
             font-size: 24px;
             line-height: 42px;
             color: white;
+			.sr-only {
+				  position: absolute;
+				  width: 1px;
+				  height: 1px;
+				  padding: 0;
+				  margin: -1px;
+				  overflow: hidden;
+				  clip: rect(0,0,0,0);
+				  border: 0;
+			}			
           }
         }
       }
@@ -197,6 +207,7 @@
       h2 {
         margin: 0;
         font-size: 18px;
+		line-height: 1.4em;
         font-weight: 100;
         color: white;
         text-transform: uppercase;
