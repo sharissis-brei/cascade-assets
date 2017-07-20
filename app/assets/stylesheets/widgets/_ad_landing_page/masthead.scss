@@ -190,6 +190,7 @@
     position: relative;
     padding: 24px 32px;
     z-index: 667;
+    background-size: cover;
 
     @include media($medium-screen) {
       @include span-columns(9);
