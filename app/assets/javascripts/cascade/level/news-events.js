@@ -52,11 +52,8 @@ $(function () {
             },
             newsFeedOptions = $(".newsFeed").text();
 
-        console.log('hello news-events.js', newsFeedOptions);
-
-
         // TODO: It probably would have been much cleaner to put all these switched vars
-        // here and below into a JS object keyed to the newsFeedOptions.
+        // here and below into a JS object keyed to the newsFeedOptions value.
         switch (newsFeedOptions) {
             case "Admissions":
                 newsFeedUrl = "http://www.chapman.edu/getFeed.ashx?name=newsAdmissions";
@@ -104,7 +101,7 @@ $(function () {
                 break;
             case "Schmid":
                 newsFeedUrl = "http://www.chapman.edu/getFeed.ashx?name=newsSCHMID";
-                (".allNews").attr("href", "http://blogs.chapman.edu/scst");
+                $(".allNews").attr("href", "http://blogs.chapman.edu/scst");
                 break;
             case "SOC":
                 newsFeedUrl = "http://www.chapman.edu/getFeed.ashx?name=newsSOC";
