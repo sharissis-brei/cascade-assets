@@ -1,269 +1,204 @@
 #theme.law {
-    @include theme-color-classes(#002f7c);
-    
-    .bigMasthead header {
-        @include media(1024px) { margin: 0; }
-        @include media(1120px) { margin: 30px 0; }
+  @include theme-color-classes(#002f7c);
+  
+  .bigMasthead header {
+    @include media(1024px) { margin: 0; }
+    @include media(1120px) { margin: 30px 0; }
+  }
+
+  .logo {
+    background: image-url('logo_law_alternate.svg') ;
+    background-repeat: no-repeat;
+    height: 57px;
+    width: 200px;
+    margin: 0 auto $base-spacing auto;
+    @include bp(m) { margin: 0 $base-spacing $base-spacing $base-spacing;}
+    @include media(1120px) { margin: -13px $base-spacing 0 0; }
+  }
+
+  .collapsedNav {
+    margin: 115px 0 0 0;
+  }
+
+  .mainNavLinks > li > a {
+    background-color:#002f7c;
+  }
+
+  .mainNavLinks .mainNavLinksAfter,
+  .mainNavLinks .mainNavLinksAfter:hover {
+    background-color:#002f7c !important;
+  }
+
+  @include bp(m) {
+    .ie8 .subNavLinks {
+      border-right: 1px solid #00307c;
+      border-bottom: 1px solid #00307c;
+      border-left: 1px solid #00307c;
     }
 
-    .logo {
-        background: image-url('logo_law_alternate.svg') ;
-        background-repeat: no-repeat;
-        height: 57px;
-        width: 200px;
-        margin: 0 auto $base-spacing auto;
-        @include bp(m) { margin: 0 $base-spacing $base-spacing $base-spacing;}
-        @include media(1120px) { margin: -13px $base-spacing 0 0; }
+    .mainNav .icon {
+      margin-left: 0;
     }
 
-    .collapsedNav {
-        margin: 115px 0 0 0;
+    .mainNav .icon:before {
+      display: none;
+    }
+  }
+
+  .nameBarButtons li a {
+    color: #00307c;
+  }
+
+  .expandedNameBarContainer h2,
+  .expandedNameBarContainer a,
+  div.styleTwo a {
+    color: #99afda;
+  }
+
+  .smallMasthead .masthead,
+  .bigMasthead .masthead,
+  .nameBar {
+    background: #00307c;
+  }
+
+  #social_follow_us .banner {
+    background-image: image-url('law_follow_us.png');
+  }
+  
+  #social_follow_us li span.hover_state,
+  #social_follow_us li span.inactive_state {
+    background-image: image-url('law_icons.png');
+  }
+
+  .ie8 .slideDescription,
+  .ie9 .slideDescription{
+    display: none !important;
+  }
+
+  .mainNavExpand a {
+    background-color: #002F7C;
+  }
+
+  .mainNavLinks > li {
+    background-color: #353430;
+  }
+
+  /* ==|== media queries ====================================================== */
+  @include bp(m) {
+
+    header {
+      padding: 0 0 15px 0;
     }
 
-    .mainNavLinks > li > a,
-    .footerLinks li a {
-        background-color:#002f7c;
+    .infoFor {
+      width: 600px;
     }
 
-    .mainNavLinks .mainNavLinksAfter,
-    .mainNavLinks .mainNavLinksAfter:hover {
-        background-color:#002f7c !important;
+    .mainNavLinks {
+      background-image: image-url('ribbon_tails_law.png');
     }
 
-    .footerLogo{
-        padding:10px 0 0 10px;
-        clear:both;
-    }
-    @include bp(m) {
-        .ie8 .subNavLinks {
-            border-right: 1px solid #00307c;
-            border-bottom: 1px solid #00307c;
-            border-left: 1px solid #00307c;
-        }
-
-        .mainNav .icon {
-            margin-left: 0;
-        }
-
-        .mainNav .icon:before {
-            display: none;
-        }
-
-        .footer-ribbon, .footer-ribbon .footer-ribbon-before {
-            background-color: #00307c;
-        }
-        .footer-ribbon .footer-ribbon-after {
-            background-image: image-url('ribbon_tails_law.png');
-        }
-    }
-    @include bp(m) {
-        .footer-links-group > h2,
-        .footer-links-group > h3 {
-            color: #fff;
-        }
-    }
-    .nameBarButtons li a {
-        color: #00307c;
-    }
-    .expandedNameBarContainer h2,
-    .expandedNameBarContainer a,
-    div.styleTwo a {
-        color: #99afda;
+    .mainNavLinks > li.noSubNav > a {
+      padding:0 !important;
     }
 
-    .smallMasthead .masthead,
-    .bigMasthead .masthead,
-    .nameBar {
-        background: #00307c;
+    .mainNavLinks > li:hover{
+      background-color:transparent;
     }
 
-    #social_follow_us .banner {
-        background-image: image-url('law_follow_us.png');
-    }
-    #social_follow_us li span.hover_state,
-    #social_follow_us li span.inactive_state {
-        background-image: image-url('law_icons.png');
+    .mainNavLinks > li > a > span {
+      padding-left: 12px;
+      padding-right: 12px;
     }
 
-    .ie8 .slideDescription,
-    .ie9 .slideDescription{
-        display: none !important;
+    .mainNavLinks,
+    .mainNavLinks > li,
+    .mainNavLinks > li.noSubNav:hover {
+      background-color:#002f7c;
     }
 
-    .mainNavExpand a {
-        background-color: #002F7C;
+  }
+
+  @include media(1120px) {
+
+    .mainNavLinks{
+      background-color: transparent;
     }
+  }
 
-    .mainNavLinks > li {
-        background-color: #353430;
+  .smallMasthead .masthead, .smallMasthead .masthead-old, .bigMasthead .mastheadPlaceholder, .bigMasthead .masthead, .bigMasthead .masthead-old, .nameBar, .rightColumn .styleTwo {
+  background: #002f7c; /* Old browsers */
+  }
+  
+  .rightColumn .styleTwo .border { background-color: #002663; }
+  .styleTwo p {color: #fff;}
+  .styleTwo li {color: #fff;}
+  .styleTwo div {color: #fff;}
+  .styleTwo h2 {color: #fff;}
+  .styleTwo h3 {color: #fff;}
+  .rightColumn .styleTwo a {color: #ffffff; border-bottom: 2px dotted #61728d;}
+
+  .nameBarButtons li a { color: #002f7c;}
+  .expandedNameBarContainer h2, .expandedNameBarContainer a, div.styleTwo a { color: #99afda; }
+
+  #social_follow_us .banner {
+    background-image: image-url('law_follow_us.png');
+  }
+  
+  #social_follow_us li span.hover_state, #social_follow_us li span.inactive_state {
+    background-image: image-url('law_icons.png');
+  }
+
+  .rounded-slider .info-container .blue{
+    background-color:#002f7c;
+    background-image: -webkit-gradient(linear, left top, left bottom, from(#002f7c), to(#01235b));
+    background-image: -webkit-linear-gradient(top, #002f7c, #01235b);
+    background-image: -moz-linear-gradient(top, #002f7c, #01235b);
+    background-image: -o-linear-gradient(top, #002f7c, #01235b);
+    background-image: linear-gradient(to bottom, #002f7c, #01235b);
+    filter: progid:DXImageTransform.Microsoft.gradient( startColorstr='#002f7c', endColorstr='#01235b',GradientType=1 );
+  }
+
+  .newbutton a {
+    background-color: #002f7c;
+    &:hover {
+      background-color: #063a8f;
     }
-
-    /* ==|== media queries ====================================================== */
-    @include bp(m) {
-
-        header {
-            padding: 0 0 15px 0;
-        }
-
-        .infoFor {
-            width: 600px;
-        }
-
-        .mainNavLinks {
-        }
-
-        .mainNavLinks > li.noSubNav > a {
-            padding:0 !important;
-        }
-
-        .mainNavLinks > li:hover{
-            background-color:transparent;
-        }
-
-        .mainNavLinks > li > a > span {
-            padding-left: 12px;
-            padding-right: 12px;
-        }
-
-        .mainNavLinks,
-        .mainNavLinks > li,
-        .mainNavLinks > li.noSubNav:hover,
-        footer .footerBefore,
-        .footerLinks{
-            background-color:#002f7c;
-        }
-
-        .mainNavLinks,
-        footer .footerAfter {
-            background-image: image-url('ribbon_tails_law.png');
-        }
-
-        .footerLinks {
-            padding: 0;
-            text-indent: 10px;
-        }
-
-        .subFooter{
-            width:780px;
-        }
-
-        .ie7 .subFooter{
-            width:855px;
-        }
-
-        .ie8 .subFooter{
-            width:835px;
-        }
-
-        .subFooter .socialIcons{
-            width: auto;
-        }
-
-        .subFooter .copyright {
-            right: 148px;
-        }
-
-        .footerLinks .switch{
-            display:none;
-        }
-
+    &:active {
+      background-color: #002562;
     }
+  }
+  
+  .midPhotoCallouts .photoCallout .caption,
+  .photoCallouts .caption,
+  .photoCallouts .rollover{
+    background-color: #002f7c;
+  }
 
-    @include media(1120px) {
-
-        .subFooter ul {
-            margin: 0 10px 0 -10px;
-        }
-
-        .mainNavLinks{
-            background-color: transparent;
-        }
-
-        .footerLogo{
-            position: absolute;
-            top: 35px;
-            left: 20px;
-            padding:10px 0 0 0;
-        }
-
-        .oldie .footerLinks li a{
-            font-size:10px;
-            margin:0;
-        }
-
-        .oldie .footerLinks{
-            float:none;
-        }
-
-        .ie7 .subFooter{
-            width:795px;
-        }
-
-        .ie8 .subFooter{
-            width:780px;
-        }
-
+  
+  .leftNavSubContent .callout .view-more-expander {
+    .view-more {
+      background-color: #002f7c;;
     }
-
-    .smallMasthead .masthead, .smallMasthead .masthead-old, .bigMasthead .mastheadPlaceholder, .bigMasthead .masthead, .bigMasthead .masthead-old, .nameBar, .rightColumn .styleTwo {
-    background: #002f7c; /* Old browsers */
+    .view-more-link {
+      background-color: #002f7c;;
     }
-    .rightColumn .styleTwo .border { background-color: #002663; }
-    .styleTwo p {color: #fff;}
-    .styleTwo li {color: #fff;}
-    .styleTwo div {color: #fff;}
-    .styleTwo h2 {color: #fff;}
-    .styleTwo h3 {color: #fff;}
-    .rightColumn .styleTwo a {color: #ffffff; border-bottom: 2px dotted #61728d;}
-
-    .nameBarButtons li a { color: #002f7c;}
-    .expandedNameBarContainer h2, .expandedNameBarContainer a, div.styleTwo a { color: #99afda; }
-
-    #social_follow_us .banner {
-        background-image: image-url('law_follow_us.png');
-        }
-    #social_follow_us li span.hover_state, #social_follow_us li span.inactive_state {
-        background-image: image-url('law_icons.png');
-        }
-
-    .rounded-slider .info-container .blue{
-        background-color:#002f7c;
-        background-image: -webkit-gradient(linear, left top, left bottom, from(#002f7c), to(#01235b));
-        background-image: -webkit-linear-gradient(top, #002f7c, #01235b);
-        background-image: -moz-linear-gradient(top, #002f7c, #01235b);
-        background-image: -o-linear-gradient(top, #002f7c, #01235b);
-        background-image: linear-gradient(to bottom, #002f7c, #01235b);
-        filter: progid:DXImageTransform.Microsoft.gradient( startColorstr='#002f7c', endColorstr='#01235b',GradientType=1 );
+    .view-less-link {
+      background-color: #002f7c;;
     }
+    .icon-triangle-up {
+      color: #002f7c;;
+    }
+  }
 
-    .newbutton a {
-        background-color: #002f7c;
-        &:hover {
-            background-color: #063a8f;
-        }
-        &:active {
-            background-color: #002562;
-        }
-    }
-    
-    .midPhotoCallouts .photoCallout .caption,
-    .photoCallouts .caption,
-    .photoCallouts .rollover{
-         background-color: #002f7c;
-    }
-    
-    .leftNavSubContent .callout .view-more-expander {
-        .view-more {
-            background-color: #002f7c;;
-        }
-        .view-more-link {
-            background-color: #002f7c;;
-        }
-        .view-less-link {
-            background-color: #002f7c;;
-        }
-        .icon-triangle-up {
-            color: #002f7c;;
-        }
-    }
+  /* Footer */
+
+  .link-container-before,
+  .links-header {
+    background-color: $law-blue-ribbon;
+  }
+
+  .link-container-after {
+    background-image: image-url('ribbon_tails_law.png');
+  }
 }
