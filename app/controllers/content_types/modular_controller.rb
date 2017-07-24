@@ -215,7 +215,7 @@ module ContentTypes
 
     def footer_path
       if params['theme'] == 'law'
-        '_cascade/blocks/html/law_footer'
+        'widgets/shared/law_footer'
       else
         'widgets/shared/footer'
       end

@@ -33,7 +33,7 @@ module ContentTypes
         'COMMON STYLES' => cascade_block('_cascade/blocks/html/common_styles'),
         'COMMON SCRIPTS' => cascade_block('_cascade/blocks/html/common_scripts'),
         'CUSTOM THEME' => cascade_block('_cascade/blocks/custom_themes/law'),
-        'GLOBAL FOOTER' => cascade_block('_cascade/blocks/html/law_footer'),
+        'GLOBAL FOOTER' => cascade_block('widgets/shared/law_footer'),
         'META VIEWPORT' => cascade_block('_cascade/blocks/html/global_meta_viewport'),
 
         # TODO: convert these as needed.
