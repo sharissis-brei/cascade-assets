@@ -1,5 +1,5 @@
 #theme.law {
-  @include theme-color-classes(#002f7c);
+  @include theme-color-classes($law-primary);
   
   .bigMasthead header {
     @include media(1024px) { margin: 0; }
@@ -195,7 +195,7 @@
 
   .link-container-before,
   .links-header {
-    background-color: $law-blue-ribbon;
+    background-color: $law-primary;
   }
 
   .link-container-after {
