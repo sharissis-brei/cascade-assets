@@ -155,11 +155,12 @@
       list-style-type: none;
 
       li {
-        line-height: 20px;
+        margin: 0 0 10px 0;
       }
 
       a {
-        margin: 0;
+        margin: 0px;
+        line-height: 14px;
         color: $black;
         &:hover { color: $red; }
       }
