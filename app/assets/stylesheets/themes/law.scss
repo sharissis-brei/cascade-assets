@@ -21,12 +21,12 @@
   }
 
   .mainNavLinks > li > a {
-    background-color:#002f7c;
+    background-color: $law-primary;
   }
 
   .mainNavLinks .mainNavLinksAfter,
   .mainNavLinks .mainNavLinksAfter:hover {
-    background-color:#002f7c !important;
+    background-color: $law-primary !important;
   }
 
   @include bp(m) {
@@ -76,7 +76,7 @@
   }
 
   .mainNavExpand a {
-    background-color: #002F7C;
+    background-color: $law-primary;
   }
 
   .mainNavLinks > li {
@@ -114,7 +114,7 @@
     .mainNavLinks,
     .mainNavLinks > li,
     .mainNavLinks > li.noSubNav:hover {
-      background-color:#002f7c;
+      background-color: $law-primary;
     }
 
   }
@@ -127,18 +127,18 @@
   }
 
   .smallMasthead .masthead, .smallMasthead .masthead-old, .bigMasthead .mastheadPlaceholder, .bigMasthead .masthead, .bigMasthead .masthead-old, .nameBar, .rightColumn .styleTwo {
-  background: #002f7c; /* Old browsers */
+  background: $law-primary; /* Old browsers */
   }
   
   .rightColumn .styleTwo .border { background-color: #002663; }
-  .styleTwo p {color: #fff;}
-  .styleTwo li {color: #fff;}
-  .styleTwo div {color: #fff;}
-  .styleTwo h2 {color: #fff;}
-  .styleTwo h3 {color: #fff;}
-  .rightColumn .styleTwo a {color: #ffffff; border-bottom: 2px dotted #61728d;}
+  .styleTwo p {color: $white;}
+  .styleTwo li {color: $white;}
+  .styleTwo div {color: $white;}
+  .styleTwo h2 {color: $white;}
+  .styleTwo h3 {color: $white;}
+  .rightColumn .styleTwo a {color: $white; border-bottom: 2px dotted #61728d;}
 
-  .nameBarButtons li a { color: #002f7c;}
+  .nameBarButtons li a { color: $law-primary;}
   .expandedNameBarContainer h2, .expandedNameBarContainer a, div.styleTwo a { color: #99afda; }
 
   #social_follow_us .banner {
@@ -150,17 +150,17 @@
   }
 
   .rounded-slider .info-container .blue{
-    background-color:#002f7c;
-    background-image: -webkit-gradient(linear, left top, left bottom, from(#002f7c), to(#01235b));
-    background-image: -webkit-linear-gradient(top, #002f7c, #01235b);
-    background-image: -moz-linear-gradient(top, #002f7c, #01235b);
-    background-image: -o-linear-gradient(top, #002f7c, #01235b);
-    background-image: linear-gradient(to bottom, #002f7c, #01235b);
+    background-color: $law-primary;
+    background-image: -webkit-gradient(linear, left top, left bottom, from($law-primary), to($law-secondary));
+    background-image: -webkit-linear-gradient(top, $law-primary, $law-secondary);
+    background-image: -moz-linear-gradient(top, $law-primary, $law-secondary);
+    background-image: -o-linear-gradient(top, $law-primary, $law-secondary);
+    background-image: linear-gradient(to bottom, $law-primary, $law-secondary);
     filter: progid:DXImageTransform.Microsoft.gradient( startColorstr='#002f7c', endColorstr='#01235b',GradientType=1 );
   }
 
   .newbutton a {
-    background-color: #002f7c;
+    background-color: $law-primary;
     &:hover {
       background-color: #063a8f;
     }
@@ -172,22 +172,22 @@
   .midPhotoCallouts .photoCallout .caption,
   .photoCallouts .caption,
   .photoCallouts .rollover{
-    background-color: #002f7c;
+    background-color: $law-primary;
   }
 
   
   .leftNavSubContent .callout .view-more-expander {
     .view-more {
-      background-color: #002f7c;;
+      background-color: $law-primary;;
     }
     .view-more-link {
-      background-color: #002f7c;;
+      background-color: $law-primary;;
     }
     .view-less-link {
-      background-color: #002f7c;;
+      background-color: $law-primary;;
     }
     .icon-triangle-up {
-      color: #002f7c;;
+      color: $law-primary;;
     }
   }
 
