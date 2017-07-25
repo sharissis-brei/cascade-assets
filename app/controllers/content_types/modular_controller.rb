@@ -202,7 +202,7 @@ module ContentTypes
         'SOCIAL ACCOUNTS' => 'TODO: _cascade/formats/level/social_accounts',
 
         # TODO: convert these to cascade_format action.
-        'GLOBAL FOOTER' => render_static_partial('widgets/shared/footer'),
+        'GLOBAL FOOTER' => render_static_partial('_cascade/blocks/html/footer'),
         'NAVIGATION' => render_static_partial('widgets/shared/navigation'),
         'OMNI-NAV' => render_static_partial('widgets/shared/omninav')
       }
@@ -215,9 +215,9 @@ module ContentTypes
 
     def footer_path
       if params['theme'] == 'law'
-        'widgets/shared/law_footer'
+        '_cascade/blocks/html/law_footer'
       else
-        'widgets/shared/footer'
+        '_cascade/blocks/html/footer'
       end
     end
 
