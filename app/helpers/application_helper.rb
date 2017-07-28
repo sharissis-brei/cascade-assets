@@ -14,6 +14,13 @@ module ApplicationHelper
     end
   end
 
+  def footer(theme)
+    path = (theme == "law") ? "law_footer" : "footer"
+    content_for :footer do
+      render "_cascade/blocks/html/#{path}"
+    end
+  end
+
   def render_widgets(*widgets)
     safe_join(widgets.map { |widget| render "widgets/#{widget}" })
   end
