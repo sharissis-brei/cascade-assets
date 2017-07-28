@@ -1,0 +1,321 @@
+/* BODY
+---------------------------------------- */
+//make room at top of page for omni-nav
+html.omni-nav-v2 {
+  padding-top: 60px;
+
+  @include media($medium-screen) {
+    padding-top: 120px;
+  }
+}
+
+#omni-nav-v2 {
+  position: fixed;
+  width: 100%;
+  top: 0;
+  font-family: "futura-pt", verdana, sans-serif;
+  z-index: 666;
+
+  .omni-nav-search-box {
+    position: relative;
+    width: 100%;
+    z-index: 666;
+
+    .omni-nav-search-input {
+      width: 100%;
+      margin: 0;
+      border: 1px solid #545454;
+      border-radius: 0;
+      font-weight: 800;
+      color: #676767;
+    }
+
+    .search-icon {
+      position: absolute;
+      display: inline-block;
+      top: 0; bottom: 0; left: 54px;
+      width: 16px;
+      height: 16px;
+      margin: auto;
+      z-index: 667;
+
+      svg {
+        fill: #676767;
+      }
+    }
+  }
+
+  /* UTILITY NAV
+  ---------------------------------------- */
+  .utility-nav {
+    display: none;
+    width: 100%;
+    height: 60px;
+    padding: 0 16px;
+    background-color: #676767;
+
+
+   &.utility-nav-open {
+     @include media($medium-screen) {
+      display: block;
+     }
+
+      .utility-nav-container {
+        display: none;
+
+        //only search container displayed on medium screen
+        @include media($medium-screen) {
+          &.utility-search {
+            display: inline-block;
+            width: 100%;
+          }
+        }
+
+        //show all utility sections on larges screen
+        @include media($large-screen) {
+          display: inline-block;
+        }
+      }
+    }
+
+    .utility-nav-container.utility-search {
+      .utility-section {
+        border-right: none;
+      }
+    }
+
+    .utility-list {
+      display: table;
+      height: 60px;
+      width: 100%;
+
+      .search-type {
+        width: 15%;
+      }
+    }
+
+    .utility-section {
+      display: table-cell;
+      vertical-align: middle;
+      border-right: 1px solid white;
+
+      &.utility-has-dropdown a:after{
+        content: '';
+        display: inline-block;
+        width: 10px;
+        height: 10px;
+        margin-left: 4px;
+        background: image-url('arrow-down');
+        background-size: cover;
+      }
+
+      a {
+        font-size: 15px;
+        line-height: 5px;
+        font-weight: 400;
+        color: white;
+      }
+    }
+  }
+
+  /* PRIMARY NAV
+  ---------------------------------------- */
+  #primary-nav {
+    @include pad(0 $base-spacing);
+    background-color: white;
+    width:100%;
+    height:60px;
+    line-height: 60px;
+    border-bottom: 1px solid #999999;
+    overflow: auto;
+
+    @include media($medium-screen) {
+      padding: 0;
+      height: auto;
+    }
+
+    .nav-container {
+      display: inline-block;
+      height: 60px;
+      float: left;
+
+      &.primary-nav-search {
+        display: none;
+      }
+
+      &.left-nav-container {
+        @include media($medium-screen) {
+          padding-left: $base-spacing;
+        }
+      }
+
+      &.right-nav-container {
+        font-size: 0; //to prevent div separation
+        float: right;
+
+        .primary-nav-action {
+          @include media($medium-screen) {
+            width: 60px;
+            background-color: #2f2f2f;
+            text-align: center;
+            margin: 0 auto;
+          }
+        }
+
+        .primary-nav-icon svg {
+          @include media($medium-screen) {
+            fill: white;
+          }
+        }
+      }
+
+      .primary-nav-icon {
+        height: 60px;
+        line-height: 60px;
+
+        svg { vertical-align: middle; }
+      }
+
+      .off-canvas-nav-trigger {
+        padding-right: 8px;
+
+        .primary-nav-icon svg {
+          padding-bottom: 4px;
+        }
+      }
+
+      &.cu-global-nav {
+        display: none;
+        padding: 14px $base-spacing;
+        background-color: white;
+
+        @include media($medium-screen) {
+          display: block;
+          clear: both;
+          width: 100%;
+          border-top: 1px solid #8a8a8a;
+        }
+
+        @include media($large-screen) {
+          display: inline-block;
+          float: right;
+          clear: none;
+          width: auto;
+          border-top: none;
+        }
+
+        .global-nav-links {
+          display: table;
+          height: 32px;
+        }
+
+        .primary-link {
+          display: table-cell;
+          vertical-align: middle;
+          padding: 0 9px;
+          border-right: 1px solid #8a8a8a;
+
+          &:first-of-type {
+            padding-left: 0;
+          }
+
+          &:last-of-type {
+            padding-right: 0;
+            border-right: none;
+          }
+
+          a {
+            text-transform: uppercase;
+            font-size: 15px;
+          }
+        }
+
+        a { color: $black; }
+      }
+    }
+  }
+
+  .cu-logo-wrapper {
+    display: table;
+    height: 60px;
+  }
+
+  .cu-logo {
+    position: static;
+    display: inline-block;
+    border: 0;
+    width: 200px;
+    height: 23px;
+    text-indent: -998em;
+    margin: 0;
+    background: image-url('chapman_logo_horizontal_color.png'); // IE 8
+    background: image-url('chapman_logo_horizontal_color.svg'), linear-gradient(transparent, transparent);
+    background-repeat: no-repeat;
+    background-size: contain;
+  }
+
+  .secondary-logo {
+    display: none;
+  }
+
+  .primary-logo {
+    display: table-cell;
+    height:  23px;
+    line-height: 23px;
+    vertical-align: middle;
+  }
+
+
+  .primary-nav-action {
+    display: inline-block;
+  }
+
+  .primary-nav-icon {
+    display: inline-block;
+    width: 18px;
+    height: 18px;
+
+    @include media($medium-screen) {
+      width: 22px;
+      height: 22px;
+    }
+  }
+
+  .cu-search-trigger{
+    @include media($medium-screen) {
+      border-right: 1px solid #8a8a8a;
+    }
+
+    .primary-nav-icon {
+      margin-right: 2px;
+
+      .icon-close-search {
+        display: none;
+      }
+    }
+  }
+
+  .utility-nav-trigger {
+    display: none;
+  }
+
+  /* BRANDED PAGES
+  *************************************/
+  &.branded {
+    .secondary-logo {
+      display: none;
+      vertical-align: middle;
+      padding-left: 20px;
+      border-left: 1px solid #2f2f2f;
+      font-size: 18px;
+      font-family: Minion Pro;
+      font-style: italic;
+
+      @include media($medium-screen) {
+        display: table-cell;
+      }
+
+      a { color: $black; }
+    }
+  }
+}
