@@ -3,6 +3,7 @@
 
 //= require global
 //= require omni-nav
+//= require omni-nav-v2
 
 //= require cascade/plugins/amplify
 //= require cascade/plugins/cookie

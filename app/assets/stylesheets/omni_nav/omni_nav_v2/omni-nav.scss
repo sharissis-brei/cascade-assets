@@ -7,6 +7,20 @@ html.omni-nav-v2 {
   @include media($medium-screen) {
     padding-top: 120px;
   }
+
+  @include media($large-screen) {
+    padding-top: 60px;
+  }
+
+  &.utility-nav-open {
+    @include media($medium-screen) {
+      padding-top: 180px;
+    }
+
+    @include media($large-screen) {
+      padding-top: 120px;
+    }
+  }
 }
 
 #omni-nav-v2 {
@@ -19,7 +33,6 @@ html.omni-nav-v2 {
   .omni-nav-search-box {
     position: relative;
     width: 100%;
-    z-index: 666;
 
     .omni-nav-search-input {
       width: 100%;
@@ -37,9 +50,9 @@ html.omni-nav-v2 {
       width: 16px;
       height: 16px;
       margin: auto;
-      z-index: 667;
 
       svg {
+        display: block;
         fill: #676767;
       }
     }
@@ -51,36 +64,60 @@ html.omni-nav-v2 {
     display: none;
     width: 100%;
     height: 60px;
-    padding: 0 16px;
     background-color: #676767;
 
+    nav {
+      display: table;
+      table-layout: fixed;
+      width: 100%;
+    }
 
-   &.utility-nav-open {
-     @include media($medium-screen) {
-      display: block;
-     }
+    .utility-nav-container {
+      display: none;
+      vertical-align: middle;
+
+      &.utility-search {
+        .utility-cell {
+          border-right: none;
+          padding-right: 0px;
+        }
+
+        & > .utility-list {
+          li { padding-right: 16px; }
+          & > li:last-child { padding-left: 0px; }
+        }
+      }
+
+      &.utility-links {
+        //This width is exactly the width of the content
+        //may need to be updated if content changes
+        width: 741px;
+      }
+    }
+
+    &.utility-nav-open {
+      @include media($medium-screen) {
+        display: block;
+      }
 
       .utility-nav-container {
-        display: none;
-
         //only search container displayed on medium screen
         @include media($medium-screen) {
           &.utility-search {
-            display: inline-block;
+            display: table-cell;
             width: 100%;
           }
         }
 
         //show all utility sections on larges screen
         @include media($large-screen) {
-          display: inline-block;
-        }
-      }
-    }
+          display: table-cell;
 
-    .utility-nav-container.utility-search {
-      .utility-section {
-        border-right: none;
+          &.utility-search {
+            display: table-cell;
+            width: auto;
+          }
+        }
       }
     }
 
@@ -90,30 +127,51 @@ html.omni-nav-v2 {
       width: 100%;
 
       .search-type {
-        width: 15%;
+        width: 120px;
       }
     }
 
-    .utility-section {
+    .utility-cell {
       display: table-cell;
       vertical-align: middle;
-      border-right: 1px solid white;
+      border-right: 1px solid #8a8a8a;
+      padding: 0 20px;
+      cursor: pointer;
 
-      &.utility-has-dropdown a:after{
-        content: '';
-        display: inline-block;
-        width: 10px;
-        height: 10px;
-        margin-left: 4px;
-        background: image-url('arrow-down');
-        background-size: cover;
+      &.utility-has-dropdown {
+        position: relative;
+
+        & > a:after{
+          content: '';
+          display: inline-block;
+          width: 10px;
+          height: 10px;
+          margin-left: 4px;
+          background: image-url('arrow-down');
+          background-size: cover;
+        }
+
+        &.dropdown-open {
+          background-color: #4d4d4d;
+
+          & > a:after { transform: rotate(-180deg); }
+
+          .dropdown { display: block; }
+        }
+      }
+
+      .utility-dropdown {
+        background-color: #4d4d4d;
+
+        li:hover { background-color: #676767; }
       }
 
       a {
-        font-size: 15px;
-        line-height: 5px;
-        font-weight: 400;
+        font-size: 14px;
+        line-height: 14px;
+        font-weight: 500;
         color: white;
+        vertical-align: middle;
       }
     }
   }
@@ -124,19 +182,38 @@ html.omni-nav-v2 {
     @include pad(0 $base-spacing);
     background-color: white;
     width:100%;
-    height:60px;
+    height: 60px;
     line-height: 60px;
+    overflow: visible;
     border-bottom: 1px solid #999999;
-    overflow: auto;
 
     @include media($medium-screen) {
       padding: 0;
-      height: auto;
+      height: 120px;
+    }
+
+    @include media($large-screen) {
+      height: 60px;
+    }
+
+    &.search-open {
+      .nav-container.primary-nav-search {
+        display: block;
+        overflow: hidden;
+        float: none;
+
+        @include media($medium-screen) {
+          display: none;
+        }
+      }
+
+      .cu-logo-container {
+        display: none;
+      }
     }
 
     .nav-container {
       display: inline-block;
-      height: 60px;
       float: left;
 
       &.primary-nav-search {
@@ -151,6 +228,7 @@ html.omni-nav-v2 {
 
       &.right-nav-container {
         font-size: 0; //to prevent div separation
+        padding-left: 8px;
         float: right;
 
         .primary-nav-action {
@@ -172,36 +250,39 @@ html.omni-nav-v2 {
       .primary-nav-icon {
         height: 60px;
         line-height: 60px;
+        cursor: pointer;
 
         svg { vertical-align: middle; }
       }
 
       .off-canvas-nav-trigger {
-        padding-right: 8px;
+        padding-right: 12px;
 
         .primary-nav-icon svg {
           padding-bottom: 4px;
         }
       }
 
+      /* GLOBAL NAV
+      ---------------------------------------- */
       &.cu-global-nav {
         display: none;
         padding: 14px $base-spacing;
         background-color: white;
+        border-top: 1px solid #8a8a8a;
 
         @include media($medium-screen) {
           display: block;
-          clear: both;
           width: 100%;
-          border-top: 1px solid #8a8a8a;
         }
 
         @include media($large-screen) {
           display: inline-block;
           float: right;
-          clear: none;
           width: auto;
           border-top: none;
+          margin: 14px $base-spacing;
+          padding: 0;
         }
 
         .global-nav-links {
@@ -211,9 +292,11 @@ html.omni-nav-v2 {
 
         .primary-link {
           display: table-cell;
+          position: relative;
           vertical-align: middle;
           padding: 0 9px;
           border-right: 1px solid #8a8a8a;
+          cursor: pointer;
 
           &:first-of-type {
             padding-left: 0;
@@ -224,9 +307,39 @@ html.omni-nav-v2 {
             border-right: none;
           }
 
-          a {
+          & > a {
             text-transform: uppercase;
             font-size: 15px;
+          }
+
+          &:hover {
+            .global-nav-dropdown { display: block; }
+          }
+
+          .global-nav-dropdown {
+            display: none;
+            position: absolute;
+            width: 200px;
+            left: 0;
+            padding-top: 20px;
+            background-color: white;
+
+            li {
+              border-bottom: 1px solid #8a8a8a;
+              padding: 10px $base-spacing;
+              font-size: 14px;
+              margin-bottom: 0;
+
+              &:last-of-type { border-bottom: none; }
+
+              &:hover {
+                background-color: #eaeaea;
+
+                a{ color: $red; }
+              }
+            }
+
+            a:before { padding-right: 8px; }
           }
         }
 
@@ -235,23 +348,89 @@ html.omni-nav-v2 {
     }
   }
 
+  /* GENERAL DROPDOWN STYLES
+  ---------------------------------------- */
+  .dropdown {
+    display: none;
+    position: absolute;
+    top: 60px; left: 0px;
+    width: 200px;
+    z-index: 667;
+
+    ul {
+      list-style-type: none;
+    }
+
+    li {
+      border-top: 1px solid white;
+      margin-bottom: 0;
+      padding: 10px 16px;
+      cursor: pointer;
+
+      &:first-of-type {
+        border-top: none;
+      }
+
+      a {
+        font-size: 14px;
+        line-height: 14px;
+        color: white;
+      }
+    }
+
+    svg {
+      width: 16px;
+      height: 16px;
+      vertical-align: middle;
+      fill: white;
+    }
+
+    &.social-dropdown {
+      width: 120px;
+
+      li {
+        padding: 0;
+        text-align: center;
+      }
+
+      ul.social-list {
+        text-align: left;
+        padding: 10px;
+
+        li {
+          display: inline-block;
+          width: 26px;
+          height: 26px;
+          border: none;
+          padding: 0;
+
+         a { 
+          display: block;
+          font-size: 0px;
+          line-height: 26px;
+        }
+
+          &:hover {
+            border: 1px solid white;
+          }
+        }
+      }
+
+      a.social-link {
+        display: block;
+        padding: 10px;
+        font-size: 12px;
+        font-weight: 800;
+        text-transform: uppercase;
+      }
+    }
+  }
+
+  /* CU LOGOS
+  ---------------------------------------- */
   .cu-logo-wrapper {
     display: table;
     height: 60px;
-  }
-
-  .cu-logo {
-    position: static;
-    display: inline-block;
-    border: 0;
-    width: 200px;
-    height: 23px;
-    text-indent: -998em;
-    margin: 0;
-    background: image-url('chapman_logo_horizontal_color.png'); // IE 8
-    background: image-url('chapman_logo_horizontal_color.svg'), linear-gradient(transparent, transparent);
-    background-repeat: no-repeat;
-    background-size: contain;
   }
 
   .secondary-logo {
@@ -260,12 +439,22 @@ html.omni-nav-v2 {
 
   .primary-logo {
     display: table-cell;
-    height:  23px;
-    line-height: 23px;
     vertical-align: middle;
+
+    a {
+      display: block;
+      border: 0;
+      text-indent: -998em;
+      margin: 0;
+    }
+
+    svg {
+      display: block;
+    }
   }
 
-
+  /* NAV TRIGGERS
+  ---------------------------------------- */
   .primary-nav-action {
     display: inline-block;
   }
@@ -281,23 +470,80 @@ html.omni-nav-v2 {
     }
   }
 
-  .cu-search-trigger{
+  .utility-nav-trigger{
     @include media($medium-screen) {
       border-right: 1px solid #8a8a8a;
     }
 
     .primary-nav-icon {
-      margin-right: 2px;
+      margin-right: 4px;
 
       .icon-close-search {
         display: none;
       }
     }
+
+    .text {
+      margin-bottom: 0;
+      color: white;
+    }
   }
 
-  .utility-nav-trigger {
-    display: none;
+  .cu-login-trigger {
+    position: relative;
+
+    &:hover {
+      .login-menu { display: block; }
+    }
+
+    .login-menu {
+      display: none;
+      position: absolute;
+      top: 60px; right: -20px;
+      width: 175px;
+      background-color: #2f2f2f;
+      text-align: left;
+      z-index: 667;
+
+      @include media($medium-screen) {
+        right: 0px;
+      }
+
+      ul {
+        list-style-type: none;
+      }
+
+      li {
+        border-top: 1px solid white;
+        margin-bottom: 0;
+        padding: 10px 16px;
+        cursor: pointer;
+
+        &:first-of-type {
+          border-top: none;
+        }
+
+        &:hover {
+          background-color: #4d4d4d;
+        }
+
+        a {
+          font-size: 14px;
+          line-height: 14px;
+          color: white;
+        }
+      }
+
+      svg {
+        width: 16px;
+        height: 16px;
+        vertical-align: middle;
+        fill: white;
+
+      }
+    }
   }
+
 
   /* BRANDED PAGES
   *************************************/
