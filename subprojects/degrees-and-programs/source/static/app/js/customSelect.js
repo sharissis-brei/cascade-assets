@@ -55,7 +55,11 @@ var chapman = chapman || {};
 
 			// Selection and syncing of custom select options
 			selectContainerSelector.on('click', '.custom-select-options li', function () {
-				chapman.customSelect.chooseCustomSelectOption($(this));
+				chapman.customSelect.changeSelectOption($(this));
+			});
+
+			$('.custom-select-container').on('change', 'select', function (event) {
+				chapman.customSelect.syncCustomSelect($(this));
 			});
 
 		},
@@ -88,18 +92,26 @@ var chapman = chapman || {};
 
 		},
 
-		chooseCustomSelectOption: function (el) {
+		// Syncs select input when a custom select list item is clicked
+		changeSelectOption: function (el) {
 			var select = $(el).closest('.custom-select-container').find('select'),
-				optionVal = $(el).data('value'),
-				optionLabel = $(el).text();
+				optionVal = $(el).data('value');
 
-			$(el).parent().find('li').removeClass('selected');
-			$(el).addClass('selected');
-			$(el).closest('.custom-select-options').removeClass(openClass).slideUp(optionsTransitionTime);
-			$(el).closest('.custom-select-container').find('.custom-select-input').removeClass(openClass);
-			$(el).closest('.custom-select-container').find('.custom-select-input .selected-value').text(optionLabel);
-			select.val(optionVal);
-			select.trigger('change'); // Force change event
+			select.val(optionVal).change(); // Force change event – this will trigger syncCustomSelect()
+
+		},
+
+		// Syncs custom select when a select input is changed (propagates from changeSelectOption())
+		syncCustomSelect: function (select) {
+			var val = $(select).val();
+			var selectContainer = $(select).closest('.custom-select-container');
+			var selectedOptionText = $(select).parent().find('.custom-select-options li[data-value="' + val + '"]').text();
+
+			selectContainer.find('.custom-select-options li').removeClass('selected');
+			selectContainer.find('.custom-select-options li[data-value="' + val + '"]').addClass('selected');
+			selectContainer.find('.custom-select-options').removeClass(openClass).slideUp(optionsTransitionTime);
+			selectContainer.find('.custom-select-input').removeClass(openClass);
+			selectContainer.find('.custom-select-input .selected-value').text(selectedOptionText);
 
 		},
 

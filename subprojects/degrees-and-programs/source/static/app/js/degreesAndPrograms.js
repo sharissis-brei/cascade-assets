@@ -17,7 +17,6 @@ var chapman = chapman || {};
 
 			this.bindUIEvents();
 			this.initGenieHeader();
-			this.initTruncations();
 
 			// if (chapmanHeader.length > 0) {
 			// 	this.setGenieHeaderMargin();
@@ -68,19 +67,6 @@ var chapman = chapman || {};
 			} else {
 				$('body').addClass('scrolled'); // Otherwise show it
 			}
-
-		},
-
-		initTruncations: function () {
-
-			$('.result .result-content .desc').dotdotdot({
-				watch: true
-			});
-
-			$('.result .active-content-inner').dotdotdot({
-				watch: true,
-				after: 'a'
-			});
 
 		},
 
