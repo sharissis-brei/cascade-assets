@@ -2,13 +2,11 @@
   <%= render 'omni_nav/utility_nav' %>
   <div id="primary-nav">
     <div class="nav-container left-nav-container">
-      <div class="off-canvas-nav-trigger">
-        <a href="#" class="primary-nav-icon"id="js-cu-off-canvas-nav-trigger" title="Access links to the pages within this section of the website and to other sections of the website" aria-label="Access links to the pages within this section of the website and to other sections of the website">
-          <svg viewBox="0 0 16 16">
-          <path d="M1 3h14v2h-14v-2z"></path><path d="M1 7h14v2h-14v-2z"></path><path d="M1 11h14v2h-14v-2z"></path>
-          </svg>
-        </a>
-      </div>
+      <a href="#" class="off-canvas-trigger primary-nav-icon" id="js-off-canvas-trigger" role="button" title="Access links to the pages within this section of the website and to other sections of the website" aria-label="Access links to the pages within this section of the website and to other sections of the website">
+        <svg viewBox="0 0 16 16">
+        <path d="M1 3h14v2h-14v-2z"></path><path d="M1 7h14v2h-14v-2z"></path><path d="M1 11h14v2h-14v-2z"></path>
+        </svg>
+      </a>
     </div>
     <div class="nav-container cu-logo-container">
       <div class="cu-logo-wrapper">
@@ -73,5 +71,7 @@
       <%= render 'omni_nav/global_nav' %>
     </div>
   </div>
-  <div id="off-canvas-nav"></div>
+
+  <%= render 'omni_nav/off_canvas_nav' %>
+
 </div>
