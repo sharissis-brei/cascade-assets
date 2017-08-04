@@ -223,6 +223,7 @@ html.omni-nav-v2 {
       &.left-nav-container {
         @include media($medium-screen) {
           padding-left: $base-spacing;
+          padding-right: $base-spacing;
         }
       }
 
@@ -252,16 +253,25 @@ html.omni-nav-v2 {
         line-height: 60px;
         cursor: pointer;
 
-        svg { vertical-align: middle; }
+        svg { 
+          vertical-align: middle; 
+        }
       }
 
       .off-canvas-nav-trigger {
         padding-right: 12px;
-
-        .primary-nav-icon svg {
-          padding-bottom: 4px;
-        }
+        height: 60px;
+        line-height: 60px;
+        cursor: pointer;
+        
+        &.primary-nav-icon {
+          svg { 
+            padding-bottom: 4px;
+          }
+        }      
       }
+
+
 
       /* GLOBAL NAV
       ---------------------------------------- */
@@ -543,6 +553,10 @@ html.omni-nav-v2 {
       }
     }
   }
+
+
+
+
 
 
   /* BRANDED PAGES
