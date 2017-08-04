@@ -100,6 +100,7 @@
 
           > li {
             border-top: 1px solid #c1c1c1;
+            margin: 0;
 
             > a {
               padding: 0.5em 1.325em;
@@ -132,7 +133,7 @@
         > a, .toggle {
           height: 46px;
         }
-        
+
         > a {
           color: #2f2f2f;
           padding: 18px;
@@ -142,15 +143,6 @@
           vertical-align: middle;
           font-size: 16px;
 
-          &:before, svg {
-            position: relative;
-            @include transition(all, 0.175s, ease-in-out);
-          }
-
-          &:before {
-            margin-right: 10px;
-          }
-
           &:hover {
             left: 5px;
             color: $cu-red;
@@ -159,8 +151,7 @@
 
 
         .toggle {
-          background-color: $cu-off-canvas-nav-background;
-          color: $grey;
+          background-color: #eaeaea;
           width: 46px;
           line-height: 45px;
           text-align: center;
@@ -173,6 +164,13 @@
             display: block;
             font-family: 'Helvetica Neue', Helvetica, Arial, sans-serif;
             @include transition(all, 0.175s, ease-in-out);
+          
+            svg {
+              width: 13px;
+              height: 13px;
+              vertical-align: middle;
+              fill: $grey;
+            }
           }
         }
       }
@@ -199,11 +197,13 @@
 
           > li {
             border-top: 1px solid #c1c1c1;
+            margin: 0;
 
             a {
               display: block;
               padding: 0.5em 1.325em;
               color: #eaeaea;
+              vertical-align: middle;
               
               &:active {
                 color: $white;
@@ -256,7 +256,6 @@
        
         .toggle {
           background-color: #8a8a8a;
-          color: #eaeaea;
           width: 46px;
           font-size: 16px;
           line-height: 45px;
@@ -270,6 +269,13 @@
             display: block;
             font-family: 'Helvetica Neue', Helvetica, Arial, sans-serif;
             @include transition(all, 0.175s, ease-in-out);
+            
+            svg {
+              width: 13px;
+              height: 13px;
+              vertical-align: middle;
+              fill: #eaeaea;
+            }
           }
         }         
       }
