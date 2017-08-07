@@ -41,6 +41,8 @@ html.omni-nav-v2 {
       border-radius: 0;
       font-weight: 800;
       color: #676767;
+
+
     }
 
     .search-icon {
@@ -55,7 +57,12 @@ html.omni-nav-v2 {
         display: block;
         fill: #676767;
       }
+
+      &.hide {
+        display: none;
+      }
     }
+
   }
 
   /* UTILITY NAV
@@ -100,16 +107,28 @@ html.omni-nav-v2 {
         display: block;
       }
 
+
+
+
       .utility-nav-container {
+
+        .icon-open-search {
+          &.hide {
+            display: none;
+          }
+        }
+        
         //only search container displayed on medium screen
         @include media($medium-screen) {
           &.utility-search {
             display: table-cell;
             width: 100%;
           }
+
+
         }
 
-        //show all utility sections on larges screen
+        //show all utility sections on large screen
         @include media($large-screen) {
           display: table-cell;
 
@@ -202,14 +221,21 @@ html.omni-nav-v2 {
         overflow: hidden;
         float: none;
 
+        // search is in utility-nav container for screen width > 768px
         @include media($medium-screen) {
           display: none;
         }
       }
 
-      .cu-logo-container {
-        display: none;
+      // logo should stay unless screen width < 768px
+      @include bp(wildcard-max, $medium-screen) {
+        .cu-logo-container {
+          display: none;
+        }      
       }
+
+
+
     }
 
     .nav-container {
@@ -223,8 +249,8 @@ html.omni-nav-v2 {
       &.left-nav-container {
         @include media($medium-screen) {
           padding-left: $base-spacing;
-          padding-right: $base-spacing;
         }
+        padding-right: $base-spacing;
       }
 
       &.right-nav-container {
@@ -245,6 +271,8 @@ html.omni-nav-v2 {
           @include media($medium-screen) {
             fill: white;
           }
+
+
         }
       }
 
@@ -256,6 +284,8 @@ html.omni-nav-v2 {
         svg { 
           vertical-align: middle; 
         }
+
+
       }
 
       .off-canvas-nav-trigger {
@@ -488,9 +518,13 @@ html.omni-nav-v2 {
     .primary-nav-icon {
       margin-right: 4px;
 
-      .icon-close-search {
-        display: none;
+      .icon-open-search, .icon-close-search {
+        &.hide {
+          display: none;
+        }      
       }
+
+/* .icon-close-search display: none */
     }
 
     .text {
