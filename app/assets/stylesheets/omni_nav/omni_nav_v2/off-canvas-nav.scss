@@ -81,9 +81,17 @@
     list-style: none;
   }
 
+  a {
+    &:hover {
+      left: 5px;
+    }
+  }
+
   .off-canvas-main {
 
+
     > ul {
+
 
       > li {
         background-color: #ffffff;
@@ -104,12 +112,15 @@
 
             > a {
               padding: 0.5em 1.325em;
+              position: relative;
               display: block;
               vertical-align: middle;
               color: #2f2f2f;
 
-              &:hover {
-                left: 5px;
+            }
+
+            &:hover {
+              a {
                 color: $cu-red;
               }
             }
@@ -144,7 +155,6 @@
           font-size: 16px;
 
           &:hover {
-            left: 5px;
             color: $cu-red;
           }
         }
@@ -199,21 +209,25 @@
             border-top: 1px solid #c1c1c1;
             margin: 0;
 
-            a {
+            > a {
               display: block;
               padding: 0.5em 1.325em;
               color: #eaeaea;
               vertical-align: middle;
+              position: relative;
               
               &:active {
                 color: $white;
               }
 
-              &:hover {
-                left: 5px;
+            }
+
+            &:hover {
+              a {
                 color: $white;
               }
             }
+
           }
         }
 
@@ -249,7 +263,6 @@
           }
 
           &:hover {
-            left: 5px;
             color: $white;
           }
         }
