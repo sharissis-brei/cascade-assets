@@ -8,16 +8,38 @@ var omni_nav_v2 = {
 
     $('.utility-nav-trigger').on('click', omni_nav_v2.onUtilityNavClick);
     this.$utility_nav.find('li.utility-has-dropdown').on('click', omni_nav_v2.onUtilityNavDropdownClick);
+    
+    // container for search changes depending on screen width
+    // desktop, tablet: utility_nav
+    // mobile: primary_nav
+    this.$container.find('input:text').on('input', omni_nav_v2.onSearchInput);
 
   },
 
   onUtilityNavClick : function() {
+
     if($(window).width() >= 768 ){
       omni_nav_v2.$utility_nav.toggleClass('utility-nav-open');
-      $('html.omni-nav-v2').toggleClass('utility-nav-open');
+      $('html.omni-nav-v2').toggleClass('utility-nav-open');  
+      omni_nav_v2.$primary_nav.removeClass('search-open');    
     } else {
+      omni_nav_v2.$utility_nav.removeClass('utility-nav-open');
+      $('html.omni-nav-v2').removeClass('utility-nav-open'); 
       omni_nav_v2.$primary_nav.toggleClass('search-open');
     }
+
+    var primary_nav_classes = document.getElementById('primary-nav').classList;
+    
+    // jQuery < 3.0 doesn't support toggleClass for SVGs
+    // toggle open iff one of the search bars is open
+    if(primary_nav_classes.contains("search-open") || omni_nav_v2.$utility_nav.hasClass('utility-nav-open')) {
+      $('.icon-open-search').attr("class", "icon-open-search hide");
+      $('.icon-close-search').attr("class", "icon-close-search");
+    } else {
+      $('.icon-open-search').attr("class", "icon-open-search");
+      $('.icon-close-search').attr("class", "icon-close-search hide");
+    }
+
   },
 
   onUtilityNavDropdownClick : function(e) {
@@ -27,11 +49,18 @@ var omni_nav_v2 = {
     $(document).on("click", omni_nav_v2.onDocumentClick);
   },
 
-  onDocumentClick : function(e){
+  onDocumentClick : function() {
     $('li.utility-has-dropdown').removeClass('dropdown-open');
     $(document).off("click", omni_nav_v2.onDocumentClick);
-  }
+  },
 
+  onSearchInput : function() {
+    $('.search-icon').addClass('hide');
+    $(document).on("click", function() {
+      this.getElementById('search-input').value = "";
+      $('.search-icon').removeClass('hide');
+    });
+  }
 }
 
 var off_canvas_nav_v2 = {
