@@ -12,8 +12,8 @@ var omni_nav_v2 = {
     // container for search changes depending on screen width
     // desktop, tablet: utility_nav
     // mobile: primary_nav
-    this.$container.find('input:text').on('input', omni_nav_v2.onSearchInput);
-
+    this.$utility_nav.find('input:text').on('input', omni_nav_v2.onSearchInput);
+    this.$primary_nav.find('input:text').on('input', omni_nav_v2.onSearchInput);
   },
 
   onUtilityNavClick : function() {
@@ -57,7 +57,8 @@ var omni_nav_v2 = {
   onSearchInput : function() {
     $('.search-icon').addClass('hide');
     $(document).on("click", function() {
-      this.getElementById('search-input').value = "";
+      omni_nav_v2.$utility_nav.find('input:text').val("");
+      omni_nav_v2.$primary_nav.find('input:text').val("");
       $('.search-icon').removeClass('hide');
     });
   }
