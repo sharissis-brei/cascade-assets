@@ -68,7 +68,10 @@ var OmniNav2 = (function() {
 
 var OffCanvasNav = (function() {
 
+  var off_canvas_links;
+
   var initialize = function() {
+    off_canvas_links = $('#js-off-canvas-nav > ul > li > a');
     syncLinkWidths();
 
     $('#js-off-canvas-trigger, #js-close-off-canvas-nav, #js-off-canvas-overlay').on('click', function(event) {
@@ -90,7 +93,7 @@ var OffCanvasNav = (function() {
 
   var syncLinkWidths = function() {
     var width = $('#js-off-canvas-nav > ul').width();
-    $('#js-off-canvas-nav > ul > li > a').css('width', width);
+    off_canvas_links.css('width', width);
   };
 
   return {
