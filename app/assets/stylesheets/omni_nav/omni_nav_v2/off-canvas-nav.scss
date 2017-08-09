@@ -66,9 +66,6 @@
 
     svg { color: $black; }
   }
-
-
-
 }
 
 .off-canvas-nav {
@@ -90,10 +87,7 @@
 
   .off-canvas-main {
 
-
     > ul {
-
-
       > li {
         background-color: $white;
         list-style: none;
@@ -117,7 +111,6 @@
               display: block;
               vertical-align: middle;
               color: $cu-off-canvas-nav-text;
-
             }
 
             &:hover {
@@ -136,7 +129,6 @@
             @include vendorize(transform, rotate(45deg));
           }
         }
-
 
         &:active {
           color: $cu-red;
@@ -192,7 +184,6 @@
   .off-canvas-utility {
 
     > ul {
-
       > li {
         background: $cu-off-canvas-nav-utility-background;
         list-style: none;
@@ -220,7 +211,6 @@
               &:active {
                 color: $white;
               }
-
             }
 
             &:hover {
@@ -228,7 +218,6 @@
                 color: $white;
               }
             }
-
           }
         }
 
@@ -294,7 +283,6 @@
         }         
       }
     }
-    
   }
 }
 
