@@ -110,7 +110,7 @@ var chapman = chapman || {};
 				var form = $(this),
 					target = $(event.target);
 
-				if (target.attr('id').includes('keyword')) {
+				if (target.attr('id').indexOf('keyword') !== -1) {
 					var keywordVal = target.val();
 
 					// If using the keyword search in the Discover section...
@@ -515,7 +515,7 @@ var chapman = chapman || {};
 				// If there is a value
 				if (value.length > 0) {
 
-					if (formattedName.includes('program')) { // Push to array if a program
+					if (formattedName.indexOf('program') !== -1) { // Push to array if a program
 						var valuesArray = value.split(',');
 						
 						// Loop through all values associated with the filter
@@ -529,9 +529,9 @@ var chapman = chapman || {};
 
 						}
 
-					} else if (formattedName.includes('interest')) { // Push to array if an interest
+					} else if (formattedName.indexOf('interest') !== -1) { // Push to array if an interest
 						interestsArray.push(value);
-					} else if (formattedName.includes('school')) {
+					} else if (formattedName.indexOf('school') !== -1) {
 
 						// Make sure the school value is a valid school name
 						if (value !== 'all' && value !== 'none') {
@@ -636,7 +636,7 @@ var chapman = chapman || {};
 				var formattedTitle = title.toLowerCase(),
 					formattedKeyword = activeFilters.keyword.toLowerCase();
 
-				if (formattedTitle.includes(formattedKeyword)) {
+				if (formattedTitle.indexOf(formattedKeyword) !== -1) {
 					_this.addResultHTML(result); // Keyword match - add result
 					return;
 				}
@@ -872,19 +872,27 @@ var chapman = chapman || {};
 			}
 
 			keywordFields.each(function () {
-				var fieldID = $(this).attr('id'),
-					datalistHTML = '',
-					datalistID = fieldID + '-datalist';
+				var fieldID = $(this).attr('id');
 
-				if (fieldID.includes('-discover') || fieldID.includes('-undergraduate')) {
-					datalistHTML = '<datalist id="' + datalistID + '">' + undergraduateAutocompleteOptions + '</datalist>';
-				} else if (fieldID.includes('-graduate')) {
-					datalistHTML = '<datalist id="' + datalistID + '">' + graduateAutocompleteOptions + '</datalist>';
+				if (fieldID.indexOf('-discover') !== -1 || fieldID.indexOf('-undergraduate') !== -1) {
+					
+					$(this).autoComplete({
+						minChars: 1,
+					    source: function(term, suggest) {
+					        suggest(undergraduateProgramNames);
+					    }
+					});
+					
+				} else if (fieldID.indexOf('-graduate') !== -1) {
+					
+					$(this).autoComplete({
+						minChars: 1,
+					    source: function(term, suggest) {
+					        suggest(graduateProgramNames);
+					    }
+					});
+					
 				}
-
-				// Add the datalist to the page
-				$(this).attr('list', datalistID);
-				$(this).after(datalistHTML);
 
 			});
 
