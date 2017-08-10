@@ -1,45 +1,4 @@
 
-
-var OffCanvasNav = (function() {
-
-  // Module Vars
-  var off_canvas_links;
-  var resizeId;
-
-  // Module Functions
-  var initialize = function() {
-    off_canvas_links = $('#js-off-canvas-nav > ul > li > a');
-    syncLinkWidths();
-
-    $('#js-off-canvas-trigger, #js-close-off-canvas-nav, #js-off-canvas-overlay').on('click', function(event) {
-      event.preventDefault();
-      $('#js-off-canvas-nav-container').toggleClass('open');
-      $('#js-off-canvas-overlay').toggleClass('active');
-      $('body').toggleClass('no-scroll');
-    });
-
-    $('#js-off-canvas-nav-container .toggle').on('click', function() {
-      $(this).parent().toggleClass('open'); // Targets li
-      $(this).parent().find('ul').slideToggle();
-    });
-
-    $(window).on('resize', function() {
-      clearTimeout(resizeId);
-      resizeId = setTimeout(syncLinkWidths, 500);
-    });
-  };
-
-  var syncLinkWidths = function() {
-    var width = $('#js-off-canvas-nav > ul').width();
-    off_canvas_links.css('width', width);
-  };
-
-  return {
-    init: initialize
-  };
-})();
-
-
 var OmniNav2 = (function() {
 
   // Constants
@@ -107,6 +66,46 @@ var OmniNav2 = (function() {
       $('.search-icon').removeClass('hide');
     });
   };
+
+
+  var OffCanvasNav = (function() {
+
+    // Module Vars
+    var off_canvas_links;
+    var resizeId;
+
+    // Module Functions
+    var initialize = function() {
+      off_canvas_links = $('#js-off-canvas-nav > ul > li > a');
+      syncLinkWidths();
+
+      $('#js-off-canvas-trigger, #js-close-off-canvas-nav, #js-off-canvas-overlay').on('click', function(event) {
+        event.preventDefault();
+        $('#js-off-canvas-nav-container').toggleClass('open');
+        $('#js-off-canvas-overlay').toggleClass('active');
+        $('body').toggleClass('no-scroll');
+      });
+
+      $('#js-off-canvas-nav-container .toggle').on('click', function() {
+        $(this).parent().toggleClass('open'); // Targets li
+        $(this).parent().find('ul').slideToggle();
+      });
+
+      $(window).on('resize', function() {
+        clearTimeout(resizeId);
+        resizeId = setTimeout(syncLinkWidths, 500);
+      });
+    };
+
+    var syncLinkWidths = function() {
+      var width = $('#js-off-canvas-nav > ul').width();
+      off_canvas_links.css('width', width);
+    };
+
+    return {
+      init: initialize
+    };
+  })();
 
   return {
     init: initialize
