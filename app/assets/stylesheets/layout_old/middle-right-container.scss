@@ -4,6 +4,7 @@
 
   @include media($medium-screen) {
     position: relative;
+    width: 73%;
     float: right;
     @include vendorize(box-sizing, border-box);
   }
@@ -11,6 +12,6 @@
   @include media($large-screen) {
     display: inline-block;
     float: none;
-    width: 52%;
+    width: 50%;
   }
 }
