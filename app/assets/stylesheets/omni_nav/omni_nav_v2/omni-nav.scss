@@ -1,3 +1,5 @@
+@import "variables";
+
 /* BODY
 ---------------------------------------- */
 //make room at top of page for omni-nav
@@ -40,20 +42,24 @@ html.omni-nav-v2 {
       border: 1px solid #545454;
       border-radius: 0;
       font-weight: 800;
-      color: #676767;
+      color: $utility-nav-background-color;
     }
 
     .search-icon {
       position: absolute;
       display: inline-block;
       top: 0; bottom: 0; left: 54px;
-      width: 16px;
-      height: 16px;
+      width: $square-icon-size;
+      height: $square-icon-size;
       margin: auto;
 
       svg {
         display: block;
-        fill: #676767;
+        fill: $utility-nav-background-color;
+      }
+
+      &.hide {
+        display: none;
       }
     }
   }
@@ -63,8 +69,8 @@ html.omni-nav-v2 {
   .utility-nav {
     display: none;
     width: 100%;
-    height: 60px;
-    background-color: #676767;
+    height: $primary-nav-height;
+    background-color: $utility-nav-background-color;
 
     nav {
       display: table;
@@ -101,6 +107,7 @@ html.omni-nav-v2 {
       }
 
       .utility-nav-container {
+        
         //only search container displayed on medium screen
         @include media($medium-screen) {
           &.utility-search {
@@ -109,7 +116,7 @@ html.omni-nav-v2 {
           }
         }
 
-        //show all utility sections on larges screen
+        //show all utility sections on large screen
         @include media($large-screen) {
           display: table-cell;
 
@@ -123,7 +130,7 @@ html.omni-nav-v2 {
 
     .utility-list {
       display: table;
-      height: 60px;
+      height: $primary-nav-height;
       width: 100%;
 
       .search-type {
@@ -134,7 +141,7 @@ html.omni-nav-v2 {
     .utility-cell {
       display: table-cell;
       vertical-align: middle;
-      border-right: 1px solid #8a8a8a;
+      border-right: 1px solid $primary-nav-border-color;
       padding: 0 20px;
       cursor: pointer;
 
@@ -163,14 +170,14 @@ html.omni-nav-v2 {
       .utility-dropdown {
         background-color: #4d4d4d;
 
-        li:hover { background-color: #676767; }
+        li:hover { background-color: $utility-nav-background-color; }
       }
 
       a {
         font-size: 14px;
         line-height: 14px;
         font-weight: 500;
-        color: white;
+        color: $white;
         vertical-align: middle;
       }
     }
@@ -180,10 +187,10 @@ html.omni-nav-v2 {
   ---------------------------------------- */
   #primary-nav {
     @include pad(0 $base-spacing);
-    background-color: white;
-    width:100%;
-    height: 60px;
-    line-height: 60px;
+    background-color: $white;
+    width: 100%;
+    height: $primary-nav-height;
+    line-height: $primary-nav-height;
     overflow: visible;
     border-bottom: 1px solid #999999;
 
@@ -193,7 +200,7 @@ html.omni-nav-v2 {
     }
 
     @include media($large-screen) {
-      height: 60px;
+      height: $primary-nav-height;
     }
 
     &.search-open {
@@ -202,13 +209,17 @@ html.omni-nav-v2 {
         overflow: hidden;
         float: none;
 
+        // search is in utility-nav container for screen width > 768px
         @include media($medium-screen) {
           display: none;
         }
       }
 
-      .cu-logo-container {
-        display: none;
+      // logo should stay unless screen width < 768px
+      @include bp(wildcard-max, $medium-screen) {
+        .cu-logo-container {
+          display: none;
+        }      
       }
     }
 
@@ -224,59 +235,140 @@ html.omni-nav-v2 {
         @include media($medium-screen) {
           padding-left: $base-spacing;
         }
+        padding-right: $base-spacing;
       }
 
       &.right-nav-container {
         font-size: 0; //to prevent div separation
         padding-left: 8px;
         float: right;
+        display: table;
+        height: 60px;
+        line-height: 60px;
 
         .primary-nav-action {
+          height: 60px;
+          display: table-cell;
+          position: relative;
+          line-height: 60px;
+
+          // without z-index, global nav dropdown overlaps primary icons
+          z-index: 668;
+          
           @include media($medium-screen) {
             width: 60px;
             background-color: #2f2f2f;
-            text-align: center;
             margin: 0 auto;
+          }
+
+          .primary-nav-icon {
+            @include media($medium-screen) {
+
+              vertical-align: middle;
+              position: absolute;
+              text-align: center;
+              width: 60px;
+
+              svg {
+                width: 22px;
+                height: 22px;
+              }
+            }
+          }
+
+          &:hover {
+            .nav-icon-text {
+              @include bp(wildcard-max, $medium-screen) {
+                display: none;
+              }
+
+              line-height: normal;
+              bottom: 6px;
+              position: absolute;
+              width: 60px;
+              text-align: center;
+              
+              a {
+                display: inline-block;
+                font-size: 10px;
+                font-family: "futura-pt", verdana, sans-serif;
+                font-weight: 800;
+                text-transform: uppercase;
+                color: $white;
+              }
+            }    
+          }
+
+          //only search text ("Find") stays when utility nav is open
+          &.utility-open {
+            .nav-icon-text.search { 
+              @include bp(wildcard-max, $medium-screen) {
+                display: none;
+              }
+
+              line-height: normal;
+              bottom: 5px;
+              position: absolute;
+              width: 60px;
+              text-align: center;
+              
+              a {
+                display: inline-block;
+                font-size: 10px;
+                font-family: "futura-pt", verdana, sans-serif;
+                font-weight: 800;
+                text-transform: uppercase;
+                color: $white;
+              }
+            }
           }
         }
 
         .primary-nav-icon svg {
           @include media($medium-screen) {
-            fill: white;
+            fill: $white;
           }
         }
       }
 
       .primary-nav-icon {
-        height: 60px;
-        line-height: 60px;
         cursor: pointer;
 
-        svg { vertical-align: middle; }
+        svg { 
+          vertical-align: middle; 
+        }
       }
 
       .off-canvas-nav-trigger {
         padding-right: 12px;
-
-        .primary-nav-icon svg {
-          padding-bottom: 4px;
-        }
+        height: $primary-nav-height;
+        line-height: $primary-nav-height;
+        cursor: pointer;
+        
+        &.primary-nav-icon {
+          svg { 
+            padding-bottom: 4px;
+          }
+        }      
       }
+
 
       /* GLOBAL NAV
       ---------------------------------------- */
       &.cu-global-nav {
         display: none;
         padding: 14px $base-spacing;
-        background-color: white;
-        border-top: 1px solid #8a8a8a;
+        background-color: $white;
+        border-top: 1px solid $primary-nav-border-color;
 
         @include media($medium-screen) {
           display: block;
           width: 100%;
         }
 
-        @include media($large-screen) {
+        /* the current content does not fit in 1024px across
+          1024-1030 causes style to break */
+        @media only screen and (min-width: 1030px) {
           display: inline-block;
           float: right;
           width: auto;
@@ -295,7 +387,7 @@ html.omni-nav-v2 {
           position: relative;
           vertical-align: middle;
           padding: 0 9px;
-          border-right: 1px solid #8a8a8a;
+          border-right: 1px solid $primary-nav-border-color;
           cursor: pointer;
 
           &:first-of-type {
@@ -319,13 +411,13 @@ html.omni-nav-v2 {
           .global-nav-dropdown {
             display: none;
             position: absolute;
-            width: 200px;
+            width: $primary-nav-dropdown-width;
             left: 0;
             padding-top: 20px;
-            background-color: white;
+            background-color: $white;
 
             li {
-              border-bottom: 1px solid #8a8a8a;
+              border-bottom: 1px solid $primary-nav-border-color;
               padding: 10px $base-spacing;
               font-size: 14px;
               margin-bottom: 0;
@@ -335,14 +427,13 @@ html.omni-nav-v2 {
               &:hover {
                 background-color: #eaeaea;
 
-                a{ color: $red; }
+                a { color: $red; }
               }
             }
 
             a:before { padding-right: 8px; }
           }
         }
-
         a { color: $black; }
       }
     }
@@ -354,7 +445,7 @@ html.omni-nav-v2 {
     display: none;
     position: absolute;
     top: 60px; left: 0px;
-    width: 200px;
+    width: $primary-nav-dropdown-width;
     z-index: 667;
 
     ul {
@@ -362,9 +453,9 @@ html.omni-nav-v2 {
     }
 
     li {
-      border-top: 1px solid white;
+      border-top: 1px solid $white;
       margin-bottom: 0;
-      padding: 10px 16px;
+      padding: 10px $base-spacing;
       cursor: pointer;
 
       &:first-of-type {
@@ -374,15 +465,15 @@ html.omni-nav-v2 {
       a {
         font-size: 14px;
         line-height: 14px;
-        color: white;
+        color: $white;
       }
     }
 
     svg {
-      width: 16px;
-      height: 16px;
+      width: $square-icon-size;
+      height: $square-icon-size;
       vertical-align: middle;
-      fill: white;
+      fill: $white;
     }
 
     &.social-dropdown {
@@ -411,7 +502,7 @@ html.omni-nav-v2 {
         }
 
           &:hover {
-            border: 1px solid white;
+            border: 1px solid $white;
           }
         }
       }
@@ -430,7 +521,7 @@ html.omni-nav-v2 {
   ---------------------------------------- */
   .cu-logo-wrapper {
     display: table;
-    height: 60px;
+    height: $primary-nav-height;
   }
 
   .secondary-logo {
@@ -472,20 +563,22 @@ html.omni-nav-v2 {
 
   .utility-nav-trigger{
     @include media($medium-screen) {
-      border-right: 1px solid #8a8a8a;
+      border-right: 1px solid $primary-nav-border-color;
     }
 
     .primary-nav-icon {
       margin-right: 4px;
 
-      .icon-close-search {
-        display: none;
+      .icon-open-search, .icon-close-search {
+        &.hide {
+          display: none;
+        }      
       }
     }
 
     .text {
       margin-bottom: 0;
-      color: white;
+      color: $white;
     }
   }
 
@@ -499,7 +592,8 @@ html.omni-nav-v2 {
     .login-menu {
       display: none;
       position: absolute;
-      top: 60px; right: -20px;
+      top: 60px; 
+      right: -20px;
       width: 175px;
       background-color: #2f2f2f;
       text-align: left;
@@ -514,9 +608,9 @@ html.omni-nav-v2 {
       }
 
       li {
-        border-top: 1px solid white;
+        border-top: 1px solid $white;
         margin-bottom: 0;
-        padding: 10px 16px;
+        padding: 10px $base-spacing;
         cursor: pointer;
 
         &:first-of-type {
@@ -530,15 +624,16 @@ html.omni-nav-v2 {
         a {
           font-size: 14px;
           line-height: 14px;
-          color: white;
+          color: $white;
+          padding-left: 9px;
         }
       }
 
       svg {
-        width: 16px;
-        height: 16px;
+        width: $square-icon-size;
+        height: $square-icon-size;
         vertical-align: middle;
-        fill: white;
+        fill: $white;
 
       }
     }
