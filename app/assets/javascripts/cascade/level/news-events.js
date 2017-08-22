@@ -67,6 +67,10 @@ $(function () {
                 newsFeedUrl = "http://www.chapman.edu/getFeed.ashx?name=newsCES";
                 $(".allNews").attr("href", "http://blogs.chapman.edu/ces");
                 break;
+			case "FORD ATTALLAH":
+                newsFeedUrl = "http://www.chapman.edu/getFeed.ashx?name=newsFordAttallah";
+                $(".allNews").attr("href", "http://blogs.chapman.edu/education");
+                break;
             case "Commencement":
                 newsFeedUrl = "http://www.chapman.edu/getFeed.ashx?name=newsCommencement";
                 $(".allNews").attr("href", "http://blogs.chapman.edu/commencement");
@@ -179,6 +183,10 @@ $(function () {
                 break;
             case "CES":
                 eventsFeedUrl = "http://www.chapman.edu/getFeed.ashx?name=eventCES";
+                $(".allEvents").attr("href", "https://events.chapman.edu/?group_id=61,20");
+                break;
+			case "FORD ATTALLAH":
+                eventsFeedUrl = "http://www.chapman.edu/getFeed.ashx?name=eventFordAttallah";
                 $(".allEvents").attr("href", "https://events.chapman.edu/?group_id=61,20");
                 break;
             case "COPA":

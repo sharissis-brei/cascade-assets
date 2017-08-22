@@ -39,6 +39,8 @@ $(function () {
                         return "SOC";
                     case "/ces/contact-us/faculty-directory".toLowerCase():
                         return "CES";
+					case "/education/contact-us/faculty-directory".toLowerCase():
+                        return "CES";
                     case "/copa/faculty-directory".toLowerCase():
                         return "COPA";
                     case "/dodge/about/faculty-directory".toLowerCase():
