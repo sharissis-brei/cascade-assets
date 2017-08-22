@@ -524,6 +524,7 @@ html.omni-nav-v2 {
     height: $primary-nav-height;
   }
 
+  // Used in branded pages (e.g. /law). See &.branded section below.
   .secondary-logo {
     display: none;
   }
