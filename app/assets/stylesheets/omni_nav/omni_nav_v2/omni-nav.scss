@@ -107,7 +107,7 @@ html.omni-nav-v2 {
       }
 
       .utility-nav-container {
-        
+
         //only search container displayed on medium screen
         @include media($medium-screen) {
           &.utility-search {
@@ -217,9 +217,9 @@ html.omni-nav-v2 {
 
       // logo should stay unless screen width < 768px
       @include bp(wildcard-max, $medium-screen) {
-        .cu-logo-container {
+        .logo-container {
           display: none;
-        }      
+        }
       }
     }
 
@@ -254,7 +254,7 @@ html.omni-nav-v2 {
 
           // without z-index, global nav dropdown overlaps primary icons
           z-index: 668;
-          
+
           @include media($medium-screen) {
             width: 60px;
             background-color: #2f2f2f;
@@ -287,7 +287,7 @@ html.omni-nav-v2 {
               position: absolute;
               width: 60px;
               text-align: center;
-              
+
               a {
                 display: inline-block;
                 font-size: 10px;
@@ -296,12 +296,12 @@ html.omni-nav-v2 {
                 text-transform: uppercase;
                 color: $white;
               }
-            }    
+            }
           }
 
           //only search text ("Find") stays when utility nav is open
           &.utility-open {
-            .nav-icon-text.search { 
+            .nav-icon-text.search {
               @include bp(wildcard-max, $medium-screen) {
                 display: none;
               }
@@ -311,7 +311,7 @@ html.omni-nav-v2 {
               position: absolute;
               width: 60px;
               text-align: center;
-              
+
               a {
                 display: inline-block;
                 font-size: 10px;
@@ -334,8 +334,8 @@ html.omni-nav-v2 {
       .primary-nav-icon {
         cursor: pointer;
 
-        svg { 
-          vertical-align: middle; 
+        svg {
+          vertical-align: middle;
         }
       }
 
@@ -344,18 +344,18 @@ html.omni-nav-v2 {
         height: $primary-nav-height;
         line-height: $primary-nav-height;
         cursor: pointer;
-        
+
         &.primary-nav-icon {
-          svg { 
+          svg {
             padding-bottom: 4px;
           }
-        }      
+        }
       }
 
 
       /* GLOBAL NAV
       ---------------------------------------- */
-      &.cu-global-nav {
+      &.global-nav {
         display: none;
         padding: 14px $base-spacing;
         background-color: $white;
@@ -495,7 +495,7 @@ html.omni-nav-v2 {
           border: none;
           padding: 0;
 
-         a { 
+         a {
           display: block;
           font-size: 0px;
           line-height: 26px;
@@ -519,7 +519,7 @@ html.omni-nav-v2 {
 
   /* CU LOGOS
   ---------------------------------------- */
-  .cu-logo-wrapper {
+  .logo-wrapper {
     display: table;
     height: $primary-nav-height;
   }
@@ -572,7 +572,7 @@ html.omni-nav-v2 {
       .icon-open-search, .icon-close-search {
         &.hide {
           display: none;
-        }      
+        }
       }
     }
 
@@ -582,7 +582,7 @@ html.omni-nav-v2 {
     }
   }
 
-  .cu-login-trigger {
+  .login-trigger {
     position: relative;
 
     &:hover {
@@ -592,7 +592,7 @@ html.omni-nav-v2 {
     .login-menu {
       display: none;
       position: absolute;
-      top: 60px; 
+      top: 60px;
       right: -20px;
       width: 175px;
       background-color: #2f2f2f;
