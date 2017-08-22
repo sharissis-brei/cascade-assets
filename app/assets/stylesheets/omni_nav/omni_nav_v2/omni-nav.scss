@@ -331,9 +331,11 @@ html.omni-nav-v2 {
         }
       }
 
-      &.logo-container {
-        margin: 13px 16px;
-        padding: 0px;
+      &.off-logo-container {
+        @include media($medium-screen) {
+          margin: 13px 16px 13px 0px;
+          padding: 0px;
+        }
 
         .logo-wrapper {
           height: 32px;
@@ -655,6 +657,9 @@ html.omni-nav-v2 {
   *************************************/
   &.branded {
 
+    @include media($large-screen) {}
+    @include media($medium-screen) {}
+
     .primary-logo {
       padding-right: 20px;
     }
@@ -670,10 +675,11 @@ html.omni-nav-v2 {
 
       @include media($medium-screen) {
         display: table-cell;
-
       }
 
-      a { color: $black; }
+      a {
+        color: $black;
+      }
     }
   }
 }
