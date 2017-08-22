@@ -331,6 +331,16 @@ html.omni-nav-v2 {
         }
       }
 
+      &.logo-container {
+        margin: 13px 16px;
+        padding: 0px;
+
+        .logo-wrapper {
+          height: 32px;
+          line-height:32px;
+        }
+      }
+
       .primary-nav-icon {
         cursor: pointer;
 
@@ -644,6 +654,11 @@ html.omni-nav-v2 {
   /* BRANDED PAGES
   *************************************/
   &.branded {
+
+    .primary-logo {
+      padding-right: 20px;
+    }
+
     .secondary-logo {
       display: none;
       vertical-align: middle;
@@ -655,9 +670,20 @@ html.omni-nav-v2 {
 
       @include media($medium-screen) {
         display: table-cell;
+
       }
 
       a { color: $black; }
     }
   }
+}
+
+/*
+ * For OmniNav v2, #theme header should have no bottom padding.
+ * Unfortunately, there is no css parent selector. So this will need to be done
+ * with js in omni-nav-v2.js.
+ * See https://stackoverflow.com/questions/1014861/is-there-a-css-parent-selector
+ */
+#theme header div#omni-nav-v2 {
+  /* Make header padding-bottom: 0px */
 }

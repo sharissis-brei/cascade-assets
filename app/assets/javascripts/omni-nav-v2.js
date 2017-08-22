@@ -19,6 +19,10 @@ var OmniNav2 = (function() {
     $utilityNav.find('li.utility-has-dropdown').on('click', onUtilityNavDropdownClick);
     $utilityNav.find('input:text').on('input', onSearchInput);
     $primaryNav.find('input:text').on('input', onSearchInput);
+
+    // Remove padding from theme version. Have to use js because css will not work.
+    // See https://stackoverflow.com/a/1014958/6763239
+    $('#theme header').css('padding-bottom', '0px');
   }
 
   var onUtilityNavClick = function() {
