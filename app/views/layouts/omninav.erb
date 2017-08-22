@@ -38,31 +38,33 @@
 <!--[if IE 8]>    <body class="ie8 oldie""> <![endif]-->
 <!--[if gt IE 8]><!-->
 <body>
-  <!--<![endif]-->
-  <span class="hidden">
-    <a href="#main" title="Skip navigation and jump directly to the main content of this page">
-      Jump to the main content of this page
-    </a>
-  </span>
+<!--<![endif]-->
+  <div id="theme" class="<%= @theme_class %>">
+    <span class="hidden">
+      <a href="#main" title="Skip navigation and jump directly to the main content of this page">
+        Jump to the main content of this page
+      </a>
+    </span>
 
-  <div id="fb-root"></div>
+    <div id="fb-root"></div>
 
-  <div class="noscript">
-    <p>Some of the content on this website requires JavaScript to be enabled in your web browser to function as intended. This includes, but is not limited to: navigation, video, image galleries, etc. While the website is still usable without JavaScript, it should be enabled to enjoy the full interactive experience.</p>
-  </div>
-
-  <div id="container">
-    <header>
-      <%= yield %>
-    </header>
-
-    <div class="homepage" id="main" role="main">
-      <%= render 'widgets/home_page/hero_panel' %>
+    <div class="noscript">
+      <p>Some of the content on this website requires JavaScript to be enabled in your web browser to function as intended. This includes, but is not limited to: navigation, video, image galleries, etc. While the website is still usable without JavaScript, it should be enabled to enjoy the full interactive experience.</p>
     </div>
 
+    <div id="container">
+      <header>
+        <%= yield %>
+      </header>
 
-      <%= render 'widgets/shared/footer' %>
-    </div>
-  </div>
+      <div class="homepage" id="main" role="main">
+        <%= render 'widgets/home_page/hero_panel' %>
+      </div>
+
+
+        <%= render 'widgets/shared/footer' %>
+      </div>
+    </div> <!-- /div#container -->
+  </div>  <!-- /div#theme -->
 </body>
 </html>
