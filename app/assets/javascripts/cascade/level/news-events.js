@@ -46,7 +46,7 @@ $(function () {
     /* Populate news from Wordpress RSS feed (converted to JSON with YQL)
     ------------------------------------------------------------------------------------------------*/
     if ($(".news").length) {
-        var newsFeedUrl = "http://www.chapman.edu/getFeed.ashx?name=newsHappenings",
+        var newsFeedUrl = "https://www.chapman.edu/getFeed.ashx?name=newsHappenings",
             newsYqlUrl = function () {
                 return ("//query.yahooapis.com/v1/public/yql?q=select%20*%20from%20rss(3)%20where%20url%3D'" + newsFeedUrl + "'&format=json&diagnostics=true&callback=?")
             },
@@ -56,71 +56,67 @@ $(function () {
         // here and below into a JS object keyed to the newsFeedOptions value.
         switch (newsFeedOptions) {
             case "Admissions":
-                newsFeedUrl = "http://www.chapman.edu/getFeed.ashx?name=newsAdmissions";
+                newsFeedUrl = "https://www.chapman.edu/getFeed.ashx?name=newsAdmissions";
                 $(".allNews").attr("href", "http://blogs.chapman.edu/cu-students");
                 break;
             case "ASBE":
-                newsFeedUrl = "http://www.chapman.edu/getFeed.ashx?name=newsBusiness";
+                newsFeedUrl = "https://www.chapman.edu/getFeed.ashx?name=newsBusiness";
                 $(".allNews").attr("href", "http://blogs.chapman.edu/business");
                 break;
-            case "CES":
-                newsFeedUrl = "http://www.chapman.edu/getFeed.ashx?name=newsCES";
+			case "CES":
+                newsFeedUrl = "https://www.chapman.edu/getFeed.ashx?name=newsCES";
                 $(".allNews").attr("href", "http://blogs.chapman.edu/ces");
                 break;
-			case "Ford Attallah":
-                newsFeedUrl = "http://www.chapman.edu/getFeed.ashx?name=newsFordAttallah";
-                $(".allNews").attr("href", "http://blogs.chapman.edu/education");
-                break;
             case "Commencement":
-                newsFeedUrl = "http://www.chapman.edu/getFeed.ashx?name=newsCommencement";
+                newsFeedUrl = "https://www.chapman.edu/getFeed.ashx?name=newsCommencement";
                 $(".allNews").attr("href", "http://blogs.chapman.edu/commencement");
                 break;
             case "COPA":
-                newsFeedUrl = "http://www.chapman.edu/getFeed.ashx?name=newsCOPA";
+                newsFeedUrl = "https://www.chapman.edu/getFeed.ashx?name=newsCOPA";
                 $(".allNews").attr("href", "http://blogs.chapman.edu/copa");
                 break;
             case "Crean":
-                newsFeedUrl = "http://www.chapman.edu/getFeed.ashx?name=newsCrean";
+                newsFeedUrl = "https://www.chapman.edu/getFeed.ashx?name=newsCrean";
                 $(".allNews").attr("href", "http://blogs.chapman.edu/crean");
                 break;
             case "Dodge":
-                newsFeedUrl = "http://www.chapman.edu/getFeed.ashx?name=newsDodge";
+                newsFeedUrl = "https://www.chapman.edu/getFeed.ashx?name=newsDodge";
                 $(".allNews").attr("href", "http://blogs.chapman.edu/dodge");
                 break;
             case "Happenings":
-                newsFeedUrl = "http://www.chapman.edu/getFeed.ashx?name=newsHappenings";
+                newsFeedUrl = "https://www.chapman.edu/getFeed.ashx?name=newsHappenings";
                 $(".allNews").attr("href", "http://blogs.chapman.edu/happenings");
                 break;
             case "Information Systems":
-                newsFeedUrl = "http://www.chapman.edu/getFeed.ashx?name=newsIST";
+                newsFeedUrl = "https://www.chapman.edu/getFeed.ashx?name=newsIST";
                 $(".allNews").attr("href", "http://blogs.chapman.edu/information-systems");
                 break;
             case "Law":
-                newsFeedUrl = "http://www.chapman.edu/getFeed.ashx?name=newsLaw";
+                newsFeedUrl = "https://www.chapman.edu/getFeed.ashx?name=newsLaw";
                 $(".allNews").attr("href", "http://blogs.chapman.edu/law");
                 break;
             case "Pharmacy":
-                newsFeedUrl = "http://www.chapman.edu/getFeed.ashx?name=newsPharmacy";
+                newsFeedUrl = "https://www.chapman.edu/getFeed.ashx?name=newsPharmacy";
                 $(".allNews").attr("href", "http://blogs.chapman.edu/pharmacy");
                 break;
             case "Schmid":
-                newsFeedUrl = "http://www.chapman.edu/getFeed.ashx?name=newsSCHMID";
+                newsFeedUrl = "https://www.chapman.edu/getFeed.ashx?name=newsSCHMID";
                 $(".allNews").attr("href", "http://blogs.chapman.edu/scst");
                 break;
             case "SOC":
-                newsFeedUrl = "http://www.chapman.edu/getFeed.ashx?name=newsSOC";
+                newsFeedUrl = "https://www.chapman.edu/getFeed.ashx?name=newsSOC";
                 $(".allNews").attr("href", "http://blogs.chapman.edu/communication");
                 break;
             case "Students":
-                newsFeedUrl = "http://www.chapman.edu/getFeed.ashx?name=newsStudents";
+                newsFeedUrl = "https://www.chapman.edu/getFeed.ashx?name=newsStudents";
                 $(".allNews").attr("href", "http://blogs.chapman.edu/happenings");
                 break;
             case "Thompson Policy Institute":
-                newsFeedUrl = "http://www.chapman.edu/getFeed.ashx?name=newsThompsonInstitute";
+                newsFeedUrl = "https://www.chapman.edu/getFeed.ashx?name=newsThompsonInstitute";
                 $(".allNews").attr("href", "http://blogs.chapman.edu/tpi/");
                 break;
             case "Wilkinson":
-                newsFeedUrl = "http://www.chapman.edu/getFeed.ashx?name=newsWilkinson";
+                newsFeedUrl = "https://www.chapman.edu/getFeed.ashx?name=newsWilkinson";
                 $(".allNews").attr("href", "http://blogs.chapman.edu/wilkinson");
                 break;
             default:
@@ -164,7 +160,7 @@ $(function () {
     ------------------------------------------------------------------------------------------------ */
     if ($(".events").length) {
         //sample: eventsFeedUrl = "https://25livepub.collegenet.com/calendars/calendar.7285.rss",
-        var eventsFeedUrl = "http://www.chapman.edu/getFeed.ashx?name=events",
+        var eventsFeedUrl = "https://www.chapman.edu/getFeed.ashx?name=events",
             eventsYqlUrl = function () {
                 return ("//query.yahooapis.com/v1/public/yql?q=select%20*%20from%20rss(3)%20where%20url%3D'" + eventsFeedUrl + "'&format=json&diagnostics=true&callback=?")
             },
@@ -174,83 +170,79 @@ $(function () {
 
         switch (eventsFeedOptions) {
             case "ASBE":
-                eventsFeedUrl = "http://www.chapman.edu/getFeed.ashx?name=eventBusiness";
+                eventsFeedUrl = "https://www.chapman.edu/getFeed.ashx?name=eventBusiness";
                 $(".allEvents").attr("href", "https://events.chapman.edu/?group_id=11,73,29,92,31,163,10");
                 break;
             case "CDC":
-                eventsFeedUrl = "http://www.chapman.edu/getFeed.ashx?name=eventCDC";
+                eventsFeedUrl = "https://www.chapman.edu/getFeed.ashx?name=eventCDC";
                 $(".allEvents").attr("href", "https://events.chapman.edu/?group_id=14");
                 break;
             case "CES":
-                eventsFeedUrl = "http://www.chapman.edu/getFeed.ashx?name=eventCES";
-                $(".allEvents").attr("href", "https://events.chapman.edu/?group_id=61,20");
-                break;
-			case "Ford Attallah":
-                eventsFeedUrl = "http://www.chapman.edu/getFeed.ashx?name=eventFordAttallah";
+                eventsFeedUrl = "https://www.chapman.edu/getFeed.ashx?name=eventCES";
                 $(".allEvents").attr("href", "https://events.chapman.edu/?group_id=61,20");
                 break;
             case "COPA":
-                eventsFeedUrl = "http://www.chapman.edu/getFeed.ashx?name=eventCOPA";
+                eventsFeedUrl = "https://www.chapman.edu/getFeed.ashx?name=eventCOPA";
                 $(".allEvents").attr("href", "https://events.chapman.edu/?group_id=21,56,105,75,89");
                 break;
             case "CREAN":
-                eventsFeedUrl = "http://www.chapman.edu/getFeed.ashx?name=eventCREAN";
+                eventsFeedUrl = "https://www.chapman.edu/getFeed.ashx?name=eventCREAN";
                 $(".allEvents").attr("href", "https://events.chapman.edu/?group_id=44,108,103,155,152,27,37,114,38");
                 break;
             case "DANCE":
-                eventsFeedUrl = "http://www.chapman.edu/getFeed.ashx?name=eventDANCE";
+                eventsFeedUrl = "https://www.chapman.edu/getFeed.ashx?name=eventDANCE";
                 $(".allEvents").attr("href", "https://events.chapman.edu/?group_id=105");
                 break;
             case "DODGE":
-                eventsFeedUrl = "http://www.chapman.edu/getFeed.ashx?name=eventDODGE";
+                eventsFeedUrl = "https://www.chapman.edu/getFeed.ashx?name=eventDODGE";
                 $(".allEvents").attr("href", "https://events.chapman.edu/?group_id=23");
                 break;
             case "Information Systems":
-                eventsFeedUrl = "http://www.chapman.edu/getFeed.ashx?name=eventIST";
+                eventsFeedUrl = "https://www.chapman.edu/getFeed.ashx?name=eventIST";
                 $(".allEvents").attr("href", "https://events.chapman.edu/?group_id=133");
                 break;
             case "LAW":
-                eventsFeedUrl = "http://www.chapman.edu/getFeed.ashx?name=eventLAW";
+                eventsFeedUrl = "https://www.chapman.edu/getFeed.ashx?name=eventLAW";
                 $(".allEvents").attr("href", "https://events.chapman.edu/?group_id=28");
                 break;
             case "MUSIC":
-                eventsFeedUrl = "http://www.chapman.edu/getFeed.ashx?name=eventMUSIC";
+                eventsFeedUrl = "https://www.chapman.edu/getFeed.ashx?name=eventMUSIC";
                 $(".allEvents").attr("href", "https://events.chapman.edu/?group_id=56,89");
                 break;
             case "PHARMACY":
-                eventsFeedUrl = "http://www.chapman.edu/getFeed.ashx?name=eventPHARMACY";
+                eventsFeedUrl = "https://www.chapman.edu/getFeed.ashx?name=eventPHARMACY";
                 $(".allEvents").attr("href", "https://events.chapman.edu/?group_id=141");
                 break;
             case "SCHMID":
-                eventsFeedUrl = "http://www.chapman.edu/getFeed.ashx?name=eventSCHMID";
+                eventsFeedUrl = "https://www.chapman.edu/getFeed.ashx?name=eventSCHMID";
                 $(".allEvents").attr("href", "https://events.chapman.edu/?group_id=36,101,120,22,123,129,112");
                 break;
             case "SOC":
-                eventsFeedUrl = "http://www.chapman.edu/getFeed.ashx?name=eventSOC";
+                eventsFeedUrl = "https://www.chapman.edu/getFeed.ashx?name=eventSOC";
                 $(".allEvents").attr("href", "https://events.chapman.edu/?group_id=146");
                 break;
             case "STUDENTS":
-                eventsFeedUrl = "http://www.chapman.edu/getFeed.ashx?name=eventSTUDENTS";
+                eventsFeedUrl = "https://www.chapman.edu/getFeed.ashx?name=eventSTUDENTS";
                 $(".allEvents").attr("href", "https://events.chapman.edu/?group_id=53,135,58,70,137,49,99,88,131,14,144,50,126,64,74,71,102,142,41,153,116,15,94,164,19,26,34,30,114,38,117");
                 break;
             case "THEATRE":
-                eventsFeedUrl = "http://www.chapman.edu/getFeed.ashx?name=eventTHEATRE";
+                eventsFeedUrl = "https://www.chapman.edu/getFeed.ashx?name=eventTHEATRE";
                 $(".allEvents").attr("href", "https://events.chapman.edu/?group_id=75");
                 break;
             case "Thompson Policy Institute":
-                eventsFeedUrl = "http://www.chapman.edu/getFeed.ashx?name=eventTHOMPSONPOLICY";
+                eventsFeedUrl = "https://www.chapman.edu/getFeed.ashx?name=eventTHOMPSONPOLICY";
                 $(".allEvents").attr("href", "https://events.chapman.edu/?group_id=191");
                 break;
             case "WILKINSON":
-                eventsFeedUrl = "http://www.chapman.edu/getFeed.ashx?name=eventWILKINSON";
+                eventsFeedUrl = "https://www.chapman.edu/getFeed.ashx?name=eventWILKINSON";
                 $(".allEvents").attr("href", "https://events.chapman.edu/?group_id=84,115,60,86,146,87,134,115,128,160,110,82,132,45,43,40");
                 break;
             case "ESI":
-                eventsFeedUrl = "http://www.chapman.edu/getFeed.ashx?name=eventESI";
+                eventsFeedUrl = "https://www.chapman.edu/getFeed.ashx?name=eventESI";
                 $(".allEvents").attr("href", "https://events.chapman.edu/?group_id=83");
                 break;
             default:
-                eventsFeedUrl = "http://www.chapman.edu/getFeed.ashx?name=events";
+                eventsFeedUrl = "https://www.chapman.edu/getFeed.ashx?name=events";
                 break;
         }
 

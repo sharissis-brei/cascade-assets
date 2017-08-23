@@ -37,8 +37,6 @@ $(function () {
                         return "SBE";
                     case "/communication/faculty-directory".toLowerCase():
                         return "SOC";
-                    case "/ces/contact-us/faculty-directory".toLowerCase():
-                        return "CES";
 					//return code has to match PeopleSoft school code so even though not CES publically, that is still their code
 					case "/education/contact-us/faculty-directory".toLowerCase():
                         return "CES";
