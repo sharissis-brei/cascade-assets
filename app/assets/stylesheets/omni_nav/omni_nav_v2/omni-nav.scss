@@ -227,6 +227,15 @@ html.omni-nav-v2 {
       display: inline-block;
       float: left;
 
+      // Used by hamburger, search, and user icons
+      .primary-nav-icon {
+        cursor: pointer;
+
+        svg {
+          vertical-align: middle;
+        }
+      }
+
       &.primary-nav-search {
         display: none;
       }
@@ -236,6 +245,15 @@ html.omni-nav-v2 {
           padding-left: $base-spacing;
         }
         padding-right: $base-spacing;
+
+        // Hamburger nav icon
+        a.off-canvas-trigger {
+          display: inline-table;
+
+          svg.hamburger-icon {
+            vertical-align: text-bottom;
+          }
+        }
       }
 
       &.right-nav-container {
@@ -344,14 +362,6 @@ html.omni-nav-v2 {
               vertical-align: baseline;
             }
           }
-        }
-      }
-
-      .primary-nav-icon {
-        cursor: pointer;
-
-        svg {
-          vertical-align: middle;
         }
       }
 
