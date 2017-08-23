@@ -10,6 +10,6 @@ class OmninavController < ApplicationController
     # params[:context] can be used to simulate different contexts (e.g. /omninav_v2/law)
     @branding_class = params[:context].nil? ? 'unbranded' : 'branded'
     @theme_class = params[:context]
-    render template: "omni_nav/omni_nav_v2", layout: 'omninav'
+    render template: "omni_nav_v2/omninav", layout: 'omninav'
   end
 end
