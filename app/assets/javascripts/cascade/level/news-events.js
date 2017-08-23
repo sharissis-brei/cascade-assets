@@ -63,7 +63,7 @@ $(function () {
                 newsFeedUrl = "http://www.chapman.edu/getFeed.ashx?name=newsBusiness";
                 $(".allNews").attr("href", "http://blogs.chapman.edu/business");
                 break;
-			case "CES":
+            case "CES":
                 newsFeedUrl = "http://www.chapman.edu/getFeed.ashx?name=newsCES";
                 $(".allNews").attr("href", "http://blogs.chapman.edu/ces");
                 break;
