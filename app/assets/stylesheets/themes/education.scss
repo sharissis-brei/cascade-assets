@@ -1,0 +1,78 @@
+//attallah school but /education folder
+#theme.education {
+  @include theme-color-classes($education-primary);
+  
+  .smallMasthead .masthead, .smallMasthead .masthead-old, .bigMasthead .mastheadPlaceholder, .bigMasthead .masthead, .bigMasthead .masthead-old, .nameBar, .rightColumn .styleTwo {
+  	background: $education-primary; /* Old browsers */
+  	//background: -moz-radial-gradient(center, ellipse cover, $education-primary 1%, $education-secondary 93%); /* FF3.6+ */
+  	//background: -webkit-gradient(radial, center center, 0px, center center, 100%, color-stop(1%,$education-primary), color-stop(93%,$education-secondary)); /* Chrome,Safari4+ */
+  	//background: -webkit-radial-gradient(center, ellipse cover, $education-primary 1%,$education-secondary 93%); /* Chrome10+,Safari5.1+ */
+  	//background: -o-radial-gradient(center, ellipse cover, $education-primary 1%,$education-secondary 93%); /* Opera 12+ */
+  	//background: -ms-radial-gradient(center, ellipse cover, $education-primary 1%,$education-secondary 93%); /* IE10+ */
+  	//background: radial-gradient(center, ellipse cover, $education-primary 1%,$education-secondary 93%); /* W3C */
+  	//filter: progid:DXImageTransform.Microsoft.gradient( startColorstr='#{$education-primary}', endColorstr='#{$education-secondary}',GradientType=1 ); /* IE6-9 fallback on horizontal gradient //*/
+  }
+
+  .rightColumn .styleTwo .border {
+    background-color: $education-tertiary;
+  }
+
+  .rightColumn .styleTwo a {
+    color: #ffffff;
+    border-bottom: 2px dotted #8eb2bf;
+  }
+
+  .nameBarButtons li a {
+    color: $education-primary;
+  }
+
+  #social_follow_us {
+    .banner {
+      background-image: image-url('education_follow_us.png');
+    }
+    li span {
+      &.hover_state, &.inactive_state {
+        background-image: image-url('education_icons.png');
+      }
+    }
+  }
+
+  .rounded-slider .info-container .blue {
+    background-color: $education-primary;
+  }
+
+  .newbutton a {
+    background-color: $education-primary;
+    &:hover {
+      background-color: $education-secondary;
+    }
+    &:active {
+      background-color: $education-tertiary;
+    }
+  }
+
+  .midPhotoCallouts .photoCallout .caption {
+    background-color: $education-primary;
+  }
+
+  .photoCallouts {
+    .caption, .rollover {
+      background-color: $education-primary;
+    }
+  }
+
+  .leftNavSubContent .callout .view-more-expander {
+    .view-more {
+      background-color: $education-primary;
+    }
+    .view-more-link {
+      background-color: $education-primary;
+    }
+    .view-less-link {
+      background-color: $education-primary;
+    }
+    .icon-triangle-up {
+      color: $education-primary;
+    }
+  }
+}
