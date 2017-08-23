@@ -18,7 +18,7 @@ class OmninavController < ApplicationController
       'business' => 'asbe',
       'law' => 'fowler'
     }
-    @logo_class = url_theme_map.fetch(@theme_class, 'default-logo')
+    @logo_class = url_theme_map.fetch(@theme_class, 'default-logo-cu')
 
     # I believe the innovation of this selector is new with OmniNav v2
     @branding_class = params[:context].nil? ? 'unbranded' : 'branded'

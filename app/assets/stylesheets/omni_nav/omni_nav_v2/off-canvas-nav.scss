@@ -73,11 +73,6 @@
       }
 
       a.off-logo {
-        // Default Chapman logo. This should be superceded by school/brand-specific logos.
-        background: image-url('chapman_logo_horizontal_color.svg'), linear-gradient(transparent, transparent);
-    		background-repeat: no-repeat;
-    		background-size: contain;
-
         display: block;
         height: 23px;
         width: 200px;
