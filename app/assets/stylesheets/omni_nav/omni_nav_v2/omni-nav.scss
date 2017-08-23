@@ -331,15 +331,19 @@ html.omni-nav-v2 {
         }
       }
 
-      &.off-logo-container {
+      &.logo-container {
         @include media($medium-screen) {
           margin: 13px 16px 13px 0px;
           padding: 0px;
-        }
 
-        .cu-logo-wrapper {
-          height: 32px;
-          line-height:32px;
+          .cu-logo-wrapper {
+            height: 32px;
+            line-height:32px;
+
+            a.branded-logo {
+              vertical-align: baseline;
+            }
+          }
         }
       }
 

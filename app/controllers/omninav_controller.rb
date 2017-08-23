@@ -13,15 +13,22 @@ class OmninavController < ApplicationController
     # Apparently this is a thing in Cascade. Kill me. See for instance the law home pages
     # where DOM tree goes:
     # body > div#theme.law > ... > div.cu-off-canvas-header > a.sc-logo.fowler
-    url_theme_map = {
+    theme_logo_map = {
       # theme class => logo class
       'business' => 'asbe',
       'law' => 'fowler'
     }
-    @logo_class = url_theme_map.fetch(@theme_class, 'default-logo-cu')
+    @logo_class = theme_logo_map.fetch(@theme_class, 'default-logo-cu')
 
-    # I believe the innovation of this selector is new with OmniNav v2
-    @branding_class = params[:context].nil? ? 'unbranded' : 'branded'
+    # I believe the identification of the following variables will have to be added
+    # to Cascade (in the velocity format?) for OmniNav v2.
+    theme_brand_map = {
+      # theme class => brand_text
+      'law' => 'Fowler School of Law'
+    }
+    @brand_text = theme_brand_map.fetch(@theme_class, '')
+
+    @brand_class = params[:context].nil? ? 'unbranded' : 'branded'
 
     render template: "omni_nav_v2/omninav", layout: 'omninav'
   end
