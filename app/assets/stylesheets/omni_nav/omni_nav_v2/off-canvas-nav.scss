@@ -8,7 +8,9 @@
     position: absolute;
     top: 0;
     right: 0;
-    padding: 1.75em 1.8em 1.75em 1.25em;
+
+    // Magic number aligns button with logo.
+    padding: 22px;
   }
 
   .off-canvas-overlay {
