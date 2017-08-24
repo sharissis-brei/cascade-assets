@@ -286,11 +286,6 @@ html.omni-nav-v2 {
               position: absolute;
               text-align: center;
               width: 60px;
-
-              svg {
-                width: 22px;
-                height: 22px;
-              }
             }
           }
 
@@ -583,6 +578,11 @@ html.omni-nav-v2 {
     height: 18px;
 
     @include media($medium-screen) {
+      width: 22px;
+      height: 22px;
+    }
+
+    svg {
       width: 22px;
       height: 22px;
     }
