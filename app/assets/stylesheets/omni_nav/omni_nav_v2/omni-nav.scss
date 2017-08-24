@@ -345,6 +345,11 @@ html.omni-nav-v2 {
       }
 
       &.logo-container {
+        svg.chapman-logo {
+          width: 200px;
+          height: 32px;
+        }
+
         @include media($medium-screen) {
           margin: 13px 16px 13px 0px;
           padding: 0px;
