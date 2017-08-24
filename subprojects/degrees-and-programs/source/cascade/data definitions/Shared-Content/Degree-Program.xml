@@ -47,7 +47,7 @@
     <text identifier="title" label="Degree Title" required="true"/>
     <text type="checkbox" identifier="school" label="School Affiliation" required="true">
         <checkbox-item value="Argyros School of Business and Economics"/>
-        <checkbox-item value="College of Educational Studies"/>
+        <checkbox-item value="Attallah College of Educational Studies"/>
         <checkbox-item value="Dodge College of Film and Media Arts"/>
         <checkbox-item value="Crean College of Health and Behavioral Sciences"/>
         <checkbox-item value="Wilkinson College of Arts, Humanities, and Social Sciences"/>
