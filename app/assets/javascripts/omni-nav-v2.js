@@ -5,38 +5,44 @@ var OmniNav2 = (function() {
   var TABLET_BREAKPOINT = 768; //px
 
   // Module Vars
-  var $container, $utility_nav, $primary_nav;
+  var $container,
+      $utilityNav,
+      $primaryNav;
 
   // Module Functions
   var initialize = function(container) {
     OffCanvasNav.init();
     $container = container;
-    $utility_nav = $container.find('.utility-nav');
-    $primary_nav = $container.find('#primary-nav');
+    $utilityNav = $container.find('.utility-nav');
+    $primaryNav = $container.find('#primary-nav');
     $('.utility-nav-trigger').on('click', onUtilityNavClick);
-    $utility_nav.find('li.utility-has-dropdown').on('click', onUtilityNavDropdownClick);
-    $utility_nav.find('input:text').on('input', onSearchInput);
-    $primary_nav.find('input:text').on('input', onSearchInput); 
+    $utilityNav.find('li.utility-has-dropdown').on('click', onUtilityNavDropdownClick);
+    $utilityNav.find('input:text').on('input', onSearchInput);
+    $primaryNav.find('input:text').on('input', onSearchInput);
+
+    // Remove padding from theme version. Have to use js because css will not work.
+    // See https://stackoverflow.com/a/1014958/6763239
+    $('#theme header').css('padding-bottom', '0px');
   }
 
   var onUtilityNavClick = function() {
     $('.primary-nav-action').toggleClass("utility-open");
 
     if ($(window).width() >= TABLET_BREAKPOINT) {
-      $utility_nav.toggleClass('utility-nav-open');
-      $('html.omni-nav-v2').toggleClass('utility-nav-open');  
-      $primary_nav.removeClass('search-open');    
+      $utilityNav.toggleClass('utility-nav-open');
+      $('html.omni-nav-v2').toggleClass('utility-nav-open');
+      $primaryNav.removeClass('search-open');
     } else {
-      $utility_nav.removeClass('utility-nav-open');
-      $('html.omni-nav-v2').removeClass('utility-nav-open'); 
-      $primary_nav.toggleClass('search-open');
+      $utilityNav.removeClass('utility-nav-open');
+      $('html.omni-nav-v2').removeClass('utility-nav-open');
+      $primaryNav.toggleClass('search-open');
     }
 
-    var primary_nav_classes = document.getElementById('primary-nav').classList;
+    var primaryNavClasses = document.getElementById('primary-nav').classList;
 
     // jQuery < 3.0 doesn't support toggleClass for SVGs
     // toggle open iff one of the search bars is open
-    if (primary_nav_classes.contains("search-open") || $utility_nav.hasClass('utility-nav-open')) {
+    if (primaryNavClasses.contains("search-open") || $utilityNav.hasClass('utility-nav-open')) {
       $('.icon-open-search').attr("class", "icon-open-search hide");
       $('.icon-close-search').attr("class", "icon-close-search");
     } else {
@@ -61,8 +67,8 @@ var OmniNav2 = (function() {
     $('.search-icon').addClass('hide');
     $(document).on("click", function() {
       // resets search input box when user clicks outside
-      $utility_nav.find('input:text').val("");
-      $primary_nav.find('input:text').val("");
+      $utilityNav.find('input:text').val("");
+      $primaryNav.find('input:text').val("");
       $('.search-icon').removeClass('hide');
     });
   };
@@ -71,12 +77,12 @@ var OmniNav2 = (function() {
   var OffCanvasNav = (function() {
 
     // Module Vars
-    var off_canvas_links;
-    var resizeId;
+    var offCanvasLinks,
+        resizeId;
 
     // Module Functions
     var initialize = function() {
-      off_canvas_links = $('#js-off-canvas-nav > ul > li > a');
+      offCanvasLinks = $('#js-off-canvas-nav > ul > li > a');
       syncLinkWidths();
 
       $('#js-off-canvas-trigger, #js-close-off-canvas-nav, #js-off-canvas-overlay').on('click', function(event) {
@@ -99,7 +105,7 @@ var OmniNav2 = (function() {
 
     var syncLinkWidths = function() {
       var width = $('#js-off-canvas-nav > ul').width();
-      off_canvas_links.css('width', width);
+      offCanvasLinks.css('width', width);
     };
 
     return {

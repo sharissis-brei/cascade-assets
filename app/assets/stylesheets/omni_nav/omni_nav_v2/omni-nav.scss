@@ -107,7 +107,7 @@ html.omni-nav-v2 {
       }
 
       .utility-nav-container {
-        
+
         //only search container displayed on medium screen
         @include media($medium-screen) {
           &.utility-search {
@@ -217,15 +217,24 @@ html.omni-nav-v2 {
 
       // logo should stay unless screen width < 768px
       @include bp(wildcard-max, $medium-screen) {
-        .cu-logo-container {
+        .logo-container {
           display: none;
-        }      
+        }
       }
     }
 
     .nav-container {
       display: inline-block;
       float: left;
+
+      // Used by hamburger, search, and user icons
+      .primary-nav-icon {
+        cursor: pointer;
+
+        svg {
+          vertical-align: middle;
+        }
+      }
 
       &.primary-nav-search {
         display: none;
@@ -236,6 +245,15 @@ html.omni-nav-v2 {
           padding-left: $base-spacing;
         }
         padding-right: $base-spacing;
+
+        // Hamburger nav icon
+        a.off-canvas-trigger {
+          display: inline-table;
+
+          svg.hamburger-icon {
+            vertical-align: text-bottom;
+          }
+        }
       }
 
       &.right-nav-container {
@@ -254,7 +272,7 @@ html.omni-nav-v2 {
 
           // without z-index, global nav dropdown overlaps primary icons
           z-index: 668;
-          
+
           @include media($medium-screen) {
             width: 60px;
             background-color: #2f2f2f;
@@ -268,11 +286,6 @@ html.omni-nav-v2 {
               position: absolute;
               text-align: center;
               width: 60px;
-
-              svg {
-                width: 22px;
-                height: 22px;
-              }
             }
           }
 
@@ -287,7 +300,7 @@ html.omni-nav-v2 {
               position: absolute;
               width: 60px;
               text-align: center;
-              
+
               a {
                 display: inline-block;
                 font-size: 10px;
@@ -296,12 +309,12 @@ html.omni-nav-v2 {
                 text-transform: uppercase;
                 color: $white;
               }
-            }    
+            }
           }
 
           //only search text ("Find") stays when utility nav is open
           &.utility-open {
-            .nav-icon-text.search { 
+            .nav-icon-text.search {
               @include bp(wildcard-max, $medium-screen) {
                 display: none;
               }
@@ -311,7 +324,7 @@ html.omni-nav-v2 {
               position: absolute;
               width: 60px;
               text-align: center;
-              
+
               a {
                 display: inline-block;
                 font-size: 10px;
@@ -331,11 +344,24 @@ html.omni-nav-v2 {
         }
       }
 
-      .primary-nav-icon {
-        cursor: pointer;
+      &.logo-container {
+        svg.chapman-logo {
+          width: 200px;
+          height: 32px;
+        }
 
-        svg { 
-          vertical-align: middle; 
+        @include media($medium-screen) {
+          margin: 13px 16px 13px 0px;
+          padding: 0px;
+
+          .cu-logo-wrapper {
+            height: 32px;
+            line-height:32px;
+
+            a.branded-logo {
+              vertical-align: baseline;
+            }
+          }
         }
       }
 
@@ -344,18 +370,18 @@ html.omni-nav-v2 {
         height: $primary-nav-height;
         line-height: $primary-nav-height;
         cursor: pointer;
-        
+
         &.primary-nav-icon {
-          svg { 
+          svg {
             padding-bottom: 4px;
           }
-        }      
+        }
       }
 
 
       /* GLOBAL NAV
       ---------------------------------------- */
-      &.cu-global-nav {
+      &.global-nav {
         display: none;
         padding: 14px $base-spacing;
         background-color: $white;
@@ -495,7 +521,7 @@ html.omni-nav-v2 {
           border: none;
           padding: 0;
 
-         a { 
+         a {
           display: block;
           font-size: 0px;
           line-height: 26px;
@@ -524,6 +550,7 @@ html.omni-nav-v2 {
     height: $primary-nav-height;
   }
 
+  // Used in branded pages (e.g. /law). See &.branded section below.
   .secondary-logo {
     display: none;
   }
@@ -559,6 +586,11 @@ html.omni-nav-v2 {
       width: 22px;
       height: 22px;
     }
+
+    svg {
+      width: 22px;
+      height: 22px;
+    }
   }
 
   .utility-nav-trigger{
@@ -572,7 +604,7 @@ html.omni-nav-v2 {
       .icon-open-search, .icon-close-search {
         &.hide {
           display: none;
-        }      
+        }
       }
     }
 
@@ -582,7 +614,7 @@ html.omni-nav-v2 {
     }
   }
 
-  .cu-login-trigger {
+  .login-trigger {
     position: relative;
 
     &:hover {
@@ -592,7 +624,7 @@ html.omni-nav-v2 {
     .login-menu {
       display: none;
       position: absolute;
-      top: 60px; 
+      top: 60px;
       right: -20px;
       width: 175px;
       background-color: #2f2f2f;
@@ -643,6 +675,17 @@ html.omni-nav-v2 {
   /* BRANDED PAGES
   *************************************/
   &.branded {
+
+    @include media($medium-screen) {
+      .primary-logo {
+        padding-right: 20px;
+      }
+    }
+
+    @include media($large-screen) {}
+
+
+
     .secondary-logo {
       display: none;
       vertical-align: middle;
@@ -656,7 +699,19 @@ html.omni-nav-v2 {
         display: table-cell;
       }
 
-      a { color: $black; }
+      a {
+        color: $black;
+      }
     }
   }
+}
+
+/*
+ * For OmniNav v2, #theme header should have no bottom padding.
+ * Unfortunately, there is no css parent selector. So this will need to be done
+ * with js in omni-nav-v2.js.
+ * See https://stackoverflow.com/questions/1014861/is-there-a-css-parent-selector
+ */
+#theme header div#omni-nav-v2 {
+  /* Make header padding-bottom: 0px */
 }
