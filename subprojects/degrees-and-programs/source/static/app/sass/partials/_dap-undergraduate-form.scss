@@ -8,9 +8,9 @@ $palettes: map-merge($palettes, (
 .dap-undergraduate-form {
 	padding: rem-calc(75 0 55);
 
-	.dap-undergraduate-interests,
+	.dap-undergraduate-interests-list,
 	.link-list {
-		margin: rem-calc(0 0 4);
+		margin: rem-calc(0 0 20);
 
 		@include breakpoint(medium) {
 			column-count: 4;

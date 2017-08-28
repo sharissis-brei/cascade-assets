@@ -111,17 +111,23 @@ var chapman = chapman || {};
 			selectContainer.find('.custom-select-options li[data-value="' + val + '"]').addClass('selected');
 			selectContainer.find('.custom-select-options').removeClass(openClass).slideUp(optionsTransitionTime);
 			selectContainer.find('.custom-select-input').removeClass(openClass);
-			selectContainer.find('.custom-select-input .selected-value').text(selectedOptionText);
+
+			if (val && val.length && val !== 'none') {
+				selectContainer.find('.custom-select-input .selected-value').text(selectedOptionText); // Use the option text if available
+			} else {
+				var defaultValue = select.find('option:first').attr('selected', true).text();
+				selectContainer.find('.custom-select-input .selected-value').text(defaultValue); // Otherwise, default to the first option
+			}
 
 		},
 
 		resetSelect: function (el) {
 			var select = $(el),
 				selectID = select.attr('id'),
-				selectedValue = select.find('option:first').attr('selected', true).text();
+				defaultValue = select.find('option:first').attr('selected', true).text();
 			
 			select.prop('selectedIndex', 0);
-			$('#' + selectID + '-clone .selected-value').text(selectedValue);
+			$('#' + selectID + '-clone .selected-value').text(defaultValue);
 
 		}
 

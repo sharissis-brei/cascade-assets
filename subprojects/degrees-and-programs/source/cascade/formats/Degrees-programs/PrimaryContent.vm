@@ -2,8 +2,8 @@
     Name:          Degrees & Programs
     Author:        BarkleyREI
     Created:       02/13/2017
-    Modified By:   Sean Stacho
-    Last Modified: 05/22/2017
+    Modified By:   Sarah Harissis
+    Last Modified: 08/28/2017
 *#
 
 ## Data (JSON)
@@ -33,7 +33,7 @@
         #foreach ( $program in $programs )
 
             ## Locate Block
-    		#set ( $path = $program.getChild("path").value )
+        	#set ( $path = $program.getChild("path").value )
 			#set ( $site = $program.getChild("site").value )
 			#set ( $programObject = $_.locateBlock( $path, $site ) )
 
@@ -254,22 +254,17 @@
     	<div class="dap-body">
 
     		<div class="dap-form">
-
 				<form id="js-dap-discover-form" class="dap-discover-form" action="">
-				
 					<fieldset>
 
 						<legend class="show-for-sr">Search for Degrees and Programs</legend>
 
-						<input type="hidden" name="type" value="undergraduate" />
+						<input type="hidden" name="type" value="discover" />
 
 						## Motivations
 						<div id="js-dap-discover-motivations" class="dap-discover-motivations">
-						
 							<div class="row">
-						
 								<div class="columns small-12">
-
 									<ul class="clearfix">
 
 										#foreach ( $motivation in $motivations )
@@ -296,11 +291,8 @@
 										#end
 
 									</ul>
-
 								</div>
-							
 							</div>
-						
 						</div>
 
 						## Interests
@@ -344,58 +336,15 @@
 
 						</div>
 
-						## Filters
-						<div id="js-dap-discover-filter-types" class="filter-types">
-    						    
-							<div class="row">
-
-								<div class="columns small-12 large-5">
-									<div class="field-container custom-select-container">
-										<label for="dap-discover-school" class="show-for-sr">Filter by Schools and Colleges</label>
-										<select name="dap-discover-school" id="dap-discover-school">
-											<option disabled="disabled" selected="selected" value="none">Filter by Schools and Colleges</option>
-                                            <option value="all">All Schools and Colleges</option>
-											#foreach ( $school in $schools )
-												<option value="${_EscapeTool.xml( $school )}">$_EscapeTool.xml( $school )</option>
-											#end
-										</select>
-									</div>
-								</div>
-
-								<div class="columns small-12 large-2">
-									<div class="or-separator">
-										<span>Or</span>
-									</div>
-								</div>
-
-								<div class="columns small-12 large-5">
-									<div class="field-container">
-										<label for="dap-discover-keyword" class="show-for-sr">Search for Degrees and Programs</label>
-										<input id="dap-discover-keyword" name="dap-discover-keyword" class="input-with-button" type="text" placeholder="Still can't find your program?" />
-										<button type="submit">
-											<span class="show-for-sr">Search for Degrees and Programs</span>
-											#svg( "icon-search" )
-										</button>
-									</div>
-								</div>
-
-							</div>
-
-						</div>
-
 					</fieldset>
-
 				</form>
-
     		</div>
 
     		## Results
 			<div id="js-dap-results-discover" class="dap-results dap-results-discover grid-view">
 
 				<div class="row">
-
 					<div class="columns small-12">
-
 						<header class="dap-results-header">
 
 							<h2 class="results-count">You are seeing all Undergraduate Degrees and Programs</h2>
@@ -412,9 +361,7 @@
 							</ul>
 
 						</header>
-
 					</div>
-
 				</div>
 
 				<div class="results-row row">
@@ -423,6 +370,44 @@
 
 				</div>
 
+			</div>
+
+			<div class="dap-form">
+				<form id="js-dap-discover-keyword-form" class="dap-discover-keyword-form" action="">
+				
+					<hr />
+					
+					<legend class="show-for-sr">Find the Degree or Program You Are Looking For by Keyword</legend>
+
+					<fieldset>
+				
+						<input type="hidden" name="type" value="discover"/>
+				
+						<div id="js-dap-discover-filter-types" class="filter-types">
+							<div class="row">
+				
+								<div class="label-column columns small-12 medium-6 large-5">
+									<span class="big-label">Still can't find what you are looking for?</span>
+								</div>
+				
+								<!-- Search for Degrees and Programs -->
+								<div class="field-column columns small-12 medium-6 large-7">
+									<div class="field-container">
+										<label for="dap-discover-keyword" class="show-for-sr">Search for Degrees and Programs by Keyword</label>
+										<input id="dap-discover-keyword" name="dap-discover-keyword" class="input-with-button" type="text" placeholder="Search"/>
+										<button type="submit">
+											<span class="show-for-sr">Search</span>
+											#svg( "icon-search" )
+										</button>
+									</div>
+								</div>
+				
+							</div>
+						</div>
+				
+					</fieldset>
+
+				</form>
 			</div>
 
     	</div>
@@ -441,9 +426,8 @@
 		#dapHeader( $header )
 
     	<div class="dap-body">
-    						
-			<div class="dap-form">
 
+			<div class="dap-form">
 				<form id="js-dap-undergraduate-form" class="dap-undergraduate-form" action="">
 					
 					<fieldset>
@@ -512,40 +496,40 @@
 
 						</div>
 
-						<div class="row">
-    										
-							<div class="columns small-12 clearfix">
-								<a id="js-reset-undergraduate-interests" class="reset" href="javascript:void(0);" title="Reset interests filters">
-									#svg( "icon-reset" ) Reset
-								</a>
-								<h4 class="subsection-heading">I'm Interested In:</h4>
-							</div>
+						<div id="js-dap-undergraduate-interests" class="dap-undergraduate-interests">
+							<div class="row">
+	    										
+								<div class="columns small-12 clearfix">
+									<a id="js-reset-undergraduate-interests" class="reset" href="javascript:void(0);" title="Reset interests filters">
+										#svg( "icon-reset" ) Reset
+									</a>
+									<h4 class="subsection-heading">I'm Interested In:</h4>
+								</div>
 
-							<div class="columns small-12">
+								<div class="columns small-12">
+									<ul id="js-dap-undergraduate-interests-list" class="dap-undergraduate-interests-list">
 
-								<ul id="js-dap-undergraduate-interests" class="dap-undergraduate-interests">
+										#foreach ( $interest in $interests )
 
-									#foreach ( $interest in $interests )
+											#set ( $suffix = $_EscapeTool.xml( $interest.value ).replace( "&amp;", "and" ).replace( " ", "-" ).toLowerCase() )
+											
+											<li>
+												<label for="dap-undergraduate-interest-${suffix}">
+													<input id="dap-undergraduate-interest-${suffix}" name="dap-undergraduate-interest-${suffix}" type="checkbox" value="${_EscapeTool.xml( $interest.value )}" />
+	    											<span>$_EscapeTool.xml( $interest.value )</span>
+												</label>
+											</li>
 
-										#set ( $suffix = $_EscapeTool.xml( $interest.value ).replace( "&amp;", "and" ).replace( " ", "-" ).toLowerCase() )
-										
-										<li>
-											<label for="dap-undergraduate-interest-${suffix}">
-												<input id="dap-undergraduate-interest-${suffix}" name="dap-undergraduate-interest-${suffix}" type="checkbox" value="${_EscapeTool.xml( $interest.value )}" />
-    											<span>$_EscapeTool.xml( $interest.value )</span>
-											</label>
+										#end
+
+										<li class="show-more">
+											<a href="javascript:void(0);">+ Show More</a>
 										</li>
 
-									#end
-
-									<li class="show-more">
-										<a href="javascript:void(0);">+ Show More</a>
-									</li>
-
-								</ul>
+									</ul>
+								</div>
 
 							</div>
-
 						</div>
 
 						<div id="js-dap-undergraduate-filter-types" class="filter-types">
@@ -556,7 +540,7 @@
 									<div class="field-container custom-select-container">
 										<label for="dap-undergraduate-school" class="show-for-sr">Filter by Schools and Colleges</label>
 										<select name="dap-undergraduate-school" id="dap-undergraduate-school">
-											<option disabled="disabled" selected="selected" value="none">Filter by Schools and Colleges</option>
+											<option disabled="disabled" selected="selected" value="">Filter by Schools and Colleges</option>
                                             <option value="all">All Schools and Colleges</option>
 											#foreach ( $school in $schools )
 												<option value="${_EscapeTool.xml( $school )}">$_EscapeTool.xml( $school )</option>
@@ -589,15 +573,12 @@
 					</fieldset>
 
 				</form>
-
 			</div>
 
 			<div id="js-dap-results-undergraduate" class="dap-results dap-results-undergraduate grid-view">
     						
 				<div class="row">
-
 					<div class="columns small-12">
-					
 						<header class="dap-results-header">
 
 							<h2 class="results-count">You are seeing all Undergraduate Degrees and Programs</h2>
@@ -614,9 +595,7 @@
 							</ul>
 
 						</header>
-
 					</div>
-				
 				</div>
 
 				<div class="results-row row">
@@ -645,9 +624,7 @@
     	<div class="dap-body">
 
 			<div class="dap-form">
-
 				<form id="js-dap-graduate-form" class="dap-graduate-form" action="">
-				
 					<fieldset>
 
 						<legend class="show-for-sr">Search for Graduate Degrees and Programs</legend>
@@ -722,7 +699,7 @@
 									<div class="field-container custom-select-container">
 										<label for="dap-graduate-school" class="show-for-sr">Filter by Schools and Colleges</label>
 										<select name="dap-graduate-school" id="dap-graduate-school">
-											<option disabled="disabled" selected="selected" value="none">Filter by Schools and Colleges</option>
+											<option disabled="disabled" selected="selected" value="">Filter by Schools and Colleges</option>
                                             <option value="all">All Schools and Colleges</option>
 											#foreach ( $school in $schools )
 												<option value="${_EscapeTool.xml( $school )}">$_EscapeTool.xml( $school )</option>
@@ -753,17 +730,13 @@
 						</div>
 
 					</fieldset>
-
 				</form>
-
 			</div>
 
 			<div id="js-dap-results-graduate" class="dap-results dap-results-graduate grid-view">
 
 				<div class="row">
-
 					<div class="columns small-12">
-
 						<header class="dap-results-header">
 
 							<h2 class="results-count">You are seeing all Graduate Degrees and Programs</h2>
@@ -780,9 +753,7 @@
 							</ul>
 
 						</header>
-
 					</div>
-
 				</div>
 
 				<div class="results-row row">

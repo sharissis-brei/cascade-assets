@@ -14,22 +14,31 @@ var chapman = chapman || {};
 	chapman.degreesAndPrograms = {
 
 		init: function () {
+			var _this = this;
 
 			this.bindUIEvents();
-			this.initGenieHeader();
 
-			// if (chapmanHeader.length > 0) {
-			// 	this.setGenieHeaderMargin();
-			// }
+			setTimeout(function() {
+				_this.setGenieHeaderOffset();
+			}, 100);
+
+			this.genieHeader();
 
 		},
 
 		bindUIEvents: function () {
+			var _this = this;
 
-			$(window).on('scroll resize', function () {
+			$(window).on('resize', function () {
 
 				if (!headerShown) {
-					chapman.degreesAndPrograms.initGenieHeader();
+					_this.setGenieHeaderOffset();
+				}
+
+			}).on('scroll', function () {
+
+				if (!headerShown) {
+					_this.genieHeader();
 				}
 
 			});
@@ -38,22 +47,29 @@ var chapman = chapman || {};
 				chapman.degreesAndPrograms.switchResultsView($(this));
 			});
 
-			$('.dap-results').on('click', '.active-content-toggle', function () {
+			$('.dap-results').on('click', '.active-content-toggle', function (event) {
+				event.preventDefault();
 				$(this).closest('.result').toggleClass('active');
 			});
 
 			$('#js-dap-undergraduate-interests .show-more a').on('click', function () {
-				$('#js-dap-undergraduate-interests').addClass('show-all');
+				$('#js-dap-undergraduate-interests-list').addClass('show-all');
 			});
 
 		},
 
-		setGenieHeaderMargin: function () {
-			var height = chapmanHeader.outerHeight(true);
-			$('body').css('margin-top', -(height));
+		// Sets the initial offset that hides the header
+		setGenieHeaderOffset: function () {
+
+			if (chapmanHeader.length > 0) {
+				var height = chapmanHeader.outerHeight(true);
+				$('body').css('margin-top', -(height)).addClass('ready');
+			}
+			
 		},
 
-		initGenieHeader: function () {
+		// Shows the header after the user has scrolled
+		genieHeader: function () {
 			var scrollPosition = $(window).scrollTop(),
 				scrollThreshhold = 15;
 			

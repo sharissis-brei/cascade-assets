@@ -1,16 +1,13 @@
+// Selector with ID needed to target this part of the header. -SH
+// scss-lint:disable IdSelector
 .degrees-and-programs {
-	transition: margin-top 1s;
-
-	@include breakpoint(rem-calc(780)) {
-		margin-top: rem-calc(-93);
-	}
 
 	@include breakpoint(rem-calc(1024)) {
-		margin-top: rem-calc(-153);
+		margin-top: rem-calc(-115); // Height of header
 	}
 
 	@include breakpoint(rem-calc(1120)) {
-		margin-top: rem-calc(-106);
+		margin-top: rem-calc(-105); // Height of header
 	}
 
 	&.scrolled,
@@ -18,13 +15,24 @@
 		margin-top: 0;
 	}
 
-	// .bigMasthead header {
-	// 	margin: 0;
+	&.scrolled {
+		transition: margin-top 1s;
+	}
 
-	// 	.maxWidth {
-	// 		display: none;
-	// 	}
+	&.ready {
 		
-	// }
+		#container header .maxWidth,
+		.dap-feature {
+			opacity: 1;
+		}
+
+	}
+
+	#container header .maxWidth,
+	.dap-feature {
+		opacity: 0;
+		transition: opacity $transition-time;
+	}
 	
 }
+// scss-lint:enable IdSelector
