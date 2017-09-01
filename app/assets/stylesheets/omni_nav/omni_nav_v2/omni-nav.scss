@@ -30,7 +30,9 @@ html.omni-nav-v2 {
   width: 100%;
   top: 0;
   font-family: "futura-pt", verdana, sans-serif;
-  z-index: 666;
+
+  //needs to display in front of 1 column hero panel
+  z-index: 669;
 
   .omni-nav-search-box {
     position: relative;

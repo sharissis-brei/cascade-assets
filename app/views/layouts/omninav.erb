@@ -53,18 +53,16 @@
     </div>
 
     <div id="container">
-      <header>
-        <%= yield %>
-      </header>
-
-      <div class="homepage" id="main" role="main">
-        <%= render 'widgets/home_page/hero_panel' %>
-      </div>
-
-
+        <header>
+          <%= yield %>
+        </header>
+        <div id="main" role="main">
+          <div class="primary-content one-column">
+            <%= render "widgets/hero/side_panel" %>
+          </div>
+        </div>
         <%= render 'widgets/shared/footer' %>
-      </div>
-    </div> <!-- /div#container -->
-  </div>  <!-- /div#theme -->
+    </div>
+  </div> <!-- /div#container -->
 </body>
 </html>
