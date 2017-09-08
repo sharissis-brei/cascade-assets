@@ -19,7 +19,7 @@
 // This is a temporary fix to make the 2 & 3 column spacing consistent. The "magic numbers" for the 3 column
 // width percentages are needed in order to match the existing 2 column width as closely as possible.
 .primaryContent.threeColumns .middleRightContainer {
-  @include media($large-screen){
+  @include media($large-screen) {
     width: 48.5%;
     padding: 0px;
   }
