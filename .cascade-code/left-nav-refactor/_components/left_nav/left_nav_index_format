@@ -1,12 +1,6 @@
-## Format used by index pages with the brute-force block that loads the entire file tree.
+## Default format. Meant to be used with the "Render all" block that loads entire file tree.
 
-#if ( $_XPathTool.selectSingleNode( $contentRoot, "//system-folder[@current = 'true']/system-page[@current = 'true']") )
-    #set( $current = true )
-    #set ( $currentPage = $_XPathTool.selectSingleNode( $contentRoot, "//system-folder[@current = 'true']/system-page[@current = 'true']" ) )
-#else
-    #set ( $current = false )
-#end
-
+#set ( $currentPage = $_XPathTool.selectSingleNode( $contentRoot, "//system-folder[@current = 'true']/system-page[@current = 'true']" ) )
 ## Current page name
 #set ( $currentPageName = $currentPage.getChild("name") )
 ## Parent page
@@ -17,9 +11,7 @@
 ## This macro is to display children of a sibling
 #macro( displayChildren $children )
     <ul class="leftNav-sub">
-
         #foreach ( $child in $children )
-
             #set ( $childPath = $child.getChild("link").value )
             #set ( $childTitle = $_EscapeTool.xml($child.getChild("display-name").value) )
             #set ( $childName = $child.getName() )
@@ -28,16 +20,13 @@
             #if ( $childName == "system-folder" && $hideSibling == [false] )
             
                 <li>
-
                     <a href="${childPath}/index" title="${childTitle}" class="c-f">
                         <span class="bullet">» </span>
                         $childTitle
                     </a>
-
                 </li>
 
             #elseif ( $childName == "system-page" && $hideSibling == [false] )
-            
                 #if ( !$_XPathTool.selectSingleNode($child, "dynamic-metadata[1][value='Yes']") )
 
                     <li>
@@ -49,17 +38,14 @@
 
                 #end
             #end
-
         #end
-
     </ul>
 #end
 
 ## This macro sets up the siblings
-#macro ( showPage $siblings )
+#macro ( displaySiblings $siblings )
     <ul>
     #foreach ( $sibling in $siblings )
-
         #set ( $current = $sibling.getAttribute("current").value == 'true' )
         #set ( $siblingPath = $sibling.getChild("link").value )
         #set ( $siblingTitle = $_EscapeTool.xml($sibling.getChild("display-name").value) )
@@ -74,78 +60,48 @@
             #set ( $siblingHasChildren = false )
         #end
          
-        #if ( $siblingName == "system-folder" )
-
-            #if ( $hideSibling == [false] )
-
-                #if ( $current == true )
-                    <li class="active">
-                #else
-                    <li>
-                #end
-
-                    <a href="${siblingPath}/index" class="s-f-idx">
-                        $siblingTitle
-                        #if ( $siblingHasChildren && $current == false )
-                            <span class="plus">+</span>
-                        #end
-                    </a>
-                    
-                    #if ( $siblingHasChildren )
-                        #displayChildren( $children )
-                    #end
-                    
-                </li>
-                    
+        #if ( $siblingName == "system-folder" && $hideSibling == [false] )
+            #if ( $current == true )
+                <li class="active">
             #else
-            
-                #if ( $_XPathTool.selectSingleNode( $sibling, "system-page[name='index']" ) )
-                    
-                    #set ( $catch = $_XPathTool.selectSingleNode( $sibling, "system-page[name='index']" ) )
-                        
-                    #if ( !$_XPathTool.selectSingleNode( $catch, "dynamic-metadata[1][value='Yes']" ) )
-                        
-                        #if ( $current == true )
-                            <li class="active">
-                        #else
-                            <li>
-                        #end
-
-                        #if ( $siblingHasChildren )
-                            #displayChildren( $children )
-                        #end
-                        </li>
-                            
-                    #end
-                        
-                #end
-                    
+                <li>
             #end
-
+                <a href="${siblingPath}/index" class="s-f-idx">
+                    $siblingTitle
+                    #if ( $siblingHasChildren && $current == false )
+                        <span class="plus">+</span>
+                    #end
+                </a>
+                
+                #if ( $siblingHasChildren )
+                    #displayChildren( $children )
+                #end
+            </li>
         #elseif ( $siblingName == "system-page" && $hideSibling == [false] )
             #if ( $current == true )
                 <li class="active">
             #else
                 <li>
             #end
-
                 <a href="${siblingPath}" title="${siblingTitle}" class="s-p">
                     $siblingTitle 
                 </a>
-            
             </li>
         #end
-
     #end
     </ul>
 #end
 
+##
+## MAIN
+##
+## Sets up the left nav main title
 #if ( $currentPageName.value == "index" && $parentName.value == "index" )
     #set ( $parentPath = $_XPathTool.selectSingleNode($parent, "../..") )
-    #set ( $parentTitle = $_EscapeTool.xml( $parentPath.getChild("display-name").value ) )
     
-    ### if fails to find parent page, don't do this LI...gives error (eg parent folder unindexed or not right metadata:
+    ### if fails to find parent page, don't do title, gives error (eg parent folder unindexed or not right metadata):
     #if ( $parentPath.getChild("display-name").value )
+        #set ( $parentTitle = $_EscapeTool.xml( $parentPath.getChild("display-name").value ) )
         <div class="leftTitle">
             <ul>
                 <li class="title">
@@ -156,9 +112,23 @@
             </ul>
         </div>
     #end
+#else
+    #set ( $parentDisplayName = $parent.getChild("display-name") )
+    
+    ### if fails to find parent page, don't do title, gives error (eg parent folder unindexed or not right metadata):
+    #if ($parentDisplayName.value)
+        #set ( $parentTitle = $_EscapeTool.xml( $parent.getChild("display-name").value ) )
+        <div class="leftTitle">
+        <ul>
+            <li class="title">
+            <a href="$parent.getChild("link").value" title="${parentTitle}">
+                $parentTitle
+            </a>
+            </li>
+        </ul>
+        </div>
+    #end
 #end
 
-#if ( $current )
-    #set ( $siblings = $_XPathTool.selectNodes($currentPage, "//system-folder[system-page[@current and name = 'index']] | //system-page[@current and name != 'index'] | //system-folder[system-page[@current and name = 'index']]/following-sibling::*[name != 'index'] | //system-folder[system-page[@current and name = 'index']]/preceding-sibling::*[name != 'index'] | //system-page[@current and name != 'index']/following-sibling::*[name != 'index'] | //system-page[@current and name != 'index']/preceding-sibling::*[name != 'index']") )
-    #showPage( $siblings )
-#end
+#set ( $siblings = $_XPathTool.selectNodes($currentPage, "//system-folder[system-page[@current and name = 'index']] | //system-page[@current and name != 'index'] | //system-folder[system-page[@current and name = 'index']]/following-sibling::*[name != 'index'] | //system-folder[system-page[@current and name = 'index']]/preceding-sibling::*[name != 'index'] | //system-page[@current and name != 'index']/following-sibling::*[name != 'index'] | //system-page[@current and name != 'index']/preceding-sibling::*[name != 'index']") )
+#displaySiblings( $siblings )
