@@ -1,0 +1,98 @@
+##
+## OmniNav format refactored to work with faster loading index block.
+##
+
+#import( "/_cascade/formats/helpers/debug.velocity" )
+
+##
+## Hardcoded Params
+##
+## secondaryNavDirectories
+## These are locations for which OmniNav should build the secondary off-canvas-nav menu.
+## Inner Array: [ directory (assume leading /), menu label, class/image id, path ]
+#set ( $secondaryNavDirectories = [
+  [ 'business', 'ARGYROS SCHOOL', 'asbe', 'business/index.aspx' ],
+  [ 'education', 'ATTALLAH COLLEGE', 'education', 'education/index.aspx' ],
+  [ 'support-chapman', 'Support Chapman', 'default', '/' ],
+  [ 'about', 'TEST PAGE IS HERE', 'default', '/' ]
+] )
+
+##
+## Vars
+##
+#set ( $indexBlock = $_XPathTool.selectSingleNode($contentRoot, "//system-index-block") )
+#set ( $currentPage = $_XPathTool.selectSingleNode($contentRoot, "//system-page[@current = 'true']") )
+
+## These vars will be set by setSecondaryNav method.
+#set ( $secondaryNavDirectory = [] )
+
+
+##
+## Macros
+##
+#macro ( build_off_canvas_nav_trigger )
+#end
+
+#macro ( build_logo )
+#end
+
+#macro ( build_login_component )
+#end
+
+#macro ( build_search_component )
+#end
+
+#macro ( build_off_canvas_nav )
+#end
+
+#macro ( setSecondaryNav $thisPage, $navDirectories  )
+  #set ( $pagePath = $thisPage.getChild("path").value )
+
+  #foreach ( $navDirectory in $navDirectories )
+    #set ( $dirName = $navDirectory[0] )
+
+    ## Start/end +1 to skip leading /
+    #set ( $startSubStr = 1 )
+    #set ( $endSubStr = $dirName.length() + 1 )
+    #set ( $pagePathDir = $pagePath.substring($startSubStr, $endSubStr) )
+
+    ## Is current path under one of specified $secondaryNavDirectories?
+    #if ( $pagePath.contains($dirName) && $pagePathDir == $dirName )
+        #set ( $secondaryNavDirectory = $navDirectory )
+    #end
+  #end
+#end
+
+#macro ( build_primary_nav )
+#end
+
+#macro ( build_secondary_nav $secondaryNavDirectory )
+#end
+
+
+##DEBUG
+##inspectXML( $contentRoot )
+
+
+##
+## Main OmniNav HTML Block
+##
+#setSecondaryNav($currentPage $secondaryNavDirectories)
+<div id="cu_nav">
+
+  <pre>
+  pagePath: $pagePath
+  secondaryNavDirectory: $secondaryNavDirectory
+  </pre>
+
+  #build_off_canvas_nav_trigger()
+
+  #build_logo()
+
+  #build_login_component()
+
+  #build_search_component()
+
+  #build_off_canvas_nav()
+
+</div>
