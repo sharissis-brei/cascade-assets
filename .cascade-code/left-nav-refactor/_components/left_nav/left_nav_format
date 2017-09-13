@@ -1,14 +1,7 @@
-## Format used by non-index pages. 
-## This loads siblings of the current page only, since non-index pages do not have children.
+## This format is to be used in the future, with the block that loads siblings and renders forward.
+## Works on non-index pages.
 
-## Current page flag
-#set ( $current = false )
-
-#if ( $_XPathTool.selectSingleNode( $contentRoot, "//system-folder[@current = 'true']/system-page[@current = 'true']") )
-    #set ( $current = true )
-    #set ( $currentPage = $_XPathTool.selectSingleNode( $contentRoot, "//system-folder[@current = 'true']/system-page[@current = 'true']" ) )
-#end
-
+#set ( $currentPage = $_XPathTool.selectSingleNode( $contentRoot, "//system-folder[@current = 'true']/system-page[@current = 'true']" ) )
 ## Current page name
 #set ( $currentPageName = $currentPage.getChild("name") )
 ## Parent page
@@ -17,9 +10,7 @@
 ## This macro is to display children of a sibling
 #macro( displayChildren $children )
     <ul class="leftNav-sub">
-
         #foreach ( $child in $children )
-
             #set ( $childPath = $child.getChild("link").value )
             #set ( $childTitle = $_EscapeTool.xml($child.getChild("display-name").value) )
             #set ( $childType = $child.getName() )
@@ -32,7 +23,6 @@
                         $childTitle
                     </a>
                 </li>
-                
             #elseif ( $childType == "system-page" && $hideSibling == [false] )
                 #if ( !$_XPathTool.selectSingleNode($child, "dynamic-metadata[1][value='Yes']") )
                     <li>
@@ -47,11 +37,10 @@
     </ul>
 #end
 
-## This macro sets up the siblings
-#macro ( showPage $siblings )
+## This macro sets up the siblings, calls other macro to set up children
+#macro ( displaySiblings $siblings )
     <ul>
     #foreach ( $sibling in $siblings )
-
         #set ( $current = $sibling.getAttribute("current").value == 'true' )
         #set ( $siblingPath = $sibling.getChild("link").value )
         #set ( $siblingTitle = $_EscapeTool.xml($sibling.getChild("display-name").value) )
@@ -67,13 +56,11 @@
         #end
          
         #if ( $siblingType == "system-folder" && $hideSibling == [false] )
-        
             #if ( $current == true )
                 <li class="active">
             #else
                 <li>
             #end
-
             <a href="${siblingPath}/index" class="s-f-idx">
                 $siblingTitle
                 #if ( $siblingHasChildren && $current == false )
@@ -84,9 +71,7 @@
                 #displayChildren( $children )
             #end
             </li>
-            
         #elseif ( $siblingType == "system-page" && $hideSibling == [false] )
-
             #if ( $current == true )
                 <li class="active">
             #else
@@ -97,15 +82,13 @@
                 $siblingTitle 
             </a>
             </li>
-
         #end
     #end
     </ul>
 #end
 
 #set ( $parentDisplayName = $parent.getChild("display-name") )
-
-### if fails to find parent page, don't do this LI...gives error (eg parent folder unindexed or not right metadata):
+## if fails to find parent page, don't do title, gives error (eg parent folder unindexed or not right metadata):
 #if ( $parentDisplayName.value )
     #set ( $parentTitle = $_EscapeTool.xml( $parentDisplayName.value ) )
     <div class="leftTitle">
@@ -119,7 +102,5 @@
     </div>
 #end
 
-#if( $current )       
-    #set ( $siblings = $_XPathTool.selectNodes($currentPage, "//system-folder[system-page[@current and name = 'index']] | //system-page[@current and name != 'index'] | //system-folder[system-page[@current and name = 'index']]/following-sibling::*[name != 'index'] | //system-folder[system-page[@current and name = 'index']]/preceding-sibling::*[name != 'index'] | //system-page[@current and name != 'index']/following-sibling::*[name != 'index'] | //system-page[@current and name != 'index']/preceding-sibling::*[name != 'index']") )
-    #showPage( $siblings )
-#end
+#set ( $siblings = $_XPathTool.selectNodes($currentPage, "//system-folder[system-page[@current and name = 'index']] | //system-page[@current and name != 'index'] | //system-folder[system-page[@current and name = 'index']]/following-sibling::*[name != 'index'] | //system-folder[system-page[@current and name = 'index']]/preceding-sibling::*[name != 'index'] | //system-page[@current and name != 'index']/following-sibling::*[name != 'index'] | //system-page[@current and name != 'index']/preceding-sibling::*[name != 'index']") )
+#displaySiblings( $siblings )
