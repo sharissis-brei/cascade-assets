@@ -116,7 +116,24 @@
 #end
 
 #macro ( buildOffCanvasNav )
+  <div id="js-cu-off-canvas-overlay" class="cu-off-canvas-overlay"></div>
 
+  <div id="js-cu-off-canvas-nav-container" class="cu-off-canvas-nav-container">
+    #buildOffCanvasNavHeader()
+    #buildOffCanvasNavMenu()
+  </div>
+#end
+
+#macro ( buildOffCanvasNavHeader )
+  #set ( $displaySecondaryMenu = $pageUmbrellaCategory.length() > 0 )
+
+  <div class="cu-off-canvas-header">
+  </div>
+#end
+
+#macro ( buildOffCanvasNavMenu )
+  <div id="js-cu-off-canvas-nav" class="cu-off-canvas-nav clearfix">
+  </div>
 #end
 
 #macro ( setPageUmbrellaCategory $thisPage  )
