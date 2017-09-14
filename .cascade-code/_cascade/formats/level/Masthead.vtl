@@ -90,9 +90,12 @@
       <div class="column header theme-bg-color">
         <div class="aligned">
           <h2 class="header">${_EscapeTool.xml($header).replace("\n", "<br/>")}</h2>
+          ## for ADA compliance, only show subheader if not empty
           <div class="subheader ${subheaderClass}">
-            <hr />
-            <h4>${_EscapeTool.xml($firstSubtitle).replace("\n", "<br/>")}</h4>
+            #if (${subheaderClass} == 'present')
+                <hr />
+                <h3>${_EscapeTool.xml($firstSubtitle).replace("\n", "<br/>")}</h3>
+            #end
           </div>
         </div>
       </div>
