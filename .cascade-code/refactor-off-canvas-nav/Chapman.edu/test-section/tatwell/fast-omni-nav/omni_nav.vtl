@@ -31,7 +31,7 @@
 ##
 ## Macros
 ##
-#macro ( build_off_canvas_nav_trigger )
+#macro ( buildOffCanvasNavTrigger )
   <a href="#"
      id="js-cu-off-canvas-nav-trigger"
      class="cu-off-canvas-nav-trigger"
@@ -41,13 +41,13 @@
   </a>
 #end
 
-#macro ( build_logo )
+#macro ( buildLogo )
   <a class="cu-logo" href="${domain}" title="Chapman University Website Home Page">
     <span itemprop="name">Chapman University</span>
   </a>
 #end
 
-#macro ( build_login_component )
+#macro ( buildLoginComponent )
   <div class="cu_nav_menu" id="cu_login_container">
     <div id="cu_identity">
       <div id="omni-login">
@@ -57,19 +57,65 @@
     </div>
 
     <ul class="cu_dropdown_menu">
-      #login_logo_link('https://blackboard.chapman.edu/' 'blackboard' 'Blackboard')
-      #login_logo_link('https://my.chapman.edu/' 'cu_window' 'MyChapman')
-      #login_logo_link('https://exchange.chapman.edu/' 'email' 'Staff &amp; Faculty Email')
-      #login_logo_link('https://www.chapman.edu/panthermail/' 'email' 'PantherMail')
-      #login_logo_link('https://mywindow.chapman.edu/' 'cu_window' 'MyWindow')
+      #loginLogoLink('https://blackboard.chapman.edu/' 'blackboard' 'Blackboard')
+      #loginLogoLink('https://my.chapman.edu/' 'cu_window' 'MyChapman')
+      #loginLogoLink('https://exchange.chapman.edu/' 'email' 'Staff &amp; Faculty Email')
+      #loginLogoLink('https://www.chapman.edu/panthermail/' 'email' 'PantherMail')
+      #loginLogoLink('https://mywindow.chapman.edu/' 'cu_window' 'MyWindow')
     </ul>
   </div>
 #end
 
-#macro ( build_search_component )
+#macro ( buildSearchComponent )
+  <div class="cu-search-open-trigger" id="js-cu-search-open-trigger">
+    <span>Search</span>
+  </div>
+
+  <div id="cu_search">
+    <select class="search-type" name="search-type" id="search-type" aria-label="search type">
+      <option value="All">All</option>
+      <option value="Blog Stories">Blog Stories</option>
+      <option value="Faculty Directory">Faculty Directory</option>
+      <option value="Events">Events</option>
+    </select>
+
+    <div id="cu_search_box">
+      <form action="/search-results/index.aspx">
+        <table cellpadding="0" cellspacing="0" class="gsc-search-box">
+          <tbody>
+            <tr>
+              <td class="gsc-input">
+                <input type="text" id="cu_search_no_js" name="q" class="gsc-input no-js"
+                       placeholder="Search" size="10" spellcheck="false" autocomplete="off"
+                       style="outline: none;" />
+
+                ## Why is this display: none? Do we not want to display? Or is it toggled
+                ## by js? If the former, remove and please stop doing this. If latter,
+                ## include comment.
+                <label for="cu_search_no_js" style="display: none;">Search</label>
+              </td>
+              <td class="gsc-search-button">
+                <input class="gsc-search-button" title="search" type="button" value="Search" />
+              </td>
+            </tr>
+          </tbody>
+        </table>
+      </form>
+    </div>
+
+    <div id="cu_search_results">
+      <div id="cu_search_results_cell">
+        <div id="cu_search_results_ui">
+          <td class="gsc-clear-button">
+            <div class="gsc-clear-button" title="clear results"></div>
+          </td>
+        </div>
+      </div>
+    </div>
+  </div>
 #end
 
-#macro ( build_off_canvas_nav )
+#macro ( buildOffCanvasNav )
 
 #end
 
@@ -99,13 +145,13 @@
   #end
 #end
 
-#macro ( build_primary_nav )
+#macro ( buildMainNav )
 #end
 
-#macro ( build_secondary_nav $secondaryNavDirectory )
+#macro ( buildUmbrellaNav )
 #end
 
-#macro ( login_logo_link $href $svg_id $label )
+#macro ( loginLogoLink $href $svg_id $label )
   ## Cascade won't allow this line to be saved when SVG_ID replaced by $svg_id.
   ## Won't even let you save it with line commented out. Error message:
   ## Draft could not be saved. named capturing group is missing trailing '}'
@@ -114,8 +160,8 @@
   <li>
     <a class="cu_nav_button" href="$href">
       <svg viewbox="0 0 512 512">
-          <use xlink:href="$xlink" xmlns:xlink="http://www.w3.org/1999/xlink">
-          </use>
+        <use xlink:href="$xlink" xmlns:xlink="http://www.w3.org/1999/xlink">
+        </use>
       </svg>
       <span class="label">$label</span>
     </a>
@@ -140,14 +186,14 @@
   <!-- pagePath: $pagePath -->
   <!-- pageUmbrellaCategory: $pageUmbrellaCategory -->
 
-  #build_off_canvas_nav_trigger()
+  #buildOffCanvasNavTrigger()
 
-  #build_logo()
+  #buildLogo()
 
-  #build_login_component()
+  #buildLoginComponent()
 
-  #build_search_component()
+  #buildSearchComponent()
 
-  #build_off_canvas_nav()
+  #buildOffCanvasNav()
 
 </div>
