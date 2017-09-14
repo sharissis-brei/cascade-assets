@@ -42,7 +42,7 @@
 #end
 
 #macro ( buildLogo )
-  <a class="cu-logo" href="${domain}" title="Chapman University Website Home Page">
+  <a class="cu-logo" href="/" title="Chapman University Website Home Page">
     <span itemprop="name">Chapman University</span>
   </a>
 #end
@@ -125,9 +125,58 @@
 #end
 
 #macro ( buildOffCanvasNavHeader )
-  #set ( $displaySecondaryMenu = $pageUmbrellaCategory.length() > 0 )
+  #set ( $isUmbrellaCategory = $pageUmbrellaCategory.size() > 0 )
+  pageUmbrellaCategory: $pageUmbrellaCategory
+  isUmbrellaCategory: $isUmbrellaCategory
 
   <div class="cu-off-canvas-header">
+
+    ## Build main nav logo.
+    ## If umbrella category, use school/college logo.
+    #if ( $isUmbrellaCategory )
+
+      ## UmbrellaCat has special path
+      #if( $pageUmbrellaCategory[3] != '/' )
+        <a class="sc-logo ${$pageUmbrellaCategory[2]}"
+           href="/${pageUmbrellaCategory[3]}"
+           title="Link to ${pageUmbrellaCategory[1]}">
+          <span itemprop="name">${pageUmbrellaCategory[1]} Logo</span>
+        </a>
+      ## Use Chapman as Default
+      #else
+        <a class="sc-logo" href="site://Chapman.edu/index" title="Link to Chapman University Homepage">
+          <span itemprop="name">Chapman University</span>
+        </a>
+      #end
+
+      <a class="default-logo" href="site://Chapman.edu/index" title="Link to Chapman University Homepage">
+        <span itemprop="name">Chapman University</span>
+      </a>
+
+    ## Else use Chapman logo.
+    #else
+      <a class="default-logo-cu" href="site://Chapman.edu/index" title="Link to Chapman University Homepage">
+        <span itemprop="name">Chapman University</span>
+      </a>
+    #end
+
+    <span id="js-cu-close-off-canvas-nav" class="close">X</span>
+
+    ## Display menu name and secondary menu links.
+    <div class="cu-off-canvas-links clearfix">
+      #if ( $isUmbrellaCategory )
+        <span id="js-main-menu" class="main-menu">${pageUmbrellaCategory[1]}</span>
+        <a id="js-level-2-link" href="#" class="level-2-link">
+          &#8592; Go to <span class="accent">${pageUmbrellaCategory[1]} Menu</span>
+        </a>
+        <a id="js-level-1-link" href="#" class="level-1-link">
+          Go to <span class="accent">Main Menu</span> &#8594;
+        </a>
+      #else
+        <span id="js-main-menu" class="main-menu">Main Menu</span>
+      #end
+    </div>
+
   </div>
 #end
 
