@@ -8,10 +8,10 @@
 ##
 ## Hardcoded Params
 ##
-## secondaryNavDirectories
+## umbrellaCategories
 ## These are locations for which OmniNav should build the secondary off-canvas-nav menu.
 ## Inner Array: [ directory (assume leading /), menu label, class/image id, path ]
-#set ( $secondaryNavDirectories = [
+#set ( $umbrellaCategories = [
   [ 'business', 'ARGYROS SCHOOL', 'asbe', 'business/index.aspx' ],
   [ 'education', 'ATTALLAH COLLEGE', 'education', 'education/index.aspx' ],
   [ 'support-chapman', 'Support Chapman', 'default', '/' ],
@@ -24,8 +24,8 @@
 #set ( $indexBlock = $_XPathTool.selectSingleNode($contentRoot, "//system-index-block") )
 #set ( $currentPage = $_XPathTool.selectSingleNode($contentRoot, "//system-page[@current = 'true']") )
 
-## These vars will be set by setSecondaryNav method.
-#set ( $secondaryNavDirectory = [] )
+## These vars will be set by setPageUmbrellaCategory method.
+#set ( $pageUmbrellaCategory = [] )
 
 
 ##
@@ -73,12 +73,12 @@
 
 #end
 
-#macro ( setSecondaryNav $thisPage, $navDirectories  )
+#macro ( setPageUmbrellaCategory $thisPage  )
   #set ( $pagePath = $thisPage.getChild("path").value )
 
-  ## Is current path under one of specified $secondaryNavDirectories?
-  #foreach ( $navDirectory in $navDirectories )
-    #set ( $dirName = $navDirectory[0] )
+  ## Is current path under one of specified $umbrellaCategories?
+  #foreach ( $umbrellaCategory in $umbrellaCategories )
+    #set ( $dirName = $umbrellaCategory[0] )
 
     ## Start/end +1 to skip leading /
     #set ( $startSubStr = 1 )
@@ -94,7 +94,7 @@
     ## Is current page directory $pagePathDir under this $navDirectory? If so,
     ## we found our $navDirectory.
     #if ( $pagePath.contains($dirName) && $pagePathDir == $dirName )
-      #set ( $secondaryNavDirectory = $navDirectory )
+      #set ( $pageUmbrellaCategory = $umbrellaCategory )
     #end
   #end
 #end
@@ -109,7 +109,7 @@
   ## Cascade won't allow this line to be saved when SVG_ID replaced by $svg_id.
   ## Won't even let you save it with line commented out. Error message:
   ## Draft could not be saved. named capturing group is missing trailing '}'
-  #set ( $xlink = "[system-asset:id=eb945fd7c04d744c54334ecab3a4f792]/_files/img/omni-nav.svg#SVG_ID[/system-asset]" )
+  #set ( $xlink = "[system-asset:id=eb945fd7c04d744c54334ecab3a4f792]/_files/img/omni-nav.svg[/system-asset]#${svg_id}" )
 
   <li>
     <a class="cu_nav_button" href="$href">
@@ -133,14 +133,12 @@
 ##
 ## Main OmniNav HTML Block
 ##
-#setSecondaryNav($currentPage $secondaryNavDirectories)
+#setPageUmbrellaCategory($currentPage)
 
 <div id="cu_nav">
 
-  <pre>
-  pagePath: $pagePath
-  secondaryNavDirectory: $secondaryNavDirectory
-  </pre>
+  <!-- pagePath: $pagePath -->
+  <!-- pageUmbrellaCategory: $pageUmbrellaCategory -->
 
   #build_off_canvas_nav_trigger()
 

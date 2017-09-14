@@ -14,14 +14,22 @@
 #set ( $simpleMap = {'a':1, 'b':2} )
 
 <div id="debug-format">
-    <h2>Debug Format</h2>
+  <h2>Debug Format</h2>
+  <h3>Maps and Arrays</h3>
+  <pre>
+    simpleArray: $simpleArray
+    nestedArray: $nestedArray
+    simpleMap: $simpleMap
+    simpleMap['a']: $simpleMap['a']
+    simpleMap['nope']: $simpleMap['nope']
+  </pre>
 
-    <pre>simpleArray: $simpleArray</pre>
-    <pre>nestedArray: $nestedArray</pre>
-    <pre>simpleMap: $simpleMap</pre>
-    <pre>simpleMap['a']: $simpleMap['a']</pre>
-    <pre>simpleMap['nope']: $simpleMap['nope']</pre>
+  <h3>contentRoot</h3>
+  <pre>
+    # Inspect
+    #inspectXML( $contentRoot )
 
-    <h4>contentRoot</h4>
-    <pre>#inspectXML( $contentRoot )</pre>
+    # _PropertyTool.outputProperties
+    $_PropertyTool.outputProperties( $contentRoot )
+  </pre>
 </div>
