@@ -409,7 +409,7 @@
 #macro ( buildOffCanvasNavSecondaryMenu )
   ## This is all based on existing code found in old Omni-Nav format.
   #set ( $umbrellaPath = $pageUmbrellaCategory[0] )
-  #set ( $parentSiblingsPath = "//system-index-block/system-folder[path = '${umbrellaPath}']/system-folder | //system-index-block/system-folder[path = '${umbrellaPath}']/system-page[name != 'index']" )
+  #set ( $parentSiblingsPath = "//system-index-block/system-folder[path = '/${umbrellaPath}']/system-folder | //system-index-block/system-folder[path = '/${umbrellaPath}']/system-page[name != 'index']" )
   #set ( $parentSiblings = $_XPathTool.selectNodes($indexBlock, $parentSiblingsPath) )
 
   <ul class="level-1">
