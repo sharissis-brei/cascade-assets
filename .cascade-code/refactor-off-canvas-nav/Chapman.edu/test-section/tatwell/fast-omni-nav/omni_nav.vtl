@@ -409,8 +409,8 @@
 #macro ( buildOffCanvasNavSecondaryMenu )
   ## This is all based on existing code found in old Omni-Nav format.
   #set ( $umbrellaPath = $pageUmbrellaCategory[0] )
-  #set ( $parentSiblingsPath = "//system-index-block/system-folder[path = '/${umbrellaPath}']/system-folder | //system-index-block/system-folder[path = '/${umbrellaPath}']/system-page[name != 'index']" )
-  #set ( $parentSiblings = $_XPathTool.selectNodes($indexBlock, $parentSiblingsPath) )
+  #set ( $parentSiblingsSelector = "//system-index-block/system-folder[path = '/${umbrellaPath}']/system-folder | //system-index-block/system-folder[path = '/${umbrellaPath}']/system-page[name != 'index']" )
+  #set ( $parentSiblings = $_XPathTool.selectNodes($indexBlock, $parentSiblingsSelector) )
 
   <ul class="level-1">
     #if ( $parentSiblings.size() > 0 )
@@ -438,14 +438,14 @@
   ## If hidden, continue. But velocity doesn't have a continue operator:
   ## https://stackoverflow.com/questions/7530019/apache-velocity-foreach-loop-continue
   #if ( $isVisible )
-    #set ( $siblingName = $siblingNode.getName() )
+    #set ( $nodeType = $siblingNode.getName() )
     #set ( $link = $siblingNode.getChild("link").value )
 
-    #if ( $siblingName == 'system-page' )
+    #if ( $nodeType == 'system-page' )
       #set ( $displayName = $_EscapeTool.xml($siblingNode.getChild("display-name").value) )
       <li><a href="$link">$displayName</a></li>
 
-    #elseif ( $siblingName == 'system-folder' )
+    #elseif ( $nodeType == 'system-folder' )
       #set ( $folderIndexPage = $_XPathTool.selectSingleNode($siblingNode, "system-page[name = 'index']") )
       #set ( $displayName = $_EscapeTool.xml($folderIndexPage.getChild("display-name").value) )
       #set ( $children = $_XPathTool.selectNodes($siblingNode, "system-page[name != 'index'] | system-folder") )
