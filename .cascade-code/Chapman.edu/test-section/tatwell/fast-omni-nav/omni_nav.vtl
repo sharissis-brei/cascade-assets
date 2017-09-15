@@ -164,8 +164,7 @@
 #end
 
 #macro ( loginLogoLink $href $svg_id $label )
-  ## Cascade won't allow this line to be saved when SVG_ID replaced by $svg_id.
-  ## Won't even let you save it with line commented out. Error message:
+  ## #${svg_id} must be outside system-asset tag or Cascade will raise error:
   ## Draft could not be saved. named capturing group is missing trailing '}'
   #set ( $xlink = "[system-asset:id=eb945fd7c04d744c54334ecab3a4f792]/_files/img/omni-nav.svg[/system-asset]#${svg_id}" )
 
