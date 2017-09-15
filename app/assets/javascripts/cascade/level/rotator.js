@@ -13,11 +13,9 @@ $(function () {
         var SLIDER_CONTAINER_SELECTOR = 'div.slider.version-201611';
         var HEADER_SELECTOR = SLIDER_CONTAINER_SELECTOR + ' div.column.header div.aligned';
         var SUBHEADER_SELECTOR = HEADER_SELECTOR + ' div.subheader';
-        var SUBTITLE_SELECTOR = SUBHEADER_SELECTOR + ' h4';
         var isSliderMasthead = $(SLIDER_CONTAINER_SELECTOR).length > 0;
         var $header = null;
         var $subheader = null;
-        var $subtitle = null;
 
         // Public Methods
         var onStart = function(slider) {
@@ -25,7 +23,6 @@ $(function () {
 
             $header = $(HEADER_SELECTOR);
             $subheader = $(SUBHEADER_SELECTOR);
-            $subtitle = $(SUBTITLE_SELECTOR);
         };
 
         var beforeSlideChange = function(slider) {
@@ -40,15 +37,11 @@ $(function () {
             if ( !isSliderMasthead ) { return; }
 
             var currentSubtitle = currentSlideSubtitle(slider);
+            $subheader.empty();
 
-            $subtitle.html(currentSubtitle)
-
-            // Must hide subheader when subtitle empty in order to hide <hr/>.
-            if ( currentSubtitle == '' ) {
-                $subheader.hide();
-            }
-            else {
-                $subheader.show();
+            // Remove contents of subheader div if no subtitle present
+            if ( currentSubtitle != '' && currentSubtitle !== undefined ) {
+                $subheader.append("<hr /><h3>"+currentSubtitle+"</h3>");
             }
 
             $header.fadeTo("slow", 1);
