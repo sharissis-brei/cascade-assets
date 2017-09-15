@@ -95,6 +95,7 @@
             ## See app/assets/javascript/cascade/level/rotator.js
             #if ( $firstSubtitle != '' )
               <hr />
+              ## Replace newline characters with html breaks so users can have multiline subtitles
               <h3>${_EscapeTool.xml($firstSubtitle).replace("\n", "<br/>")}</h3>
             #end
           </div>

@@ -41,8 +41,9 @@ $(function () {
             // Always remove contents of div when switching slides
             $subheader.empty();
 
-            // Remove contents of subheader div if no subtitle present
+            // Only add html for subtitle if there is one
             if ( currentSubtitle != '' && currentSubtitle !== undefined ) {
+                // Replace newline characters with html breaks so users can have multiline subtitles
                 $subheader.append("<hr /><h3>"+currentSubtitle.replace(/(\n)+/g, "<br/>")+"</h3>");
             }
 
