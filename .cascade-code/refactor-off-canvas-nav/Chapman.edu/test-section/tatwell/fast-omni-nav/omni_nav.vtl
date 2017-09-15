@@ -167,7 +167,7 @@
 
   <div id="js-cu-off-canvas-nav-container" class="cu-off-canvas-nav-container">
     #buildOffCanvasNavHeader()
-    #buildOffCanvasNavMenu()
+    #buildOffCanvasNavMenus()
   </div>
 #end
 
@@ -182,7 +182,7 @@
 
       ## UmbrellaCat has special path
       #if( $pageUmbrellaCategory[3] != '/' )
-        <a class="sc-logo ${$pageUmbrellaCategory[2]}"
+        <a class="sc-logo ${pageUmbrellaCategory[2]}"
            href="/${pageUmbrellaCategory[3]}"
            title="Link to ${pageUmbrellaCategory[1]}">
           <span itemprop="name">${pageUmbrellaCategory[1]} Logo</span>
@@ -225,7 +225,7 @@
   </div>
 #end
 
-#macro ( buildOffCanvasNavMenu )
+#macro ( buildOffCanvasNavMenus )
   #set ( $isUmbrellaCategory = $pageUmbrellaCategory.size() > 0 )
 
   <div id="js-cu-off-canvas-nav" class="cu-off-canvas-nav clearfix">
@@ -241,7 +241,7 @@
 #macro ( buildOffCanvasNavMainMenu )
   ## Level is either 1 (no umbrella cat) or 2 (umbrella cat)
   #set ( $isUmbrellaCategory = $pageUmbrellaCategory.size() > 0 )
-  #set( $level = "#if( $isUmbrellaCategory ) )2#{else}1#end" )
+  #set( $level = "#if( $isUmbrellaCategory )2#{else}1#end" )
 
   <ul class="level-${level}">
     <li id="off-menu-university" class="off-dropdown">
@@ -388,23 +388,86 @@
   ## This is all based on existing code found in old Omni-Nav format.
   #set ( $umbrellaPath = $pageUmbrellaCategory[0] )
   #set ( $parentSiblingsPath = "//system-index-block/system-folder[path = '${umbrellaPath}']/system-folder | //system-index-block/system-folder[path = '${umbrellaPath}']/system-page[name != 'index']" )
-  #set ( $siblingsPath = "//system-folder[@current = 'true']/system-folder | //system-folder[@current = 'true']/system-page[name != 'index']" )
   #set ( $parentSiblings = $_XPathTool.selectNodes($indexBlock, $parentSiblingsPath) )
 
   <ul class="level-1">
     #if ( $parentSiblings.size() > 0 )
-      #buildSecondaryMenuItems( $parentSiblings )
+      #foreach ( $sibling in $parentSiblings )
+        #buildSecondaryMenuItem( $sibling )
+      #end
     #else
-      #set ( $siblings = $_XPathTool.selectNodes($indexBlock, $siblingsPath) )
-      #buildSecondaryMenuItems( $siblings )
+      #set ( $pageSiblingsPath = "//system-folder[@current = 'true']/system-folder | //system-folder[@current = 'true']/system-page[name != 'index']" )
+      #set ( $pageSiblings = $_XPathTool.selectNodes($indexBlock, $pageSiblingsPath) )
+      #foreach ( $sibling in $pageSiblings )
+        #buildSecondaryMenuItem( $sibling )
+      #end
     #end
   </ul>
 #end
 
-#macro ( buildSecondaryMenuItems $siblingNodes )
+#macro ( buildSecondaryMenuItem $siblingNode )
   ## This is based on showPage macro from previous velocity format.
-  TODO: buildSecondaryMenuItems macro
+  ## It builds a menu link for the secondary menu. It will either be a link or a
+  ## drop-down menu with multiple links.
+  #set ( $hideSettingSelector = "dynamic-metadata[1][value='Yes'] or system-page[name = 'index']/dynamic-metadata[1][value='Yes']" )
+  #set ( $metaHideSetting = $_XPathTool.selectNodes($siblingNode, $hideSettingSelector) )
+  #set ( $isVisible = $metaHideSetting == [false] )
+
+  ## If hidden, continue. But velocity doesn't have a continue operator:
+  ## https://stackoverflow.com/questions/7530019/apache-velocity-foreach-loop-continue
+  #if ( $isVisible )
+    #set ( $siblingName = $siblingNode.getName() )
+    #set ( $link = $siblingNode.getChild("link").value )
+
+    #if ( $siblingName == 'system-page' )
+      #set ( $displayName = $_EscapeTool.xml($siblingNode.getChild("display-name").value) )
+      <li><a href="$link">$displayName</a></li>
+
+    #elseif ( $siblingName == 'system-folder' )
+      #set ( $folderIndexPage = $_XPathTool.selectSingleNode($siblingNode, "system-page[name = 'index']") )
+      #set ( $displayName = $_EscapeTool.xml($folderIndexPage.getChild("display-name").value) )
+      #set ( $children = $_XPathTool.selectNodes($siblingNode, "system-page[name != 'index'] | system-folder") )
+
+      ## Count hidden children to see if we need to show toggle button.
+      #set ( $hiddenChildCounter = 0 )
+      #set ( $hiddenChildSelector = "dynamic-metadata[1][value='Yes'] | system-folder/dynamic-metadata/value" )
+      #foreach ( $child in $children )
+        #if ( $_XPathTool.selectSingleNode($child, $hiddenChildSelector) )
+          #set ( $hiddenChildCounter = $hiddenChildCounter + 1 )
+        #end
+      #end
+      #set ( $hasVisibleChildren = $children.size() > 0 && $hiddenChildCounter < $children.size() )
+
+      <li>
+        <a href="${link}/index">$displayName</a>
+
+        #if ( $hasVisibleChildren )
+          <span class="toggle"><span>+</span></span>
+          <ul>
+            #foreach ( $child in $children )
+              #set ( $metaHideSettingSelector = "dynamic-metadata[1][value='Yes'] or system-page[name = 'index']/dynamic-metadata[1][value='Yes']" )
+              #set ( $metaHideChildSetting = $_XPathTool.selectNodes($child, $metaHideSettingSelector) )
+              #set ( $childIsVisible = $metaHideChildSetting == [false] )
+
+              #if ( $childIsVisible )
+                #set ( $childFileType = $child.getName() )
+                #set ( $childLink = $child.getChild("link").value )
+                #set ( $childDisplayName = $_EscapeTool.xml($child.getChild("display-name").value) )
+
+                #if ( $childFileType == "system-page" )
+                  <li><a href="${childLink}">$childDisplayName</a></li>
+                #elseif ( $childFileType == "system-page" )
+                  <li><a href="${childLink}/index">$childDisplayName</a></li>
+                #end
+              #end
+            #end
+          </ul>
+        #end
+      </li>
+    #end
+  #end
 #end
+
 
 ##
 ## Main OmniNav HTML Block
