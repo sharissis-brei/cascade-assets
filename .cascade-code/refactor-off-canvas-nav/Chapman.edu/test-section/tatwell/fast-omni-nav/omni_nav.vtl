@@ -1,6 +1,10 @@
 #*
  * OmniNav format refactored to work with faster loading index block.
  * Chapman.edu/test-section/tatwell/fast-omni-nav/omni_nav_format.vtl
+ *
+ * Refactor reduced format from about 630 lines to 515.
+ *
+ * TODO: Move off-canvas-nav macros into their own file.
  *#
 
 #import( "/_cascade/formats/helpers/debug.velocity" )
@@ -10,13 +14,31 @@
 ##
 ## umbrellaCategories
 ## These are locations for which OmniNav should build the secondary off-canvas-nav menu.
+## umbrellaCategory is the term product owners use.
+## Does order matter here? I'm assuming it does.
 ## Inner Array: [ directory (assume leading /), menu label, class/image id, path ]
 #set ( $umbrellaCategories = [
   [ 'business', 'ARGYROS SCHOOL', 'asbe', 'business/index.aspx' ],
   [ 'education', 'ATTALLAH COLLEGE', 'education', 'education/index.aspx' ],
+  [ 'dodge', 'DODGE COLLEGE', 'dodge', 'dodge/index.aspx' ],
+  [ 'crean', 'CREAN COLLEGE', 'crean', 'crean/index.aspx' ],
+  [ 'wilkinson', 'WILKINSON COLLEGE', 'wilkinson', 'wilkinson/index.aspx' ],
+  [ 'copa', 'CoPA', 'copa', 'copa/index.aspx' ],
+  [ 'pharmacy', 'CUSP', 'cusp', 'pharmacy/index.aspx' ],
+  [ 'law', 'FOWLER SCHOOL OF LAW', 'fowler', 'law/index.aspx' ],
+  [ 'scst', 'SCHMID COLLEGE', 'schmid', 'scst/index.aspx' ],
+  [ 'about', 'About', 'default', '/' ],
+  [ 'academics', 'Academics', 'default', '/' ],
+  [ 'admission', 'Admission', 'default', '/' ],
+  [ 'alumni', 'Alumni', 'default', '/' ],
+  [ 'campus-services', 'Campus Services', 'default', '/' ],
+  [ 'faculty-staff', 'Faculty and Staff', 'default', '/' ],
+  [ 'families', 'Families', 'default', '/' ],
+  [ 'research', 'Research', 'default', '/' ],
+  [ 'students', 'Students', 'default', '/' ],
   [ 'support-chapman', 'Support Chapman', 'default', '/' ],
-  [ 'about', 'TEST PAGE IS HERE', 'default', '/' ]
-] )
+  [ 'communication', 'SCHOOL OF COMM', 'soc', 'communication/index.aspx' ]
+])
 
 ##
 ## Vars
@@ -24,7 +46,7 @@
 #set ( $indexBlock = $_XPathTool.selectSingleNode($contentRoot, "//system-index-block") )
 #set ( $currentPage = $_XPathTool.selectSingleNode($contentRoot, "//system-page[@current = 'true']") )
 
-## These vars will be set by setPageUmbrellaCategory method.
+## This will be set by setPageUmbrellaCategory method.
 #set ( $pageUmbrellaCategory = [] )
 
 
