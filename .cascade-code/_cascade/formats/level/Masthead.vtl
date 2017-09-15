@@ -44,7 +44,6 @@
     #set ( $slides = $_XPathTool.selectNodes($masthead, 'slider201611/slides/slide') )
     #set ( $header = $_XPathTool.selectSingleNode($masthead, 'slider201611/header').value )
     #set ( $firstSubtitle = $_XPathTool.selectSingleNode($slides[0], 'subTitle').value )
-    #set ( $subheaderClass = "#if($firstSubtitle != '')present#{else}absent#end" )
 
   <div class="slider version-201611">
     <div class="hidden slideOptions">
@@ -91,10 +90,12 @@
         <div class="aligned">
           <h2 class="header">${_EscapeTool.xml($header).replace("\n", "<br/>")}</h2>
           ## for ADA compliance, only show subheader if not empty
-          <div class="subheader ${subheaderClass}">
-            #if (${subheaderClass} == 'present')
-                <hr />
-                <h3>${_EscapeTool.xml($firstSubtitle).replace("\n", "<br/>")}</h3>
+          <div class="subheader">
+            ## HTML for subsequent slides comes from javascript
+            ## See app/assets/javascript/cascade/level/rotator.js
+            #if ( $firstSubtitle != '' )
+              <hr />
+              <h3>${_EscapeTool.xml($firstSubtitle).replace("\n", "<br/>")}</h3>
             #end
           </div>
         </div>
