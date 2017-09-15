@@ -37,11 +37,13 @@ $(function () {
             if ( !isSliderMasthead ) { return; }
 
             var currentSubtitle = currentSlideSubtitle(slider);
+
+            // Always remove contents of div when switching slides
             $subheader.empty();
 
             // Remove contents of subheader div if no subtitle present
             if ( currentSubtitle != '' && currentSubtitle !== undefined ) {
-                $subheader.append("<hr /><h3>"+currentSubtitle+"</h3>");
+                $subheader.append("<hr /><h3>"+currentSubtitle.replace(/(\n)+/g, "<br/>")+"</h3>");
             }
 
             $header.fadeTo("slow", 1);
