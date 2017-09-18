@@ -33,6 +33,8 @@ $(function () {
             $header.fadeTo("slow", 0);
         };
 
+        // This function sets the slide subtitles when switching slides
+        // The first subtitle gets set in the Velocity format: _cascade/formats/level/Masthead
         var afterSlideChange = function(slider) {
             if ( !isSliderMasthead ) { return; }
 
@@ -44,7 +46,8 @@ $(function () {
             // Only add html for subtitle if there is one
             if ( currentSubtitle != '' && currentSubtitle !== undefined ) {
                 // Replace newline characters with html breaks so users can have multiline subtitles
-                $subheader.append("<hr /><h3>"+currentSubtitle.replace(/(\n)+/g, "<br/>")+"</h3>");
+                currentSubtitle = currentSubtitle.replace(/(\n)+/g, "<br/>")
+                $subheader.append("<hr /><h3>"+currentSubtitle+"</h3>");
             }
 
             $header.fadeTo("slow", 1);
