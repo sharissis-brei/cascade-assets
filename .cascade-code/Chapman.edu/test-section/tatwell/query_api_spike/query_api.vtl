@@ -23,6 +23,36 @@
 ## Macros
 ##
 #macro ( queryCurrentPageParentSiblings )
+  #set ( $parentSiblings = [] )
+
+  ## Based on https://www.hannonhill.com/kb/Script-Formats/#locator-tool
+  ## TODO: walk slashes left of current path to get grandparent
+  #set ( $currentPath = $currentPage.getChild('path').value )
+  #set ( $grandParentFolder = $_.locateFolder('/test-section/tatwell') )
+
+  <pre>
+  currentPath: $currentPath
+  grandParentFolder.path: $grandParentFolder.path
+
+  # grandParentFolder
+  $_PropertyTool.outputProperties( $grandParentFolder )
+  </pre>
+
+  #foreach( $parentSibling in $grandParentFolder.children )
+    #set ( $hideSettingSelector = "dynamic-metadata[1][value='Yes'] or system-page[name = 'index']/dynamic-metadata[1][value='Yes']" )
+    #set ( $isVisible = $_XPathTool.selectNodes($parentSibling, $hideSettingSelector) == [false] )
+
+    ## add method returns boolean which will displayed if not assigned to var.
+    #set ($discard = $parentSiblings.add({'node': $parentSibling, 'visible?': $isVisible}))
+  #end
+
+  <pre>
+  # ParentSiblings: title : visible?
+  #foreach( $parentSibling in $parentSiblings )
+    #set ( $node = $parentSibling.get('node') )
+    $node.name : $parentSibling.get('visible?')
+  #end
+  </pre>
 #end
 
 
@@ -31,15 +61,14 @@
 ##
 ## Main Format Block
 ##
-#setPageUmbrellaCategory($currentPage)
-
 <div id="format-results">
 
   <pre>
-  # contentRoot
-  $_PropertyTool.outputProperties( $contentRoot )
-
   # currentPage
+  currentPage current?: $currentPage.getAttributeValue('current')
+  currentPage title: $currentPage.getChild("title").value
+  currentPage path: $currentPage.getChild('path').value
+
   $_PropertyTool.outputProperties( $currentPage )
   </pre>
 
