@@ -1,0 +1,48 @@
+#*
+ * query_api.vtl
+ * Test format to demonstrate usage of Cascade locator tool and Query API.
+ *
+ * For more info, see spike user story:
+ * https://trello.com/c/InwKZ4w9
+ *#
+
+#import( "/_cascade/formats/helpers/debug.velocity" )
+
+##
+## Hardcoded Params
+##
+
+
+##
+## Vars
+##
+#set ( $currentPage = $_XPathTool.selectSingleNode($contentRoot, "//system-page[@current = 'true']") )
+
+
+##
+## Macros
+##
+#macro ( queryCurrentPageParentSiblings )
+#end
+
+
+
+
+##
+## Main Format Block
+##
+#setPageUmbrellaCategory($currentPage)
+
+<div id="format-results">
+
+  <pre>
+  # contentRoot
+  $_PropertyTool.outputProperties( $contentRoot )
+
+  # currentPage
+  $_PropertyTool.outputProperties( $currentPage )
+  </pre>
+
+  #queryCurrentPageParentSiblings()
+
+</div>
