@@ -46,7 +46,7 @@ $(function () {
             // Only add html for subtitle if there is one
             if ( currentSubtitle != '' && currentSubtitle !== undefined ) {
                 // Replace newline characters with html breaks so users can have multiline subtitles
-                currentSubtitle = currentSubtitle.replace(/(\n)+/g, "<br/>")
+                currentSubtitle = currentSubtitle.replace(/(\n)+/g, "<br/>");
                 $subheader.append("<hr /><h3>"+currentSubtitle+"</h3>");
             }
 
