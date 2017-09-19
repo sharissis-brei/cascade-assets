@@ -22,39 +22,59 @@
 ##
 ## Macros
 ##
-#macro ( queryCurrentPageParentSiblings )
-  #set ( $parentSiblings = [] )
-
-  ## Based on https://www.hannonhill.com/kb/Script-Formats/#locator-tool
-  ## TODO: walk slashes left of current path to get grandparent
+#macro ( debugPathTools )
   #set ( $currentPath = $currentPage.getChild('path').value )
-  #set ( $grandParentFolder = $_.locateFolder('/test-section/tatwell') )
+  #set ( $pathList = $currentPath.split('/') )
+  #set ( $parentIndex = $pathList.size() - 2 )
+  #set ( $parentFolderName = $pathList.get($parentIndex) )
+  #set ( $grandParentPath = $_StringTool.substringBefore($currentPath, $parentFolderName) )
 
   <pre>
+  # debugPathTools
+  currentPage.parentFolder: $currentPage.parentFolder
+  isNull: $_PropertyTool.isNull($currentPage.parentFolder)
   currentPath: $currentPath
-  grandParentFolder.path: $grandParentFolder.path
-
-  # grandParentFolder
-  $_PropertyTool.outputProperties( $grandParentFolder )
-  </pre>
-
-  #foreach( $parentSibling in $grandParentFolder.children )
-    #set ( $hideSettingSelector = "dynamic-metadata[1][value='Yes'] or system-page[name = 'index']/dynamic-metadata[1][value='Yes']" )
-    #set ( $isVisible = $_XPathTool.selectNodes($parentSibling, $hideSettingSelector) == [false] )
-
-    ## add method returns boolean which will displayed if not assigned to var.
-    #set ($discard = $parentSiblings.add({'node': $parentSibling, 'visible?': $isVisible}))
-  #end
-
-  <pre>
-  # ParentSiblings: title : visible?
-  #foreach( $parentSibling in $parentSiblings )
-    #set ( $node = $parentSibling.get('node') )
-    $node.name : $parentSibling.get('visible?')
-  #end
+  pathList.size: $pathList.size()
+  parentFolderName: $parentFolderName
+  grandParentPath: $grandParentPath
   </pre>
 #end
 
+#macro ( queryCurrentPageParentSiblings )
+  ## Note: Velocity (Java) arrays don't have a pop or remove method.
+  #set ( $parentSiblings = [] )
+
+  #set ( $currentPath = $currentPage.getChild('path').value )
+  #set ( $pathList = $currentPath.split('/') )
+  #set ( $parentIndex = $pathList.size() - 2 )
+  #set ( $parentFolderName = $pathList.get($parentIndex) )
+
+  ## locateFolder fails with trailing slashes. Thus the leading slash added here.
+  ## This will also need some sanity checks for paths less than 3 folders deep.
+  #set ( $grandParentPath = $_StringTool.substringBefore($currentPath, "/${parentFolderName}") )
+  #set ( $grandParentFolder = $_.locateFolder($grandParentPath) )
+
+  #foreach( $parentSibling in $grandParentFolder.children )
+    ## add method returns boolean which will displayed if not assigned to var.
+    #set ( $discard = $parentSiblings.add($parentSibling) )
+  #end
+
+  <pre>
+  # queryCurrentPageParentSiblings
+  currentPath: $currentPath
+  grandParentPath: $grandParentPath
+  grandParentFolder isNull?: $_PropertyTool.isNull($grandParentFolder)
+  parentSiblings: ${_DisplayTool.list($parentSiblings,"/")}
+  grandParentFolder.path: $grandParentFolder.path
+
+  # ParentSiblings: title : visible?
+  #foreach( $parentSibling in $grandParentFolder.children )
+    #set ( $hideSettingSelector = "dynamic-metadata[1][value='Yes'] or system-page[name = 'index']/dynamic-metadata[1][value='Yes']" )
+    #set ( $isVisible = $_XPathTool.selectNodes($parentSibling, $hideSettingSelector) == [false] )
+    $parentSibling.name : $isVisible
+  #end
+  </pre>
+#end
 
 
 
@@ -69,9 +89,10 @@
   currentPage title: $currentPage.getChild("title").value
   currentPage path: $currentPage.getChild('path').value
 
-  $_PropertyTool.outputProperties( $currentPage )
+  ##$_PropertyTool.outputProperties( $currentPage )
   </pre>
 
   #queryCurrentPageParentSiblings()
+  #debugPathTools()
 
 </div>
