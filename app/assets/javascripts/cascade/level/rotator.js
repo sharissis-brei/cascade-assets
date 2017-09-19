@@ -13,11 +13,9 @@ $(function () {
         var SLIDER_CONTAINER_SELECTOR = 'div.slider.version-201611';
         var HEADER_SELECTOR = SLIDER_CONTAINER_SELECTOR + ' div.column.header div.aligned';
         var SUBHEADER_SELECTOR = HEADER_SELECTOR + ' div.subheader';
-        var SUBTITLE_SELECTOR = SUBHEADER_SELECTOR + ' h4';
         var isSliderMasthead = $(SLIDER_CONTAINER_SELECTOR).length > 0;
         var $header = null;
         var $subheader = null;
-        var $subtitle = null;
 
         // Public Methods
         var onStart = function(slider) {
@@ -25,7 +23,6 @@ $(function () {
 
             $header = $(HEADER_SELECTOR);
             $subheader = $(SUBHEADER_SELECTOR);
-            $subtitle = $(SUBTITLE_SELECTOR);
         };
 
         var beforeSlideChange = function(slider) {
@@ -36,19 +33,21 @@ $(function () {
             $header.fadeTo("slow", 0);
         };
 
+        // This function sets the slide subtitles when switching slides
+        // The first subtitle gets set in the Velocity format: _cascade/formats/level/Masthead
         var afterSlideChange = function(slider) {
             if ( !isSliderMasthead ) { return; }
 
             var currentSubtitle = currentSlideSubtitle(slider);
 
-            $subtitle.html(currentSubtitle)
+            // Always remove contents of div when switching slides
+            $subheader.empty();
 
-            // Must hide subheader when subtitle empty in order to hide <hr/>.
-            if ( currentSubtitle == '' ) {
-                $subheader.hide();
-            }
-            else {
-                $subheader.show();
+            // Only add html for subtitle if there is one
+            if ( currentSubtitle != '' && currentSubtitle !== undefined ) {
+                // Replace newline characters with html breaks so users can have multiline subtitles
+                currentSubtitle = currentSubtitle.replace(/(\n)+/g, "<br/>");
+                $subheader.append("<hr /><h3>"+currentSubtitle+"</h3>");
             }
 
             $header.fadeTo("slow", 1);
