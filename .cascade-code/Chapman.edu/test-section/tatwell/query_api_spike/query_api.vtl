@@ -85,8 +85,8 @@
 
   # ParentSiblings: title : visible?
   #foreach( $parentSibling in $grandParentFolder.children )
-    #set ( $hideSettingSelector = "dynamic-metadata[1][value='Yes'] or system-page[name = 'index']/dynamic-metadata[1][value='Yes']" )
-    #set ( $isVisible = $_XPathTool.selectNodes($parentSibling, $hideSettingSelector) == [false] )
+    #set ( $metaHide = $parentSibling.metadata.getDynamicField('Hide from navigation').value )
+    #set ( $isVisible = $metaHide != 'Yes' )
     $parentSibling.name : $isVisible
   #end
   </pre>
@@ -130,8 +130,8 @@
   <pre>
   # queryUmbrellaCategory
   umbrellaPath: $umbrellaPath
-  Sibling Count: $siblingCount of $rootFolder.children.size()
-  Child Count: $childCount of $umbrellaFolder.children.size()
+  Visible Sibling Count: $siblingCount of $rootFolder.children.size()
+  Visible Count: $childCount of $umbrellaFolder.children.size()
   Sibling Paths:
     - First: $firstSiblingPath
     - Last: $lastSiblingPath
@@ -164,7 +164,7 @@
 <div id="format-main">
 
   <h1>Query API Spike</h1>
-  <p><a href="https://github.com/chapmanu/cascade-assets/blob/spike-locator-tool/.cascade-code/Chapman.edu/test-section/tatwell/query_api_spike/query_api.vtl">query_api.vtl source</a><p>
+  <p><a href="https://github.com/chapmanu/cascade-assets/blob/spike-locator-tool/.cascade-code/Chapman.edu/test-section/tatwell/query_api_spike/query_api.vtl">query_api.vtl source</a></p>
 
   #debugCurrentPage()
   #debugPathTools()
