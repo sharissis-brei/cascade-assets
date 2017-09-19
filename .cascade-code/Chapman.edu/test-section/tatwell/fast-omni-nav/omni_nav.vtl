@@ -449,15 +449,10 @@
       #set ( $displayName = $_EscapeTool.xml($folderIndexPage.getChild("display-name").value) )
       #set ( $children = $_XPathTool.selectNodes($siblingNode, "system-page[name != 'index'] | system-folder") )
 
-      ## Count hidden children to see if we need to show toggle button.
-      #set ( $hiddenChildCounter = 0 )
-      #set ( $hiddenChildSelector = "dynamic-metadata[1][value='Yes'] | system-folder/dynamic-metadata/value" )
-      #foreach ( $child in $children )
-        #if ( $_XPathTool.selectSingleNode($child, $hiddenChildSelector) )
-          #set ( $hiddenChildCounter = $hiddenChildCounter + 1 )
-        #end
-      #end
-      #set ( $hasVisibleChildren = $children.size() > 0 && $hiddenChildCounter < $children.size() )
+      ## If folder has visible children, we need to show toggle button with drop-down.
+      #set ( $hiddenChildSelector = "system-page[name != 'index']/dynamic-metadata[1][value='Yes'] | system-folder[dynamic-metadata[1][value='Yes']]" )
+      #set ( $hiddenChildren = $_XPathTool.selectNodes($siblingNode, $hiddenChildSelector) )
+      #set ( $hasVisibleChildren = $children.size() > 0 && $hiddenChildren.size() < $children.size() )
 
       <li>
         <a href="${link}/index">$displayName</a>
