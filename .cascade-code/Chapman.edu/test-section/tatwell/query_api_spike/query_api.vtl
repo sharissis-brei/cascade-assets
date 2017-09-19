@@ -16,14 +16,30 @@
 ##
 ## Vars
 ##
-#set ( $currentPage = $_XPathTool.selectSingleNode($contentRoot, "//system-page[@current = 'true']") )
+## Cascade provides a $currentPage object to every format.
+
+## This can be selected when Page Block is present:
+##set ( $pageNode = $_XPathTool.selectSingleNode($contentRoot, "//system-page[@current = 'true']") )
 
 
 ##
 ## Macros
 ##
+#macro ( debugCurrentPage )
+  <pre>
+  # currentPage
+  currentPage name: $currentPage.name
+  currentPage path: $currentPage.path
+  currentPage assetType: $currentPage.assetType
+  currentPage Hide from navigation?: $currentPage.metadata.getDynamicField('Hide from navigation').checkbox
+
+  # _PropertyTool.outputProperties( currentPage )
+  $_PropertyTool.outputProperties( $currentPage )
+  </pre>
+#end
+
 #macro ( debugPathTools )
-  #set ( $currentPath = $currentPage.getChild('path').value )
+  #set ( $currentPath = $currentPage.path )
   #set ( $pathList = $currentPath.split('/') )
   #set ( $parentIndex = $pathList.size() - 2 )
   #set ( $parentFolderName = $pathList.get($parentIndex) )
@@ -32,7 +48,7 @@
   <pre>
   # debugPathTools
   currentPage.parentFolder: $currentPage.parentFolder
-  isNull: $_PropertyTool.isNull($currentPage.parentFolder)
+  \- isNull: $_PropertyTool.isNull($currentPage.parentFolder)
   currentPath: $currentPath
   pathList.size: $pathList.size()
   parentFolderName: $parentFolderName
@@ -44,7 +60,7 @@
   ## Note: Velocity (Java) arrays don't have a pop or remove method.
   #set ( $parentSiblings = [] )
 
-  #set ( $currentPath = $currentPage.getChild('path').value )
+  #set ( $currentPath = $currentPage.path )
   #set ( $pathList = $currentPath.split('/') )
   #set ( $parentIndex = $pathList.size() - 2 )
   #set ( $parentFolderName = $pathList.get($parentIndex) )
@@ -76,23 +92,84 @@
   </pre>
 #end
 
+#macro ( queryUmbrellaCategory )
+  ## For off-canvas nav
+  ## This would normally need to be extracted from currentPage's path.
+  #set ( $umbrellaPath = "/law" )
+
+  ## Siblings
+  #set ( $visibleUmbrellaSiblings = [] )
+  #set ( $rootPath = '/' )
+  #set ( $rootFolder = $_.locateFolder($rootPath) )
+  #foreach( $childAsset in $rootFolder.children )
+    #set ( $metaHide = $childAsset.metadata.getDynamicField('Hide from navigation').value )
+    #if ( $metaHide != 'Yes' )
+      #set ( $discard = $visibleUmbrellaSiblings.add($childAsset) )
+    #end
+  #end
+  #set ( $siblingCount = $visibleUmbrellaSiblings.size() )
+  #set ( $firstSiblingPath = $_EscapeTool.xml($visibleUmbrellaSiblings[0].path) )
+  #set ( $lastIndex = $visibleUmbrellaSiblings.size() - 1 )
+  #set ( $lastSiblingPath = $_EscapeTool.xml($visibleUmbrellaSiblings[$lastIndex].path) )
+
+  ## Children
+  #set ( $visibleUmbrellaChildren = [] )
+  #set ( $umbrellaFolder = $_.locateFolder($umbrellaPath) )
+  #foreach( $childAsset in $umbrellaFolder.children )
+    #set ( $metaHide = $childAsset.metadata.getDynamicField('Hide from navigation').value )
+    #if ( $metaHide != 'Yes' )
+      #set ( $discard = $visibleUmbrellaChildren.add($childAsset) )
+    #end
+  #end
+  #set ( $childCount = $visibleUmbrellaChildren.size() )
+  #set ( $firstChildPath = $_EscapeTool.xml($visibleUmbrellaChildren[0].path) )
+  #set ( $lastIndex = $childCount - 1 )
+  #set ( $lastChildPath = $_EscapeTool.xml($visibleUmbrellaChildren[$lastIndex].path) )
+
+  ## Output
+  <pre>
+  # queryUmbrellaCategory
+  umbrellaPath: $umbrellaPath
+  Sibling Count: $siblingCount of $rootFolder.children.size()
+  Child Count: $childCount of $umbrellaFolder.children.size()
+  Sibling Paths:
+    - First: $firstSiblingPath
+    - Last: $lastSiblingPath
+  Child Paths:
+    - First: $firstChildPath
+    - Last: $lastChildPath
+  </pre>
+#end
+
+#macro( debugHideFromNavigation )
+  #set ( $azFolder = $_.locateFolder('/a-z') )
+  #set ( $azIndex = $_.locatePage('/a-z/index') )
+  #set ( $aboutIndex = $_.locatePage('/about/index') )
+  #set ( $testSectionFolder = $_.locateFolder('/test-section') )
+
+  ## Output
+  <pre>
+  # debugHideFromNavigation
+  a-z folder: $azFolder.metadata.getDynamicField('Hide from navigation').value
+  a-z index: $azIndex.metadata.getDynamicField('Hide from navigation').value
+  about index: $aboutIndex.metadata.getDynamicField('Hide from navigation').value
+  test-section folder: $testSectionFolder.metadata.getDynamicField('Hide from navigation').value
+  </pre>
+#end
 
 
 ##
 ## Main Format Block
 ##
-<div id="format-results">
+<div id="format-main">
 
-  <pre>
-  # currentPage
-  currentPage current?: $currentPage.getAttributeValue('current')
-  currentPage title: $currentPage.getChild("title").value
-  currentPage path: $currentPage.getChild('path').value
+  <h1>Query API Spike</h1>
+  <p><a href="https://github.com/chapmanu/cascade-assets/blob/spike-locator-tool/.cascade-code/Chapman.edu/test-section/tatwell/query_api_spike/query_api.vtl">query_api.vtl source</a><p>
 
-  ##$_PropertyTool.outputProperties( $currentPage )
-  </pre>
-
-  #queryCurrentPageParentSiblings()
+  #debugCurrentPage()
   #debugPathTools()
+  #debugHideFromNavigation()
+  #queryCurrentPageParentSiblings()
+  #queryUmbrellaCategory()
 
 </div>
