@@ -50,83 +50,31 @@
       <ul>
         <li>
           <a>About</a>
-          <span class="toggle">
-            <span>
-              <svg version="1.1" xmlns="http://www.w3.org/2000/svg" width="512" height="512" viewBox="0 0 512 512">
-                <title></title>
-                <g id="icomoon-ignore"></g>
-                <path d="M480 224h-192v-192h-64v192h-192v64h192v192h64v-192h192z"></path>
-              </svg>
-            </span>
-          </span>
+          #buildToggleIcon()
           <ul>
-            <li>
-              <a>Maps &amp; Directions</a>
-            </li>
-            <li>
-              <a>Visit Chapman</a>
-            </li>
-            <li>
-              <a>Discover Chapman</a>
-            </li>
-            <li>
-              <a>Our Campus</a>
-            </li>
+            <li><a>Maps &amp; Directions</a></li>
+            <li><a>Visit Chapman</a></li>
+            <li><a>Discover Chapman</a></li>
+            <li><a>Our Campus</a></li>
           </ul>
         </li>
         <li>
           <a>Academics</a>
-          <span class="toggle">
-            <span>
-              <svg version="1.1" xmlns="http://www.w3.org/2000/svg" width="512" height="512" viewBox="0 0 512 512">
-                <title></title>
-                <g id="icomoon-ignore"></g>
-                <path d="M480 224h-192v-192h-64v192h-192v64h192v192h64v-192h192z"></path>
-              </svg>
-            </span>
-          </span>
+          #buildToggleIcon()
         </li>
         <li>
           <a>Admission</a>
-          <span class="toggle">
-            <span>
-              <svg version="1.1" xmlns="http://www.w3.org/2000/svg" width="512" height="512" viewBox="0 0 512 512">
-                <title></title>
-                <g id="icomoon-ignore"></g>
-                <path d="M480 224h-192v-192h-64v192h-192v64h192v192h64v-192h192z"></path>
-              </svg>
-            </span>
-          </span>
+          #buildToggleIcon()
         </li>
-        <li>
-          <a>Arts</a>
-        </li>
+        <li><a>Arts</a></li>
         <li>
           <a>Campus Life</a>
-          <span class="toggle">
-            <span>
-              <svg version="1.1" xmlns="http://www.w3.org/2000/svg" width="512" height="512" viewBox="0 0 512 512">
-                <title></title>
-                <g id="icomoon-ignore"></g>
-                <path d="M480 224h-192v-192h-64v192h-192v64h192v192h64v-192h192z"></path>
-              </svg>
-            </span>
-          </span>
+          #buildToggleIcon()
         </li>
-        <li>
-          <a>Research</a>
-        </li>
+        <li><a>Research</a></li>
         <li>
           <a>Support</a>
-          <span class="toggle">
-            <span>
-              <svg version="1.1" xmlns="http://www.w3.org/2000/svg" width="512" height="512" viewBox="0 0 512 512">
-                <title></title>
-                <g id="icomoon-ignore"></g>
-                <path d="M480 224h-192v-192h-64v192h-192v64h192v192h64v-192h192z"></path>
-              </svg>
-            </span>
-          </span>
+          #buildToggleIcon()
         </li>
       </ul>
     </div>
@@ -134,15 +82,7 @@
       <ul>
         <li>
           <a>Find information for...</a>
-          <span class="toggle">
-            <span>
-              <svg version="1.1" xmlns="http://www.w3.org/2000/svg" width="512" height="512" viewBox="0 0 512 512">
-                <title></title>
-                <g id="icomoon-ignore"></g>
-                <path d="M480 224h-192v-192h-64v192h-192v64h192v192h64v-192h192z"></path>
-              </svg>
-            </span>
-          </span>
+          #buildToggleIcon()
           <ul>
             <li><a>Prospective Students</a></li>
             <li><a>Current Students</a></li>
@@ -151,39 +91,17 @@
             <li><a>Parents &amp; Families</a></li>
           </ul>
         </li>
-        <li>
-          <a>Degrees &amp; Programs</a>
-        </li>
+        <li><a>Degrees &amp; Programs</a></li>
         <li>
           <a>Maps &amp; Directories</a>
-          <span class="toggle">
-            <span>
-              <svg version="1.1" xmlns="http://www.w3.org/2000/svg" width="512" height="512" viewBox="0 0 512 512">
-                <title></title>
-                <g id="icomoon-ignore"></g>
-                <path d="M480 224h-192v-192h-64v192h-192v64h192v192h64v-192h192z"></path>
-              </svg>
-            </span>
-          </span>
+          #buildToggleIcon()
         </li>
         <li>
           <a>Blogs</a>
-          <span class="toggle">
-            <span>
-              <svg version="1.1" xmlns="http://www.w3.org/2000/svg" width="512" height="512" viewBox="0 0 512 512">
-                <title></title>
-                <g id="icomoon-ignore"></g>
-                <path d="M480 224h-192v-192h-64v192h-192v64h192v192h64v-192h192z"></path>
-              </svg>
-            </span>
-          </span>
+          #buildToggleIcon()
         </li>
-        <li>
-          <a>Events</a>
-        </li>
-        <li>
-          <a>Social</a>
-        </li>
+        <li><a>Events</a></li>
+        <li><a>Social</a></li>
       </ul>
     </div>
   </div>
@@ -193,4 +111,16 @@
 #end
 
 #macro ( buildSecondaryMenuItem $siblingNode )
+#end
+
+#macro ( buildToggleIcon )
+  <span class="toggle">
+    <span>
+      <svg version="1.1" xmlns="http://www.w3.org/2000/svg" width="512" height="512" viewBox="0 0 512 512">
+        <title></title>
+        <g id="icomoon-ignore"></g>
+        <path d="M480 224h-192v-192h-64v192h-192v64h192v192h64v-192h192z"></path>
+      </svg>
+    </span>
+  </span>
 #end
