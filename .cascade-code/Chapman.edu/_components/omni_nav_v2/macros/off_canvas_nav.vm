@@ -1,0 +1,22 @@
+#*
+ * OffCanvasNav Macros for OmniNav v2.
+ * Chapman.edu/_components/omni_nav_v2/macros/off_canvas_nav.vm
+ *#
+
+ #macro ( buildOffCanvasNav )
+ #end
+
+ #macro ( buildOffCanvasNavHeader )
+ #end
+
+ #macro ( buildOffCanvasNavMenus )
+ #end
+
+ #macro ( buildOffCanvasNavMainMenu )
+ #end
+
+ #macro ( buildOffCanvasNavSecondaryMenu )
+ #end
+
+ #macro ( buildSecondaryMenuItem $siblingNode )
+ #end
