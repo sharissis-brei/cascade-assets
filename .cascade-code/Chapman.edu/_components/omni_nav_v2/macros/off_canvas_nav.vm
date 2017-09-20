@@ -32,8 +32,6 @@
 #end
 
 #macro ( buildOffCanvasNavMenus )
-  #set ( $isUmbrellaCategory = $pageUmbrellaCategory.size() > 0 )
-
   ## For umbrella cats, build secondary menu.
   #if ( $isUmbrellaCategory )
     #buildOffCanvasNavSecondaryMenu()
@@ -108,6 +106,11 @@
 #end
 
 #macro ( buildOffCanvasNavSecondaryMenu )
+  <ul class="level-1">
+    #foreach ( $asset in $umbrellaAssets )
+      #buildSecondaryMenuItem( $asset )
+    #end
+  </ul>
 #end
 
 #macro ( buildSecondaryMenuItem $siblingNode )

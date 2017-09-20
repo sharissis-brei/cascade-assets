@@ -40,9 +40,12 @@
 ## Vars
 ##
 ## Cascade provides a $currentPage object to every format.
+#set ( $pagePath = $currentPage.path )
 
 ## This will be set by data macros below.
 #set ( $pageUmbrellaCategory = [] )
+#set ( $isUmbrellaCategory = false )
+#set ( $umbrellaAssets = [] )
 #set ( $brandClass = '' )
 #set ( $brandText = '' )
 #set ( $logoClass = '' )
@@ -51,7 +54,44 @@
 ##
 ## Data Macros
 ##
+#macro ( collectUmbrellaData )
+  #setPageUmbrellaCategory()
+  #set ( $isUmbrellaCategory = $pageUmbrellaCategory.size() > 0 )
+
+  #if ( $isUmbrellaCategory )
+    #setUmbrellaAssets()
+  #end
+#end
+
+#macro ( collectBrandData )
+#end
+
 #macro ( setPageUmbrellaCategory )
+  ## Is current path under one of specified $umbrellaCategories?
+  #foreach ( $umbrellaCategory in $umbrellaCategories )
+    #set ( $dirName = $umbrellaCategory[0] )
+
+    ## Define substr range to compare umbrella dir with current page path.
+    ## pagePath does not include leading /.
+    #set ( $startSubStr = 0 )
+    #set ( $endSubStr = $dirName.length() )
+
+    ## Make sure endSubStr not long than pagePath else will throw exception
+    #if ( $endSubStr > $pagePath.length() )
+      #set ( $endSubStr = $pagePath.length() )
+    #end
+
+    #set ( $pagePathDir = $pagePath.substring($startSubStr, $endSubStr) )
+
+    ## Is current page directory $pagePathDir under this $navDirectory? If so,
+    ## we found our $navDirectory.
+    #if ( $pagePath.contains($dirName) && $pagePathDir == $dirName )
+      #set ( $pageUmbrellaCategory = $umbrellaCategory )
+    #end
+  #end
+#end
+
+#macro ( setUmbrellaAssets )
 #end
 
 #macro ( setBrandVars )
@@ -410,6 +450,6 @@
 ##
 ## Main OmniNav HTML Block
 ##
-#setPageUmbrellaCategory()
-#setBrandVars()
+#collectUmbrellaData()
+#collectBrandData()
 #buildOmniNav()
