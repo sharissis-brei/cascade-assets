@@ -1,10 +1,6 @@
 #*
  * OmniNav v2 format.
  * Chapman.edu/_components/omni_nav_v2/omni_nav.vtl
- *
- * Refactor reduced format from about 630 lines to 515.
- *
- * TODO: Move off-canvas-nav macros into their own file.
  *#
 
 #import( "/_components/omni_nav_v2/macros/off_canvas_nav.vm" )
@@ -47,12 +43,37 @@
 
 ## This will be set by setPageUmbrellaCategory method.
 #set ( $pageUmbrellaCategory = [] )
+#set ( $brandClass = '' )
 
 
 ##
-## Macros
+## Data Macros
 ##
-#macro ( buildOffCanvasNavTrigger )
+#macro ( setPageUmbrellaCategory )
+#end
+
+#macro ( setBrandClass )
+#end
+
+
+##
+## Template Macros
+##
+#macro ( buildOmniNav )
+<div id="omni-nav-v2" class="$brandClass">
+  <!-- pagePath: $pagePath -->
+  <!-- pageUmbrellaCategory: $pageUmbrellaCategory -->
+
+  #buildUtilityNav()
+  #buildPrimaryNav()
+  #buildOffCanvasNav()
+</div>
+#end
+
+#macro ( buildUtilityNav )
+#end
+
+#macro ( buildPrimaryNav )
 #end
 
 #macro ( buildLogoComponent )
@@ -64,37 +85,16 @@
 #macro ( buildSearchComponent )
 #end
 
-#macro ( setPageUmbrellaCategory $thisPage )
+
+
+#macro ( loginLogoLink $href $svgId $label )
 #end
-
-#macro ( loginLogoLink $href $svg_id $label )
-#end
-
-
-##
-## Off-Canvas Nav Macros
-##
 
 
 
 ##
 ## Main OmniNav HTML Block
 ##
-#setPageUmbrellaCategory($currentPage)
-
-<div id="cu_nav">
-
-  <!-- pagePath: $pagePath -->
-  <!-- pageUmbrellaCategory: $pageUmbrellaCategory -->
-
-  #buildOffCanvasNavTrigger()
-
-  #buildLogo()
-
-  #buildLoginComponent()
-
-  #buildSearchComponent()
-
-  #buildOffCanvasNav()
-
-</div>
+#setPageUmbrellaCategory()
+#setBrandClass()
+#buildOmniNav()
