@@ -5,10 +5,19 @@
   <div class="cu-off-canvas-header">
     <div class="cu-logo-wrapper">
         <div class="primary-logo">
-          <a class="<%= @logo_class %> off-logo" href="/" title="Chapman University Website Home Page">
+          <a class="default-logo-cu off-logo" href="/" title="Chapman University Website Home Page">
             <!-- logo set as background image by class -->
           </a>
         </div>
+
+        <% if @page_umbrella_category.present? %>
+        <!-- This will be displayed conditionally by format in Cascade -->
+        <div class="secondary-logo">
+          <a class="<%= @page_umbrella_category[2] %> off-logo" href="/" title="<%= @page_umbrella_category[4] %>">
+            <!-- logo set as background image by class -->
+          </a>
+        </div>
+        <% end %>
     </div>
 
     <span class="close" id="js-close-off-canvas-nav">

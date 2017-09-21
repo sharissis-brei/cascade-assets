@@ -1,4 +1,4 @@
-<div id="omni-nav-v2" class="<%= @brand_class %>">
+<div id="omni-nav-v2" class="<%= @page_umbrella_category.present? ? 'branded' : 'unbranded' %>">
 
   <%= render 'omni_nav_v2/utility_nav' %>
 
@@ -30,9 +30,12 @@
             </svg>
           </a>
         </div>
+
+        <% if @page_umbrella_category.present? %>
         <div class="secondary-logo">
-          <a class="branded-logo" href="#"><%= @brand_text %></a>
+          <a class="branded-logo" href="#"><%= @page_umbrella_category[4] %></a>
         </div>
+        <% end %>
       </div>
     </div>
 
