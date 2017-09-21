@@ -2529,16 +2529,6 @@ html{
     border-top:none;
 }
 
-/*Middle Column*/
-
-.addThis{
-    clear:both;
-    margin: 20px 0 10px;
-}
-
-.addThis .twitter_share { top: 2px; position: relative; float: left; }
-.addThis .fb_like_container { top: 2px; float: left; position: relative; width: 110px !important; overflow: hidden; }
-
 /*One Column*/
 
 .oneColumn header{

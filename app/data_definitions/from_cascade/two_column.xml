@@ -681,12 +681,6 @@
                 </text>
             </group>
         </group>
-        <group identifier="shareBar" label="Share Bar">
-            <text type="radiobutton" identifier="show" label="Show" default="Yes" required="true">
-                <radio-item value="Yes"/>
-                <radio-item value="No"/>
-            </text>
-        </group>
     </group>
     <group identifier="meta" label="Supplemental Content" collapsed="true">
         <asset type="block" identifier="social_accounts" label="Social Accounts" render-content-depth="10"/>
