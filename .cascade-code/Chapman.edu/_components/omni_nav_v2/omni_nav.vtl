@@ -92,6 +92,21 @@
 #end
 
 #macro ( setUmbrellaAssets )
+  ## umbrellaAssets equal Umbrella directory's visible (non-index) children. These
+  ## are used in OffCanvasNav secondary menu.
+  #set ( $umbrellaDirectory = $pageUmbrellaCategory[0] )
+  #set ( $umbrellaPath = "/${umbrellaDirectory}" )
+
+  ## Collect Umbrella assets.
+  #set ( $umbrellaFolder = $_.locateFolder($umbrellaPath) )
+  #foreach( $childAsset in $umbrellaFolder.children )
+    #set ( $metaHide = $childAsset.metadata.getDynamicField('Hide from navigation').value )
+
+    ## Skip if hidden or is index page.
+    #if ( $metaHide != 'Yes' && $childAsset.name != 'index' )
+      #set ( $discard = $umbrellaAssets.add($childAsset) )
+    #end
+  #end
 #end
 
 #macro ( setBrandVars )
@@ -105,6 +120,12 @@
 <div id="omni-nav-v2" class="$brandClass">
   <!-- pagePath: $pagePath -->
   <!-- pageUmbrellaCategory: $pageUmbrellaCategory -->
+  <!-- umbrellaAssets count: $umbrellaAssets.size() -->
+
+  ## DEBUG
+  #foreach ( $asset in $umbrellaAssets )
+    <!-- $asset.name : $asset.path ($asset.children.size()) -->
+  #end
 
   #buildUtilityNav()
   #buildPrimaryNav()
@@ -112,14 +133,6 @@
 </div>
 #end
 
-#macro ( buildLogoComponent )
-#end
-
-#macro ( buildLoginComponent )
-#end
-
-#macro ( loginLogoLink $href $svgId $label )
-#end
 
 ##
 ## Primary Nav Macros
