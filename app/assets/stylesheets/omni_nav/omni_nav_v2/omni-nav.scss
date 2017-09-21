@@ -30,7 +30,9 @@ html.omni-nav-v2 {
   width: 100%;
   top: 0;
   font-family: "futura-pt", verdana, sans-serif;
-  z-index: 666;
+
+  // Needs to be high enough to put off-canvas-nav on top of anything else on page.
+  z-index: 1000;
 
   .omni-nav-search-box {
     position: relative;
