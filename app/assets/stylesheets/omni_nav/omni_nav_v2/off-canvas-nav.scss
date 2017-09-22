@@ -77,28 +77,26 @@
       padding: 0;
       background: $cu-off-canvas-nav-background;
 
-      div.toggle-logo {
-        width: $cu-off-canvas-nav-mobile-width;
-
-        @include bp(m) {
-          width: $cu-off-canvas-nav-desktop-width;
-        }
-
-        @media (min-width: 780px) {
-          width: $cu-off-canvas-nav-desktop-width;
-        }
-
-        padding: 18px;
+      div.cu-logo-wrapper {
+        width: 100%;
         position: relative;
 
-        a.off-logo {
-          display: block;
-          height: 23px;
-          width: 75%;
-        }
-      }
+        div.toggle-logo {
+          float: left;
+          width: 50%;
 
-      svg { color: $black; }
+          padding: 18px;
+          position: relative;
+
+          a.off-logo {
+            display: block;
+            height: 23px;
+            width: 75%;
+          }
+        }
+
+        svg { color: $black; }
+      }
     }
 
     .off-canvas-nav {
@@ -126,15 +124,7 @@
       .off-canvas-menu {
         // Float these to put main and umbrella side-by-side and slide back and forth.
         float: left;
-        width: $cu-off-canvas-nav-mobile-width;
-
-        @include bp(m) {
-          width: $cu-off-canvas-nav-desktop-width;
-        }
-
-        @media (min-width: 780px) {
-          width: $cu-off-canvas-nav-desktop-width;
-        }
+        width: 50%;
 
         .menu-header {
           padding: 18px;
