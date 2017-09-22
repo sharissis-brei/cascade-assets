@@ -18,16 +18,17 @@
 ## These are locations for which OmniNav should build the secondary off-canvas-nav menu.
 ## umbrellaCategory is the term product owners use.
 ## Does order matter here? I'm assuming it does.
-## Inner Array: [ directory (assume leading /), menu label, class/image id, path ]
+## TODO: Talk with product owners to see if we can unify menu and brand labels [1] and [4] below.
+## Inner Array: [ directory (assume leading /), menu label, class/image id, path, brand label ]
 #set ( $umbrellaCategories = [
-  [ 'business', 'ARGYROS SCHOOL', 'asbe', 'business/index.aspx' ],
+  [ 'business', 'ARGYROS SCHOOL', 'asbe', 'business/index.aspx', 'Argyros School of Business' ],
   [ 'education', 'ATTALLAH COLLEGE', 'education', 'education/index.aspx' ],
   [ 'dodge', 'DODGE COLLEGE', 'dodge', 'dodge/index.aspx' ],
   [ 'crean', 'CREAN COLLEGE', 'crean', 'crean/index.aspx' ],
   [ 'wilkinson', 'WILKINSON COLLEGE', 'wilkinson', 'wilkinson/index.aspx' ],
   [ 'copa', 'CoPA', 'copa', 'copa/index.aspx' ],
   [ 'pharmacy', 'CUSP', 'cusp', 'pharmacy/index.aspx' ],
-  [ 'law', 'FOWLER SCHOOL OF LAW', 'fowler', 'law/index.aspx' ],
+  [ 'law', 'FOWLER SCHOOL OF LAW', 'fowler', 'law/index.aspx', 'Fowler School of Law' ],
   [ 'scst', 'SCHMID COLLEGE', 'schmid', 'scst/index.aspx' ],
   [ 'about', 'About', 'default', '/' ],
   [ 'academics', 'Academics', 'default', '/' ],
@@ -53,8 +54,6 @@
 #set ( $isUmbrellaCategory = false )
 #set ( $umbrellaAssets = [] )
 #set ( $brandClass = '' )
-#set ( $brandText = '' )
-#set ( $logoClass = '' )
 
 
 ##
@@ -70,6 +69,11 @@
 #end
 
 #macro ( collectBrandData )
+  #if ( $isUmbrellaCategory )
+    #set ( $brandClass = 'branded' )
+  #else
+    #set ( $brandClass = 'unbranded' )
+  #end
 #end
 
 #macro ( setPageUmbrellaCategory )
@@ -113,9 +117,6 @@
       #set ( $discard = $umbrellaAssets.add($childAsset) )
     #end
   #end
-#end
-
-#macro ( setBrandVars )
 #end
 
 
@@ -187,9 +188,12 @@
           </svg>
         </a>
       </div>
+
+      #if ( $isUmbrellaCategory )
       <div class="secondary-logo">
-        <a class="branded-logo" href="#">$brandText</a>
+        <a class="branded-logo" href="#">${pageUmbrellaCategory[4]}</a>
       </div>
+      #end
     </div>
   </div>
 #end
@@ -468,68 +472,77 @@
 #macro ( buildOffCanvasNavHeader )
   <div class="cu-off-canvas-header">
     <div class="cu-logo-wrapper">
-        <div class="primary-logo">
-          <a class="$logoClass off-logo" href="/" title="Chapman University Website Home Page">
+      #if ( $isUmbrellaCategory )
+        <div id="umbrella-logo" class="toggle-logo">
+          <a class="${pageUmbrellaCategory[2]} off-logo" href="/" title="${pageUmbrellaCategory[4]}">
             <!-- logo set as background image by class -->
           </a>
+          #buildOffCanvasNavCloseIcon()
         </div>
-    </div>
+      #end
 
-    <span class="close" id="js-close-off-canvas-nav">
-      <svg version="1.1" xmlns="http://www.w3.org/2000/svg" width="13" height="13" viewBox="0 0 512 512">
-        <title></title>
-        <g id="icomoon-ignore"></g>
-        <path d="M446.627 110.627l-45.254-45.254-145.373 145.372-145.373-145.372-45.254 45.253 145.373 145.374-145.373 145.373 45.254 45.254 145.373-145.373 145.373 145.373 45.254-45.255-145.372-145.372z"></path>
-      </svg>
-    </span>
+      <div id="main-logo" class="toggle-logo">
+        <a class="default-logo-cu off-logo" href="/" title="Chapman University Website Home Page">
+          <!-- logo set as background image by class -->
+        </a>
+        #buildOffCanvasNavCloseIcon()
+      </div>
+    </div>
   </div>
 #end
 
 #macro ( buildOffCanvasNavMenus )
   ## For umbrella cats, build secondary menu.
-  #if ( $isUmbrellaCategory )
-    #buildOffCanvasNavSecondaryMenu()
-  #end
+  <div class="off-canvas-nav clearfix" id="js-off-canvas-nav">
+    #if ( $isUmbrellaCategory )
+      #buildOffCanvasNavSecondaryMenu()
+    #end
 
-  #buildOffCanvasNavMainMenu()
+    #buildOffCanvasNavMainMenu()
+  </div>
 #end
 
 #macro ( buildOffCanvasNavMainMenu )
-  <div class="main-menu">Main Menu</div>
+  <div id="off-canvas-main"  class="off-canvas-main">
+    <div class="menu-header">
+      <span class="menu-label">Main Menu</span>
 
-  <div class="off-canvas-nav clearfix" id="js-off-canvas-nav">
-    <div class="off-canvas-main">
-      <ul>
-        <li>
-          <a>About</a>
-          #buildToggleIcon()
-          <ul>
-            <li><a>Maps &amp; Directions</a></li>
-            <li><a>Visit Chapman</a></li>
-            <li><a>Discover Chapman</a></li>
-            <li><a>Our Campus</a></li>
-          </ul>
-        </li>
-        <li>
-          <a>Academics</a>
-          #buildToggleIcon()
-        </li>
-        <li>
-          <a>Admission</a>
-          #buildToggleIcon()
-        </li>
-        <li><a>Arts</a></li>
-        <li>
-          <a>Campus Life</a>
-          #buildToggleIcon()
-        </li>
-        <li><a>Research</a></li>
-        <li>
-          <a>Support</a>
-          #buildToggleIcon()
-        </li>
-      </ul>
+      #if ( $isUmbrellaCategory )
+        <a class="toggle-menu-label" href="#">&lt; ${pageUmbrellaCategory[1]} Menu</a>
+      #end
     </div>
+
+    <ul>
+      <li>
+        <a>About</a>
+        #buildToggleIcon()
+        <ul>
+          <li><a>Maps &amp; Directions</a></li>
+          <li><a>Visit Chapman</a></li>
+          <li><a>Discover Chapman</a></li>
+          <li><a>Our Campus</a></li>
+        </ul>
+      </li>
+      <li>
+        <a>Academics</a>
+        #buildToggleIcon()
+      </li>
+      <li>
+        <a>Admission</a>
+        #buildToggleIcon()
+      </li>
+      <li><a>Arts</a></li>
+      <li>
+        <a>Campus Life</a>
+        #buildToggleIcon()
+      </li>
+      <li><a>Research</a></li>
+      <li>
+        <a>Support</a>
+        #buildToggleIcon()
+      </li>
+    </ul>
+
     <div class="off-canvas-utility">
       <ul>
         <li>
@@ -560,16 +573,17 @@
 #end
 
 #macro ( buildOffCanvasNavSecondaryMenu )
-  <div class="secondary-menu">UMBRELLA NAME HERE</div>
-
-  <div class="off-canvas-nav clearfix" id="js-off-canvas-nav">
-    <div class="off-canvas-secondary">
-      <ul>
-        #foreach ( $asset in $umbrellaAssets )
-          #buildSecondaryMenuItem( $asset )
-        #end
-      </ul>
+  <div id="off-canvas-umbrella" class="off-canvas-menu">
+    <div class="menu-header">
+      <span class="menu-label">${pageUmbrellaCategory[1]}</span>
+      <a class="toggle-menu-label" href="#">Main Menu &gt;</a>
     </div>
+
+    <ul>
+      #foreach ( $asset in $umbrellaAssets )
+        #buildSecondaryMenuItem( $asset )
+      #end
+    </ul>
   </div>
 #end
 
@@ -627,6 +641,16 @@
         <path d="M480 224h-192v-192h-64v192h-192v64h192v192h64v-192h192z"></path>
       </svg>
     </span>
+  </span>
+#end
+
+#macro ( buildOffCanvasNavCloseIcon )
+  <span class="close" id="js-close-off-canvas-nav">
+    <svg version="1.1" xmlns="http://www.w3.org/2000/svg" width="13" height="13" viewBox="0 0 512 512">
+      <title></title>
+      <g id="icomoon-ignore"></g>
+      <path d="M446.627 110.627l-45.254-45.254-145.373 145.372-145.373-145.372-45.254 45.253 145.373 145.374-145.373 145.373 45.254 45.254 145.373-145.373 145.373 145.373 45.254-45.255-145.372-145.372z"></path>
+    </svg>
   </span>
 #end
 
