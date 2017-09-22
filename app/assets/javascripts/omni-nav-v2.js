@@ -73,7 +73,7 @@ var OmniNav2 = (function() {
     });
   };
 
-
+  // This module handles functionality associated with OffCanvasNav in particular.
   var OffCanvasNav = (function() {
 
     // Module Vars
@@ -112,6 +112,11 @@ var OmniNav2 = (function() {
     var enableMenusToggle = function() {
       // Enables toggle to slide main/umbrella menus back and forth.
       $('a.toggle-menu-label').on('click', function(e) {
+        console.debug('toggle menus now!');
+        // Toggles headers.
+        $('div#umbrella-logo').toggle('blind');
+
+        // Slide-toggles the menus.
         $('div#off-canvas-umbrella').toggle('slide');
       });
     }

@@ -14,8 +14,10 @@
   }
 
   .off-canvas-overlay {
+    // This value is relative to OmniNav parent.
+    z-index: 1002;
+
     background-color: $black;
-    z-index: 668;
     position: fixed;
     visibility: hidden;
     opacity: 0;
@@ -34,6 +36,9 @@
   }
 
   .off-canvas-nav-container {
+    // This value is relative to OmniNav parent.
+    z-index: 1003;
+
     position: fixed;
     top: 0;
     left: -($cu-off-canvas-nav-mobile-width);
@@ -41,7 +46,6 @@
     height: 100%;
     overflow-y: scroll;
     overflow-x: hidden;
-    z-index: 669;
     background-color: $cu-off-canvas-nav-utility-background;
     @include transition(all, 0.375s, ease-in-out);
 
@@ -65,19 +69,33 @@
     }
 
     .cu-off-canvas-header {
+      // For menu-toggling
+      width: 200%;
+
       height: 60px;
       position: relative;
-      padding: 0 0 0 18px;
+      padding: 0;
       background: $cu-off-canvas-nav-background;
 
-      .shifted & {
-        display: none;
-      }
+      div.toggle-logo {
+        width: $cu-off-canvas-nav-mobile-width;
 
-      a.off-logo {
-        display: block;
-        height: 23px;
-        width: 200px;
+        @include bp(m) {
+          width: $cu-off-canvas-nav-desktop-width;
+        }
+
+        @media (min-width: 780px) {
+          width: $cu-off-canvas-nav-desktop-width;
+        }
+
+        padding: 18px;
+        position: relative;
+
+        a.off-logo {
+          display: block;
+          height: 23px;
+          width: 75%;
+        }
       }
 
       svg { color: $black; }
@@ -101,11 +119,22 @@
       }
 
       // Menus: Main / Umbrella menus. When umbrella present, menu slide back-and-forth.
-      .off-canvas-menu {
+      #off-canvas-main {
+        position: relative;
+      }
 
+      .off-canvas-menu {
         // Float these to put main and umbrella side-by-side and slide back and forth.
         float: left;
-        width: 400px;
+        width: $cu-off-canvas-nav-mobile-width;
+
+        @include bp(m) {
+          width: $cu-off-canvas-nav-desktop-width;
+        }
+
+        @media (min-width: 780px) {
+          width: $cu-off-canvas-nav-desktop-width;
+        }
 
         .menu-header {
           padding: 18px;
@@ -122,9 +151,7 @@
           }
 
           // Menu Labels
-          span.menu-label {
-
-          }
+          span.menu-label {}
 
           a.toggle-menu-label {
             display: block;
@@ -329,10 +356,6 @@
           }
         }
       }
-    }
-
-    #off-canvas-main {
-      position: relative;
     }
   }
 
