@@ -77,13 +77,14 @@ var OmniNav2 = (function() {
   var OffCanvasNav = (function() {
 
     // Module Vars
-    var offCanvasLinks,
+    var $offCanvasLinks,
         resizeId;
 
     // Module Functions
     var initialize = function() {
-      offCanvasLinks = $('#js-off-canvas-nav > ul > li > a');
+      $offCanvasLinks = $('#js-off-canvas-nav > ul > li > a');
       syncLinkWidths();
+      enableMenusToggle();
 
       $('#js-off-canvas-trigger, #js-close-off-canvas-nav, #js-off-canvas-overlay').on('click', function(event) {
         event.preventDefault();
@@ -105,8 +106,15 @@ var OmniNav2 = (function() {
 
     var syncLinkWidths = function() {
       var width = $('#js-off-canvas-nav > ul').width();
-      offCanvasLinks.css('width', width);
+      $offCanvasLinks.css('width', width);
     };
+
+    var enableMenusToggle = function() {
+      // Enables toggle to slide main/umbrella menus back and forth.
+      $('a.toggle-menu-label').on('click', function(e) {
+        $('div#off-canvas-umbrella').toggle('slide');
+      });
+    }
 
     return {
       init: initialize

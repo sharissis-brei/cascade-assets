@@ -29,10 +29,63 @@
     </span>
   </div>
 
-  <div class="main-menu">Main Menu</div>
-
   <div class="off-canvas-nav clearfix" id="js-off-canvas-nav">
-    <div class="off-canvas-main">
+    <% if @page_umbrella_category.present? %>
+    <div id="off-canvas-umbrella" class="off-canvas-menu">
+      <div class="menu-header">
+        <span class="menu-label"><%= @page_umbrella_category[1] %></span>
+        <a class="toggle-menu-label" href="#">Main Menu &gt;</a>
+      </div>
+      <ul>
+        <li>
+          <a>About this School</a>
+          <span class="toggle">
+            <span>
+              <svg version="1.1" xmlns="http://www.w3.org/2000/svg" width="512" height="512" viewBox="0 0 512 512">
+                <title></title>
+                <g id="icomoon-ignore"></g>
+                <path d="M480 224h-192v-192h-64v192h-192v64h192v192h64v-192h192z"></path>
+              </svg>
+            </span>
+          </span>
+          <ul>
+            <li><a href="#">Shish</a></li>
+            <li><a href="#">Koom</a></li>
+            <li><a href="#">Bah</a></li>
+          </ul>
+        </li>
+        <li>
+          <a href="#">Meet the Dean</a>
+        </li>
+        <li>
+          <a>Student Resources</a>
+          <span class="toggle">
+            <span>
+              <svg version="1.1" xmlns="http://www.w3.org/2000/svg" width="512" height="512" viewBox="0 0 512 512">
+                <title></title>
+                <g id="icomoon-ignore"></g>
+                <path d="M480 224h-192v-192h-64v192h-192v64h192v192h64v-192h192z"></path>
+              </svg>
+            </span>
+          </span>
+          <ul>
+            <li><a href="#">Academic Affairs</a></li>
+            <li><a href="#">Graduation</a></li>
+            <li><a href="#">Organizations</a></li>
+          </ul>
+        </li>
+      </ul>
+
+    </div>
+    <% end %>
+
+    <div id="off-canvas-main" class="off-canvas-menu">
+      <div class="menu-header">
+        <span class="menu-label">Main Menu</span>
+        <% if @page_umbrella_category.present? %>
+        <a class="toggle-menu-label" href="#">&lt; <%= @page_umbrella_category[1] %> Menu</a>
+        <% end %>
+      </div>
       <ul>
         <li>
           <a>About</a>
@@ -46,18 +99,10 @@
             </span>
           </span>
           <ul>
-            <li>
-              <a>Maps &amp; Directions</a>
-            </li>
-            <li>
-              <a>Visit Chapman</a>
-            </li>
-            <li>
-              <a>Discover Chapman</a>
-            </li>
-            <li>
-              <a>Our Campus</a>
-            </li>
+            <li><a href="#">Maps &amp; Directions</a></li>
+            <li><a href="#">Visit Chapman</a></li>
+            <li><a href="#">Discover Chapman</a></li>
+            <li><a href="#">Our Campus</a></li>
           </ul>
         </li>
         <li>
@@ -115,62 +160,63 @@
           </span>
         </li>
       </ul>
-    </div>
-    <div class="off-canvas-utility">
-      <ul>
-        <li>
-          <a>Find information for...</a>
-          <span class="toggle">
-            <span>
-              <svg version="1.1" xmlns="http://www.w3.org/2000/svg" width="512" height="512" viewBox="0 0 512 512">
-                <title></title>
-                <g id="icomoon-ignore"></g>
-                <path d="M480 224h-192v-192h-64v192h-192v64h192v192h64v-192h192z"></path>
-              </svg>
+
+      <div class="off-canvas-utility">
+        <ul>
+          <li>
+            <a>Find information for...</a>
+            <span class="toggle">
+              <span>
+                <svg version="1.1" xmlns="http://www.w3.org/2000/svg" width="512" height="512" viewBox="0 0 512 512">
+                  <title></title>
+                  <g id="icomoon-ignore"></g>
+                  <path d="M480 224h-192v-192h-64v192h-192v64h192v192h64v-192h192z"></path>
+                </svg>
+              </span>
             </span>
-          </span>
-          <ul>
-              <li><a>Prospective Students</a></li>
-              <li><a>Current Students</a></li>
-              <li><a>Alumni</a></li>
-              <li><a>Faculty &amp; Staff</a></li>
-              <li><a>Parents &amp; Families</a></li>
-            </ul>
-        </li>
-        <li>
-          <a>Degrees &amp; Programs</a>
-        </li>
-        <li>
-          <a>Maps &amp; Directories</a>
-          <span class="toggle">
-            <span>
-              <svg version="1.1" xmlns="http://www.w3.org/2000/svg" width="512" height="512" viewBox="0 0 512 512">
-                <title></title>
-                <g id="icomoon-ignore"></g>
-                <path d="M480 224h-192v-192h-64v192h-192v64h192v192h64v-192h192z"></path>
-              </svg>
+            <ul>
+                <li><a href="#">Prospective Students</a></li>
+                <li><a href="#">Current Students</a></li>
+                <li><a href="#">Alumni</a></li>
+                <li><a href="#">Faculty &amp; Staff</a></li>
+                <li><a href="#">Parents &amp; Families</a></li>
+              </ul>
+          </li>
+          <li>
+            <a href="#">Degrees &amp; Programs</a>
+          </li>
+          <li>
+            <a>Maps &amp; Directories</a>
+            <span class="toggle">
+              <span>
+                <svg version="1.1" xmlns="http://www.w3.org/2000/svg" width="512" height="512" viewBox="0 0 512 512">
+                  <title></title>
+                  <g id="icomoon-ignore"></g>
+                  <path d="M480 224h-192v-192h-64v192h-192v64h192v192h64v-192h192z"></path>
+                </svg>
+              </span>
             </span>
-          </span>
-        </li>
-        <li>
-          <a>Blogs</a>
-          <span class="toggle">
-            <span>
-              <svg version="1.1" xmlns="http://www.w3.org/2000/svg" width="512" height="512" viewBox="0 0 512 512">
-                <title></title>
-                <g id="icomoon-ignore"></g>
-                <path d="M480 224h-192v-192h-64v192h-192v64h192v192h64v-192h192z"></path>
-              </svg>
+          </li>
+          <li>
+            <a>Blogs</a>
+            <span class="toggle">
+              <span>
+                <svg version="1.1" xmlns="http://www.w3.org/2000/svg" width="512" height="512" viewBox="0 0 512 512">
+                  <title></title>
+                  <g id="icomoon-ignore"></g>
+                  <path d="M480 224h-192v-192h-64v192h-192v64h192v192h64v-192h192z"></path>
+                </svg>
+              </span>
             </span>
-          </span>
-        </li>
-        <li>
-          <a>Events</a>
-        </li>
-        <li>
-          <a>Social</a>
-        </li>
-      </ul>
+          </li>
+          <li>
+            <a href="#">Events</a>
+          </li>
+          <li>
+            <a href="#">Social</a>
+          </li>
+        </ul>
+      </div>
     </div>
   </div>
 </div>
