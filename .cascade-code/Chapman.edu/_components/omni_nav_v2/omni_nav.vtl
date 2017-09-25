@@ -21,15 +21,15 @@
 ## TODO: Talk with product owners to see if we can unify menu and brand labels [1] and [4] below.
 ## Inner Array: [ directory (assume leading /), menu label, class/image id, path, brand label ]
 #set ( $umbrellaCategories = [
-  [ 'business', 'ARGYROS SCHOOL', 'asbe', 'business/index.aspx', 'Argyros School of Business' ],
-  [ 'education', 'ATTALLAH COLLEGE', 'education', 'education/index.aspx' ],
-  [ 'dodge', 'DODGE COLLEGE', 'dodge', 'dodge/index.aspx' ],
-  [ 'crean', 'CREAN COLLEGE', 'crean', 'crean/index.aspx' ],
-  [ 'wilkinson', 'WILKINSON COLLEGE', 'wilkinson', 'wilkinson/index.aspx' ],
-  [ 'copa', 'CoPA', 'copa', 'copa/index.aspx' ],
-  [ 'pharmacy', 'CUSP', 'cusp', 'pharmacy/index.aspx' ],
-  [ 'law', 'FOWLER SCHOOL OF LAW', 'fowler', 'law/index.aspx', 'Fowler School of Law' ],
-  [ 'scst', 'SCHMID COLLEGE', 'schmid', 'scst/index.aspx' ],
+  [ 'business', 'ARGYROS SCHOOL', 'asbe', '/business/index.aspx', 'Argyros School of Business' ],
+  [ 'education', 'ATTALLAH COLLEGE', 'education', '/education/index.aspx' ],
+  [ 'dodge', 'DODGE COLLEGE', 'dodge', '/dodge/index.aspx' ],
+  [ 'crean', 'CREAN COLLEGE', 'crean', '/crean/index.aspx' ],
+  [ 'wilkinson', 'WILKINSON COLLEGE', 'wilkinson', '/wilkinson/index.aspx' ],
+  [ 'copa', 'CoPA', 'copa', '/copa/index.aspx' ],
+  [ 'pharmacy', 'CUSP', 'cusp', '/pharmacy/index.aspx' ],
+  [ 'law', 'FOWLER SCHOOL OF LAW', 'fowler', '/law/index.aspx', 'Fowler School of Law' ],
+  [ 'scst', 'SCHMID COLLEGE', 'schmid', '/scst/index.aspx' ],
   [ 'about', 'About', 'default', '/' ],
   [ 'academics', 'Academics', 'default', '/' ],
   [ 'admission', 'Admission', 'default', '/' ],
@@ -40,7 +40,7 @@
   [ 'research', 'Research', 'default', '/' ],
   [ 'students', 'Students', 'default', '/' ],
   [ 'support-chapman', 'Support Chapman', 'default', '/' ],
-  [ 'communication', 'SCHOOL OF COMM', 'soc', 'communication/index.aspx' ]
+  [ 'communication', 'SCHOOL OF COMM', 'soc', '/communication/index.aspx' ]
 ])
 
 ##
@@ -52,24 +52,32 @@
 ## This will be set by data macros below.
 #set ( $pageUmbrellaCategory = [] )
 #set ( $isUmbrellaCategory = false )
+#set ( $umbrellaDirectory = '' )
+#set ( $umbrellaDirectoryPath = '' )
+#set ( $umbrellaLabel = '' )
+#set ( $umbrellaClass = '' )
+#set ( $umbrellaIndexPath = '' )
+#set ( $umbrellaBrandLabel = '' )
 #set ( $umbrellaAssets = [] )
 #set ( $brandClass = '' )
 
 
 ##
-## Data Macros
+## Var Macros
 ##
-#macro ( collectUmbrellaData )
+#macro ( setVars )
   #setPageUmbrellaCategory()
+
   #set ( $isUmbrellaCategory = $pageUmbrellaCategory.size() > 0 )
 
   #if ( $isUmbrellaCategory )
+    #set ( $umbrellaDirectory = $pageUmbrellaCategory[0] )
+    #set ( $umbrellaLabel = $pageUmbrellaCategory[1] )
+    #set ( $umbrellaClass = $pageUmbrellaCategory[2] )
+    #set ( $umbrellaIndexPath = $pageUmbrellaCategory[3] )
+    #set ( $umbrellaBrandLabel = $pageUmbrellaCategory[4] )
+    #set ( $umbrellaDirectoryPath = "/${umbrellaDirectory}" )
     #setUmbrellaAssets()
-  #end
-#end
-
-#macro ( collectBrandData )
-  #if ( $isUmbrellaCategory )
     #set ( $brandClass = 'branded' )
   #else
     #set ( $brandClass = 'unbranded' )
@@ -103,12 +111,10 @@
 
 #macro ( setUmbrellaAssets )
   ## umbrellaAssets equal Umbrella directory's visible (non-index) children. These
-  ## are used in OffCanvasNav secondary menu.
-  #set ( $umbrellaDirectory = $pageUmbrellaCategory[0] )
-  #set ( $umbrellaPath = "/${umbrellaDirectory}" )
+  ## are used in OffCanvasNav secondary menu. This must be called after
+  ## $umbrellaDirectoryPath is set.
+  #set ( $umbrellaFolder = $_.locateFolder($umbrellaDirectoryPath) )
 
-  ## Collect Umbrella assets.
-  #set ( $umbrellaFolder = $_.locateFolder($umbrellaPath) )
   #foreach( $childAsset in $umbrellaFolder.children )
     #set ( $metaHide = $childAsset.metadata.getDynamicField('Hide from navigation').value )
 
@@ -129,7 +135,7 @@
   <!-- pageUmbrellaCategory: $pageUmbrellaCategory -->
   <!-- umbrellaAssets count: $umbrellaAssets.size() -->
 
-  ## DEBUG
+  ## TODO: Remove this when dev complete.
   #foreach ( $asset in $umbrellaAssets )
     <!-- $asset.name : $asset.path ($asset.children.size()) -->
   #end
@@ -191,7 +197,7 @@
 
       #if ( $isUmbrellaCategory )
       <div class="secondary-logo">
-        <a class="branded-logo" href="#">${pageUmbrellaCategory[4]}</a>
+        <a class="branded-logo" href="#">${umbrellaBrandLabel}</a>
       </div>
       #end
     </div>
@@ -474,7 +480,7 @@
     <div class="cu-logo-wrapper">
       #if ( $isUmbrellaCategory )
         <div id="umbrella-logo" class="toggle-logo">
-          <a class="${pageUmbrellaCategory[2]} off-logo" href="/" title="${pageUmbrellaCategory[4]}">
+          <a class="${umbrellaClass} off-logo" href="${umbrellaIndexPath}" title="${umbrellaBrandLabel}">
             <!-- logo set as background image by class -->
           </a>
           #buildOffCanvasNavCloseIcon()
@@ -503,12 +509,12 @@
 #end
 
 #macro ( buildOffCanvasNavMainMenu )
-  <div id="off-canvas-main"  class="off-canvas-main">
+  <div id="off-canvas-main" class="off-canvas-menu">
     <div class="menu-header">
       <span class="menu-label">Main Menu</span>
 
       #if ( $isUmbrellaCategory )
-        <a class="toggle-menu-label" href="#">&lt; ${pageUmbrellaCategory[1]} Menu</a>
+        <a class="toggle-menu-label" href="#">&lt; ${umbrellaLabel} Menu</a>
       #end
     </div>
 
@@ -575,7 +581,7 @@
 #macro ( buildOffCanvasNavSecondaryMenu )
   <div id="off-canvas-umbrella" class="off-canvas-menu">
     <div class="menu-header">
-      <span class="menu-label">${pageUmbrellaCategory[1]}</span>
+      <span class="menu-label">${umbrellaLabel}</span>
       <a class="toggle-menu-label" href="#">Main Menu &gt;</a>
     </div>
 
@@ -671,6 +677,5 @@
 ##
 ## Main OmniNav HTML Block
 ##
-#collectUmbrellaData()
-#collectBrandData()
+#setVars()
 #buildOmniNav()
