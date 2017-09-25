@@ -56,7 +56,7 @@
 #set ( $umbrellaDirectoryPath = '' )
 #set ( $umbrellaLabel = '' )
 #set ( $umbrellaClass = '' )
-#set ( $umbrellaIndexPath = '' )
+#set ( $umbrellaHref = '' )
 #set ( $umbrellaBrandLabel = '' )
 #set ( $umbrellaAssets = [] )
 #set ( $brandClass = '' )
@@ -74,7 +74,7 @@
     #set ( $umbrellaDirectory = $pageUmbrellaCategory[0] )
     #set ( $umbrellaLabel = $pageUmbrellaCategory[1] )
     #set ( $umbrellaClass = $pageUmbrellaCategory[2] )
-    #set ( $umbrellaIndexPath = $pageUmbrellaCategory[3] )
+    #set ( $umbrellaHref = $pageUmbrellaCategory[3] )
     #set ( $umbrellaBrandLabel = $pageUmbrellaCategory[4] )
     #set ( $umbrellaDirectoryPath = "/${umbrellaDirectory}" )
     #setUmbrellaAssets()
@@ -197,7 +197,7 @@
 
       #if ( $isUmbrellaCategory )
       <div class="secondary-logo">
-        <a class="branded-logo" href="#">${umbrellaBrandLabel}</a>
+        <a class="branded-logo" href="${umbrellaHref}">${umbrellaBrandLabel}</a>
       </div>
       #end
     </div>
@@ -480,7 +480,7 @@
     <div class="cu-logo-wrapper">
       #if ( $isUmbrellaCategory )
         <div id="umbrella-logo" class="toggle-logo">
-          <a class="${umbrellaClass} off-logo" href="${umbrellaIndexPath}" title="${umbrellaBrandLabel}">
+          <a class="${umbrellaClass} off-logo" href="${umbrellaHref}" title="${umbrellaBrandLabel}">
             <!-- logo set as background image by class -->
           </a>
           #buildOffCanvasNavCloseIcon()
