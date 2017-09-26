@@ -34,6 +34,24 @@ html.omni-nav-v2 {
   // Needs to be high enough to put off-canvas-nav on top of anything else on page.
   z-index: 1000;
 
+  /* Branded / Unbranded Variations
+  ---------------------------------------- */
+  &.unbranded {
+
+    div#primary-nav div.global-nav {
+      /* In unbranded version, global nav float parallel to log. In branded, it
+         it stacks underneath. */
+      @include media($large-screen) {
+        display: inline-block;
+        float: right;
+        width: auto;
+        border-top: none;
+        margin: 14px $base-spacing;
+        padding: 0;
+      }
+    }
+  }
+
   .omni-nav-search-box {
     position: relative;
     width: 100%;
@@ -260,7 +278,6 @@ html.omni-nav-v2 {
 
       &.right-nav-container {
         font-size: 0; //to prevent div separation
-        padding-left: 8px;
         float: right;
         display: table;
         height: 60px;
@@ -353,7 +370,7 @@ html.omni-nav-v2 {
         }
 
         @include media($medium-screen) {
-          margin: 13px 16px 13px 0px;
+          margin: 13px 0px;
           padding: 0px;
 
           .cu-logo-wrapper {
@@ -392,17 +409,11 @@ html.omni-nav-v2 {
         @include media($medium-screen) {
           display: block;
           width: 100%;
+          border-bottom: 1px solid #8a8a8a;
         }
 
-        /* the current content does not fit in 1024px across
-          1024-1030 causes style to break */
-        @media only screen and (min-width: 1030px) {
-          display: inline-block;
-          float: right;
-          width: auto;
-          border-top: none;
-          margin: 14px $base-spacing;
-          padding: 0;
+        @include media($large-screen) {
+          border-bottom-width: 0px;
         }
 
         .global-nav-links {
