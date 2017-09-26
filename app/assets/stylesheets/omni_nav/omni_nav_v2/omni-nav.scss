@@ -37,7 +37,6 @@ html.omni-nav-v2 {
   /* Branded / Unbranded Variations
   ---------------------------------------- */
   &.unbranded {
-
     div#primary-nav div.global-nav {
       /* In unbranded version, global nav float parallel to log. In branded, it
          it stacks underneath. */
@@ -48,6 +47,16 @@ html.omni-nav-v2 {
         border-top: none;
         margin: 14px $base-spacing;
         padding: 0;
+      }
+    }
+  }
+
+  &.branded {
+    div#primary-nav div.global-nav {
+      /* When it stacks, primary-nav will already have bottom-border. */
+      @include media($large-screen) {
+        border-top: none;
+        border-bottom: 1px solid #8a8a8a;
       }
     }
   }
