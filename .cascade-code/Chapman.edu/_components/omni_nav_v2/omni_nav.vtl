@@ -18,8 +18,12 @@
 ## These are locations for which OmniNav should build the secondary off-canvas-nav menu.
 ## umbrellaCategory is the term product owners use.
 ## Does order matter here? I'm assuming it does.
-## TODO: Talk with product owners to see if we can unify menu and brand labels [1] and [4] below.
-## Inner Array: [ $umbrellaDirectory, $umbrellaLabel/$umbrellaBrandLabel, $umbrellaClass, $umbrellaHref ]
+## TODO: Ross is reviewing the labels and will provide an updated list.
+## I would prefer that each inner array item within the array were only 2 items and
+## all other vars be derived from those:
+## [$umbrellaFolderId, $umbrellaLabel]
+## Current inner array values:
+## [ $umbrellaDirectory, $umbrellaLabel/$umbrellaBrandLabel, $umbrellaClass, $umbrellaHref ]
 #set ( $umbrellaCategories = [
   [ 'business', 'ARGYROS SCHOOL', 'asbe', '/business/' ],
   [ 'education', 'ATTALLAH COLLEGE', 'education', '/education/' ],
@@ -76,7 +80,7 @@
     ## These 2 were originally different values and could differ in the future.
     #set ( $umbrellaLabel = $pageUmbrellaCategory[1] )
     #set ( $umbrellaBrandLabel = $pageUmbrellaCategory[1] )
-    
+
     #set ( $umbrellaClass = $pageUmbrellaCategory[2] )
     #set ( $umbrellaHref = $pageUmbrellaCategory[3] )
     #set ( $umbrellaDirectoryPath = "/${umbrellaDirectory}" )
