@@ -14,8 +14,10 @@
   }
 
   .off-canvas-overlay {
+    // This value is relative to OmniNav parent.
+    z-index: 1002;
+
     background-color: $black;
-    z-index: 668;
     position: fixed;
     visibility: hidden;
     opacity: 0;
@@ -34,6 +36,9 @@
   }
 
   .off-canvas-nav-container {
+    // This value is relative to OmniNav parent.
+    z-index: 1003;
+
     position: fixed;
     top: 0;
     left: -($cu-off-canvas-nav-mobile-width);
@@ -41,7 +46,6 @@
     height: 100%;
     overflow-y: scroll;
     overflow-x: hidden;
-    z-index: 669;
     background-color: $cu-off-canvas-nav-utility-background;
     @include transition(all, 0.375s, ease-in-out);
 
@@ -65,40 +69,41 @@
     }
 
     .cu-off-canvas-header {
+      // For menu-toggling
+      width: 200%;
+
       height: 60px;
       position: relative;
-      padding: 0 0 0 18px;
+      padding: 0;
       background: $cu-off-canvas-nav-background;
 
-      .shifted & {
-        display: none;
+      div.cu-logo-wrapper {
+        width: 100%;
+        position: relative;
+
+        div.toggle-logo {
+          float: left;
+          width: 50%;
+
+          padding: 18px;
+          position: relative;
+
+          a.off-logo {
+            display: block;
+            height: 23px;
+            width: 75%;
+          }
+        }
+
+        svg { color: $black; }
       }
-
-      a.off-logo {
-        display: block;
-        height: 23px;
-        width: 200px;
-      }
-
-      svg { color: $black; }
-    }
-
-    .main-menu {
-      padding: 18px;
-      color: $cu-off-canvas-nav-background;
-      background: $cu-off-canvas-nav-text;
-      font-size: 13px;
-      font-weight: 800;
-      letter-spacing: 0.25px;
-      text-transform: uppercase;
-      border-bottom: 1px solid $cu-off-canvas-nav-border-secondary;
     }
 
     .off-canvas-nav {
-      width: 100%;
+      /* Width is 200% to put menus side-by-side in umbrella context */
+      width: 200%;
       position: relative;
       left: 0;
-      cursor: pointer;
       @include transition(all, 0.375s, ease-in-out);
 
       li {
@@ -111,7 +116,38 @@
         }
       }
 
-      .off-canvas-main {
+      // Menus: Main / Umbrella menus. When umbrella present, menu slide back-and-forth.
+      #off-canvas-main {
+        position: relative;
+      }
+
+      .off-canvas-menu {
+        // Float these to put main and umbrella side-by-side and slide back and forth.
+        float: left;
+        width: 50%;
+
+        .menu-header {
+          padding: 18px;
+          color: $cu-off-canvas-nav-background;
+          background: $cu-off-canvas-nav-text;
+          font-size: 13px;
+          font-weight: 800;
+          letter-spacing: 0.25px;
+          text-transform: uppercase;
+          border-bottom: 1px solid $cu-off-canvas-nav-border-secondary;
+
+          a {
+            color:$white;
+          }
+
+          // Menu Labels
+          span.menu-label {}
+
+          a.toggle-menu-label {
+            display: block;
+            float: right;
+          }
+        }
 
         > ul {
           > li {
