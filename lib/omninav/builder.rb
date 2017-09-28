@@ -621,7 +621,7 @@ OFF_CANVAS_HEADER_HTML
           <span class="toggle"><span>+</span></span>
           <ul>
             <li><a href="https://www.chapman.edu/business/">Argyros School of Business &amp; Economics</a></li>
-            <li><a href="https://www.chapman.edu/ces/">College of Educational Studies</a></li>
+            <li><a href="https://www.chapman.edu/education/">Attallah College of Educational Studies</a></li>
             <li><a href="https://www.chapman.edu/copa/">College of Performing Arts</a></li>
             <li><a href="https://www.chapman.edu/crean/">Crean College of Health &amp; Behavioral Sciences</a></li>
             <li><a href="https://www.chapman.edu/dodge/">Dodge College of Film &amp; Media Arts</a></li>
@@ -655,7 +655,7 @@ OFF_CANVAS_HEADER_HTML
               <a href="https://blogs.chapman.edu/business/" title="Blog for Argyros School of Business &amp; Economics">Argyros School of Business &amp; Economics</a>
             </li>
             <li>
-              <a href="https://blogs.chapman.edu/ces/" title="Blog for College of Educational Studies">College of Educational Studies</a>
+              <a href="https://blogs.chapman.edu/education/" title="Blog for Attallah College of Educational Studies">Attallah College of Educational Studies</a>
             </li>
             <li>
               <a href="https://blogs.chapman.edu/copa/" title="Blog for College of Performing Arts">College of Performing Arts</a>

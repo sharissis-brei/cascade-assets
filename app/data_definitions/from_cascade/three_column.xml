@@ -634,12 +634,6 @@
                 </text>
             </group>
         </group>
-        <group identifier="shareBar" label="Share Bar">
-            <text type="radiobutton" identifier="show" label="Show" default="Yes" required="true">
-                <radio-item value="Yes"/>
-                <radio-item value="No"/>
-            </text>
-        </group>
     </group>
     <!--
   <group identifier="leftColumn" label="Left Column" collapsed="true"><group identifier="widget" label="Widgets" multiple="true"><text type="dropdown" identifier="widgetType" label="Type of Widget" help-text="Choose the type of content you'd like to add to the page"><dropdown-item value="(select one)"/><dropdown-item value="Second Choice"/></text></group></group>

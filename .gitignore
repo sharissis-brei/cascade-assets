@@ -17,6 +17,7 @@
 
 # Untracked Directories
 .dev/
+.pseudo/
 .sass-cache/
 dist/
 node_modules
