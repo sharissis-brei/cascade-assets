@@ -110,6 +110,10 @@ $dap-result-breakpoint: rem-calc(600);
 
 	}
 
+	.results-row {
+		transition: height $transition-time;
+	}
+
 	.result {
 		opacity: 0;
 		overflow: hidden;
@@ -117,6 +121,11 @@ $dap-result-breakpoint: rem-calc(600);
 		width: 100%;
 		transition: opacity $transition-time;
 		display: none;
+
+		&.ghost {
+			padding-top: 0;
+			height: 2px;
+		}
 
 		&.visible,
 		.no-js & {

@@ -18,7 +18,8 @@ var chapman = chapman || {};
 		graduateProgramNames = [],
 		resultsSetItems = [],
 		resultsSetItemsLoaded = 0,
-		lazyLoadingInterval,
+		lazyLoadingPaused = true,
+		lazyLoadingIntervalTime = 200,
 		resultsSetCount = 0,
 		isTransitioning = false, // Flag for transitioning between sections
 		isUserScroll = true, // Flag for scrolling caused by user vs. animation
@@ -77,6 +78,7 @@ var chapman = chapman || {};
 			this.getProgramsData();
 			this.bindUIEvents();
 			this.getUrlTypeQuery();
+			this.initLazyLoadingInterval();
 		},
 
 		bindUIEvents: function () {
@@ -87,7 +89,7 @@ var chapman = chapman || {};
 			$(window).on('scroll resize', function () {
 
 				if (isUserScroll) {
-					_this.lazyloadResults();
+					lazyLoadingPaused = false;
 				}
 				
 				isMobile = Modernizr.mq('(max-width: 1023px)'); // Reset this if screen size changes
@@ -357,6 +359,7 @@ var chapman = chapman || {};
 					graduateResults.sort(_this.titleAlphaSort);
 
 					_this.initAutocompletes();
+					_this.applyHashFilters();
 
 				},
 				error: function (e) {
@@ -366,89 +369,86 @@ var chapman = chapman || {};
 
 		},
 
-		// Appends results as the user scrolls
-		lazyloadResults: function () {
+		initLazyLoadingInterval: function () {
 			var _this = this;
 
-			clearInterval(lazyLoadingInterval); // Clear this each time so there aren't multiple intervals
+			setInterval(function() {
 
-			if (activeSection !== undefined && activeSection !== '') {
-				var interval = 250;
+				if (!lazyLoadingPaused && activeSection !== undefined && activeSection !== '') {
+					_this.lazyLoadResults();
+				}
 
-				lazyLoadingInterval = setInterval(function() {
-					var resultsContainer = $('#js-dap-results-' + activeSection);
-					var bottomOfResultsContainer = resultsContainer.offset().top + resultsContainer.outerHeight(true);
-					var scrollThreshold = $(window).height() * 1.1;
+			}, lazyLoadingIntervalTime);
 
-					if (resultsSetItemsLoaded < resultsSetItems.length) { // If there are results left to load
+		},
 
-						if ((scrollPosition + scrollThreshold) >= bottomOfResultsContainer && resultsContainer.is(':visible')) { // If the user is past the scroll point and the container is visible
-							var result = $(resultsSetItems[resultsSetItemsLoaded]);
+		lazyLoadResults: function () {
+			var _this = this;
+			var resultsContainer = $('#js-dap-results-' + activeSection);
+			var bottomOfResultsContainer;
+			var windowHeight = $(window).height();
+			var bottomOfWindow = scrollPosition + windowHeight;
+			var result = $(resultsSetItems[resultsSetItemsLoaded]);
 
-							if (result.length) {
-								$('#js-dap-results-' + activeSection + ' .results-row').append(result); // Append the result
-								_this.fadeInResult(result); // Fade it in
-								resultsSetItemsLoaded++; // Move to the next result
-							}
+			if (resultsSetItemsLoaded < resultsSetItems.length && result.length) { // If there are results left to load
 
-						}
+				$('#js-dap-results-' + activeSection + ' .results-row').append(result); // Append the result
+				var $result = $(result); // Store previously appended result as variable
+				bottomOfResultsContainer = resultsContainer.offset().top + resultsContainer.outerHeight(true); // Recalculate container's height with new result
 
-					} else {
-						clearInterval(lazyLoadingInterval); // Clear the interval if no more results left
+				if (bottomOfWindow >= bottomOfResultsContainer && resultsContainer.is(':visible')) { // If the user is past the scroll threshold
+					_this.fadeInResult($result); // Fade the result in
+					resultsSetItemsLoaded++; // Move to the next result
+				} else {
+					$result.remove(); // Otherwise remove it and wait until there's more room
+					lazyLoadingPaused = true;
+				}
 
-						if (activeSection === 'discover') {
+			} else {
+				lazyLoadingPaused = true;
 
-							// Open the keyword form
-							dap.discover.$keywordForm.slideDown(standardTransitionTime, function() {
-								$(this).css('overflow', 'visible');
-							});
+				if (activeSection === 'discover') {
 
-						}
+					// Open the keyword form
+					dap.discover.$keywordForm.slideDown(standardTransitionTime, function() {
+						$(this).css('overflow', 'visible');
+					});
 
-					}
-					
-				}, interval);
+				}
 
 			}
 
 		},
 
 		fadeInResult: function (result) {
+			var image = result.find('.image'),
+				imageSrc = image.data('src') || '',
+				desc = result.find('.result-content .desc'),
+				activeContentInner = result.find('.active-content-inner');
 
-			if (!(result.hasClass('visible'))) {
-				var image = result.find('.image'),
-					imageSrc = image.data('src') || '',
-					desc = result.find('.result-content .desc'),
-					activeContentInner = result.find('.active-content-inner');
-
-				// Truncate description
-				if (desc.length) {
-					desc.dotdotdot({
-						watch: true
-					});
-				}
-
-				// Truncate content container
-				if (activeContentInner.length) {
-					activeContentInner.dotdotdot({
-						watch: true,
-						after: 'a'
-					});
-				}
-
-				// Load the images dynamically
-				if (image.length) {
-					image.css('background-image', 'url(' + imageSrc + ')');
-				}
-
-				// Show and fade in the result
-				result.addClass('visible');
-
-				setTimeout(function() {
-					result.addClass('faded-in');
-				}, 100);
-
+			// Truncate description
+			if (desc.length) {
+				desc.dotdotdot({
+					watch: true
+				});
 			}
+
+			// Truncate content container
+			if (activeContentInner.length) {
+				activeContentInner.dotdotdot({
+					watch: true,
+					after: 'a'
+				});
+			}
+
+			// Load the images dynamically
+			if (image.length) {
+				image.css('background-image', 'url(' + imageSrc + ')');
+			}
+
+			setTimeout(function() {
+				result.addClass('faded-in');
+			}, 100);
 
 		},
 
@@ -468,8 +468,7 @@ var chapman = chapman || {};
 				// _this.resetFiltering(form);
 				_this.resetForm(form);
 			}
-			
-			clearInterval(lazyLoadingInterval);
+
 			_this.resetDiscoverMotivation();
 			_this.closeDiscoverMotivationPanel();
 			_this.resetDiscoverInterest();
@@ -478,6 +477,7 @@ var chapman = chapman || {};
 			if (section.hasClass('active')) { // If the section is open, close it
 				var activeResults = $('#js-dap-results-' + activeSection + ' .results-row .result');
 
+				section.removeClass('active');
 				activeResults.removeClass('faded-in');
 				setTimeout(function () {
 					activeResults.removeClass('visible');
@@ -488,7 +488,6 @@ var chapman = chapman || {};
 						$dapFeature.removeClass(transitioningClass);
 					});
 
-					section.removeClass('active');
 					activeSection = ''; // Clear the active section
 
 				}, 500);
@@ -616,7 +615,11 @@ var chapman = chapman || {};
 					// Open the results section
 					dap.discover.$results.slideDown(standardTransitionTime, function() {
 						$(this).css('overflow', 'visible');
-						_this.lazyloadResults();
+
+						setTimeout(function () {
+							lazyLoadingPaused = false;
+						}, standardTransitionTime/2);
+						
 					});
 
 					_this.mobileScrollToTarget(dap.discover.$interests); // Scroll to interests on mobile
@@ -657,7 +660,7 @@ var chapman = chapman || {};
 				el.addClass(activeClass);
 				el.find('input').prop('checked', true); // Make sure the interest's input is checked if it's not already
 
-				_this.lazyloadResults();
+				lazyLoadingPaused = false;
 				_this.mobileScrollToTarget(dap.discover.$results); // Scroll to results on mobile
 
 			}
@@ -800,6 +803,8 @@ var chapman = chapman || {};
 
 				}
 
+				resultsCountText = 'You are seeing ' + resultsSetCount + ' out of ' + undergraduateResults.length + ' Undergraduate Degrees and Programs'; // Set the results count text
+
 			} else if (activeSection === 'graduate') {
 
 				for (var j = 0; j < graduateResults.length; j++) {
@@ -812,14 +817,8 @@ var chapman = chapman || {};
 
 				}
 
-			}
+				resultsCountText = 'You are seeing ' + resultsSetCount + ' out of ' + graduateResults.length + ' Graduate Degrees and Programs'; // Set the results count text
 
-			// Set the results count text
-			if (activeSection === 'discover' || 
-				activeSection === 'undergraduate') {
-				resultsCountText = 'You are seeing ' + resultsSetCount + ' out of ' + undergraduateResults.length + ' Undergraduate Degrees and Programs';
-			} else if (activeSection === 'graduate') {
-				resultsCountText = 'You are seeing ' + resultsSetCount + ' out of ' + graduateResults.length + ' Graduate Degrees and Programs';
 			}
 
 			$resultsCount.removeClass('faded-in');
@@ -832,7 +831,7 @@ var chapman = chapman || {};
 			if (activeSection !== 'discover') {
 
 				setTimeout(function () {
-					_this.lazyloadResults();
+					lazyLoadingPaused = false;
 				}, standardTransitionTime * 2);
 
 			}
@@ -991,7 +990,7 @@ var chapman = chapman || {};
 
 			}
 
-			resultHTML = '<article class="result columns small-12 clearfix">' +
+			resultHTML = '<article class="result visible columns small-12 clearfix">' +
 		                    '<div class="image" role="img" data-src="' + imgSrc + '" aria-label="' + imgAlt + '">' +
 		                        '<div class="active-content">' +
 		                            '<div class="active-content-inner">' +
