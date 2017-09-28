@@ -1,0 +1,80 @@
+#macro(outputFunnels2up $element)
+##
+## formerly called funnel-boxes
+
+#set ($funnels = $_XPathTool.selectNodes($element.getChild('funnels-2up'), "region") )
+##
+    <div class="funnel-boxes-widget funnel">
+        #foreach ($region in $funnels)
+##
+            #set ($links = $_XPathTool.selectNodes($region.getChild('links'), "link") )
+            #set ($headlinelinkType = $region.getChild('headlineLink').getChild('linkType').value)
+            ###if ($region.getChild('headlineLink').getChild('internalLink').getChild('path').value != "/")
+            #if ($headlinelinkType == 'Internal Link')
+                #set ($headlineLink = $region.getChild('headlineLink').getChild('internalLink').getChild('path').value )
+            ###elseif ($region.getChild('headlineLink').getChild('externalLink').value != "")
+            #elseif ($headlinelinkType == 'External Link')
+                #set ($headlineLink = $region.getChild('headlineLink').getChild('externalLink').value )
+            #else
+                #set ($headlineLink = '')
+            #end
+            ###set ($altText = $region.getChild('altText').value )
+            #if ($region.getChild('altText').value != "")
+                #set ($altText = $region.getChild('altText').value)
+            #else
+                #set ($altText = "[photo description needed in 2up Funnel]")
+            #end
+            #set ($imageUrl = $region.getChild('image').getChild('path').value )
+            #set ($headline = $region.getChild('headline').value )
+            #set ($copy = $region.getChild('copy').value )
+##
+            <div class="funnelBlock">
+##
+                <div class="featureImage">
+                    #if ($headlineLink != '' && $headlineLink != '/')
+                        <a href="${_EscapeTool.xml(${headlineLink})}">
+                            <img alt="${_EscapeTool.xml($altText)}" height="125px" src="${imageUrl}" width="290px"/>
+                        </a>
+                    #else
+                        <img alt="${_EscapeTool.xml($altText)}" height="125px" src="${imageUrl}" width="290px"/>
+                    #end
+                </div>
+                <h3>
+                    #if ($headlineLink != '' && $headlineLink != '/')
+                        <a href="${_EscapeTool.xml(${headlineLink})}">${_EscapeTool.xml($headline)}&#160;»</a>
+                    #else
+                        ${_EscapeTool.xml($headline)}
+                    #end
+                </h3>
+                #if ($copy != '')
+                    <div class="copy">${_EscapeTool.xml($copy)}</div>
+                #end
+##
+                #if ($links.size() > 0)
+                    <ul class="linkList">
+                    #foreach ($link in $links)
+                        #set ($linkType = $link.getChild('linkType').value)
+                        #if ($linkType == 'Internal Link')
+                            #set ($linkURL = $link.getChild('internalLink').getChild('path').value )
+                        #elseif ($linkType == 'File Link')
+                            #set ($linkURL = $link.getChild('fileLink').getChild('path').value )
+                        #else
+                            #set ($linkURL = $link.getChild('externalLink').value )
+                        #end
+                        #set ($label = $link.getChild('label').value)
+                        #if ($linkURL != '' && $linkURL != '/' && $label != '')
+                            <li>
+                            <a href="${_EscapeTool.xml(${linkURL})}">${_EscapeTool.xml($label)}&#160;»</a>
+                            </li>
+                        #end
+                    #end
+                    </ul>
+                #end
+            </div>
+            ## end .funnelRegion
+##
+        #end
+        ## end foreach
+    </div>
+    ## end .funnel
+#end
