@@ -112,7 +112,10 @@ var ChapmanImageFeeds = (function() {
                     "title": title,
                     "target": "_blank"
                 }).append(
-                    $("<img>").attr({ 'src': src })
+                    $("<img>").attr({
+                        'src': src,
+                        'alt': title
+                    })
                 )
             ).appendTo($parent);
 

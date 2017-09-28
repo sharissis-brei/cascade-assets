@@ -539,7 +539,8 @@ $(function () {
                                 "target": "_blank"
                             }).append(
                                 $("<img>").attr({
-                                    'src': items[i].link[items[i].link.length - 1].href
+                                    'src': items[i].link[items[i].link.length - 1].href,
+                                    'alt': items[i].title
                                 })
                             )
                         ).appendTo($flul);
