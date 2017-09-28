@@ -93,13 +93,13 @@
 #macro( buildFunnelBlockHeader $isLink $headlineLink $headlineText )
   ## For accessibility, must be h2. For more info, see:
   ## https://github.com/chapmanu/cascade-assets/issues/249
-  <h3>
+  <h2>
     #if ( $isLink )
       <a href="${_EscapeTool.xml($headlineLink)}">${_EscapeTool.xml($headlineText)}&#160;»</a>
     #else
       ${_EscapeTool.xml($headlineText)}
     #end
-  </h3>
+  </h2>
 #end
 
 #macro( buildFunnelBlockLinkList $links )
