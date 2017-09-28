@@ -41,10 +41,10 @@
             <div class="month"></div>
             <div class="year"></div>
           </div>
-          <h3>
+          <div class="title">
             <a href="#"></a>
             <span class="bullet">»</span>
-          </h3>
+          </div>
           <!--<p class="copy ellipsis multiline"></p>-->
           <!--<a class="readMore">Read More »</a>-->
         </div>
@@ -58,10 +58,10 @@
             <div class="month"></div>
             <div class="year"></div>
           </div>
-          <h3>
+          <div class="title">
             <a href="#"></a>
             <span class="bullet">»</span>
-          </h3>
+          </div>
           <!--<p class="copy ellipsis multiline"></p>-->
           <!--<a class="readMore">Read More »</a>-->
         </div>
@@ -75,10 +75,10 @@
             <div class="month"></div>
             <div class="year"></div>
           </div>
-          <h3>
+          <div class="title">
             <a href="#"></a>
             <span class="bullet">»</span>
-          </h3>
+          </div>
           <!--<p class="copy ellipsis multiline"></p>-->
           <!--<a class="readMore">Read More »</a>-->
         </div>
@@ -99,10 +99,10 @@
             <div class="month"></div>
             <div class="year"></div>
           </div>
-          <h3>
+          <div class="title">
             <a href="#"></a>
             <span class="bullet">»</span>
-          </h3>
+          </div>
           <!--<p class="copy ellipsis multiline"></p>-->
           <!--<a class="readMore">Read More »</a>-->
         </div>
@@ -117,10 +117,10 @@
             <div class="month"></div>
             <div class="year"></div>
           </div>
-          <h3>
+          <div class="title">
             <a href="#"></a>
             <span class="bullet">»</span>
-          </h3>
+          </div>
           <!--<p class="copy ellipsis multiline"></p>-->
           <!--<a class="readMore">Read More »</a>-->
         </div>
@@ -135,10 +135,10 @@
             <div class="month"></div>
             <div class="year"></div>
           </div>
-          <h3>
+          <div class="title">
             <a href="#"></a>
             <span class="bullet">»</span>
-          </h3>
+          </div>
           <!--<p class="copy ellipsis multiline"></p>-->
           <!--<a class="readMore">Read More »</a>-->
         </div>
