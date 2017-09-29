@@ -1,0 +1,128 @@
+#*
+ * Chapman.edu/_cascade/formats/modular/widgets/Funnels 2up
+ * 2-column widget that funnels user to another page.
+ *
+ * Formerly called funnel-boxes.
+ *#
+
+##
+## Hardcoded Params
+##
+#set ( $FUNNEL_FEATURE_IMAGE_HEIGHT = '125px' )
+#set ( $FUNNEL_FEATURE_IMAGE_WIDTH = '290px' )
+
+
+##
+## Public Macros
+##
+#macro( outputFunnels2up $element )
+  ## Data
+  #set ($funnels = $_XPathTool.selectNodes($element.getChild('funnels-2up'), "region") )
+
+  ## Output
+  <div class="funnel-boxes-widget funnel">
+    #foreach ( $funnel in $funnels )
+      #buildFunnelBlock( $funnel )
+    #end
+  </div>
+#end
+
+
+##
+## Private Macros
+##
+#macro( buildFunnelBlock $funnel )
+  ## Funnel Data
+  #set ( $headlineLinkType = $funnel.getChild('headlineLink').getChild('linkType').value )
+  #set ( $altText = $funnel.getChild('altText').value )
+  #set ( $imageUrl = $funnel.getChild('image').getChild('path').value )
+  #set ( $headlineText = $funnel.getChild('headline').value )
+  #set ( $links = $_XPathTool.selectNodes($region.getChild('links'), "link") )
+  #set ( $details = $funnel.getChild('copy').value )
+
+  #if ( $altText == "" )
+    #set ( $altText = "TODO: [photo description needed in 2up Funnel]" )
+  #end
+
+  #if ( $headlineLinkType == 'Internal Link' )
+    #set ( $isLink = true )
+    #set ( $headlineLink = $funnel.getChild('headlineLink').getChild('internalLink').getChild('path').value )
+  #elseif ( $headlineLinkType == 'External Link' )
+    #set ( $isLink = true )
+    #set ( $headlineLink = $funnel.getChild('headlineLink').getChild('externalLink').value )
+  #else
+    #set ( $isLink = false )
+  #end
+
+  ## Output
+  <div class="funnelBlock">
+    #buildFunnelBlockFeatureImage( $isLink $headlineLink $imageUrl $altText )
+    #buildFunnelBlockHeader( $isLink $headlineLink $headlineText )
+
+    ## "copy" is additional descriptive text that goes under header
+    #if ( $details != '' )
+      <div class="copy">
+        ${_EscapeTool.xml($details)}
+      </div>
+    #end
+
+    #if ( $links.size() > 0 )
+      #buildFunnelBlockLinkList( $links )
+    #end
+  </div>
+#end
+
+#macro( buildFunnelBlockFeatureImage $isLink $headlineLink $imageUrl $altText )
+  <div class="featureImage">
+    #if ( $isLink )
+      <a href="${_EscapeTool.xml($headlineLink)}">
+        <img src="$imageUrl"
+             alt="${_EscapeTool.xml($altText)}"
+             height="$FUNNEL_FEATURE_IMAGE_HEIGHT"
+             width="$FUNNEL_FEATURE_IMAGE_WIDTH" />
+      </a>
+    #else
+      <img src="$imageUrl"
+           alt="${_EscapeTool.xml($altText)}"
+           height="$FUNNEL_FEATURE_IMAGE_HEIGHT"
+           width="$FUNNEL_FEATURE_IMAGE_WIDTH" />
+    #end
+  </div>
+#end
+
+#macro( buildFunnelBlockHeader $isLink $headlineLink $headlineText )
+  ## For accessibility, must be h2. For more info, see:
+  ## https://github.com/chapmanu/cascade-assets/issues/249
+  <h2>
+    #if ( $isLink )
+      <a href="${_EscapeTool.xml($headlineLink)}">${_EscapeTool.xml($headlineText)}&#160;»</a>
+    #else
+      ${_EscapeTool.xml($headlineText)}
+    #end
+  </h2>
+#end
+
+#macro( buildFunnelBlockLinkList $links )
+  <ul class="linkList">
+    #foreach ( $link in $links )
+      #set ( $linkType = $link.getChild('linkType').value )
+      #set ( $linkLabel = $link.getChild('label').value )
+
+      #if ( $linkType == 'Internal Link' )
+        #set ($linkURL = $link.getChild('internalLink').getChild('path').value )
+      #elseif ( $linkType == 'File Link' )
+        #set ($linkURL = $link.getChild('fileLink').getChild('path').value )
+      #else
+        #set ( $linkURL = $link.getChild('externalLink').value )
+      #end
+
+      #set ( $isLink = $linkURL != '' && $linkURL != '/' && $linkLabel != '' )
+
+      #if ( $isLink )
+        <li>
+          <a href="${_EscapeTool.xml($linkURL)}">${_EscapeTool.xml($linkLabel)}&#160;»</a>
+        </li>
+      #end
+    #end
+  </ul>
+#end
