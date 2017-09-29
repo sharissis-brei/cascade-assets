@@ -82,6 +82,8 @@
       <div class="month"></div>
       <div class="year"></div>
     </div>
-    <h3><a href="#"></a></h3>
+    <div class="title">
+      <a href="#"></a>
+    </div>
   </div>
 #end
