@@ -30,6 +30,7 @@
     <a class="no-js-link" href="https://blogs.chapman.edu/happenings/" title="View All News Stories">View All News »</a>
     <a class="no-js-link" href="https://events.chapman.edu" title="View All Event Listings">View All Events »</a>
 
+    ## Featured Tab Content
     <li class="active">
       <div class="featured">
         <img src="" alt="Chapman University" class="image" height="130"  width="225" />
@@ -46,6 +47,7 @@
       </div>
     </li>
 
+    ## News Tab Content
     <li>
       <div class="news clearfix">
         <img class="loading" src="/_files/level/img/ajax-loader.gif" alt="Loading events list..."/>
@@ -58,6 +60,7 @@
       </div>
     </li>
 
+    ## Events Tab Content
     <li>
       <div class="events clearfix">
         <img class="loading" src="/_files/level/img/ajax-loader.gif" alt="Loading events list..."/>
