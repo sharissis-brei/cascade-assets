@@ -22,8 +22,9 @@ $tab-content-border-color: #c1c1c1;
   display: inline-block;
 
   a { border-bottom: none; text-decoration: none;}
-  // Story titles
-  div.title {
+  // Non-Featured Story titles
+  div.news div.title,
+  div.events div.title {
     margin: 10px 0 0 0;
     a {
       font-weight: normal;
