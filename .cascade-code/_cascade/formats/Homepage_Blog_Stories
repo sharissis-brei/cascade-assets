@@ -1,400 +1,343 @@
+#*
+ * Chapman.edu/_cascade/formats/Homepage Blog Stories
+ * Blog Stories widget for Chapman home page.
+ *
+ *#
+
+##
+## Hardcoded Params
+##
+## id => [ bigStoryCss, bigStoryName, bigStoryLink ]
+#set ( $BLOGS_MAP = {
+  'academics' : [ '', 'Higher Ed and Technology: Academics at Chapman', '' ],
+  'alumni' : [ '', 'Chapman Alumni', '' ],
+  'business' : [ 'business', 'Argyros School of Business and Economics', '' ],
+  'education' : [ 'education', 'Attallah College of Educational Studies', 'https://blogs.chapman.edu/ces' ],
+  'collections' : [ '', 'Art Collections', '' ],
+  'communication' : [ 'communication', 'School of Communication', '' ],
+  'copa' : [ 'copa', 'College of Performing Arts', '' ],
+  'crean' : [ 'crean', 'Crean College of Health and Behavioral Sciences', '' ],
+  'creating-a-childrens-book' : [ '', 'Creating a Children&quot;s Book and Blogging About It', '' ],
+  'dodge' : [ 'dodge', 'Dodge College of Film and Media Arts', '' ],
+  'happenings' : [ '', 'Happenings', '' ],
+  'holocaust-education' : [ '', 'Holocaust Education', '' ],
+  'huell-howser-archives' : [ '', 'Huell Howser Archives', '' ],
+  'law' : [ 'law', 'Fowler School of Law', '' ],
+  'magazine' : [ '', 'Chapman Magazine', '' ],
+  'pharmacy' : [ 'pharmacy', 'School of Pharmacy', '' ],
+  'press-room' : [ '', 'Press Room', '' ],
+  'scst' : [ 'scst', 'Schmid College of Science and Technology', '' ],
+  'smc' : [ '', 'Strategic Marketing and Communications', '' ],
+  'students' : [ '', 'One University (Student blog)', '' ],
+  'sustainability' : [ '', 'Sustainability', '' ],
+  'wilkinson' : [ 'wilkinson', 'Wilkinson College of Humanities and Social Sciences', '' ]
+})
+
+
+##
+## Vars
+##
+## Cascade provides a $currentPage object to every format.
 #set ( $currentPage = $_XPathTool.selectSingleNode($contentRoot, "//system-page[@current]") )
 
-#set ( $bigstory = $currentPage.getChild('system-data-structure').getChild('BlogStories').getChild('topStory') )
-#set ( $bigstory_header = $bigstory.getChild('header').value )
-### these for use in data-cta=label param of A tag
-#set ($bigstory_header_striptags = $_DisplayTool.stripTags($bigstory_header) )
-#set ($bigstory_header_edited = $bigstory_header_striptags.replaceAll("&amp;","and").replaceAll("""","").replaceAll("/\W/", "") )
+#set ( $topStoryBlogID = '' )
+#set ( $topStoryBlogParams = '' )
+#set ( $topStoryImages = [] )
+#set ( $topStoryCategoryText = '' )
+#set ( $topStoryCategoryLink = '' )
+#set ( $topStoryLink = '' )
+#set ( $topStoryLinkText = '' )
+#set ( $topStoryCtaLabel = '' )
+#set ( $topStoryExcerpt = '' )
 
-#set ( $bigstory_storyLink = $bigstory.getChild('link').value )
-#set ( $bigstory_CategoryText = $bigstory.getChild('topCategory').getChild('text').value )
-#set ( $bigstory_CategoryLink = $bigstory.getChild('topCategory').getChild('link').value )
-###set ( $bigstory_excerpt = $bigstory.getChild('excerpt').value )
-#set ( $bigstory_excerpt = ${_SerializerTool.serialize($bigstory.getChild('excerpt'), true)})
-#set ( $bigstory_addlLinkText = $bigstory.getChild('extraLink').getChild('text').value )
-#set ( $bigstory_addlLink_ext = $bigstory.getChild('extraLink').getChild('link').value )
-#set ( $bigstory_addlLink_int = $bigstory.getChild('extraLink').getChild('internalLink').getChild('path').value )
-#if ($bigstory_addlLink_ext != '')
-    #set ( $bigstory_addlLink = $bigstory_addlLink_ext )
-#elseif ($bigstory_addlLink_int != '' && $bigstory_addlLink_int != '/')
-    #set ( $bigstory_addlLink = $bigstory_addlLink_int )
-#else
-    #set ( $bigstory_addlLink = '#' )
-#end
-#set ( $bigstory_blogName = $bigstory.getChild('blogName').value )
-## preset then override with IF statement below if applicable (SAME LOGIC REPEATED BELOW FOR TRENDING STORIES, UPDATE BOTH PLACES)
-#set ( $bigstory_blogFooter_css = '' )
-#set ( $bigstory_blogFooter_name = 'Chapman University' )
-#set ( $bigstory_blogFooter_link = 'http://blogs.chapman.edu/' )
-#if ( $bigstory_blogName == 'academics' )
-    #set ( $bigstory_blogFooter_css = '' )
-    #set ( $bigstory_blogFooter_name = 'Higher Ed and Technology: Academics at Chapman' )
-    #set ( $bigstory_blogFooter_link = 'http://blogs.chapman.edu/academics' )
-#end
-#if ( $bigstory_blogName == 'alumni' )
-    #set ( $bigstory_blogFooter_css = '' )
-    #set ( $bigstory_blogFooter_name = 'Chapman Alumni' )
-    #set ( $bigstory_blogFooter_link = 'http://blogs.chapman.edu/alumni' )
-#end
-#if ( $bigstory_blogName == 'business' )
-    #set ( $bigstory_blogFooter_css = 'business' )
-    #set ( $bigstory_blogFooter_name = 'Argyros School of Business and Economics' )
-    #set ( $bigstory_blogFooter_link = 'http://blogs.chapman.edu/business' )
-#end
-#if ( $bigstory_blogName == 'education' )
-    #set ( $bigstory_blogFooter_css = 'education' )
-    #set ( $bigstory_blogFooter_name = 'Attallah College of Educational Studies' )
-    #set ( $bigstory_blogFooter_link = 'http://blogs.chapman.edu/ces' )
-#end
-#if ( $bigstory_blogName == 'collections' )
-    #set ( $bigstory_blogFooter_css = '' )
-    #set ( $bigstory_blogFooter_name = 'Art Collections' )
-    #set ( $bigstory_blogFooter_link = 'http://blogs.chapman.edu/collections' )
-#end
-#if ( $bigstory_blogName == 'communication' )
-    #set ( $bigstory_blogFooter_css = 'communication' )
-    #set ( $bigstory_blogFooter_name = 'School of Communication' )
-    #set ( $bigstory_blogFooter_link = 'http://blogs.chapman.edu/communication' )
-#end
-#if ( $bigstory_blogName == 'copa' )
-    #set ( $bigstory_blogFooter_css = 'copa' )
-    #set ( $bigstory_blogFooter_name = 'College of Performing Arts' )
-    #set ( $bigstory_blogFooter_link = 'http://blogs.chapman.edu/copa' )
-#end
-#if ( $bigstory_blogName == 'crean' )
-    #set ( $bigstory_blogFooter_css = 'crean' )
-    #set ( $bigstory_blogFooter_name = 'Crean College of Health and Behavioral Sciences' )
-    #set ( $bigstory_blogFooter_link = 'http://blogs.chapman.edu/crean' )
-#end
-#if ( $bigstory_blogName == 'creating-a-childrens-book' )
-    #set ( $bigstory_blogFooter_css = '' )
-    #set ( $bigstory_blogFooter_name = 'Creating a Children&quot;s Book and Blogging About It' )
-    #set ( $bigstory_blogFooter_link = 'http://blogs.chapman.edu/creating-a-childrens-book' )
-#end
-#if ( $bigstory_blogName == 'dodge' )
-    #set ( $bigstory_blogFooter_css = 'dodge' )
-    #set ( $bigstory_blogFooter_name = 'Dodge College of Film and Media Arts' )
-    #set ( $bigstory_blogFooter_link = 'http://blogs.chapman.edu/dodge' )
-#end
-#if ( $bigstory_blogName == 'happenings' )
-    #set ( $bigstory_blogFooter_css = '' )
-    #set ( $bigstory_blogFooter_name = 'Happenings' )
-    #set ( $bigstory_blogFooter_link = 'http://blogs.chapman.edu/happenings' )
-#end
-#if ( $bigstory_blogName == 'holocaust-education' )
-    #set ( $bigstory_blogFooter_css = '' )
-    #set ( $bigstory_blogFooter_name = 'Holocaust Education' )
-    #set ( $bigstory_blogFooter_link = 'http://blogs.chapman.edu/holocaust-education' )
-#end
-#if ( $bigstory_blogName == 'huell-howser-archives' )
-    #set ( $bigstory_blogFooter_css = '' )
-    #set ( $bigstory_blogFooter_name = 'Huell Howser Archives' )
-    #set ( $bigstory_blogFooter_link = 'http://blogs.chapman.edu/huell-howser-archives' )
-#end
-#if ( $bigstory_blogName == 'law' )
-    #set ( $bigstory_blogFooter_css = 'law' )
-    #set ( $bigstory_blogFooter_name = 'Fowler School of Law' )
-    #set ( $bigstory_blogFooter_link = 'http://blogs.chapman.edu/law' )
-#end
-#if ( $bigstory_blogName == 'magazine' )
-    #set ( $bigstory_blogFooter_css = '' )
-    #set ( $bigstory_blogFooter_name = 'Chapman Magazine' )
-    #set ( $bigstory_blogFooter_link = 'http://blogs.chapman.edu/magazine' )
-#end
-#if ( $bigstory_blogName == 'pharmacy' )
-    #set ( $bigstory_blogFooter_css = 'pharmacy' )
-    #set ( $bigstory_blogFooter_name = 'School of Pharmacy' )
-    #set ( $bigstory_blogFooter_link = 'http://blogs.chapman.edu/pharmacy' )
-#end
-#if ( $bigstory_blogName == 'press-room' )
-    #set ( $bigstory_blogFooter_css = '' )
-    #set ( $bigstory_blogFooter_name = 'Press Room' )
-    #set ( $bigstory_blogFooter_link = 'http://blogs.chapman.edu/press-room' )
-#end
-#if ( $bigstory_blogName == 'scst' )
-    #set ( $bigstory_blogFooter_css = 'scst' )
-    #set ( $bigstory_blogFooter_name = 'Schmid College of Science and Technology' )
-    #set ( $bigstory_blogFooter_link = 'http://blogs.chapman.edu/scst' )
-#end
-#if ( $bigstory_blogName == 'smc' )
-    #set ( $bigstory_blogFooter_css = '' )
-    #set ( $bigstory_blogFooter_name = 'Strategic Marketing and Communications' )
-    #set ( $bigstory_blogFooter_link = 'http://blogs.chapman.edu/smc' )
-#end
-#if ( $bigstory_blogName == 'students' )
-    #set ( $bigstory_blogFooter_css = '' )
-    #set ( $bigstory_blogFooter_name = 'One University (Student blog)' )
-    #set ( $bigstory_blogFooter_link = 'http://blogs.chapman.edu/students' )
-#end
-#if ( $bigstory_blogName == 'sustainability' )
-    #set ( $bigstory_blogFooter_css = '' )
-    #set ( $bigstory_blogFooter_name = 'Sustainability' )
-    #set ( $bigstory_blogFooter_link = 'http://blogs.chapman.edu/sustainability' )
-#end
-#if ( $bigstory_blogName == 'wilkinson' )
-    #set ( $bigstory_blogFooter_css = 'wilkinson' )
-    #set ( $bigstory_blogFooter_name = 'Wilkinson College of Humanities and Social Sciences' )
-    #set ( $bigstory_blogFooter_link = 'http://blogs.chapman.edu/wilkinson' )
+#set ( $trendingStories = [] )
+
+#set ( $primaryButtonText = '' )
+#set ( $primaryButtonIcon = '' )
+#set ( $primaryButtonTrackingID = '' )
+#set ( $primaryButtonLink = '' )
+
+#set ( $secondaryButtonText = '' )
+#set ( $secondaryButtonIcon = '' )
+#set ( $secondaryButtonTrackingID = '' )
+#set ( $secondaryButtonLink = '' )
+
+
+##
+## Var Macros
+##
+#macro ( setVars )
+  #set ( $blogStories = $currentPage.getChild('system-data-structure').getChild('BlogStories') )
+  #setTopStoryVars()
+  #setTrendingStoriesVars()
+  #setButtonsVars()
 #end
 
-##the two buttons following the stories:
-#set ( $PrimaryButton = $currentPage.getChild('system-data-structure').getChild('BlogStories').getChild('primaryButton') )
-#set ( $PrimaryButton_LinkText = $PrimaryButton.getChild('text').value )
-#set ( $PrimaryButton_icon = $PrimaryButton.getChild('icon').value )
-#set ( $PrimaryButton_Link_ext = $PrimaryButton.getChild('link').value )
-#set ( $PrimaryButton_Link_int = $PrimaryButton.getChild('internalLink').getChild('path').value )
-#if ($PrimaryButton_Link_ext != '')
-    #set ( $PrimaryButton_Link = $PrimaryButton_Link_ext )
-#elseif ($PrimaryButton_Link_int != '' && $PrimaryButton_Link_int != '/')
-    #set ( $PrimaryButton_Link = $PrimaryButton_Link_int )
-#else
-    #set ( $PrimaryButton_Link = '#' )
+#macro ( setTopStoryVars )
+  ## Set Top Story Blog ID and params.
+  #set ( $topStory = $blogStories.getChild('topStory') )
+  #set ( $topStoryBlogID = $topStory.getChild('blogName').value )
+  #set ( $topStoryBlogParams = $BLOGS_MAP[$topStoryBlogID] )
+
+  ## Top Story Vars
+  #set ( $topStoryHeader = $topStory.getChild('header').value )
+  #set ( $topStoryHeaderStripped = $_DisplayTool.stripTags($topStoryHeader) )
+  #set ( $topStoryCtaLabel = $topStoryHeaderStripped.replaceAll("&amp;","and").replaceAll("""","").replaceAll("/\W/", "") )
+  #set ( $topStoryLink = $topStory.getChild('link').value )
+  #set ( $topStoryCategoryText = $topStory.getChild('topCategory').getChild('text').value )
+  #set ( $topStoryCategoryLink = $topStory.getChild('topCategory').getChild('link').value )
+  #set ( $topStoryExcerpt = ${_SerializerTool.serialize($topStory.getChild('excerpt'), true)} )
+  #set ( $topStoryImages = $_XPathTool.selectNodes($currentPage, "./system-data-structure/BlogStories/topStory/images") )
+  #set ( $topStoryLinkText = $topStory.getChild('extraLink').getChild('text').value )
+  #set ( $topStoryExtraLinkLink = $topStory.getChild('extraLink').getChild('link').value )
+  #set ( $topStoryExtraLinkInternalLinkPath = $topStory.getChild('extraLink').getChild('internalLink').getChild('path').value )
+
+  ## Set Top Story Link
+  #if ( $topStoryExtraLinkLink != '' )
+    #set ( $topStoryLink = $topStoryExtraLinkLink )
+  #elseif ($topStoryExtraLinkInternalLinkPath != '' && $topStoryExtraLinkInternalLinkPath != '/')
+    #set ( $topStoryLink = $topStoryExtraLinkInternalLinkPath )
+  #else
+    #set ( $topStoryLink = '#' )
+  #end
 #end
-#set ($PrimaryButtonTrackID = $PrimaryButton.getChild('trackingID').value )
 
-#set ( $SecondaryButton = $currentPage.getChild('system-data-structure').getChild('BlogStories').getChild('secondaryButton') )
-#set ( $SecondaryButton_LinkText = $SecondaryButton.getChild('text').value )
-#set ( $SecondaryButton_icon = $SecondaryButton.getChild('icon').value )
-#set ( $SecondaryButton_Link_ext = $SecondaryButton.getChild('link').value )
-#set ( $SecondaryButton_Link_int = $SecondaryButton.getChild('internalLink').getChild('path').value )
-#if ($SecondaryButton_Link_ext != '')
-    #set ( $SecondaryButton_Link = $SecondaryButton_Link_ext )
-#elseif ($SecondaryButton_Link_int != '' && $SecondaryButton_Link_int != '/')
-    #set ( $SecondaryButton_Link = $SecondaryButton_Link_int )
-#else
-    #set ( $SecondaryButton_Link = '#' )
+#macro ( setTrendingStoriesVars )
+  #set ( $trendingStories = $_XPathTool.selectNodes($currentPage, "./system-data-structure/BlogStories/trendingStories/story") )
 #end
-#set ($SecondaryButtonTrackID = $SecondaryButton.getChild('trackingID').value )
 
-    <!-- Begin Blog Stories Area -->
-    <section id="featured_stories" class="stories section">
-      <div class="maxWidth">
+#macro ( setButtonsVars )
+  ## Primary Button
+  #set ( $primaryButton = $blogStories.getChild('primaryButton') )
+  #set ( $primaryButtonText = $primaryButton.getChild('text').value )
+  #set ( $primaryButtonIcon = $primaryButton.getChild('icon').value )
+  #set ( $primaryButtonTrackingID = $primaryButton.getChild('trackingID').value )
+  #set ( $primaryButtonExternalLink = $primaryButton.getChild('link').value )
+  #set ( $primaryButtonInternalLinkPath = $primaryButton.getChild('internalLink').getChild('path').value )
 
-        <div class="announcement">
-            <!-- Images must be 725x374 (or proportionally larger) for this space | unlimited images supported -->
-            <div class="imagerotator">
-                ## can be 1 to N number of images for the Top Story (only):
-                #set ( $bigstory_Images = $_XPathTool.selectNodes($currentPage, "./system-data-structure/BlogStories/topStory/images") )
-                #if( $bigstory_Images.size() > 0 )
-                    #foreach($image in  $bigstory_Images)
-                        #set ( $bigstory_imageAltText = $image.getChild('altText').value )
-                        #set ( $bigstory_image_ext = $image.getChild('link').value )
-                        #set ( $bigstory_image_int = $image.getChild('internalLink').getChild('path').value )
-                        #if ($bigstory_image_ext != '')
-                            #set ( $bigstory_image = $bigstory_image_ext )
-                        #elseif ($bigstory_image_int != '' && $bigstory_image_int != '/')
-                            #set ( $bigstory_image = $bigstory_image_int )
-                        #else
-                            #set ( $bigstory_image = '' )
-                        #end
-                        <img src="$bigstory_image" alt="$bigstory_imageAltText"/>
-                    #end
-                #end
-                <div style="padding-bottom:52%" class="imagerotator_clearfix"></div>
-            </div>
-            <div class="details">
-                <a href="$bigstory_CategoryLink" class="tag">#$bigstory_CategoryText</a>
-                <h2 class="title"><a href="$bigstory_storyLink" class="smc-cta" data-cta-id="Top Story" data-cta-label="$bigstory_header_edited">$bigstory_header</a></h2>
-                <p class="source blogname $bigstory_blogFooter_css">
-                    <a href="$bigstory_blogFooter_link">$bigstory_blogFooter_name</a>
-                </p>
+  ## Set Primary Button Link
+  #if ( $primaryButtonExternalLink != '' )
+    #set ( $primaryButtonLink = $primaryButtonExternalLink )
+  #elseif ( $primaryButtonInternalLinkPath != '' && $primaryButtonInternalLinkPath != '/' )
+    #set ( $primaryButtonLink = $primaryButtonInternalLinkPath )
+  #else
+    #set ( $primaryButtonLink = '#' )
+  #end
 
-                <p>$bigstory_excerpt</p>
-                #if ($bigstory_addlLinkText != "" )
-                    <p><a href="$bigstory_addlLink">$bigstory_addlLinkText »</a></p>
-                #end
-            </div>
-        </div> <!--end announcement-->
+  ## Secondary Button
+  #set ( $secondaryButton = $blogStories.getChild('secondaryButton') )
+  #set ( $secondaryButtonText = $secondaryButton.getChild('text').value )
+  #set ( $secondaryButtonIcon = $secondaryButton.getChild('icon').value )
+  #set ( $secondaryButtonTrackingID = $secondaryButton.getChild('trackingID').value )
+  #set ( $secondaryButtonExternalLink = $secondaryButton.getChild('link').value )
+  #set ( $secondaryButtonInternalLink = $secondaryButton.getChild('internalLink').getChild('path').value )
 
-        ## beginning of 3 trending stories:
-        #set ( $smallStories = $_XPathTool.selectNodes($currentPage, "./system-data-structure/BlogStories/trendingStories/story") )
-        #if( $smallStories.size() > 0 )
-            #foreach($story in $smallStories)
-                #set ( $smallstory_header = $story.getChild('header').value )
-                ## if url to story starts with // then the compound link to twitter using that url doesn't work. append http: in front if needed:
-                #if ($story.getChild('link').value.substring(0,2) == "//")
-                    #set ( $smallstory_storyLink = "http:" + $story.getChild('link').value )
-                #else
-                    #set ( $smallstory_storyLink = $story.getChild('link').value )
-                #end
+  ## Set Secondary Button Link
+  #if ( $secondaryButtonExternalLink != '' )
+    #set ( $secondaryButtonLink = $secondaryButtonExternalLink )
+  #elseif ($secondaryButtonInternalLink != '' && $secondaryButtonInternalLink != '/')
+    #set ( $secondaryButtonLink = $secondaryButtonInternalLink )
+  #else
+    #set ( $secondaryButtonLink = '#' )
+  #end
+#end
 
-                #set ( $smallstory_facebookLink = 'http://www.facebook.com/sharer.php?u=' + $smallstory_storyLink )
-                 ## example: http://twitter.com/intent/tweet?text=If%20All%20the%20Sky%20Were%20Paper%20Featured%20on%20CNN&amp;url=https://blogs.chapman.edu/magazine/2013/10/15/the-allure-of-valhalla-chapman-students-chart-an-icelandic-journey/
-                 ###set ( $smallstory_twitterLink = 'http://twitter.com/intent/tweet?text=' + $smallstory_header + '&amp;url=' + $smallstory_storyLink)
-                 ### strip out symbols in header for use tweet text
-                    #set ($header_striptags = $_DisplayTool.stripTags($smallstory_header) )
-                    #set ($header_edited = $header_striptags.replaceAll("&amp;","and").replaceAll("""","").replaceAll("/\W/", "") )
-                #set ( $smallstory_twitterLink = 'http://twitter.com/intent/tweet?text=' + ${_EscapeTool.url($header_edited)} + '&amp;url=' + $smallstory_storyLink )
-                #set ( $smallstory_CategoryText = $story.getChild('topCategory').getChild('text').value )
-                #set ( $smallstory_CategoryLink = $story.getChild('topCategory').getChild('link').value )
-                #set ( $smallstory_imageAltText = $story.getChild('image').getChild('altText').value )
-                #set ( $smallstory_image_ext = $story.getChild('image').getChild('link').value )
-                #set ( $smallstory_image_int = $story.getChild('image').getChild('internalLink').getChild('path').value )
-                #if ($smallstory_image_ext != '')
-                    #set ( $smallstory_image = $smallstory_image_ext )
-                #elseif ($smallstory_image_int != '' && $smallstory_image_int != '/')
-                    ###set ( $smallstory_image = $smallstory_image_int )
-                    ### this is so image renders inside Cascade too:
-                    #set ( $smallstory_image = "")
-                    #set ( $smallstory_image = "[system-asset:local]$smallstory_image_int"+$smallstory_image+"[/system-asset:local]")
-                #else
-                    #set ( $smallstory_image = '' )
-                #end
-                #set ( $smallstory_blogName = $story.getChild('blogName').value )
 
-                ## preset then override with IF statement below if applicable (SAME LOGIC REPEATED BELOW FOR TRENDING STORIES, UPDATE BOTH PLACES)
-                #set ( $smallstory_blogFooter_css = '' )
-                #set ( $smallstory_blogFooter_name = 'Chapman University' )
-                #set ( $smallstory_blogFooter_link = 'http://blogs.chapman.edu/' )
-                #if ( $smallstory_blogName == 'academics' )
-                    #set ( $smallstory_blogFooter_css = '' )
-                    #set ( $smallstory_blogFooter_name = 'Higher Ed and Technology: Academics at Chapman' )
-                    #set ( $smallstory_blogFooter_link = 'http://blogs.chapman.edu/academics' )
-                #end
-                #if ( $smallstory_blogName == 'alumni' )
-                    #set ( $smallstory_blogFooter_css = '' )
-                    #set ( $smallstory_blogFooter_name = 'Chapman Alumni' )
-                    #set ( $smallstory_blogFooter_link = 'http://blogs.chapman.edu/alumni' )
-                #end
-                #if ( $smallstory_blogName == 'business' )
-                    #set ( $smallstory_blogFooter_css = 'business' )
-                    #set ( $smallstory_blogFooter_name = 'Argyros School of Business and Economics' )
-                    #set ( $smallstory_blogFooter_link = 'http://blogs.chapman.edu/business' )
-                #end
-                #if ( $smallstory_blogName == 'education' )
-                    #set ( $smallstory_blogFooter_css = 'education' )
-                    #set ( $smallstory_blogFooter_name = 'Attallah College of Educational Studies' )
-                    #set ( $smallstory_blogFooter_link = 'http://blogs.chapman.edu/ces' )
-                #end
-                #if ( $smallstory_blogName == 'collections' )
-                    #set ( $smallstory_blogFooter_css = '' )
-                    #set ( $smallstory_blogFooter_name = 'Art Collections' )
-                    #set ( $smallstory_blogFooter_link = 'http://blogs.chapman.edu/collections' )
-                #end
-                #if ( $smallstory_blogName == 'communication' )
-                    #set ( $smallstory_blogFooter_css = 'communication' )
-                    #set ( $smallstory_blogFooter_name = 'School of Communicaton' )
-                    #set ( $smallstory_blogFooter_link = 'http://blogs.chapman.edu/communication' )
-                #end
-                #if ( $smallstory_blogName == 'copa' )
-                    #set ( $smallstory_blogFooter_css = 'copa' )
-                    #set ( $smallstory_blogFooter_name = 'College of Performing Arts' )
-                    #set ( $smallstory_blogFooter_link = 'http://blogs.chapman.edu/copa' )
-                #end
-                #if ( $smallstory_blogName == 'crean' )
-                    #set ( $smallstory_blogFooter_css = 'crean' )
-                    #set ( $smallstory_blogFooter_name = 'Crean College of Health and Behavioral Sciences' )
-                    #set ( $smallstory_blogFooter_link = 'http://blogs.chapman.edu/crean' )
-                #end
-                #if ( $smallstory_blogName == 'creating-a-childrens-book' )
-                    #set ( $smallstory_blogFooter_css = '' )
-                    #set ( $smallstory_blogFooter_name = 'Creating a Children&quot;s Book and Blogging About It' )
-                    #set ( $smallstory_blogFooter_link = 'http://blogs.chapman.edu/creating-a-childrens-book' )
-                #end
-                #if ( $smallstory_blogName == 'dodge' )
-                    #set ( $smallstory_blogFooter_css = 'dodge' )
-                    #set ( $smallstory_blogFooter_name = 'Dodge College of Film and Media Arts' )
-                    #set ( $smallstory_blogFooter_link = 'http://blogs.chapman.edu/dodge' )
-                #end
-                #if ( $smallstory_blogName == 'happenings' )
-                    #set ( $smallstory_blogFooter_css = '' )
-                    #set ( $smallstory_blogFooter_name = 'Happenings' )
-                    #set ( $smallstory_blogFooter_link = 'http://blogs.chapman.edu/happenings' )
-                #end
-                #if ( $smallstory_blogName == 'holocaust-education' )
-                    #set ( $smallstory_blogFooter_css = '' )
-                    #set ( $smallstory_blogFooter_name = 'Holocaust Education' )
-                    #set ( $smallstory_blogFooter_link = 'http://blogs.chapman.edu/holocaust-education' )
-                #end
-                #if ( $smallstory_blogName == 'huell-howser-archives' )
-                    #set ( $smallstory_blogFooter_css = '' )
-                    #set ( $smallstory_blogFooter_name = 'Huell Howser Archives' )
-                    #set ( $smallstory_blogFooter_link = 'http://blogs.chapman.edu/huell-howser-archives' )
-                #end
-                #if ( $smallstory_blogName == 'law' )
-                    #set ( $smallstory_blogFooter_css = 'law' )
-                    #set ( $smallstory_blogFooter_name = 'Fowler School of Law' )
-                    #set ( $smallstory_blogFooter_link = 'http://blogs.chapman.edu/law' )
-                #end
-                #if ( $smallstory_blogName == 'magazine' )
-                    #set ( $smallstory_blogFooter_css = '' )
-                    #set ( $smallstory_blogFooter_name = 'Chapman Magazine' )
-                    #set ( $smallstory_blogFooter_link = 'http://blogs.chapman.edu/magazine' )
-                #end
-                #if ( $smallstory_blogName == 'pharmacy' )
-                    #set ( $smallstory_blogFooter_css = 'pharmacy' )
-                    #set ( $smallstory_blogFooter_name = 'School of Pharmacy' )
-                    #set ( $smallstory_blogFooter_link = 'http://blogs.chapman.edu/pharmacy' )
-                #end
-                #if ( $smallstory_blogName == 'press-room' )
-                    #set ( $smallstory_blogFooter_css = '' )
-                    #set ( $smallstory_blogFooter_name = 'Press Room' )
-                    #set ( $smallstory_blogFooter_link = 'http://blogs.chapman.edu/press-room' )
-                #end
-                #if ( $smallstory_blogName == 'scst' )
-                    #set ( $smallstory_blogFooter_css = 'scst' )
-                    #set ( $smallstory_blogFooter_name = 'Schmid College of Science and Technology' )
-                    #set ( $smallstory_blogFooter_link = 'http://blogs.chapman.edu/scst' )
-                #end
-                #if ( $smallstory_blogName == 'smc' )
-                    #set ( $smallstory_blogFooter_css = '' )
-                    #set ( $smallstory_blogFooter_name = 'Strategic Marketing and Communications' )
-                    #set ( $smallstory_blogFooter_link = 'http://blogs.chapman.edu/smc' )
-                #end
-                #if ( $smallstory_blogName == 'students' )
-                    #set ( $smallstory_blogFooter_css = '' )
-                    #set ( $smallstory_blogFooter_name = 'One University (Student blog)' )
-                    #set ( $smallstory_blogFooter_link = 'http://blogs.chapman.edu/students' )
-                #end
-                #if ( $smallstory_blogName == 'sustainability' )
-                    #set ( $smallstory_blogFooter_css = '' )
-                    #set ( $smallstory_blogFooter_name = 'Sustainability' )
-                    #set ( $smallstory_blogFooter_link = 'http://blogs.chapman.edu/sustainability' )
-                #end
-                #if ( $smallstory_blogName == 'wilkinson' )
-                    #set ( $smallstory_blogFooter_css = 'wilkinson' )
-                    #set ( $smallstory_blogFooter_name = 'Wilkinson College of Humanities and Social Sciences' )
-                    #set ( $smallstory_blogFooter_link = 'http://blogs.chapman.edu/wilkinson' )
-                #end
+##
+## Build Macros
+##
+#macro ( buildComponent )
+  <!-- Homepage Blog Stories Macro -->
+  <section id="featured_stories" class="stories section">
+    <div class="maxWidth">
+      #buildAnnouncementBlock()
+      #buildTrendingStoriesBlock()
+      #buildActionsBlock()
+    </div>
+  </section>
+#end
 
-        <div class="third">
-          <article class="story story-$foreach.count">
-              <a href="$smallstory_CategoryLink" class="tag">#$smallstory_CategoryText</a>
-              <a href="$smallstory_storyLink" class="permalink smc-cta" data-cta-id="Trending Story $foreach.count" data-cta-label="$header_edited">
-                  <h2 class="title">$smallstory_header</h2><!-- LIMIT THIS FIELD TO 50 CHARACTERS -->
-                  <div class="story-bg" style="background-image:url('$smallstory_image');">
-                      <img src="$smallstory_image" alt="$smallstory_imageAltText"/>
-                  </div>
-              </a>
-              <footer class="story_footer">
-                  <p class="source blogname $smallstory_blogFooter_css">
-                      <a href="$smallstory_blogFooter_link">$smallstory_blogFooter_name</a>
-                  </p>
-                  <p class="meta">
-                      <a href="$smallstory_facebookLink" class="action facebook" service="Facebook">Share on Facebook</a>
-                      <!--#passthrough<a href="$smallstory_twitterLink" class="action twitter" service="Twitter">Post to Twitter</a>#passthrough-->
-                      <a href="#" class="icon shares"></a>
-                  </p>
-              </footer>
-          </article>
-        </div>
-        ## END of foreach of small stories:
-            #end
+#macro ( buildAnnouncementBlock )
+  #set ( $footerCss = $topStoryBlogParams[0] )
+  #set ( $footerName = $topStoryBlogParams[1] )
+  #set ( $footerLink = $topStoryBlogParams[2] )
+
+  #if ( $footerLink == '' )
+    $footerLink = "https://blogs.chapman.edu/${footerLink}"
+  #end
+
+  <div class="announcement">
+    ## Images must be 725x374 (or proportionally larger) for this space
+    ## Supports unlimited number of images.
+    <div class="imagerotator">
+
+      ## Is this if check needed?
+      #if ( $topStoryImages.size > 0 )
+        #foreach( $image in $topStoryImages )
+          #set ( $imageAltText = $image.getChild('altText').value )
+          #set ( $imageExternalLink = $image.getChild('link').value )
+          #set ( $imageInternalLinkPath = $image.getChild('internalLink').getChild('path').value )
+
+          ## Set image src.
+          #if ( $imageExternalLink != '' )
+            #set ( $imageSrc = $imageExternalLink )
+          #elseif ( $imageInternalLinkPath != '' && $imageInternalLinkPath != '/' )
+            #set ( $imageSrc = $imageInternalLinkPath )
+          #else
+            #set ( $imageSrc = '' )
+          #end
+
+          <img src="$imageSrc" alt="$imageAltText" />
         #end
+      #end
 
-        <div class="actions">
-            #if ($SecondaryButtonTrackID != "")
-                <a href="$SecondaryButton_Link"  data-cta-id="$SecondaryButtonTrackID" class="button smc-cta $SecondaryButton_icon">$SecondaryButton_LinkText</a>
-            #else
-                <a href="$SecondaryButton_Link" class="button $SecondaryButton_icon">$SecondaryButton_LinkText</a>
-            #end
-            #if ($PrimaryButtonTrackID != "")
-                <a href="$PrimaryButton_Link"  data-cta-id="$PrimaryButtonTrackID" class="button red smc-cta $PrimaryButton_icon">$PrimaryButton_LinkText</a>
-            #else
-                <a href="$PrimaryButton_Link" class="button red $PrimaryButton_icon">$PrimaryButton_LinkText</a>
-            #end
-        </div>
+      <div style="padding-bottom:52%" class="imagerotator_clearfix"></div>
+    </div>
 
-      </div> <!-- end maxwidth-->
-    </section> <!-- end featured-stories-->
-<!-- End Blog Stories Area -->
+    <div class="details">
+      <a href="$topStoryCategoryLink" class="tag">#${$topStoryCategoryText}</a>
+
+      <h2 class="title">
+        <a class="smc-cta"
+           href="$topStoryLink"
+           data-cta-id="Top Story"
+           data-cta-label="$topStoryCtaLabel">
+          $bigstory_header
+        </a>
+      </h2>
+
+      <p class="source blogname $footerCss">
+        <a href="$footerLink">$footerName</a>
+      </p>
+
+      <p>$topStoryExcerpt</p>
+
+      #if ( $topStoryLinkText != "" )
+        <p><a href="$topStoryLink">$topStoryLinkText »</a></p>
+      #end
+    </div>
+</div>
+#end
+
+#macro ( buildTrendingStoriesBlock )
+  ## There are three trending stories
+  #if ( $trendingStories.size() > 0 )
+    #foreach ( $story in $trendingStories )
+      ## Set category vars.
+      #set ( $storyCategoryLink = $story.getChild('topCategory').getChild('link').value )
+      #set ( $storyCategoryText = $story.getChild('topCategory').getChild('text').value )
+
+      ## Set story link.
+      #set ( $storyLink = $story.getChild('link').value )
+
+      ## if url to story starts with // then the compound link to Twitter using that
+      ## url won't work. Append https: in front.
+      #if ( $storyLink.substring(0,2) == "//" )
+        #set ( $storyLink = "https:" + storyLink )
+      #end
+
+      ## Set story header vars.
+      #set ( $storyHeader = $story.getChild('header').value )
+      #set ( $storyHeaderStripped = $_DisplayTool.stripTags($storyHeader) )
+      #set ( $storyHeaderCtaLabel = $storyHeaderStripped.replaceAll("&amp;","and").replaceAll("""","").replaceAll("/\W/", "") )
+
+      # Set story image vars
+      #set ( $storyImageAltText = $story.getChild('image').getChild('altText').value )
+      #set ( $storyImageExternalLink = $story.getChild('image').getChild('link').value )
+      #set ( $storyImageInternalLink = $story.getChild('image').getChild('internalLink').getChild('path').value )
+      #if ( $storyImageExternalLink != '' )
+        #set ( $storyImage = $storyImageExternalLink )
+      #elseif ( $storyImageInternalLink != '' && $storyImageInternalLink != '/' )
+        ## This renders image inside Cascade.
+        #set ( $storyImage = "[system-asset:local]$storyImageInternalLink[/system-asset:local]")
+      #else
+        #set ( $storyImage = '' )
+      #end
+
+      # Set story footer vars
+      #set ( $mapKey = $story.getChild('blogName').value )
+      #set ( $storyBlogParams = $BLOGS_MAP[$mapKey] )
+      #set ( $storyCss = $storyBlogParams[0] )
+      #set ( $storyBlogName = $storyBlogParams[1] )
+      #set ( $storyBlogLink = $storyBlogParams[2] )
+
+      ## Yes, each block has className "third" (for 1/3rd?)
+      <div class="third">
+        <article class="story story-$foreach.count">
+          <a class="tag" href="$storyCategoryLink">#$storyCategoryText</a>
+
+          <a class="permalink smc-cta"
+             href="$storyLink"
+             data-cta-id="Trending Story $foreach.count"
+             data-cta-label="$storyHeaderCtaLabel">
+            ## Limit title to 50 characters. (Not sure why that's being announced here.)
+            <h2 class="title">$storyHeader</h2>
+            <div class="story-bg" style="background-image:url('$storyImage');">
+              <img src="$storyImage" alt="$storyImageAltText" />
+            </div>
+          </a>
+
+          <footer class="story_footer">
+            <p class="source blogname $storyCss">
+              <a href="$storyBlogLink">$storyBlogName</a>
+            </p>
+            #buildMetaSocialBlock( $storyLink $storyHeader )
+          </footer>
+        </article>
+      </div>
+    #end
+  #end
+#end
+
+#macro ( buildActionsBlock )
+  <div class="actions">
+    #if ( $secondaryButtonTrackingID != "" )
+      <a class="button smc-cta $secondaryButtonIcon"
+         href="$secondaryButtonLink"
+         data-cta-id="$secondaryButtonTrackingID">
+        $secondaryButtonText
+      </a>
+    #else
+      <a href="$secondaryButtonLink" class="button $secondaryButtonIcon">$secondaryButtonText</a>
+    #end
+
+    #if ( $primaryButtonTrackingID != "" )
+      <a class="button red smc-cta $primaryButtonIcon"
+         href="$primaryButtonLink"
+         data-cta-id="$primaryButtonTrackingID">
+        $primaryButtonText
+      </a>
+    #else
+      <a href="$primaryButtonLink" class="button red $primaryButtonIcon">$primaryButtonText</a>
+    #end
+  </div>
+#end
+
+#macro( buildMetaSocialBlock $storyLink $storyHeader )
+  ## Constants. (These should probably be https.)
+  #set ( $facebookUrl = 'http://www.facebook.com/sharer.php?u=' )
+  #set ( $twitterUrl = 'http://twitter.com/intent/tweet?text=' )
+
+  ## Data
+  ## Normalize header for Twitter.
+  #set ( $headerStripped = $_DisplayTool.stripTags($storyHeader) )
+  #set ( $headerNormed = $headerStripped.replaceAll("&amp;","and").replaceAll("""","").replaceAll("/\W/", "") )
+  #set ( $escapedHeader = ${_EscapeTool.url($headerNormed)} )
+  #set ( $facebookLink = $facebookUrl + $storyLink )
+  #set ( $twitterLink = $twitterUrl + $escapedHeader + '&amp;url=' + $storyLink )
+
+  ## Output
+  <p class="meta">
+    <a href="$facebookLink" class="action facebook" service="Facebook">Share on Facebook</a>
+    <a href="$twitterLink" class="action twitter" service="Twitter">Post to Twitter</a>
+    <a href="#" class="icon shares"></a>
+  </p>
+#end
+
+
+##
+## Main Format Block
+## This should be first place developer looks for high level understanding of code flow.
+##
+#setVars()
+#buildComponent()
