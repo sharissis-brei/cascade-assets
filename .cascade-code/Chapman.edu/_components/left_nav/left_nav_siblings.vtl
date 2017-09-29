@@ -1,0 +1,144 @@
+## Formerly LeftNav_Velocity. Can be used with index and non-index pages.
+## New left nav format that works without a block
+
+#set ( $pagePath = $currentPage.path )
+#set ( $isIndex = $currentPage.name == 'index' )
+
+## Parent depends on whether page is an index or not
+#macro ( setParentFolder )
+    #if ( $isIndex )
+        #set ( $parent = $currentPage.parentFolder )
+        #set ( $parentDir = $parent.parentFolder )     
+    #else
+        #set ( $parentDir = $currentPage.parentFolder )
+    #end
+#end
+
+## Builds the header for the left nav
+#macro ( buildLeftNavTitle )
+    <div class="leftTitle">
+        <ul>
+            <li class="title">
+                #if ( $isIndex )
+                    <a href="${parentDir.link}/index" target="_top" title="${_EscapeTool.xml($parentDir.metadata.displayName)}">
+                        ${_EscapeTool.xml($parentDir.metadata.displayName)}
+                    </a>
+                #else
+                    ## For non-index pages, the title should be the name of the index page for the folder it's in
+                    #set ( $indexPage = $_.locatePage("${parentDir.path}/index") )
+                    <a href="${parentDir.link}/index" target="_top" title="${_EscapeTool.xml($indexPage.metadata.displayName)}" >
+                        ${_EscapeTool.xml($indexPage.metadata.displayName)}
+                    </a>
+                #end
+            </li>
+        </ul>
+    </div>
+#end
+
+#macro ( buildLeftNav )
+    <ul>
+    #set ( $siblings = $parentDir.children )
+    
+    #foreach ( $sibling in $siblings )
+        #set ( $isVisible = $sibling.metadata.getDynamicField('Hide from navigation').value != "Yes" )
+
+        #if ( $sibling.assetType == 'page' && $isVisible && ($sibling.name != 'index') )
+            #set ( $siblingTitle = ${_EscapeTool.xml($sibling.metadata.displayName)} )
+
+            #if ( $sibling.path == $currentPage.path )
+                <li class="active">
+            #else
+                <li>
+            #end
+                <a href="${sibling.link}" title="$siblingTitle" class="s-p">$siblingTitle</a>
+            </li>
+        #elseif ( $sibling.assetType == 'folder' && $isVisible )
+            #set ( $indexPage = $_.locatePage("${sibling.path}/index") )
+            #set ( $visibleIndex = $indexPage.metadata.getDynamicField('Hide from navigation').value != "Yes" )
+            ## For folders, the title displayed is the name of the index page
+            #set ( $siblingTitle = ${_EscapeTool.xml($indexPage.metadata.displayName)} )
+            
+            ## Only if the index page is also visible
+            #if ( $visibleIndex )
+                #set ( $visibleChildren = [] )
+                
+                ## Get all children assets that aren't hidden
+                #foreach ( $asset in $sibling.children )
+                    ## By default, set visibility to false
+                    #set ( $visibleChild = false )
+                    #if ( $asset.assetType == 'folder')
+                        ## Both the folder and index page must be visible
+                        #set ( $folderVisible = $asset.metadata.getDynamicField('Hide from navigation').value != "Yes" )
+                        #set ( $folderIndexPage = $_.locatePage("${asset.path}/index" ) )
+                        #set ( $folderIndexVisible = $folderIndexPage.metadata.getDynamicField('Hide from navigation').value != "Yes" )
+                        
+                        #if ( $folderIndexVisible && $folderVisible )
+                            #set ( $visibleChild = true )
+                        #end
+                    #elseif ( $asset.assetType == 'page' && ($asset.name != 'index') )
+                        #set ( $visibleChild = $asset.metadata.getDynamicField('Hide from navigation').value != "Yes" )
+                    #end
+                    
+                    #if ( $visibleChild )
+                        #set ( $discard = $visibleChildren.add($asset) )
+                    #end
+                #end
+                
+                #if ( $indexPage.path == $currentPage.path )
+                    <li class="active">
+                #else
+                    <li>
+                #end
+                
+                #if ( $visibleChildren.size() > 0 )
+                    <a href="${indexPage.link}" class="s-f-idx">
+                        $siblingTitle
+                        <span class="plus">+</span>
+                    </a>
+                    #buildChildren($visibleChildren)
+                    </li>
+                #else
+                    <a href="${indexPage.link}" class="s-f-idx">
+                        $siblingTitle
+                    </a>
+                    </li>
+                #end
+            #end
+        #end
+    #end
+    </ul>
+#end
+
+## Sets up the children of a sibling, submenus in the left nav
+#macro ( buildChildren $children )
+    <ul class="leftNav-sub">
+        
+        #foreach ( $child in $children )
+            #set ( $childTitle = ${_EscapeTool.xml($child.metadata.displayName)} )
+            
+            ## If it's a visible page that isn't the index
+            #if ( $child.assetType == 'page' && ($child.name != 'index') )
+                <li>
+                    <a href="${child.link}" title="${childTitle}" class="c-p">
+                        <span class="bullet">» </span>
+                        $childTitle
+                    </a>
+                </li>
+            #elseif ( $child.assetType == 'folder' )
+                <li>
+                    <a href="${child.link}/index" title="${childTitle}" class="c-f">
+                        <span class="bullet">» </span>
+                        $childTitle
+                    </a>
+                </li>
+            #end
+        #end
+    </ul>
+#end
+
+##
+## MAIN
+##
+#setParentFolder
+#buildLeftNavTitle
+#buildLeftNav

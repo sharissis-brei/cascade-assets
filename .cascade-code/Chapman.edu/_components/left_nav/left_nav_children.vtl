@@ -1,0 +1,133 @@
+## Formerly LeftNavNoSiblings. Used for index pages.
+## New left nav format that works without a block
+
+#set ( $pagePath = $currentPage.path )
+#set ( $parentDir = $currentPage.parentFolder )
+
+## Builds the header for the left nav
+#macro ( buildLeftNavTitle )
+    <div class="leftTitle">
+        <ul>
+            <li class="title">
+            <a href="${parentDir.link}/index" target="_top" title="${_EscapeTool.xml($parentDir.metadata.displayName)}">
+                ${_EscapeTool.xml($parentDir.metadata.displayName)}
+            </a>
+            </li>
+        </ul>
+    </div>
+#end
+
+## Builds the left navigation
+#macro ( buildLeftNav )
+    <ul>
+    #set ( $children = $parentDir.children )
+    #foreach ( $child in $children )
+        #set ( $isVisible = $child.metadata.getDynamicField('Hide from navigation').value != "Yes" )
+
+        ## Child is a page
+        #if ( $child.assetType == 'page' && $isVisible && ($child.name != 'index') )
+            #set ( $childTitle = ${_EscapeTool.xml($child.metadata.displayName)} )
+
+            #if ( $child.path == $currentPage.path )
+                <li class="active">
+            #else
+                <li>
+            #end
+                <a href="${child.link}" title="$childTitle" class="s-p">$childTitle</a>
+            </li>
+
+        ## Child is a folder
+        #elseif ( $child.assetType == 'folder' && $isVisible )
+            ## For folders, also need to check visibility of index page
+            #set ( $folderIndexPage = $_.locatePage("${child.path}/index") )
+            #set ( $visibleIndex = $folderIndexPage.metadata.getDynamicField('Hide from navigation').value != "Yes" )
+            ## Titles for folders are set to the name of its index page
+            #set ( $childTitle = ${_EscapeTool.xml($folderIndexPage.metadata.displayName)} )
+            
+            ## Only if the child folder's index page is also visible
+            #if ( $visibleIndex )
+                #set ( $visibleChildren = [] )
+                
+                ## Get all visible children assets
+                #foreach ( $asset in $child.children )
+                    ## By default, set visibility of child asset to false
+                    #set ( $visibleChild = false )
+                    
+                    #if ( $asset.assetType == 'folder' )
+                        ## Folder and index of the folder both have to be visible
+                        #set ( $folderVisible = $asset.metadata.getDynamicField('Hide from navigation').value != 'Yes')
+                        #set ( $childIndexPage = $_.locatePage("${asset.path}/index") )
+                        #set ( $folderIndexVisible = $childIndexPage.metadata.getDynamicField('Hide from navigation').value != 'Yes')
+            
+                        #if ( $folderVisible && $folderIndexVisible )
+                            #set ( $visibleChild = true )
+                        #end
+
+                    ## Not counting index pages, they don't go in the dropdowns
+                    #elseif ( $asset.assetType == 'page' && !($asset.name.equals('index')) )
+                        #set ( $visibleChild = $asset.metadata.getDynamicField('Hide from navigation').value != 'Yes')
+                    #end
+                    
+                    #if ( $visibleChild )
+                        #set ( $discard = $visibleChildren.add($asset) )
+                    #end
+                #end
+                
+                ## Needs to have a dropdown if it has visible children
+                #if ( $visibleChildren.size() > 0 )
+                    <li>
+                        <a href="${folderIndexPage.link}" class="s-f-idx">
+                            $childTitle
+                            <span class="plus">+</span>
+                        </a>
+                        #buildGrandchildren($visibleChildren $child)
+                    </li>
+                    
+                ## If it has no visible children it's basically just a page
+                #else
+                    <li>
+                        <a href="${folderIndexPage.link}" class="s-f-idx">
+                        $childTitle
+                        </a>
+                    </li>               
+                #end
+            #end
+        #end
+    #end
+    </ul>
+#end
+
+## Sets up the children of a child, submenus in the left nav
+#macro ( buildGrandchildren $visibleGrandchildren )
+    <ul class="leftNav-sub">
+        #foreach ( $child in $visibleGrandchildren )
+            #set ( $childTitle = ${_EscapeTool.xml($child.metadata.displayName)} )
+
+            ## If it's a page that isn't the index
+            #if ( $child.assetType == 'page' && ($child.name != 'index') )
+                <li>
+                    <a href="${child.link}" title="$childTitle" class="c-p">
+                        <span class="bullet">» </span>
+                        $childTitle
+                    </a>
+                </li>
+
+            #elseif ( $child.assetType == 'folder' )
+                #set ( $childIndexPage = $_.locatePage("${child.path}/index") )
+
+                <li>
+                    <a href="${childIndexPage.link}" title="$childTitle" class="c-f">
+                        <span class="bullet">» </span>
+                        $childTitle
+                    </a>
+                </li>
+            #end
+        #end
+    </ul>
+#end
+
+##
+## MAIN
+##
+#buildLeftNavTitle
+#buildLeftNav
