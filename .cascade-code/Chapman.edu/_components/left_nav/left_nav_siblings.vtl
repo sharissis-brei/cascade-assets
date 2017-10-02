@@ -3,6 +3,7 @@
 
 #set ( $pagePath = $currentPage.path )
 #set ( $isIndex = $currentPage.name == 'index' )
+#set ( $visibleChildren = [] )
 
 ## Parent depends on whether page is an index or not
 #macro ( setParentFolder )
@@ -43,15 +44,8 @@
         #set ( $isVisible = $sibling.metadata.getDynamicField('Hide from navigation').value != "Yes" )
 
         #if ( $sibling.assetType == 'page' && $isVisible && ($sibling.name != 'index') )
-            #set ( $siblingTitle = ${_EscapeTool.xml($sibling.metadata.displayName)} )
+            #buildSiblingPage($sibling)
 
-            #if ( $sibling.path == $currentPage.path )
-                <li class="active">
-            #else
-                <li>
-            #end
-                <a href="${sibling.link}" title="$siblingTitle" class="s-p">$siblingTitle</a>
-            </li>
         #elseif ( $sibling.assetType == 'folder' && $isVisible )
             #set ( $indexPage = $_.locatePage("${sibling.path}/index") )
             #set ( $visibleIndex = $indexPage.metadata.getDynamicField('Hide from navigation').value != "Yes" )
@@ -61,28 +55,7 @@
             ## Only if the index page is also visible
             #if ( $visibleIndex )
                 #set ( $visibleChildren = [] )
-                
-                ## Get all children assets that aren't hidden
-                #foreach ( $asset in $sibling.children )
-                    ## By default, set visibility to false
-                    #set ( $visibleChild = false )
-                    #if ( $asset.assetType == 'folder')
-                        ## Both the folder and index page must be visible
-                        #set ( $folderVisible = $asset.metadata.getDynamicField('Hide from navigation').value != "Yes" )
-                        #set ( $folderIndexPage = $_.locatePage("${asset.path}/index" ) )
-                        #set ( $folderIndexVisible = $folderIndexPage.metadata.getDynamicField('Hide from navigation').value != "Yes" )
-                        
-                        #if ( $folderIndexVisible && $folderVisible )
-                            #set ( $visibleChild = true )
-                        #end
-                    #elseif ( $asset.assetType == 'page' && ($asset.name != 'index') )
-                        #set ( $visibleChild = $asset.metadata.getDynamicField('Hide from navigation').value != "Yes" )
-                    #end
-                    
-                    #if ( $visibleChild )
-                        #set ( $discard = $visibleChildren.add($asset) )
-                    #end
-                #end
+                #getVisibleChildren($sibling.children)
                 
                 #if ( $indexPage.path == $currentPage.path )
                     <li class="active">
@@ -95,7 +68,11 @@
                         $siblingTitle
                         <span class="plus">+</span>
                     </a>
-                    #buildChildren($visibleChildren)
+                    <ul class="leftNav-sub">
+                        #foreach ( $child in $visibleChildren )
+                            #buildChild($child)
+                        #end
+                    </ul>
                     </li>
                 #else
                     <a href="${indexPage.link}" class="s-f-idx">
@@ -110,30 +87,62 @@
 #end
 
 ## Sets up the children of a sibling, submenus in the left nav
-#macro ( buildChildren $children )
-    <ul class="leftNav-sub">
-        
-        #foreach ( $child in $children )
-            #set ( $childTitle = ${_EscapeTool.xml($child.metadata.displayName)} )
+#macro ( buildChild $child )
+    #set ( $childTitle = ${_EscapeTool.xml($child.metadata.displayName)} )
+    
+    ## If it's a visible page that isn't the index
+    #if ( $child.assetType == 'page' && ($child.name != 'index') )
+        <li>
+            <a href="${child.link}" title="${childTitle}" class="c-p">
+                <span class="bullet">» </span>
+                $childTitle
+            </a>
+        </li>
+    #elseif ( $child.assetType == 'folder' )
+        <li>
+            <a href="${child.link}/index" title="${childTitle}" class="c-f">
+                <span class="bullet">» </span>
+                $childTitle
+            </a>
+        </li>
+    #end
+#end
+
+#macro ( buildSiblingPage $sibling )
+    #set ( $siblingTitle = ${_EscapeTool.xml($sibling.metadata.displayName)} )
+
+    #if ( $sibling.path == $currentPage.path )
+        <li class="active">
+    #else
+        <li>
+    #end
+        <a href="${sibling.link}" title="$siblingTitle" class="s-p">$siblingTitle</a>
+    </li>
+#end
+
+## Gets unhidden assets, pages and folders (index pages of folders)
+#macro ( getVisibleChildren $childrenAssets )
+    ## Get all children assets that aren't hidden
+    #foreach ( $asset in $childrenAssets )
+        ## By default, set visibility to false
+        #set ( $visibleChild = false )
+        #if ( $asset.assetType == 'folder')
+            ## Both the folder and index page must be visible
+            #set ( $folderVisible = $asset.metadata.getDynamicField('Hide from navigation').value != "Yes" )
+            #set ( $folderIndexPage = $_.locatePage("${asset.path}/index" ) )
+            #set ( $folderIndexVisible = $folderIndexPage.metadata.getDynamicField('Hide from navigation').value != "Yes" )
             
-            ## If it's a visible page that isn't the index
-            #if ( $child.assetType == 'page' && ($child.name != 'index') )
-                <li>
-                    <a href="${child.link}" title="${childTitle}" class="c-p">
-                        <span class="bullet">» </span>
-                        $childTitle
-                    </a>
-                </li>
-            #elseif ( $child.assetType == 'folder' )
-                <li>
-                    <a href="${child.link}/index" title="${childTitle}" class="c-f">
-                        <span class="bullet">» </span>
-                        $childTitle
-                    </a>
-                </li>
+            #if ( $folderIndexVisible && $folderVisible )
+                #set ( $visibleChild = true )
             #end
+        #elseif ( $asset.assetType == 'page' && ($asset.name != 'index') )
+            #set ( $visibleChild = $asset.metadata.getDynamicField('Hide from navigation').value != "Yes" )
         #end
-    </ul>
+        
+        #if ( $visibleChild )
+            #set ( $discard = $visibleChildren.add($asset) )
+        #end
+    #end
 #end
 
 ##
