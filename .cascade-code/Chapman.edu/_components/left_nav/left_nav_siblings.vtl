@@ -3,7 +3,6 @@
 
 #set ( $pagePath = $currentPage.path )
 #set ( $isIndex = $currentPage.name == 'index' )
-#set ( $visibleChildren = [] )
 
 ## Parent depends on whether page is an index or not
 #macro ( setParentFolder )
@@ -15,28 +14,8 @@
     #end
 #end
 
-## Builds the header for the left nav
-#macro ( buildLeftNavTitle )
-    <div class="leftTitle">
-        <ul>
-            <li class="title">
-                #if ( $isIndex )
-                    <a href="${parentDir.link}/index" target="_top" title="${_EscapeTool.xml($parentDir.metadata.displayName)}">
-                        ${_EscapeTool.xml($parentDir.metadata.displayName)}
-                    </a>
-                #else
-                    ## For non-index pages, the title should be the name of the index page for the folder it's in
-                    #set ( $indexPage = $_.locatePage("${parentDir.path}/index") )
-                    <a href="${parentDir.link}/index" target="_top" title="${_EscapeTool.xml($indexPage.metadata.displayName)}" >
-                        ${_EscapeTool.xml($indexPage.metadata.displayName)}
-                    </a>
-                #end
-            </li>
-        </ul>
-    </div>
-#end
-
 #macro ( buildLeftNav )
+    #buildLeftNavTitle
     <ul>
     #set ( $siblings = $parentDir.children )
     
@@ -50,7 +29,7 @@
             #set ( $indexPage = $_.locatePage("${sibling.path}/index") )
             #set ( $visibleIndex = $indexPage.metadata.getDynamicField('Hide from navigation').value != "Yes" )
             ## For folders, the title displayed is the name of the index page
-            #set ( $siblingTitle = ${_EscapeTool.xml($indexPage.metadata.displayName)} )
+            #set ( $siblingTitle = ${_EscapeTool.xml($indexPage.label)} )
             
             ## Only if the index page is also visible
             #if ( $visibleIndex )
@@ -86,9 +65,22 @@
     </ul>
 #end
 
+## Builds the header for the left nav
+#macro ( buildLeftNavTitle )
+    <div class="leftTitle">
+        <ul>
+            <li class="title">
+                <a href="${parentDir.link}/index" target="_top" title="${_EscapeTool.xml($parentDir.label)}" >
+                    ${_EscapeTool.xml($parentDir.label)}
+                </a>
+            </li>
+        </ul>
+    </div>
+#end
+
 ## Sets up the children of a sibling, submenus in the left nav
 #macro ( buildChild $child )
-    #set ( $childTitle = ${_EscapeTool.xml($child.metadata.displayName)} )
+    #set ( $childTitle = ${_EscapeTool.xml($child.label)} )
     
     ## If it's a visible page that isn't the index
     #if ( $child.assetType == 'page' && ($child.name != 'index') )
@@ -109,7 +101,7 @@
 #end
 
 #macro ( buildSiblingPage $sibling )
-    #set ( $siblingTitle = ${_EscapeTool.xml($sibling.metadata.displayName)} )
+    #set ( $siblingTitle = ${_EscapeTool.xml($sibling.label)} )
 
     #if ( $sibling.path == $currentPage.path )
         <li class="active">
@@ -149,5 +141,4 @@
 ## MAIN
 ##
 #setParentFolder
-#buildLeftNavTitle
 #buildLeftNav

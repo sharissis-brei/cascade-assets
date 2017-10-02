@@ -3,23 +3,10 @@
 
 #set ( $pagePath = $currentPage.path )
 #set ( $parentDir = $currentPage.parentFolder )
-#set ( $visibleChildren = [] )
-
-## Builds the header for the left nav
-#macro ( buildLeftNavTitle )
-    <div class="leftTitle">
-        <ul>
-            <li class="title">
-            <a href="${parentDir.link}/index" target="_top" title="${_EscapeTool.xml($parentDir.metadata.displayName)}">
-                ${_EscapeTool.xml($parentDir.metadata.displayName)}
-            </a>
-            </li>
-        </ul>
-    </div>
-#end
 
 ## Builds the left navigation
 #macro ( buildLeftNav )
+    #buildLeftNavTitle
     <ul>
     #set ( $children = $parentDir.children )
     #foreach ( $child in $children )
@@ -35,7 +22,7 @@
             #set ( $folderIndexPage = $_.locatePage("${child.path}/index") )
             #set ( $visibleIndex = $folderIndexPage.metadata.getDynamicField('Hide from navigation').value != "Yes" )
             ## Titles for folders are set to the name of its index page
-            #set ( $childTitle = ${_EscapeTool.xml($folderIndexPage.metadata.displayName)} )
+            #set ( $childTitle = ${_EscapeTool.xml($folderIndexPage.label)} )
             
             ## Only if the child folder's index page is also visible
             #if ( $visibleIndex )
@@ -66,9 +53,22 @@
     </ul>
 #end
 
+## Builds the header for the left nav
+#macro ( buildLeftNavTitle )
+    <div class="leftTitle">
+        <ul>
+            <li class="title">
+            <a href="${parentDir.link}/index" target="_top" title="${_EscapeTool.xml($parentDir.label)}">
+                ${_EscapeTool.xml($parentDir.label)}
+            </a>
+            </li>
+        </ul>
+    </div>
+#end
+
 ## Builds a single child page, has no dropdown
 #macro ( buildChildPage $child)
-    #set ( $childTitle = ${_EscapeTool.xml($child.metadata.displayName)} )
+    #set ( $childTitle = ${_EscapeTool.xml($child.label)} )
 
     #if ( $child.path == $currentPage.path )
         <li class="active">
@@ -83,7 +83,7 @@
 #macro ( buildGrandchildren $visibleGrandchildren )
     <ul class="leftNav-sub">
         #foreach ( $child in $visibleGrandchildren )
-            #set ( $childTitle = ${_EscapeTool.xml($child.metadata.displayName)} )
+            #set ( $childTitle = ${_EscapeTool.xml($child.label)} )
 
             ## If it's a page that isn't the index
             #if ( $child.assetType == 'page' && ($child.name != 'index') )
@@ -139,5 +139,4 @@
 ##
 ## MAIN
 ##
-#buildLeftNavTitle
 #buildLeftNav
