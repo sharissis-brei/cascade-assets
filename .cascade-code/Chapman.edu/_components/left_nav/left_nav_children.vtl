@@ -36,7 +36,7 @@
                             $childTitle
                             <span class="plus">+</span>
                         </a>
-                        #buildGrandchildren($visibleChildren $child)
+                        #buildGrandchildren($visibleChildren)
                     </li>
                     
                 ## If it has no visible children it's basically just a page
@@ -85,25 +85,20 @@
         #foreach ( $child in $visibleGrandchildren )
             #set ( $childTitle = ${_EscapeTool.xml($child.label)} )
 
-            ## If it's a page that isn't the index
-            #if ( $child.assetType == 'page' && ($child.name != 'index') )
-                <li>
-                    <a href="${child.link}" title="$childTitle" class="c-p">
-                        <span class="bullet">» </span>
-                        $childTitle
-                    </a>
-                </li>
-
+            #if ( $child.assetType == 'page' )
+                #set ( $childLink = "${child.link}" )
+                #set ( $childClass = "c-p" )
             #elseif ( $child.assetType == 'folder' )
-                #set ( $childIndexPage = $_.locatePage("${child.path}/index") )
-
-                <li>
-                    <a href="${childIndexPage.link}" title="$childTitle" class="c-f">
-                        <span class="bullet">» </span>
-                        $childTitle
-                    </a>
-                </li>
+                #set ( $childLink = "${child.link}/index" )
+                #set ( $childClass = "c-f" )
             #end
+
+            <li>
+                <a href="$childLink" title="$childTitle" class="$childClass">
+                    <span class="bullet">» </span>
+                    $childTitle
+                </a>
+            </li>
         #end
     </ul>
 #end

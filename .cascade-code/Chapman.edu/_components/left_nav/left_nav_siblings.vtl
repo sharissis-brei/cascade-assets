@@ -14,6 +14,7 @@
     #end
 #end
 
+## Builds left navigation
 #macro ( buildLeftNav )
     #buildLeftNavTitle
     <ul>
@@ -22,9 +23,11 @@
     #foreach ( $sibling in $siblings )
         #set ( $isVisible = $sibling.metadata.getDynamicField('Hide from navigation').value != "Yes" )
 
+        ## Sibling is a single page
         #if ( $sibling.assetType == 'page' && $isVisible && ($sibling.name != 'index') )
             #buildSiblingPage($sibling)
 
+        ## Sibling is a folder
         #elseif ( $sibling.assetType == 'folder' && $isVisible )
             #set ( $indexPage = $_.locatePage("${sibling.path}/index") )
             #set ( $visibleIndex = $indexPage.metadata.getDynamicField('Hide from navigation').value != "Yes" )
@@ -53,6 +56,7 @@
                         #end
                     </ul>
                     </li>
+                ## If it has no other children, it basically just looks like a page does in the left nav
                 #else
                     <a href="${indexPage.link}" class="s-f-idx">
                         $siblingTitle
@@ -81,25 +85,24 @@
 ## Sets up the children of a sibling, submenus in the left nav
 #macro ( buildChild $child )
     #set ( $childTitle = ${_EscapeTool.xml($child.label)} )
-    
-    ## If it's a visible page that isn't the index
-    #if ( $child.assetType == 'page' && ($child.name != 'index') )
-        <li>
-            <a href="${child.link}" title="${childTitle}" class="c-p">
-                <span class="bullet">» </span>
-                $childTitle
-            </a>
-        </li>
+
+    #if ( $child.assetType == 'page' )
+        #set ( $childClass = "c-p" )
+        #set ( $childLink = "${child.link}" )
     #elseif ( $child.assetType == 'folder' )
-        <li>
-            <a href="${child.link}/index" title="${childTitle}" class="c-f">
-                <span class="bullet">» </span>
-                $childTitle
-            </a>
-        </li>
+        #set ( $childClass = "c-f" )
+        #set ( $childLink = "${child.link}/index" )
     #end
+    
+    <li>
+        <a href="${childLink}" title="${childTitle}" class="${childClass}">
+            <span class="bullet">» </span>
+            $childTitle
+        </a>
+    </li>
 #end
 
+## Builds a basic page list item that has no dropdown (no children) in the left nav
 #macro ( buildSiblingPage $sibling )
     #set ( $siblingTitle = ${_EscapeTool.xml($sibling.label)} )
 
