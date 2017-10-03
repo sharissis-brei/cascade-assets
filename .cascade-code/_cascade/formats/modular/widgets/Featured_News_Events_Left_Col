@@ -1,97 +1,89 @@
-#macro(outputFeaturedNewsEvents $element)
-## placeholder html for left column news/event. Feeds and options for both left and primary pulled in thru different format
-##
-    <!-- formats/modular/widgets/Featured News Events Left Col -->
-    <div class="news-events-widget news-events-widget--left newsEvents">
-        <ul class="newsEventsNav">
-            <li class="active">Featured</li>
-            <li>News</li>
-            <li>Events</li>
-        </ul>
-        <ul class="newsEventsContent">
-            <a class="no-js-link" href="https://blogs.chapman.edu/happenings/" title="View All News Stories">View All News »</a>
-            <a class="no-js-link" href="https://events.chapman.edu" title="View All Event Listings">View All Events »</a>
-            <li class="active">
-                <div class="featured">
-                    <img class="image" height="130" src="" width="225" alt="Chapman University"/>
-                    <div class="date">
-                        <div class="day"></div>
-                        <div class="month"></div>
-                        <div class="year"></div>
-                    </div>
-                    <div class="title"></div>
-                    <div class="description">View the published page to see this section.</div>
-                    <div class="readMore"></div>
-                </div>
-            </li>
-            <li>
-                <div class="news clearfix">
-                    <img class="loading" src="/_files/level/img/ajax-loader.gif" alt="Loading news list..."/>
-                    <div class="story story1" itemscope="itemscope" itemtype="http://schema.org/Article">
+#*
+ * Chapman.edu/_cascade/formats/modular/widgets/Featured News Events Left Col
+ * Left-Col variant of Featured News/Events widget.
+ *
+ * Placeholder html for left column news/event. Feeds and options for both left
+ * and primary pulled in thru different format. This is used in conjunction with
+ * /app/assets/javascripts/cascade/level/news-events.js.
+ *
+ *#
 
-                        <div class="date" itemprop="datePublished">
-                            <div class="day"></div>
-                            <div class="month"></div>
-                            <div class="year"></div>
-                        </div>
-                        <h3><a href="#"></a></h3>
-                    </div>
-                    <div class="story story2" itemscope="itemscope" itemtype="http://schema.org/Article">
+#macro( outputFeaturedNewsEvents $element )
+  ## Note: $element not actually used.
 
-                        <div class="date" itemprop="datePublished">
-                            <div class="day"></div>
-                            <div class="month"></div>
-                            <div class="year"></div>
-                        </div>
-                        <h3><a href="#"></a></h3>
-                    </div>
-                    <div class="story story3" itemscope="itemscope" itemtype="http://schema.org/Article">
+  ## Static HTML output.
+  <div class="news-events-widget news-events-widget--left newsEvents">
+    <ul class="newsEventsNav">
+      <li class="active">Featured</li>
+      <li>News</li>
+      <li>Events</li>
+    </ul>
 
-                        <div class="date" itemprop="datePublished">
-                            <div class="day"></div>
-                            <div class="month"></div>
-                            <div class="year"></div>
-                        </div>
-                        <h3><a href="#"></a></h3>
-                    </div>
-                    <a class="allNews" href="">View all News »</a>
-                </div>
-            </li>
-            <li>
-                <div class="events clearfix">
-                    <img class="loading" src="/_files/level/img/ajax-loader.gif" alt="Loading events list..."/>
-                    <div class="story story1" itemscope="itemscope" itemtype="http://schema.org/Article">
+    #buildContentList()
+  </div>
+#end
 
-                        <div class="date" itemprop="datePublished">
-                            <div class="day"></div>
-                            <div class="month"></div>
-                            <div class="year"></div>
-                        </div>
-                        <h3><a href="#"></a></h3>
-                    </div>
-                    <div class="story story2" itemscope="itemscope" itemtype="http://schema.org/Article">
+#macro( buildContentList )
+  <ul class="newsEventsContent">
+    ## FIXME: This should be wrapped in a no-display li tag. But doing so will break
+    ## tab functionality.
+    <a class="no-js-link" href="https://blogs.chapman.edu/happenings/" title="View All News Stories">View All News »</a>
+    <a class="no-js-link" href="https://events.chapman.edu" title="View All Event Listings">View All Events »</a>
 
-                        <div class="date" itemprop="datePublished">
-                            <div class="day"></div>
-                            <div class="month"></div>
-                            <div class="year"></div>
-                        </div>
-                        <h3><a href="#"></a></h3>
-                    </div>
-                    <div class="story story3" itemscope="itemscope" itemtype="http://schema.org/Article">
+    ## Featured Tab Content
+    <li class="active">
+      <div class="featured">
+        <img src="" alt="Chapman University" class="image" height="130"  width="225" />
+        <div class="date">
+          <div class="day"></div>
+          <div class="month"></div>
+          <div class="year"></div>
+        </div>
+        <div class="title"></div>
+        <div class="description">
+          View the published page to see this section.
+        </div>
+        <div class="readMore"></div>
+      </div>
+    </li>
 
-                        <div class="date" itemprop="datePublished">
-                            <div class="day"></div>
-                            <div class="month"></div>
-                            <div class="year"></div>
-                        </div>
-                        <h3><a href="#"></a></h3>
-                    </div>
-                    <a class="allEvents" href="">View all Events »</a>
-                </div>
-            </li>
-        </ul>
+    ## News Tab Content
+    <li>
+      <div class="news clearfix">
+        <img class="loading" src="/_files/level/img/ajax-loader.gif" alt="Loading events list..."/>
+
+        #foreach ( $i in [1..3] )
+          #buildStoryBlock($i)
+        #end
+
+        <a class="allNews" href="">View all News »</a>
+      </div>
+    </li>
+
+    ## Events Tab Content
+    <li>
+      <div class="events clearfix">
+        <img class="loading" src="/_files/level/img/ajax-loader.gif" alt="Loading events list..."/>
+
+        #foreach ( $i in [1..3] )
+          #buildStoryBlock($i)
+        #end
+
+        <a class="allEvents" href="">View all Events »</a>
+      </div>
+    </li>
+  </ul>
+#end
+
+#macro( buildStoryBlock $i )
+  <div class="story story${i}" itemscope="itemscope" itemtype="http://schema.org/Article">
+    <div class="date" itemprop="datePublished">
+      <div class="day"></div>
+      <div class="month"></div>
+      <div class="year"></div>
     </div>
-    ## end newsEvents
-##
+    <div class="title">
+      <a href="#"></a>
+    </div>
+  </div>
 #end

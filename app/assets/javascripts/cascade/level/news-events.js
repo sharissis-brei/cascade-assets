@@ -140,9 +140,9 @@ $(function () {
                             $this.find(".date .year").html(newsData.item[i].pubDate.split(' ')[3]);
                         }
                         //Title
-                        $this.find("h3>a").html(newsData.item[i].title);
+                        $this.find(".title>a").html(newsData.item[i].title);
                         //Links
-                        $this.find("h3>a, .readMore").each(function () {
+                        $this.find(".title>a, .readMore").each(function () {
                             $(this).attr('href', newsData.item[i].link);
                         });
                         //Show News
@@ -266,10 +266,10 @@ $(function () {
 
                         if ( rssitem ) {
                             // Title
-                            $this.find("h3>a").html(rssitem.title);
+                            $this.find(".title>a").html(rssitem.title);
 
                             // Links
-                            $this.find("h3>a, .readMore").each(function () {
+                            $this.find(".title>a, .readMore").each(function () {
                                 $(this).attr('href', rssitem.link);
                             });
 
