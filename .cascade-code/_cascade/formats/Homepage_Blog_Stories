@@ -14,7 +14,7 @@
   'academics' : [ '', 'Higher Ed and Technology: Academics at Chapman', '' ],
   'alumni' : [ '', 'Chapman Alumni', '' ],
   'business' : [ 'business', 'Argyros School of Business and Economics', '' ],
-  'education' : [ 'education', 'Attallah College of Educational Studies', 'https://blogs.chapman.edu/ces' ],
+  'education' : [ 'education', 'Attallah College of Educational Studies', '' ],
   'collections' : [ '', 'Art Collections', '' ],
   'communication' : [ 'communication', 'School of Communication', '' ],
   'copa' : [ 'copa', 'College of Performing Arts', '' ],
