@@ -149,6 +149,7 @@
 ##
 #macro ( buildComponent )
   <!-- Homepage Blog Stories Macro -->
+  <!-- topStoryBlogID: $topStoryBlogID -->
   <section id="featured_stories" class="stories section">
     <div class="maxWidth">
       #buildAnnouncementBlock()
@@ -173,7 +174,7 @@
     <div class="imagerotator">
 
       ## Is this if check needed?
-      #if ( $topStoryImages.size > 0 )
+      #if ( $topStoryImages.size() > 0 )
         #foreach( $image in $topStoryImages )
           #set ( $imageAltText = $image.getChild('altText').value )
           #set ( $imageExternalLink = $image.getChild('link').value )
@@ -196,14 +197,14 @@
     </div>
 
     <div class="details">
-      <a href="$topStoryCategoryLink" class="tag">#${$topStoryCategoryText}</a>
+      <a href="$topStoryCategoryLink" class="tag">#${topStoryCategoryText}</a>
 
       <h2 class="title">
         <a class="smc-cta"
            href="$topStoryLink"
            data-cta-id="Top Story"
            data-cta-label="$topStoryCtaLabel">
-          $bigstory_header
+          $topStoryHeader
         </a>
       </h2>
 
@@ -235,7 +236,7 @@
       ## if url to story starts with // then the compound link to Twitter using that
       ## url won't work. Append https: in front.
       #if ( $storyLink.substring(0,2) == "//" )
-        #set ( $storyLink = "https:" + storyLink )
+        #set ( $storyLink = "https:" + $storyLink )
       #end
 
       ## Set story header vars.
@@ -251,7 +252,7 @@
         #set ( $storyImage = $storyImageExternalLink )
       #elseif ( $storyImageInternalLink != '' && $storyImageInternalLink != '/' )
         ## This renders image inside Cascade.
-        #set ( $storyImage = "[system-asset:local]$storyImageInternalLink[/system-asset:local]")
+        #set ( $storyImage = "[system-asset:local]${storyImageInternalLink}[/system-asset:local]")
       #else
         #set ( $storyImage = '' )
       #end
@@ -329,7 +330,9 @@
   <p class="meta">
     <a href="$facebookLink" class="action facebook" service="Facebook">Share on Facebook</a>
     <a href="$twitterLink" class="action twitter" service="Twitter">Post to Twitter</a>
-    <a href="#" class="icon shares"></a>
+
+    ## sr-only span avoids WAVE issue: https://stackoverflow.com/a/39919878/6763239
+    <a href="#" class="icon shares"><span class="sr-only">Share Icon</span></a>
   </p>
 #end
 
