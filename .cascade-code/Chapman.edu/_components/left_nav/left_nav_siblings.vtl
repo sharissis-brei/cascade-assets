@@ -1,11 +1,9 @@
 ## Formerly LeftNav_Velocity. Can be used with index and non-index pages.
 ## New left nav format that works without a block
 
-#set ( $pagePath = $currentPage.path )
-#set ( $isIndex = $currentPage.name == 'index' )
-
 #macro ( setVars )
     ## Parent depends on whether page is an index or not
+    #set ( $isIndex = $currentPage.name == 'index' )
     #if ( $isIndex )
         #set ( $parent = $currentPage.parentFolder )
         #set ( $parentDir = $parent.parentFolder )     
