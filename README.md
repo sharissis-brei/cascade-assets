@@ -116,81 +116,16 @@ Follow these conventions to keep our xml consistent across link types in our dat
 ```
 
 
-## Velocity Templating Language (VTL) Cheat Sheet
+## Velocity Templating Language (VTL)
 
-For full reference, see [the Apache Velocity Project site](http://velocity.apache.org/engine/1.7/vtl-reference.html).
+For full reference, see the Apache Velocity Project site:
 
-#### Setting Variables
-```html
- #set ($name = "James")
-```
+- http://velocity.apache.org/engine/1.7/vtl-reference.html
 
-#### If Else
-```
-#if ($name == 'James')
-  <h1>Hello James</h1>
-#elseif ($name == 'Luke')
-  <h1>Hello Luke</h1>
-#else
-  <h1>Hello Other Person</h1>
-#end
-```
+For Chapman's Velocity style guide, see the wiki:
 
-#### Loops
-```html
- #set ($items = $_XPathTool.selectNodes($xml_object, '//path/to/items'))
+- https://wimops.chapman.edu/wiki/Velocity
 
- #foreach($item in $items)
-   ...
-   <h1>$item.getChild('title').value</h1>
-   ...
- #end
-```
-
-#### String Interpolation
-Wrap a variable with ${ ... } to interpolate it into a string. For example:
-```
-#set ($name = "James")
-#set ($greeting = "Hello ${name}, Nice to meet you.")
-```
-You can also do ifs and elses right in a string.  For example:
-```
-#set($classStr = "messaging-widget__#if($textAlign == 'Left')text-left#{else}text-right#end")
-```
-
-#### Navigating XML Data
-```html
-## Selecting multiple xml nodes.
-#set ($items = $_XPathTool.selectNodes($object, '//x_path/to/item'))
-
-## Selecting a single node in xml
-$_XPathTool.selectSingleNode($cardElement, 'backStat/title')
-
-## Which is also the same as...
-$cardElement.getChild('backStat').getChild('title')
-```
-
-#### Outputting values into HTML
-```html
-## You must always escape the value of an xml node before displaying it.
-<p>$_EscapeTool.xml($cardElement.getChild('title').value)</p>
-```
-
-#### Macros
-```html
-#macro(outputCalloutText $param)
- <p>$_EscapeTool.xml($param.getChild('text').value)</p>
-#end
-
-## Call it with this...
-#outputCalloutText($callout)
-```
-
-#### System Assets
-If you are linking to interal files, you must wrap the url in [system-asset] tags.  This is so that the images will appear in the cascade preview window as well as the published page.  For example:
-```html
- #set ($linkUrl = "[system-asset]${content.getChild('fileLink').getChild('path').value}[/system-asset]")
-```
 
 ## Developer Tips
 ### Cascade Testing
