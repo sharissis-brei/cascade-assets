@@ -1,13 +1,15 @@
 #*
  * Chapman.edu/_cascade/formats/Homepage Blog Stories
  * Blog Stories widget for Chapman home page.
- *
  *#
 
 ##
 ## Hardcoded Params
 ##
-## id => [ bigStoryCss, bigStoryName, bigStoryLink ]
+#set ( $FACEBOOK_SHARE_URL = 'http://www.facebook.com/sharer.php?u=' )
+#set ( $TWITTER_SHARE_URL = 'http://twitter.com/intent/tweet?text=' )
+
+## id => [ css class, blog title, blog link ]
 #set ( $BLOGS_MAP = {
   'academics' : [ '', 'Higher Ed and Technology: Academics at Chapman', '' ],
   'alumni' : [ '', 'Chapman Alumni', '' ],
@@ -35,9 +37,8 @@
 
 
 ##
-## Vars
+## Global Vars
 ##
-## Cascade provides a $currentPage object to every format.
 #set ( $currentPage = $_XPathTool.selectSingleNode($contentRoot, "//system-page[@current]") )
 
 #set ( $topStoryBlogID = '' )
@@ -223,6 +224,7 @@
   ## There are three trending stories
   #if ( $trendingStories.size() > 0 )
     #foreach ( $story in $trendingStories )
+      ## Data
       ## Set category vars.
       #set ( $storyCategoryLink = $story.getChild('topCategory').getChild('link').value )
       #set ( $storyCategoryText = $story.getChild('topCategory').getChild('text').value )
@@ -241,7 +243,7 @@
       #set ( $storyHeaderStripped = $_DisplayTool.stripTags($storyHeader) )
       #set ( $storyHeaderCtaLabel = $storyHeaderStripped.replaceAll("&amp;","and").replaceAll("""","").replaceAll("/\W/", "") )
 
-      # Set story image vars
+      ## Set story image vars
       #set ( $storyImageAltText = $story.getChild('image').getChild('altText').value )
       #set ( $storyImageExternalLink = $story.getChild('image').getChild('link').value )
       #set ( $storyImageInternalLink = $story.getChild('image').getChild('internalLink').getChild('path').value )
@@ -254,13 +256,14 @@
         #set ( $storyImage = '' )
       #end
 
-      # Set story footer vars
+      ## Set story footer vars
       #set ( $mapKey = $story.getChild('blogName').value )
       #set ( $storyBlogParams = $BLOGS_MAP[$mapKey] )
       #set ( $storyCss = $storyBlogParams[0] )
       #set ( $storyBlogName = $storyBlogParams[1] )
       #set ( $storyBlogLink = $storyBlogParams[2] )
 
+      ## Output
       ## Yes, each block has className "third" (for 1/3rd?)
       <div class="third">
         <article class="story story-$foreach.count">
@@ -314,17 +317,13 @@
 #end
 
 #macro( buildMetaSocialBlock $storyLink $storyHeader )
-  ## Constants. (These should probably be https.)
-  #set ( $facebookUrl = 'http://www.facebook.com/sharer.php?u=' )
-  #set ( $twitterUrl = 'http://twitter.com/intent/tweet?text=' )
-
   ## Data
   ## Normalize header for Twitter.
   #set ( $headerStripped = $_DisplayTool.stripTags($storyHeader) )
   #set ( $headerNormed = $headerStripped.replaceAll("&amp;","and").replaceAll("""","").replaceAll("/\W/", "") )
   #set ( $escapedHeader = ${_EscapeTool.url($headerNormed)} )
-  #set ( $facebookLink = $facebookUrl + $storyLink )
-  #set ( $twitterLink = $twitterUrl + $escapedHeader + '&amp;url=' + $storyLink )
+  #set ( $facebookLink = $FACEBOOK_SHARE_URL + $storyLink )
+  #set ( $twitterLink = $TWITTER_SHARE_URL + $escapedHeader + '&amp;url=' + $storyLink )
 
   ## Output
   <p class="meta">
@@ -337,7 +336,6 @@
 
 ##
 ## Main Format Block
-## This should be first place developer looks for high level understanding of code flow.
 ##
 #setVars()
 #buildComponent()
