@@ -57,28 +57,28 @@
 #end
 
 ## Builds a basic page list item that has no dropdown (no children) in the left nav
-#macro ( buildSiblingPageListItem $sibling )
-    #set ( $siblingTitle = ${_EscapeTool.xml($sibling.label)} )
+#macro ( buildSiblingPageListItem $siblingPage )
+    #set ( $siblingPageTitle = ${_EscapeTool.xml($siblingPage.label)} )
 
-    #if ( $sibling.path == $currentPage.path )
+    #if ( $siblingPage.path == $currentPage.path )
         <li class="active">
     #else
         <li>
     #end
-        <a href="${sibling.link}" title="$siblingTitle" class="s-p">$siblingTitle</a>
+        <a href="${siblingPage.link}" title="$siblingPageTitle" class="s-p">$siblingPageTitle</a>
     </li>
 #end
 
 ## Sets up the folder list items in the left nav
-#macro ( buildSiblingFolderListItem $sibling $indexPage )
+#macro ( buildSiblingFolderListItem $siblingFolder $indexPage )
     ## For folders, the title displayed is the parent folder name
-    #set ( $siblingTitle = ${_EscapeTool.xml($indexPage.parentFolder.label)} )
-    #set ( $visibleChildren = [] )
+    #set ( $siblingFolderTitle = ${_EscapeTool.xml($indexPage.parentFolder.label)} )
+    #set ( $visibleChildAssets = [] )
 
     ## Get all children assets that aren't hidden
-    #foreach ( $asset in $sibling.children )
+    #foreach ( $asset in $siblingFolder.children )
         ## By default, set visibility to false
-        #set ( $visibleChild = false )
+        #set ( $isVisibleChild = false )
         #if ( $asset.assetType == 'folder')
             ## Both the folder and index page must be visible
             #set ( $folderVisible = $asset.metadata.getDynamicField('Hide from navigation').value != "Yes" )
@@ -86,14 +86,14 @@
             #set ( $folderIndexVisible = $folderIndexPage.metadata.getDynamicField('Hide from navigation').value != "Yes" )
             
             #if ( $folderIndexVisible && $folderVisible )
-                #set ( $visibleChild = true )
+                #set ( $isVisibleChild = true )
             #end
         #elseif ( $asset.assetType == 'page' && ($asset.name != 'index') )
-            #set ( $visibleChild = $asset.metadata.getDynamicField('Hide from navigation').value != "Yes" )
+            #set ( $isVisibleChild = $asset.metadata.getDynamicField('Hide from navigation').value != "Yes" )
         #end
         
-        #if ( $visibleChild )
-            #set ( $discard = $visibleChildren.add($asset) )
+        #if ( $isVisibleChild )
+            #set ( $discard = $visibleChildAssets.add($asset) )
         #end
     #end
     
@@ -104,21 +104,21 @@
         <li>
     #end
     
-    #if ( $visibleChildren.size() > 0 )
+    #if ( $visibleChildAssets.size() > 0 )
         <a href="${indexPage.link}" class="s-f-idx">
-            $siblingTitle
+            $siblingFolderTitle
             <span class="plus">+</span>
         </a>
         <ul class="leftNav-sub">
-            #foreach ( $child in $visibleChildren )
-                #buildChildListItem($child)
+            #foreach ( $asset in $visibleChildAssets )
+                #buildChildListItem($asset)
             #end
         </ul>
         </li>
     ## If it has no other children, it basically just looks like a page does in the left nav
     #else
         <a href="${indexPage.link}" class="s-f-idx">
-            $siblingTitle
+            $siblingFolderTitle
         </a>
         </li>
     #end
