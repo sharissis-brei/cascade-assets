@@ -1,11 +1,19 @@
-## Formerly LeftNavNoSiblings. Used for index pages.
+## Formerly LeftNavNoSiblings. Primarily used for index pages.
 ## New left nav format that works without a block
 
 #set ( $parentDir = $currentPage.parentFolder )
 
-## Builds the left navigation
-#macro ( buildLeftNav )
-    #buildLeftNavTitle()
+## Builds the left navigation for non-index pages (only shows the title)
+#macro ( buildNonIndexLeftNav )
+    #buildNonIndexLeftNavTitle()
+    ## Needs to have empty <ul> tags because otherwise title does not have a bottom margin
+    ## Without it, other left col widgets will show up directly under the left nav with no space
+    <ul></ul>
+#end
+
+## Builds the left navigation for index pages
+#macro ( buildIndexLeftNav )
+    #buildIndexLeftNavTitle()
     <ul>
     #foreach ( $child in $parentDir.children )
         #buildLeftNavMenu($child)
@@ -13,13 +21,27 @@
     </ul>
 #end
 
-## Builds the header for the left nav
-#macro ( buildLeftNavTitle )
+## Builds the header for the left nav on index pages
+#macro ( buildIndexLeftNavTitle )
     <div class="leftTitle">
         <ul>
             <li class="title">
             <a href="${parentDir.link}/index" target="_top" title="${_EscapeTool.xml($parentDir.label)}">
                 ${_EscapeTool.xml($parentDir.label)}
+            </a>
+            </li>
+        </ul>
+    </div>
+#end
+
+## Builds header for non-index pages that use this format
+## Non-index pages should display the title as the page display name and nothing else
+#macro ( buildNonIndexLeftNavTitle )
+    <div class="leftTitle">
+        <ul>
+            <li class="title">
+            <a href="${currentPage.link}" target="_top" title="${_EscapeTool.xml($currentPage.label)}">
+                ${_EscapeTool.xml($currentPage.label)}
             </a>
             </li>
         </ul>
@@ -141,4 +163,9 @@
 ##
 ## MAIN
 ##
-#buildLeftNav()
+## Two formats, depending on whether it's an index page or not
+#if($currentPage.name == 'index')
+    #buildIndexLeftNav()
+#else
+    #buildNonIndexLeftNav()
+#end
