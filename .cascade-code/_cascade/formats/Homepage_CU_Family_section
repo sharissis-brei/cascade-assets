@@ -3,41 +3,20 @@
  * Chapman Families Stories widget for Chapman home page.
  *
  * The code here is shocking similar to that in the Homepage Blog Stories format.
- *
- * TODO: Unify duplicate code from this format and Homepage Blog Stories format.
  *#
 
-##
-## Hardcoded Params
-##
-#set ( $FACEBOOK_SHARE_URL = 'http://www.facebook.com/sharer.php?u=' )
-#set ( $TWITTER_SHARE_URL = 'http://twitter.com/intent/tweet?text=' )
+ ##
+ ## Imports
+ ##
+ #import( "/_config/blogs.vm" )
+ #import( "/_config/social.vm" )
 
-## id => [ css class, blog title, blog link ]
-#set ( $BLOGS_MAP = {
-  'academics' : [ '', 'Higher Ed and Technology: Academics at Chapman', '' ],
-  'alumni' : [ '', 'Chapman Alumni', '' ],
-  'business' : [ 'business', 'Argyros School of Business and Economics', '' ],
-  'education' : [ 'education', 'Attallah College of Educational Studies', '' ],
-  'collections' : [ '', 'Art Collections', '' ],
-  'communication' : [ 'communication', 'School of Communication', '' ],
-  'copa' : [ 'copa', 'College of Performing Arts', '' ],
-  'crean' : [ 'crean', 'Crean College of Health and Behavioral Sciences', '' ],
-  'creating-a-childrens-book' : [ '', 'Creating a Children&quot;s Book and Blogging About It', '' ],
-  'dodge' : [ 'dodge', 'Dodge College of Film and Media Arts', '' ],
-  'happenings' : [ '', 'Happenings', '' ],
-  'holocaust-education' : [ '', 'Holocaust Education', '' ],
-  'huell-howser-archives' : [ '', 'Huell Howser Archives', '' ],
-  'law' : [ 'law', 'Fowler School of Law', '' ],
-  'magazine' : [ '', 'Chapman Magazine', '' ],
-  'pharmacy' : [ 'pharmacy', 'School of Pharmacy', '' ],
-  'press-room' : [ '', 'Press Room', '' ],
-  'scst' : [ 'scst', 'Schmid College of Science and Technology', '' ],
-  'smc' : [ '', 'Strategic Marketing and Communications', '' ],
-  'students' : [ '', 'One University (Student blog)', '' ],
-  'sustainability' : [ '', 'Sustainability', '' ],
-  'wilkinson' : [ 'wilkinson', 'Wilkinson College of Humanities and Social Sciences', '' ]
-})
+
+ ##
+ ## Hardcoded Params
+ ##
+ #set ( $FACEBOOK_SHARE_URL = $SOCIAL_CONFIG['facebook']['shareUrl'] )
+ #set ( $TWITTER_SHARE_URL = $SOCIAL_CONFIG['twitter']['shareUrl'] )
 
 
 ##
@@ -45,7 +24,6 @@
 ##
 #set ( $currentPage = $_XPathTool.selectSingleNode($contentRoot, "//system-page[@current]") )
 #set ( $familyData = $currentPage.getChild('system-data-structure').getChild('chapmanFamily') )
-#set ( $blogID = $familyData.getChild('blogName').value )
 #set ( $header = $familyData.getChild('header').value )
 
 #set ( $smallStories = $_XPathTool.selectNodes($familyData, "./story") )
@@ -82,8 +60,7 @@
 ## Build Macros
 ##
 #macro ( buildChapmanFamilyBlock )
-  <!-- Homepage Blog Stories Macro -->
-  <!-- topStoryBlogID: $topStoryBlogID -->
+  <!-- Chapman Family Section Macro -->
   <section id="chapmanFamily" class="section light-bg stories">
     <div class="maxWidth">
       <h2 class="heading skrollable skrollable-after" data-bottom="opacity:0;" data-center="opacity:1;">
@@ -108,67 +85,69 @@
   ## There are three trending stories
   #if ( $smallStories.size() > 0 )
     #foreach ( $story in $smallStories )
-      ## Data
-      ## Set category vars.
-      #set ( $storyCategoryLink = $story.getChild('topCategory').getChild('link').value )
-      #set ( $storyCategoryText = $story.getChild('topCategory').getChild('text').value )
-
-      ## Set story link.
-      #set ( $storyLink = $story.getChild('link').value )
-
-      ## if url to story starts with // then the compound link to Twitter using that
-      ## url won't work. Append https: in front.
-      #if ( $storyLink.substring(0,2) == "//" )
-        #set ( $storyLink = "https:" + $storyLink )
-      #end
-
-      ## Set story header vars.
-      #set ( $storyHeader = $story.getChild('header').value )
-      #set ( $storyHeaderStripped = $_DisplayTool.stripTags($storyHeader) )
-      #set ( $storyHeaderCtaLabel = $storyHeaderStripped.replaceAll("&amp;","and").replaceAll("""","").replaceAll("/\W/", "") )
-
-      ## Set story image vars
-      #set ( $storyImageAltText = $story.getChild('image').getChild('altText').value )
-      #set ( $storyImageExternalLink = $story.getChild('image').getChild('link').value )
-      #set ( $storyImageInternalLink = $story.getChild('image').getChild('internalLink').getChild('path').value )
-      #if ( $storyImageExternalLink != '' )
-        #set ( $storyImage = $storyImageExternalLink )
-      #elseif ( $storyImageInternalLink != '' && $storyImageInternalLink != '/' )
-        ## This renders image inside Cascade.
-        #set ( $storyImage = "[system-asset:local]${storyImageInternalLink}[/system-asset:local]")
-      #else
-        #set ( $storyImage = '' )
-      #end
-
-      ## Set story footer vars
-      #set ( $mapKey = $story.getChild('blogName').value )
-      #set ( $storyBlogParams = $BLOGS_MAP[$mapKey] )
-      #set ( $storyCss = $storyBlogParams[0] )
-      #set ( $storyBlogName = $storyBlogParams[1] )
-      #set ( $storyBlogLink = $storyBlogParams[2] )
-
-      ## Output
-      <div class="third">
-        <article class="story">
-          <a class="tag" href="$storyCategoryLink">#$storyCategoryText</a>
-
-          <a class="permalink" href="$storyLink">
-            <h2 class="title">$storyHeader</h2>
-            <div class="story-bg" style="background-image:url('$storyImage');">
-              <img src="$storyImage" alt="$storyImageAltText" />
-            </div>
-          </a>
-
-          <footer class="story_footer">
-            <p class="source blogname $storyCss">
-              <a href="$storyBlogLink">$storyBlogName</a>
-            </p>
-            #buildMetaSocialBlock( $storyLink $storyHeader )
-          </footer>
-        </article>
-      </div>
+      #buildStoryArticleBlock($story)
     #end
   #end
+#end
+
+#macro ( buildStoryArticleBlock $story )
+  ## Data
+  #set ( $storyCategoryLink = $story.getChild('topCategory').getChild('link').value )
+  #set ( $storyCategoryText = $story.getChild('topCategory').getChild('text').value )
+  #set ( $storyHeader = $story.getChild('header').value )
+  #set ( $storyLink = $story.getChild('link').value )
+
+  ## if url to story starts with // then the compound link to Twitter using that
+  ## url won't work. Append https: in front.
+  #if ( $storyLink.substring(0,2) == "//" )
+    #set ( $storyLink = "https:" + $storyLink )
+  #end
+
+  ## Set story image vars
+  #set ( $storyImageAltText = $story.getChild('image').getChild('altText').value )
+  #set ( $storyImageExternalLink = $story.getChild('image').getChild('link').value )
+  #set ( $storyImageInternalLink = $story.getChild('image').getChild('internalLink').getChild('path').value )
+  #if ( $storyImageExternalLink != '' )
+    #set ( $storyImage = $storyImageExternalLink )
+  #elseif ( $storyImageInternalLink != '' && $storyImageInternalLink != '/' )
+    ## This renders image inside Cascade.
+    #set ( $storyImage = "[system-asset:local]${storyImageInternalLink}[/system-asset:local]")
+  #else
+    #set ( $storyImage = '' )
+  #end
+
+  ## Output
+  <div class="third">
+    <article class="story">
+      <a class="tag" href="$storyCategoryLink">#$storyCategoryText</a>
+
+      <a class="permalink" href="$storyLink">
+        <h2 class="title">$storyHeader</h2>
+        <div class="story-bg" style="background-image:url('$storyImage');">
+          <img src="$storyImage" alt="$storyImageAltText" />
+        </div>
+      </a>
+
+      #buildStoryArticleBlockFooter( $story $storyLink $storyHeader )
+    </article>
+  </div>
+#end
+
+#macro ( buildStoryArticleBlockFooter $story $storyLink $storyHeader )
+  ## Data
+  #set ( $storyBlogName = $story.getChild('blogName').value )
+  #set ( $storyBlogParams = $BLOGS_CONFIG[$storyBlogName] )
+  #set ( $storyBlogTitle = $storyBlogParams[0] )
+  #set ( $storyCss = $storyBlogParams[1] )
+  #set ( $storyBlogLink = "https://blogs.chapman.edu/${storyBlogName}" )
+
+  ## Output
+  <footer class="story_footer">
+    <p class="source blogname $storyCss">
+      <a href="$storyBlogLink">$storyBlogTitle</a>
+    </p>
+    #buildMetaSocialBlock( $storyLink $storyHeader )
+  </footer>
 #end
 
 #macro( buildMetaSocialBlock $storyLink $storyHeader )

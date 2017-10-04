@@ -243,12 +243,12 @@
   ## Output
   ## Yes, each block has className "third" (for 1/3rd?)
   <div class="third">
-    <article class="story story-$foreach.count">
+    <article class="story story-$storyIndex">
       <a class="tag" href="$storyCategoryLink">#$storyCategoryText</a>
 
       <a class="permalink smc-cta"
          href="$storyLink"
-         data-cta-id="Trending Story $foreach.count"
+         data-cta-id="Trending Story $storyIndex"
          data-cta-label="$storyHeaderCtaLabel">
         ## Limit title to 50 characters. (Not sure why that's being announced here.)
         <h2 class="title">$storyHeader</h2>
