@@ -71,8 +71,6 @@
   #set ( $topStoryExcerpt = ${_SerializerTool.serialize($topStory.getChild('excerpt'), true)} )
   #set ( $topStoryImages = $_XPathTool.selectNodes($currentPage, "./system-data-structure/BlogStories/topStory/images") )
   #set ( $topStoryLinkText = $topStory.getChild('extraLink').getChild('text').value )
-  #set ( $topStoryExtraLinkLink = $topStory.getChild('extraLink').getChild('link').value )
-  #set ( $topStoryExtraLinkInternalLinkPath = $topStory.getChild('extraLink').getChild('internalLink').getChild('path').value )
 #end
 
 #macro ( setTrendingStoriesVars )
