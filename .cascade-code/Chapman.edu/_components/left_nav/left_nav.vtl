@@ -23,11 +23,13 @@
 
 ## Builds the header for the left nav
 #macro ( buildLeftNavTitle )
+    #set ( $folderIndexPage = $_.locatePage("${parentDir.path}/index" ) )
+    
     <div class="leftTitle">
         <ul>
             <li class="title">
-                <a href="${parentDir.link}/index" target="_top" title="${_EscapeTool.xml($parentDir.label)}" >
-                    ${_EscapeTool.xml($parentDir.label)}
+                <a href="${folderIndexPage.link}" target="_top" title="${_EscapeTool.xml($folderIndexPage.label)}" >
+                    ${_EscapeTool.xml($folderIndexPage.label)}
                 </a>
             </li>
         </ul>
@@ -71,8 +73,8 @@
 
 ## Sets up the folder list items in the left nav
 #macro ( buildSiblingFolderListItem $siblingFolder $indexPage )
-    ## For folders, the title displayed is the parent folder name
-    #set ( $siblingFolderTitle = ${_EscapeTool.xml($indexPage.parentFolder.label)} )
+    ## For folders, the title displayed is the display name of its index page
+    #set ( $siblingFolderTitle = ${_EscapeTool.xml($indexPage.label)} )
     #set ( $visibleChildAssets = [] )
 
     ## Get all children assets that aren't hidden

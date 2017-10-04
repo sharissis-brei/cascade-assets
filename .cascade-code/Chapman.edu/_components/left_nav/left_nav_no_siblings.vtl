@@ -143,10 +143,10 @@
             #set ( $grandchildTitle = ${_EscapeTool.xml($grandchild.label)} )
 
             #if ( $grandchild.assetType == 'page' )
-                #set ( $grandchildLink = "${child.link}" )
+                #set ( $grandchildLink = "${grandchild.link}" )
                 #set ( $grandchildClass = "c-p" )
             #elseif ( $grandchild.assetType == 'folder' )
-                #set ( $grandchildLink = "${child.link}/index" )
+                #set ( $grandchildLink = "${grandchild.link}/index" )
                 #set ( $grandchildClass = "c-f" )
             #end
 
