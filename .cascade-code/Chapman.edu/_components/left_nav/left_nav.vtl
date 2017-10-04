@@ -14,17 +14,20 @@
 
 ## Builds left navigation
 #macro ( buildLeftNav )
-    #buildLeftNavTitle()
-    <ul>
+    ## Data
     #set ( $siblings = $parentDir.children )
+    
+    ## Output
+    #buildLeftNavTitle()
     #buildLeftNavMenu($siblings)
-    </ul>
 #end
 
 ## Builds the header for the left nav
 #macro ( buildLeftNavTitle )
+    ## Data
     #set ( $folderIndexPage = $_.locatePage("${parentDir.path}/index" ) )
     
+    ## Output
     <div class="leftTitle">
         <ul>
             <li class="title">
@@ -38,6 +41,7 @@
 
 ## Builds menu in the left nav
 #macro ( buildLeftNavMenu $siblings )
+    <ul>
     #foreach ( $sibling in $siblings )
         #set ( $isVisible = $sibling.metadata.getDynamicField('Hide from navigation').value != "Yes" )
 
@@ -56,23 +60,28 @@
             #end
         #end
     #end
+    </ul>
 #end
 
 ## Builds a basic page list item that has no dropdown (no children) in the left nav
 #macro ( buildSiblingPageListItem $siblingPage )
+    ## Data
     #set ( $siblingPageTitle = ${_EscapeTool.xml($siblingPage.label)} )
-
     #if ( $siblingPage.path == $currentPage.path )
-        <li class="active">
+        #set ( $liClass = "active" )
     #else
-        <li>
+        #set ( $liClass = "unstyled-inactive" )
     #end
-        <a href="${siblingPage.link}" title="$siblingPageTitle" class="s-p">$siblingPageTitle</a>
+    
+    ## Output
+    <li class="${liClass}">
+        <a href="${siblingPage.link}" title="${siblingPageTitle}" class="s-p">$siblingPageTitle</a>
     </li>
 #end
 
 ## Sets up the folder list items in the left nav
 #macro ( buildSiblingFolderListItem $siblingFolder $indexPage )
+    ## Data
     ## For folders, the title displayed is the display name of its index page
     #set ( $siblingFolderTitle = ${_EscapeTool.xml($indexPage.label)} )
     #set ( $visibleChildAssets = [] )
@@ -99,7 +108,7 @@
         #end
     #end
     
-    ## Building the actual output
+    ## Output
     #if ( $indexPage.path == $currentPage.path )
         <li class="active">
     #else
@@ -128,8 +137,8 @@
 
 ## Sets up the children of a sibling, submenus in the left nav
 #macro ( buildChildListItem $child )
+    ## Data
     #set ( $childTitle = ${_EscapeTool.xml($child.label)} )
-
     #if ( $child.assetType == 'page' )
         #set ( $childClass = "c-p" )
         #set ( $childLink = "${child.link}" )
@@ -138,6 +147,7 @@
         #set ( $childLink = "${child.link}/index" )
     #end
     
+    ## Output
     <li>
         <a href="${childLink}" title="${childTitle}" class="${childClass}">
             <span class="bullet">» </span>
