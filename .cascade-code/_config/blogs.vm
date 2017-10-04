@@ -15,10 +15,10 @@
 #set ( $BLOGS_CONFIG = {
   'academics' : [ 'Higher Ed and Technology: Academics at Chapman', '' ],
   'alumni' : [ 'Chapman Alumni', '' ],
-  'business' : [ 'business', 'Argyros School of Business and Economics', '' ],
-  'education' : [ 'education', 'Attallah College of Educational Studies', '' ],
+  'business' : [ 'Argyros School of Business and Economics', 'business' ],
+  'education' : [ 'Attallah College of Educational Studies', 'education' ],
   'collections' : [ 'Art Collections', '' ],
-  'communication' : [ 'communication', 'School of Communication', '' ],
+  'communication' : [ 'School of Communication', 'communication' ],
   'copa' : [ 'College of Performing Arts', 'copa' ],
   'crean' : [ 'Crean College of Health and Behavioral Sciences', 'crean' ],
   'creating-a-childrens-book' : [ 'Creating a Children&quot;s Book and Blogging About It', '' ],

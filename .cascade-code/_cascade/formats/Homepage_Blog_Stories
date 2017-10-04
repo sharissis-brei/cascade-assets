@@ -63,9 +63,9 @@
 
   ## Top Story Vars
   #set ( $topStoryHeader = $topStory.getChild('header').value )
+  #set ( $topStoryLink = $topStory.getChild('link').value )
   #set ( $topStoryHeaderStripped = $_DisplayTool.stripTags($topStoryHeader) )
   #set ( $topStoryCtaLabel = $topStoryHeaderStripped.replaceAll("&amp;","and").replaceAll("""","").replaceAll("/\W/", "") )
-  #set ( $topStoryLink = $topStory.getChild('link').value )
   #set ( $topStoryCategoryText = $topStory.getChild('topCategory').getChild('text').value )
   #set ( $topStoryCategoryLink = $topStory.getChild('topCategory').getChild('link').value )
   #set ( $topStoryExcerpt = ${_SerializerTool.serialize($topStory.getChild('excerpt'), true)} )
@@ -73,15 +73,6 @@
   #set ( $topStoryLinkText = $topStory.getChild('extraLink').getChild('text').value )
   #set ( $topStoryExtraLinkLink = $topStory.getChild('extraLink').getChild('link').value )
   #set ( $topStoryExtraLinkInternalLinkPath = $topStory.getChild('extraLink').getChild('internalLink').getChild('path').value )
-
-  ## Set Top Story Link
-  #if ( $topStoryExtraLinkLink != '' )
-    #set ( $topStoryLink = $topStoryExtraLinkLink )
-  #elseif ($topStoryExtraLinkInternalLinkPath != '' && $topStoryExtraLinkInternalLinkPath != '/')
-    #set ( $topStoryLink = $topStoryExtraLinkInternalLinkPath )
-  #else
-    #set ( $topStoryLink = '#' )
-  #end
 #end
 
 #macro ( setTrendingStoriesVars )
@@ -252,7 +243,10 @@
          data-cta-label="$storyHeaderCtaLabel">
         ## Limit title to 50 characters. (Not sure why that's being announced here.)
         <h2 class="title">$storyHeader</h2>
-        <div class="story-bg" style="background-image:url('$storyImage');">
+        <div class="story-bg"
+             style="background-image:url('$storyImage');"
+             role="img"
+             aria-label="$storyImageAltText">
           <img src="$storyImage" alt="$storyImageAltText" />
         </div>
       </a>
