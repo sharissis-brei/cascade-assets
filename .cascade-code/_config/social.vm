@@ -1,0 +1,18 @@
+#*
+ * Chapman.edu/_config/social.vm
+ * Social settings.
+ *
+ * Usage:
+ * #import( "/_config/social.vm" )
+ *
+ * #set ( $TWITTER_SHARE_URL = $SOCIAL_CONFIG['twitter']['shareUrl'] )
+ *#
+
+#set ( $SOCIAL_CONFIG = {
+  'facebook' : {
+    'shareUrl' : 'http://www.facebook.com/sharer.php?u='
+  },
+  'twitter' : {
+    'shareUrl' : 'http://twitter.com/intent/tweet?text='
+  }
+})
