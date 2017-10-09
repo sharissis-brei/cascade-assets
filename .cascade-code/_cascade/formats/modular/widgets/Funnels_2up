@@ -37,7 +37,7 @@
   #set ( $altText = $funnel.getChild('altText').value )
   #set ( $imageUrl = $funnel.getChild('image').getChild('path').value )
   #set ( $headlineText = $funnel.getChild('headline').value )
-  #set ( $links = $_XPathTool.selectNodes($region.getChild('links'), "link") )
+  #set ( $links = $_XPathTool.selectNodes($funnel.getChild('links'), "link") )
   #set ( $details = $funnel.getChild('copy').value )
 
   #if ( $altText == "" )
