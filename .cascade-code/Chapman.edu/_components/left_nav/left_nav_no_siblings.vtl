@@ -85,7 +85,7 @@
     
     ## Output
     <li class="${liClass}">
-        <a href="${childPage.link}" title="${childPageTitle}" class="s-p">$childPageTitle</a>
+        <a href="${childPage.link}" title="${childPageTitle}">$childPageTitle</a>
     </li>
 #end
 
@@ -126,7 +126,7 @@
     ## Needs to have a dropdown if it has visible children
     #if ( $visibleChildAssets.size() > 0 )
         <li>
-            <a href="${folderIndexPage.link}" class="s-f-idx">
+            <a href="${folderIndexPage.link}">
                 $childFolderTitle
                 <span class="plus">+</span>
             </a>
@@ -136,7 +136,7 @@
     ## If it has no visible children it's basically just a page
     #else
         <li>
-            <a href="${folderIndexPage.link}" class="s-f-idx">
+            <a href="${folderIndexPage.link}">
             $childFolderTitle
             </a>
         </li>               
@@ -151,15 +151,13 @@
             #set ( $grandchildTitle = ${_EscapeTool.xml($grandchild.label)} )
             #if ( $grandchild.assetType == 'page' )
                 #set ( $grandchildLink = "${grandchild.link}" )
-                #set ( $grandchildClass = "c-p" )
             #elseif ( $grandchild.assetType == 'folder' )
                 #set ( $grandchildLink = "${grandchild.link}/index" )
-                #set ( $grandchildClass = "c-f" )
             #end
     
             ## Output
             <li>
-                <a href="$grandchildLink" title="$grandchildTitle" class="$grandchildClass">
+                <a href="$grandchildLink" title="$grandchildTitle">
                     <span class="bullet">» </span>
                     $grandchildTitle
                 </a>
