@@ -75,7 +75,7 @@
     
     ## Output
     <li class="${liClass}">
-        <a href="${siblingPage.link}" title="${siblingPageTitle}" class="s-p">$siblingPageTitle</a>
+        <a href="${siblingPage.link}" title="${siblingPageTitle}">$siblingPageTitle</a>
     </li>
 #end
 
@@ -116,7 +116,7 @@
     #end
     
     #if ( $visibleChildAssets.size() > 0 )
-        <a href="${indexPage.link}" class="s-f-idx">
+        <a href="${indexPage.link}">
             $siblingFolderTitle
             <span class="plus">+</span>
         </a>
@@ -128,7 +128,7 @@
         </li>
     ## If it has no other children, it basically just looks like a page does in the left nav
     #else
-        <a href="${indexPage.link}" class="s-f-idx">
+        <a href="${indexPage.link}">
             $siblingFolderTitle
         </a>
         </li>
@@ -140,16 +140,14 @@
     ## Data
     #set ( $childTitle = ${_EscapeTool.xml($child.label)} )
     #if ( $child.assetType == 'page' )
-        #set ( $childClass = "c-p" )
         #set ( $childLink = "${child.link}" )
     #elseif ( $child.assetType == 'folder' )
-        #set ( $childClass = "c-f" )
         #set ( $childLink = "${child.link}/index" )
     #end
     
     ## Output
     <li>
-        <a href="${childLink}" title="${childTitle}" class="${childClass}">
+        <a href="${childLink}" title="${childTitle}">
             <span class="bullet">» </span>
             $childTitle
         </a>
