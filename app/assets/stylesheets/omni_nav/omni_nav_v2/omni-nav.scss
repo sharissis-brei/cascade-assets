@@ -61,37 +61,103 @@ html.omni-nav-v2 {
     }
   }
 
-  .omni-nav-search-box {
-    position: relative;
-    width: 100%;
+  // These elements are dynamically created by google cusom search API
+  // Needed to override googles default styling
+  table.gsc-search-box {
+    margin-bottom: 0;
 
-    .omni-nav-search-input {
-      width: 100%;
-      margin: 0;
-      border: 1px solid #545454;
-      border-radius: 0;
-      font-weight: 800;
-      color: $utility-nav-background-color;
-    }
-
-    .search-icon {
-      position: absolute;
-      display: inline-block;
-      top: 0; bottom: 0; left: 54px;
-      width: $square-icon-size;
-      height: $square-icon-size;
-      margin: auto;
-
-      svg {
-        display: block;
-        fill: $utility-nav-background-color;
-      }
-
-      &.hide {
-        display: none;
-      }
+    td.gsc-input {
+       padding-right: 0;
     }
   }
+
+  .cu-search-box form.gsc-search-box {
+    position: relative;
+    width: 100%;
+    margin-bottom: 0;
+
+    input.gsc-input  {
+      padding-right: 0;
+      height: $gcs-search-box-height;
+      width: 100%;
+      margin: 0;
+      border: none;
+      border-radius: 0;
+      box-shadow: none;
+      font-weight: 800;
+      color: $utility-nav-background-color;
+      @include vendorize(appearance, none);
+    }
+
+    input.gsc-search-button {
+      display: inline-block;
+      width: $square-icon-size;
+      height: $gcs-search-box-height;
+      margin: auto;
+      border: none;
+      box-shadow: none;
+      border-radius: 0;
+      outline: none;
+      background-color: white;
+      background-image: image-url('search.svg');
+      background-size: 16px;
+      background-position: center;
+      background-repeat: no-repeat;
+      text-indent: -9999px;
+    }
+  }
+
+  .search-results-container {
+    display: none;
+    position: absolute;
+    top: $primary-nav-height;
+    left: 0;
+    width: 100%;
+    z-index: 669;
+    overflow-y: scroll;
+  }
+
+  .cu-search-results {
+    height: 90%;
+    overflow-y: scroll;
+
+    .gsc-control-cse { padding: 18px 23px 15px 20px; }
+    .gsc-selected-option-container { min-width: 95px; }
+    .gsc-cursor-box { display: none; }
+
+    .gs-title {
+      text-decoration: none;
+      a.gs-title, b {
+        font-size: 16px;
+        text-decoration: none;
+        text-decoration-line: none;
+        color: $red;
+
+      }
+      a.gs-title:visited {
+        color: #3b6f87;
+        b { color: #3b6f87; }
+      }
+    }
+
+    .gs-visibleUrl { color: #8a8a8a; }
+
+    // Custom more results link
+    .more-results, .utility-nav .more-results {
+        display: block;
+        padding: 14px;
+        margin: 0 auto;
+        background: #eaeaea;
+        border-radius: 3px;
+        font-size: 12px;
+        color: $black;
+        text-align: center;
+        text-decoration: none;
+
+        &:hover { background: #CCCCCC;}
+    }
+  }
+
 
   /* UTILITY NAV
   ---------------------------------------- */
@@ -112,7 +178,9 @@ html.omni-nav-v2 {
       vertical-align: middle;
 
       &.utility-search {
-        .utility-cell {
+        position: relative;
+
+        .utility-cell.search-type {
           border-right: none;
           padding-right: 0px;
         }
@@ -121,6 +189,8 @@ html.omni-nav-v2 {
           li { padding-right: 16px; }
           & > li:last-child { padding-left: 0px; }
         }
+
+
       }
 
       &.utility-links {
@@ -202,13 +272,14 @@ html.omni-nav-v2 {
         li:hover { background-color: $utility-nav-background-color; }
       }
 
-      a {
-        font-size: 14px;
-        line-height: 14px;
-        font-weight: 500;
-        color: $white;
-        vertical-align: middle;
-      }
+    }
+
+    a {
+      font-size: 14px;
+      line-height: 14px;
+      font-weight: 500;
+      color: $white;
+      vertical-align: middle;
     }
   }
 
@@ -230,6 +301,14 @@ html.omni-nav-v2 {
 
     @include media($large-screen) {
       height: $primary-nav-height;
+    }
+
+    .primary-nav-search {
+      .cu-search-box{ margin-right: 8px; }
+
+      input.gsc-input, input.gsc-search-button { border: 1px solid #545454;}
+      input.gsc-input { border-right: none; }
+      input.gsc-search-button { border-left: none; }
     }
 
     &.search-open {
