@@ -620,7 +620,7 @@ html.omni-nav-v2 {
     position: absolute;
     top: 60px; left: 0px;
     width: $primary-nav-dropdown-width;
-    z-index: 667;
+    z-index: 668; //needs to be on top of primary-nav
 
     ul {
       list-style-type: none;
