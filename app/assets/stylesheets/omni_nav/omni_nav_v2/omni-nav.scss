@@ -61,6 +61,19 @@ html.omni-nav-v2 {
     }
   }
 
+  #search-results-overlay {
+    display: none;
+    position: fixed;
+    background: rgba(0,0,0,0.4);
+    left: 0;
+    top: 0;
+    width: 100%;
+    height: 100%;
+    z-index: 666;
+  }
+
+  &.search-results-open #search-results-overlay { display: block; }
+
   // These elements are dynamically created by google cusom search API
   // Needed to override googles default styling
   table.gsc-search-box {
@@ -113,7 +126,6 @@ html.omni-nav-v2 {
     top: $primary-nav-height;
     left: 0;
     width: 100%;
-    z-index: 669;
     overflow-y: scroll;
   }
 
@@ -124,9 +136,27 @@ html.omni-nav-v2 {
     .gsc-control-cse { padding: 18px 23px 15px 20px; }
     .gsc-selected-option-container { min-width: 95px; }
     .gsc-cursor-box { display: none; }
+    .gsc-result-info, .gsc-orderby-label { color: #2f2f2f; }
+
+    .gs-snippet {
+      line-height: 16px;
+      color: $black;
+    }
+
+    .gsc-above-wrapper-area {
+      padding-top: 0;
+      margin-bottom: 16px;
+    }
+
+    .gsc-result-info {
+      font-size: 12px;
+    }
 
     .gs-title {
       text-decoration: none;
+      padding-bottom: 5px;
+      height: auto;
+
       a.gs-title, b {
         font-size: 16px;
         text-decoration: none;
@@ -140,7 +170,7 @@ html.omni-nav-v2 {
       }
     }
 
-    .gs-visibleUrl { color: #8a8a8a; }
+    .gs-visibleUrl { color: #2f2f2f; }
 
     // Custom more results link
     .more-results, .utility-nav .more-results {
@@ -179,6 +209,8 @@ html.omni-nav-v2 {
 
       &.utility-search {
         position: relative;
+        z-index: 669; //search bar & search results need to be on top of overlay and primary-nav action icons
+        cursor: auto;
 
         .utility-cell.search-type {
           border-right: none;
@@ -287,12 +319,14 @@ html.omni-nav-v2 {
   ---------------------------------------- */
   #primary-nav {
     @include pad(0 $base-spacing);
+    position: relative;
     background-color: $white;
     width: 100%;
     height: $primary-nav-height;
     line-height: $primary-nav-height;
     overflow: visible;
     border-bottom: 1px solid #999999;
+    z-index: 667; //needs to be on top of search results overlay
 
     @include media($medium-screen) {
       padding: 0;
@@ -303,12 +337,18 @@ html.omni-nav-v2 {
       height: $primary-nav-height;
     }
 
-    .primary-nav-search {
+    #primary-nav-search {
       .cu-search-box{ margin-right: 8px; }
-
+      .search-results-container { line-height: normal; }
       input.gsc-input, input.gsc-search-button { border: 1px solid #545454;}
       input.gsc-input { border-right: none; }
       input.gsc-search-button { border-left: none; }
+
+      .gs-visibleUrl {
+        font-size: 12px;
+        line-height: 16px;
+        margin: 4px 0;
+      }
     }
 
     &.search-open {
