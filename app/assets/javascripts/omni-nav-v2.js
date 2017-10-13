@@ -18,7 +18,6 @@ var OmniNav2 = (function() {
     $utilitySearch = $utilityNav.find('.utility-search');
     $('.utility-nav-trigger').on('click', onUtilityNavClick);
     $utilityNav.find('li.utility-has-dropdown').on('click', onUtilityNavDropdownClick);
-    $utilitySearch.find('.search-type-option').on('click', onUtilitySearchSelect);
 
     // Remove padding from theme version. Have to use js because css will not work.
     // See https://stackoverflow.com/a/1014958/6763239
@@ -73,11 +72,6 @@ var OmniNav2 = (function() {
     });
   };
 
-  var onUtilitySearchSelect = function() {
-    var searchType = $(this).children('a').text();
-    $("#selected-search-type").text(searchType);
-  };
-
   var GoogleCustomSearch = (function() {
     var GCS_ENGINE_ID = '015856566681218627934:2ndbiubovo4';
     var GCS_SOURCE = location.protocol + '//www.google.com/cse/cse.js?cx=' + GCS_ENGINE_ID;
@@ -117,26 +111,31 @@ var OmniNav2 = (function() {
     // two-column GCS(named by Google) layout consists of a search box and separate search results container
     // Layout option is set in the GCS control panel
     var TwoColumnGCS = function() {
-      var SEARCH_RESULTS_BASE_URL = "www.chapman.edu/search-results/index.aspx?";
-      var ENTER_KEY = 13;
-      var ESC_KEY = 27;
+      var SEARCH_RESULTS_BASE_URL = "www.chapman.edu/search-results/index.aspx?",
+        ENTER_KEY = 13,
+        ESC_KEY = 27,
+        DEFAULT_FILTER_TEXT = "Search From";
 
       var $element,
           $searchBox,
           $searchResults,
           $searchResultsContainer,
           $loadMoreResultsButton,
+          $selectedSearchFilter,
           elementName,
           searchBoxConfig,
           searchResultsConfig,
+          hasSearchFilters,
           gcsElement;
 
       var initialize = function($el) {
         $element = $el;
-        $searchBox = $element.children(".cu-search-box");
-        $searchResultsContainer = $element.children('.search-results-container');
-        $searchResults = $searchResultsContainer.children('.cu-search-results');
+        $searchBox = $element.find(".cu-search-box");
+        $searchResultsContainer = $element.find('.search-results-container');
+        $searchResults = $searchResultsContainer.find('.cu-search-results');
+        $selectedSearchFilter = $element.find('.selected-search-filter');
         elementName = $element[0].id;
+        hasSearchFilters = $element.find('.search-filter-option').length;
 
         searchBoxConfig = {
           gname: elementName,
@@ -167,13 +166,19 @@ var OmniNav2 = (function() {
         gcsElement = google.search.cse.element.getElement(elementName);
         $loadMoreResultsButton = $searchResults.find('.more-results');
 
+        //event binding
+        $element.find('.search-filter-option').on('click', onSearchFilterClick);
         $searchBox.find('input.gsc-search-button').on('click', onSearchEnter);
         $searchBox.find('input.gsc-input').on('keyup', onSearchEnter);
         $searchBox.find('.gsc-clear-button').on('click', hideSearchResults);
       };
 
+      var onSearchFilterClick = function() {
+        $selectedSearchFilter.text($(this).text());
+      }
+
       var onSearchEnter = function(e) {
-        if((e.type == 'click' || e.which == ENTER_KEY) && gcsElement.getInputQuery().length > 0){
+        if((e.type == 'click' || e.which == ENTER_KEY) && gcsElement.getInputQuery().length > 0) {
           showSearchResults();
         }
       }
@@ -186,7 +191,6 @@ var OmniNav2 = (function() {
         if($(e.target).is($searchResults, $searchBox) || $searchResults.has(e.target).length || $searchBox.has(e.target).length) {
           return;
         }
-
         hideSearchResults();
       }
 
@@ -199,17 +203,36 @@ var OmniNav2 = (function() {
       var showSearchResults = function() {
         var term = gcsElement.getInputQuery();
         $loadMoreResultsButton.text('See more results for "'+term+'"');
-        $searchResultsContainer.fadeIn(200);
         $container.addClass('search-results-open');
         lockScroll();
         $(document).on('keyup', onSearchEsc);
         $(document).on('click', onDocumentClick);
+
+        // Trigger a click on the GCS tab corresponding to the search type dropdown selection
+        // unfortunately GCS does not provide a callback for when search results
+        // are returned so must use timeout
+        if(hasSearchFilters) {
+          setTimeout(function() {
+            //tabs are created after each search executes so don't cache these selectors
+            $('.gsc-tabsArea .gsc-tabHeader').each(function() {
+              if ($(this).text() == $selectedSearchFilter.text()) {
+                $(this).trigger('click');
+                return false;
+              }
+            });
+
+            $searchResultsContainer.fadeIn(200);
+          }, 500);
+        } else { $searchResultsContainer.fadeIn(200); }
       };
 
       var hideSearchResults = function() {
         $searchResultsContainer.fadeOut(200);
         $container.removeClass('search-results-open');
         unlockScroll();
+
+        gcsElement.clearAllResults();
+        if(hasSearchFilters){ $selectedSearchFilter.text(DEFAULT_FILTER_TEXT); }
         $(document).off('keyup', onSearchEsc);
         $(document).off('click', onDocumentClick);
       };
