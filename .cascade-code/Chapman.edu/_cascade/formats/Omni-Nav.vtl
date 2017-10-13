@@ -38,14 +38,14 @@
 
 ## Directories - Chapman University's Umbrella Categories
 ## WARNING: Next 4 lists are mapped together.
-#set ( $directories = ["/business", "/education", "/dodge", "/crean", "/wilkinson", "/copa", "/pharmacy", "/law", "/scst", "/about", "/academics", "/admission", "/alumni", "/campus-services", "/faculty-staff", "/families", "/research", "/students", "/support-chapman", "/communication"] )
+#set ( $directories = ["/business", "/education", "/dodge", "/crean", "/wilkinson", "/copa", "/pharmacy", "/law", "/scst", "/about", "/academics", "/admission", "/alumni", "/campus-services", "/faculty-staff", "/families", "/research", "/students", "/support-chapman", "/communication", "/campus-services/career-development"] )
 ## Umbrella Categories
-#set ( $umbrellaCats = ["ARGYROS SCHOOL", "ATTALLAH COLLEGE", "DODGE COLLEGE", "CREAN COLLEGE", "WILKINSON COLLEGE", "CoPA", "CUSP", "FOWLER SCHOOL OF LAW", "SCHMID COLLEGE", "About", "Academics", "Admission", "Alumni", "Campus Services", "Faculty and Staff", "Families", "Research", "Students", "Support Chapman", "SCHOOL OF COMM"] )
+#set ( $umbrellaCats = ["ARGYROS SCHOOL", "ATTALLAH COLLEGE", "DODGE COLLEGE", "CREAN COLLEGE", "WILKINSON COLLEGE", "CoPA", "CUSP", "FOWLER SCHOOL OF LAW", "SCHMID COLLEGE", "About", "Academics", "Admission", "Alumni", "Campus Services", "Faculty and Staff", "Families", "Research", "Students", "Support Chapman", "SCHOOL OF COMM", "Career"] )
 ## Paths to Umbrella Categories Logos
 ##set ( $umbrellaCatsImages = ["off-canvas-header-asbe.png", "off-canvas-header-ces.png", "off-canvas-header-education.png", "off-canvas-header-dodge.png", "off-canvas-header-crean.png", "off-canvas-header-wilkinson.png", "off-canvas-header-copa.png", "off-canvas-header-cusp.png", "off-canvas-header-fowler.png", "off-canvas-header-schmid.png", "off-canvas-header-default.png", "off-canvas-header-default.png", "off-canvas-header-default.png", "off-canvas-header-default.png", "off-canvas-header-default.png", "off-canvas-header-default.png", "off-canvas-header-default.png", "off-canvas-header-default.png", "off-canvas-header-default.png", "off-canvas-header-default.png", "off-canvas-header-soc.png"] )
-#set ( $umbrellaCatsClasses = ["asbe", "education", "dodge", "crean", "wilkinson", "copa", "cusp", "fowler", "schmid", "default", "default", "default", "default", "default", "default", "default", "default", "default", "default", "soc"] )
+#set ( $umbrellaCatsClasses = ["asbe", "education", "dodge", "crean", "wilkinson", "copa", "cusp", "fowler", "schmid", "default", "default", "default", "default", "default", "default", "default", "default", "default", "default", "soc", "default"] )
 ## Umbrella Categories Paths
-#set ( $umbrellaCatsPaths = ["business/index.aspx", "education/index.aspx", "dodge/index.aspx", "crean/index.aspx", "wilkinson/index.aspx", "copa/index.aspx", "pharmacy/index.aspx", "law/index.aspx", "scst/index.aspx", "/", "/", "/", "/", "/", "/", "/", "/", "/", "/", "communication/index.aspx"] )
+#set ( $umbrellaCatsPaths = ["business/index.aspx", "education/index.aspx", "dodge/index.aspx", "crean/index.aspx", "wilkinson/index.aspx", "copa/index.aspx", "pharmacy/index.aspx", "law/index.aspx", "scst/index.aspx", "/", "/", "/", "/", "/", "/", "/", "/", "/", "/", "communication/index.aspx", "/"] )
 
 ## Determine whether or not the secondary menu for Schools & Colleges should display as well as any additional assets
 #macro ( display $page, $directories )
@@ -79,7 +79,12 @@
 #set ( $defaultPageName = "/index" )
 ## Current Directory Path
 #set ( $currentDirectoryPath = $directories.get($counter) )
-#set ( $topLevelXPath = "//system-index-block/system-folder[path = '${currentDirectoryPath}']/system-folder | //system-index-block/system-folder[path = '${currentDirectoryPath}']/system-page[name != 'index']" )
+## Career is not in root so parent directory is different, it's an extra folder down
+#if ( $currentDirectoryPath == "/campus-services/career-development" )
+    #set ( $topLevelXPath = "//system-index-block/system-folder/system-folder[path = '${currentDirectoryPath}']/system-folder | //system-index-block/system-folder/system-folder[path = '${currentDirectoryPath}']/system-page[name != 'index']" )
+#else
+    #set ( $topLevelXPath = "//system-index-block/system-folder[path = '${currentDirectoryPath}']/system-folder | //system-index-block/system-folder[path = '${currentDirectoryPath}']/system-page[name != 'index']" )
+#end
 ## Parent siblings
 ## #set ( $parentSiblings = $_XPathTool.selectNodes($root, "//system-folder[system-folder[@current = 'true']]/system-folder | //system-folder[system-folder[@current = 'true']]/system-page[name != 'index']") )
 #set ( $parentSiblings = $_XPathTool.selectNodes($root, $topLevelXPath) )
