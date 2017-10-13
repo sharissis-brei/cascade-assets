@@ -99,12 +99,6 @@
             background: image-url('chapman_logo_horizontal_color.svg'), linear-gradient(transparent, transparent);
             background-repeat: no-repeat;
             background-size: contain;
-
-            @include bp(m) {
-              height: 28px;
-              width: 273px;
-              margin: 0;
-            }
           }
         }
 
