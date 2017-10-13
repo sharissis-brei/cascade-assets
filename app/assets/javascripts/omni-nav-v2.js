@@ -84,7 +84,7 @@ var OmniNav2 = (function() {
     var searchElements = [];
 
     var initialize = function() {
-      searchElements = $(".cu-search-box");
+      searchElements = $(".cu-two-column-gcs");
 
       // Must define window.__gsce before GCS script loads
       // Source: https://developers.google.com/custom-search/docs/tutorial/implementingsearchbox
@@ -121,7 +121,8 @@ var OmniNav2 = (function() {
       var ENTER_KEY = 13;
       var ESC_KEY = 27;
 
-      var $searchBox,
+      var $element,
+          $searchBox,
           $searchResults,
           $searchResultsContainer,
           $loadMoreResultsButton,
@@ -131,10 +132,11 @@ var OmniNav2 = (function() {
           gcsElement;
 
       var initialize = function($el) {
-        $searchBox = $el;
-        $searchResultsContainer = $searchBox.next('.search-results-container');
+        $element = $el;
+        $searchBox = $element.children(".cu-search-box");
+        $searchResultsContainer = $element.children('.search-results-container');
         $searchResults = $searchResultsContainer.children('.cu-search-results');
-        elementName = $searchBox[0].id;
+        elementName = $element[0].id;
 
         searchBoxConfig = {
           gname: elementName,
@@ -181,10 +183,11 @@ var OmniNav2 = (function() {
       }
 
       var onDocumentClick = function(e) {
-        if($searchResultsContainer.not(e.target) && $searchResultsContainer.has(e.target).length === 0
-          && $searchBox.not(e.target) && $searchBox.has(e.target).length === 0 ) {
-          hideSearchResults();
+        if($(e.target).is($searchResults, $searchBox) || $searchResults.has(e.target).length || $searchBox.has(e.target).length) {
+          return;
         }
+
+        hideSearchResults();
       }
 
       var renderGCSMarkup = function() {
@@ -197,16 +200,16 @@ var OmniNav2 = (function() {
         var term = gcsElement.getInputQuery();
         $loadMoreResultsButton.text('See more results for "'+term+'"');
         $searchResultsContainer.fadeIn(200);
+        $container.addClass('search-results-open');
         lockScroll();
-
         $(document).on('keyup', onSearchEsc);
         $(document).on('click', onDocumentClick);
       };
 
       var hideSearchResults = function() {
         $searchResultsContainer.fadeOut(200);
+        $container.removeClass('search-results-open');
         unlockScroll();
-
         $(document).off('keyup', onSearchEsc);
         $(document).off('click', onDocumentClick);
       };
