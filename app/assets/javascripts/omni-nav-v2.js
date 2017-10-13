@@ -15,7 +15,6 @@ var OmniNav2 = (function() {
     $container = container;
     $utilityNav = $container.find('.utility-nav');
     $primaryNav = $container.find('#primary-nav');
-    $utilitySearch = $utilityNav.find('.utility-search');
     $('.utility-nav-trigger').on('click', onUtilityNavClick);
     $utilityNav.find('li.utility-has-dropdown').on('click', onUtilityNavDropdownClick);
 
@@ -197,7 +196,12 @@ var OmniNav2 = (function() {
       var renderGCSMarkup = function() {
         google.search.cse.element.render(searchBoxConfig, searchResultsConfig);
         $searchBox.find('input.gsc-input').attr('placeholder', 'Search');
-        $searchResults.find('.gsc-control-cse').append($('<a>', {class: "more-results", href: SEARCH_RESULTS_BASE_URL}));
+        $searchResults.find('.gsc-control-cse').append($('<a>', {
+          class: "more-results",
+          href: SEARCH_RESULTS_BASE_URL,
+          title: "See more results",
+          text: "See more results"
+        }));
       };
 
       var showSearchResults = function() {

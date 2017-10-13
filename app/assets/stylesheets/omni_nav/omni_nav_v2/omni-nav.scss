@@ -172,6 +172,13 @@ html.omni-nav-v2 {
 
     .gs-visibleUrl { color: #2f2f2f; }
 
+    .gs-per-result-labels a.gs-label, span {
+      color: $black;
+      font-size: 12px;
+      line-height: 12px;
+      vertical-align: inherit;
+    }
+
     // Custom more results link
     .more-results, .utility-nav .more-results {
         display: block;
