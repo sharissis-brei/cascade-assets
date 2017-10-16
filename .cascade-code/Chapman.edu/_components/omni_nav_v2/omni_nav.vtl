@@ -123,10 +123,25 @@
   #set ( $umbrellaFolder = $_.locateFolder($umbrellaDirectoryPath) )
 
   #foreach( $childAsset in $umbrellaFolder.children )
-    #set ( $metaHide = $childAsset.metadata.getDynamicField('Hide from navigation').value )
-
-    ## Skip if hidden or is index page.
-    #if ( $metaHide != 'Yes' && $childAsset.name != 'index' )
+    ## When the 'Hide from navigation' box is not checked, and it has never been checked, the metadata 
+    ## field doesn't exist for that asset. When the box is not checked, but it was at one point, it exists with a value of ''.
+    ## See Github issue: https://github.com/chapmanu/cascade-assets/issues/262
+    ## By default, set visibility to false
+    #set ( $isVisibleChild = false )
+    #if ( $childAsset.assetType == 'folder')
+      ## Both the folder and index page must be visible
+      #set ( $folderVisible = $childAsset.metadata.getDynamicField('Hide from navigation').value != "Yes" )
+      #set ( $folderIndexPage = $_.locatePage("${childAsset.path}/index" ) )
+      #set ( $folderIndexVisible = $folderIndexPage.metadata.getDynamicField('Hide from navigation').value != "Yes" )
+      
+      #if ( $folderIndexVisible && $folderVisible )
+          #set ( $isVisibleChild = true )
+      #end
+    #elseif ( $childAsset.assetType == 'page' && ($childAsset.name != 'index') )
+      #set ( $isVisibleChild = $childAsset.metadata.getDynamicField('Hide from navigation').value != "Yes" )
+    #end
+    
+    #if ( $isVisibleChild )
       #set ( $discard = $umbrellaAssets.add($childAsset) )
     #end
   #end
@@ -549,7 +564,7 @@
       #end
 
       <div id="main-logo" class="toggle-logo">
-        <a class="default-logo-cu off-logo" href="/" title="Chapman University Website Home Page">
+        <a class="default off-logo" href="/" title="Chapman University Website Home Page">
           <!-- logo set as background image by class -->
         </a>
         #buildOffCanvasNavCloseIcon()
@@ -723,45 +738,54 @@
 #macro ( buildSecondaryMenuItem $asset )
   ## This builds a menu link for the secondary menu. It will either be a link or a
   ## drop-down menu with multiple links.
-  #set ( $metaHideSetting = $asset.metadata.getDynamicField('Hide from navigation').value )
-  #set ( $isVisible = $metaHideSetting != 'Yes' )
+  ## The setUmbrellaAssets macro already filters out hidden assets
   #set ( $assetType = $asset.assetType )
 
-  ## If hidden, continue. But velocity doesn't have a continue operator:
-  ## https://stackoverflow.com/questions/7530019/apache-velocity-foreach-loop-continue
-  #if ( $isVisible )
-    #if ( $assetType == 'page' )
-      <li><a href="${asset.path}">${_EscapeTool.xml($asset.metadata.displayName)}</a></li>
+  #if ( $assetType == 'page' )
+    <li><a href="${asset.path}">${_EscapeTool.xml($asset.metadata.displayName)}</a></li>
+  
+  #elseif ( $assetType == 'folder' )
+    ## Collect folder's visible children.
+    #set ( $visibleChildren = [] )
 
-    #elseif ( $assetType == 'folder' )
-      ## Collect folder's visible children.
-      #set ( $visibleChildren = [] )
-      #foreach ( $assetChild in $asset.children )
-        #set ( $metaHideSetting = $assetChild.metadata.getDynamicField('Hide from navigation').value )
-        #set ( $isVisible = $metaHideSetting != 'Yes' )
-        #if ( $isVisible && $assetChild.name != 'index' )
-          #set ( $discard = $visibleChildren.add($assetChild) )
-        #end
+    #foreach( $childAsset in $asset.children )
+      ## By default, set visibility to false
+      #set ( $isVisibleChild = false )
+      #if ( $childAsset.assetType == 'folder')
+          ## Both the folder and index page must be visible
+          #set ( $folderVisible = $childAsset.metadata.getDynamicField('Hide from navigation').value != "Yes" )
+          #set ( $folderIndexPage = $_.locatePage("${childAsset.path}/index" ) )
+          #set ( $folderIndexVisible = $folderIndexPage.metadata.getDynamicField('Hide from navigation').value != "Yes" )
+          
+          #if ( $folderIndexVisible && $folderVisible )
+              #set ( $isVisibleChild = true )
+          #end
+      #elseif ( $childAsset.assetType == 'page' && ($childAsset.name != 'index') )
+          #set ( $isVisibleChild = $childAsset.metadata.getDynamicField('Hide from navigation').value != "Yes" )
       #end
 
-      ## Link for folder. Include drop-down if folder has visible children.
-      <li>
-        <a href="${asset.path}/index">${_EscapeTool.xml($asset.metadata.displayName)}</a>
-
-        #if ( $visibleChildren.size() > 0 )
-          <span class="toggle"><span>+</span></span>
-          <ul>
-            #foreach ( $child in $visibleChildren )
-              #if ( $child.assetType == "page" )
-                <li><a href="${child.path}">${_EscapeTool.xml($child.metadata.displayName)}</a></li>
-              #elseif ( $child.assetType == "folder" )
-                <li><a href="${child.path}/index">${_EscapeTool.xml($child.metadata.displayName)}</a></li>
-              #end
-            #end
-          </ul>
-        #end
-      </li>
+      #if ( $isVisibleChild )
+          #set ( $discard = $visibleChildren.add($childAsset) )
+      #end
     #end
+  
+    ## Link for folder. Include drop-down if folder has visible children.
+    <li>
+      <a href="${asset.path}/index">${_EscapeTool.xml($asset.metadata.displayName)}</a>
+  
+      #if ( $visibleChildren.size() > 0 )
+        <span class="toggle"><span>+</span></span>
+        <ul>
+          #foreach ( $child in $visibleChildren )
+            #if ( $child.assetType == "page" )
+              <li><a href="${child.path}">${_EscapeTool.xml($child.metadata.displayName)}</a></li>
+            #elseif ( $child.assetType == "folder" )
+              <li><a href="${child.path}/index">${_EscapeTool.xml($child.metadata.displayName)}</a></li>
+            #end
+          #end
+        </ul>
+      #end
+    </li>
   #end
 #end
 
