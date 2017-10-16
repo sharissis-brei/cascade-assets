@@ -367,24 +367,6 @@
 		},
 		{
 			"type": "undergraduate",
-			"title": "Underwater Basket Weaving",
-			"img": {
-				"src": "img/temp/program-image-1.jpg",
-				"alt": "Image alt goes here"
-			},
-			"href": "#",
-			"degreeTypes": {
-				"title": ["Integrated/4+1"],
-				"type": ["integrated/4+1"]
-			},
-			"desc": "Short program description lorem ipsum dolor sit amet, consectetur adipisicing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua. Ut enim ad minim veniam, quis nostrud exercitation ullamco laboris nisi ut aliquip. Short program description lorem ipsum dolor sit amet, consectetur adipisicing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua. Ut enim ad minim veniam, quis nostrud exercitation ullamco laboris nisi ut aliquip.",
-			"motivations": ["expressing", "experiencing"],
-			"interests": ["performing-arts", "experiencing-interest-b"],
-			"schools": ["copa"],
-			"campus": ["Main Campus"]
-		},
-		{
-			"type": "undergraduate",
 			"title": "Undeclared",
 			"img": {
 				"src": "img/temp/program-image-1.jpg",
