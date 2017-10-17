@@ -110,7 +110,7 @@ var OmniNav2 = (function() {
     // two-column GCS(named by Google) layout consists of a search box and separate search results container
     // Layout option is set in the GCS control panel
     var TwoColumnGCS = function() {
-      var SEARCH_RESULTS_BASE_URL = "www.chapman.edu/search-results/index.aspx?",
+      var SEARCH_RESULTS_BASE_URL = "//www.chapman.edu/search-results/index.aspx?",
         ENTER_KEY = 13,
         ESC_KEY = 27,
         DEFAULT_FILTER_TEXT = "Search From";
@@ -125,7 +125,8 @@ var OmniNav2 = (function() {
           searchBoxConfig,
           searchResultsConfig,
           hasSearchFilters,
-          gcsElement;
+          gcsElement,
+          resizeTimer;
 
       var initialize = function($el) {
         $element = $el;
@@ -170,6 +171,7 @@ var OmniNav2 = (function() {
         $searchBox.find('input.gsc-search-button').on('click', onSearchEnter);
         $searchBox.find('input.gsc-input').on('keyup', onSearchEnter);
         $searchBox.find('.gsc-clear-button').on('click', hideSearchResults);
+        $(window).on('resize', onSearchResultsResize);
       };
 
       var onSearchFilterClick = function() {
@@ -193,6 +195,11 @@ var OmniNav2 = (function() {
         hideSearchResults();
       }
 
+      var onSearchResultsResize = function() {
+        clearTimeout(resizeTimer);
+        resizeTimer = setTimeout(updateSearchResultsHeight, 500);
+      }
+
       var renderGCSMarkup = function() {
         google.search.cse.element.render(searchBoxConfig, searchResultsConfig);
         $searchBox.find('input.gsc-input').attr('placeholder', 'Search');
@@ -207,6 +214,7 @@ var OmniNav2 = (function() {
       var showSearchResults = function() {
         var term = gcsElement.getInputQuery();
         $loadMoreResultsButton.text('See more results for "'+term+'"');
+        $loadMoreResultsButton.attr('href', SEARCH_RESULTS_BASE_URL + 'q=' + encodeURIComponent(term));
         $container.addClass('search-results-open');
         lockScroll();
         $(document).on('keyup', onSearchEsc);
