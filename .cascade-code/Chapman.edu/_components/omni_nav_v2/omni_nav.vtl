@@ -164,6 +164,8 @@
   #buildUtilityNav()
   #buildPrimaryNav()
   #buildOffCanvasNav()
+
+  <!-- Page overlay for when search results are displayed -->
   <div id="search-results-overlay"></div>
 </div>
 #end
@@ -318,10 +320,8 @@
 #end
 
 #macro ( buildPrimaryNavSearchBox )
-  <div class="nav-container primary-nav-search">
-    <div class="cu-two-column-gcs" id ="primary-nav-search">
-      #buildSearchBox()
-    </div>
+  <div class="nav-container" id="primary-nav-search">
+    #buildSearchBox()
   </div>
 #end
 
@@ -493,7 +493,7 @@
 #macro ( buildSearchComponent )
   #set ($searchFilters = ["All", "Blog Stories", "Faculty Directory", "Events", "Main Website"])
 
-  <div class="utility-nav-container utility-search cu-two-column-gcs" id ="utility-nav-search">
+  <div class="utility-nav-container utility-search" id="utility-nav-search">
     <ul class="utility-list">
       <li class="utility-cell search-type utility-has-dropdown">
         <a class="selected-search-filter">Search From</a>

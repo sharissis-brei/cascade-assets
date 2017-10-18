@@ -345,6 +345,8 @@ html.omni-nav-v2 {
     }
 
     #primary-nav-search {
+      display: none;
+
       .cu-search-box{ margin-right: 8px; }
       .search-results-container { line-height: normal; }
       input.gsc-input, input.gsc-search-button { border: 1px solid #545454;}
@@ -359,7 +361,7 @@ html.omni-nav-v2 {
     }
 
     &.search-open {
-      .nav-container.primary-nav-search {
+      #primary-nav-search {
         display: block;
         overflow: hidden;
         float: none;
@@ -389,10 +391,6 @@ html.omni-nav-v2 {
         svg {
           vertical-align: middle;
         }
-      }
-
-      &.primary-nav-search {
-        display: none;
       }
 
       &.left-nav-container {
