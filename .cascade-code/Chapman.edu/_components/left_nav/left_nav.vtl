@@ -61,7 +61,7 @@
             #buildSiblingPageListItem($sibling)
 
         ## Sibling is a folder
-        #elseif ( $sibling.assetType == 'folder' && $isVisible )
+        #elseif ( $sibling.assetType == 'folder' && $isVisible && $sibling.name != '_files' )
             #set ( $indexPage = $_.locatePage("${sibling.path}/index") )
             #set ( $visibleIndex = $indexPage.metadata.getDynamicField('Hide from navigation').value != "Yes" )
             
@@ -101,7 +101,7 @@
     #foreach ( $asset in $siblingFolder.children )
         ## By default, set visibility to false
         #set ( $isVisibleChild = false )
-        #if ( $asset.assetType == 'folder')
+        #if ( $asset.assetType == 'folder' && $asset.name != '_files' )
             ## Both the folder and index page must be visible
             #set ( $folderVisible = $asset.metadata.getDynamicField('Hide from navigation').value != "Yes" )
             #set ( $folderIndexPage = $_.locatePage("${asset.path}/index" ) )
