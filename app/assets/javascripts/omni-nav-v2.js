@@ -15,6 +15,7 @@ var OmniNav2 = (function() {
     $container = container;
     $utilityNav = $container.find('.utility-nav');
     $primaryNav = $container.find('#primary-nav');
+    $('html').addClass('omni-nav-v2');
     $('.utility-nav-trigger').on('click', onUtilityNavClick);
     $utilityNav.find('li.utility-has-dropdown').on('click', onUtilityNavDropdownClick);
 
@@ -129,6 +130,7 @@ var OmniNav2 = (function() {
 
     // two-column GCS(named by Google) layout consists of a search box and separate search results container
     // Layout option is set in the GCS control panel
+    // Each GCS element must have a unique id to use as it's gname
     var TwoColumnGCS = function() {
       var SEARCH_RESULTS_BASE_URL = "//www.chapman.edu/search-results/index.aspx?",
         ENTER_KEY = 13,
@@ -364,5 +366,8 @@ var OmniNav2 = (function() {
 })();
 
 $(document).ready(function () {
-  OmniNav2.init($('#omni-nav-v2'));
+  //prevent conflicts with omni-nav-v1
+  if($('#omni-nav-v2').length) {
+    OmniNav2.init($('#omni-nav-v2'));
+  }
 });
