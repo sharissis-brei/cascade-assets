@@ -74,10 +74,16 @@ var OmniNav2 = (function() {
   var GoogleCustomSearch = (function() {
     var GCS_ENGINE_ID = '015856566681218627934:2ndbiubovo4';
     var GCS_SOURCE = location.protocol + '//www.google.com/cse/cse.js?cx=' + GCS_ENGINE_ID;
-    var searchElements = [];
+
+    var utilityNavGCS,
+        primaryNavGCS,
+        $utilitySearch,
+        $primarySearch,
+        resizeTimer;
 
     var initialize = function() {
-      searchElements = $(".cu-two-column-gcs");
+      $utilitySearch = $('#utility-nav-search');
+      $primarySearch = $('#primary-nav-search');
 
       // Must define window.__gsce before GCS script loads
       // Source: https://developers.google.com/custom-search/docs/tutorial/implementingsearchbox
@@ -98,13 +104,27 @@ var OmniNav2 = (function() {
           s.parentNode.insertBefore(gcse, s);
         })();
       }
+
+      $(window).on('resize', onWindowResize);
     };
 
+    var onWindowResize = function() {
+      clearTimeout(resizeTimer);
+
+      resizeTimer = setTimeout(function(){
+        if($(window).width() >= TABLET_BREAKPOINT && $primarySearch.hasClass('search-results-open')) {
+          primaryNavGCS.hideSearchResults();
+        } else if($(window).width() < TABLET_BREAKPOINT && $utilitySearch.hasClass('search-results-open')) {
+          utilityNavGCS.hideSearchResults();
+        }
+      }, 250);
+    }
+
     var loadGCSElements = function() {
-      searchElements.each(function() {
-        var element = new TwoColumnGCS();
-        element.init($(this));
-      });
+      utilityNavGCS = new TwoColumnGCS();
+      primaryNavGCS = new TwoColumnGCS();
+      utilityNavGCS.init($utilitySearch);
+      primaryNavGCS.init($primarySearch);
     };
 
     // two-column GCS(named by Google) layout consists of a search box and separate search results container
@@ -216,6 +236,7 @@ var OmniNav2 = (function() {
         $loadMoreResultsButton.text('See more results for "'+term+'"');
         $loadMoreResultsButton.attr('href', SEARCH_RESULTS_BASE_URL + 'q=' + encodeURIComponent(term));
         $container.addClass('search-results-open');
+        $element.addClass('search-results-open');
         lockScroll();
         $(document).on('keyup', onSearchEsc);
         $(document).on('click', onDocumentClick);
@@ -239,10 +260,10 @@ var OmniNav2 = (function() {
       };
 
       var hideSearchResults = function() {
-        $searchResultsContainer.fadeOut(200);
+        $searchResultsContainer.hide();
         $container.removeClass('search-results-open');
+        $element.removeClass('search-results-open');
         unlockScroll();
-
         gcsElement.clearAllResults();
         if(hasSearchFilters){ $selectedSearchFilter.text(DEFAULT_FILTER_TEXT); }
         $(document).off('keyup', onSearchEsc);
@@ -276,6 +297,7 @@ var OmniNav2 = (function() {
 
       return {
         init: initialize,
+        hideSearchResults: hideSearchResults
       };
     };
 
