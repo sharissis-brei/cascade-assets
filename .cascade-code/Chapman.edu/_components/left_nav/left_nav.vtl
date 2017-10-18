@@ -63,11 +63,12 @@
         ## Sibling is a folder
         #elseif ( $sibling.assetType == 'folder' && $isVisible && $sibling.name != '_files' )
             #set ( $indexPage = $_.locatePage("${sibling.path}/index") )
-            #set ( $visibleIndex = $indexPage.metadata.getDynamicField('Hide from navigation').value != "Yes" )
+            ## This makes sure the previous line returned the expected page
+            #set ( $indexPageExists = ( $indexPage.path == "${sibling.path}/index" ) )
+            #set ( $visibleIndex = $indexPageExists && ($indexPage.metadata.getDynamicField('Hide from navigation').value != "Yes") )
             
             ## Only if the index page is also visible
-            ## Also make sure the correct index page was found
-            #if ( $visibleIndex && ( $indexPage.path == "${sibling.path}/index" ) )
+            #if ( $visibleIndex )
                 #buildSiblingFolderListItem($sibling $indexPage)
             #end
         #end
@@ -105,11 +106,12 @@
         #if ( $asset.assetType == 'folder' && $asset.name != '_files' )
             #set ( $folderVisible = $asset.metadata.getDynamicField('Hide from navigation').value != "Yes" )
             #set ( $folderIndexPage = $_.locatePage("${asset.path}/index" ) )
-            #set ( $folderIndexVisible = $folderIndexPage.metadata.getDynamicField('Hide from navigation').value != "Yes" )
+            ## This makes sure the previous line returned the expected index page
+            #set ( $folderIndexExists = ( $folderIndexPage.path == "${asset.path}/index" ) )
+            #set ( $folderIndexVisible = $folderIndexExists && ($folderIndexPage.metadata.getDynamicField('Hide from navigation').value != "Yes") )
             
             ## Both the folder and index page must be visible
-            ## Also make sure this asset's index page was found correctly
-            #if ( $folderIndexVisible && $folderVisible && ( $folderIndexPage.path == "${asset.path}/index" ) )
+            #if ( $folderIndexVisible && $folderVisible )
                 #set ( $isVisibleChild = true )
             #end
         #elseif ( $asset.assetType == 'page' && ($asset.name != 'index') )

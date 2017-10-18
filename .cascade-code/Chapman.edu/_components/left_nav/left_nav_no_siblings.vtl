@@ -62,11 +62,11 @@
         #elseif ( $childAsset.assetType == 'folder' && $isVisible && $childAsset.name != '_files' )
             ## For folders, also need to check visibility of index page
             #set ( $folderIndexPage = $_.locatePage("${childAsset.path}/index") )
-            #set ( $visibleIndex = $folderIndexPage.metadata.getDynamicField('Hide from navigation').value != "Yes" )
+            ## This verifies that the previous line found the correct index page we're expecting
+            #set ( $folderIndexPageExists = ($folderIndexPage.path == "${childAsset.path}/index") )
+            #set ( $visibleIndex = $folderIndexPageExists && ($folderIndexPage.metadata.getDynamicField('Hide from navigation').value != "Yes") )
             
-            ## Only if the child folder's index page is also visible
-            ## Also verify $folderIndexPage found the right index page
-            #if ( $visibleIndex && ($folderIndexPage.path == "${childAsset.path}/index") )
+            #if ( $visibleIndex )
                 #buildChildFolderListItem($childAsset)
             #end
         #end
@@ -106,11 +106,12 @@
         #if ( $asset.assetType == 'folder' && $asset.name != '_files' )
             #set ( $folderVisible = $asset.metadata.getDynamicField('Hide from navigation').value != 'Yes')
             #set ( $childIndexPage = $_.locatePage("${asset.path}/index") )
-            #set ( $folderIndexVisible = $childIndexPage.metadata.getDynamicField('Hide from navigation').value != 'Yes')
+            ## This makes sure the previous line returned the expected page
+            #set ( $childIndexExists = ($childIndexPage.path == "${asset.path}/index") )
+            #set ( $folderIndexVisible = $childIndexExists && ($childIndexPage.metadata.getDynamicField('Hide from navigation').value != 'Yes') )
             
             ## Folder and index of the folder both have to be visible
-            ## Also make sure it found the right child index, some folders don't have one
-            #if ( $folderVisible && $folderIndexVisible && ($childIndexPage.path == "${asset.path}/index"))
+            #if ( $folderVisible && $folderIndexVisible )
                 #set ( $isVisibleChild = true )
             #end
 
