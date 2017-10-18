@@ -25,14 +25,25 @@
 ## Builds the header for the left nav
 #macro ( buildLeftNavTitle )
     ## Data
-    #set ( $folderIndexPage = $_.locatePage("${parentDir.path}/index" ) )
+    #if ( $parentDir.path == "/" )
+        ## For folders under the root, the index doesn't need another forward slash
+        #set ( $folderIndexPage = $_.locatePage("${parentDir.path}index" ) )
+        #set ( $titleLink = $folderIndexPage.link )
+        ## This $title variable should be $folderIndexPage.label, but for the home page
+        ## that label is way too long.
+        #set ( $leftNavTitle = "Chapman University" )
+    #else
+        #set ( $folderIndexPage = $_.locatePage("${parentDir.path}/index" ) )
+        #set ( $titleLink = $folderIndexPage.link )
+        #set ( $leftNavTitle = ${_EscapeTool.xml($folderIndexPage.label)} )
+    #end
     
     ## Output
     <div class="leftTitle">
         <ul>
             <li class="title">
-                <a href="${folderIndexPage.link}" target="_top" title="${_EscapeTool.xml($folderIndexPage.label)}" >
-                    ${_EscapeTool.xml($folderIndexPage.label)}
+                <a href="${titleLink}" target="_top" title="${leftNavTitle}" >
+                    ${leftNavTitle}
                 </a>
             </li>
         </ul>
