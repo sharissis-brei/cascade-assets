@@ -25,14 +25,25 @@
 ## Builds the header for the left nav
 #macro ( buildLeftNavTitle )
     ## Data
-    #set ( $folderIndexPage = $_.locatePage("${parentDir.path}/index" ) )
+    #if ( $parentDir.path == "/" )
+        ## For folders under the root, the index doesn't need another forward slash
+        #set ( $folderIndexPage = $_.locatePage("${parentDir.path}index" ) )
+        #set ( $titleLink = $folderIndexPage.link )
+        ## This $title variable should be $folderIndexPage.label, but for the home page
+        ## that label is way too long.
+        #set ( $leftNavTitle = "Chapman University" )
+    #else
+        #set ( $folderIndexPage = $_.locatePage("${parentDir.path}/index" ) )
+        #set ( $titleLink = $folderIndexPage.link )
+        #set ( $leftNavTitle = ${_EscapeTool.xml($folderIndexPage.label)} )
+    #end
     
     ## Output
     <div class="leftTitle">
         <ul>
             <li class="title">
-                <a href="${folderIndexPage.link}" target="_top" title="${_EscapeTool.xml($folderIndexPage.label)}" >
-                    ${_EscapeTool.xml($folderIndexPage.label)}
+                <a href="${titleLink}" target="_top" title="${leftNavTitle}" >
+                    ${leftNavTitle}
                 </a>
             </li>
         </ul>
@@ -50,9 +61,11 @@
             #buildSiblingPageListItem($sibling)
 
         ## Sibling is a folder
-        #elseif ( $sibling.assetType == 'folder' && $isVisible )
+        #elseif ( $sibling.assetType == 'folder' && $isVisible && $sibling.name != '_files' )
             #set ( $indexPage = $_.locatePage("${sibling.path}/index") )
-            #set ( $visibleIndex = $indexPage.metadata.getDynamicField('Hide from navigation').value != "Yes" )
+            ## This makes sure the previous line returned the expected page
+            #set ( $indexPageExists = ( $indexPage.path == "${sibling.path}/index" ) )
+            #set ( $visibleIndex = $indexPageExists && ($indexPage.metadata.getDynamicField('Hide from navigation').value != "Yes") )
             
             ## Only if the index page is also visible
             #if ( $visibleIndex )
@@ -90,12 +103,14 @@
     #foreach ( $asset in $siblingFolder.children )
         ## By default, set visibility to false
         #set ( $isVisibleChild = false )
-        #if ( $asset.assetType == 'folder')
-            ## Both the folder and index page must be visible
+        #if ( $asset.assetType == 'folder' && $asset.name != '_files' )
             #set ( $folderVisible = $asset.metadata.getDynamicField('Hide from navigation').value != "Yes" )
             #set ( $folderIndexPage = $_.locatePage("${asset.path}/index" ) )
-            #set ( $folderIndexVisible = $folderIndexPage.metadata.getDynamicField('Hide from navigation').value != "Yes" )
+            ## This makes sure the previous line returned the expected index page
+            #set ( $folderIndexExists = ( $folderIndexPage.path == "${asset.path}/index" ) )
+            #set ( $folderIndexVisible = $folderIndexExists && ($folderIndexPage.metadata.getDynamicField('Hide from navigation').value != "Yes") )
             
+            ## Both the folder and index page must be visible
             #if ( $folderIndexVisible && $folderVisible )
                 #set ( $isVisibleChild = true )
             #end
