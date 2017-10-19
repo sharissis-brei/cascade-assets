@@ -45,11 +45,11 @@
   #end
 
   #if ( $headlineLinkType == 'Internal Link' )
-    #set ( $isLink = true )
     #set ( $headlineLink = $funnel.getChild('headlineLink').getChild('internalLink').getChild('path').value )
+    #set ( $isLink = $headlineLink != '' && $headlineLink != '/' )
   #elseif ( $headlineLinkType == 'External Link' )
-    #set ( $isLink = true )
     #set ( $headlineLink = $funnel.getChild('headlineLink').getChild('externalLink').value )
+    #set ( $isLink = $headlineLink != '' && $headlineLink != '/' )
   #else
     #set ( $isLink = false )
   #end
