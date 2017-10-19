@@ -56,7 +56,7 @@
 
   ## Output
   <div class="funnelBlock">
-    #buildFunnelBlockFeatureImage( $isLink $headlineLink $imageUrl $altText )
+    #buildFunnelBlockFeatureImage( $imageUrl $altText )
     #buildFunnelBlockHeader( $isLink $headlineLink $headlineText )
 
     ## "copy" is additional descriptive text that goes under header
@@ -72,21 +72,12 @@
   </div>
 #end
 
-#macro( buildFunnelBlockFeatureImage $isLink $headlineLink $imageUrl $altText )
+#macro( buildFunnelBlockFeatureImage $imageUrl $altText )
   <div class="featureImage">
-    #if ( $isLink )
-      <a href="${_EscapeTool.xml($headlineLink)}">
-        <img src="$imageUrl"
-             alt="${_EscapeTool.xml($altText)}"
-             height="$FUNNEL_FEATURE_IMAGE_HEIGHT"
-             width="$FUNNEL_FEATURE_IMAGE_WIDTH" />
-      </a>
-    #else
-      <img src="$imageUrl"
-           alt="${_EscapeTool.xml($altText)}"
-           height="$FUNNEL_FEATURE_IMAGE_HEIGHT"
-           width="$FUNNEL_FEATURE_IMAGE_WIDTH" />
-    #end
+    <img src="$imageUrl"
+         alt="${_EscapeTool.xml($altText)}"
+         height="$FUNNEL_FEATURE_IMAGE_HEIGHT"
+         width="$FUNNEL_FEATURE_IMAGE_WIDTH" />
   </div>
 #end
 
