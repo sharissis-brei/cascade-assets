@@ -164,6 +164,9 @@
   #buildUtilityNav()
   #buildPrimaryNav()
   #buildOffCanvasNav()
+
+  <!-- Page overlay for when search results are displayed -->
+  <div id="search-results-overlay"></div>
 </div>
 #end
 
@@ -317,7 +320,7 @@
 #end
 
 #macro ( buildPrimaryNavSearchBox )
-  <div class="nav-container primary-nav-search">
+  <div class="nav-container" id="primary-nav-search">
     #buildSearchBox()
   </div>
 #end
@@ -488,9 +491,20 @@
 #end
 
 #macro ( buildSearchComponent )
-  <div class="utility-nav-container utility-search">
+  #set ($searchFilters = ["All", "Blog Stories", "Faculty Directory", "Events", "Main Website"])
+
+  <div class="utility-nav-container utility-search" id="utility-nav-search">
     <ul class="utility-list">
-      <li class="utility-cell search-type utility-has-dropdown"><a>Search from</a></li>
+      <li class="utility-cell search-type utility-has-dropdown">
+        <a class="selected-search-filter">Search From</a>
+        <div class="utility-dropdown dropdown">
+          <ul>
+            #foreach ($filter in $searchFilters)
+              <li class="search-filter-option"><a>$filter</a></li>
+            #end
+          </ul>
+        </div>
+      </li>
       <li class="utility-cell">
         #buildSearchBox()
       </li>
@@ -817,14 +831,10 @@
 ## Helper Macros
 ##
 #macro( buildSearchBox )
-  <form class="omni-nav-search-box">
-    <input type="text" placeholder="Search" class="omni-nav-search-input"/>
-    <span class="search-icon">
-      <svg width="16" height="16" viewBox="0 0 16 16">
-        <path d="M16 13.5l-4.695-4.695c0.444-0.837 0.695-1.792 0.695-2.805 0-3.314-2.686-6-6-6s-6 2.686-6 6 2.686 6 6 6c1.013 0 1.968-0.252 2.805-0.695l4.695 4.695 2.5-2.5zM2 6c0-2.209 1.791-4 4-4s4 1.791 4 4-1.791 4-4 4-4-1.791-4-4z"></path>
-      </svg>
-    </span>
-  </form>
+  <div class="cu-search-box"></div>
+  <div class="search-results-container">
+    <div class="cu-search-results"></div>
+  </div>
 #end
 
 #macro( debugUmbrellaAssets )

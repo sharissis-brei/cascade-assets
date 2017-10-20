@@ -56,11 +56,25 @@
         </li>
       </ul>
     </div>
-    <div class="utility-nav-container utility-search">
+    <div class="utility-nav-container utility-search" id="utility-nav-search">
       <ul class="utility-list">
-        <li class="utility-cell search-type utility-has-dropdown"><a>Search from</a></li>
+        <li class="utility-cell search-type utility-has-dropdown">
+          <a class="selected-search-filter">Search From</a>
+          <div class="utility-dropdown dropdown">
+            <ul>
+              <li class="search-filter-option"><a>All</a></li>
+              <li class="search-filter-option"><a>Blog Stories</a></li>
+              <li class="search-filter-option"><a>Faculty Directory</a></li>
+              <li class="search-filter-option"><a>Events</a></li>
+              <li class="search-filter-option"><a>Main Website</a></li>
+            </ul>
+          </div>
+        </li>
         <li class="utility-cell">
-          <%= render 'omni_nav_v2/search_box' %>
+          <div class="cu-search-box"></div>
+          <div class="search-results-container">
+            <div class="cu-search-results"></div>
+          </div>
         </li>
       </ul>
     </div>

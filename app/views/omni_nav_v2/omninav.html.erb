@@ -127,17 +127,16 @@
         </div>
       </div>
     </div>
-
-    <div class="nav-container primary-nav-search">
-      <%= render 'omni_nav_v2/search_box' %>
+    <div class="nav-container" id="primary-nav-search">
+      <div class="cu-search-box"></div>
+      <div class="search-results-container">
+        <div class="cu-search-results"></div>
+      </div>
     </div>
-
     <div class="nav-container global-nav">
       <%= render 'omni_nav_v2/global_nav' %>
     </div>
-
   </div>
-
   <%= render 'omni_nav_v2/off_canvas_nav' %>
-
+  <div id="search-results-overlay"></div>
 </div>
