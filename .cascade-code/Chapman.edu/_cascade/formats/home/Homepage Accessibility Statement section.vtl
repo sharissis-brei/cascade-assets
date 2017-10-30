@@ -1,0 +1,39 @@
+#*
+ * Chapman.edu/_cascade/formats/Homepage Accessibility Statement section
+ * Accessibility Statement widget for Chapman home page.
+ *#
+
+##
+## Global Vars
+##
+#set ( $currentPage = $_XPathTool.selectSingleNode($contentRoot, "//system-page[@current]") )
+#set ( $AccessStatement = $currentPage.getChild('system-data-structure').getChild('accessibility-statement') )
+
+##
+## Build Macros
+##
+
+#macro ( setVars )
+  #set ( $header = $AccessStatement.getChild('header').value )
+  #set ( $copy = $_SerializerTool.serialize($AccessStatement.getChild('copy'), true) )
+#end
+
+#macro ( buildAccessibilityBlock )
+  <!-- Accessibility Statement Section Macro -->
+  <section id="accessibility-statement" class="section" style="background-color:#fff; padding:10px; margin:0;">
+    <div class="maxWidth">
+      #if ($header != '')
+        <h2 style="font-size:14px;">$header</h2>
+      #end
+      <div>$copy</div>
+    </div>
+  </section>
+#end
+
+##
+## Main Format Block
+##
+#if ($AccessStatement.getChild('show').value == 'Yes')
+  #setVars()
+  #buildAccessibilityBlock()
+#end
