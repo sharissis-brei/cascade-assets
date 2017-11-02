@@ -113,11 +113,13 @@
     ## we found our $navDirectory.
     #if ( $pagePath.contains($dirName) && $pagePathDir == $dirName )
       ## A page can enter this loop more than once if it falls under multiple umbrella categories
+      ## e.g. a page under both Campus Services and Career umbrellas
       ## First check if it hasn't been set yet
       #if ( $pageUmbrellaCategory.size() == 0 )
         #set ( $pageUmbrellaCategory = $umbrellaCategory )
       ## If it has been set, pages should use the umbrella category that's more specific
       ## This ensures the page uses the closest matching directory out of all the umbrella categories
+      ## e.g. a page under Career should use campus-services/career umbrella not campus-services
       #elseif ( $pagePathDir.length() > $pageUmbrellaCategory[0].length() )
         #set ( $pageUmbrellaCategory = $umbrellaCategory )
       #end
