@@ -34,18 +34,18 @@
   [ 'pharmacy', 'CUSP', 'cusp', '/pharmacy/' ],
   [ 'law', 'FOWLER SCHOOL OF LAW', 'fowler', '/law/' ],
   [ 'scst', 'SCHMID COLLEGE', 'schmid', '/scst/' ],
+  [ 'communication', 'SCHOOL OF COMM', 'soc', '/communication/' ],
   [ 'about', 'About', 'default', '/' ],
   [ 'academics', 'Academics', 'default', '/' ],
   [ 'admission', 'Admission', 'default', '/' ],
   [ 'alumni', 'Alumni', 'default', '/' ],
   [ 'campus-services', 'Campus Services', 'default', '/' ],
+  [ 'campus-services/career-development', 'Career', 'default', '/' ],
   [ 'faculty-staff', 'Faculty and Staff', 'default', '/' ],
   [ 'families', 'Families', 'default', '/' ],
   [ 'research', 'Research', 'default', '/' ],
   [ 'students', 'Students', 'default', '/' ],
-  [ 'support-chapman', 'Support Chapman', 'default', '/' ],
-  [ 'communication', 'SCHOOL OF COMM', 'soc', '/communication/' ],
-  [ 'campus-services/career-development', 'Career', 'default', '/' ]
+  [ 'support-chapman', 'Support Chapman', 'default', '/' ]
 ])
 
 ##
@@ -112,11 +112,12 @@
     ## Is current page directory $pagePathDir under this $navDirectory? If so,
     ## we found our $navDirectory.
     #if ( $pagePath.contains($dirName) && $pagePathDir == $dirName )
-      ## Hasn't been set yet in a previous iteration
+      ## A page can enter this loop more than once if it falls under multiple umbrella categories
+      ## First check if it hasn't been set yet
       #if ( $pageUmbrellaCategory.size() == 0 )
         #set ( $pageUmbrellaCategory = $umbrellaCategory )
-      ## If it has been set already and this is another match,
-      ## check if this new one is longer (more specific directory)
+      ## If it has been set, pages should use the umbrella category that's more specific
+      ## This ensures the page uses the closest matching directory out of all the umbrella categories
       #elseif ( $pagePathDir.length() > $pageUmbrellaCategory[0].length() )
         #set ( $pageUmbrellaCategory = $umbrellaCategory )
       #end
