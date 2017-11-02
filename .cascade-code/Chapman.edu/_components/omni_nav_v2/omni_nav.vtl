@@ -112,7 +112,14 @@
     ## Is current page directory $pagePathDir under this $navDirectory? If so,
     ## we found our $navDirectory.
     #if ( $pagePath.contains($dirName) && $pagePathDir == $dirName )
-      #set ( $pageUmbrellaCategory = $umbrellaCategory )
+      ## Hasn't been set yet in a previous iteration
+      #if ( $pageUmbrellaCategory.size() == 0 )
+        #set ( $pageUmbrellaCategory = $umbrellaCategory )
+      ## If it has been set already and this is another match,
+      ## check if this new one is longer (more specific directory)
+      #elseif ( $pagePathDir.length() > $pageUmbrellaCategory[0].length() )
+        #set ( $pageUmbrellaCategory = $umbrellaCategory )
+      #end
     #end
   #end
 #end
