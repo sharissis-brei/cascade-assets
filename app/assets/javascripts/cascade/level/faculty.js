@@ -62,7 +62,7 @@ $(function () {
                 var extensionStart = window.location.pathname.lastIndexOf("."),
                     relativePath = window.location.pathname.substr(0, extensionStart).toLowerCase();
                 switch (relativePath) {                
-                    case "/research-and-institutions/economic-science-institute/about-us/faculty-directory".toLowerCase():
+                    case "/research/institutes-and-centers/economic-science-institute/about-us/faculty-directory".toLowerCase():
                         return "ESI";
                     case "/copa/dance/faculty-directory".toLowerCase():
                         return "DANC";
@@ -206,29 +206,14 @@ $(function () {
                                     }
                                     else {
                                         if (prev_dept == '') {
-                                            if (data[i].DeanFlag == 'Y') {
-                                                final_school_dept = prev_school + ',<em>Dean</em>';
-                                            }
-                                            else {
-                                                final_school_dept = prev_school;
-                                            }
+                                            final_school_dept = prev_school;
                                         }
                                         else {
                                             if (prev_school != '') {
-                                                if (data[i].DeanFlag == 'Y') {
-                                                    final_school_dept = prev_school + "; " + prev_dept + ',<em>Dean</em>';
-                                                }
-                                                else {
-                                                    final_school_dept = prev_school + "; " + prev_dept;
-                                                }
+                                                final_school_dept = prev_school + "; " + prev_dept;
                                             }
                                             else {
-                                                if (data[i].DeanFlag == 'Y') {
-                                                    final_school_dept = prev_dept + ',<em>Dean</em>';
-                                                }
-                                                else {
-                                                    final_school_dept = prev_dept;
-                                                }
+                                                final_school_dept = prev_dept;
                                             }
                                         }                            
                                         affiliation.push(final_school_dept);
@@ -239,29 +224,14 @@ $(function () {
                                 //end FOR loop; 
                                 //one final output after last loop to get last "previous" variable:
                                 if (prev_dept == '') {
-                                    if (data[i].DeanFlag == 'Y') {
-                                        final_school_dept = prev_school + ', <em>Dean</em>';
-                                    }
-                                    else {
-                                        final_school_dept = prev_school;
-                                    }
+                                    final_school_dept = prev_school;
                                 }
                                 else {
                                     if (prev_school != '') {
-                                        if (data[i].DeanFlag == 'Y') {
-                                            final_school_dept = prev_school + '; ' + prev_dept + ', <em>Dean</em>';
-                                        }
-                                        else {
-                                            final_school_dept = prev_school + '; ' + prev_dept;
-                                        }
+                                        final_school_dept = prev_school + '; ' + prev_dept;
                                     }
                                     else {
-                                        if (data[i].DeanFlag == 'Y')  {
-                                            final_school_dept = prev_dept + ', <em>Dean</em>';
-                                        }
-                                        else {
-                                            final_school_dept = prev_dept;
-                                        }
+                                        final_school_dept = prev_dept;
                                     }
                                 }
                                 affiliation.push(final_school_dept);
