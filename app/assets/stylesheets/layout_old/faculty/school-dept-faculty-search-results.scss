@@ -61,7 +61,7 @@
 		}		
 		h2>a:after{
 			content:" \00BB";   
-		}		
+		}
 		.department{
 			font-size:14px;  
 		}		
@@ -70,14 +70,11 @@
 			line-height: 15px;
 			margin: 4px 0 0 0;
 		}
-		.additionalTitles{
-			font-size:13px;
-			line-height:14px;
-			margin:5px 0 5px 0;
-		}		
-		.specialty{
+		.additionalTitles, .specialty{
+			font-size:14px;
+			line-height: 15px;
 			margin:0;
-		}		
+		}
 		.affiliation{
 			font-size:13px;
 			line-height:14px;
