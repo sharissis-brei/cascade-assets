@@ -279,9 +279,8 @@ $(function () {
                     $(".facultyList .facultyMember.old").remove();
                 });
             };
-
         populateResults();
-
+        //
         $(".directorySearchButton").click(function (event) {            
             keywords = $.trim($("#directorySearchBox").val());
             if (keywords) {
@@ -293,42 +292,37 @@ $(function () {
             page = 0;
             populateResults();
         });
-
+        //
         $('#directorySearchBox').keypress(function (event) {
             if (event.which == 13) {
                 jQuery(this).blur();
                 jQuery('.directorySearchButton').focus().click();
             }
         });
-
+        //
         $(".first").click(function () {
             page = 0;
             populateResults();
         });
-
         $(".previous").click(function () {
             (page === 0) ? page = 0 : page -= 1;
             populateResults();
         });
-
         $(".next").click(function () {
             (page === totalPages) ? page = totalPages : page += 1;
             populateResults();
         });
-
         $(".last").click(function () {
             page = totalPages;
             populateResults();
         });
-
         $("#showAll").bind("change", function () {
             scope = "_faculty/all";
         });
-
         $("#tenure").bind("change", function () {
             scope = "_facultysearch/tenure";
         });
-
+        //
         function formatResult(result) {
             var imgAlt = result.name ? 'Photo of ' + result.name : 'Faculty Member Photo',
                 formattedResult =
@@ -343,6 +337,5 @@ $(function () {
                     '</div>';
             return formattedResult;
         }
-
     } // end of IF around test for deptFacultyDirectorySearch on page so only runs on school/dept faculty listing page(s)
 });
