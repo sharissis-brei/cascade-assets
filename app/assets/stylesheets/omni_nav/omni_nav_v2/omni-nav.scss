@@ -307,6 +307,8 @@ html.omni-nav-v2 {
 
       .utility-dropdown {
         background-color: #4d4d4d;
+        -webkit-box-shadow: 0px 10px 10px 1px rgba(0, 0, 0, 0.2);
+        box-shadow: 0px 10px 10px 1px rgba(0, 0, 0, 0.2);
 
         li:hover { background-color: $utility-nav-background-color; }
       }
@@ -587,6 +589,8 @@ html.omni-nav-v2 {
             left: 0;
             padding-top: 20px;
             background-color: $white;
+            -webkit-box-shadow: 0px 10px 10px 1px rgba(0, 0, 0, 0.2);
+            box-shadow: 0px 10px 10px 1px rgba(0, 0, 0, 0.2);
 
             li {
               border-bottom: 1px solid $primary-nav-border-color;
@@ -776,6 +780,8 @@ html.omni-nav-v2 {
       background-color: #2f2f2f;
       text-align: left;
       z-index: 667;
+      -webkit-box-shadow: 0px 10px 10px 1px rgba(0, 0, 0, 0.2);
+      box-shadow: 0px 10px 10px 1px rgba(0, 0, 0, 0.2);
 
       @include media($medium-screen) {
         right: 0px;
