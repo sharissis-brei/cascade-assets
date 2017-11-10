@@ -14,6 +14,13 @@ html.omni-nav-v2 {
     padding-top: 60px;
   }
 
+  /* branded omninav always has primary nav stacked on top of global nav */
+  &.branded {
+    @include media($large-screen) {
+      padding-top: 120px;
+    }
+  }
+
   &.utility-nav-open {
     @include media($medium-screen) {
       padding-top: 180px;
@@ -21,6 +28,17 @@ html.omni-nav-v2 {
 
     @include media($large-screen) {
       padding-top: 120px;
+    }
+
+    /* since branded is min 120px height (global + primary), adding utility will always make it 180 */
+    &.branded {
+      @include media($medium-screen) {
+        padding-top: 180px;
+      }
+
+      @include media($large-screen) {
+        padding-top: 180px;
+      }      
     }
   }
 }
