@@ -71,7 +71,7 @@
   </div>
 #end
 
-#macro( buildFunnelBlockLink $isLink $headlineLink )
+#macro( buildFunnelBlockLink $isLink $headlineLink $headlineText )
     #if ( $isLink )
       <a href="${_EscapeTool.xml($headlineLink)}">
         #buildFunnelBlockFeatureImage( $imageUrl $altText )
