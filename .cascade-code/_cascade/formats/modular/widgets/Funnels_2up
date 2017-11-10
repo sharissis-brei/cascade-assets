@@ -56,7 +56,7 @@
 
   ## Output
   <div class="funnelBlock">
-    #buildFunnelBlockLink( $isLink $headlineLink )
+    #buildFunnelBlockLink( $isLink $headlineLink $headlineText )
 
     ## "copy" is additional descriptive text that goes under header
     #if ( $details != '' )
