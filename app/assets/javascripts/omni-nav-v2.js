@@ -59,6 +59,7 @@ var OmniNav2 = (function() {
     e.stopPropagation();
     $(this).siblings('.utility-has-dropdown').removeClass('dropdown-open');
     $(this).toggleClass('dropdown-open');
+    $(this).find('.dropdown').slideToggle();
     $(document).on("click", onDocumentClick);
   };
 
