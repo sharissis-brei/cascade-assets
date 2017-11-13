@@ -23,29 +23,29 @@
 ## all other vars be derived from those:
 ## [$umbrellaFolderId, $umbrellaLabel]
 ## Current inner array values:
-## [ $umbrellaDirectory, $umbrellaLabel/$umbrellaBrandLabel, $umbrellaClass, $umbrellaHref ]
+## [ $umbrellaDirectory, $umbrellaLabel/$umbrellaBrandLabel, $umbrellaClass ]
 #set ( $umbrellaCategories = [
-  [ 'business', 'ARGYROS SCHOOL', 'asbe', '/business/' ],
-  [ 'education', 'ATTALLAH COLLEGE', 'education', '/education/' ],
-  [ 'dodge', 'DODGE COLLEGE', 'dodge', '/dodge/' ],
-  [ 'crean', 'CREAN COLLEGE', 'crean', '/crean/' ],
-  [ 'wilkinson', 'WILKINSON COLLEGE', 'wilkinson', '/wilkinson/' ],
-  [ 'copa', 'CoPA', 'copa', '/copa/' ],
-  [ 'pharmacy', 'CUSP', 'cusp', '/pharmacy/' ],
-  [ 'law', 'FOWLER SCHOOL OF LAW', 'fowler', '/law/' ],
-  [ 'scst', 'SCHMID COLLEGE', 'schmid', '/scst/' ],
-  [ 'communication', 'SCHOOL OF COMM', 'soc', '/communication/' ],
-  [ 'about', 'About', 'default', '/' ],
-  [ 'academics', 'Academics', 'default', '/' ],
-  [ 'admission', 'Admission', 'default', '/' ],
-  [ 'alumni', 'Alumni', 'default', '/' ],
-  [ 'campus-services', 'Campus Services', 'default', '/' ],
-  [ 'campus-services/career-development', 'Career', 'default', '/' ],
-  [ 'faculty-staff', 'Faculty and Staff', 'default', '/' ],
-  [ 'families', 'Families', 'default', '/' ],
-  [ 'research', 'Research', 'default', '/' ],
-  [ 'students', 'Students', 'default', '/' ],
-  [ 'support-chapman', 'Support Chapman', 'default', '/' ]
+  [ 'business', 'ARGYROS SCHOOL', 'asbe' ],
+  [ 'education', 'ATTALLAH COLLEGE', 'education' ],
+  [ 'dodge', 'DODGE COLLEGE', 'dodge' ],
+  [ 'crean', 'CREAN COLLEGE', 'crean' ],
+  [ 'wilkinson', 'WILKINSON COLLEGE', 'wilkinson' ],
+  [ 'copa', 'CoPA', 'copa' ],
+  [ 'pharmacy', 'CUSP', 'cusp' ],
+  [ 'law', 'FOWLER SCHOOL OF LAW', 'fowler' ],
+  [ 'scst', 'SCHMID COLLEGE', 'schmid' ],
+  [ 'communication', 'SCHOOL OF COMM', 'soc' ],
+  [ 'about', 'About', 'default' ],
+  [ 'academics', 'Academics', 'default' ],
+  [ 'admission', 'Admission', 'default' ],
+  [ 'alumni', 'Alumni', 'default' ],
+  [ 'campus-services', 'Campus Services', 'default' ],
+  [ 'campus-services/career-development', 'Career', 'default' ],
+  [ 'faculty-staff', 'Faculty and Staff', 'default' ],
+  [ 'families', 'Families', 'default' ],
+  [ 'research', 'Research', 'default' ],
+  [ 'students', 'Students', 'default' ],
+  [ 'support-chapman', 'Support Chapman', 'default' ]
 ])
 
 ##
@@ -61,7 +61,6 @@
 #set ( $umbrellaDirectoryPath = '' )
 #set ( $umbrellaLabel = '' )
 #set ( $umbrellaClass = '' )
-#set ( $umbrellaHref = '' )
 #set ( $umbrellaBrandLabel = '' )
 #set ( $umbrellaAssets = [] )
 #set ( $brandClass = '' )
@@ -83,7 +82,6 @@
     #set ( $umbrellaBrandLabel = $pageUmbrellaCategory[1] )
 
     #set ( $umbrellaClass = $pageUmbrellaCategory[2] )
-    #set ( $umbrellaHref = $pageUmbrellaCategory[3] )
     #set ( $umbrellaDirectoryPath = "/${umbrellaDirectory}" )
     #setUmbrellaAssets()
     #set ( $brandClass = 'branded' )
@@ -212,10 +210,18 @@
 #end
 
 #macro ( buildPrimaryNavLogoContainer )
+  #if ( $isUmbrellaCategory )
+    #set ( $logoHref = "${umbrellaDirectoryPath}" )
+    #set ( $logoTitle = "Chapman University ${umbrellaLabel} Home Page" )
+  #else
+    #set ( $logoHref = "/" )
+    #set ( $logoTitle = "Chapman University Website Home Page" )
+  #end
+  
   <div class="nav-container logo-container">
     <div class="cu-logo-wrapper">
       <div class="primary-logo">
-        <a href="/" title="Chapman University Website Home Page">
+        <a href="${logoHref}" title="${logoTitle}">
           <svg class="chapman-logo" xmlns="http://www.w3.org/2000/svg" viewBox="0 0 273.58 28.08">
             <defs>
               <style>.cls-1 { fill: #98002e; } .cls-2 { fill: #231f20; }</style>
@@ -231,7 +237,7 @@
 
       #if ( $isUmbrellaCategory )
       <div class="secondary-logo">
-        <a class="branded-logo" href="${umbrellaHref}">${umbrellaBrandLabel}</a>
+        <a class="branded-logo" href="${umbrellaDirectoryPath}">${umbrellaBrandLabel}</a>
       </div>
       #end
     </div>
@@ -581,7 +587,7 @@
     <div class="cu-logo-wrapper">
       #if ( $isUmbrellaCategory )
         <div id="umbrella-logo" class="toggle-logo">
-          <a class="${umbrellaClass} off-logo" href="${umbrellaHref}" title="${umbrellaBrandLabel}">
+          <a class="${umbrellaClass} off-logo" href="${umbrellaDirectoryPath}" title="${umbrellaBrandLabel}">
             <!-- logo set as background image by class -->
           </a>
           #buildOffCanvasNavCloseIcon()
