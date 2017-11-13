@@ -56,8 +56,7 @@
 
   ## Output
   <div class="funnelBlock">
-    #buildFunnelBlockFeatureImage( $imageUrl $altText )
-    #buildFunnelBlockHeader( $isLink $headlineLink $headlineText )
+    #buildFunnelBlockLink( $isLink $headlineLink $headlineText )
 
     ## "copy" is additional descriptive text that goes under header
     #if ( $details != '' )
@@ -72,6 +71,18 @@
   </div>
 #end
 
+#macro( buildFunnelBlockLink $isLink $headlineLink $headlineText )
+    #if ( $isLink )
+      <a href="${_EscapeTool.xml($headlineLink)}">
+        #buildFunnelBlockFeatureImage( $imageUrl $altText )
+        #buildFunnelBlockHeader( $headlineText )
+      </a>
+    #else
+      #buildFunnelBlockFeatureImage( $imageUrl $altText )
+      #buildFunnelBlockHeader( $headlineText )
+    #end
+#end
+
 #macro( buildFunnelBlockFeatureImage $imageUrl $altText )
   <div class="featureImage">
     <img src="$imageUrl"
@@ -81,15 +92,11 @@
   </div>
 #end
 
-#macro( buildFunnelBlockHeader $isLink $headlineLink $headlineText )
+#macro( buildFunnelBlockHeader $headlineText )
   ## For accessibility, must be h2. For more info, see:
   ## https://github.com/chapmanu/cascade-assets/issues/249
   <h2>
-    #if ( $isLink )
-      <a href="${_EscapeTool.xml($headlineLink)}">${_EscapeTool.xml($headlineText)}&#160;»</a>
-    #else
       ${_EscapeTool.xml($headlineText)}
-    #end
   </h2>
 #end
 
