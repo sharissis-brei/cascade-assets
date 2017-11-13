@@ -258,10 +258,6 @@ html.omni-nav-v2 {
     }
 
     &.utility-nav-open {
-      @include media($medium-screen) {
-        display: block;
-      }
-
       .utility-nav-container {
 
         //only search container displayed on medium screen

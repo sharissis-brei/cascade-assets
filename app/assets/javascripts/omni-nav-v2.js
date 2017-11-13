@@ -2,6 +2,7 @@ var OmniNav2 = (function() {
 
   // Constants
   var TABLET_BREAKPOINT = 768; //px
+  var DESKTOP_BREAKPOINT = 1024;
 
   // Module Vars
   var $container,
@@ -32,11 +33,28 @@ var OmniNav2 = (function() {
   var onUtilityNavClick = function() {
     $('.primary-nav-action').toggleClass("utility-open");
 
-    if ($(window).width() >= TABLET_BREAKPOINT) {
-      $utilityNav.toggleClass('utility-nav-open');
+    if ($(window).width() >= DESKTOP_BREAKPOINT) {
+      // slideToggle() sets display: block by default but utility-nav-container needs to be table-cell
+      $utilityNav.find('.utility-nav-container').slideToggle(function() {
+        $(this).css('display', 'table-cell');
+      });
+
+      $utilityNav.toggleClass('utility-nav-open').slideToggle();
       $('html.omni-nav-v2').toggleClass('utility-nav-open');
       $primaryNav.removeClass('search-open');
-    } else {
+    } 
+    else if (($(window).width() >= TABLET_BREAKPOINT) && $(window).width() < DESKTOP_BREAKPOINT ) {
+      // on tablet size, utility-links don't show, only utility-search
+      $utilityNav.find('.utility-nav-container.utility-search').slideToggle( function() {
+        $(this).css('display', 'table-cell');
+      });
+
+      $utilityNav.find('.utility-nav-container.utility-links').css('display', 'none');
+      $utilityNav.toggleClass('utility-nav-open').slideToggle();
+      $('html.omni-nav-v2').toggleClass('utility-nav-open');
+      $primaryNav.removeClass('search-open');
+    }
+    else {
       $utilityNav.removeClass('utility-nav-open');
       $('html.omni-nav-v2').removeClass('utility-nav-open');
       $primaryNav.toggleClass('search-open');
