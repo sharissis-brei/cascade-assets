@@ -25,16 +25,16 @@ var OmniNav2 = (function() {
       $('html').addClass('branded');
     }
 
-    // Set gradual transition for padding adjustments after initial load
-    // Timing and duration match slideToggle defaults
-    $('html.omni-nav-v2').css('transition', 'padding-top 400ms ease-in-out');
-
     // Remove padding from theme version. Have to use js because css will not work.
     // See https://stackoverflow.com/a/1014958/6763239
     $('#theme header').css('padding-bottom', '0px');
   }
 
   var onUtilityNavClick = function() {
+    // Set gradual transition for padding adjustments after initial load
+    // Timing and duration match slideToggle defaults
+    $('html.omni-nav-v2').css('transition', 'padding-top 400ms ease-in-out');
+
     $('.primary-nav-action').toggleClass("utility-open");
 
     if ($(window).width() >= DESKTOP_BREAKPOINT) {
