@@ -12,6 +12,12 @@
  *#
 
 ##
+## Imports
+##
+#import( "/_config/global_nav.vm" )
+#import( "/_config/global_nav_law.vm" )
+
+##
 ## Hardcoded Params
 ##
 ## umbrellaCategories
@@ -65,7 +71,7 @@
 #set ( $umbrellaBrandLabel = '' )
 #set ( $umbrellaAssets = [] )
 #set ( $brandClass = '' )
-
+#set ( $globalNavLinks = [] )
 
 ##
 ## Var Macros
@@ -89,6 +95,13 @@
     #set ( $brandClass = 'branded' )
   #else
     #set ( $brandClass = 'unbranded' )
+  #end
+
+  ## Currently law is the only page with different global nav content
+  #if( $umbrellaLabel == 'FOWLER SCHOOL OF LAW' )
+    #set( $globalNavLinks = $GLOBAL_NAV_LAW_CONFIG )
+  #else
+    #set( $globalNavLinks = $GLOBAL_NAV_CONFIG )
   #end
 #end
 
@@ -158,7 +171,6 @@
   #end
 #end
 
-
 ##
 ## Template Macros
 ##
@@ -190,7 +202,7 @@
     #buildPrimaryNavLogoContainer()
     #buildPrimaryNavRightContainer()
     #buildPrimaryNavSearchBox()
-    #buildPrimaryNavGlobalNav()
+    #buildGlobalNav()
   </div>
 #end
 
@@ -335,106 +347,41 @@
   </div>
 #end
 
-#macro ( buildPrimaryNavGlobalNav )
+##
+## Global Nav Macros
+##
+#macro( buildGlobalNav )
   <div class="nav-container global-nav">
     <div id="cu-global-nav">
       <nav>
         <ul class="global-nav-links">
-          <li class="primary-link">
-            <a>About</a>
-            <div class="global-nav-dropdown">
-              <ul>
-                <li><a class="icon icon-location" href="/about/maps-directions/">Maps and Directions </a></li>
-                <li><a class="icon icon-california" href="/about/visit-chapman/">Visit Chapman</a></li>
-                <li><a class="icon icon-cu-monogram" href="/discover/index.html">Discover Chapman</a></li>
-                <li><a class="icon icon-office" href="/about/campus/">Our Campus</a></li>
-                <li><a class="icon icon-cu-monogram" href="/about/facts-history/">Facts and History</a></li>
-                <li><a class="icon icon-cu-window" href="/about/administration/">Administration</a></li>
-                <li><a class="icon icon-envelop" href="/about/contact-us.aspx">Contact Us</a></li>
-              </ul>
-            </div>
-          </li>
-          <li class="primary-link">
-            <a>Academics</a>
-            <div class="global-nav-dropdown">
-              <ul>
-                <li><a class="icon icon-graduation" href="/academics/degrees-and-programs.aspx">Degrees &amp; Programs</a></li>
-                <li><a class="icon icon-library2" href="/academics/schools-colleges.aspx">Schools &amp; Colleges</a></li>
-                <li><a class="icon icon-calendar4" href="/academics/academic-calendar.aspx">Academic Calendar</a></li>
-                <li><a class="icon icon-books" href="/academics/libraries/">Libraries</a></li>
-                <li><a class="icon icon-book2" href="/academics/course-catalogs/">Course Catalogs</a></li>
-                <li><a class="icon icon-earth" href="/international-studies/">International Study</a></li>
-              </ul>
-            </div>
-          </li>
-          <li class="primary-link">
-            <a>Admission</a>
-            <div class="global-nav-dropdown">
-              <ul>
-                <li><a class="icon icon-bookmark" href="/admission/undergraduate/">Undergraduate Admission</a></li>
-                <li><a class="icon icon-pencil5" href="/admission/undergraduate/applynow.aspx">Undergraduate Application</a> </li>
-                <li><a class="icon icon-bookmark2" href="/admission/graduate/">Graduate Admission</a></li>
-                <li><a class="icon icon-pencil5" href="/admission/graduate/applynow.aspx">Graduate Application</a></li>
-                <li><a class="icon icon-calculate2" href="/admission/undergraduate/afford.aspx">Affordability</a></li>
-                <li><a class="icon icon-calculate" href="/students/tuition-and-aid/financial-aid/net-cost-calculator/">Financial Aid Calculator</a></li>
-                <li><a class="icon icon-office" href="/admission/undergraduate/visit.aspx">Campus Tours</a></li>
-              </ul>
-            </div>
-          </li>
-          <li class="primary-link">
-            <a>Faculty</a>
-            <div class="global-nav-dropdown">
-              <ul>
-                <li><a class="icon icon-cu-window" href="/law/events/dialogue-series.aspx">Chapman Dialogue Series</a></li>
-                <li><a class="icon icon-cu-window" href="/law/law-faculty/">Faculty Directory</a></li>
-                <li><a class="icon icon-cu-window" href="/law/law-faculty/faculty-in-news.aspx">Faculty News</a></li>
-                <li><a class="icon icon-cu-window" href="/law/law-faculty/publications/">Faculty Publications</a></li>
-              </ul>
-            </div>
-          </li>
-          <li class="primary-link">
-            <a>Careers</a>
-            <div class="global-nav-dropdown">
-              <ul>
-                <li><a class="icon icon-cu-window" href="/law/employers/">Employer Resources</a></li>
-                <li><a class="icon icon-cu-window" href="/law/careers/employment-faqs.aspx">Employer FAQs</a></li>
-                <li><a class="icon icon-cu-window" href="/law/careers/students-alumni/">Job Resources for Students / Alumni</a></li>
-                <li><a class="icon icon-cu-window" href="/law/careers/students-alumni/on-campus-interviews/">On Campus Interview Program</a></li>
-                <li><a class="icon icon-cu-window" href="/law/careers/students-alumni/on-campus-interviews/">Symplicity for Students</a></li>
-              </ul>
-            </div>
-          </li>
-          <li class="primary-link">
-            <a>Current Students</a>
-            <div class="global-nav-dropdown">
-              <ul>
-                <li><a class="icon icon-paw" href="http://www.chapmanathletics.com/landing/index">Athletics</a></li>
-                <li><a class="icon icon-hand" href="/diversity/">Diversity and Inclusion</a></li>
-                <li><a class="icon icon-calendar4" href="https://events.chapman.edu/ ">Events</a></li>
-                <li><a class="icon icon-earth" href="/about/fish-interfaith-center/">Fish Interfaith Center</a></li>
-                <li><a class="icon icon-heart3" href="/students/health-and-safety/">Health and Safety</a></li>
-                <li><a class="icon icon-home2" href="/students/services/housing-and-residence/">Residence Life</a></li>
-                <li><a class="icon icon-smiley" href="/students/life/">Student Life</a></li>
-              </ul>
-            </div>
-          </li>
-          <li class="primary-link">
-            <a>Support</a>
-            <div class="global-nav-dropdown">
-              <ul>
-                <li><a class="icon icon-envelop" href="/support-chapman/contact-us.aspx">Contact Development</a></li>
-                <li><a class="icon icon-hand" href="/support-chapman/get-involved.aspx">Get Involved</a></li>
-                <li><a class="icon icon-cu-monogram" href="/support-chapman/ways-to-give/areas-to-support.aspx">Areas to Support</a></li>
-                <li><a class="icon icon-paw" href="/alumni/">Alumni</a></li>
-              </ul>
-            </div>
-          </li>
+          #foreach( $link in $globalNavLinks )
+            <li class="primary-link">
+              <a href="$link.sectionLink">$link.sectionTitle</a>
+              #if( $link.dropdown.size() > 0 )
+                #buildGlobalNavDropdown( $link.dropdown )
+              #end
+            </li>
+          #end
         </ul>
       </nav>
     </div>
   </div>
 #end
 
+#macro( buildGlobalNavDropdown $dropdownLinks )
+  <div class="global-nav-dropdown">
+    <ul>
+      #foreach( $dropdownLink in $dropdownLinks )
+        <li>
+          <a class="icon $dropdownLink.iconClass" href="$dropdownLink.link">
+            ${_EscapeTool.xml( $dropdownLink.text )}
+          </a>
+        </li>
+      #end
+    </ul>
+  </div>
+#end
 
 ##
 ## Utility Nav Macros
