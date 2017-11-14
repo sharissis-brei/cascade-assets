@@ -2,7 +2,7 @@ var OmniNav2 = (function() {
 
   // Constants
   var TABLET_BREAKPOINT = 768; //px
-  var DESKTOP_BREAKPOINT = 1024;
+  var DESKTOP_BREAKPOINT = 1024; //px
 
   // Module Vars
   var $container,
@@ -19,11 +19,15 @@ var OmniNav2 = (function() {
     $('html').addClass('omni-nav-v2');
     $('.utility-nav-trigger').on('click', onUtilityNavClick);
     $utilityNav.find('li.utility-has-dropdown').on('click', onUtilityNavDropdownClick);
-    
+
     // Adjusts CSS to accomodate primary nav stacked on top of global nav when branded
     if ( $('html').find('#omni-nav-v2').hasClass('branded') ) {
       $('html').addClass('branded');
     }
+
+    // Set gradual transition for padding adjustments after initial load
+    // Timing and duration match slideToggle defaults
+    $('html.omni-nav-v2').css('transition', 'padding-top 400ms ease-in-out');
 
     // Remove padding from theme version. Have to use js because css will not work.
     // See https://stackoverflow.com/a/1014958/6763239
@@ -34,23 +38,37 @@ var OmniNav2 = (function() {
     $('.primary-nav-action').toggleClass("utility-open");
 
     if ($(window).width() >= DESKTOP_BREAKPOINT) {
-      // slideToggle() sets display: block by default but utility-nav-container needs to be table-cell
-      $utilityNav.find('.utility-nav-container').slideToggle(function() {
+      // slideToggle() sets display: block and overflow: hidden by default
+      // utility-nav-container needs to be table-cell, and all utility-nav divs need overflow: visible
+      $utilityNav.find('.utility-nav-container').slideToggle(10, function() {
         $(this).css('display', 'table-cell');
+        $(this).css('overflow', 'visible');
       });
 
-      $utilityNav.toggleClass('utility-nav-open').slideToggle();
+      // Main utility-nav div
+      $utilityNav.toggleClass('utility-nav-open').slideToggle(function() {
+        $(this).css('overflow', 'visible');
+      });
+
+      // Other utility nav trigger classes
       $('html.omni-nav-v2').toggleClass('utility-nav-open');
       $primaryNav.removeClass('search-open');
     } 
-    else if (($(window).width() >= TABLET_BREAKPOINT) && $(window).width() < DESKTOP_BREAKPOINT ) {
-      // on tablet size, utility-links don't show, only utility-search
-      $utilityNav.find('.utility-nav-container.utility-search').slideToggle( function() {
+    else if ( $(window).width() >= TABLET_BREAKPOINT && $(window).width() < DESKTOP_BREAKPOINT ) {
+      // On tablet, utility-links don't show, only utility-search should toggle in container
+      $utilityNav.find('.utility-nav-container.utility-search').slideToggle(10, function() {
         $(this).css('display', 'table-cell');
+        $(this).css('overflow', 'visible');
       });
 
+      // Make sure utility-links doesn't still have display: table-cell
       $utilityNav.find('.utility-nav-container.utility-links').css('display', 'none');
-      $utilityNav.toggleClass('utility-nav-open').slideToggle();
+      // Main utility-nav div
+      $utilityNav.toggleClass('utility-nav-open').slideToggle(function() {
+        $(this).css('overflow', 'visible');
+      });
+
+      // Other utility nav trigger classes
       $('html.omni-nav-v2').toggleClass('utility-nav-open');
       $primaryNav.removeClass('search-open');
     }
@@ -60,6 +78,7 @@ var OmniNav2 = (function() {
       $primaryNav.toggleClass('search-open');
     }
 
+    
     var primaryNavClasses = document.getElementById('primary-nav').classList;
 
     // jQuery < 3.0 doesn't support toggleClass for SVGs
