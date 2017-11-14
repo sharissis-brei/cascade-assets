@@ -27,8 +27,7 @@
             <text help-text="blog name/icon that displays below story" identifier="blogName" label="Blog Name" type="dropdown">
                 <dropdown-item value=""/>
                 <dropdown-item value="academics"/>
-                <dropdown-item value="alumni"/>
-                <dropdown-item value="happenings"/>
+                <dropdown-item value="alumni"/>                
                 <dropdown-item value="business"/>
                 <dropdown-item value="chapman-blogs"/>
                 <dropdown-item value="collections"/>
@@ -41,6 +40,7 @@
                 <dropdown-item value="huell-howser-archives"/>
                 <dropdown-item value="law"/>
                 <dropdown-item value="magazine"/>
+                <dropdown-item value="news-and-stories"/>
                 <dropdown-item value="pharmacy"/>
                 <dropdown-item value="press-room"/>
                 <dropdown-item value="scst"/>
@@ -73,7 +73,6 @@
                     <dropdown-item value=""/>
                     <dropdown-item value="academics"/>
                     <dropdown-item value="alumni"/>
-                    <dropdown-item value="happenings"/>
                     <dropdown-item value="business"/>
                     <dropdown-item value="chapman-blogs"/>
                     <dropdown-item value="collections"/>
@@ -86,6 +85,7 @@
                     <dropdown-item value="huell-howser-archives"/>
                     <dropdown-item value="law"/>
                     <dropdown-item value="magazine"/>
+                    <dropdown-item value="news-and-stories"/>
                     <dropdown-item value="pharmacy"/>
                     <dropdown-item value="press-room"/>
                     <dropdown-item value="scst"/>
@@ -182,7 +182,6 @@
             <dropdown-item value=""/>
             <dropdown-item value="academics"/>
             <dropdown-item value="alumni"/>
-            <dropdown-item value="happenings"/>
             <dropdown-item value="business"/>
             <dropdown-item value="chapman-blogs"/>
             <dropdown-item value="collections"/>
@@ -195,6 +194,7 @@
             <dropdown-item value="huell-howser-archives"/>
             <dropdown-item value="law"/>
             <dropdown-item value="magazine"/>
+            <dropdown-item value="news-and-stories"/>
             <dropdown-item value="pharmacy"/>
             <dropdown-item value="press-room"/>
             <dropdown-item value="scst"/>

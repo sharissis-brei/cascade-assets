@@ -1,5 +1,5 @@
 $(function () {
-
+	//I DON'T BELIEVE THIS NEWS-EVENTS.JS IS USED (MANDY 11-13-17)
 	var eventsFeedUrl = "//www.chapman.edu/getFeed.ashx?name=majorEvents",
     eventsYqlUrl = function () { return ("//query.yahooapis.com/v1/public/yql?q=select%20*%20from%20rss(3)%20where%20url%3D'" + eventsFeedUrl + "'&format=json&diagnostics=true&callback=?") },
     eventsFeedOptions = $(".eventsFeed").text();
