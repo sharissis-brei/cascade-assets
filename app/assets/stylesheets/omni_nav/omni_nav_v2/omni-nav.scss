@@ -263,17 +263,13 @@ html.omni-nav-v2 {
         //only search container displayed on medium screen
         @include media($medium-screen) {
           &.utility-search {
-            display: table-cell;
             width: 100%;
           }
         }
 
         //show all utility sections on large screen
         @include media($large-screen) {
-          display: table-cell;
-
           &.utility-search {
-            display: table-cell;
             width: auto;
           }
         }
