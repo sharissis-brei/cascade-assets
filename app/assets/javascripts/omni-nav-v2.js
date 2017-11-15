@@ -83,7 +83,9 @@ var OmniNav2 = (function() {
 
   var repositionForCollabsibleAnchor = function(urlParams, omninavHeight) {
     /* Used with the Collapsible Region widget */
-    if ((urlParams["openregion"] != undefined) && (urlParams["openregion"] == parseInt(urlParams["openregion"])) && urlParams["openregion"] - 1 < $(".collapsibles-widget .accordion").length) {
+    if ((urlParams["openregion"] != undefined) && 
+        (urlParams["openregion"] == parseInt(urlParams["openregion"])) && 
+        (urlParams["openregion"] - 1 < $(".collapsibles-widget .accordion").length)) {
 
       // Offset for zero based arrays
       if (urlParams["openregion"] != 0) 
@@ -111,7 +113,10 @@ var OmniNav2 = (function() {
 
   var repositionForTabAnchor = function(urlParams, omninavHeight) {
     /* Used with the Tab widget */
-    if ((urlParams["startingtab"] != undefined) && (urlParams["startingtab"] == parseInt(urlParams["startingtab"])) && (urlParams["startingtab"] - 1 < $(".main .tabs-nav li").length)) {
+    if ((urlParams["startingtab"] != undefined) && 
+        (urlParams["startingtab"] == parseInt(urlParams["startingtab"])) && 
+        (urlParams["startingtab"] - 1 < $(".main .tabs-nav li").length)) {
+      
       // Offset for zero based arrays
       if (urlParams["startingtab"] != 0)
           urlParams["startingtab"] = urlParams["startingtab"] - 1;

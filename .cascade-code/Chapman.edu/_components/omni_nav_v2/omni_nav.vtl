@@ -785,7 +785,7 @@
       <a href="${asset.path}/index">${_EscapeTool.xml($asset.metadata.displayName)}</a>
   
       #if ( $visibleChildren.size() > 0 )
-        #buildToggleIcon
+        #buildToggleIcon()
         <ul>
           #foreach ( $child in $visibleChildren )
             #if ( $child.assetType == "page" )
