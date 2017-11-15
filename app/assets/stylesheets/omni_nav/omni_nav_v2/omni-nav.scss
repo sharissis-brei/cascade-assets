@@ -34,11 +34,7 @@ html.omni-nav-v2 {
     &.branded {
       @include media($medium-screen) {
         padding-top: 180px;
-      }
-
-      @include media($large-screen) {
-        padding-top: 180px;
-      }      
+      }     
     }
   }
 }
