@@ -1,4 +1,6 @@
 $(function () {
+    //used with News/Events widget in 2 and 3 Column Modular templates
+    //
     // Make it work with old code.
     var pad2 = utils.pad2;
 
@@ -46,7 +48,7 @@ $(function () {
     /* Populate news from Wordpress RSS feed (converted to JSON with YQL)
     ------------------------------------------------------------------------------------------------*/
     if ($(".news").length) {
-        var newsFeedUrl = "http://www.chapman.edu/getFeed.ashx?name=newsHappenings",
+        var newsFeedUrl = "http://www.chapman.edu/getFeed.ashx?name=newsNewsAndStories",
             newsYqlUrl = function () {
                 return ("//query.yahooapis.com/v1/public/yql?q=select%20*%20from%20rss(3)%20where%20url%3D'" + newsFeedUrl + "'&format=json&diagnostics=true&callback=?")
             },
@@ -83,10 +85,6 @@ $(function () {
                 newsFeedUrl = "http://www.chapman.edu/getFeed.ashx?name=newsEducation";
                 $(".allNews").attr("href", "http://blogs.chapman.edu/education");
                 break;
-            case "Happenings":
-                newsFeedUrl = "http://www.chapman.edu/getFeed.ashx?name=newsHappenings";
-                $(".allNews").attr("href", "http://blogs.chapman.edu/happenings");
-                break;
             case "Information Systems":
                 newsFeedUrl = "http://www.chapman.edu/getFeed.ashx?name=newsIST";
                 $(".allNews").attr("href", "http://blogs.chapman.edu/information-systems");
@@ -94,6 +92,10 @@ $(function () {
             case "Law":
                 newsFeedUrl = "http://www.chapman.edu/getFeed.ashx?name=newsLaw";
                 $(".allNews").attr("href", "http://blogs.chapman.edu/law");
+                break;
+            case "News and Stories":
+                newsFeedUrl = "http://www.chapman.edu/getFeed.ashx?name=newsNewsAndStories";
+                $(".allNews").attr("href", "http://blogs.chapman.edu/news-and-stories");
                 break;
             case "Pharmacy":
                 newsFeedUrl = "http://www.chapman.edu/getFeed.ashx?name=newsPharmacy";
@@ -109,7 +111,7 @@ $(function () {
                 break;
             case "Students":
                 newsFeedUrl = "http://www.chapman.edu/getFeed.ashx?name=newsStudents";
-                $(".allNews").attr("href", "http://blogs.chapman.edu/happenings");
+                $(".allNews").attr("href", "http://blogs.chapman.edu/students");
                 break;
             case "Thompson Policy Institute":
                 newsFeedUrl = "http://www.chapman.edu/getFeed.ashx?name=newsThompsonInstitute";
@@ -120,7 +122,7 @@ $(function () {
                 $(".allNews").attr("href", "http://blogs.chapman.edu/wilkinson");
                 break;
             default:
-                $(".allNews").attr("href", "http://blogs.chapman.edu/happenings");
+                $(".allNews").attr("href", "http://blogs.chapman.edu/news-and-stories");
                 break;
         }
 
