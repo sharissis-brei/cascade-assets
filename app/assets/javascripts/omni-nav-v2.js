@@ -218,6 +218,14 @@ var OmniNav2 = (function() {
       // Other utility nav trigger classes
       $('html.omni-nav-v2').toggleClass('utility-nav-open');
       $primaryNav.removeClass('search-open');
+
+      // Sets focus on search input field, if utility nav is being opened
+      if ($('.utility-nav-open').length > 0) {
+        // Focus needs a slight delay to allow the utility nav to come down all the way
+        setTimeout(function(){
+          $('#gsc-i-id1').focus();
+        },300);
+      }
     } 
     else if ( $(window).width() >= TABLET_BREAKPOINT && $(window).width() < DESKTOP_BREAKPOINT ) {
       // On tablet, utility-links don't show, only utility-search should toggle in container
@@ -236,11 +244,21 @@ var OmniNav2 = (function() {
       // Other utility nav trigger classes
       $('html.omni-nav-v2').toggleClass('utility-nav-open');
       $primaryNav.removeClass('search-open');
+      
+      // Sets focus on search input field, if utility nav is being opened
+      if ($('.utility-nav-open').length > 0) {
+        // Focus needs a slight delay to allow the utility nav to come down all the way
+        setTimeout(function(){
+          $('#gsc-i-id1').focus();
+        },300);
+      }
     }
     else {
       $utilityNav.removeClass('utility-nav-open');
       $('html.omni-nav-v2').removeClass('utility-nav-open');
       $primaryNav.toggleClass('search-open');
+      // Sets focus for search input field
+      if ($('.search-open').length > 0) $('#gsc-i-id2').focus();
     }
 
     
