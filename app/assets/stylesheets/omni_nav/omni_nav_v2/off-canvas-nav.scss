@@ -84,9 +84,69 @@
         div.toggle-logo {
           float: left;
           width: 50%;
-
           padding: 18px;
           position: relative;
+
+          .asbe {
+            background: image-url('off-canvas-header-asbe.png'); // IE 8
+            background: image-url('off-canvas-header-asbe.svg'), linear-gradient(transparent, transparent);
+            background-repeat: no-repeat;
+            background-size: contain;
+          }
+          .education {
+            background: image-url('off-canvas-header-ces.png'); // IE 8
+            background: image-url('off-canvas-header-ces.svg'), linear-gradient(transparent, transparent);
+            background-repeat: no-repeat;
+            background-size: contain;
+          }
+          .dodge {
+            background: image-url('off-canvas-header-dodge.png'); // IE 8
+            background: image-url('off-canvas-header-dodge.svg'), linear-gradient(transparent, transparent);
+            background-repeat: no-repeat;
+            background-size: contain;
+          }
+          .crean {
+            background: image-url('off-canvas-header-crean.png'); // IE 8
+            background: image-url('off-canvas-header-crean.svg'), linear-gradient(transparent, transparent);
+            background-repeat: no-repeat;
+            background-size: contain;
+          }
+          .wilkinson {
+            background: image-url('off-canvas-header-wilkinson.png'); // IE 8
+            background: image-url('off-canvas-header-wilkinson.svg'), linear-gradient(transparent, transparent);
+            background-repeat: no-repeat;
+            background-size: contain;
+          }
+          .copa {
+            background: image-url('off-canvas-header-copa.png'); // IE 8
+            background: image-url('off-canvas-header-copa.svg'), linear-gradient(transparent, transparent);
+            background-repeat: no-repeat;
+            background-size: contain;
+          }
+          .cusp {
+            background: image-url('off-canvas-header-cusp.png'); // IE 8
+            background: image-url('off-canvas-header-cusp.svg'), linear-gradient(transparent, transparent);
+            background-repeat: no-repeat;
+            background-size: contain;
+          }
+          .fowler {
+            background: image-url('off-canvas-header-fowler.png'); // IE 8
+            background: image-url('off-canvas-header-fowler.svg'), linear-gradient(transparent, transparent);
+            background-repeat: no-repeat;
+            background-size: contain;
+          }
+          .schmid {
+            background: image-url('off-canvas-header-schmid.png'); // IE 8
+            background: image-url('off-canvas-header-schmid.svg'), linear-gradient(transparent, transparent);
+            background-repeat: no-repeat;
+            background-size: contain;
+          }
+          .soc {
+            background: image-url('off-canvas-header-soc.png'); // IE 8
+            background: image-url('off-canvas-header-soc.svg'), linear-gradient(transparent, transparent);
+            background-repeat: no-repeat;
+            background-size: contain;
+          }
 
           a.off-logo {
             display: block;
