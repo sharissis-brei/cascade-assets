@@ -282,8 +282,17 @@ var OmniNav2 = (function() {
 
   var onUtilityNavDropdownClick = function(e) {
     e.stopPropagation();
-    $('.utility-links').find('.utility-has-dropdown').removeClass('dropdown-open');
-    $('.utility-search').find('.utility-has-dropdown').removeClass('dropdown-open');
+
+    // This is to prevent Search From and Social dropdowns from overlapping
+    // Search From (.search-type) has a different parent than the other dropdowns so it needs a different selector to hide the other dropdowns
+    if ( $(this)[0].classList.contains('search-type') ) {
+      $('.utility-links').find('.utility-has-dropdown').removeClass('dropdown-open');
+    }
+    else {
+      $(this).siblings('.utility-has-dropdown').removeClass('dropdown-open');
+      $('.utility-search').find('.utility-has-dropdown').removeClass('dropdown-open');
+    }
+    
     $(this).toggleClass('dropdown-open');
     $(document).on("click", onDocumentClick);
   };
