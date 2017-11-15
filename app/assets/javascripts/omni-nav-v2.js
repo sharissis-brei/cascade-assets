@@ -28,7 +28,172 @@ var OmniNav2 = (function() {
     // Remove padding from theme version. Have to use js because css will not work.
     // See https://stackoverflow.com/a/1014958/6763239
     $('#theme header').css('padding-bottom', '0px');
-  }
+
+    // Functions for anchor points in certain widgets
+    var height = getOmninavHeight();
+    var params = getUrlParams();
+    repositionForPersonnelAnchor(params, height);
+    repositionForTabAnchor(params, height);
+    repositionForCollabsibleAnchor(params, height);
+  };
+
+  var getOmninavHeight = function() {
+    // The primary nav will always show, this is the minimum
+    var height = 60;
+
+    // On mobile screen, omninav is always just primary nav
+    if ( $(window).width() < TABLET_BREAKPOINT ) {
+      return height;
+    }
+
+    // Global nav height
+    // For branded omninav, global nav is always stacked below primary
+    // Otherwise, global nav is only stacked on tablet
+    var isTabletSize = ($(window).width() >= TABLET_BREAKPOINT) && ($(window).width() < DESKTOP_BREAKPOINT);
+    if ( $('html').find('#omni-nav-v2').hasClass('branded') || isTabletSize) {
+      height += 60;
+    }
+
+    // By default when you load the page for the first time, the utility nav is closed
+    // so its height will never need to be accounted for in this case
+    return height;
+  };
+
+  var getUrlParams = function() {
+    // ex. ?openregion=1
+    var searchString = window.location.search.substring(1);
+    //ex. #john-doe
+    var anchorName = window.location.hash;
+
+    if ( searchString.indexOf('=') > -1 ) {
+      var urlParams = {};
+      var e,
+      a = /\+/g,  // Regex for replacing addition symbol with a space
+      r = /([^&=]+)=?([^&]*)/g,
+      d = function (s) { return decodeURIComponent(s.replace(a, " ")); },
+      q = window.location.search.substring(1);
+
+      while (e = r.exec(q)) urlParams[d(e[1])] = d(e[2]);
+      return urlParams;
+    }
+    else {
+      return anchorName;
+    }
+  };
+
+  var repositionForCollabsibleAnchor = function(urlParams, omninavHeight) {
+    /* Used with the Collapsible Region widget */
+    if ((urlParams["openregion"] != undefined) && (urlParams["openregion"] == parseInt(urlParams["openregion"])) && urlParams["openregion"] - 1 < $(".collapsibles-widget .accordion").length) {
+
+      // Offset for zero based arrays
+      if (urlParams["openregion"] != 0) 
+          urlParams["openregion"] = urlParams["openregion"] - 1;
+      
+      var $activeElementRegion = $(".collapsibles-widget .accordion").eq(urlParams["openregion"]);
+
+      // Add the active class to nth accordion and remove all other active classes
+      $activeElementRegion.addClass("active").siblings().removeClass("active");
+
+      // Display the current region
+      $activeElementRegion.find("div.collapsibles-widget").show();
+
+      // Hide the other regions
+      $activeElementRegion.siblings().find("div.content").hide();
+  
+      // Scroll to the active element (add offset for omninav height)
+      setTimeout(function(){
+        $('html, body').stop().animate({
+          scrollTop:$activeElementRegion.offset().top - omninavHeight
+        },1000);
+      },250);
+    }
+  };
+
+  var repositionForTabAnchor = function(urlParams, omninavHeight) {
+    /* Used with the Tab widget */
+    if ((urlParams["startingtab"] != undefined) && (urlParams["startingtab"] == parseInt(urlParams["startingtab"])) && (urlParams["startingtab"] - 1 < $(".main .tabs-nav li").length)) {
+      // Offset for zero based arrays
+      if (urlParams["startingtab"] != 0)
+          urlParams["startingtab"] = urlParams["startingtab"] - 1;
+      
+      var $activeElementTab = $(".main .tabs-nav li").eq(urlParams["startingtab"]);
+
+      // Set active class
+      $activeElementTab.addClass("active").siblings().removeClass("active");
+
+      // Update the content section - set active content to display
+      $activeElementTab.parent().siblings().children("li:eq(" + urlParams["startingtab"] + ")").addClass("active").siblings().removeClass("active");
+
+      // Scroll to the active element (add offset for omninav height)
+      setTimeout(function(){
+        $('html, body').stop().animate({
+          scrollTop:$activeElementTab.offset().top - omninavHeight
+        },1000);
+      },250);
+    }
+  };
+
+  var repositionForPersonnelAnchor = function(urlHash, omninavHeight) {
+    // Unfortunately, there isn't a uniform identifier that can be referenced throughout
+    // the site at this time. So we have to cover a few cases.
+    var $wysiwygLinks = $('h3.anchorLinks a, a[href="#top"]');
+    var $azLinks = $('div.a-z-widget a');
+
+    // Callback to reposition anchors on click.
+    var repositionAnchorsOnClick = function(e) {
+      // Pull anchor identifer from URL hash.
+      var anchorIdentifer = this.hash.slice(1);
+
+      // Identify target element. It could be a name or id attr.
+      var nameSelector = 'a[name=' + anchorIdentifer + ']';
+      var idSelector = '#' + anchorIdentifer;
+
+      // Look first for name selector.
+      var $target = $(nameSelector);
+
+      // If no name selector, look for ID selector.
+      if (!$target.length) {
+        $target = $(idSelector);
+      }
+
+      if ( $target.length ) {
+        e.preventDefault();
+        var newTopPosition = $target.offset().top - omninavHeight;
+
+        setTimeout(function(){
+          $('html, body').stop().animate({scrollTop: newTopPosition}, 1000);
+        },250);
+      }
+    };
+
+    // Scrolls down if there is a hash initially in the current page URL
+    var repositionAnchorsFromUrl = function() {
+      // Pull anchor identifer from URL hash.
+      var anchorIdentifer = urlHash.slice(1);
+
+      // Identify target element. It could be a name or id attr.
+      var nameSelector = 'a[name=' + anchorIdentifer + ']';
+      var idSelector = '#' + anchorIdentifer;
+
+      // Look first for name selector.
+      var $target = $(nameSelector);
+
+      // If no name selector, look for ID selector.
+      if (!$target.length) {
+        $target = $(idSelector);
+      }
+
+      setTimeout(function(){
+        $('html, body').stop().animate({
+          scrollTop:$target.offset().top - omninavHeight
+        },1000);
+      },250);
+    };
+
+    if (typeof urlHash === 'string') repositionAnchorsFromUrl();
+    $wysiwygLinks.on('click', repositionAnchorsOnClick);
+    $azLinks.on('click', repositionAnchorsOnClick);
+  };
 
   var onUtilityNavClick = function() {
     // Set gradual transition for padding adjustments after initial load
