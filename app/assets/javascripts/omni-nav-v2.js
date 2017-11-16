@@ -29,6 +29,11 @@ var OmniNav2 = (function() {
     // See https://stackoverflow.com/a/1014958/6763239
     $('#theme header').css('padding-bottom', '0px');
 
+    // Removes space between mastheads and omninav
+    // Only applicable to omninav v2
+    $('.bigMasthead').find('header').css('margin-top', '0px');
+    $('.bigMasthead').find('header').css('margin-bottom', '0px');
+
     // Functions for anchor points in certain widgets
     var height = getOmninavHeight();
     var params = getUrlParams();
