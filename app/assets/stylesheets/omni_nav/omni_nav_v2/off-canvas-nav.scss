@@ -152,6 +152,10 @@
             display: block;
             height: 23px;
             width: 75%;
+
+            /* WAVE error reports empty anchor tag because logo is a background image.
+             * Use color:transparent to add text that users can't see, to give context. */
+            color: transparent;
           }
 
           a.default.off-logo {
