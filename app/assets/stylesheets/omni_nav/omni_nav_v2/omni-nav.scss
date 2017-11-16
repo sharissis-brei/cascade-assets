@@ -611,9 +611,13 @@ html.omni-nav-v2 {
 
             li {
               border-bottom: 1px solid $primary-nav-border-color;
-              padding: 10px $base-spacing;
               font-size: 14px;
               margin-bottom: 0;
+
+              a {
+                padding: 10px $base-spacing;
+                display: block;
+              }
 
               &:last-of-type { border-bottom: none; }
 
@@ -648,7 +652,6 @@ html.omni-nav-v2 {
     li {
       border-top: 1px solid $white;
       margin-bottom: 0;
-      padding: 10px $base-spacing;
       cursor: pointer;
 
       &:first-of-type {
@@ -659,6 +662,8 @@ html.omni-nav-v2 {
         font-size: 14px;
         line-height: 14px;
         color: $white;
+        padding: 10px $base-spacing;
+        display: block;
       }
     }
 
@@ -692,6 +697,7 @@ html.omni-nav-v2 {
           display: block;
           font-size: 0px;
           line-height: 26px;
+          padding: 0px;
         }
 
           &:hover {
@@ -816,7 +822,6 @@ html.omni-nav-v2 {
       li {
         border-top: 1px solid $white;
         margin-bottom: 0;
-        padding: 10px $base-spacing;
         cursor: pointer;
 
         &:first-of-type {
@@ -831,7 +836,8 @@ html.omni-nav-v2 {
           font-size: 14px;
           line-height: 14px;
           color: $white;
-          padding-left: 9px;
+          padding: 10px $base-spacing;
+          display: block;
         }
       }
 
@@ -840,7 +846,7 @@ html.omni-nav-v2 {
         height: $square-icon-size;
         vertical-align: middle;
         fill: $white;
-
+        margin-right: 9px;
       }
     }
   }
