@@ -628,7 +628,22 @@ html.omni-nav-v2 {
               }
             }
 
-            a:before { padding-right: 8px; }
+            .icon-california:before {
+              font-size: 1.2em;
+            }
+
+            .icon-cu-monogram:before {
+              font-size: 1.3em;
+            }
+
+            .icon-cu-window:before {
+              font-size: 1.25em; 
+            }
+
+            a:before { 
+              padding-right: 8px;
+              margin: 3px 3px 10px 0;
+            }
           }
         }
         a { color: $black; }
@@ -869,7 +884,7 @@ html.omni-nav-v2 {
     .secondary-logo {
       display: none;
       vertical-align: middle;
-      padding-left: 20px;
+      padding: 1px 0 0 20px;
       border-left: 1px solid #2f2f2f;
       font-size: 18px;
       font-family: Minion Pro;
