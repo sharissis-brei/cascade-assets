@@ -14,6 +14,13 @@ html.omni-nav-v2 {
     padding-top: 60px;
   }
 
+  /* branded omninav always has primary nav stacked on top of global nav */
+  &.branded {
+    @include media($large-screen) {
+      padding-top: 120px;
+    }
+  }
+
   &.utility-nav-open {
     @include media($medium-screen) {
       padding-top: 180px;
@@ -21,6 +28,13 @@ html.omni-nav-v2 {
 
     @include media($large-screen) {
       padding-top: 120px;
+    }
+
+    /* since branded is min 120px height (global + primary), adding utility will always make it 180 */
+    &.branded {
+      @include media($medium-screen) {
+        padding-top: 180px;
+      }     
     }
   }
 }
@@ -240,26 +254,18 @@ html.omni-nav-v2 {
     }
 
     &.utility-nav-open {
-      @include media($medium-screen) {
-        display: block;
-      }
-
       .utility-nav-container {
 
         //only search container displayed on medium screen
         @include media($medium-screen) {
           &.utility-search {
-            display: table-cell;
             width: 100%;
           }
         }
 
         //show all utility sections on large screen
         @include media($large-screen) {
-          display: table-cell;
-
           &.utility-search {
-            display: table-cell;
             width: auto;
           }
         }
@@ -301,12 +307,20 @@ html.omni-nav-v2 {
 
           & > a:after { transform: rotate(-180deg); }
 
-          .dropdown { display: block; }
+          .utility-dropdown {
+            visibility: visible;
+            opacity: 1;
+            @include vendorize(transition, opacity 0.3s ease-in);
+          }
         }
       }
 
       .utility-dropdown {
         background-color: #4d4d4d;
+        -webkit-box-shadow: 0px 10px 10px 1px rgba(0, 0, 0, 0.2);
+        box-shadow: 0px 10px 10px 1px rgba(0, 0, 0, 0.2);
+        visibility: hidden;
+        opacity: 0;
 
         li:hover { background-color: $utility-nav-background-color; }
       }
@@ -498,7 +512,7 @@ html.omni-nav-v2 {
 
       &.logo-container {
         svg.chapman-logo {
-          width: 200px;
+          width: 190px;
           height: 32px;
         }
 
@@ -577,22 +591,33 @@ html.omni-nav-v2 {
           }
 
           &:hover {
-            .global-nav-dropdown { display: block; }
+            .global-nav-dropdown { 
+              visibility: visible;
+              opacity: 1;
+              @include vendorize(transition, opacity 0.3s ease-in);
+            }
           }
 
           .global-nav-dropdown {
-            display: none;
+            visibility: hidden;
             position: absolute;
             width: $primary-nav-dropdown-width;
             left: 0;
             padding-top: 20px;
             background-color: $white;
+            -webkit-box-shadow: 0px 10px 10px 1px rgba(0, 0, 0, 0.2);
+            box-shadow: 0px 10px 10px 1px rgba(0, 0, 0, 0.2);
+            opacity: 0;
 
             li {
               border-bottom: 1px solid $primary-nav-border-color;
-              padding: 10px $base-spacing;
               font-size: 14px;
               margin-bottom: 0;
+
+              a {
+                padding: 10px $base-spacing;
+                display: block;
+              }
 
               &:last-of-type { border-bottom: none; }
 
@@ -603,7 +628,22 @@ html.omni-nav-v2 {
               }
             }
 
-            a:before { padding-right: 8px; }
+            .icon-california:before {
+              font-size: 1.2em;
+            }
+
+            .icon-cu-monogram:before {
+              font-size: 1.3em;
+            }
+
+            .icon-cu-window:before {
+              font-size: 1.25em; 
+            }
+
+            a:before { 
+              padding-right: 8px;
+              margin: 3px 3px 10px 0;
+            }
           }
         }
         a { color: $black; }
@@ -614,7 +654,7 @@ html.omni-nav-v2 {
   /* GENERAL DROPDOWN STYLES
   ---------------------------------------- */
   .dropdown {
-    display: none;
+    visibility: hidden;
     position: absolute;
     top: 60px; left: 0px;
     width: $primary-nav-dropdown-width;
@@ -627,7 +667,6 @@ html.omni-nav-v2 {
     li {
       border-top: 1px solid $white;
       margin-bottom: 0;
-      padding: 10px $base-spacing;
       cursor: pointer;
 
       &:first-of-type {
@@ -638,6 +677,8 @@ html.omni-nav-v2 {
         font-size: 14px;
         line-height: 14px;
         color: $white;
+        padding: 10px $base-spacing;
+        display: block;
       }
     }
 
@@ -671,6 +712,7 @@ html.omni-nav-v2 {
           display: block;
           font-size: 0px;
           line-height: 26px;
+          padding: 0px;
         }
 
           &:hover {
@@ -745,7 +787,7 @@ html.omni-nav-v2 {
     }
 
     .primary-nav-icon {
-      margin-right: 4px;
+      margin-right: 13px;
 
       .icon-open-search, .icon-close-search {
         &.hide {
@@ -764,11 +806,16 @@ html.omni-nav-v2 {
     position: relative;
 
     &:hover {
-      .login-menu { display: block; }
+      .login-menu { 
+        visibility: visible;
+        opacity: 1;
+        @include vendorize(transition, opacity 0.3s ease-in);
+      }
     }
 
     .login-menu {
-      display: none;
+      visibility: hidden;
+      opacity: 0;
       position: absolute;
       top: 60px;
       right: -20px;
@@ -776,6 +823,8 @@ html.omni-nav-v2 {
       background-color: #2f2f2f;
       text-align: left;
       z-index: 667;
+      -webkit-box-shadow: 0px 10px 10px 1px rgba(0, 0, 0, 0.2);
+      box-shadow: 0px 10px 10px 1px rgba(0, 0, 0, 0.2);
 
       @include media($medium-screen) {
         right: 0px;
@@ -788,7 +837,6 @@ html.omni-nav-v2 {
       li {
         border-top: 1px solid $white;
         margin-bottom: 0;
-        padding: 10px $base-spacing;
         cursor: pointer;
 
         &:first-of-type {
@@ -803,7 +851,8 @@ html.omni-nav-v2 {
           font-size: 14px;
           line-height: 14px;
           color: $white;
-          padding-left: 9px;
+          padding: 10px $base-spacing;
+          display: block;
         }
       }
 
@@ -812,7 +861,7 @@ html.omni-nav-v2 {
         height: $square-icon-size;
         vertical-align: middle;
         fill: $white;
-
+        margin-right: 9px;
       }
     }
   }
@@ -835,7 +884,7 @@ html.omni-nav-v2 {
     .secondary-logo {
       display: none;
       vertical-align: middle;
-      padding-left: 20px;
+      padding: 1px 0 0 20px;
       border-left: 1px solid #2f2f2f;
       font-size: 18px;
       font-family: Minion Pro;

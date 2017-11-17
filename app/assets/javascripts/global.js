@@ -80,5 +80,7 @@ var globalLoader = (function() {
 })();
 
 $(document).ready(function() {
-    globalLoader.init();
+    if ( $('html').find('#omni-nav-v2').length === 0 ){
+        globalLoader.init();
+    }
 });

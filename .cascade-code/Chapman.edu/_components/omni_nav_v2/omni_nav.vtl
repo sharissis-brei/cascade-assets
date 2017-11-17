@@ -23,35 +23,33 @@
 ## umbrellaCategories
 ## These are locations for which OmniNav should build the secondary off-canvas-nav menu.
 ## umbrellaCategory is the term product owners use.
-## Does order matter here? I'm assuming it does.
-## TODO: Ross is reviewing the labels and will provide an updated list.
 ## I would prefer that each inner array item within the array were only 2 items and
 ## all other vars be derived from those:
 ## [$umbrellaFolderId, $umbrellaLabel]
 ## Current inner array values:
-## [ $umbrellaDirectory, $umbrellaLabel/$umbrellaBrandLabel, $umbrellaClass, $umbrellaHref ]
+## [ $umbrellaDirectory, $umbrellaLabel/$umbrellaBrandLabel, $umbrellaClass ]
 #set ( $umbrellaCategories = [
-  [ 'business', 'ARGYROS SCHOOL', 'asbe', '/business/' ],
-  [ 'education', 'ATTALLAH COLLEGE', 'education', '/education/' ],
-  [ 'dodge', 'DODGE COLLEGE', 'dodge', '/dodge/' ],
-  [ 'crean', 'CREAN COLLEGE', 'crean', '/crean/' ],
-  [ 'wilkinson', 'WILKINSON COLLEGE', 'wilkinson', '/wilkinson/' ],
-  [ 'copa', 'CoPA', 'copa', '/copa/' ],
-  [ 'pharmacy', 'CUSP', 'cusp', '/pharmacy/' ],
-  [ 'law', 'FOWLER SCHOOL OF LAW', 'fowler', '/law/' ],
-  [ 'scst', 'SCHMID COLLEGE', 'schmid', '/scst/' ],
-  [ 'communication', 'SCHOOL OF COMM', 'soc', '/communication/' ],
-  [ 'about', 'About', 'default', '/' ],
-  [ 'academics', 'Academics', 'default', '/' ],
-  [ 'admission', 'Admission', 'default', '/' ],
-  [ 'alumni', 'Alumni', 'default', '/' ],
-  [ 'campus-services', 'Campus Services', 'default', '/' ],
-  [ 'campus-services/career-development', 'Career', 'default', '/' ],
-  [ 'faculty-staff', 'Faculty and Staff', 'default', '/' ],
-  [ 'families', 'Families', 'default', '/' ],
-  [ 'research', 'Research', 'default', '/' ],
-  [ 'students', 'Students', 'default', '/' ],
-  [ 'support-chapman', 'Support Chapman', 'default', '/' ]
+  [ 'business', 'Argyros School', 'asbe' ],
+  [ 'education', 'Attallah College', 'education' ],
+  [ 'dodge', 'Dodge College', 'dodge' ],
+  [ 'crean', 'Crean College', 'crean' ],
+  [ 'wilkinson', 'Wilkinson College', 'wilkinson' ],
+  [ 'copa', 'College of Performing Arts', 'copa' ],
+  [ 'pharmacy', 'School of Pharmacy', 'cusp' ],
+  [ 'law', 'Fowler School', 'fowler' ],
+  [ 'scst', 'Schmid College', 'schmid' ],
+  [ 'communication', 'School of Communication', 'soc' ],
+  [ 'about', 'About', 'default' ],
+  [ 'academics', 'Academics', 'default' ],
+  [ 'admission', 'Admission', 'default' ],
+  [ 'alumni', 'Alumni', 'default' ],
+  [ 'campus-services', 'Campus Services', 'default' ],
+  [ 'campus-services/career-development', 'Career', 'default' ],
+  [ 'faculty-staff', 'Faculty and Staff', 'default' ],
+  [ 'families', 'Families', 'default' ],
+  [ 'research', 'Research', 'default' ],
+  [ 'students', 'Students', 'default' ],
+  [ 'support-chapman', 'Support Chapman', 'default' ]
 ])
 
 ##
@@ -67,7 +65,6 @@
 #set ( $umbrellaDirectoryPath = '' )
 #set ( $umbrellaLabel = '' )
 #set ( $umbrellaClass = '' )
-#set ( $umbrellaHref = '' )
 #set ( $umbrellaBrandLabel = '' )
 #set ( $umbrellaAssets = [] )
 #set ( $brandClass = '' )
@@ -89,7 +86,6 @@
     #set ( $umbrellaBrandLabel = $pageUmbrellaCategory[1] )
 
     #set ( $umbrellaClass = $pageUmbrellaCategory[2] )
-    #set ( $umbrellaHref = $pageUmbrellaCategory[3] )
     #set ( $umbrellaDirectoryPath = "/${umbrellaDirectory}" )
     #setUmbrellaAssets()
     #set ( $brandClass = 'branded' )
@@ -227,7 +223,7 @@
   <div class="nav-container logo-container">
     <div class="cu-logo-wrapper">
       <div class="primary-logo">
-        <a href="/" title="Chapman University Website Home Page">
+        <a href="/index" title="Chapman University Website Home Page">
           <svg class="chapman-logo" xmlns="http://www.w3.org/2000/svg" viewBox="0 0 273.58 28.08">
             <defs>
               <style>.cls-1 { fill: #98002e; } .cls-2 { fill: #231f20; }</style>
@@ -243,7 +239,7 @@
 
       #if ( $isUmbrellaCategory )
       <div class="secondary-logo">
-        <a class="branded-logo" href="${umbrellaHref}">${umbrellaBrandLabel}</a>
+        <a class="branded-logo" href="${umbrellaDirectoryPath}/index">${umbrellaBrandLabel}</a>
       </div>
       #end
     </div>
@@ -285,55 +281,65 @@
       <div class="login-menu">
         <ul>
           <li>
-            <svg xmlns="http://www.w3.org/2000/svg" width="32" height="32" viewBox="0 0 512 512">
-              <path d="M50.4 174.2C47.2 112.2 1 139.3 0 118.1c-0.5-8.2 4.5-6.7 7.7-7 1.7 0 5 1.2 26.2 0.2 39.1-2.2 76.5-5.7 113.9-7.7 110.9-6 114.4 60.8 114.9 70.6 1.5 29.4-13.5 54.6-45.4 66.3v1.7c56.1 10 73.8 33.7 76 74.3 3.2 60.3-35.4 100-108.7 104 -66.8 3.7-89.8 3.2-112.4 4.5 -11.5 0.5-22.7 3-32.4 3.5s-14.7 0.7-15-5.7c-0.7-14.7 38.9-5.5 36.7-49.4L50.4 174.2 50.4 174.2zM108.5 220.1c1.2 21.2 6.2 24.2 32.4 24.4l26.2-1.5c34.2-1.7 46.4-20.4 44.6-53.1 -2.5-42.4-36.6-68.3-77.3-66.1 -29.4 1.5-30.2 18-28.7 44.1L108.5 220.1 108.5 220.1zM115.5 350.5c2.2 42.4 14.5 54.9 58.3 52.4 44.1-2.5 65.3-32.9 62.8-77 -1.5-26.2-16.7-66.1-98.2-61.6 -26.2 1.5-27.2 13-25.9 35.7L115.5 350.5 115.5 350.5z"/>
-              <path d="M321.9 138.1c-1.7-32.7-28.4-11.5-29.4-27.9 -0.5-11.5 20.9-6 61.8-34.4 3.2-1.7 4.7-3.5 8-3.7 5-0.2 3.7 9.7 4 13l9.7 177.8c17-17.2 35.9-32.9 58.6-34.2 52.1-2.7 74.3 41.6 75.8 72.8C514.1 370.1 477 408 421.6 411c-40.6 2.2-54.9-15-61.3-14.7 -8.2 0.5-12 18.7-21.9 19.2 -3.2 0.2-5-1.2-5.2-4.7 -0.2-3.2 2.5-13.2 1.2-36.2L321.9 138.1 321.9 138.1zM380.7 350.8c2 37.4 36.6 43.9 49.9 43.1 37.4-2 43.6-38.4 42.1-67.6 -1.7-34.2-19.9-65.8-62.3-63.6 -13 0.7-33.7 10-32.9 26.4L380.7 350.8 380.7 350.8z"/>
-            </svg>
-            <a href="https://blackboard.chapman.edu/">Blackboard</a>
+            <a href="https://blackboard.chapman.edu/">
+              <svg xmlns="http://www.w3.org/2000/svg" width="32" height="32" viewBox="0 0 512 512">
+                <path d="M50.4 174.2C47.2 112.2 1 139.3 0 118.1c-0.5-8.2 4.5-6.7 7.7-7 1.7 0 5 1.2 26.2 0.2 39.1-2.2 76.5-5.7 113.9-7.7 110.9-6 114.4 60.8 114.9 70.6 1.5 29.4-13.5 54.6-45.4 66.3v1.7c56.1 10 73.8 33.7 76 74.3 3.2 60.3-35.4 100-108.7 104 -66.8 3.7-89.8 3.2-112.4 4.5 -11.5 0.5-22.7 3-32.4 3.5s-14.7 0.7-15-5.7c-0.7-14.7 38.9-5.5 36.7-49.4L50.4 174.2 50.4 174.2zM108.5 220.1c1.2 21.2 6.2 24.2 32.4 24.4l26.2-1.5c34.2-1.7 46.4-20.4 44.6-53.1 -2.5-42.4-36.6-68.3-77.3-66.1 -29.4 1.5-30.2 18-28.7 44.1L108.5 220.1 108.5 220.1zM115.5 350.5c2.2 42.4 14.5 54.9 58.3 52.4 44.1-2.5 65.3-32.9 62.8-77 -1.5-26.2-16.7-66.1-98.2-61.6 -26.2 1.5-27.2 13-25.9 35.7L115.5 350.5 115.5 350.5z"/>
+                <path d="M321.9 138.1c-1.7-32.7-28.4-11.5-29.4-27.9 -0.5-11.5 20.9-6 61.8-34.4 3.2-1.7 4.7-3.5 8-3.7 5-0.2 3.7 9.7 4 13l9.7 177.8c17-17.2 35.9-32.9 58.6-34.2 52.1-2.7 74.3 41.6 75.8 72.8C514.1 370.1 477 408 421.6 411c-40.6 2.2-54.9-15-61.3-14.7 -8.2 0.5-12 18.7-21.9 19.2 -3.2 0.2-5-1.2-5.2-4.7 -0.2-3.2 2.5-13.2 1.2-36.2L321.9 138.1 321.9 138.1zM380.7 350.8c2 37.4 36.6 43.9 49.9 43.1 37.4-2 43.6-38.4 42.1-67.6 -1.7-34.2-19.9-65.8-62.3-63.6 -13 0.7-33.7 10-32.9 26.4L380.7 350.8 380.7 350.8z"/>
+              </svg>
+              Blackboard
+            </a>
           </li>
           <li>
-            <svg xmlns="http://www.w3.org/2000/svg" width="32" height="32" viewBox="0 0 28.1 28.1">
-              <style type="text/css">
-                .st0{fill:#ffffff;}
-              </style>
-              <polygon class="st0" points="13 14.5 0 27.5 0 14.5 "/>
-              <polygon class="st0" points="0 13.6 0 0.6 13 13.6 "/>
-              <polygon class="st0" points="27.5 0 14.5 13 14.5 0 "/>
-              <polygon class="st0" points="13.6 13 0.6 0 13.6 0 "/>
-              <polygon class="st0" points="15.1 13.6 28.1 0.6 28.1 13.6 "/>
-              <polygon class="st0" points="28.1 14.5 28.1 27.5 15.1 14.5 "/>
-              <polygon class="st0" points="13.6 15 0.6 28.1 13.6 28.1 "/>
-              <polygon class="st0" points="14.5 15 14.5 28.1 27.5 28.1 "/>
-            </svg>
-            <a href="https://my.chapman.edu/">My Chapman</a>
+            <a href="https://my.chapman.edu/">
+              <svg xmlns="http://www.w3.org/2000/svg" width="32" height="32" viewBox="0 0 28.1 28.1">
+                <style type="text/css">
+                  .st0{fill:#ffffff;}
+                </style>
+                <polygon class="st0" points="13 14.5 0 27.5 0 14.5 "/>
+                <polygon class="st0" points="0 13.6 0 0.6 13 13.6 "/>
+                <polygon class="st0" points="27.5 0 14.5 13 14.5 0 "/>
+                <polygon class="st0" points="13.6 13 0.6 0 13.6 0 "/>
+                <polygon class="st0" points="15.1 13.6 28.1 0.6 28.1 13.6 "/>
+                <polygon class="st0" points="28.1 14.5 28.1 27.5 15.1 14.5 "/>
+                <polygon class="st0" points="13.6 15 0.6 28.1 13.6 28.1 "/>
+                <polygon class="st0" points="14.5 15 14.5 28.1 27.5 28.1 "/>
+              </svg>
+              My Chapman
+            </a>
           </li>
           <li>
-            <svg xmlns="http://www.w3.org/2000/svg" width="32" height="32" viewBox="0 0 448 448">
-              <path d="M416 376V184c-5.2 6-11 11.5-17.2 16.5C363 228 327 256 292.2 285c-18.8 15.8-42 35-68 35h-0.5c-26 0-49.2-19.2-68-35C121 256 85 228 49.2 200.5c-6.2-5-12-10.5-17.2-16.5v192c0 4.2 3.8 8 8 8h368C412.2 384 416 380.2 416 376zM416 113.2c0-6.2 1.5-17.2-8-17.2H40c-4.2 0-8 3.8-8 8 0 28.5 14.2 53.2 36.8 71 33.5 26.2 67 52.8 100.2 79.2 13.2 10.8 37.2 33.8 54.8 33.8h0.5c17.5 0 41.5-23 54.8-33.8 33.2-26.5 66.8-53 100.2-79.2C395.5 162.2 416 134.5 416 113.2zM448 104v272c0 22-18 40-40 40H40c-22 0-40-18-40-40V104c0-22 18-40 40-40h368C430 64 448 82 448 104z"/>
-            </svg>
-            <a href="https://exchange.chapman.edu/">Staff &amp; Faculty Email</a>
+            <a href="https://exchange.chapman.edu/">
+              <svg xmlns="http://www.w3.org/2000/svg" width="32" height="32" viewBox="0 0 448 448">
+                <path d="M416 376V184c-5.2 6-11 11.5-17.2 16.5C363 228 327 256 292.2 285c-18.8 15.8-42 35-68 35h-0.5c-26 0-49.2-19.2-68-35C121 256 85 228 49.2 200.5c-6.2-5-12-10.5-17.2-16.5v192c0 4.2 3.8 8 8 8h368C412.2 384 416 380.2 416 376zM416 113.2c0-6.2 1.5-17.2-8-17.2H40c-4.2 0-8 3.8-8 8 0 28.5 14.2 53.2 36.8 71 33.5 26.2 67 52.8 100.2 79.2 13.2 10.8 37.2 33.8 54.8 33.8h0.5c17.5 0 41.5-23 54.8-33.8 33.2-26.5 66.8-53 100.2-79.2C395.5 162.2 416 134.5 416 113.2zM448 104v272c0 22-18 40-40 40H40c-22 0-40-18-40-40V104c0-22 18-40 40-40h368C430 64 448 82 448 104z"/>
+              </svg>
+              Staff &amp; Faculty Email
+            </a>
           </li>
           <li>
-            <svg xmlns="http://www.w3.org/2000/svg" width="32" height="32" viewBox="0 0 448 448">
-              <path d="M416 376V184c-5.2 6-11 11.5-17.2 16.5C363 228 327 256 292.2 285c-18.8 15.8-42 35-68 35h-0.5c-26 0-49.2-19.2-68-35C121 256 85 228 49.2 200.5c-6.2-5-12-10.5-17.2-16.5v192c0 4.2 3.8 8 8 8h368C412.2 384 416 380.2 416 376zM416 113.2c0-6.2 1.5-17.2-8-17.2H40c-4.2 0-8 3.8-8 8 0 28.5 14.2 53.2 36.8 71 33.5 26.2 67 52.8 100.2 79.2 13.2 10.8 37.2 33.8 54.8 33.8h0.5c17.5 0 41.5-23 54.8-33.8 33.2-26.5 66.8-53 100.2-79.2C395.5 162.2 416 134.5 416 113.2zM448 104v272c0 22-18 40-40 40H40c-22 0-40-18-40-40V104c0-22 18-40 40-40h368C430 64 448 82 448 104z"/>
-            </svg>
-            <a href="/panthermail/">Panther Mail</a>
+            <a href="/panthermail/">
+              <svg xmlns="http://www.w3.org/2000/svg" width="32" height="32" viewBox="0 0 448 448">
+                <path d="M416 376V184c-5.2 6-11 11.5-17.2 16.5C363 228 327 256 292.2 285c-18.8 15.8-42 35-68 35h-0.5c-26 0-49.2-19.2-68-35C121 256 85 228 49.2 200.5c-6.2-5-12-10.5-17.2-16.5v192c0 4.2 3.8 8 8 8h368C412.2 384 416 380.2 416 376zM416 113.2c0-6.2 1.5-17.2-8-17.2H40c-4.2 0-8 3.8-8 8 0 28.5 14.2 53.2 36.8 71 33.5 26.2 67 52.8 100.2 79.2 13.2 10.8 37.2 33.8 54.8 33.8h0.5c17.5 0 41.5-23 54.8-33.8 33.2-26.5 66.8-53 100.2-79.2C395.5 162.2 416 134.5 416 113.2zM448 104v272c0 22-18 40-40 40H40c-22 0-40-18-40-40V104c0-22 18-40 40-40h368C430 64 448 82 448 104z"/>
+              </svg>
+              PantherMail
+            </a>
           </li>
           <li>
-            <svg xmlns="http://www.w3.org/2000/svg" width="32" height="32" viewBox="0 0 28.1 28.1">
-              <style type="text/css">
-                .st0{fill:#ffffff;}
-              </style>
-              <polygon class="st0" points="13 14.5 0 27.5 0 14.5 "/>
-              <polygon class="st0" points="0 13.6 0 0.6 13 13.6 "/>
-              <polygon class="st0" points="27.5 0 14.5 13 14.5 0 "/>
-              <polygon class="st0" points="13.6 13 0.6 0 13.6 0 "/>
-              <polygon class="st0" points="15.1 13.6 28.1 0.6 28.1 13.6 "/>
-              <polygon class="st0" points="28.1 14.5 28.1 27.5 15.1 14.5 "/>
-              <polygon class="st0" points="13.6 15 0.6 28.1 13.6 28.1 "/>
-              <polygon class="st0" points="14.5 15 14.5 28.1 27.5 28.1 "/>
-            </svg>
-            <a href="https://mywindow.chapman.edu/">My Window</a>
+            <a href="https://mywindow.chapman.edu/">
+              <svg xmlns="http://www.w3.org/2000/svg" width="32" height="32" viewBox="0 0 28.1 28.1">
+                <style type="text/css">
+                  .st0{fill:#ffffff;}
+                </style>
+                <polygon class="st0" points="13 14.5 0 27.5 0 14.5 "/>
+                <polygon class="st0" points="0 13.6 0 0.6 13 13.6 "/>
+                <polygon class="st0" points="27.5 0 14.5 13 14.5 0 "/>
+                <polygon class="st0" points="13.6 13 0.6 0 13.6 0 "/>
+                <polygon class="st0" points="15.1 13.6 28.1 0.6 28.1 13.6 "/>
+                <polygon class="st0" points="28.1 14.5 28.1 27.5 15.1 14.5 "/>
+                <polygon class="st0" points="13.6 15 0.6 28.1 13.6 28.1 "/>
+                <polygon class="st0" points="14.5 15 14.5 28.1 27.5 28.1 "/>
+              </svg>
+              My Window
+            </a>
           </li>
         </ul>
       </div>
@@ -402,26 +408,26 @@
         <a href="#">Find information for</a>
         <div class="utility-dropdown dropdown">
           <ul>
-            <li><a href="/future-students/">Prospective Students</a></li>
-            <li><a href="/students/">Current Students</a></li>
-            <li><a href="/alumni">Alumni</a></li>
-            <li><a href="/faculty-staff/">Faculty &amp; Staff</a></li>
-            <li><a href="/families/">Parents &amp; Families</a></li>
+            <li><a href="/future-students/index">Prospective Students</a></li>
+            <li><a href="/students/index">Current Students</a></li>
+            <li><a href="/alumni/index">Alumni</a></li>
+            <li><a href="/faculty-staff/index">Faculty &amp; Staff</a></li>
+            <li><a href="/families/index">Parents &amp; Families</a></li>
           </ul>
         </div>
       </li>
-      <li class="utility-cell"><a href="/academics/degrees-and-programs.aspx">Degrees &amp; Programs</a></li>
+      <li class="utility-cell"><a href="/academics/degrees-and-programs">Degrees &amp; Programs</a></li>
       <li class="utility-cell utility-has-dropdown">
         <a href="#">Map &amp; Directories</a>
         <div class="utility-dropdown dropdown">
           <ul>
-            <li><a href="/about/maps-directions/campus-map/">Interactive Map</a></li>
-            <li><a href="/our-faculty/">Faculty Directory</a></li>
-            <li><a href="/directory/">All Directories</a></li>
+            <li><a href="/about/maps-directions/campus-map/index">Interactive Map</a></li>
+            <li><a href="/our-faculty/index">Faculty Directory</a></li>
+            <li><a href="/directory/index">All Directories</a></li>
           </ul>
         </div>
       </li>
-      <li class="utility-cell"><a href="https://blogs.chapman.edu/">Blogs</a></li>
+      <li class="utility-cell"><a href="https://blogs.chapman.edu/">News</a></li>
       <li class="utility-cell"><a href="https://events.chapman.edu/">Events</a></li>
       <li class="utility-cell utility-has-dropdown">
         <a href="#">Social</a>
@@ -528,16 +534,18 @@
     <div class="cu-logo-wrapper">
       #if ( $isUmbrellaCategory )
         <div id="umbrella-logo" class="toggle-logo">
-          <a class="${umbrellaClass} off-logo" href="${umbrellaHref}" title="${umbrellaBrandLabel}">
+          <a class="${umbrellaClass} off-logo" href="${umbrellaDirectoryPath}/index" title="${umbrellaBrandLabel}">
             <!-- logo set as background image by class -->
+            ${umbrellaBrandLabel} Logo
           </a>
           #buildOffCanvasNavCloseIcon()
         </div>
       #end
 
       <div id="main-logo" class="toggle-logo">
-        <a class="default off-logo" href="/" title="Chapman University Website Home Page">
+        <a class="default off-logo" href="/index" title="Chapman University Website Home Page">
           <!-- logo set as background image by class -->
+          Chapman University Logo
         </a>
         #buildOffCanvasNavCloseIcon()
       </div>
@@ -568,77 +576,77 @@
 
     <ul>
       <li>
-        <a href="/about/">About</a>
+        <a href="/about/index">About</a>
         #buildToggleIcon()
         <ul>
-          <li><a href="/about/maps-directions">Maps &amp; Directions</a></li>
-          <li><a href="/about/visit-chapman/">Visit Chapman</a></li>
-          <li><a href="/discover/">Discover Chapman</a></li>
-          <li><a href="/about/campus/">Our Campus</a></li>
-          <li><a href="/about/facts-history/">Facts &amp; History</a></li>
-          <li><a href="/about/administration/">Administration</a></li>
-          <li><a href="/about/contact-us.aspx">Contact Us</a></li>
+          <li><a href="/about/maps-directions/index">Maps &amp; Directions</a></li>
+          <li><a href="/about/visit-chapman/index">Visit Chapman</a></li>
+          <li><a href="/discover/index">Discover Chapman</a></li>
+          <li><a href="/about/campus/index">Our Campus</a></li>
+          <li><a href="/about/facts-history/index">Facts &amp; History</a></li>
+          <li><a href="/about/administration/index">Administration</a></li>
+          <li><a href="/about/contact-us">Contact Us</a></li>
         </ul>
       </li>
       <li>
-        <a href="/academics/">Academics</a>
+        <a href="/academics/index">Academics</a>
         #buildToggleIcon()
         <ul>
           <li><a href="/academics/degrees-and-programs">Degrees &amp; Programs</a></li>
-          <li><a href="/academics/schools-colleges">Schools &amp; Colleges</a></li>
-          <li><a href="/academics/academic-calendar.aspx">Academic Calendar</a></li>
-          <li><a href="/academics/libraries/">Libraries</a></li>
-          <li><a href="/academics/course-catalogs/">Course Catalogs</a></li>
-          <li><a href="/international-studies/">International Study</a></li>
+          <li><a href="/academics/schools-colleges/index">Schools &amp; Colleges</a></li>
+          <li><a href="/academics/academic-calendar">Academic Calendar</a></li>
+          <li><a href="/academics/libraries/index">Libraries</a></li>
+          <li><a href="/academics/course-catalogs/index">Course Catalogs</a></li>
+          <li><a href="/international-studies/index">International Study</a></li>
         </ul>
       </li>
       <li>
-        <a href="/admission/">Admission</a>
+        <a href="/admission/index">Admission</a>
         #buildToggleIcon()
         <ul>
-          <li><a href="/admission/undergraduate/">Undergraduate Admission</a></li>
-          <li><a href="/admission/undergraduate/applynow.aspx">Undergraduate Application</a></li>
-          <li><a href="/admission/graduate/">Graduate Admission</a></li>
-          <li><a href="/admission/graduate/applynow.aspx">Graduate Application</a></li>
-          <li><a href="/admission/undergraduate/afford.aspx">Affordability</a></li>
-          <li><a href="/students/tuition-and-aid/financial-aid/net-cost-calculator/">Financial Aid Calculator</a></li>
-          <li><a href="/admission/undergraduate/visit.aspx">Campus Tours</a></li>
+          <li><a href="/admission/undergraduate/index">Undergraduate Admission</a></li>
+          <li><a href="/admission/undergraduate/applynow">Undergraduate Application</a></li>
+          <li><a href="/admission/graduate/index">Graduate Admission</a></li>
+          <li><a href="/admission/graduate/applynow">Graduate Application</a></li>
+          <li><a href="/admission/undergraduate/afford">Affordability</a></li>
+          <li><a href="/students/tuition-and-aid/financial-aid/net-cost-calculator/index">Financial Aid Calculator</a></li>
+          <li><a href="/admission/undergraduate/visit">Campus Tours</a></li>
         </ul>
       </li>
-      <li><a href="/arts/">Arts</a></li>
+      <li><a href="/arts/index">Arts</a></li>
       <li>
-        <a href="/campus-life/">Campus Life</a>
+        <a href="/campus-life/index">Campus Life</a>
         #buildToggleIcon()
         <ul>
           <li><a href="http://www.chapmanathletics.com/landing/index">Athletics</a></li>
-          <li><a href="/diversity/">Diversity &amp; Inclusion</a></li>
+          <li><a href="/diversity/index">Diversity &amp; Inclusion</a></li>
           <li><a href="https://events.chapman.edu/">Events</a></li>
-          <li><a href="/about/fish-interfaith-center/">Fish Interfaith Center</a></li>
-          <li><a href="/students/health-and-safety/">Health &amp; Safety</a></li>
-          <li><a href="/students/services/housing-and-residence/">Residence Life</a></li>
-          <li><a href="/students/life/">Student Life</a></li>
+          <li><a href="/about/fish-interfaith-center/index">Fish Interfaith Center</a></li>
+          <li><a href="/students/health-and-safety/index">Health &amp; Safety</a></li>
+          <li><a href="/students/services/housing-and-residence/index">Residence Life</a></li>
+          <li><a href="/students/life/index">Student Life</a></li>
         </ul>
       </li>
       <li>
         <a href="/research/">Research</a>
         #buildToggleIcon()
         <ul>
-          <li><a href="/research/pre-award/">Pre-Award Administration</a></li>
-          <li><a href="/research/post-award/">Post-Award Administration</a></li>
-          <li><a href="/research/integrity/">Research Integrity</a></li>
-          <li><a href="/research/institutes-and-centers/">Institutes &amp; Centers</a></li>
-          <li><a href="/research/office-undergraduate-research-creative-activity/">Undergraduate Research &amp; Creative Activity</a></li>
-          <li><a href="/research/graduate-research/">Graduate Research Support</a></li>
+          <li><a href="/research/sponsored-projects-services/pre-award/index">Pre-Award Administration</a></li>
+          <li><a href="/research/sponsored-projects-services/post-award/index">Post-Award Administration</a></li>
+          <li><a href="/research/integrity/index">Research Integrity</a></li>
+          <li><a href="/research/institutes-and-centers/index">Institutes &amp; Centers</a></li>
+          <li><a href="/research/office-undergraduate-research-creative-activity/index">Undergraduate Research &amp; Creative Activity</a></li>
+          <li><a href="/research/graduate-research/index">Graduate Research Support</a></li>
         </ul>
       </li>
       <li>
-        <a href="/support-chapman/">Support</a>
+        <a href="/support-chapman/index">Support</a>
         #buildToggleIcon()
         <ul>
-          <li><a href="/support-chapman/contact-us.aspx">Contact Development</a></li>
-          <li><a href="/support-chapman/get-involved.aspx">Get Involved</a></li>
-          <li><a href="/support-chapman/ways-to-give/areas-to-support.aspx">Areas to Support</a></li>
-          <li><a href="/alumni/">Alumni</a></li>
+          <li><a href="/support-chapman/contact-us">Contact Development</a></li>
+          <li><a href="/support-chapman/get-involved">Get Involved</a></li>
+          <li><a href="/support-chapman/ways-to-give/areas-to-support">Areas to Support</a></li>
+          <li><a href="/alumni/index">Alumni</a></li>
         </ul>
       </li>
     </ul>
@@ -646,45 +654,27 @@
     <div class="off-canvas-utility">
       <ul>
         <li>
-          <a href="/audiences/">Find information for...</a>
+          <a href="/audiences/index">Find information for...</a>
           #buildToggleIcon()
           <ul>
-            <li><a href="/future-students/">Prospective Students</a></li>
-            <li><a href="/students/">Current Students</a></li>
-            <li><a href="/alumni/">Alumni</a></li>
-            <li><a href="/faculty-staff/">Faculty &amp; Staff</a></li>
-            <li><a href="/families/">Parents &amp; Families</a></li>
+            <li><a href="/future-students/index">Prospective Students</a></li>
+            <li><a href="/students/index">Current Students</a></li>
+            <li><a href="/alumni/index">Alumni</a></li>
+            <li><a href="/faculty-staff/index">Faculty &amp; Staff</a></li>
+            <li><a href="/families/index">Parents &amp; Families</a></li>
           </ul>
         </li>
-        <li><a href="/academics/degrees-and-programs.aspx">Degrees &amp; Programs</a></li>
+        <li><a href="/academics/degrees-and-programs">Degrees &amp; Programs</a></li>
         <li>
-          <a href="/about/maps-directions/">Maps &amp; Directories</a>
+          <a href="/about/maps-directions/index">Maps &amp; Directories</a>
           #buildToggleIcon()
           <ul>
-            <li><a href="/about/maps-directions/campus-map/">Interactive Map</a></li>
-            <li><a href="/our-faculty/">Faculty Directory</a></li>
-            <li><a href="/directory/">All Directories</a></li>
+            <li><a href="/about/maps-directions/campus-map/index">Interactive Map</a></li>
+            <li><a href="/our-faculty/index">Faculty Directory</a></li>
+            <li><a href="/directory/index">All Directories</a></li>
           </ul>
         </li>
-        <li>
-          <a href="https://blogs.chapman.edu/">Blogs</a>
-          #buildToggleIcon()
-          <ul>
-            <li><a href="https://blogs.chapman.edu/happenings/">Happenings</a></li>
-            <li><a href="https://blogs.chapman.edu/alumni/">Chapman Alumni</a></li>
-            <li><a href="https://blogs.chapman.edu/business/">Argyros School of Business &amp; Economics</a></li>
-            <li><a href="https://blogs.chapman.edu/education/">Attallah College of Educational Studies</a></li>
-            <li><a href="https://blogs.chapman.edu/copa/">College of Performing Arts</a></li>
-            <li><a href="https://blogs.chapman.edu/crean/">Crean College of Health &amp; Behavioral Sciences</a></li>
-            <li><a href="https://blogs.chapman.edu/dodge/">Dodge College of Film &amp; Media Arts</a></li>
-            <li><a href="https://blogs.chapman.edu/law/">Fowler School of Law</a></li>
-            <li><a href="https://blogs.chapman.edu/scst/">Schmid College of Science &amp; Technology</a></li>
-            <li><a href="https://blogs.chapman.edu/communication/">School of Communication</a></li>
-            <li><a href="https://blogs.chapman.edu/pharmacy/">School of Pharmacy</a></li>
-            <li><a href="https://blogs.chapman.edu/wilkinson/">Wilkinson College of Arts, Humanities, &amp; Social Sciences</a></li>
-            <li><a href="https://blogs.chapman.edu/">View More Blogs</a></li>
-          </ul>
-        </li>
+        <li><a href="https://blogs.chapman.edu/">News</a></li>
         <li><a href="https://events.chapman.edu/">Events</a></li>
         <li><a href="https://social.chapman.edu/">Social</a></li>
       </ul>
@@ -746,7 +736,7 @@
       <a href="${asset.path}/index">${_EscapeTool.xml($asset.metadata.displayName)}</a>
   
       #if ( $visibleChildren.size() > 0 )
-        <span class="toggle"><span>+</span></span>
+        #buildToggleIcon()
         <ul>
           #foreach ( $child in $visibleChildren )
             #if ( $child.assetType == "page" )
