@@ -17,7 +17,7 @@
     <div class="text-column">
         <div class="section-message">
             #if ($category != "")
-                <h4 class="category">$category</h4>
+              <div class="category">$category</div>
             #end
             #if ($title != "")
         	    <h2 class="title">$title</h2>
