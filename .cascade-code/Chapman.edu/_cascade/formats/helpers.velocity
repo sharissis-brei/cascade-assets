@@ -107,9 +107,26 @@
         "YouTube"    : "icon-youtube"
     })
 
+    #set ($iconTitleText = {
+        "Facebook"   : "Follow Us On Facebook",
+        "GooglePlus" : "Follow Us On GooglePlus",
+        "iTunes U"   : "Follow Us On iTunes U",
+        "Instagram"  : "Follow Us On Instagram",
+        "LinkedIn"   : "Follow Us On LinkedIn",
+        "Pinterest"  : "Follow Us On Pinterest",
+        "Twitter"    : "Follow Us On Twitter",
+        "WordPress"  : "Follow Us On WordPress",
+        "YouTube"    : "Follow Us On YouTube"
+    })
+
     #if($iconClasses.get($type))
         #set($icon = $iconClasses.get($type))
-        <li><a class="social-link $icon" href="$link"></a></li>
+        #set($iconTitleText = $iconTitleText.get($type))
+        <li>
+          <a class="social-link $icon" href="$link">
+            <span class="sr-only">$iconTitleText</span>
+          </a>
+        </li>
     #end
 #end
 
