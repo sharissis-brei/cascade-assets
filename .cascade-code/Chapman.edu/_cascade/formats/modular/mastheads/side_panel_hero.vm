@@ -43,7 +43,6 @@
                     <li><a #outputHref($link)>$_EscapeTool.xml($link.getChild('label').value)</a></li>
                     #end
                 </ul>
-                <label for="program-select-box" style="display: none;">$_EscapeTool.xml($dropdownLabel) dropdown menu</label>
 			</nav>
 		</section>
       </div>
