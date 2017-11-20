@@ -1,0 +1,130 @@
+#*
+ * side_panel_hero(.vm)
+ * Master Version: Chapman.edu/_cascade/formats/modular/mastheads/side_panel_hero
+ *#
+
+#import( "/_cascade/formats/helpers.velocity" )
+
+#macro(outputSidePanelHero $element)
+    ## Panel Variables
+    #set ( $panelTitle    = $element.getChild('panel').getChild('title').value )
+    #set ( $panelSubtitle = $element.getChild('panel').getChild('subtitle').value )
+    #set ( $panelBody     = $_SerializerTool.serialize($element.getChild('panel').getChild('body'), true ) )
+    #set ( $dropdownLabel = $element.getChild('panel').getChild('dropdownNav').getChild('dropdownLabel').value )
+    #set ( $dropdownLinks = $_XPathTool.selectNodes($element, '//sidePanelHero/panel/dropdownNav/dropdownLink') )
+    #set ( $buttons       = $_XPathTool.selectNodes($element, '//sidePanelHero/panel/callsToAction/button') )
+
+    ## Featured Content Slides
+    #set ( $slides = $_XPathTool.selectNodes($element, '//sidePanelHero/featuredContent') )
+
+    <div class="side-panel-hero">
+
+      <div class="hero-content">
+        <section class="hero-content-panel">
+        	<h1>$_EscapeTool.xml($panelTitle)</h1>
+			#if ($panelSubtitle != "")
+    		    <h2>$_EscapeTool.xml($panelSubtitle)</h2>
+            #end
+			<p>$panelBody</p>
+
+            <nav class="calls-to-action">
+    			#foreach($button in $buttons)
+				<a #outputHref($button) class="theme-bg-color theme-button">$_EscapeTool.xml($button.getChild('label').value)</a>
+				#end
+			</nav>
+
+			<nav class="program-select" id="program-select-links">
+
+                <span class="select-arrow theme-border-color"></span>
+
+                <button class="hero-select-button theme-border-color">$_EscapeTool.xml($dropdownLabel)</button>
+                <ul class="hero-select-list">
+                    #foreach( $link in $dropdownLinks )
+                    <li><a #outputHref($link)>$_EscapeTool.xml($link.getChild('label').value)</a></li>
+                    #end
+                </ul>
+                <label for="program-select-box" style="display: none;">$_EscapeTool.xml($dropdownLabel) dropdown menu</label>
+			</nav>
+		</section>
+      </div>
+
+      <div class="cd-hero">
+        <div class="cd-arrow-left"><a href="#">&#139;</a></div>
+        <div class="cd-arrow-right"><a href="#">&#155;</a></div>
+        <div class="cd-slide-container">
+            <ul class="cd-hero-slider autoplay">
+
+              #foreach($slide in $slides)
+                ## Background Variables
+                #set ( $backgroundType          = $slide.getChild('featuredBackgroundMedia').getChild('type').value )
+                #set ( $backgroundImage         = $slide.getChild('featuredBackgroundMedia').getChild('imageFile').getChild('path').value )
+                #set ( $backgroundImageAlignY   = $slide.getChild('featuredBackgroundMedia').getChild('alignY').value )
+                #set ( $backgroundVideo         = $slide.getChild('featuredBackgroundMedia').getChild('videoFile').getChild('path').value )
+                #set ( $backgroundFallbackImage = $slide.getChild('featuredBackgroundMedia').getChild('fallbackImageFile').getChild('path').value )
+                #set ( $backgroundAltText       = $slide.getChild('featuredBackgroundMedia').getChild('alternateText').value )
+
+                ## Featured Content Variables
+                #set ( $featuredCategory      = $slide.getChild('featuredPanel').getChild('category').value )
+                #set ( $featuredTitle         = $slide.getChild('featuredPanel').getChild('title').value )
+                #set ( $featuredSubtitle      = $slide.getChild('featuredPanel').getChild('subtitle').value )
+                #set ( $featuredBody          = $_SerializerTool.serialize($slide.getChild('featuredPanel').getChild('body'), true) )
+                #set ( $featuredLink          = $slide.getChild('featuredPanel').getChild('link') )
+                #set ( $featuredContentExists = "#if($featuredCategory != '' || $featuredTitle != '' || $featuredSubtitle != '' || $slide.getChild('featuredPanel').getChild('body').value.length() != 0 || $featuredLink.getChild('label').value != '')true#{else}false#end")
+
+                <li class="#if($foreach.index == 0)selected#end">
+                    <div class="theme-bg-color slider-bottom-border"></div>
+                    #if ( $backgroundType == 'Image' )
+                    <div class="background-image" style="background-image: url('[system-asset]${backgroundImage}[/system-asset]'); background-position: center ${backgroundImageAlignY.toLowerCase()};">
+                        <article class="theme-bg-color-alpha">
+                			<img src="[system-asset]${backgroundImage}[/system-asset]" alt="${_EscapeTool.xml($backgroundAltText)}" />
+                    		#if ( $featuredContentExists == 'true' )
+                                <div class="content">
+                    				<span class="category">$_EscapeTool.xml($featuredCategory)</span>
+                    				<h2 class="title">$_EscapeTool.xml($featuredTitle)</h2>
+                    				<h3 class="subtitle">$_EscapeTool.xml($featuredSubtitle)</h3>
+                    				<p class="body">$featuredBody</p>
+                    				<a #outputHref($featuredLink)>$_EscapeTool.xml($featuredLink.getChild('label').value)</a>
+                    			</div>
+                            #end
+                		</article>
+                    </div>
+                	#elseif ( $backgroundType == 'Video' )
+                	<div class="background-video-wrapper">
+                        <article class="theme-bg-color-alpha">
+                			<video autoplay="true" loop="true" poster="[system-asset]${_EscapeTool.xml($backgroundFallbackImage)}[/system-asset]">
+                				<source src="[system-asset]${_EscapeTool.xml($backgroundVideo)}[/system-asset]" type="video/mp4" />
+                			</video>
+                            #if ( $featuredContentExists == 'true' )
+                    			<div class="content">
+                    				<span class="category">$_EscapeTool.xml($featuredCategory)</span>
+                    				<h2 class="title">$_EscapeTool.xml($featuredTitle)</h2>
+                    				<h3 class="subtitle">$_EscapeTool.xml($featuredSubtitle)</h3>
+                    				<p class="body">$featuredBody</p>
+                    				<a #outputHref($featuredLink)>$_EscapeTool.xml($featuredLink.getChild('label').value)</a>
+                    			</div>
+                            #end
+                		</article>
+                		<video id="background-video" class="background-video" autoplay="true" loop="true" poster="[system-asset]${_EscapeTool.xml($backgroundFallbackImage)}[/system-asset]">
+                			<source src="[system-asset]${_EscapeTool.xml($backgroundVideo)}[/system-asset]" type="video/mp4" />
+                		</video>
+                	</div>
+                	#end
+                </li>
+              #end
+            </ul>
+        </div>
+        <div class="cd-slider-nav">
+          <nav>
+            <span class="cd-marker item-1"></span>
+            <ul>
+              #foreach( $slide in $slides )
+                <li class="#if($foreach.index == 0)selected#end">
+                    <a href="#0">$foreach.index</a>
+                </li>
+              #end
+            </ul>
+          </nav>
+        </div>
+      </div>
+    </div>
+#end
