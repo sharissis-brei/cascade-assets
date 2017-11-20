@@ -1,8 +1,6 @@
 #*
  * call_to_action_3_up(.vm)
  * Master Version: Chapman.edu/_cascade/formats/modular/widgets/1 Column/call_to_action_3_up
- *
- * Notice comments here. This is an example of Velocity multiline comments.
  *#
 #import( "/_cascade/formats/helpers.velocity" )
 
@@ -32,7 +30,7 @@
 
     <div class="column">
         <div class="image-wrap">
-            <a #outputHref($link)><img class="image" #outputSrc($media) alt="$alternateText"/></a>
+            <img class="image" #outputSrc($media) alt="$alternateText"/>
         </div>
         <div class="text-wrap">
             <h3 class="headline">$title</h3>
