@@ -21,19 +21,19 @@
 
       <div class="hero-content">
         <section class="hero-content-panel">
-        	<h1>$_EscapeTool.xml($panelTitle)</h1>
-			#if ($panelSubtitle != "")
-    		    <h2>$_EscapeTool.xml($panelSubtitle)</h2>
+            <h1>$_EscapeTool.xml($panelTitle)</h1>
+            #if ($panelSubtitle != "")
+                <h2>$_EscapeTool.xml($panelSubtitle)</h2>
             #end
-			<p>$panelBody</p>
+            <p>$panelBody</p>
 
             <nav class="calls-to-action">
-    			#foreach($button in $buttons)
-				<a #outputHref($button) class="theme-bg-color theme-button">$_EscapeTool.xml($button.getChild('label').value)</a>
-				#end
-			</nav>
+                #foreach($button in $buttons)
+                <a #outputHref($button) class="theme-bg-color theme-button">$_EscapeTool.xml($button.getChild('label').value)</a>
+                #end
+            </nav>
 
-			<nav class="program-select" id="program-select-links">
+            <nav class="program-select" id="program-select-links">
 
                 <span class="select-arrow theme-border-color"></span>
 
@@ -43,8 +43,8 @@
                     <li><a #outputHref($link)>$_EscapeTool.xml($link.getChild('label').value)</a></li>
                     #end
                 </ul>
-			</nav>
-		</section>
+            </nav>
+        </section>
       </div>
 
       <div class="cd-hero">
@@ -75,39 +75,39 @@
                     #if ( $backgroundType == 'Image' )
                     <div class="background-image" style="background-image: url('[system-asset]${backgroundImage}[/system-asset]'); background-position: center ${backgroundImageAlignY.toLowerCase()};">
                         <article class="theme-bg-color-alpha">
-                			<img src="[system-asset]${backgroundImage}[/system-asset]" alt="${_EscapeTool.xml($backgroundAltText)}" />
-                    		#if ( $featuredContentExists == 'true' )
-                                <div class="content">
-                    				<span class="category">$_EscapeTool.xml($featuredCategory)</span>
-                    				<h2 class="title">$_EscapeTool.xml($featuredTitle)</h2>
-                    				<h3 class="subtitle">$_EscapeTool.xml($featuredSubtitle)</h3>
-                    				<p class="body">$featuredBody</p>
-                    				<a #outputHref($featuredLink)>$_EscapeTool.xml($featuredLink.getChild('label').value)</a>
-                    			</div>
-                            #end
-                		</article>
-                    </div>
-                	#elseif ( $backgroundType == 'Video' )
-                	<div class="background-video-wrapper">
-                        <article class="theme-bg-color-alpha">
-                			<video autoplay="true" loop="true" poster="[system-asset]${_EscapeTool.xml($backgroundFallbackImage)}[/system-asset]">
-                				<source src="[system-asset]${_EscapeTool.xml($backgroundVideo)}[/system-asset]" type="video/mp4" />
-                			</video>
+                            <img src="[system-asset]${backgroundImage}[/system-asset]" alt="${_EscapeTool.xml($backgroundAltText)}" />
                             #if ( $featuredContentExists == 'true' )
-                    			<div class="content">
-                    				<span class="category">$_EscapeTool.xml($featuredCategory)</span>
-                    				<h2 class="title">$_EscapeTool.xml($featuredTitle)</h2>
-                    				<h3 class="subtitle">$_EscapeTool.xml($featuredSubtitle)</h3>
-                    				<p class="body">$featuredBody</p>
-                    				<a #outputHref($featuredLink)>$_EscapeTool.xml($featuredLink.getChild('label').value)</a>
-                    			</div>
+                                <div class="content">
+                                    <span class="category">$_EscapeTool.xml($featuredCategory)</span>
+                                    <h2 class="title">$_EscapeTool.xml($featuredTitle)</h2>
+                                    <h3 class="subtitle">$_EscapeTool.xml($featuredSubtitle)</h3>
+                                    <p class="body">$featuredBody</p>
+                                    <a #outputHref($featuredLink)>$_EscapeTool.xml($featuredLink.getChild('label').value)</a>
+                                </div>
                             #end
-                		</article>
-                		<video id="background-video" class="background-video" autoplay="true" loop="true" poster="[system-asset]${_EscapeTool.xml($backgroundFallbackImage)}[/system-asset]">
-                			<source src="[system-asset]${_EscapeTool.xml($backgroundVideo)}[/system-asset]" type="video/mp4" />
-                		</video>
-                	</div>
-                	#end
+                        </article>
+                    </div>
+                    #elseif ( $backgroundType == 'Video' )
+                    <div class="background-video-wrapper">
+                        <article class="theme-bg-color-alpha">
+                            <video autoplay="true" loop="true" poster="[system-asset]${_EscapeTool.xml($backgroundFallbackImage)}[/system-asset]">
+                                <source src="[system-asset]${_EscapeTool.xml($backgroundVideo)}[/system-asset]" type="video/mp4" />
+                            </video>
+                            #if ( $featuredContentExists == 'true' )
+                                <div class="content">
+                                    <span class="category">$_EscapeTool.xml($featuredCategory)</span>
+                                    <h2 class="title">$_EscapeTool.xml($featuredTitle)</h2>
+                                    <h3 class="subtitle">$_EscapeTool.xml($featuredSubtitle)</h3>
+                                    <p class="body">$featuredBody</p>
+                                    <a #outputHref($featuredLink)>$_EscapeTool.xml($featuredLink.getChild('label').value)</a>
+                                </div>
+                            #end
+                        </article>
+                        <video id="background-video" class="background-video" autoplay="true" loop="true" poster="[system-asset]${_EscapeTool.xml($backgroundFallbackImage)}[/system-asset]">
+                            <source src="[system-asset]${_EscapeTool.xml($backgroundVideo)}[/system-asset]" type="video/mp4" />
+                        </video>
+                    </div>
+                    #end
                 </li>
               #end
             </ul>
