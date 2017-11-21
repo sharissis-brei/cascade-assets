@@ -17,23 +17,23 @@
     <div class="text-column">
         <div class="section-message">
             #if ($category != "")
-              <div class="category">$category</div>
+                <div class="category">$category</div>
             #end
             #if ($title != "")
-        	    <h2 class="title">$title</h2>
+                <h2 class="title">$title</h2>
             #end
             #if ($body != "")
-			<div class="body editableContent">
-                <p>$body</p>
-			</div>
+                <div class="body editableContent">
+                    <p>$body</p>
+                </div>
             #end
             #if ($label != "" && ($content.getChild('format').value != "Stacked"))
-        		<div class="actions">
+                <div class="actions">
                     <a #outputHref($button) class="theme-button">$label&#160;</a>
                 </div>
             #end
-		</div>
-	</div>
+        </div>
+    </div>
 #end
 
 #macro(outputMessagingClasses $content)
