@@ -1,0 +1,38 @@
+#*
+ * Chapman.edu/_config/blogs.vm
+ * Blogs settings.
+ *
+ * Usage:
+ * #import( "/_config/blogs.vm" )
+ *
+ * #set ( $blogID = $currentPage.getChild('system-data-structure').getChild('blogName').value )
+ * #set ( $blogParams = $BLOGS_CONFIG[$blogID] )
+ * #set ( $blogTitle = $blogParams[0] )
+ * #set ( $blogCss = $blogParams[1] )
+ *#
+
+## blog id => [ blog title, css theme class ]
+#set ( $BLOGS_CONFIG = {
+  'academics' : [ 'Higher Ed and Technology: Academics at Chapman', '' ],
+  'alumni' : [ 'Chapman Alumni', '' ],
+  'business' : [ 'Argyros School of Business and Economics', 'business' ],
+  'education' : [ 'Attallah College of Educational Studies', 'education' ],
+  'collections' : [ 'Art Collections', '' ],
+  'communication' : [ 'School of Communication', 'communication' ],
+  'copa' : [ 'College of Performing Arts', 'copa' ],
+  'crean' : [ 'Crean College of Health and Behavioral Sciences', 'crean' ],
+  'creating-a-childrens-book' : [ 'Creating a Children&quot;s Book and Blogging About It', '' ],
+  'dodge' : [ 'Dodge College of Film and Media Arts', 'dodge' ],
+  'happenings' : [ 'Happenings', '' ],
+  'holocaust-education' : [ 'Holocaust Education', '' ],
+  'huell-howser-archives' : [ 'Huell Howser Archives', '' ],
+  'law' : [ 'Fowler School of Law', 'law' ],
+  'magazine' : [ 'Chapman Magazine', '' ],
+  'pharmacy' : [ 'School of Pharmacy', 'pharmacy' ],
+  'press-room' : [ 'Press Room', '' ],
+  'scst' : [ 'Schmid College of Science and Technology', 'scst' ],
+  'smc' : [ 'Strategic Marketing and Communications', '' ],
+  'students' : [ 'One University (Student blog)', '' ],
+  'sustainability' : [ 'Sustainability', '' ],
+  'wilkinson' : [ 'Wilkinson College of Humanities and Social Sciences', 'wilkinson' ]
+})

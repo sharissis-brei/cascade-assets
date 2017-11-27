@@ -1,0 +1,137 @@
+##
+## helpers.velocity
+## Master Version: Chapman.edu/_cascade/formats/helpers.velocity
+##
+## Pass a certain XML structure into this macro, and get a string that looks
+## like "background-image: url('https://mycoolimage.com/file1.png')
+##
+## Useage: <div style=#addBackgroundImage($content) >
+##
+## The xml in the $content variable passed in must look like the following:
+## <media>
+##     <fileLink>
+##         <path>/_files/image1.png</path>
+##     </fileLink>
+## </media>
+#macro(addBackgroundImage $content)
+    #set ($linkUrl = $content.getChild('fileLink').getChild('path').value)
+    #if ($linkUrl != '')
+        "background-image: url('[system-asset]${linkUrl}[/system-asset]')"
+    #else
+        ""
+    #end
+#end
+
+##
+## Pass a specificly strucutred xml node to this macro and ouput a url.
+##
+## The XML passed in as the $link variable must be structured like this:
+##
+## <link>
+##   <linkType>Internal Link</linkType>
+##
+##   <externalLink>http://link.goes/here</externalLink>
+##
+##   <internalLink>
+##     <path>/link/goes/here</path>
+##   </internalLink>
+##
+##   <fileLink>
+##     <path>/link/goes/here</path>
+##   </fileLink>
+## </link>
+##
+#macro( outputUrl $link )
+    #set ($linkType = $link.getChild('linkType').value)
+    #if ($linkType == 'Internal Link')
+        #set ($linkUrl = "${link.getChild('internalLink').getChild('path').value}")
+    #elseif ($linkType == 'File Link')
+        #set ($linkUrl = "${link.getChild('fileLink').getChild('path').value}")
+    #elseif ($linkType == 'External Link')
+        #set ($linkUrl = $link.getChild('externalLink').value)
+    #else
+        #set ($linkUrl = '')
+    #end
+    ${_EscapeTool.xml(${linkUrl})}
+#end
+
+#macro( outputHref $link )
+    #set ($linkType = $link.getChild('linkType').value)
+    #if ($linkType == 'Internal Link')
+        #set ($linkUrl = "${link.getChild('internalLink').getChild('path').value}")
+    #elseif ($linkType == 'File Link')
+        #set ($linkUrl = "${link.getChild('fileLink').getChild('path').value}")
+    #elseif ($linkType == 'External Link')
+        #set ($linkUrl = $link.getChild('externalLink').value)
+    #else
+        #set ($linkUrl = '')
+    #end
+    href="${_EscapeTool.xml(${linkUrl})}"
+#end
+
+#macro( outputSrc $link )
+    #set ($linkUrl = $link.getChild('fileLink').getChild('path').value)
+    #if ($linkUrl != '')
+        src="[system-asset]${_EscapeTool.xml($linkUrl)}[/system-asset]"
+    #end
+#end
+
+##
+## Pass any XML node into this element to see the structure printed to the page.
+##
+#macro( inspectXML $single_xml_node )
+    <pre>${_EscapeTool.xml($_SerializerTool.serialize($single_xml_node, false))}</pre>
+#end
+
+## Pass a specificly strucutred xml node to this macro and ouput a social icon list element.
+##
+## The XML passed in as the $content variable must be structured like this:
+##
+## <social-media-link>
+##    <social-media-type>Selected social media type here</social-media-type>
+##    <link>/link/goes/here</link>
+## </social-media-link>
+#macro(outputSocialIcon $content)
+    #set ($type = $content.getChild('social-media-type').value)
+    #set ($link = $content.getChild('link').value)
+
+    #set ($iconClasses = {
+        "Facebook"   : "icon-facebook",
+        "GooglePlus" : "icon-google-plus",
+        "iTunes U"   : "icon-graduation2",
+        "Instagram"  : "icon-instagram",
+        "LinkedIn"   : "icon-linkedin2",
+        "Pinterest"  : "icon-pinterest",
+        "Twitter"    : "icon-twitter",
+        "WordPress"  : "icon-newspaper",
+        "YouTube"    : "icon-youtube"
+    })
+
+    #set ($iconTitleText = {
+        "Facebook"   : "Follow Us On Facebook",
+        "GooglePlus" : "Follow Us On GooglePlus",
+        "iTunes U"   : "Follow Us On iTunes U",
+        "Instagram"  : "Follow Us On Instagram",
+        "LinkedIn"   : "Follow Us On LinkedIn",
+        "Pinterest"  : "Follow Us On Pinterest",
+        "Twitter"    : "Follow Us On Twitter",
+        "WordPress"  : "Follow Us On WordPress",
+        "YouTube"    : "Follow Us On YouTube"
+    })
+
+    #if($iconClasses.get($type))
+        #set($icon = $iconClasses.get($type))
+        #set($iconTitleText = $iconTitleText.get($type))
+        <li>
+          <a class="social-link $icon" href="$link">
+            <span class="sr-only">$iconTitleText</span>
+          </a>
+        </li>
+    #end
+#end
+
+#macro(outputBgColorClass $element $widgetClass)
+    #set($bgColor = $element.getChild('bgColor').value)
+    #set($colorClass = "${widgetClass}__#if($bgColor == 'Light')light-bg#{elseif}($bgColor == 'Medium')medium-bg#{else}dark-bg#end")
+    $colorClass
+#end

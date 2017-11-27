@@ -1,0 +1,180 @@
+#*
+ * Chapman.edu/_cascade/formats/Homepage CU Family section
+ * Chapman Families Stories widget for Chapman home page.
+ *
+ * The code here is shocking similar to that in the Homepage Blog Stories format.
+ *#
+
+ ##
+ ## Imports
+ ##
+ #import( "/_config/blogs.vm" )
+ #import( "/_config/social.vm" )
+
+
+ ##
+ ## Hardcoded Params
+ ##
+ #set ( $FACEBOOK_SHARE_URL = $SOCIAL_CONFIG['facebook']['shareUrl'] )
+ #set ( $TWITTER_SHARE_URL = $SOCIAL_CONFIG['twitter']['shareUrl'] )
+
+
+##
+## Global Vars
+##
+#set ( $currentPage = $_XPathTool.selectSingleNode($contentRoot, "//system-page[@current]") )
+#set ( $familyData = $currentPage.getChild('system-data-structure').getChild('chapmanFamily') )
+#set ( $header = $familyData.getChild('header').value )
+
+#set ( $smallStories = $_XPathTool.selectNodes($familyData, "./story") )
+
+#set ( $calloutHeader = '' )
+#set ( $calloutDetails = '' )
+#set ( $calloutLink = '' )
+#set ( $calloutLinkText = '' )
+
+
+##
+## Var Macros
+##
+#macro ( setVars )
+  #set ( $calloutHeader = $familyData.getChild('callout').getChild('header').value )
+  #set ( $calloutDetails = $_SerializerTool.serialize($familyData.getChild('callout').getChild('copy'), true) )
+
+  ## Set $calloutLink
+  #set ( $calloutLinkText = $familyData.getChild('callout').getChild('link').getChild('linktext').value )
+  #set ( $calloutExternalLink = $familyData.getChild('callout').getChild('link').getChild('externalLink').value )
+  #set ( $calloutInternalLink = $familyData.getChild('callout').getChild('link').getChild('internalLink').getChild('path').value )
+
+  #if ( $calloutExternalLink != '' )
+    #set ( $calloutLink = $calloutExternalLink )
+  #elseif ( $calloutInternalLink != '' && $calloutInternalLink != '/' )
+    #set ( $calloutLink = $calloutInternalLink )
+  #else
+    #set ( $calloutLink = '#' )
+  #end
+#end
+
+
+##
+## Build Macros
+##
+#macro ( buildChapmanFamilyBlock )
+  <!-- Chapman Family Section Macro -->
+  <section id="chapmanFamily" class="section light-bg stories">
+    <div class="maxWidth">
+      <h2 class="heading skrollable skrollable-after" data-bottom="opacity:0;" data-center="opacity:1;">
+        $header
+      </h2>
+
+      #buildSmallStoriesBlock()
+      #buildCalloutBlock()
+    </div>
+  </section>
+#end
+
+#macro ( buildCalloutBlock )
+  <div class="third">
+    <h2>$calloutHeader</h2>
+    <p>$calloutDetails</p>
+    <p><a href="$calloutLink">$calloutLinkText »</a></p>
+  </div>
+#end
+
+#macro ( buildSmallStoriesBlock )
+  ## There are three trending stories
+  #if ( $smallStories.size() > 0 )
+    #foreach ( $story in $smallStories )
+      #buildStoryArticleBlock($story)
+    #end
+  #end
+#end
+
+#macro ( buildStoryArticleBlock $story )
+  ## Data
+  #set ( $storyCategoryLink = $story.getChild('topCategory').getChild('link').value )
+  #set ( $storyCategoryText = $story.getChild('topCategory').getChild('text').value )
+  #set ( $storyHeader = $story.getChild('header').value )
+  #set ( $storyLink = $story.getChild('link').value )
+
+  ## if url to story starts with // then the compound link to Twitter using that
+  ## url won't work. Append https: in front.
+  #if ( $storyLink.substring(0,2) == "//" )
+    #set ( $storyLink = "https:" + $storyLink )
+  #end
+
+  ## Set story image vars
+  #set ( $storyImageAltText = $story.getChild('image').getChild('altText').value )
+  #set ( $storyImageExternalLink = $story.getChild('image').getChild('link').value )
+  #set ( $storyImageInternalLink = $story.getChild('image').getChild('internalLink').getChild('path').value )
+  #if ( $storyImageExternalLink != '' )
+    #set ( $storyImage = $storyImageExternalLink )
+  #elseif ( $storyImageInternalLink != '' && $storyImageInternalLink != '/' )
+    ## This renders image inside Cascade.
+    #set ( $storyImage = "[system-asset:local]${storyImageInternalLink}[/system-asset:local]")
+  #else
+    #set ( $storyImage = '' )
+  #end
+
+  ## Output
+  <div class="third">
+    <article class="story">
+      <a class="tag" href="$storyCategoryLink">#$storyCategoryText</a>
+
+      <a class="permalink" href="$storyLink">
+        <h2 class="title">$storyHeader</h2>
+        <div class="story-bg"
+             style="background-image:url('$storyImage');"
+             role="img"
+             aria-label="$storyImageAltText">
+          <img src="$storyImage" alt="$storyImageAltText" />
+        </div>
+      </a>
+
+      #buildStoryArticleBlockFooter( $story $storyLink $storyHeader )
+    </article>
+  </div>
+#end
+
+#macro ( buildStoryArticleBlockFooter $story $storyLink $storyHeader )
+  ## Data
+  #set ( $storyBlogName = $story.getChild('blogName').value )
+  #set ( $storyBlogParams = $BLOGS_CONFIG[$storyBlogName] )
+  #set ( $storyBlogTitle = $storyBlogParams[0] )
+  #set ( $storyCss = $storyBlogParams[1] )
+  #set ( $storyBlogLink = "https://blogs.chapman.edu/${storyBlogName}" )
+
+  ## Output
+  <footer class="story_footer">
+    <p class="source blogname $storyCss">
+      <a href="$storyBlogLink">$storyBlogTitle</a>
+    </p>
+    #buildMetaSocialBlock( $storyLink $storyHeader )
+  </footer>
+#end
+
+#macro( buildMetaSocialBlock $storyLink $storyHeader )
+  ## Data
+  ## Normalize header for Twitter.
+  #set ( $headerStripped = $_DisplayTool.stripTags($storyHeader) )
+  #set ( $headerNormed = $headerStripped.replaceAll("&amp;","and").replaceAll("""","").replaceAll("/\W/", "") )
+  #set ( $escapedHeader = ${_EscapeTool.url($headerNormed)} )
+  #set ( $facebookLink = $FACEBOOK_SHARE_URL + $storyLink )
+  #set ( $twitterLink = $TWITTER_SHARE_URL + $escapedHeader + '&amp;url=' + $storyLink )
+
+  ## Output
+  <p class="meta">
+    <a href="$facebookLink" class="action facebook" service="Facebook">Share on Facebook</a>
+    <a href="$twitterLink" class="action twitter" service="Twitter">Post to Twitter</a>
+
+    ## sr-only span avoids WAVE issue: https://stackoverflow.com/a/39919878/6763239
+    <a href="#" class="icon shares"><span class="sr-only">Share Icon</span></a>
+  </p>
+#end
+
+
+##
+## Main Format Block
+##
+#setVars()
+#buildChapmanFamilyBlock()

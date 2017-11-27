@@ -16,7 +16,7 @@
 #set ( $accordion = $_XPathTool.selectNodes( $contentRoot, "//accordion/section" ) )
 
 ## Chapman University Schools & Colleges
-#set ( $schools = ["Argyros School of Business and Economics", "College of Educational Studies", "College of Performing Arts", "Crean College of Health and Behavioral Sciences", "Dodge College of Film and Media Arts", "Fowler School of Law", "Schmid College of Science and Technology", "School of Communication", "School of Pharmacy", "Wilkinson College of Arts, Humanities, and Social Sciences"] )
+#set ( $schools = ["Argyros School of Business and Economics", "Attallah College of Educational Studies", "College of Performing Arts", "Crean College of Health and Behavioral Sciences", "Dodge College of Film and Media Arts", "Fowler School of Law", "Schmid College of Science and Technology", "School of Communication", "School of Pharmacy", "Wilkinson College of Arts, Humanities, and Social Sciences"] )
 
 ## SVG Macro
 #macro ( svg $name )

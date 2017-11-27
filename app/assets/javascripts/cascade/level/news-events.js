@@ -1,4 +1,6 @@
 $(function () {
+    //used with News/Events widget in 2 and 3 Column Modular templates
+    //
     // Make it work with old code.
     var pad2 = utils.pad2;
 
@@ -46,7 +48,7 @@ $(function () {
     /* Populate news from Wordpress RSS feed (converted to JSON with YQL)
     ------------------------------------------------------------------------------------------------*/
     if ($(".news").length) {
-        var newsFeedUrl = "http://www.chapman.edu/getFeed.ashx?name=newsHappenings",
+        var newsFeedUrl = "http://www.chapman.edu/getFeed.ashx?name=newsNewsAndStories",
             newsYqlUrl = function () {
                 return ("//query.yahooapis.com/v1/public/yql?q=select%20*%20from%20rss(3)%20where%20url%3D'" + newsFeedUrl + "'&format=json&diagnostics=true&callback=?")
             },
@@ -62,10 +64,6 @@ $(function () {
             case "ASBE":
                 newsFeedUrl = "http://www.chapman.edu/getFeed.ashx?name=newsBusiness";
                 $(".allNews").attr("href", "http://blogs.chapman.edu/business");
-                break;
-            case "CES":
-                newsFeedUrl = "http://www.chapman.edu/getFeed.ashx?name=newsCES";
-                $(".allNews").attr("href", "http://blogs.chapman.edu/ces");
                 break;
             case "Commencement":
                 newsFeedUrl = "http://www.chapman.edu/getFeed.ashx?name=newsCommencement";
@@ -83,9 +81,9 @@ $(function () {
                 newsFeedUrl = "http://www.chapman.edu/getFeed.ashx?name=newsDodge";
                 $(".allNews").attr("href", "http://blogs.chapman.edu/dodge");
                 break;
-            case "Happenings":
-                newsFeedUrl = "http://www.chapman.edu/getFeed.ashx?name=newsHappenings";
-                $(".allNews").attr("href", "http://blogs.chapman.edu/happenings");
+            case "Education":
+                newsFeedUrl = "http://www.chapman.edu/getFeed.ashx?name=newsEducation";
+                $(".allNews").attr("href", "http://blogs.chapman.edu/education");
                 break;
             case "Information Systems":
                 newsFeedUrl = "http://www.chapman.edu/getFeed.ashx?name=newsIST";
@@ -94,6 +92,10 @@ $(function () {
             case "Law":
                 newsFeedUrl = "http://www.chapman.edu/getFeed.ashx?name=newsLaw";
                 $(".allNews").attr("href", "http://blogs.chapman.edu/law");
+                break;
+            case "News and Stories":
+                newsFeedUrl = "http://www.chapman.edu/getFeed.ashx?name=newsNewsAndStories";
+                $(".allNews").attr("href", "http://blogs.chapman.edu/news-and-stories");
                 break;
             case "Pharmacy":
                 newsFeedUrl = "http://www.chapman.edu/getFeed.ashx?name=newsPharmacy";
@@ -109,7 +111,7 @@ $(function () {
                 break;
             case "Students":
                 newsFeedUrl = "http://www.chapman.edu/getFeed.ashx?name=newsStudents";
-                $(".allNews").attr("href", "http://blogs.chapman.edu/happenings");
+                $(".allNews").attr("href", "http://blogs.chapman.edu/students");
                 break;
             case "Thompson Policy Institute":
                 newsFeedUrl = "http://www.chapman.edu/getFeed.ashx?name=newsThompsonInstitute";
@@ -120,7 +122,7 @@ $(function () {
                 $(".allNews").attr("href", "http://blogs.chapman.edu/wilkinson");
                 break;
             default:
-                $(".allNews").attr("href", "http://blogs.chapman.edu/happenings");
+                $(".allNews").attr("href", "http://blogs.chapman.edu/news-and-stories");
                 break;
         }
 
@@ -140,9 +142,9 @@ $(function () {
                             $this.find(".date .year").html(newsData.item[i].pubDate.split(' ')[3]);
                         }
                         //Title
-                        $this.find("h3>a").html(newsData.item[i].title);
+                        $this.find(".title>a").html(newsData.item[i].title);
                         //Links
-                        $this.find("h3>a, .readMore").each(function () {
+                        $this.find(".title>a, .readMore").each(function () {
                             $(this).attr('href', newsData.item[i].link);
                         });
                         //Show News
@@ -177,10 +179,6 @@ $(function () {
                 eventsFeedUrl = "http://www.chapman.edu/getFeed.ashx?name=eventCDC";
                 $(".allEvents").attr("href", "https://events.chapman.edu/?group_id=14");
                 break;
-            case "CES":
-                eventsFeedUrl = "http://www.chapman.edu/getFeed.ashx?name=eventCES";
-                $(".allEvents").attr("href", "https://events.chapman.edu/?group_id=61,20");
-                break;
             case "COPA":
                 eventsFeedUrl = "http://www.chapman.edu/getFeed.ashx?name=eventCOPA";
                 $(".allEvents").attr("href", "https://events.chapman.edu/?group_id=21,56,105,75,89");
@@ -196,6 +194,10 @@ $(function () {
             case "DODGE":
                 eventsFeedUrl = "http://www.chapman.edu/getFeed.ashx?name=eventDODGE";
                 $(".allEvents").attr("href", "https://events.chapman.edu/?group_id=23");
+                break;
+            case "Education":
+                eventsFeedUrl = "http://www.chapman.edu/getFeed.ashx?name=eventEducation";
+                $(".allEvents").attr("href", "https://events.chapman.edu/?group_id=61,20");
                 break;
             case "Information Systems":
                 eventsFeedUrl = "http://www.chapman.edu/getFeed.ashx?name=eventIST";
@@ -266,10 +268,10 @@ $(function () {
 
                         if ( rssitem ) {
                             // Title
-                            $this.find("h3>a").html(rssitem.title);
+                            $this.find(".title>a").html(rssitem.title);
 
                             // Links
-                            $this.find("h3>a, .readMore").each(function () {
+                            $this.find(".title>a, .readMore").each(function () {
                                 $(this).attr('href', rssitem.link);
                             });
 

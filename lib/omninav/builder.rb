@@ -12,7 +12,7 @@ module Omninav
     # Constants
     # On versioning, see http://semver.org/.
     #
-    VERSION = '2.0.0'.freeze
+    VERSION = '2.0.1'.freeze
     DOMAIN = 'https://www.chapman.edu/'.freeze
 
     attr_accessor :target, :output_dir, :deploy_map
@@ -621,7 +621,7 @@ OFF_CANVAS_HEADER_HTML
           <span class="toggle"><span>+</span></span>
           <ul>
             <li><a href="https://www.chapman.edu/business/">Argyros School of Business &amp; Economics</a></li>
-            <li><a href="https://www.chapman.edu/ces/">College of Educational Studies</a></li>
+            <li><a href="https://www.chapman.edu/education/">Attallah College of Educational Studies</a></li>
             <li><a href="https://www.chapman.edu/copa/">College of Performing Arts</a></li>
             <li><a href="https://www.chapman.edu/crean/">Crean College of Health &amp; Behavioral Sciences</a></li>
             <li><a href="https://www.chapman.edu/dodge/">Dodge College of Film &amp; Media Arts</a></li>
@@ -646,7 +646,7 @@ OFF_CANVAS_HEADER_HTML
           <span class="toggle"><span>+</span></span>
           <ul>
             <li>
-              <a href="https://blogs.chapman.edu/happenings/" title="Blog for Happenings">Happenings</a>
+              <a href="https://blogs.chapman.edu/news-and-stories/" title="Blog for News and Stories">News and Stories</a>
             </li>
             <li>
               <a href="https://blogs.chapman.edu/alumni/" title="Blog for Chapman Alumni">Chapman Alumni</a>
@@ -655,7 +655,7 @@ OFF_CANVAS_HEADER_HTML
               <a href="https://blogs.chapman.edu/business/" title="Blog for Argyros School of Business &amp; Economics">Argyros School of Business &amp; Economics</a>
             </li>
             <li>
-              <a href="https://blogs.chapman.edu/ces/" title="Blog for College of Educational Studies">College of Educational Studies</a>
+              <a href="https://blogs.chapman.edu/education/" title="Blog for Attallah College of Educational Studies">Attallah College of Educational Studies</a>
             </li>
             <li>
               <a href="https://blogs.chapman.edu/copa/" title="Blog for College of Performing Arts">College of Performing Arts</a>

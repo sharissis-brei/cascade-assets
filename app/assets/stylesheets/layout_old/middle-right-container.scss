@@ -1,8 +1,10 @@
 .middleRightContainer {
   text-align: left;
+  padding: 0 10px;
 
   @include media($medium-screen) {
     position: relative;
+    width: 73%;
     float: right;
     @include vendorize(box-sizing, border-box);
   }
@@ -10,6 +12,17 @@
   @include media($large-screen) {
     display: inline-block;
     float: none;
-    width: 52%;
+    width: 50%;
   }
+}
+
+// This is a temporary fix to make the 2 & 3 column spacing consistent. The "magic numbers" for the 3 column
+// width percentages are needed in order to match the existing 2 column width as closely as possible.
+.primaryContent.threeColumns .middleRightContainer {
+  @include media($large-screen) {
+    width: 48.5%;
+    padding: 0px;
+  }
+
+  @media (min-width: 1120px) { width: 51%; }
 }

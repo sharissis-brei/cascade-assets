@@ -1,0 +1,27 @@
+## sets feeds and display options (for whole page regardless if for primary or left column)
+## this is not the piece that writes out the placeholder html though for the 3 stories
+## (that is a separate format that is written out via the widgets processing)
+##
+#set ($currentPage = $_XPathTool.selectSingleNode($contentRoot, "//system-page[@current]") )
+#set ($feeds = $currentPage.getChild('system-data-structure').getChild('meta').getChild('news-events-options') )
+##
+## initialize:
+#set ($primarycontentOptions = "Do Not Show")
+#set ($leftColumnOptions = "Do Not Show")
+## overwrite with options:
+#set ($primarycontentOptions = $_XPathTool.selectSingleNode($currentPage, "//primaryContent/widget[widgetType='Featured / News / Events']/FeaturedNewsEvents/options").value )
+#set ($leftColumnOptions = $_XPathTool.selectSingleNode($currentPage, "//leftColumn/widget[widgetType='Featured / News / Events']/FeaturedNewsEvents/options").value )
+##
+<!-- formats/modular/Featured News Events Feeds -->
+<div class="hidden">
+    #set ($path = $feeds.getChild('feature').getChild('path').value )
+    #if ($path != '/')
+        <div class="featureFeed">${path}.xml</div>
+    #else
+        <div class="featureFeed">/_featured/Default.xml</div>
+    #end
+    <div class="newsFeed">$feeds.getChild('newsFeed').value</div>
+    <div class="eventsFeed">$feeds.getChild('eventsFeed').value</div>
+    <div class="newsEventsOptions">$primarycontentOptions</div>
+    <div class="leftColumnNewsEventsOptions">$leftColumnOptions</div>
+</div>
