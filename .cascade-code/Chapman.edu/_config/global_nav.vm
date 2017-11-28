@@ -1,7 +1,7 @@
 #set ($GLOBAL_NAV_CONFIG = [
   {
     'sectionTitle': 'About',
-    'sectionLink': 'about/index.aspx',
+    'sectionLink': '/about/index',
     'dropdown': [
       {
         'text': 'Maps and Directions',
@@ -46,7 +46,7 @@
     'dropdown': [
       {
         'text': 'Degrees & Programs',
-        'link': '/academics/degrees-and-programs.aspx',
+        'link': '/academics/degrees-and-programs',
         'iconClass': 'icon-graduation'
       },
       {
