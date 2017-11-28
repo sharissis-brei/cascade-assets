@@ -1,0 +1,214 @@
+#set ( $GLOBAL_NAV_LAW_CONFIG = [
+  {
+    'sectionTitle': 'About',
+    'sectionLink': '/law/about/index',
+    'dropdown': [
+      {
+        'text': 'Administration',
+        'link': '/law/about/administration/index',
+        'iconClass': 'default'
+      },
+      {
+        'text': 'Alumni Profiles',
+        'link': '/law/about/law-profiles/index',
+        'iconClass': 'default'
+      },
+      {
+        'text': 'Contact Us',
+        'link': '/law/about/contact-us',
+        'iconClass': 'default'
+      },
+      {
+       'text': 'History',
+       'link': '/law/about/learn-about/history',
+       'iconClass': 'default'
+      },
+      {
+       'text': 'Visit Chapman',
+       'link': '/law/about/visiting-school/tours',
+       'iconClass': 'default'
+      }
+    ]
+  },
+  {
+    'sectionTitle': 'Academics',
+    'sectionLink': '/law/academic-programs/index',
+    'dropdown': [
+      {
+        'text': 'Academic Centers',
+        'link': '/law/legal-clinics/index.aspx',
+        'iconClass': 'default'
+      },
+      {
+        'text': 'JD',
+        'link': '/law/academic-programs/jd/index',
+        'iconClass': 'default'
+      },
+      {
+        'text': 'JD Emphasis Programs',
+        'link': '/law/academic-programs/emphasis-areas/index',
+        'iconClass': 'default'
+      },
+      {
+        'text': 'Joint Degree Programs',
+        'link': '/law/academic-programs/joint-degree-programs/index',
+        'iconClass': 'default'
+      },
+      {
+        'text': 'LL.M.',
+        'link': '/law/academic-programs/llm/index',
+        'iconClass': 'default'
+      }
+    ]
+  },
+  {
+    'sectionTitle': 'Admission',
+    'sectionLink': '/law/admission/index',
+    'dropdown': [
+      {
+        'text': 'ABA Required Disclosures',
+        'link': '/law/admission/aba-disclosures',
+        'iconClass': 'default'
+      },
+      {
+        'text': 'Admission FAQs',
+        'link': '/law/admission/faq',
+        'iconClass': 'default'
+      },
+      {
+        'text': 'Catalog Request',
+        'link': '/law/admission/request-catalog-form',
+        'iconClass': 'default'
+      },
+      {
+        'text': 'JD Application',
+        'link': '/law/admission/apply-now',
+        'iconClass': 'default'
+      },
+      {
+        'text': 'LL.M. Application',
+        'link': '/law/admission/llm-applicants',
+        'iconClass': 'default'
+      },
+      {
+        'text': 'More Admission Resources',
+        'link': '/law/admission/index',
+        'iconClass': 'default'
+      }
+    ]
+  },
+  {
+    'sectionTitle': 'Faculty',
+    'sectionLink': '/law/law-faculty/index',
+    'dropdown': [
+      {
+        'text': 'Chapman Dialogue Lecture Series',
+        'link': '/law/events/dialogue-series',
+        'iconClass': 'default'
+      },
+      {
+        'text': 'Faculty Directory',
+        'link': '/law/law-faculty/index',
+        'iconClass': 'default'
+      },
+      {
+        'text': 'Faculty News',
+        'link': '/law/law-faculty/faculty-in-news',
+        'iconClass': 'default'
+      },
+      {
+        'text': 'Faculty Publications',
+        'link': '/law/law-faculty/publications/index',
+        'iconClass': 'default'
+      }
+    ]
+  },
+  {
+    'sectionTitle': 'Careers',
+    'sectionLink': '/law/careers/index',
+    'dropdown': [
+      {
+        'text': 'Employer Resources',
+        'link': '/law/employers/index',
+        'iconClass': 'default'
+      },
+      {
+        'text': 'Employment FAQs',
+        'link': '/law/careers/employment-faqs',
+        'iconClass': 'default'
+      },
+      {
+        'text': 'Job Resources for Students/Alumni',
+        'link': '/law/careers/students-alumni/index',
+        'iconClass': 'default'
+      },
+      {
+        'text': 'On Campus Interview Program',
+        'link': '/law/careers/students-alumni/on-campus-interviews/index',
+        'iconClass': 'default'
+      },
+      {
+        'text': 'Symplicity for Students',
+        'link': 'https://law-chapman-csm.symplicity.com/students/',
+        'iconClass': 'default'
+      }
+    ]
+  },
+  {
+    'sectionTitle': 'Current Students',
+    'sectionLink': '/law/student-resources/index',
+    'dropdown': [
+      {
+        'text': 'Academic Achievement Program',
+        'link': '/law/student-resources/achievement-program/index',
+        'iconClass': 'default'
+      },
+      {
+        'text': 'Bar Prep Program',
+        'link': '/law/student-resources/bar-preparation/index',
+        'iconClass': 'default'
+      },
+      {
+        'text': 'Law Library',
+        'link': '/law/student-resources/library/index',
+        'iconClass': 'default'
+      },
+      {
+        'text': 'Register for Classes',
+        'link': '/law/student-resources/registering-classes/index',
+        'iconClass': 'default'
+      },
+      {
+        'text': 'Student Organizations',
+        'link': '/law/student-resources/student-organizations/index',
+        'iconClass': 'default'
+      },
+      {
+        'text': 'More Resources',
+        'link': '/law/student-resources/index',
+        'iconClass': 'default'
+      }
+    ]
+  },
+  {
+    'sectionTitle': 'Support',
+    'sectionLink': '/law/support/index',
+    'dropdown': [
+      {
+        'text': 'Donor Spotlight',
+        'link': '/law/donors-community/index',
+        'iconClass': 'default'
+      },
+      {
+        'text': 'Donate to the Fowler School',
+        'link': '/law/support/index',
+        'iconClass': 'default'
+      },
+      {
+        'text': 'Meet Dale E. Fowler',
+        'link': '/support-chapman/chapman-donors/dale-fowler',
+        'iconClass': 'default'
+      }
+    ]
+  }
+])
