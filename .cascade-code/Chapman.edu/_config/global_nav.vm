@@ -164,7 +164,7 @@
   },
   {
     'sectionTitle': 'Research',
-    'sectionLink': '/research/institutes-and-centers/index',
+    'sectionLink': '/research/index',
     'dropdown': [
       {
         'text': 'Sponsored Projects Services',
