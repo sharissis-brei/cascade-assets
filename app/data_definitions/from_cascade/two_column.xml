@@ -702,9 +702,9 @@
                 <dropdown-item value="COPA"/>
                 <dropdown-item value="Crean"/>
                 <dropdown-item value="Dodge"/>
-                <dropdown-item value="Happenings"/>
                 <dropdown-item value="Information Systems"/>
                 <dropdown-item value="Law"/>
+                <dropdown-item value="News and Stories"/>
                 <dropdown-item value="Pharmacy"/>
                 <dropdown-item value="Schmid"/>
                 <dropdown-item value="SOC"/>

@@ -70,9 +70,9 @@ $cu-viewport-xl: 1200px;
 /***************************************************
 * Make room for our nav bar
 ***************************************************/
-html { padding-top: $cu-nav-height !important; }
+html { padding-top: $cu-nav-height; }
+
 html.cu-companion-bar { padding-top: $cu-nav-height + $cu-companion-height !important;}
-html, body { margin:0; padding: 0;}
 
 
 /***************************************************

@@ -67,7 +67,7 @@
         display: table-cell;
         vertical-align: middle;
 
-        &.left p {
+        &.left div.day {
           padding-right: 4px;
           font-size: 32px;
         }
@@ -77,13 +77,13 @@
         }
       }
 
-      p {
+      p, div.day {
         text-transform: uppercase;
         color: $red;
         font-weight: 800;
         line-height: 1;
       }
-    } 
+    }
   }
 
   .feed-column {
@@ -142,7 +142,7 @@
   color: white;
 
   .event-card {
-    a, p, .event-date p {color: white;}
+    a, p, .event-date p, .event-date div.day { color: white; }
   }
 
   .feed-column .event-date {

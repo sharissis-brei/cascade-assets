@@ -1,0 +1,427 @@
+@import "variables";
+
+/* OFF CANVAS NAV
+----------------------------------------------*/
+#omni-nav-v2 {
+  .close {
+    cursor: pointer;
+    position: absolute;
+    top: 0;
+    right: 0;
+
+    // Magic number aligns button with logo.
+    padding: 22px;
+  }
+
+  .off-canvas-overlay {
+    // This value is relative to OmniNav parent.
+    z-index: 1002;
+
+    background-color: $black;
+    position: fixed;
+    visibility: hidden;
+    opacity: 0;
+    top: 0;
+    bottom: 0;
+    left: 0;
+    right: 0;
+    width: 100%;
+    height: 100%;
+    @include transition(all, 0.375s, ease-in-out);
+
+    &.active {
+      visibility: visible;
+      opacity: 0.5;
+    }
+  }
+
+  .off-canvas-nav-container {
+    // This value is relative to OmniNav parent.
+    z-index: 1003;
+
+    position: fixed;
+    top: 0;
+    left: -($cu-off-canvas-nav-mobile-width);
+    width: $cu-off-canvas-nav-mobile-width;
+    height: 100%;
+    overflow-y: scroll;
+    overflow-x: hidden;
+    background-color: $cu-off-canvas-nav-utility-background;
+    @include transition(all, 0.375s, ease-in-out);
+
+    @include bp(m) {
+      left: -($cu-off-canvas-nav-desktop-width);
+      width: $cu-off-canvas-nav-desktop-width;
+    }
+
+    @media (min-width: 780px) {
+      left: -($cu-off-canvas-nav-desktop-width);
+      width: $cu-off-canvas-nav-desktop-width;
+    }
+
+    ul, ol {
+      margin: 0;
+      padding: 0;
+    }
+
+    &.open {
+      left: 0;
+    }
+
+    .cu-off-canvas-header {
+      // For menu-toggling
+      width: 200%;
+
+      height: 60px;
+      position: relative;
+      padding: 0;
+      background: $cu-off-canvas-nav-background;
+
+      div.cu-logo-wrapper {
+        width: 100%;
+        position: relative;
+
+        div.toggle-logo {
+          float: left;
+          width: 50%;
+          padding: 18px;
+          position: relative;
+
+          .asbe {
+            background: image-url('off-canvas-header-asbe.png'); // IE 8
+            background: image-url('off-canvas-header-asbe.svg'), linear-gradient(transparent, transparent);
+            background-repeat: no-repeat;
+            background-size: contain;
+          }
+          .education {
+            background: image-url('off-canvas-header-ces.png'); // IE 8
+            background: image-url('off-canvas-header-ces.svg'), linear-gradient(transparent, transparent);
+            background-repeat: no-repeat;
+            background-size: contain;
+          }
+          .dodge {
+            background: image-url('off-canvas-header-dodge.png'); // IE 8
+            background: image-url('off-canvas-header-dodge.svg'), linear-gradient(transparent, transparent);
+            background-repeat: no-repeat;
+            background-size: contain;
+          }
+          .crean {
+            background: image-url('off-canvas-header-crean.png'); // IE 8
+            background: image-url('off-canvas-header-crean.svg'), linear-gradient(transparent, transparent);
+            background-repeat: no-repeat;
+            background-size: contain;
+          }
+          .wilkinson {
+            background: image-url('off-canvas-header-wilkinson.png'); // IE 8
+            background: image-url('off-canvas-header-wilkinson.svg'), linear-gradient(transparent, transparent);
+            background-repeat: no-repeat;
+            background-size: contain;
+          }
+          .copa {
+            background: image-url('off-canvas-header-copa.png'); // IE 8
+            background: image-url('off-canvas-header-copa.svg'), linear-gradient(transparent, transparent);
+            background-repeat: no-repeat;
+            background-size: contain;
+          }
+          .cusp {
+            background: image-url('off-canvas-header-cusp.png'); // IE 8
+            background: image-url('off-canvas-header-cusp.svg'), linear-gradient(transparent, transparent);
+            background-repeat: no-repeat;
+            background-size: contain;
+          }
+          .fowler {
+            background: image-url('off-canvas-header-fowler.png'); // IE 8
+            background: image-url('off-canvas-header-fowler.svg'), linear-gradient(transparent, transparent);
+            background-repeat: no-repeat;
+            background-size: contain;
+          }
+          .schmid {
+            background: image-url('off-canvas-header-schmid.png'); // IE 8
+            background: image-url('off-canvas-header-schmid.svg'), linear-gradient(transparent, transparent);
+            background-repeat: no-repeat;
+            background-size: contain;
+          }
+          .soc {
+            background: image-url('off-canvas-header-soc.png'); // IE 8
+            background: image-url('off-canvas-header-soc.svg'), linear-gradient(transparent, transparent);
+            background-repeat: no-repeat;
+            background-size: contain;
+          }
+
+          a.off-logo {
+            display: block;
+            height: 23px;
+            width: 75%;
+
+            /* WAVE error reports empty anchor tag because logo is a background image.
+             * Use color:transparent to add text that users can't see, to give context. */
+            color: transparent;
+          }
+
+          a.default.off-logo {
+            background: image-url('chapman_logo_horizontal_color.png'); // IE 8
+            background: image-url('chapman_logo_horizontal_color.svg'), linear-gradient(transparent, transparent);
+            background-repeat: no-repeat;
+            background-size: contain;
+          }
+        }
+
+        svg { color: $black; }
+      }
+    }
+
+    .off-canvas-nav {
+      /* Width is 200% to put menus side-by-side in umbrella context */
+      width: 200%;
+      position: relative;
+      left: 0;
+      @include transition(all, 0.375s, ease-in-out);
+
+      li {
+        list-style: none;
+      }
+
+      a {
+        left: 0;
+        @include transition(all, 0.175s, ease-in-out);
+
+        &:hover {
+          left: 5px;
+        }
+      }
+
+      // Menus: Main / Umbrella menus. When umbrella present, menu slide back-and-forth.
+      #off-canvas-main {
+        position: relative;
+      }
+
+      .off-canvas-menu {
+        // Float these to put main and umbrella side-by-side and slide back and forth.
+        float: left;
+        width: 50%;
+
+        .menu-header {
+          padding: 18px;
+          color: $cu-off-canvas-nav-background;
+          background: $cu-off-canvas-nav-text;
+          font-size: 13px;
+          font-weight: 800;
+          letter-spacing: 0.25px;
+          text-transform: uppercase;
+          border-bottom: 1px solid $cu-off-canvas-nav-border-secondary;
+
+          a {
+            color:$white;
+          }
+
+          // Menu Labels
+          span.menu-label {}
+
+          a.toggle-menu-label {
+            display: block;
+            float: right;
+          }
+        }
+
+        > ul {
+          > li {
+            background-color: $white;
+            list-style: none;
+            display: table;
+            border-bottom: 1px solid $cu-off-canvas-nav-border;
+            position: relative;
+            width: 100%;
+            height: 46px;
+            margin: 0;
+
+            > ul {
+              display: none;
+              background-color: $cu-off-canvas-nav-background;
+
+              > li {
+                border-top: 1px solid $cu-off-canvas-nav-border-secondary;
+                margin: 0;
+
+                > a {
+                  padding: 0.5em 1.325em;
+                  position: relative;
+                  display: block;
+                  vertical-align: middle;
+                  color: $cu-off-canvas-nav-text;
+                }
+
+                &:hover {
+                  a {
+                    color: $cu-red;
+                  }
+                }
+              }
+            }
+
+            &.open {
+              > a {
+                color: $cu-red;
+              }
+              .toggle > span {
+                @include vendorize(transform, rotate(45deg));
+              }
+            }
+
+            &:active {
+              color: $cu-red;
+            }
+
+            > a, .toggle {
+              height: 46px;
+            }
+
+            > a {
+              color: $cu-off-canvas-nav-text;
+              padding: 18px;
+              position: relative;
+              display: block;
+              @include transition(all, 0.175s, ease-in-out);
+              vertical-align: middle;
+              font-size: 16px;
+
+              &:hover {
+                color: $cu-red;
+              }
+            }
+
+
+            .toggle {
+              background-color: $cu-off-canvas-nav-background;
+              width: 46px;
+              line-height: 45px;
+              text-align: center;
+              position: absolute;
+              cursor: pointer;
+              top: 0;
+              right: 0;
+
+              span {
+                display: block;
+                font-family: 'Helvetica Neue', Helvetica, Arial, sans-serif;
+                @include transition(all, 0.175s, ease-in-out);
+
+                svg {
+                  width: 13px;
+                  height: 13px;
+                  vertical-align: middle;
+                  fill: $grey;
+                }
+              }
+            }
+          }
+        }
+      }
+
+
+      .off-canvas-utility {
+
+        > ul {
+          > li {
+            background: $cu-off-canvas-nav-utility-background;
+            list-style: none;
+            display: table;
+            border-bottom: 1px solid $cu-off-canvas-nav-border;
+            position: relative;
+            width: 100%;
+            height: 46px;
+            margin: 0;
+
+            > ul {
+              display: none;
+
+              > li {
+                border-top: 1px solid $cu-off-canvas-nav-border-secondary;
+                margin: 0;
+
+                > a {
+                  display: block;
+                  padding: 0.5em 1.325em;
+                  color: $cu-off-canvas-nav-background;
+                  vertical-align: middle;
+                  position: relative;
+
+                  &:active {
+                    color: $white;
+                  }
+                }
+
+                &:hover {
+                  a {
+                    color: $white;
+                  }
+                }
+              }
+            }
+
+            &.open {
+              > a {
+                color: $white;
+              }
+              .toggle > span {
+                @include vendorize(transform, rotate(45deg));
+              }
+            }
+
+            > a, .toggle {
+              height: 46px;
+            }
+
+            > a {
+              color: $cu-off-canvas-nav-background;
+              padding: 18px;
+              position: relative;
+              display: block;
+              @include transition(all, 0.175s, ease-in-out);
+              vertical-align: middle;
+              font-size: 16px;
+
+              &:before, svg {
+                position: relative;
+                @include transition(all, 0.175s, ease-in-out);
+              }
+
+              &:before {
+                margin-right: 10px;
+              }
+
+              &:hover {
+                color: $white;
+              }
+            }
+
+            .toggle {
+              background-color: #8a8a8a;
+              width: 46px;
+              font-size: 16px;
+              line-height: 45px;
+              text-align: center;
+              position: absolute;
+              cursor: pointer;
+              top: 0;
+              right: 0;
+
+              > span {
+                display: block;
+                font-family: 'Helvetica Neue', Helvetica, Arial, sans-serif;
+                @include transition(all, 0.175s, ease-in-out);
+
+                svg {
+                  width: 13px;
+                  height: 13px;
+                  vertical-align: middle;
+                  fill: $cu-off-canvas-nav-background;
+                }
+              }
+            }
+          }
+        }
+      }
+    }
+  }
+
+}

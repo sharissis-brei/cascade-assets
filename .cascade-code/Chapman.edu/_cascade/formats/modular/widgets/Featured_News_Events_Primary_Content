@@ -27,7 +27,7 @@
   <ul class="newsEventsContent">
     ## FIXME: This should be wrapped in a no-display li tag. But doing so will break
     ## tab functionality.
-    <a class="no-js-link" href="https://blogs.chapman.edu/happenings/" title="View All News Stories">View All News »</a>
+    <a class="no-js-link" href="https://blogs.chapman.edu/news-and-stories/" title="View All News Stories">View All News »</a>
     <a class="no-js-link" href="https://events.chapman.edu" title="View All Event Listings">View All Events »</a>
 
     #buildFeaturedTabContent()
