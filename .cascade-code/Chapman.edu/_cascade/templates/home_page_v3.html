@@ -19,50 +19,37 @@
         <system-region name="ADDITIONAL HEAD"/>
         <system-region name="GOOGLE_ANALYTICS"/>
     </head>
-    <!--[if lt IE 7]>
-    <body class="ie6 oldie"">
+    <body>
+        <system-region name="JUMP LINK"/>
+        <div class="noscript">
+            <p>Some of the content on this website requires JavaScript to be enabled in your web browser to function as intended. This includes, but is not limited to: navigation, video, image galleries, etc. While the website is still usable without JavaScript, it should be enabled to enjoy the full interactive experience.</p>
+        </div>
+        <system-region name="ALERT"/>
+        <div class="bigMasthead smallRotator" id="container">
+            <header>
+                <system-region name="OMNI-NAV"/>
+                <system-region name="NAVIGATION"/>
+            </header>
+            <div class="homepage" id="main" role="main">
+                <h1 style="display: none;">Chapman University</h1>
+                <system-region name="HERO_PANEL"/>
+                <system-region name="BLOG_STORIES"/>
+                <system-region name="ADMISSION_UG"/>
+                <system-region name="ADMISSION_GENINFO"/>
+                <system-region name="ADMISSION_GRAD"/>
+                <system-region name="CHAPMAN_FAMILY"/>
+                <system-region name="ACCESSIBILITY_STATEMENT"/>
+            </div>
+            <div class="home">
+                <system-region name="GLOBAL FOOTER"/>
+            </div>
+        </div>
+        <!--! end of #container -->
+        <!--[if lt IE 7 ]>
+        <script src="//ajax.googleapis.com/ajax/libs/chrome-frame/1.0.3/CFInstall.min.js"></script>
+        <script>window.attachEvent('onload',function(){CFInstall.check({mode:'overlay'})})</script>
         <![endif]-->
-        <!--[if IE 7]>
-        <body class="ie7 oldie"">
-            <![endif]-->
-            <!--[if IE 8]>
-            <body class="ie8 oldie"">
-                <![endif]-->
-                <!--[if gt IE 8]>
-                <!-->
-                <body>
-                    <!--
-                    <![endif]-->
-                    <system-region name="JUMP LINK"/>
-                    <div class="noscript">
-                        <p>Some of the content on this website requires JavaScript to be enabled in your web browser to function as intended. This includes, but is not limited to: navigation, video, image galleries, etc. While the website is still usable without JavaScript, it should be enabled to enjoy the full interactive experience.</p>
-                    </div>
-                    <system-region name="ALERT"/>
-                    <div class="bigMasthead smallRotator" id="container">
-                        <header>
-                            <system-region name="OMNI-NAV"/>
-                            <system-region name="NAVIGATION"/>
-                        </header>
-                        <div class="homepage" id="main" role="main">
-                            <h1 style="display: none;">Chapman University</h1>
-                            <system-region name="HERO_PANEL"/>
-                            <system-region name="BLOG_STORIES"/>
-                            <system-region name="ADMISSION_UG"/>
-                            <system-region name="ADMISSION_GENINFO"/>
-                            <system-region name="ADMISSION_GRAD"/>
-                            <system-region name="CHAPMAN_FAMILY"/>
-                            <system-region name="ACCESSIBILITY_STATEMENT"/>
-                        </div>
-                        <div class="home">
-                            <system-region name="GLOBAL FOOTER"/>
-                        </div>
-                    </div>
-                    <!--! end of #container -->
-                    <!--[if lt IE 7 ]>
-                    <script src="//ajax.googleapis.com/ajax/libs/chrome-frame/1.0.3/CFInstall.min.js"></script>
-                    <script>window.attachEvent('onload',function(){CFInstall.check({mode:'overlay'})})</script>
-                    <![endif]-->
-                    <system-region name="FORM_VALIDATION"/>
-                    <system-region name="ADDITIONAL BODY AT-END"/>
-                </body>
-            </html>
+        <system-region name="FORM_VALIDATION"/>
+        <system-region name="ADDITIONAL BODY AT-END"/>
+    </body>
+</html>
