@@ -1,0 +1,798 @@
+#*
+ * OmniNav v2 format.
+ * Chapman.edu/_components/omni_nav_v2/omni_nav.vtl
+ *
+ * It would make sense to move the various component-specific macros (like those
+ * for Primary Nav) into their own file and import them like so:
+ *
+ * #import( "/_components/omni_nav_v2/macros/primary_nav.vm" )
+ *
+ * But this makes debugging the code in Cascade's format editor much harder. It is
+ * simpler to just keep it all in a well-structured single file.
+ *#
+
+##
+## Imports
+##
+#import( "/_config/global_nav.vm" )
+#import( "/_config/global_nav_law.vm" )
+
+##
+## Hardcoded Params
+##
+## umbrellaCategories
+## These are locations for which OmniNav should build the secondary off-canvas-nav menu.
+## umbrellaCategory is the term product owners use.
+## I would prefer that each inner array item within the array were only 2 items and
+## all other vars be derived from those:
+## [$umbrellaFolderId, $umbrellaLabel]
+## Current inner array values:
+## [ $umbrellaDirectory, $umbrellaLabel/$umbrellaBrandLabel, $umbrellaClass ]
+#set ( $umbrellaCategories = [
+  [ 'business', 'Argyros School', 'asbe' ],
+  [ 'education', 'Attallah College', 'education' ],
+  [ 'dodge', 'Dodge College', 'dodge' ],
+  [ 'crean', 'Crean College', 'crean' ],
+  [ 'wilkinson', 'Wilkinson College', 'wilkinson' ],
+  [ 'copa', 'College of Performing Arts', 'copa' ],
+  [ 'pharmacy', 'School of Pharmacy', 'cusp' ],
+  [ 'law', 'Fowler School', 'fowler' ],
+  [ 'scst', 'Schmid College', 'schmid' ],
+  [ 'communication', 'School of Communication', 'soc' ],
+  [ 'about', 'About', 'default' ],
+  [ 'academics', 'Academics', 'default' ],
+  [ 'admission', 'Admission', 'default' ],
+  [ 'alumni', 'Alumni', 'default' ],
+  [ 'campus-services', 'Campus Services', 'default' ],
+  [ 'campus-services/career-development', 'Career', 'default' ],
+  [ 'faculty-staff', 'Faculty and Staff', 'default' ],
+  [ 'families', 'Families', 'default' ],
+  [ 'research', 'Research', 'default' ],
+  [ 'students', 'Students', 'default' ],
+  [ 'support-chapman', 'Support Chapman', 'default' ]
+])
+
+##
+## Vars
+##
+## Cascade provides a $currentPage object to every format.
+#set ( $pagePath = $currentPage.path )
+
+## This will be set by data macros below.
+#set ( $pageUmbrellaCategory = [] )
+#set ( $isUmbrellaCategory = false )
+#set ( $umbrellaDirectory = '' )
+#set ( $umbrellaDirectoryPath = '' )
+#set ( $umbrellaLabel = '' )
+#set ( $umbrellaClass = '' )
+#set ( $umbrellaBrandLabel = '' )
+#set ( $umbrellaAssets = [] )
+#set ( $brandClass = '' )
+#set ( $globalNavLinks = [] )
+
+##
+## Var Macros
+##
+#macro ( setVars )
+  #setPageUmbrellaCategory()
+
+  #set ( $isUmbrellaCategory = $pageUmbrellaCategory.size() > 0 )
+
+  #if ( $isUmbrellaCategory )
+    #set ( $umbrellaDirectory = $pageUmbrellaCategory[0] )
+
+    ## These 2 were originally different values and could differ in the future.
+    #set ( $umbrellaLabel = $pageUmbrellaCategory[1] )
+    #set ( $umbrellaBrandLabel = $pageUmbrellaCategory[1] )
+
+    #set ( $umbrellaClass = $pageUmbrellaCategory[2] )
+    #set ( $umbrellaDirectoryPath = "/${umbrellaDirectory}" )
+    #setUmbrellaAssets()
+    #set ( $brandClass = 'branded' )
+  #else
+    #set ( $brandClass = 'unbranded' )
+  #end
+
+  ## Currently law is the only page with different global nav content
+  #if( $umbrellaDirectory == 'law' )
+    #set( $globalNavLinks = $GLOBAL_NAV_LAW_CONFIG )
+  #else
+    #set( $globalNavLinks = $GLOBAL_NAV_CONFIG )
+  #end
+#end
+
+#macro ( setPageUmbrellaCategory )
+  ## Is current path under one of specified $umbrellaCategories?
+  #foreach ( $umbrellaCategory in $umbrellaCategories )
+    #set ( $dirName = $umbrellaCategory[0] )
+
+    ## Define substr range to compare umbrella dir with current page path.
+    ## pagePath does not include leading /.
+    #set ( $startSubStr = 0 )
+    #set ( $endSubStr = $dirName.length() )
+
+    ## Make sure endSubStr not long than pagePath else will throw exception
+    #if ( $endSubStr > $pagePath.length() )
+      #set ( $endSubStr = $pagePath.length() )
+    #end
+
+    #set ( $pagePathDir = $pagePath.substring($startSubStr, $endSubStr) )
+
+    ## Is current page directory $pagePathDir under this $navDirectory? If so,
+    ## we found our $navDirectory.
+    #if ( $pagePath.contains($dirName) && $pagePathDir == $dirName )
+      ## A page can enter this loop more than once if it falls under multiple umbrella categories
+      ## e.g. a page under both Campus Services and Career umbrellas
+      ## First check if it hasn't been set yet
+      #if ( $pageUmbrellaCategory.size() == 0 )
+        #set ( $pageUmbrellaCategory = $umbrellaCategory )
+      ## If it has been set, pages should use the umbrella category that's more specific
+      ## This ensures the page uses the closest matching directory out of all the umbrella categories
+      ## e.g. a page under Career should use campus-services/career umbrella not campus-services
+      #elseif ( $pagePathDir.length() > $pageUmbrellaCategory[0].length() )
+        #set ( $pageUmbrellaCategory = $umbrellaCategory )
+      #end
+    #end
+  #end
+#end
+
+#macro ( setUmbrellaAssets )
+  ## umbrellaAssets equal Umbrella directory's visible (non-index) children. These
+  ## are used in OffCanvasNav secondary menu. This must be called after
+  ## $umbrellaDirectoryPath is set.
+  #set ( $umbrellaFolder = $_.locateFolder($umbrellaDirectoryPath) )
+
+  #foreach( $childAsset in $umbrellaFolder.children )
+    ## When the 'Hide from navigation' box is not checked, and it has never been checked, the metadata 
+    ## field doesn't exist for that asset. When the box is not checked, but it was at one point, it exists with a value of ''.
+    ## See Github issue: https://github.com/chapmanu/cascade-assets/issues/262
+    ## By default, set visibility to false
+    #set ( $isVisibleChild = false )
+    #if ( $childAsset.assetType == 'folder')
+      ## Both the folder and index page must be visible
+      #set ( $folderVisible = $childAsset.metadata.getDynamicField('Hide from navigation').value != "Yes" )
+      #set ( $folderIndexPage = $_.locatePage("${childAsset.path}/index" ) )
+      #set ( $folderIndexVisible = $folderIndexPage.metadata.getDynamicField('Hide from navigation').value != "Yes" )
+      
+      #if ( $folderIndexVisible && $folderVisible )
+          #set ( $isVisibleChild = true )
+      #end
+    #elseif ( $childAsset.assetType == 'page' && ($childAsset.name != 'index') )
+      #set ( $isVisibleChild = $childAsset.metadata.getDynamicField('Hide from navigation').value != "Yes" )
+    #end
+    
+    #if ( $isVisibleChild )
+      #set ( $discard = $umbrellaAssets.add($childAsset) )
+    #end
+  #end
+#end
+
+##
+## Template Macros
+##
+#macro ( buildOmniNav )
+<div id="omni-nav-v2" class="$brandClass">
+  <!-- pagePath: $pagePath -->
+  <!-- pageUmbrellaCategory: $pageUmbrellaCategory -->
+  <!-- umbrellaAssets count: $umbrellaAssets.size() -->
+
+  ## Uncomment to list pageUmbrella child assets.
+  ##debugUmbrellaAssets()
+
+  #buildUtilityNav()
+  #buildPrimaryNav()
+  #buildOffCanvasNav()
+
+  <!-- Page overlay for when search results are displayed -->
+  <div id="search-results-overlay"></div>
+</div>
+#end
+
+
+##
+## Primary Nav Macros
+##
+#macro ( buildPrimaryNav )
+  <div id="primary-nav">
+    #buildPrimaryNavLeftContainer()
+    #buildPrimaryNavLogoContainer()
+    #buildPrimaryNavRightContainer()
+    #buildPrimaryNavSearchBox()
+    #buildGlobalNav()
+  </div>
+#end
+
+#macro ( buildPrimaryNavLeftContainer )
+  <div class="nav-container left-nav-container">
+    <a href="#"
+       id="js-off-canvas-trigger"
+       class="off-canvas-trigger primary-nav-icon"
+       role="button"
+       title="Access links to the pages within this section of the website and to other sections of the website"
+       aria-label="Access links to the pages within this section of the website and to other sections of the website">
+      <svg class="hamburger-icon" width="32" height="32" viewBox="0 0 16 16">
+        <path d="M1 3h14v2h-14v-2z"></path>
+        <path d="M1 7h14v2h-14v-2z"></path>
+        <path d="M1 11h14v2h-14v-2z"></path>
+      </svg>
+    </a>
+  </div>
+#end
+
+#macro ( buildPrimaryNavLogoContainer )
+  <div class="nav-container logo-container">
+    <div class="cu-logo-wrapper">
+      <div class="primary-logo">
+        <a href="/index" title="Chapman University Website Home Page">
+          <svg class="chapman-logo" xmlns="http://www.w3.org/2000/svg" viewBox="0 0 273.58 28.08">
+            <defs>
+              <style>.cls-1 { fill: #98002e; } .cls-2 { fill: #231f20; }</style>
+            </defs>
+            <title>Chapman Horizontal Color</title>
+            <path class="cls-1" d="M13.04 14.46L0 27.49V14.46h13.04zM0 13.62V.59l13.04 13.03H0zM27.49 0L14.46 13.03V0h13.03zM13.62 13.03L.59 0h13.03v13.03zM15.05 13.62L28.08.59v13.03H15.05zM28.08 14.46v13.03L15.05 14.46h13.03zM13.62 15.05L.59 28.08h13.03V15.05zM14.46 15.05v13.03h13.03L14.46 15.05z"/>
+            <g>
+              <path class="cls-2" d="M48 10.33c-.66-2.52-2.06-3.2-4.21-3.2-3.94 0-5.7 3-5.7 6.42 0 4.23 2.17 7 5.72 7 2.45 0 3.59-1.18 4.67-3.48l.52.09c-.28.94-.77 2.7-1.12 3.53a19.67 19.67 0 0 1-4.12.61c-5.54 0-7.87-3.77-7.87-7.25 0-4.51 3.48-7.65 8.28-7.65a16.32 16.32 0 0 1 3.97.6c.18 1.21.26 2.17.39 3.31zM61.73 13V9.91c0-2.39-.18-2.54-1.93-2.67v-.51h5.78v.5c-1.84.13-2 .29-2 2.67v7.9c0 2.39.18 2.54 2 2.67V21h-5.95v-.5c1.93-.13 2.1-.29 2.1-2.67V13.9h-7.6v3.9c0 2.39.18 2.54 2 2.67V21h-5.81v-.5c1.8-.13 2-.29 2-2.67V9.91c0-2.39-.18-2.54-2.06-2.67v-.51H56v.5c-1.71.13-1.88.29-1.88 2.67V13h7.6zM75.28 20.47l.7-.09c.81-.09.9-.33.68-1-.15-.53-.79-2.23-1.4-3.81h-4.45c-.22.57-.79 2.28-1.1 3.2-.42 1.27-.22 1.56.77 1.64l.66.07V21h-4.69v-.5c1.42-.15 1.6-.29 2.37-2.23L73.33 6.6l.5-.2 1.56 4.16c1 2.78 2 5.57 2.85 7.8.7 1.84 1 2 2.34 2.1V21h-5.3v-.5zm-4.18-5.74H75l-2-5.39zM85.25 17.8c0 2.39.18 2.54 2.3 2.67V21h-6.11v-.5c1.8-.13 2-.29 2-2.67V9.91c0-2.39-.17-2.54-1.86-2.67v-.51h5.52a6 6 0 0 1 3.64.92 3.52 3.52 0 0 1 1.4 3 4.52 4.52 0 0 1-4.27 4.4 8.1 8.1 0 0 1-1 0l-1.62-.42v3.17zm0-3.77a4.43 4.43 0 0 0 1.64.26c1.38 0 3.18-.72 3.18-3.57 0-2.39-1.25-3.35-3.51-3.35a3.48 3.48 0 0 0-1.12.11c-.13 0-.2.15-.2.59v6zM97.53 6.73l5.3 11.27L108 6.73h3.62v.5c-1.91.15-2 .24-2 2.67l.18 7.89c.07 2.45.13 2.52 2.06 2.67V21h-5.78v-.5c1.92-.18 1.92-.25 1.92-2.7l-.06-8.8h-.09l-5.37 11.77h-.55l-5.06-11.5-.22 6.11a27.5 27.5 0 0 0 0 3.94c.11.81.64 1 2.06 1.14V21h-5.19v-.5c1.23-.11 1.69-.33 1.84-1.14a35.15 35.15 0 0 0 .37-4.16l.27-4.63c.15-2.94 0-3.18-2.06-3.33v-.51h3.62zM121.55 20.47l.7-.09c.81-.09.9-.33.68-1-.15-.53-.79-2.23-1.4-3.81h-4.45c-.22.57-.79 2.28-1.1 3.2-.42 1.27-.22 1.56.77 1.64l.66.07V21h-4.69v-.5c1.42-.15 1.6-.29 2.37-2.23L119.6 6.6l.5-.2 1.56 4.16c1 2.78 2 5.57 2.85 7.8.7 1.84 1 2 2.34 2.1V21h-5.3v-.5zm-4.19-5.74h3.88l-1.93-5.39zM140.73 21.13h-.57l-9.51-11.55v5.59a34.11 34.11 0 0 0 .18 4.16c.11.77.7 1.07 2.15 1.14V21h-5.26v-.5c1.2 0 1.77-.37 1.88-1.14a34 34 0 0 0 .18-4.16v-4.79c0-1.58 0-1.93-.42-2.43a2.42 2.42 0 0 0-1.93-.75v-.5h3.2l9.23 11v-5.19a33.94 33.94 0 0 0-.18-4.16c-.11-.77-.7-1.07-2.15-1.14v-.51h5.26v.5c-1.21 0-1.77.37-1.88 1.14a33.94 33.94 0 0 0-.18 4.16v8.59zM154.83 6.73v.5c-1.75.13-1.93.29-1.93 2.67v4.58a7.47 7.47 0 0 0 .92 4.25 3.59 3.59 0 0 0 3.18 1.52 3.73 3.73 0 0 0 3.22-1.64 9.67 9.67 0 0 0 1-4.87v-1.18a34.41 34.41 0 0 0-.22-4.18c-.11-.77-.7-1.07-2.15-1.14v-.51h5.26v.5c-1.21 0-1.77.37-1.88 1.14a34.41 34.41 0 0 0-.18 4.18V14c0 2.54-.39 4.34-1.67 5.7a6.15 6.15 0 0 1-7.65.46c-1.16-.94-1.69-2.43-1.69-4.93V9.91c0-2.39-.18-2.54-2-2.67v-.51h5.79zM178.32 21.13h-.57l-9.51-11.55v5.59a34 34 0 0 0 .17 4.16c.11.77.7 1.07 2.15 1.14V21h-5.26v-.5c1.21 0 1.77-.37 1.88-1.14a34.23 34.23 0 0 0 .17-4.16v-4.79c0-1.58 0-1.93-.42-2.43a2.42 2.42 0 0 0-1.93-.74v-.51h3.2l9.22 11v-5.19a34.24 34.24 0 0 0-.17-4.16c-.11-.77-.7-1.07-2.15-1.14v-.51h5.26v.5c-1.21 0-1.78.37-1.88 1.14a34.22 34.22 0 0 0-.17 4.16v8.59zM185.51 17.8c0 2.39.17 2.54 2 2.67V21h-5.81v-.5c1.8-.13 2-.29 2-2.67V9.91c0-2.39-.17-2.54-2-2.67v-.51h5.78v.5c-1.8.13-2 .29-2 2.67v7.9zM195.24 21.11c-1.49-3.92-3.59-9.33-4.54-11.77-.7-1.82-1-2-2.32-2.1v-.51h5.32v.5l-.7.09c-.81.11-.94.33-.7 1 .57 1.62 2.26 5.94 3.86 10 1.14-3 3-8 3.51-9.42.42-1.25.2-1.53-.79-1.64l-.66-.07v-.46H203v.5c-1.47.15-1.66.31-2.48 2.24-.29.68-3 7.19-4.65 11.63h-.66zM205.9 9.91c0-2.39-.17-2.54-1.93-2.67v-.51h9.6c0 .37.13 2 .24 3.2l-.55.07a4 4 0 0 0-.79-2c-.35-.37-1.07-.53-2.41-.53h-1.67c-.61 0-.66 0-.66.68v5H210c1.88 0 2-.13 2.17-1.75h.55v4.34h-.55a2.35 2.35 0 0 0-.46-1.49 2.77 2.77 0 0 0-1.71-.28h-2.21v3.88c0 1.25.13 1.91.55 2.17a5 5 0 0 0 2.23.26c1.25 0 2.28-.11 2.76-.63a6.08 6.08 0 0 0 1.05-2.15l.55.07c-.11.61-.59 2.85-.77 3.44h-10.41v-.5c2-.13 2.15-.29 2.15-2.67V9.91zM220 17.8c0 2.39.17 2.54 2 2.67V21h-5.83v-.5c1.84-.13 2-.29 2-2.67V9.91c0-2.39-.17-2.54-1.93-2.67v-.51h5.57a6.4 6.4 0 0 1 3.46.75 3.19 3.19 0 0 1 1.45 2.8 4.09 4.09 0 0 1-2.89 3.83c.39.66 1.29 2.17 2 3.13a20.17 20.17 0 0 0 1.84 2.41 2.83 2.83 0 0 0 1.64 1.1v.42H229c-2.52-.07-3.29-.83-4.12-2-.68-1-1.6-2.61-2.21-3.64a1.4 1.4 0 0 0-1.38-.79H220v3.06zm0-3.73h1.27a3.24 3.24 0 0 0 2.19-.59 3.53 3.53 0 0 0 1.27-2.89 3.06 3.06 0 0 0-3.31-3.22 3.87 3.87 0 0 0-1.23.11c-.13 0-.2.15-.2.59v6zM230.55 17.12c.35 1 1.47 3.46 3.79 3.46a2.59 2.59 0 0 0 2.72-2.83c0-1.86-1.42-2.63-2.83-3.31-.72-.35-3.68-1.38-3.68-4 0-2.17 1.64-4 4.51-4a6.44 6.44 0 0 1 1.82.29 8.55 8.55 0 0 0 .83.24c.09.77.22 1.64.39 3l-.55.07c-.37-1.29-1-2.83-3-2.83a2.28 2.28 0 0 0-2.37 2.43c0 1.62 1.16 2.34 2.83 3.09 1.45.64 3.75 1.53 3.75 4.25 0 2.54-2.08 4.4-4.86 4.4a7 7 0 0 1-2.08-.33c-.55-.17-.94-.35-1.21-.46-.17-.57-.42-2.13-.64-3.31zM244.28 17.8c0 2.39.17 2.54 2 2.67V21h-5.78v-.5c1.8-.13 2-.29 2-2.67V9.91c0-2.39-.17-2.54-2-2.67v-.51h5.78v.5c-1.8.13-2 .29-2 2.67v7.9zM254.73 17.8c0 2.39.18 2.54 2.32 2.67V21h-6.4v-.5c2.06-.13 2.24-.29 2.24-2.67V7.46h-1c-2 0-2.54.29-2.87.7a5.81 5.81 0 0 0-.77 1.88h-.55c.09-1.34.22-2.74.26-3.86h.31a1 1 0 0 0 1.14.55h9a1.05 1.05 0 0 0 1-.55h.31c0 .92.13 2.52.24 3.79l-.56.03a4.26 4.26 0 0 0-.79-2c-.37-.42-1.05-.57-2.41-.57h-1.47V17.8zM267.95 17.8c0 2.39.17 2.54 2.28 2.67V21h-6.31v-.5c2-.13 2.19-.29 2.19-2.67V15.3a2.27 2.27 0 0 0-.48-1.31c-1-1.71-1.84-3.29-2.78-4.91s-1-1.69-2.3-1.84v-.51h5.28v.5l-1 .13c-.55.09-.7.28-.33 1 1 1.84 2 3.66 3.07 5.46.92-1.75 1.91-3.55 2.72-5.35.37-.79.2-1-.63-1.1l-.88-.11v-.53h4.82v.5c-1.47.13-1.58.42-2.5 1.86s-1.82 3-2.76 4.8a1.89 1.89 0 0 0-.37 1.18v2.73z"/>
+            </g>
+          </svg>
+        </a>
+      </div>
+
+      #if ( $isUmbrellaCategory )
+      <div class="secondary-logo">
+        <a class="branded-logo" href="${umbrellaDirectoryPath}/index">${umbrellaBrandLabel}</a>
+      </div>
+      #end
+    </div>
+  </div>
+#end
+
+#macro ( buildPrimaryNavRightContainer )
+  <div class="nav-container right-nav-container">
+    <div class="primary-nav-action utility-nav-trigger">
+      <a class="primary-nav-icon">
+        <svg width="32" height="32" viewBox="0 0 16 16" class="icon-open-search" id="icon-open-search">
+          <g>
+            <path d="M16 13.5l-4.695-4.695c0.444-0.837 0.695-1.792 0.695-2.805 0-3.314-2.686-6-6-6s-6 2.686-6 6 2.686 6 6 6c1.013 0 1.968-0.252 2.805-0.695l4.695 4.695 2.5-2.5zM2 6c0-2.209 1.791-4 4-4s4 1.791 4 4-1.791 4-4 4-4-1.791-4-4z"></path>
+            <path d="M9 5h-2v-2h-2v2h-2v2h2v2h2v-2h2z"></path>
+          </g>
+        </svg>
+        <svg width="32" height="32" viewBox="0 0 16 16" class="icon-close-search hide" id="icon-close-search">
+          <g>
+            <path d="M16 13.5l-4.695-4.695c0.444-0.837 0.695-1.792 0.695-2.805 0-3.314-2.686-6-6-6s-6 2.686-6 6 2.686 6 6 6c1.013 0 1.968-0.252 2.805-0.695l4.695 4.695 2.5-2.5zM2 6c0-2.209 1.791-4 4-4s4 1.791 4 4-1.791 4-4 4-4-1.791-4-4z"></path>
+            <path d="M3 5h6v2h-6v-2z"></path>
+          </g>
+        </svg>
+      </a>
+      <div class="nav-icon-text search">
+        <a>Find</a>
+      </div>
+    </div>
+    <div class="primary-nav-action login-trigger">
+      <a class="primary-nav-icon" role="button">
+        <svg width="32" height="32" viewBox="0 0 16 16">
+          <g>
+            <path d="M4 5c0-2.209 1.791-4 4-4s4 1.791 4 4c0 2.209-1.791 4-4 4s-4-1.791-4-4zM12 10h-8c-2.209 0-4 1.791-4 4v1h16v-1c0-2.209-1.791-4-4-4z"/>
+          </g>
+        </svg>
+      </a>
+      <div class="nav-icon-text">
+        <a>Log in</a>
+      </div>
+      <div class="login-menu">
+        <ul>
+          <li>
+            <a href="https://blackboard.chapman.edu/">
+              <svg xmlns="http://www.w3.org/2000/svg" width="32" height="32" viewBox="0 0 512 512">
+                <path d="M50.4 174.2C47.2 112.2 1 139.3 0 118.1c-0.5-8.2 4.5-6.7 7.7-7 1.7 0 5 1.2 26.2 0.2 39.1-2.2 76.5-5.7 113.9-7.7 110.9-6 114.4 60.8 114.9 70.6 1.5 29.4-13.5 54.6-45.4 66.3v1.7c56.1 10 73.8 33.7 76 74.3 3.2 60.3-35.4 100-108.7 104 -66.8 3.7-89.8 3.2-112.4 4.5 -11.5 0.5-22.7 3-32.4 3.5s-14.7 0.7-15-5.7c-0.7-14.7 38.9-5.5 36.7-49.4L50.4 174.2 50.4 174.2zM108.5 220.1c1.2 21.2 6.2 24.2 32.4 24.4l26.2-1.5c34.2-1.7 46.4-20.4 44.6-53.1 -2.5-42.4-36.6-68.3-77.3-66.1 -29.4 1.5-30.2 18-28.7 44.1L108.5 220.1 108.5 220.1zM115.5 350.5c2.2 42.4 14.5 54.9 58.3 52.4 44.1-2.5 65.3-32.9 62.8-77 -1.5-26.2-16.7-66.1-98.2-61.6 -26.2 1.5-27.2 13-25.9 35.7L115.5 350.5 115.5 350.5z"/>
+                <path d="M321.9 138.1c-1.7-32.7-28.4-11.5-29.4-27.9 -0.5-11.5 20.9-6 61.8-34.4 3.2-1.7 4.7-3.5 8-3.7 5-0.2 3.7 9.7 4 13l9.7 177.8c17-17.2 35.9-32.9 58.6-34.2 52.1-2.7 74.3 41.6 75.8 72.8C514.1 370.1 477 408 421.6 411c-40.6 2.2-54.9-15-61.3-14.7 -8.2 0.5-12 18.7-21.9 19.2 -3.2 0.2-5-1.2-5.2-4.7 -0.2-3.2 2.5-13.2 1.2-36.2L321.9 138.1 321.9 138.1zM380.7 350.8c2 37.4 36.6 43.9 49.9 43.1 37.4-2 43.6-38.4 42.1-67.6 -1.7-34.2-19.9-65.8-62.3-63.6 -13 0.7-33.7 10-32.9 26.4L380.7 350.8 380.7 350.8z"/>
+              </svg>
+              Blackboard
+            </a>
+          </li>
+          <li>
+            <a href="https://my.chapman.edu/">
+              <svg xmlns="http://www.w3.org/2000/svg" width="32" height="32" viewBox="0 0 28.1 28.1">
+                <style type="text/css">
+                  .st0{fill:#ffffff;}
+                </style>
+                <polygon class="st0" points="13 14.5 0 27.5 0 14.5 "/>
+                <polygon class="st0" points="0 13.6 0 0.6 13 13.6 "/>
+                <polygon class="st0" points="27.5 0 14.5 13 14.5 0 "/>
+                <polygon class="st0" points="13.6 13 0.6 0 13.6 0 "/>
+                <polygon class="st0" points="15.1 13.6 28.1 0.6 28.1 13.6 "/>
+                <polygon class="st0" points="28.1 14.5 28.1 27.5 15.1 14.5 "/>
+                <polygon class="st0" points="13.6 15 0.6 28.1 13.6 28.1 "/>
+                <polygon class="st0" points="14.5 15 14.5 28.1 27.5 28.1 "/>
+              </svg>
+              My Chapman
+            </a>
+          </li>
+          <li>
+            <a href="https://exchange.chapman.edu/">
+              <svg xmlns="http://www.w3.org/2000/svg" width="32" height="32" viewBox="0 0 448 448">
+                <path d="M416 376V184c-5.2 6-11 11.5-17.2 16.5C363 228 327 256 292.2 285c-18.8 15.8-42 35-68 35h-0.5c-26 0-49.2-19.2-68-35C121 256 85 228 49.2 200.5c-6.2-5-12-10.5-17.2-16.5v192c0 4.2 3.8 8 8 8h368C412.2 384 416 380.2 416 376zM416 113.2c0-6.2 1.5-17.2-8-17.2H40c-4.2 0-8 3.8-8 8 0 28.5 14.2 53.2 36.8 71 33.5 26.2 67 52.8 100.2 79.2 13.2 10.8 37.2 33.8 54.8 33.8h0.5c17.5 0 41.5-23 54.8-33.8 33.2-26.5 66.8-53 100.2-79.2C395.5 162.2 416 134.5 416 113.2zM448 104v272c0 22-18 40-40 40H40c-22 0-40-18-40-40V104c0-22 18-40 40-40h368C430 64 448 82 448 104z"/>
+              </svg>
+              Staff &amp; Faculty Email
+            </a>
+          </li>
+          <li>
+            <a href="/panthermail/">
+              <svg xmlns="http://www.w3.org/2000/svg" width="32" height="32" viewBox="0 0 448 448">
+                <path d="M416 376V184c-5.2 6-11 11.5-17.2 16.5C363 228 327 256 292.2 285c-18.8 15.8-42 35-68 35h-0.5c-26 0-49.2-19.2-68-35C121 256 85 228 49.2 200.5c-6.2-5-12-10.5-17.2-16.5v192c0 4.2 3.8 8 8 8h368C412.2 384 416 380.2 416 376zM416 113.2c0-6.2 1.5-17.2-8-17.2H40c-4.2 0-8 3.8-8 8 0 28.5 14.2 53.2 36.8 71 33.5 26.2 67 52.8 100.2 79.2 13.2 10.8 37.2 33.8 54.8 33.8h0.5c17.5 0 41.5-23 54.8-33.8 33.2-26.5 66.8-53 100.2-79.2C395.5 162.2 416 134.5 416 113.2zM448 104v272c0 22-18 40-40 40H40c-22 0-40-18-40-40V104c0-22 18-40 40-40h368C430 64 448 82 448 104z"/>
+              </svg>
+              PantherMail
+            </a>
+          </li>
+          <li>
+            <a href="https://mywindow.chapman.edu/">
+              <svg xmlns="http://www.w3.org/2000/svg" width="32" height="32" viewBox="0 0 28.1 28.1">
+                <style type="text/css">
+                  .st0{fill:#ffffff;}
+                </style>
+                <polygon class="st0" points="13 14.5 0 27.5 0 14.5 "/>
+                <polygon class="st0" points="0 13.6 0 0.6 13 13.6 "/>
+                <polygon class="st0" points="27.5 0 14.5 13 14.5 0 "/>
+                <polygon class="st0" points="13.6 13 0.6 0 13.6 0 "/>
+                <polygon class="st0" points="15.1 13.6 28.1 0.6 28.1 13.6 "/>
+                <polygon class="st0" points="28.1 14.5 28.1 27.5 15.1 14.5 "/>
+                <polygon class="st0" points="13.6 15 0.6 28.1 13.6 28.1 "/>
+                <polygon class="st0" points="14.5 15 14.5 28.1 27.5 28.1 "/>
+              </svg>
+              My Window
+            </a>
+          </li>
+        </ul>
+      </div>
+    </div>
+  </div>
+#end
+
+#macro ( buildPrimaryNavSearchBox )
+  <div class="nav-container" id="primary-nav-search">
+    #buildSearchBox()
+  </div>
+#end
+
+##
+## Global Nav Macros
+##
+#macro( buildGlobalNav )
+  <div class="nav-container global-nav">
+    <div id="cu-global-nav">
+      <nav>
+        <ul class="global-nav-links">
+          #foreach( $link in $globalNavLinks )
+            <li class="primary-link">
+              <a href="$link.sectionLink">$link.sectionTitle</a>
+              #if( $link.dropdown.size() > 0 )
+                #buildGlobalNavDropdown( $link.dropdown )
+              #end
+            </li>
+          #end
+        </ul>
+      </nav>
+    </div>
+  </div>
+#end
+
+#macro( buildGlobalNavDropdown $dropdownLinks )
+  <div class="global-nav-dropdown">
+    <ul>
+      #foreach( $dropdownLink in $dropdownLinks )
+        <li>
+          <a class="icon $dropdownLink.iconClass" href="$dropdownLink.link">
+            ${_EscapeTool.xml( $dropdownLink.text )}
+          </a>
+        </li>
+      #end
+    </ul>
+  </div>
+#end
+
+##
+## Utility Nav Macros
+##
+#macro ( buildUtilityNav )
+  <div class="utility-nav">
+    <nav>
+      #buildUtilityNavLinks()
+      #buildSearchComponent()
+    </nav>
+  </div>
+#end
+
+#macro ( buildUtilityNavLinks )
+  <div class="utility-nav-container utility-links">
+    <ul class="utility-list">
+      <li class="utility-cell utility-has-dropdown">
+        <a href="#">Find information for</a>
+        <div class="utility-dropdown dropdown">
+          <ul>
+            <li><a href="/future-students/index">Prospective Students</a></li>
+            <li><a href="/students/index">Current Students</a></li>
+            <li><a href="/alumni/index">Alumni</a></li>
+            <li><a href="/faculty-staff/index">Faculty &amp; Staff</a></li>
+            <li><a href="/families/index">Parents &amp; Families</a></li>
+          </ul>
+        </div>
+      </li>
+      <li class="utility-cell"><a href="/academics/degrees-and-programs">Degrees &amp; Programs</a></li>
+      <li class="utility-cell utility-has-dropdown">
+        <a href="#">Map &amp; Directories</a>
+        <div class="utility-dropdown dropdown">
+          <ul>
+            <li><a href="/about/maps-directions/campus-map/index">Interactive Map</a></li>
+            <li><a href="/our-faculty/index">Faculty Directory</a></li>
+            <li><a href="/directory/index">All Directories</a></li>
+          </ul>
+        </div>
+      </li>
+      <li class="utility-cell"><a href="https://blogs.chapman.edu/">News</a></li>
+      <li class="utility-cell"><a href="https://events.chapman.edu/">Events</a></li>
+      <li class="utility-cell utility-has-dropdown">
+        <a href="#">Social</a>
+        <div class="utility-dropdown social-dropdown dropdown">
+          <ul>
+            <li>
+              <ul class="social-list">
+                #buildSocialMenuItem('facebook')
+                #buildSocialMenuItem('twitter')
+                #buildSocialMenuItem('pinterest')
+                #buildSocialMenuItem('instagram')
+                #buildSocialMenuItem('youtube')
+                #buildSocialMenuItem('linkedin')
+                #buildSocialMenuItem('snapchat')
+                #buildSocialMenuItem('tumblr')
+              </ul>
+            </li>
+            <li><a class="social-link" href="https://social.chapman.edu/">Social hub</a></li>
+          </ul>
+        </div>
+      </li>
+    </ul>
+  </div>
+#end
+
+#macro ( buildSearchComponent )
+  #set ($searchFilters = ["All", "Blog Stories", "Faculty Directory", "Events", "Main Website"])
+
+  <div class="utility-nav-container utility-search" id="utility-nav-search">
+    <ul class="utility-list">
+      <li class="utility-cell search-type utility-has-dropdown">
+        <a class="selected-search-filter">Search From</a>
+        <div class="utility-dropdown dropdown">
+          <ul>
+            #foreach ($filter in $searchFilters)
+              <li class="search-filter-option"><a>$filter</a></li>
+            #end
+          </ul>
+        </div>
+      </li>
+      <li class="utility-cell">
+        #buildSearchBox()
+      </li>
+    </ul>
+  </div>
+#end
+
+#macro ( buildSocialMenuItem $service )
+  ## Hardcoded Settings
+  #set ( $socialMediaUrls = {
+    'facebook' : 'https://www.facebook.com/ChapmanUniversity',
+    'twitter' : 'https://twitter.com/chapmanu',
+    'pinterest' : 'https://www.pinterest.com/chapmanu/',
+    'instagram' : 'https://www.instagram.com/chapmanu/',
+    'youtube' : 'https://www.youtube.com/user/ChapmanUniversity',
+    'linkedin' : 'https://www.linkedin.com/edu/school?id=17838',
+    'snapchat' : 'https://www.snapchat.com/add/chapmanu',
+    'tumblr' : 'http://chapmanadmission.tumblr.com/',
+    'social hub' : 'https://social.chapman.edu/'
+  })
+  #set ( $socialMediaIconSvgPath = {
+    'facebook' : '<path d="M19 6h5v-6h-5c-3.9 0-7 3.1-7 7v3h-4v6h4v16h6v-16h5l1-6h-6v-3c0-0.5 0.5-1 1-1z"/>',
+    'twitter' : '<path d="M32 7.1c-1.2 0.5-2.4 0.9-3.8 1 1.4-0.8 2.4-2.1 2.9-3.6-1.3 0.8-2.7 1.3-4.2 1.6-1.2-1.3-2.9-2.1-4.8-2.1-3.6 0-6.6 2.9-6.6 6.6 0 0.5 0.1 1 0.2 1.5-5.5-0.3-10.3-2.9-13.5-6.9-0.6 1-0.9 2.1-0.9 3.3 0 2.3 1.2 4.3 2.9 5.5-1.1 0-2.1-0.3-3-0.8 0 0 0 0.1 0 0.1 0 3.2 2.3 5.8 5.3 6.4-0.5 0.2-1.1 0.2-1.7 0.2-0.4 0-0.8 0-1.2-0.1 0.8 2.6 3.3 4.5 6.1 4.6-2.2 1.8-5.1 2.8-8.2 2.8-0.5 0-1 0-1.6-0.1 2.9 1.9 6.4 3 10.1 3 12.1 0 18.7-10 18.7-18.7 0-0.3 0-0.6 0-0.8 1.3-0.9 2.4-2.1 3.3-3.4z"/>',
+    'pinterest' : '<path d="M16 0c-8.8 0-16 7.2-16 16s7.2 16 16 16 16-7.2 16-16-7.2-16-16-16zM16 29.9c-1.4 0-2.8-0.2-4.1-0.6 0.6-0.9 1.4-2.4 1.7-3.6 0.2-0.6 0.9-3.3 0.9-3.3 0.5 0.9 1.8 1.6 3.2 1.6 4.2 0 7.2-3.8 7.2-8.6 0-4.6-3.7-8-8.5-8-6 0-9.2 4-9.2 8.4 0 2 1.1 4.6 2.8 5.4 0.3 0.1 0.4 0.1 0.5-0.2 0-0.2 0.3-1.1 0.4-1.6 0-0.1 0-0.3-0.1-0.4-0.6-0.7-1-2-1-3.2 0-3.1 2.3-6 6.3-6 3.4 0 5.8 2.3 5.8 5.6 0 3.8-1.9 6.4-4.4 6.4-1.4 0-2.4-1.1-2-2.5 0.4-1.6 1.2-3.4 1.2-4.6 0-1.1-0.6-1.9-1.8-1.9-1.4 0-2.5 1.4-2.5 3.4 0 1.2 0.4 2.1 0.4 2.1s-1.4 5.8-1.6 6.9c-0.3 1.2-0.2 2.9 0 4-5.2-2-8.8-7-8.8-12.9 0-7.7 6.2-13.9 13.9-13.9s13.9 6.2 13.9 13.9c0 7.7-6.2 13.9-13.9 13.9z"/>',
+    'instagram' : '<path d="M16 2.9c4.3 0 4.8 0 6.5 0.1 1.6 0.1 2.4 0.3 3 0.6 0.7 0.3 1.3 0.6 1.8 1.2 0.6 0.6 0.9 1.1 1.2 1.8 0.2 0.6 0.5 1.4 0.6 3 0.1 1.7 0.1 2.2 0.1 6.5s0 4.8-0.1 6.5c-0.1 1.6-0.3 2.4-0.5 3-0.3 0.7-0.6 1.3-1.2 1.8-0.6 0.6-1.1 0.9-1.8 1.2-0.6 0.2-1.4 0.5-3 0.6-1.7 0.1-2.2 0.1-6.5 0.1s-4.8 0-6.5-0.1c-1.6-0.1-2.4-0.3-3-0.5-0.7-0.3-1.3-0.6-1.8-1.2-0.6-0.6-0.9-1.1-1.2-1.8-0.2-0.6-0.5-1.4-0.5-3-0.1-1.7-0.1-2.2-0.1-6.5s0-4.8 0.1-6.5c0.1-1.6 0.3-2.4 0.6-3 0.3-0.7 0.6-1.3 1.2-1.8 0.6-0.6 1.1-0.9 1.8-1.2 0.6-0.2 1.4-0.5 3-0.5 1.7-0.1 2.2-0.1 6.5-0.1zM16 0c-4.3 0-4.9 0-6.6 0.1-1.7 0.1-2.9 0.4-3.9 0.7-1.1 0.4-1.9 1-2.8 1.9-0.9 0.9-1.4 1.8-1.8 2.8-0.4 1-0.7 2.2-0.7 3.9-0.1 1.7-0.1 2.3-0.1 6.6s0 4.9 0.1 6.6c0.1 1.7 0.4 2.9 0.7 3.9 0.4 1.1 1 2 1.9 2.8 0.9 0.9 1.8 1.4 2.8 1.8 1 0.4 2.2 0.7 3.9 0.7 1.7 0.1 2.3 0.1 6.6 0.1s4.9 0 6.6-0.1c1.7-0.1 2.9-0.3 3.9-0.7 1.1-0.4 1.9-1 2.8-1.8s1.4-1.8 1.8-2.8c0.4-1 0.7-2.2 0.7-3.9 0.1-1.7 0.1-2.2 0.1-6.6s0-4.9-0.1-6.6c-0.1-1.7-0.3-2.9-0.7-3.9-0.4-1.1-0.9-2-1.8-2.8-0.9-0.9-1.8-1.4-2.8-1.8-1-0.4-2.2-0.7-3.9-0.7-1.7-0.1-2.3-0.1-6.6-0.1v0z"/><path d="M16 7.8c-4.5 0-8.2 3.7-8.2 8.2s3.7 8.2 8.2 8.2 8.2-3.7 8.2-8.2c0-4.5-3.7-8.2-8.2-8.2zM16 21.3c-2.9 0-5.3-2.4-5.3-5.3s2.4-5.3 5.3-5.3c2.9 0 5.3 2.4 5.3 5.3s-2.4 5.3-5.3 5.3z"/><path d="M26.5 7.5c0 1.1-0.9 1.9-1.9 1.9s-1.9-0.9-1.9-1.9c0-1.1 0.9-1.9 1.9-1.9s1.9 0.9 1.9 1.9z"/>',
+    'youtube' : '<path d="M31.6,10.1c0,0-0.3-2.2-1.3-3.2c-1.2-1.3-2.6-1.3-3.2-1.3c-4.4-0.4-11.2-0.4-11.2-0.4l0,0c0,0-6.7,0-11.2,0.4c-0.6,0.1-2,0.1-3.2,1.3c-1,1-1.3,3.2-1.3,3.2S0,12.7,0,15.3v2.4c0,2.6,0.4,5.2,0.4,5.2S0.6,25,1.6,26c1.2,1.3,2.8,1.3,3.5,1.3C7.6,27.5,16,27.7,16,27.7s6.7,0,11.2-0.4c0.6-0.1,2-0.1,3.2-1.3c1-1,1.3-3.2,1.3-3.2s0.4-2.6,0.4-5.2v-2.4C31.9,12.7,31.6,10.1,31.6,10.1L31.6,10.1z M12.6,20.6v-9l8.6,4.5L12.6,20.6L12.6,20.6z"/>',
+    'linkedin' : '<path d="M12 12h5.5v2.8h0.1c0.8-1.4 2.7-2.8 5.5-2.8 5.8 0 6.9 3.6 6.9 8.4v9.6h-5.8v-8.5c0-2 0-4.7-3-4.7-3 0-3.5 2.2-3.5 4.5v8.7h-5.8v-18z"/><path d="M2 12h6v18h-6v-18z"/><path d="M8 7c0 1.7-1.3 3-3 3s-3-1.3-3-3c0-1.7 1.3-3 3-3s3 1.3 3 3z"/>',
+    'snapchat' : '<path d="M16.5,1.4c3.4,0,6.3,1.9,7.7,4.9c0.5,0.9,0.5,2.4,0.5,3.4c0,1.2-0.1,2.4-0.2,3.6c0.2,0.1,0.4,0.1,0.5,0.1c0.6,0,1.3-0.5,1.9-0.5c0.6,0,1.6,0.5,1.6,1.2c0,1.8-3.8,1.5-3.8,3.1c0,0.3,0.1,0.5,0.2,0.8c0.9,2,2.6,3.9,4.6,4.7c0.5,0.2,1,0.4,1.5,0.5c0.4,0.1,0.5,0.4,0.5,0.6c0,1.3-3.3,1.8-4.2,1.9c-0.4,0.5-0.1,2-1.1,2c-0.8,0-1.6-0.3-2.4-0.3c-0.4,0-0.8,0-1.2,0.1c-2.2,0.5-3,3-6.7,3c-3.6,0-4.5-2.5-6.7-2.8c-0.4-0.1-0.8-0.1-1.2-0.1c-0.8,0-1.6,0.3-2.4,0.3c-1.1,0-0.7-1.4-1.1-2c-0.9-0.1-4.2-0.6-4.2-1.9c0-0.4,0.2-0.5,0.5-0.6c0.5-0.1,1-0.2,1.6-0.5c2-0.8,3.8-2.7,4.6-4.7c0.1-0.3,0.2-0.5,0.2-0.8c0-1.6-3.8-1.3-3.8-3.1c0-0.7,0.9-1.2,1.5-1.2c0.5,0,1.2,0.5,1.9,0.5c0.2,0,0.5,0,0.6-0.1C7.7,12.2,7.6,11,7.6,9.8c0-1,0.1-2.5,0.5-3.4C9.8,2.7,12.6,1.4,16.5,1.4z"/>',
+    'tumblr' : '<path d="M17.9,14v7.3c0,1.9,0,2.9,0.2,3.5c0.2,0.5,0.7,1.1,1.2,1.4c0.7,0.4,1.5,0.6,2.4,0.6c1.6,0,2.6-0.2,4.2-1.3v4.8c-1.4,0.6-2.6,1-3.7,1.3c-1.1,0.3-2.3,0.4-3.6,0.4c-1.5,0-2.3-0.2-3.5-0.6C14,31,13,30.5,12.2,29.8s-1.3-1.4-1.7-2.2c-0.3-0.8-0.5-1.9-0.5-3.4V13.1H5.9V8.6c1.3-0.4,2.7-1,3.6-1.8s1.6-1.7,2.2-2.7c0.5-1.1,0.8-2.4,1-4.1h5.2v8h8v6H17.9z"/>',
+    'social hub' : ''
+  })
+
+  #set ( $socialHref = $socialMediaUrls[$service] )
+  #set ( $svgPath = $socialMediaIconSvgPath[$service] )
+
+  <li class="social-media-menu-item">
+    <a href="$socialHref" target="_blank">
+      <svg class="icon icon-$service"
+           xlink="http://www.w3.org/2000/svg"
+           width="32"
+           height="32"
+           viewBox="0 0 32 32">
+        <title>$service</title>
+        $svgPath
+      </svg>
+    </a>
+  </li>
+#end
+
+
+##
+## Off-Canvas Nav Macros
+##
+#macro ( buildOffCanvasNav )
+  <div class="off-canvas-overlay" id="js-off-canvas-overlay"></div>
+  <div class="off-canvas-nav-container" id="js-off-canvas-nav-container">
+    #buildOffCanvasNavHeader()
+    #buildOffCanvasNavMenus()
+  </div>
+#end
+
+#macro ( buildOffCanvasNavHeader )
+  <div class="cu-off-canvas-header">
+    <div class="cu-logo-wrapper">
+      #if ( $isUmbrellaCategory )
+        <div id="umbrella-logo" class="toggle-logo">
+          <a class="${umbrellaClass} off-logo" href="${umbrellaDirectoryPath}/index" title="${umbrellaBrandLabel}">
+            <!-- logo set as background image by class -->
+            ${umbrellaBrandLabel} Logo
+          </a>
+          #buildOffCanvasNavCloseIcon()
+        </div>
+      #end
+
+      <div id="main-logo" class="toggle-logo">
+        <a class="default off-logo" href="/index" title="Chapman University Website Home Page">
+          <!-- logo set as background image by class -->
+          Chapman University Logo
+        </a>
+        #buildOffCanvasNavCloseIcon()
+      </div>
+    </div>
+  </div>
+#end
+
+#macro ( buildOffCanvasNavMenus )
+  ## For umbrella cats, build secondary menu.
+  <div class="off-canvas-nav clearfix" id="js-off-canvas-nav">
+    #if ( $isUmbrellaCategory )
+      #buildOffCanvasNavSecondaryMenu()
+    #end
+
+    #buildOffCanvasNavMainMenu()
+  </div>
+#end
+
+#macro ( buildOffCanvasNavMainMenu )
+  <div id="off-canvas-main" class="off-canvas-menu">
+    <div class="menu-header">
+      <span class="menu-label">Main Menu</span>
+
+      #if ( $isUmbrellaCategory )
+        <a class="toggle-menu-label" href="#">&lt; ${umbrellaLabel} Menu</a>
+      #end
+    </div>
+
+    <ul>
+      <li>
+        <a href="/about/index">About</a>
+        #buildToggleIcon()
+        <ul>
+          <li><a href="/about/maps-directions/index">Maps &amp; Directions</a></li>
+          <li><a href="/about/visit-chapman/index">Visit Chapman</a></li>
+          <li><a href="/discover/index">Discover Chapman</a></li>
+          <li><a href="/about/campus/index">Our Campus</a></li>
+          <li><a href="/about/facts-history/index">Facts &amp; History</a></li>
+          <li><a href="/about/administration/index">Administration</a></li>
+          <li><a href="/about/contact-us">Contact Us</a></li>
+        </ul>
+      </li>
+      <li>
+        <a href="/academics/index">Academics</a>
+        #buildToggleIcon()
+        <ul>
+          <li><a href="/academics/degrees-and-programs">Degrees &amp; Programs</a></li>
+          <li><a href="/academics/schools-colleges">Schools &amp; Colleges</a></li>
+          <li><a href="/academics/academic-calendar">Academic Calendar</a></li>
+          <li><a href="/academics/libraries/index">Libraries</a></li>
+          <li><a href="/academics/course-catalogs/index">Course Catalogs</a></li>
+          <li><a href="/international-studies/index">International Study</a></li>
+        </ul>
+      </li>
+      <li>
+        <a href="/admission/index">Admission</a>
+        #buildToggleIcon()
+        <ul>
+          <li><a href="/admission/undergraduate/index">Undergraduate Admission</a></li>
+          <li><a href="/admission/undergraduate/applynow">Undergraduate Application</a></li>
+          <li><a href="/admission/graduate/index">Graduate Admission</a></li>
+          <li><a href="/admission/graduate/applynow">Graduate Application</a></li>
+          <li><a href="/admission/undergraduate/afford">Affordability</a></li>
+          <li><a href="/students/tuition-and-aid/financial-aid/net-cost-calculator/index">Financial Aid Calculator</a></li>
+          <li><a href="/admission/undergraduate/visit">Campus Tours</a></li>
+        </ul>
+      </li>
+      <li><a href="/arts/index">Arts</a></li>
+      <li>
+        <a href="/campus-life/index">Campus Life</a>
+        #buildToggleIcon()
+        <ul>
+          <li><a href="http://www.chapmanathletics.com/landing/index">Athletics</a></li>
+          <li><a href="/diversity/index">Diversity &amp; Inclusion</a></li>
+          <li><a href="https://events.chapman.edu/">Events</a></li>
+          <li><a href="/about/fish-interfaith-center/index">Fish Interfaith Center</a></li>
+          <li><a href="/students/health-and-safety/index">Health &amp; Safety</a></li>
+          <li><a href="/students/services/housing-and-residence/index">Residence Life</a></li>
+          <li><a href="/students/life/index">Student Life</a></li>
+        </ul>
+      </li>
+      <li>
+        <a href="/research/">Research</a>
+        #buildToggleIcon()
+        <ul>
+          <li><a href="/research/sponsored-projects-services/pre-award/index">Pre-Award Administration</a></li>
+          <li><a href="/research/sponsored-projects-services/post-award/index">Post-Award Administration</a></li>
+          <li><a href="/research/integrity/index">Research Integrity</a></li>
+          <li><a href="/research/institutes-and-centers/index">Institutes &amp; Centers</a></li>
+          <li><a href="/research/office-undergraduate-research-creative-activity/index">Undergraduate Research &amp; Creative Activity</a></li>
+          <li><a href="/research/graduate-research/index">Graduate Research Support</a></li>
+        </ul>
+      </li>
+      <li>
+        <a href="/support-chapman/index">Support</a>
+        #buildToggleIcon()
+        <ul>
+          <li><a href="/support-chapman/contact-us">Contact Development</a></li>
+          <li><a href="/support-chapman/get-involved">Get Involved</a></li>
+          <li><a href="/support-chapman/ways-to-give/areas-to-support">Areas to Support</a></li>
+          <li><a href="/alumni/index">Alumni</a></li>
+        </ul>
+      </li>
+    </ul>
+
+    <div class="off-canvas-utility">
+      <ul>
+        <li>
+          <a href="/audiences/index">Find information for...</a>
+          #buildToggleIcon()
+          <ul>
+            <li><a href="/future-students/index">Prospective Students</a></li>
+            <li><a href="/students/index">Current Students</a></li>
+            <li><a href="/alumni/index">Alumni</a></li>
+            <li><a href="/faculty-staff/index">Faculty &amp; Staff</a></li>
+            <li><a href="/families/index">Parents &amp; Families</a></li>
+          </ul>
+        </li>
+        <li><a href="/academics/degrees-and-programs">Degrees &amp; Programs</a></li>
+        <li>
+          <a href="/about/maps-directions/index">Maps &amp; Directories</a>
+          #buildToggleIcon()
+          <ul>
+            <li><a href="/about/maps-directions/campus-map/index">Interactive Map</a></li>
+            <li><a href="/our-faculty/index">Faculty Directory</a></li>
+            <li><a href="/directory/index">All Directories</a></li>
+          </ul>
+        </li>
+        <li><a href="https://blogs.chapman.edu/">News</a></li>
+        <li><a href="https://events.chapman.edu/">Events</a></li>
+        <li><a href="https://social.chapman.edu/">Social</a></li>
+      </ul>
+    </div>
+  </div>
+#end
+
+#macro ( buildOffCanvasNavSecondaryMenu )
+  <div id="off-canvas-umbrella" class="off-canvas-menu">
+    <div class="menu-header">
+      <span class="menu-label">${umbrellaLabel}</span>
+      <a class="toggle-menu-label" href="#">Main Menu &gt;</a>
+    </div>
+
+    <ul>
+      #foreach ( $asset in $umbrellaAssets )
+        #buildSecondaryMenuItem( $asset )
+      #end
+    </ul>
+  </div>
+#end
+
+#macro ( buildSecondaryMenuItem $asset )
+  ## This builds a menu link for the secondary menu. It will either be a link or a
+  ## drop-down menu with multiple links.
+  ## The setUmbrellaAssets macro already filters out hidden assets
+  #set ( $assetType = $asset.assetType )
+
+  #if ( $assetType == 'page' )
+    <li><a href="${asset.path}">${_EscapeTool.xml($asset.metadata.displayName)}</a></li>
+  
+  #elseif ( $assetType == 'folder' )
+    ## Collect folder's visible children.
+    #set ( $visibleChildren = [] )
+
+    #foreach( $childAsset in $asset.children )
+      ## By default, set visibility to false
+      #set ( $isVisibleChild = false )
+      #if ( $childAsset.assetType == 'folder')
+          ## Both the folder and index page must be visible
+          #set ( $folderVisible = $childAsset.metadata.getDynamicField('Hide from navigation').value != "Yes" )
+          #set ( $folderIndexPage = $_.locatePage("${childAsset.path}/index" ) )
+          #set ( $folderIndexVisible = $folderIndexPage.metadata.getDynamicField('Hide from navigation').value != "Yes" )
+          
+          #if ( $folderIndexVisible && $folderVisible )
+              #set ( $isVisibleChild = true )
+          #end
+      #elseif ( $childAsset.assetType == 'page' && ($childAsset.name != 'index') )
+          #set ( $isVisibleChild = $childAsset.metadata.getDynamicField('Hide from navigation').value != "Yes" )
+      #end
+
+      #if ( $isVisibleChild )
+          #set ( $discard = $visibleChildren.add($childAsset) )
+      #end
+    #end
+  
+    ## Link for folder. Include drop-down if folder has visible children.
+    <li>
+      <a href="${asset.path}/index">${_EscapeTool.xml($asset.metadata.displayName)}</a>
+  
+      #if ( $visibleChildren.size() > 0 )
+        #buildToggleIcon()
+        <ul>
+          #foreach ( $child in $visibleChildren )
+            #if ( $child.assetType == "page" )
+              <li><a href="${child.path}">${_EscapeTool.xml($child.metadata.displayName)}</a></li>
+            #elseif ( $child.assetType == "folder" )
+              <li><a href="${child.path}/index">${_EscapeTool.xml($child.metadata.displayName)}</a></li>
+            #end
+          #end
+        </ul>
+      #end
+    </li>
+  #end
+#end
+
+#macro ( buildToggleIcon )
+  <span class="toggle">
+    <span>
+      <svg version="1.1" xmlns="http://www.w3.org/2000/svg" width="32" height="32" viewBox="0 0 512 512">
+        <title></title>
+        <g id="icomoon-ignore"></g>
+        <path d="M480 224h-192v-192h-64v192h-192v64h192v192h64v-192h192z"></path>
+      </svg>
+    </span>
+  </span>
+#end
+
+#macro ( buildOffCanvasNavCloseIcon )
+  <span class="close" id="js-close-off-canvas-nav">
+    <svg version="1.1" xmlns="http://www.w3.org/2000/svg" width="13" height="13" viewBox="0 0 512 512">
+      <title></title>
+      <g id="icomoon-ignore"></g>
+      <path d="M446.627 110.627l-45.254-45.254-145.373 145.372-145.373-145.372-45.254 45.253 145.373 145.374-145.373 145.373 45.254 45.254 145.373-145.373 145.373 145.373 45.254-45.255-145.372-145.372z"></path>
+    </svg>
+  </span>
+#end
+
+
+##
+## Helper Macros
+##
+#macro( buildSearchBox )
+  <div class="cu-search-box"></div>
+  <div class="search-results-container">
+    <div class="cu-search-results"></div>
+  </div>
+#end
+
+#macro( debugUmbrellaAssets )
+  #foreach ( $asset in $umbrellaAssets )
+    <!-- $asset.name : $asset.path ($asset.children.size()) -->
+  #end
+#end
+
+
+##
+## Main OmniNav HTML Block
+##
+#setVars()
+#buildOmniNav()

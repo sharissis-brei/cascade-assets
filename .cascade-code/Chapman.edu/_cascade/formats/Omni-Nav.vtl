@@ -1,639 +1,644 @@
 #*
- * Original: Chapman.edu/_cascade/formats/Omni-Nav(.vtl)
- * https://dev-cascade.chapman.edu/entity/open.act?id=96e4c084c04d744c098ae2c297a66017&type=format
+ * Chapman.edu/_cascade/formats/Omni-Nav(.vtl)
+ * Master: https://cascade.chapman.edu/entity/open.act?id=96e4c084c04d744c098ae2c297a66017&type=format
  *#
 
-## Name: Omni-Nav
-## Author: BarkleyREI
-## Created: 06/29/2015
-## Modified By: Ed Lan/Mandy Thomas 10/26/16- replace $site with actual site://Chapman.edu/ in all links for Main Menu and remove ".aspx"
-##    (fixes links in preview AND outputs fully qualified url so can use this on other servers besides www)
-## Modified By: Ed Lan/Mandy Thomas 10/25/16- copied prod version here (different menu options)
-## Modified By: Sarah Harissis 9/16/16 - added title params
-## 2016-12-09 (Tom Atwell): changed domain from http to https
-## Modified By: Mirabel Rice 2/6/17 - added aria-label attribute to search dropdown
-## Modified By: Wai dela Cruz 2/8/17: Changed markup to replace menu and login icons with IcoMoon. 2017-02-10: Replace Off-Canvas CU logo with SVG.
-## Modified By: Sean Stacho (BarkleyREI) 05/04/2017 - Added aria-label attribute to .cu-off-canvas-nav-trigger
-## Modified By: Kayla Ziegler 05/08/2017 - moved clear button to search result dropdown
-## Modified By: Tom Atwell 06/01/2017 - added SOC to Blogs list in off-canvas nav
-## Modified By: Wai dela Cruz 06/09/2017 - converted icons to inline SVG and fixed alignment
-## Modified By: Tom Atwell 06/15/2017 - Removes redundant title attrs from off-canvas nav tabs.
-## Modified By: M. Thomas 08/22/2017 - change College of Educational Studies and references to /CES to new url and school name;
-##         (first pass will to add new but leave old in as well; can't change blogs url yet)
-
-## Domain
-#set ( $domain = "https://www.chapman.edu/" )
-## Site name
-#set ( $site = "site://Chapman.edu/" )
-## Root
-#set ( $root = $_XPathTool.selectSingleNode( $contentRoot, "//system-index-block" ) )
-## Current page
-#set ( $currentPage = $_XPathTool.selectSingleNode($root, "//system-page[@current = 'true']") )
-## Display secondary menu - e.g. Schools & Colleges
-#set ( $displaySecondaryMenu = false )
-## Index - e.g. Counter to help choose what name or title for what umbrella category should be used
-#set ( $counter = 0 )
-## level - e.g. Determines whether or not the Main Menu should display first or second on an umbrella category page
-#set ( $level = 1 )
-
-## Directories - Chapman University's Umbrella Categories
-## WARNING: Next 4 lists are mapped together.
-#set ( $directories = ["/business", "/education", "/dodge", "/crean", "/wilkinson", "/copa", "/pharmacy", "/law", "/scst", "/about", "/academics", "/admission", "/alumni", "/campus-services", "/faculty-staff", "/families", "/research", "/students", "/support-chapman", "/communication"] )
-## Umbrella Categories
-#set ( $umbrellaCats = ["ARGYROS SCHOOL", "ATTALLAH COLLEGE", "DODGE COLLEGE", "CREAN COLLEGE", "WILKINSON COLLEGE", "CoPA", "CUSP", "FOWLER SCHOOL OF LAW", "SCHMID COLLEGE", "About", "Academics", "Admission", "Alumni", "Campus Services", "Faculty and Staff", "Families", "Research", "Students", "Support Chapman", "SCHOOL OF COMM"] )
-## Paths to Umbrella Categories Logos
-##set ( $umbrellaCatsImages = ["off-canvas-header-asbe.png", "off-canvas-header-ces.png", "off-canvas-header-education.png", "off-canvas-header-dodge.png", "off-canvas-header-crean.png", "off-canvas-header-wilkinson.png", "off-canvas-header-copa.png", "off-canvas-header-cusp.png", "off-canvas-header-fowler.png", "off-canvas-header-schmid.png", "off-canvas-header-default.png", "off-canvas-header-default.png", "off-canvas-header-default.png", "off-canvas-header-default.png", "off-canvas-header-default.png", "off-canvas-header-default.png", "off-canvas-header-default.png", "off-canvas-header-default.png", "off-canvas-header-default.png", "off-canvas-header-default.png", "off-canvas-header-soc.png"] )
-#set ( $umbrellaCatsClasses = ["asbe", "education", "dodge", "crean", "wilkinson", "copa", "cusp", "fowler", "schmid", "default", "default", "default", "default", "default", "default", "default", "default", "default", "default", "soc"] )
-## Umbrella Categories Paths
-#set ( $umbrellaCatsPaths = ["business/index.aspx", "education/index.aspx", "dodge/index.aspx", "crean/index.aspx", "wilkinson/index.aspx", "copa/index.aspx", "pharmacy/index.aspx", "law/index.aspx", "scst/index.aspx", "/", "/", "/", "/", "/", "/", "/", "/", "/", "/", "communication/index.aspx"] )
+ ## Name: Omni-Nav
+ ## Author: BarkleyREI
+ ## Created: 06/29/2015
+ ## Modified By: Ed Lan/Mandy Thomas 10/26/16- replace $site with actual site://Chapman.edu/ in all links for Main Menu and remove ".aspx"
+ ##    (fixes links in preview AND outputs fully qualified url so can use this on other servers besides www)
+ ## Modified By: Ed Lan/Mandy Thomas 10/25/16- copied prod version here (different menu options)
+ ## Modified By: Sarah Harissis 9/16/16 - added title params
+ ## 2016-12-09 (Tom Atwell): changed domain from http to https
+ ## Modified By: Mirabel Rice 2/6/17 - added aria-label attribute to search dropdown
+ ## Modified By: Wai dela Cruz 2/8/17: Changed markup to replace menu and login icons with IcoMoon. 2017-02-10: Replace Off-Canvas CU logo with SVG.
+ ## Modified By: Sean Stacho (BarkleyREI) 05/04/2017 - Added aria-label attribute to .cu-off-canvas-nav-trigger
+ ## Modified By: Kayla Ziegler 05/08/2017 - moved clear button to search result dropdown
+ ## Modified By: Tom Atwell 06/01/2017 - added SOC to Blogs list in off-canvas nav
+ ## Modified By: Wai dela Cruz 06/09/2017 - converted icons to inline SVG and fixed alignment
+ ## Modified By: Tom Atwell 06/15/2017 - Removes redundant title attrs from off-canvas nav tabs.
+ ## Modified By: M. Thomas 08/22/2017 - change College of Educational Studies and references to /CES to new url and school name;
+ ##         (first pass will to add new but leave old in as well; can't change blogs url yet)
+
+ ## Domain
+ #set ( $domain = "https://www.chapman.edu/" )
+ ## Site name
+ #set ( $site = "site://Chapman.edu/" )
+ ## Root
+ #set ( $root = $_XPathTool.selectSingleNode( $contentRoot, "//system-index-block" ) )
+ ## Current page
+ #set ( $currentPage = $_XPathTool.selectSingleNode($root, "//system-page[@current = 'true']") )
+ ## Display secondary menu - e.g. Schools & Colleges
+ #set ( $displaySecondaryMenu = false )
+ ## Index - e.g. Counter to help choose what name or title for what umbrella category should be used
+ #set ( $counter = 0 )
+ ## level - e.g. Determines whether or not the Main Menu should display first or second on an umbrella category page
+ #set ( $level = 1 )
+
+ ## Directories - Chapman University's Umbrella Categories
+ ## WARNING: Next 4 lists are mapped together.
+ #set ( $directories = ["/business", "/education", "/dodge", "/crean", "/wilkinson", "/copa", "/pharmacy", "/law", "/scst", "/about", "/academics", "/admission", "/alumni", "/campus-services", "/faculty-staff", "/families", "/research", "/students", "/support-chapman", "/communication", "/campus-services/career-professional-development"] )
+ ## Umbrella Categories
+ #set ( $umbrellaCats = ["ARGYROS SCHOOL", "ATTALLAH COLLEGE", "DODGE COLLEGE", "CREAN COLLEGE", "WILKINSON COLLEGE", "CoPA", "CUSP", "FOWLER SCHOOL OF LAW", "SCHMID COLLEGE", "About", "Academics", "Admission", "Alumni", "Campus Services", "Faculty and Staff", "Families", "Research", "Students", "Support Chapman", "SCHOOL OF COMM", "Career"] )
+ ## Paths to Umbrella Categories Logos
+ ##set ( $umbrellaCatsImages = ["off-canvas-header-asbe.png", "off-canvas-header-ces.png", "off-canvas-header-education.png", "off-canvas-header-dodge.png", "off-canvas-header-crean.png", "off-canvas-header-wilkinson.png", "off-canvas-header-copa.png", "off-canvas-header-cusp.png", "off-canvas-header-fowler.png", "off-canvas-header-schmid.png", "off-canvas-header-default.png", "off-canvas-header-default.png", "off-canvas-header-default.png", "off-canvas-header-default.png", "off-canvas-header-default.png", "off-canvas-header-default.png", "off-canvas-header-default.png", "off-canvas-header-default.png", "off-canvas-header-default.png", "off-canvas-header-default.png", "off-canvas-header-soc.png"] )
+ #set ( $umbrellaCatsClasses = ["asbe", "education", "dodge", "crean", "wilkinson", "copa", "cusp", "fowler", "schmid", "default", "default", "default", "default", "default", "default", "default", "default", "default", "default", "soc", "default"] )
+ ## Umbrella Categories Paths
+ #set ( $umbrellaCatsPaths = ["business/index.aspx", "education/index.aspx", "dodge/index.aspx", "crean/index.aspx", "wilkinson/index.aspx", "copa/index.aspx", "pharmacy/index.aspx", "law/index.aspx", "scst/index.aspx", "/", "/", "/", "/", "/", "/", "/", "/", "/", "/", "communication/index.aspx", "/"] )
+
+ ## Determine whether or not the secondary menu for Schools & Colleges should display as well as any additional assets
+ #macro ( display $page, $directories )
 
-## Determine whether or not the secondary menu for Schools & Colleges should display as well as any additional assets
-#macro ( display $page, $directories )
+     #set ( $path = $page.getChild("path").value )
 
-    #set ( $path = $page.getChild("path").value )
+     #foreach ( $directory in $directories )
+
+         #set ( $directoryLength = $directory.length() )
+
+         #if ( $path.contains($directory) )
+
+             #if ( $path.substring(0, ${directoryLength}) == $directory )
 
-    #foreach ( $directory in $directories )
+                 #set ( $displaySecondaryMenu = true )
+                 #set ( $counter = $foreach.index )
+                 #set ( $level = 2 )
+                 ## #break
 
-        #set ( $directoryLength = $directory.length() )
+             #end
 
-        #if ( $path.contains($directory) )
+         #end
 
-            #if ( $path.substring(0, ${directoryLength}) == $directory )
+     #end
 
-                #set ( $displaySecondaryMenu = true )
-                #set ( $counter = $foreach.index )
-                #set ( $level = 2 )
-                ## #break
+ #end
 
-            #end
+ #display( $currentPage, $directories )
 
-        #end
+ ## Default page name
+ #set ( $defaultPageName = "/index" )
+ ## Current Directory Path
+ #set ( $currentDirectoryPath = $directories.get($counter) )
+ ## Career is not in root so parent directory is different, it's an extra folder down
+ #if ( $currentDirectoryPath == "/campus-services/career-professional-development" )
+     #set ( $topLevelXPath = "//system-index-block/system-folder/system-folder[path = '${currentDirectoryPath}']/system-folder | //system-index-block/system-folder/system-folder[path = '${currentDirectoryPath}']/system-page[name != 'index']" )
+ #else
+     #set ( $topLevelXPath = "//system-index-block/system-folder[path = '${currentDirectoryPath}']/system-folder | //system-index-block/system-folder[path = '${currentDirectoryPath}']/system-page[name != 'index']" )
+ #end
+ ## Parent siblings
+ ## #set ( $parentSiblings = $_XPathTool.selectNodes($root, "//system-folder[system-folder[@current = 'true']]/system-folder | //system-folder[system-folder[@current = 'true']]/system-page[name != 'index']") )
+ #set ( $parentSiblings = $_XPathTool.selectNodes($root, $topLevelXPath) )
+ ## If parent has siblings...
+ #set ( $parentHasSiblings = $parentSiblings.size() > 0 )
+ ## Siblings
+ #set ( $siblings = $_XPathTool.selectNodes($root, "//system-folder[@current = 'true']/system-folder | //system-folder[@current = 'true']/system-page[name != 'index']") )
 
-    #end
+ #macro ( showPage $siblings )
 
-#end
+     #foreach ( $sibling in $siblings )
 
-#display( $currentPage, $directories )
+         #set ( $current = $sibling.getAttribute("current").value == 'true' )
+         #set ( $link = $sibling.getChild("link").value )
+         ## #set ( $displayName = $_EscapeTool.xml($sibling.getChild("display-name").value) )
+         #set ( $displayName = '' )
+         #set ( $siblingName = $sibling.getName() )
+         #set ( $hideSibling = $_XPathTool.selectNodes($sibling, "dynamic-metadata[1][value='Yes'] or system-page[name = 'index']/dynamic-metadata[1][value='Yes']") )
+         #set ( $children = $_XPathTool.selectNodes($sibling, "system-page[name != 'index'] | system-folder") )
+         #set ( $siblingHasChildren = $children.size() > 0 )
+         #set ( $hiddenChildCounter = 0 )
+         #set ( $allChildrenHidden = false )
 
-## Default page name
-#set ( $defaultPageName = "/index" )
-## Current Directory Path
-#set ( $currentDirectoryPath = $directories.get($counter) )
-#set ( $topLevelXPath = "//system-index-block/system-folder[path = '${currentDirectoryPath}']/system-folder | //system-index-block/system-folder[path = '${currentDirectoryPath}']/system-page[name != 'index']" )
-## Parent siblings
-## #set ( $parentSiblings = $_XPathTool.selectNodes($root, "//system-folder[system-folder[@current = 'true']]/system-folder | //system-folder[system-folder[@current = 'true']]/system-page[name != 'index']") )
-#set ( $parentSiblings = $_XPathTool.selectNodes($root, $topLevelXPath) )
-## If parent has siblings...
-#set ( $parentHasSiblings = $parentSiblings.size() > 0 )
-## Siblings
-#set ( $siblings = $_XPathTool.selectNodes($root, "//system-folder[@current = 'true']/system-folder | //system-folder[@current = 'true']/system-page[name != 'index']") )
+         #if ( $siblingName == "system-folder" )
 
-#macro ( showPage $siblings )
+             #set ( $folderIndexPage = $_XPathTool.selectSingleNode($sibling, "system-page[name = 'index']") )
+             #set ( $displayName = $_EscapeTool.xml($folderIndexPage.getChild("display-name").value) )
 
-    #foreach ( $sibling in $siblings )
+         #end
 
-        #set ( $current = $sibling.getAttribute("current").value == 'true' )
-        #set ( $link = $sibling.getChild("link").value )
-        ## #set ( $displayName = $_EscapeTool.xml($sibling.getChild("display-name").value) )
-        #set ( $displayName = '' )
-        #set ( $siblingName = $sibling.getName() )
-        #set ( $hideSibling = $_XPathTool.selectNodes($sibling, "dynamic-metadata[1][value='Yes'] or system-page[name = 'index']/dynamic-metadata[1][value='Yes']") )
-        #set ( $children = $_XPathTool.selectNodes($sibling, "system-page[name != 'index'] | system-folder") )
-        #set ( $siblingHasChildren = $children.size() > 0 )
-        #set ( $hiddenChildCounter = 0 )
-        #set ( $allChildrenHidden = false )
+         #if ( $siblingName == 'system-page' )
 
-        #if ( $siblingName == "system-folder" )
+             #set ( $displayName = $_EscapeTool.xml($sibling.getChild("display-name").value) )
 
-            #set ( $folderIndexPage = $_XPathTool.selectSingleNode($sibling, "system-page[name = 'index']") )
-            #set ( $displayName = $_EscapeTool.xml($folderIndexPage.getChild("display-name").value) )
+         #end
 
-        #end
+         #foreach ( $child in $children )
 
-        #if ( $siblingName == 'system-page' )
+             #if ($_XPathTool.selectSingleNode($child, "dynamic-metadata[1][value='Yes'] | system-folder/dynamic-metadata/value") )
+                 #set ( $hiddenChildCounter = $hiddenChildCounter + 1 )
+             #end
 
-            #set ( $displayName = $_EscapeTool.xml($sibling.getChild("display-name").value) )
+         #end
 
-        #end
+         #if ( $hiddenChildCounter == $children.size() )
+             #set ( $allChildrenHidden = true )
+         #end
 
-        #foreach ( $child in $children )
+         #if ( $siblingName == "system-folder" )
 
-            #if ($_XPathTool.selectSingleNode($child, "dynamic-metadata[1][value='Yes'] | system-folder/dynamic-metadata/value") )
-                #set ( $hiddenChildCounter = $hiddenChildCounter + 1 )
-            #end
+             #if ( $hideSibling == [false] )
 
-        #end
+                 <li>
 
-        #if ( $hiddenChildCounter == $children.size() )
-            #set ( $allChildrenHidden = true )
-        #end
+                     <a href="${link}/index">$displayName</a>
 
-        #if ( $siblingName == "system-folder" )
+                     #if ( $siblingHasChildren && !$allChildrenHidden )
 
-            #if ( $hideSibling == [false] )
+                         <span class="toggle"><span>+</span></span>
 
-                <li>
+                         <ul>
 
-                    <a href="${link}/index">$displayName</a>
+                             #foreach ( $child in $children )
 
-                    #if ( $siblingHasChildren && !$allChildrenHidden )
+                                 #set ( $childLink = $child.getChild("link").value )
+                                 #set ( $childDisplayName = $_EscapeTool.xml($child.getChild("display-name").value) )
+                                 #set ( $childName = $child.getName() )
+                                 #set ( $hideChild = $_XPathTool.selectNodes($child, "dynamic-metadata[1][value='Yes'] or system-page[name = 'index']/dynamic-metadata[1][value='Yes']") )
+                                 #set ( $granchildren = $_XPathTool.selectNodes($child, "system-page[name != 'index'] | system-folder") )
+                                 #set ( $childHasChildren = $grandchildren.size() > 0 )
 
-                        <span class="toggle"><span>+</span></span>
+                                 #if ( $childName == "system-folder" )
 
-                        <ul>
+                                     #if ( $hideChild == [false] )
 
-                            #foreach ( $child in $children )
+                                         <li>
+                                             <a href="$childLink/index">$childDisplayName</a>
+                                         </li>
 
-                                #set ( $childLink = $child.getChild("link").value )
-                                #set ( $childDisplayName = $_EscapeTool.xml($child.getChild("display-name").value) )
-                                #set ( $childName = $child.getName() )
-                                #set ( $hideChild = $_XPathTool.selectNodes($child, "dynamic-metadata[1][value='Yes'] or system-page[name = 'index']/dynamic-metadata[1][value='Yes']") )
-                                #set ( $granchildren = $_XPathTool.selectNodes($child, "system-page[name != 'index'] | system-folder") )
-                                #set ( $childHasChildren = $grandchildren.size() > 0 )
+                                     #end
 
-                                #if ( $childName == "system-folder" )
+                                 #end
 
-                                    #if ( $hideChild == [false] )
+                                 #if ( $childName == "system-page" )
 
-                                        <li>
-                                            <a href="$childLink/index">$childDisplayName</a>
-                                        </li>
+                                     #if ( $hideChild == [false] )
 
-                                    #end
+                                         <li>
+                                             <a href="$childLink">$childDisplayName</a>
+                                         </li>
 
-                                #end
+                                     #end
 
-                                #if ( $childName == "system-page" )
+                                 #end
 
-                                    #if ( $hideChild == [false] )
+                             #end
 
-                                        <li>
-                                            <a href="$childLink">$childDisplayName</a>
-                                        </li>
+                         </ul>
 
-                                    #end
+                     #end
 
-                                #end
+                 </li>
+             #end
 
-                            #end
+         #end
 
-                        </ul>
+         #if ( $siblingName == 'system-page' )
 
-                    #end
+             #if ( $hideSibling == [false] )
 
-                </li>
-            #end
+                 <li>
+                     <a href="$link">$displayName</a>
+                 </li>
 
-        #end
+             #end
 
-        #if ( $siblingName == 'system-page' )
+         #end
 
-            #if ( $hideSibling == [false] )
+     #end
 
-                <li>
-                    <a href="$link">$displayName</a>
-                </li>
+ #end
 
-            #end
+ <div id="cu_nav">
 
-        #end
+    <a class="cu-off-canvas-nav-trigger" href="#" id="js-cu-off-canvas-nav-trigger" title="Access links to the pages within this section of the website and to other sections of the website" aria-label="Access links to the pages within this section of the website and to other sections of the website">
+         <span class="icon icon-menu7"></span>
+     </a>
 
-    #end
+     <a class="cu-logo" href="${domain}" title="Chapman University Website Home Page">
+         <span itemprop="name">Chapman University</span>
+     </a>
 
-#end
+     <div class="cu_nav_menu" id="cu_login_container">
 
-<div id="cu_nav">
+         <div id="cu_identity">
 
-   <a class="cu-off-canvas-nav-trigger" href="#" id="js-cu-off-canvas-nav-trigger" title="Access links to the pages within this section of the website and to other sections of the website" aria-label="Access links to the pages within this section of the website and to other sections of the website">
-        <span class="icon icon-menu7"></span>
-    </a>
+             <div id="omni-login"><span class="icon icon-user3"></span><span class="cu_name">Log In</span></div>
 
-    <a class="cu-logo" href="${domain}" title="Chapman University Website Home Page">
-        <span itemprop="name">Chapman University</span>
-    </a>
+         </div>
 
-    <div class="cu_nav_menu" id="cu_login_container">
+         <div class="cu_dropdown_menu" data-show-domain="blogs.chapman.edu" id="cu_login_form" style="display: none;">
 
-        <div id="cu_identity">
+             <form action="https://blogs.chapman.edu/wp-login.php" method="post">
 
-            <div id="omni-login"><span class="icon icon-user3"></span><span class="cu_name">Log In</span></div>
+                 <label for="cu_username" style="display: none;">ChapmanU User ID</label>
 
-        </div>
+                 <input class="username" id="cu_username" name="log" onblur="if (this.value == '') {this.value = 'ChapmanU User ID';}" onfocus="if (this.value == 'ChapmanU User ID') { this.value = ''; }" type="text" value="ChapmanU User ID" />
 
-        <div class="cu_dropdown_menu" data-show-domain="blogs.chapman.edu" id="cu_login_form" style="display: none;">
+                 <label for="cu_password" style="display: none;">Password</label>
 
-            <form action="https://blogs.chapman.edu/wp-login.php" method="post">
+                 <input class="password" id="cu_password" name="pwd" onblur="if (this.value == '') { this.value = 'Password'; }" onfocus="if (this.value == 'Password') { this.value = ''; }" type="password" value="Password" />
 
-                <label for="cu_username" style="display: none;">ChapmanU User ID</label>
+                 <input id="cu_submit" name="submit" type="submit" value="Log In" />
 
-                <input class="username" id="cu_username" name="log" onblur="if (this.value == '') {this.value = 'ChapmanU User ID';}" onfocus="if (this.value == 'ChapmanU User ID') { this.value = ''; }" type="text" value="ChapmanU User ID" />
+                 <input class="persist" id="cu_persist" name="rememberme" type="checkbox" value="forever" />
 
-                <label for="cu_password" style="display: none;">Password</label>
+                 <label for="cu_persist">Remember Me</label>
 
-                <input class="password" id="cu_password" name="pwd" onblur="if (this.value == '') { this.value = 'Password'; }" onfocus="if (this.value == 'Password') { this.value = ''; }" type="password" value="Password" />
+             </form>
 
-                <input id="cu_submit" name="submit" type="submit" value="Log In" />
+         </div>
 
-                <input class="persist" id="cu_persist" name="rememberme" type="checkbox" value="forever" />
+         <ul class="cu_dropdown_menu">
+             <li>
+                 <a class="cu_nav_button" href="https://blackboard.chapman.edu/">
+                     <svg viewbox="0 0 512 512">
+                         <use xlink:href="[system-asset:id=eb945fd7c04d744c54334ecab3a4f792]/_files/img/omni-nav.svg#blackboard[/system-asset]" xmlns:xlink="http://www.w3.org/1999/xlink"></use>
+                     </svg>
+                     Blackboard
+                 </a>
+             </li>
+             <li>
+                 <a class="cu_nav_button" href="https://my.chapman.edu/">
+                     <svg viewbox="0 0 512 512">
+                         <use xlink:href="[system-asset:id=eb945fd7c04d744c54334ecab3a4f792]/_files/img/omni-nav.svg#cu_window[/system-asset]" xmlns:xlink="http://www.w3.org/1999/xlink"></use>
+                     </svg>
+                     MyChapman
+                 </a>
+             </li>
+             <li>
+                 <a class="cu_nav_button" href="https://exchange.chapman.edu/">
+                     <svg viewbox="0 0 512 512">
+                         <use xlink:href="[system-asset:id=eb945fd7c04d744c54334ecab3a4f792]/_files/img/omni-nav.svg#email[/system-asset]" xmlns:xlink="http://www.w3.org/1999/xlink"></use>
+                     </svg>
+                     Staff &amp; Faculty Email
+                 </a>
+             </li>
+             <li>
+                 <a class="cu_nav_button" href="http://www.chapman.edu/panthermail/">
+                     <svg viewbox="0 0 512 512">
+                         <use xlink:href="[system-asset:id=eb945fd7c04d744c54334ecab3a4f792]/_files/img/omni-nav.svg#email[/system-asset]" xmlns:xlink="http://www.w3.org/1999/xlink"></use>
+                     </svg>
+                     PantherMail
+                 </a>
+             </li>
+             <li>
+                 <a class="cu_nav_button" href="https://mywindow.chapman.edu/">
+                     <svg viewbox="0 0 512 512">
+                         <use xlink:href="[system-asset:id=eb945fd7c04d744c54334ecab3a4f792]/_files/img/omni-nav.svg#cu_window[/system-asset]" xmlns:xlink="http://www.w3.org/1999/xlink"></use>
+                     </svg>
+                     MyWindow
+                 </a>
+             </li>
+         </ul>
 
-                <label for="cu_persist">Remember Me</label>
+     </div>
 
-            </form>
+     <div class="cu-search-open-trigger" id="js-cu-search-open-trigger">
+         <span>Search</span>
+     </div>
 
-        </div>
+     <div id="cu_search">
 
-        <ul class="cu_dropdown_menu">
-            <li>
-                <a class="cu_nav_button" href="https://blackboard.chapman.edu/">
-                    <svg viewbox="0 0 512 512">
-                        <use xlink:href="[system-asset:id=eb945fd7c04d744c54334ecab3a4f792]/_files/img/omni-nav.svg#blackboard[/system-asset]" xmlns:xlink="http://www.w3.org/1999/xlink"></use>
-                    </svg>
-                    Blackboard
-                </a>
-            </li>
-            <li>
-                <a class="cu_nav_button" href="https://my.chapman.edu/">
-                    <svg viewbox="0 0 512 512">
-                        <use xlink:href="[system-asset:id=eb945fd7c04d744c54334ecab3a4f792]/_files/img/omni-nav.svg#cu_window[/system-asset]" xmlns:xlink="http://www.w3.org/1999/xlink"></use>
-                    </svg>
-                    MyChapman
-                </a>
-            </li>
-            <li>
-                <a class="cu_nav_button" href="https://exchange.chapman.edu/">
-                    <svg viewbox="0 0 512 512">
-                        <use xlink:href="[system-asset:id=eb945fd7c04d744c54334ecab3a4f792]/_files/img/omni-nav.svg#email[/system-asset]" xmlns:xlink="http://www.w3.org/1999/xlink"></use>
-                    </svg>
-                    Staff &amp; Faculty Email
-                </a>
-            </li>
-            <li>
-                <a class="cu_nav_button" href="http://www.chapman.edu/panthermail/">
-                    <svg viewbox="0 0 512 512">
-                        <use xlink:href="[system-asset:id=eb945fd7c04d744c54334ecab3a4f792]/_files/img/omni-nav.svg#email[/system-asset]" xmlns:xlink="http://www.w3.org/1999/xlink"></use>
-                    </svg>
-                    PantherMail
-                </a>
-            </li>
-            <li>
-                <a class="cu_nav_button" href="https://mywindow.chapman.edu/">
-                    <svg viewbox="0 0 512 512">
-                        <use xlink:href="[system-asset:id=eb945fd7c04d744c54334ecab3a4f792]/_files/img/omni-nav.svg#cu_window[/system-asset]" xmlns:xlink="http://www.w3.org/1999/xlink"></use>
-                    </svg>
-                    MyWindow
-                </a>
-            </li>
-        </ul>
+         <select class="search-type" name="search-type" id="search-type" aria-label="search type">
+             <option value="All">All</option>
+             <option value="Blog Stories">Blog Stories</option>
+             <option value="Faculty Directory">Faculty Directory</option>
+             <option value="Events">Events</option>
+         </select>
 
-    </div>
+         <div id="cu_search_box">
 
-    <div class="cu-search-open-trigger" id="js-cu-search-open-trigger">
-        <span>Search</span>
-    </div>
+             <form action="${domain}search-results/index.aspx">
 
-    <div id="cu_search">
+                 <table cellpadding="0" cellspacing="0" class="gsc-search-box">
+                     <tbody>
+                         <tr>
+                             <td class="gsc-input">
+                                 <input autocomplete="off" class="gsc-input no-js" id="cu_search_no_js" name="q" placeholder="Search" size="10" spellcheck="false" style="outline: none;" type="text" />
+                                 <label for="cu_search_no_js" style="display: none;">Search</label>
+                             </td>
+                             <td class="gsc-search-button">
+                                 <input class="gsc-search-button" title="search" type="button" value="Search" />
+                             </td>
+                         </tr>
+                     </tbody>
+                 </table>
 
-        <select class="search-type" name="search-type" id="search-type" aria-label="search type">
-            <option value="All">All</option>
-            <option value="Blog Stories">Blog Stories</option>
-            <option value="Faculty Directory">Faculty Directory</option>
-            <option value="Events">Events</option>
-        </select>
+             </form>
 
-        <div id="cu_search_box">
+         </div>
 
-            <form action="${domain}search-results/index.aspx">
+         <div id="cu_search_results">
+             <div id="cu_search_results_cell">
+                 <div id="cu_search_results_ui">
+                     <td class="gsc-clear-button">
+                         <div class="gsc-clear-button" title="clear results"></div>
+                     </td>
+                 </div>
+             </div>
+         </div>
 
-                <table cellpadding="0" cellspacing="0" class="gsc-search-box">
-                    <tbody>
-                        <tr>
-                            <td class="gsc-input">
-                                <input autocomplete="off" class="gsc-input no-js" id="cu_search_no_js" name="q" placeholder="Search" size="10" spellcheck="false" style="outline: none;" type="text" />
-                                <label for="cu_search_no_js" style="display: none;">Search</label>
-                            </td>
-                            <td class="gsc-search-button">
-                                <input class="gsc-search-button" title="search" type="button" value="Search" />
-                            </td>
-                        </tr>
-                    </tbody>
-                </table>
+     </div>
 
-            </form>
+     <!-- Off Canvas Nav -->
+     <div class="cu-off-canvas-overlay" id="js-cu-off-canvas-overlay"></div>
 
-        </div>
+     <div class="cu-off-canvas-nav-container" id="js-cu-off-canvas-nav-container">
 
-        <div id="cu_search_results">
-            <div id="cu_search_results_cell">
-                <div id="cu_search_results_ui">
-                    <td class="gsc-clear-button">
-                        <div class="gsc-clear-button" title="clear results"></div>
-                    </td>
-                </div>
-            </div>
-        </div>
+         <div class="cu-off-canvas-header">
 
-    </div>
+             #if ( $displaySecondaryMenu )
 
-    <!-- Off Canvas Nav -->
-    <div class="cu-off-canvas-overlay" id="js-cu-off-canvas-overlay"></div>
+                 #if ( $umbrellaCatsPaths.get($counter) == "/" )
+                     <a class="sc-logo" href="site://Chapman.edu/index" title="Link to Chapman University Homepage">
+                         <span itemprop="name">Chapman University</span>
+                     </a>
+                 #else
+                     ##<a class="sc-logo" href="${site}${umbrellaCatsPaths.get($counter)}" title="Link to ${umbrellaCats.get($counter)}">
+                         ##<img alt="${umbrellaCats.get($counter)} Logo" src="/_files/img/${umbrellaCatsImages.get($counter)}" />
+                     ##</a>
+                     <a class="sc-logo ${umbrellaCatsClasses.get($counter)}" href="${site}${umbrellaCatsPaths.get($counter)}" title="Link to ${umbrellaCats.get($counter)}">
+                         <span itemprop="name">${umbrellaCats.get($counter)} Logo</span>
+                     </a>
+                 #end
 
-    <div class="cu-off-canvas-nav-container" id="js-cu-off-canvas-nav-container">
+                 <a class="default-logo" href="site://Chapman.edu/index" title="Link to Chapman University Homepage">
+                     <span itemprop="name">Chapman University</span>
+                 </a>
 
-        <div class="cu-off-canvas-header">
+             #else
+                 <a href="site://Chapman.edu/index" class="default-logo-cu" title="Link to Chapman University Homepage">
+                     <span itemprop="name">Chapman University</span>
+                 </a>
+             #end
 
-            #if ( $displaySecondaryMenu )
+             <span class="close" id="js-cu-close-off-canvas-nav">X</span>
 
-                #if ( $umbrellaCatsPaths.get($counter) == "/" )
-                    <a class="sc-logo" href="site://Chapman.edu/index" title="Link to Chapman University Homepage">
-                        <span itemprop="name">Chapman University</span>
-                    </a>
-                #else
-                    ##<a class="sc-logo" href="${site}${umbrellaCatsPaths.get($counter)}" title="Link to ${umbrellaCats.get($counter)}">
-                        ##<img alt="${umbrellaCats.get($counter)} Logo" src="/_files/img/${umbrellaCatsImages.get($counter)}" />
-                    ##</a>
-                    <a class="sc-logo ${umbrellaCatsClasses.get($counter)}" href="${site}${umbrellaCatsPaths.get($counter)}" title="Link to ${umbrellaCats.get($counter)}">
-                        <span itemprop="name">${umbrellaCats.get($counter)} Logo</span>
-                    </a>
-                #end
+             <div class="cu-off-canvas-links clearfix">
 
-                <a class="default-logo" href="site://Chapman.edu/index" title="Link to Chapman University Homepage">
-                    <span itemprop="name">Chapman University</span>
-                </a>
+                 #if ( $displaySecondaryMenu )
 
-            #else
-                <a href="site://Chapman.edu/index" class="default-logo-cu" title="Link to Chapman University Homepage">
-                    <span itemprop="name">Chapman University</span>
-                </a>
-            #end
+                     <span id="js-main-menu" class="main-menu">$umbrellaCats.get($counter)</span>
 
-            <span class="close" id="js-cu-close-off-canvas-nav">X</span>
+                 #else
 
-            <div class="cu-off-canvas-links clearfix">
+                     <span id="js-main-menu" class="main-menu">Main Menu</span>
 
-                #if ( $displaySecondaryMenu )
+                 #end
 
-                    <span id="js-main-menu" class="main-menu">$umbrellaCats.get($counter)</span>
+                 ## If an umbrella category, display toggle links
+                 #if ( $displaySecondaryMenu )
 
-                #else
+                     <a id="js-level-2-link" href="#" class="level-2-link">
+                         &#8592; Go to <span class="accent">$umbrellaCats.get($counter) Menu</span>
+                     </a>
 
-                    <span id="js-main-menu" class="main-menu">Main Menu</span>
+                     <a id="js-level-1-link" href="#" class="level-1-link">
+                         Go to <span class="accent">Main Menu</span> &#8594;
+                     </a>
 
-                #end
+                 #end
 
-                ## If an umbrella category, display toggle links
-                #if ( $displaySecondaryMenu )
+             </div>
 
-                    <a id="js-level-2-link" href="#" class="level-2-link">
-                        &#8592; Go to <span class="accent">$umbrellaCats.get($counter) Menu</span>
-                    </a>
+         </div>
 
-                    <a id="js-level-1-link" href="#" class="level-1-link">
-                        Go to <span class="accent">Main Menu</span> &#8594;
-                    </a>
+         <div class="cu-off-canvas-nav clearfix" id="js-cu-off-canvas-nav">
 
-                #end
+             ## Show secondary menu for umbrella categories
+             #if ( $displaySecondaryMenu )
 
-            </div>
+                 <ul class="level-1">
 
-        </div>
+                     #if( !$parentHasSiblings )
 
-        <div class="cu-off-canvas-nav clearfix" id="js-cu-off-canvas-nav">
-
-            ## Show secondary menu for umbrella categories
-            #if ( $displaySecondaryMenu )
-
-                <ul class="level-1">
-
-                    #if( !$parentHasSiblings )
-
-                        ## Show siblings...
-                        #showPage( $siblings )
-
-                    #else
-
-                        ## Show parent siblings...
-                        #showPage( $parentSiblings )
-
-                    #end
-
-                </ul>
-
-            #end
-
-            <ul class="level-${level}">
-                <li>
-                    <a class="has-icon" href="site://Chapman.edu/index">
-                        <svg class="icon-cu-window" viewBox="0 0 512 512">
-                        <path d="M237.5,263.3L-0.3,501.1V263.3H237.5z M-0.3,248.1V10.3l237.8,237.8H-0.3z M501.3-0.5L263.5,237.3V-0.5H501.3z
-         M248.3,237.3L10.5-0.5h237.8L248.3,237.3L248.3,237.3z M274.3,248.1L512,10.3v237.8H274.3z M512,263.3v237.8L274.3,263.3H512z
-         M248.3,274L10.5,511.8h237.8L248.3,274L248.3,274z M263.5,274v237.8h237.7L263.5,274z"/>
-                        </svg>
-                        The University
-                    </a>
-                    <span class="toggle">
-                        <span>+</span>
-                    </span>
-                    <ul>
-                        <li>
-                            <a href="site://Chapman.edu/about/index">About</a>
-                        </li>
-                        <li>
-                            <a href="site://Chapman.edu/academics/index">Academics</a>
-                        </li>
-                        <li>
-                            <a href="site://Chapman.edu/admission/index">Admission</a>
-                        </li>
-                        <li>
-                            <a href="site://Chapman.edu/arts/index">Arts</a>
-                        </li>
-                        <li>
-                            <a href="site://Chapman.edu/campus-life/index">Campus Life</a>
-                        </li>
-                        <li>
-                            <a href="site://Chapman.edu/research/index">Research</a>
-                        </li>
-                        <li>
-                            <a href="site://Chapman.edu/support-chapman/index">Support</a>
-                        </li>
-                    </ul>
-                </li>
-                <li>
-                    <a class="has-icon" href="site://Chapman.edu/audiences/index" title="Find information for...">
-                        <svg class="icon-user3" viewBox="0 0 16 16">
-                        <path d="M4 5c0-2.209 1.791-4 4-4s4 1.791 4 4c0 2.209-1.791 4-4 4s-4-1.791-4-4zM12 10h-8c-2.209 0-4 1.791-4 4v1h16v-1c0-2.209-1.791-4-4-4z"></path>
-                        </svg>
-                        Find information for...
-                    </a>
-                    <span class="toggle">
-                        <span>+</span>
-                    </span>
-                    <ul>
-                        <li>
-                            <a href="site://Chapman.edu/future-students/index">Prospective Students</a>
-                        </li>
-                        <li>
-                            <a href="site://Chapman.edu/students/index">Current Students</a>
-                        </li>
-                        <li>
-                            <a href="site://Chapman.edu/alumni/index">Alumni</a>
-                        </li>
-                        <li>
-                            <a href="site://Chapman.edu/faculty-staff/index">Faculty &amp; Staff</a>
-                        </li>
-                        <li>
-                            <a href="site://Chapman.edu/families/index">Parents &amp; Families</a>
-                        </li>
-                    </ul>
-                </li>
-                <li>
-                    <a class="has-icon" href="site://Chapman.edu/academics/degrees-and-programs" title="Degrees &amp; Programs">
-                        <svg class="icon-graduation" viewBox="0 0 16 16">
-                        <path d="M3 9.177v2.323c0 1 2.239 2.5 5 2.5s5-1.5 5-2.5v-2.323l-5 2.5-5-2.5zM8 2l-8 4 8 4 6.491-3.246-0.491 4.246h1v-4.5l1-0.5-8-4zM8.5 6.225c-0.4 0-0.725-0.325-0.725-0.725s0.325-0.725 0.725-0.725 0.725 0.325 0.725 0.725c0 0.4-0.325 0.725-0.725 0.725z"></path>
-                        </svg>
-                        Degrees &amp; Programs</a>
-                </li>
-                <li>
-                    <a class="has-icon" href="site://Chapman.edu/academics/schools-colleges" title="Schools &amp; Colleges">
-                        <svg class="icon-building" viewbox="0 0 512 512">
-                            <path d="M256,0L0,160h512L256,0z M400,192l16,32v192h64V224l16-32H400z M272,192l16,32v192h64V224l16-32H272z M144,192l16,32v192
-        h64V224l16-32H144z M16,192l16,32v192h64V224l16-32H16z M16,448L0,512h512l-16-64H16z M288,96c0,17.7-14.3,32-32,32s-32-14.3-32-32
-        s14.3-32,32-32S288,78.3,288,96z"/>
-                        </svg>
-                        Schools &amp; Colleges
-                    </a>
-                    <span class="toggle">
-                        <span>+</span>
-                    </span>
-                    <ul>
-                        <li><a href="site://Chapman.edu/business/index">Argyros School of Business &amp; Economics</a>
-                        </li>
-                        <li><a href="site://Chapman.edu/education/index">Attallah College of Educational Studies</a>
-                        </li>
-                        <li><a href="site://Chapman.edu/copa/index">College of Performing Arts</a>
-                        </li>
-                        <li><a href="site://Chapman.edu/crean/index">Crean College of Health &amp; Behavioral Sciences</a>
-                        </li>
-                        <li><a href="site://Chapman.edu/dodge/index">Dodge College of Film &amp; Media Arts</a>
-                        </li>
-                        <li><a href="site://Chapman.edu/law/index">Fowler School of Law</a>
-                        </li>
-                        <li><a href="site://Chapman.edu/scst/index">Schmid College of Science &amp; Technology</a>
-                        </li>
-                        <li><a href="site://Chapman.edu/communication/index">School of Communication</a>
-                        </li>
-                        <li><a href="site://Chapman.edu/pharmacy/index">School of Pharmacy</a>
-                        </li>
-                        <li><a href="site://Chapman.edu/wilkinson/index">Wilkinson College of Arts, Humanities, &amp; Social Sciences</a>
-                        </li>
-                    </ul>
-                </li>
-
-                <li>
-                    <a class="has-icon" href="https://events.chapman.edu/" title="Events">
-                        <svg class="icon-calendar" viewbox="0 0 512 512">
-                            <path d="M416,96h-32v64h-96V96h-96v64H96V96H64c-17.6,0-32,14.4-32,32v352c0,17.6,14.4,32,32,32h352c17.6,0,32-14.4,32-32V128
-        C448,110.4,433.6,96,416,96z M128,480H64.1c0,0,0,0-0.1-0.1V416h64V480z M128,384H64v-64h64V384z M128,288H64v-64h64V288z M224,480
-        h-64v-64h64V480z M224,384h-64v-64h64V384z M224,288h-64v-64h64V288z M320,480h-64v-64h64V480z M320,384h-64v-64h64V384z M320,288
-        h-64v-64h64V288z M416,479.9C416,480,416,480,416,479.9l-64,0.1v-64h64V479.9z M416,384h-64v-64h64V384z M416,288h-64v-64h64V288z
-         M160,64c0-8.8-7.2-16-16-16s-16,7.2-16,16v64h32V64z M352,64c0-8.8-7.2-16-16-16s-16,7.2-16,16v64h32V64z"/>
-                        </svg>
-                        Events
-                    </a>
-                </li>
-
-                <!-- Off-Canvas Blogs Tab and List -->
-                <li>
-                    <a class="has-icon" href="https://blogs.chapman.edu/" title="Blogs">
-                        <svg class="icon-newspaper" viewbox="0 0 512 512">
-                            <path d="M448,128V64H0v352c0,17.7,14.3,32,32,32h432c26.5,0,48-21.5,48-48V128H448z M416,416H32V96h384V416z M64,160h320v32H64V160
-        z M256,224h128v32H256V224z M256,288h128v32H256V288z M256,352h96v32h-96V352z M64,224h160v160H64V224z"/>
-                        </svg>
-                        Blogs
-                    </a>
-                    <span class="toggle">
-                        <span>+</span>
-                    </span>
-                    <ul>
-                        <li>
-                          <a href="https://blogs.chapman.edu/happenings/" title="Happenings Blog">Happenings</a>
-                        </li>
-                        <li>
-                          <a href="https://blogs.chapman.edu/alumni/" title="Chapman Alumni Blog">Chapman Alumni</a>
-                        </li>
-                        <li>
-                          <a href="https://blogs.chapman.edu/business/" title="Argyros School of Business &amp; Economics Blog">Argyros School of Business &amp; Economics</a>
-                        </li>
-                        <li>
-                          <a href="https://blogs.chapman.edu/education/" title="Attallah College of Educational Studies Blog">Attallah College of Educational Studies</a>
-                        </li>
-                        <li>
-                          <a href="https://blogs.chapman.edu/copa/" title="College of Performing Arts Blog">College of Performing Arts</a>
-                        </li>
-                        <li>
-                          <a href="https://blogs.chapman.edu/crean/" title="Crean College of Health and Behavioral Sciences Blog">Crean College of Health and Behavioral Sciences</a>
-                        </li>
-                        <li>
-                          <a href="https://blogs.chapman.edu/dodge/" title="Dodge College of Film and Media Arts Blog">Dodge College of Film and Media Arts</a>
-                        </li>
-                        <li>
-                          <a href="https://blogs.chapman.edu/law/" title="Fowler School of Law Blog">Fowler School of Law</a>
-                        </li>
-                        <li>
-                          <a href="https://blogs.chapman.edu/scst/" title="Schmid College of Science and Technology Blog">Schmid College of Science and Technology</a>
-                        </li>
-                        <li>
-                          <a href="https://blogs.chapman.edu/communication/" title="School of Communication Blog">School of Communication</a>
-                        </li>
-                        <li>
-                          <a href="https://blogs.chapman.edu/pharmacy/" title="School of Pharmacy Blog">School of Pharmacy</a>
-                        </li>
-                        <li>
-                          <a href="https://blogs.chapman.edu/wilkinson/" title="Wilkinson College of Arts, Humanities, and Social Sciences Blog">Wilkinson College of Arts, Humanities, and Social Sciences</a>
-                        </li>
-                        <li>
-                            <a href="https://blogs.chapman.edu/" title="View more Blogs">View More Blogs</a>
-                        </li>
-                    </ul>
-                </li>
-
-                <li>
-                    <a class="has-icon" href="https://inside.chapman.edu/" title="Inside Chapman">
-                        <svg class="icon-monogram" viewbox="0 0 512 512">
-                            <path d="M423,230h89c-0.6-3.9-1.4-11.7-2.5-17.9c-5.5-31.9-16.9-60.1-33-87.4h-86.7v85.8H419C420.7,218.3,422,226.1,423,230
-        L423,230z M304,210.5v-85.8H36.8c-16.1,27.3-27.5,55.9-33,87.8C1.3,226.9,0,241.4,0,256.4c0,15.1,1.3,30.3,3.8,44.6
-        c5.5,31.9,16.9,61.5,33,88.8h87.9v-89.7H94.2c-3.8-15.6-5.9-29.5-5.9-44.8c0-15.3,2.1-29.2,5.9-44.8H304L304,210.5z M419,300.2
-        H214.4v89.7h262.1c16.1-27.3,27.5-57.4,33-89.3c1.1-6.2,1.9-12.1,2.5-19.9h-89C422,288.5,420.7,292.4,419,300.2L419,300.2z
-         M124.7,124.8h11.7V98.9c-3.9-1.6-15.6-4.2-19.5-4.8V52.5c31.2-21,66.3-35.3,105.2-40.8v69c-3.9,0.8-8,1.7-11.8,2.7l-7.7,2v39.4
-        h11.7V93.1c3.9-1,7.4-1.8,11.1-2.6l8.4-1.6V0l-11.9,1.7c-38.7,5.6-76.2,20.3-108.5,42.5l-4.3,3v55.2l7.4,1.6l8.2,2.5
-        C124.7,106.4,124.7,124.7,124.7,124.8L124.7,124.8z M214.4,388.7V210.5h-11.7v215.1l8.1,2c15.3,4.1,31.4,6.2,47.2,6.2
-        c15.8,0,31.3-2.1,46.6-6.2l7.2-2v-35.8H304v28.1c-15.6,3.9-29.9,5.9-44.8,5.9c-14.9,0-29.2-2-44.8-5.9L214.4,388.7L214.4,388.7z
-         M304,93.1v207.1h7.8V85.4l-7.7-2c-3.8-1-7.9-1.9-11.8-2.7v-69c39,5.5,74.1,19.8,105.2,40.8V94c-3.9,0.6-11.7,3.3-15.6,4.8v201.3
-        h7.8V106.4c3.9-1.1,8.7-2.2,10.2-2.5l9.3-1.6V47.1l-5-3C372,21.9,334.6,7.2,295.9,1.7L284.5,0v88.9l8.4,1.6
-        C296.6,91.3,300.1,92.1,304,93.1L304,93.1z M136.4,300.3v-89.8h-11.7v264.7l5.6,2.9C169,500.3,213.3,512,258.1,512
-        c44.8,0,88.4-11.7,127-33.9l4.7-2.9v-85.3H382v79.5c-39,20.7-78.2,32.6-122.8,32.6c-44.6,0-87.7-11.8-122.8-32.6
-        C136.4,469.4,136.4,300.3,136.4,300.3L136.4,300.3z"/>
-                        </svg>
-                        Inside Chapman
-                    </a>
-                </li>
-                <li>
-                    <a class="has-icon" href="https://social.chapman.edu/" title="Social">
-                        <svg class="icon-chat" viewbox="0 0 512 512">
-                            <path d="M213.3,28.5c117.8,0,213.3,77.3,213.3,172.6s-95.5,172.6-213.3,172.6c-11.3,0-22.4-0.7-33.3-2.1
-        c-45.8,45.6-98.7,53.8-151.6,55v-11.2C57,401.5,80,376.1,80,347.1c0-4-0.3-8-0.9-11.9C30.8,303.6,0,255.3,0,201.1
-        C0,105.8,95.5,28.5,213.3,28.5z M442.7,415.4c0,24.9,16.1,46.6,40.9,58.6v9.6c-45.8-1-87.9-8-127.6-47.2c-9.4,1.2-19,1.8-28.8,1.8
-        c-42.4,0-81.5-11.4-112.7-30.7c64.3-0.2,125-20.8,171-58.1c23.2-18.8,41.5-40.8,54.4-65.5c13.7-26.2,20.6-54,20.6-82.8
-        c0-4.6-0.2-9.3-0.6-13.8c32.3,26.6,52.1,62.9,52.1,102.9c0,46.4-26.7,87.9-68.6,115C442.9,408.5,442.7,411.9,442.7,415.4
-        L442.7,415.4z"/>
-                        </svg>
-                        Social
-                    </a>
-                </li>
-            </ul>
-
-        </div>
-
-    </div>
-    <!-- End Off Canvas Nav -->
-
-</div>
+                         ## Show siblings...
+                         #showPage( $siblings )
+
+                     #else
+
+                         ## Show parent siblings...
+                         #showPage( $parentSiblings )
+
+                     #end
+
+                 </ul>
+
+             #end
+
+             <ul class="level-${level}">
+                 <li>
+                     <a class="has-icon" href="site://Chapman.edu/index">
+                         <svg class="icon-cu-window" viewBox="0 0 512 512">
+                         <path d="M237.5,263.3L-0.3,501.1V263.3H237.5z M-0.3,248.1V10.3l237.8,237.8H-0.3z M501.3-0.5L263.5,237.3V-0.5H501.3z
+          M248.3,237.3L10.5-0.5h237.8L248.3,237.3L248.3,237.3z M274.3,248.1L512,10.3v237.8H274.3z M512,263.3v237.8L274.3,263.3H512z
+          M248.3,274L10.5,511.8h237.8L248.3,274L248.3,274z M263.5,274v237.8h237.7L263.5,274z"/>
+                         </svg>
+                         The University
+                     </a>
+                     <span class="toggle">
+                         <span>+</span>
+                     </span>
+                     <ul>
+                         <li>
+                             <a href="site://Chapman.edu/about/index">About</a>
+                         </li>
+                         <li>
+                             <a href="site://Chapman.edu/academics/index">Academics</a>
+                         </li>
+                         <li>
+                             <a href="site://Chapman.edu/admission/index">Admission</a>
+                         </li>
+                         <li>
+                             <a href="site://Chapman.edu/arts/index">Arts</a>
+                         </li>
+                         <li>
+                             <a href="site://Chapman.edu/campus-life/index">Campus Life</a>
+                         </li>
+                         <li>
+                             <a href="site://Chapman.edu/research/index">Research</a>
+                         </li>
+                         <li>
+                             <a href="site://Chapman.edu/support-chapman/index">Support</a>
+                         </li>
+                     </ul>
+                 </li>
+                 <li>
+                     <a class="has-icon" href="site://Chapman.edu/audiences/index" title="Find information for...">
+                         <svg class="icon-user3" viewBox="0 0 16 16">
+                         <path d="M4 5c0-2.209 1.791-4 4-4s4 1.791 4 4c0 2.209-1.791 4-4 4s-4-1.791-4-4zM12 10h-8c-2.209 0-4 1.791-4 4v1h16v-1c0-2.209-1.791-4-4-4z"></path>
+                         </svg>
+                         Find information for...
+                     </a>
+                     <span class="toggle">
+                         <span>+</span>
+                     </span>
+                     <ul>
+                         <li>
+                             <a href="site://Chapman.edu/future-students/index">Prospective Students</a>
+                         </li>
+                         <li>
+                             <a href="site://Chapman.edu/students/index">Current Students</a>
+                         </li>
+                         <li>
+                             <a href="site://Chapman.edu/alumni/index">Alumni</a>
+                         </li>
+                         <li>
+                             <a href="site://Chapman.edu/faculty-staff/index">Faculty &amp; Staff</a>
+                         </li>
+                         <li>
+                             <a href="site://Chapman.edu/families/index">Parents &amp; Families</a>
+                         </li>
+                     </ul>
+                 </li>
+                 <li>
+                     <a class="has-icon" href="site://Chapman.edu/academics/degrees-and-programs" title="Degrees &amp; Programs">
+                         <svg class="icon-graduation" viewBox="0 0 16 16">
+                         <path d="M3 9.177v2.323c0 1 2.239 2.5 5 2.5s5-1.5 5-2.5v-2.323l-5 2.5-5-2.5zM8 2l-8 4 8 4 6.491-3.246-0.491 4.246h1v-4.5l1-0.5-8-4zM8.5 6.225c-0.4 0-0.725-0.325-0.725-0.725s0.325-0.725 0.725-0.725 0.725 0.325 0.725 0.725c0 0.4-0.325 0.725-0.725 0.725z"></path>
+                         </svg>
+                         Degrees &amp; Programs</a>
+                 </li>
+                 <li>
+                     <a class="has-icon" href="site://Chapman.edu/academics/schools-colleges" title="Schools &amp; Colleges">
+                         <svg class="icon-building" viewbox="0 0 512 512">
+                             <path d="M256,0L0,160h512L256,0z M400,192l16,32v192h64V224l16-32H400z M272,192l16,32v192h64V224l16-32H272z M144,192l16,32v192
+         h64V224l16-32H144z M16,192l16,32v192h64V224l16-32H16z M16,448L0,512h512l-16-64H16z M288,96c0,17.7-14.3,32-32,32s-32-14.3-32-32
+         s14.3-32,32-32S288,78.3,288,96z"/>
+                         </svg>
+                         Schools &amp; Colleges
+                     </a>
+                     <span class="toggle">
+                         <span>+</span>
+                     </span>
+                     <ul>
+                         <li><a href="site://Chapman.edu/business/index">Argyros School of Business &amp; Economics</a>
+                         </li>
+                         <li><a href="site://Chapman.edu/education/index">Attallah College of Educational Studies</a>
+                         </li>
+                         <li><a href="site://Chapman.edu/copa/index">College of Performing Arts</a>
+                         </li>
+                         <li><a href="site://Chapman.edu/crean/index">Crean College of Health &amp; Behavioral Sciences</a>
+                         </li>
+                         <li><a href="site://Chapman.edu/dodge/index">Dodge College of Film &amp; Media Arts</a>
+                         </li>
+                         <li><a href="site://Chapman.edu/law/index">Fowler School of Law</a>
+                         </li>
+                         <li><a href="site://Chapman.edu/scst/index">Schmid College of Science &amp; Technology</a>
+                         </li>
+                         <li><a href="site://Chapman.edu/communication/index">School of Communication</a>
+                         </li>
+                         <li><a href="site://Chapman.edu/pharmacy/index">School of Pharmacy</a>
+                         </li>
+                         <li><a href="site://Chapman.edu/wilkinson/index">Wilkinson College of Arts, Humanities, &amp; Social Sciences</a>
+                         </li>
+                     </ul>
+                 </li>
+
+                 <li>
+                     <a class="has-icon" href="https://events.chapman.edu/" title="Events">
+                         <svg class="icon-calendar" viewbox="0 0 512 512">
+                             <path d="M416,96h-32v64h-96V96h-96v64H96V96H64c-17.6,0-32,14.4-32,32v352c0,17.6,14.4,32,32,32h352c17.6,0,32-14.4,32-32V128
+         C448,110.4,433.6,96,416,96z M128,480H64.1c0,0,0,0-0.1-0.1V416h64V480z M128,384H64v-64h64V384z M128,288H64v-64h64V288z M224,480
+         h-64v-64h64V480z M224,384h-64v-64h64V384z M224,288h-64v-64h64V288z M320,480h-64v-64h64V480z M320,384h-64v-64h64V384z M320,288
+         h-64v-64h64V288z M416,479.9C416,480,416,480,416,479.9l-64,0.1v-64h64V479.9z M416,384h-64v-64h64V384z M416,288h-64v-64h64V288z
+          M160,64c0-8.8-7.2-16-16-16s-16,7.2-16,16v64h32V64z M352,64c0-8.8-7.2-16-16-16s-16,7.2-16,16v64h32V64z"/>
+                         </svg>
+                         Events
+                     </a>
+                 </li>
+
+                 <!-- Off-Canvas Blogs Tab and List -->
+                 <li>
+                     <a class="has-icon" href="https://blogs.chapman.edu/" title="Blogs">
+                         <svg class="icon-newspaper" viewbox="0 0 512 512">
+                             <path d="M448,128V64H0v352c0,17.7,14.3,32,32,32h432c26.5,0,48-21.5,48-48V128H448z M416,416H32V96h384V416z M64,160h320v32H64V160
+         z M256,224h128v32H256V224z M256,288h128v32H256V288z M256,352h96v32h-96V352z M64,224h160v160H64V224z"/>
+                         </svg>
+                         Blogs
+                     </a>
+                     <span class="toggle">
+                         <span>+</span>
+                     </span>
+                     <ul>
+                         <li>
+                           <a href="https://blogs.chapman.edu/news-and-stories/" title="Blog for News and Stories">News and Stories</a>
+                         </li>
+                         <li>
+                           <a href="https://blogs.chapman.edu/alumni/" title="Chapman Alumni Blog">Chapman Alumni</a>
+                         </li>
+                         <li>
+                           <a href="https://blogs.chapman.edu/business/" title="Argyros School of Business &amp; Economics Blog">Argyros School of Business &amp; Economics</a>
+                         </li>
+                         <li>
+                           <a href="https://blogs.chapman.edu/education/" title="Attallah College of Educational Studies Blog">Attallah College of Educational Studies</a>
+                         </li>
+                         <li>
+                           <a href="https://blogs.chapman.edu/copa/" title="College of Performing Arts Blog">College of Performing Arts</a>
+                         </li>
+                         <li>
+                           <a href="https://blogs.chapman.edu/crean/" title="Crean College of Health and Behavioral Sciences Blog">Crean College of Health and Behavioral Sciences</a>
+                         </li>
+                         <li>
+                           <a href="https://blogs.chapman.edu/dodge/" title="Dodge College of Film and Media Arts Blog">Dodge College of Film and Media Arts</a>
+                         </li>
+                         <li>
+                           <a href="https://blogs.chapman.edu/law/" title="Fowler School of Law Blog">Fowler School of Law</a>
+                         </li>
+                         <li>
+                           <a href="https://blogs.chapman.edu/scst/" title="Schmid College of Science and Technology Blog">Schmid College of Science and Technology</a>
+                         </li>
+                         <li>
+                           <a href="https://blogs.chapman.edu/communication/" title="School of Communication Blog">School of Communication</a>
+                         </li>
+                         <li>
+                           <a href="https://blogs.chapman.edu/pharmacy/" title="School of Pharmacy Blog">School of Pharmacy</a>
+                         </li>
+                         <li>
+                           <a href="https://blogs.chapman.edu/wilkinson/" title="Wilkinson College of Arts, Humanities, and Social Sciences Blog">Wilkinson College of Arts, Humanities, and Social Sciences</a>
+                         </li>
+                         <li>
+                             <a href="https://blogs.chapman.edu/" title="View more Blogs">View More Blogs</a>
+                         </li>
+                     </ul>
+                 </li>
+
+                 <li>
+                     <a class="has-icon" href="https://inside.chapman.edu/" title="Inside Chapman">
+                         <svg class="icon-monogram" viewbox="0 0 512 512">
+                             <path d="M423,230h89c-0.6-3.9-1.4-11.7-2.5-17.9c-5.5-31.9-16.9-60.1-33-87.4h-86.7v85.8H419C420.7,218.3,422,226.1,423,230
+         L423,230z M304,210.5v-85.8H36.8c-16.1,27.3-27.5,55.9-33,87.8C1.3,226.9,0,241.4,0,256.4c0,15.1,1.3,30.3,3.8,44.6
+         c5.5,31.9,16.9,61.5,33,88.8h87.9v-89.7H94.2c-3.8-15.6-5.9-29.5-5.9-44.8c0-15.3,2.1-29.2,5.9-44.8H304L304,210.5z M419,300.2
+         H214.4v89.7h262.1c16.1-27.3,27.5-57.4,33-89.3c1.1-6.2,1.9-12.1,2.5-19.9h-89C422,288.5,420.7,292.4,419,300.2L419,300.2z
+          M124.7,124.8h11.7V98.9c-3.9-1.6-15.6-4.2-19.5-4.8V52.5c31.2-21,66.3-35.3,105.2-40.8v69c-3.9,0.8-8,1.7-11.8,2.7l-7.7,2v39.4
+         h11.7V93.1c3.9-1,7.4-1.8,11.1-2.6l8.4-1.6V0l-11.9,1.7c-38.7,5.6-76.2,20.3-108.5,42.5l-4.3,3v55.2l7.4,1.6l8.2,2.5
+         C124.7,106.4,124.7,124.7,124.7,124.8L124.7,124.8z M214.4,388.7V210.5h-11.7v215.1l8.1,2c15.3,4.1,31.4,6.2,47.2,6.2
+         c15.8,0,31.3-2.1,46.6-6.2l7.2-2v-35.8H304v28.1c-15.6,3.9-29.9,5.9-44.8,5.9c-14.9,0-29.2-2-44.8-5.9L214.4,388.7L214.4,388.7z
+          M304,93.1v207.1h7.8V85.4l-7.7-2c-3.8-1-7.9-1.9-11.8-2.7v-69c39,5.5,74.1,19.8,105.2,40.8V94c-3.9,0.6-11.7,3.3-15.6,4.8v201.3
+         h7.8V106.4c3.9-1.1,8.7-2.2,10.2-2.5l9.3-1.6V47.1l-5-3C372,21.9,334.6,7.2,295.9,1.7L284.5,0v88.9l8.4,1.6
+         C296.6,91.3,300.1,92.1,304,93.1L304,93.1z M136.4,300.3v-89.8h-11.7v264.7l5.6,2.9C169,500.3,213.3,512,258.1,512
+         c44.8,0,88.4-11.7,127-33.9l4.7-2.9v-85.3H382v79.5c-39,20.7-78.2,32.6-122.8,32.6c-44.6,0-87.7-11.8-122.8-32.6
+         C136.4,469.4,136.4,300.3,136.4,300.3L136.4,300.3z"/>
+                         </svg>
+                         Inside Chapman
+                     </a>
+                 </li>
+                 <li>
+                     <a class="has-icon" href="https://social.chapman.edu/" title="Social">
+                         <svg class="icon-chat" viewbox="0 0 512 512">
+                             <path d="M213.3,28.5c117.8,0,213.3,77.3,213.3,172.6s-95.5,172.6-213.3,172.6c-11.3,0-22.4-0.7-33.3-2.1
+         c-45.8,45.6-98.7,53.8-151.6,55v-11.2C57,401.5,80,376.1,80,347.1c0-4-0.3-8-0.9-11.9C30.8,303.6,0,255.3,0,201.1
+         C0,105.8,95.5,28.5,213.3,28.5z M442.7,415.4c0,24.9,16.1,46.6,40.9,58.6v9.6c-45.8-1-87.9-8-127.6-47.2c-9.4,1.2-19,1.8-28.8,1.8
+         c-42.4,0-81.5-11.4-112.7-30.7c64.3-0.2,125-20.8,171-58.1c23.2-18.8,41.5-40.8,54.4-65.5c13.7-26.2,20.6-54,20.6-82.8
+         c0-4.6-0.2-9.3-0.6-13.8c32.3,26.6,52.1,62.9,52.1,102.9c0,46.4-26.7,87.9-68.6,115C442.9,408.5,442.7,411.9,442.7,415.4
+         L442.7,415.4z"/>
+                         </svg>
+                         Social
+                     </a>
+                 </li>
+             </ul>
+
+         </div>
+
+     </div>
+     <!-- End Off Canvas Nav -->
+
+ </div>

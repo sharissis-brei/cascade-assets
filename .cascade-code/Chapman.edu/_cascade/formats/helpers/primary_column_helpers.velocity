@@ -1,0 +1,50 @@
+#*
+ * primary_column_helpers.velocity
+ * Master Version: Chapman.edu/_cascade/formats/helpers/primary_column_helpers.velocity
+ *#
+
+#import( "/_cascade/formats/helpers.velocity" )
+
+## Used for repeated code on primary_column widgets
+
+#macro(outputSectionMessage $content)
+    #set ($category = $_EscapeTool.xml($content.getChild('textFields').getChild('category').value) )
+    #set ($title    = $_EscapeTool.xml($content.getChild('textFields').getChild('title').value) )
+    #set ($body     = $_SerializerTool.serialize($content.getChild('textFields').getChild('body'), true) )
+    #set ($button   = $content.getChild('textFields').getChild('button') )
+    #set ($label    = $_EscapeTool.xml($button.getChild('label').value) )
+
+    <div class="text-column">
+        <div class="section-message">
+            #if ($category != "")
+                <div class="category">$category</div>
+            #end
+            #if ($title != "")
+                <h2 class="title">$title</h2>
+            #end
+            #if ($body != "")
+                <div class="body editableContent">
+                    <p>$body</p>
+                </div>
+            #end
+            #if ($label != "" && ($content.getChild('format').value != "Stacked"))
+                <div class="actions">
+                    <a #outputHref($button) class="theme-button">$label&#160;</a>
+                </div>
+            #end
+        </div>
+    </div>
+#end
+
+#macro(outputMessagingClasses $content)
+    #set ($format     = $content.getChild('format').value)
+    #set ($bgColor = $content.getChild('bgColor').value)
+    #set ($textAlign  = $content.getChild('textFields').getChild('textAlign').value)
+    #set ($classStr   = "messaging-widget ")
+
+    ## Setting Class String
+    #set($classStr = "${classStr} messaging-widget__#if($format == 'Stacked' || $format == 'Centered')1-column#{else}2-column#end")
+    #set($classStr = "${classStr} messaging-widget__#if($bgColor == 'Light')light-bg#{elseif}($bgColor == 'Medium')medium-bg#{else}dark-bg#end")
+    #set($classStr = "${classStr} messaging-widget__#if($textAlign == 'Left')text-left#{else}text-right#end")
+    $classStr
+#end

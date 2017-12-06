@@ -1,5 +1,5 @@
 <?php
-// OmniNav Build Version: 2.0.0.20170828.215919
+// OmniNav Build Version: 2.0.1.20171109.211010
 
 // If logged in
 if (is_user_logged_in()) {
@@ -340,7 +340,7 @@ if (is_user_logged_in()) {
           <span class="toggle"><span>+</span></span>
           <ul>
             <li>
-              <a href="https://blogs.chapman.edu/happenings/" title="Blog for Happenings">Happenings</a>
+              <a href="https://blogs.chapman.edu/news-and-stories/" title="Blog for News and Stories">News and Stories</a>
             </li>
             <li>
               <a href="https://blogs.chapman.edu/alumni/" title="Blog for Chapman Alumni">Chapman Alumni</a>

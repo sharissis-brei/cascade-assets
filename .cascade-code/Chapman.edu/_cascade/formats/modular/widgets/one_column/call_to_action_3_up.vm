@@ -1,0 +1,41 @@
+#*
+ * call_to_action_3_up(.vm)
+ * Master Version: Chapman.edu/_cascade/formats/modular/widgets/1 Column/call_to_action_3_up
+ *#
+#import( "/_cascade/formats/helpers.velocity" )
+
+#macro(outputCallToAction3Up $element)
+    #set ($displayCallToAction3Up = $element.getChild('callToAction3Up').getChild('display-call-to-action-3-up').value)
+    #if ($displayCallToAction3Up == 'Yes')
+        #set ($callToAction3Up = $element.getChild('callToAction3Up'))
+        #set ($classStr = "call-to-action-3-up-widget")
+
+        <div class="${classStr} #outputBgColorClass($callToAction3Up $classStr)">
+            <div class="outer-container">
+                #outputCtaColumn($callToAction3Up.getChild('cta1'))
+                #outputCtaColumn($callToAction3Up.getChild('cta2'))
+                #outputCtaColumn($callToAction3Up.getChild('cta3'))
+            </div>
+        </div>
+    #end
+#end
+
+#macro(outputCtaColumn $cta)
+    #set ($media           = $cta.getChild('media') )
+    #set ($alternateText   = $_EscapeTool.xml($cta.getChild('media').getChild('alternateText').value) )
+    #set ($title           = $_EscapeTool.xml($cta.getChild('textFields').getChild('title').value) )
+    #set ($body            = $_SerializerTool.serialize($cta.getChild('textFields').getChild('body'), true) )
+    #set ($link            = $cta.getChild('link') )
+    #set ($label           = $_EscapeTool.xml($link.getChild('label').value) )
+
+    <div class="column">
+        <div class="image-wrap">
+            <img class="image" #outputSrc($media) alt="$alternateText"/>
+        </div>
+        <div class="text-wrap">
+            <h3 class="headline">$title</h3>
+            <p class="text-content">$body</p>
+            <a #outputHref($link) class="more-link">$label</a>
+        </div>
+    </div>
+#end

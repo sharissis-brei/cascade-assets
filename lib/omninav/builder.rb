@@ -12,7 +12,7 @@ module Omninav
     # Constants
     # On versioning, see http://semver.org/.
     #
-    VERSION = '2.0.0'.freeze
+    VERSION = '2.0.1'.freeze
     DOMAIN = 'https://www.chapman.edu/'.freeze
 
     attr_accessor :target, :output_dir, :deploy_map
@@ -646,7 +646,7 @@ OFF_CANVAS_HEADER_HTML
           <span class="toggle"><span>+</span></span>
           <ul>
             <li>
-              <a href="https://blogs.chapman.edu/happenings/" title="Blog for Happenings">Happenings</a>
+              <a href="https://blogs.chapman.edu/news-and-stories/" title="Blog for News and Stories">News and Stories</a>
             </li>
             <li>
               <a href="https://blogs.chapman.edu/alumni/" title="Blog for Chapman Alumni">Chapman Alumni</a>

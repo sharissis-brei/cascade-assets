@@ -26,6 +26,7 @@ Rails.application.routes.draw do
 
   # Omninav Controller
   get 'omninav', to: 'omninav#demo'
+  get 'omninav_v2(/:context)', to: 'omninav#demo_v2'
 
   # The priority is based upon order of creation: first created -> highest priority.
   # See how all your routes lay out with "rake routes".

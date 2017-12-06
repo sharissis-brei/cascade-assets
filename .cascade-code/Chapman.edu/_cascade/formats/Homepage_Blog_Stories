@@ -1,0 +1,322 @@
+#*
+ * Chapman.edu/_cascade/formats/Homepage Blog Stories
+ * Blog Stories widget for Chapman home page.
+ *#
+
+##
+## Imports
+##
+#import( "/_config/blogs.vm" )
+#import( "/_config/social.vm" )
+
+
+##
+## Hardcoded Params
+##
+#set ( $FACEBOOK_SHARE_URL = $SOCIAL_CONFIG['facebook']['shareUrl'] )
+#set ( $TWITTER_SHARE_URL = $SOCIAL_CONFIG['twitter']['shareUrl'] )
+
+
+##
+## Global Vars
+##
+#set ( $currentPage = $_XPathTool.selectSingleNode($contentRoot, "//system-page[@current]") )
+
+#set ( $topStoryBlogID = '' )
+#set ( $topStoryBlogParams = '' )
+#set ( $topStoryImages = [] )
+#set ( $topStoryCategoryText = '' )
+#set ( $topStoryCategoryLink = '' )
+#set ( $topStoryLink = '' )
+#set ( $topStoryLinkText = '' )
+#set ( $topStoryCtaLabel = '' )
+#set ( $topStoryExcerpt = '' )
+
+#set ( $trendingStories = [] )
+
+#set ( $primaryButtonText = '' )
+#set ( $primaryButtonIcon = '' )
+#set ( $primaryButtonTrackingID = '' )
+#set ( $primaryButtonLink = '' )
+
+#set ( $secondaryButtonText = '' )
+#set ( $secondaryButtonIcon = '' )
+#set ( $secondaryButtonTrackingID = '' )
+#set ( $secondaryButtonLink = '' )
+
+
+##
+## Var Macros
+##
+#macro ( setVars )
+  #set ( $blogStories = $currentPage.getChild('system-data-structure').getChild('BlogStories') )
+  #setTopStoryVars()
+  #setTrendingStoriesVars()
+  #setButtonsVars()
+#end
+
+#macro ( setTopStoryVars )
+  ## Set Top Story Blog ID and params.
+  #set ( $topStory = $blogStories.getChild('topStory') )
+  #set ( $topStoryBlogID = $topStory.getChild('blogName').value )
+  #set ( $topStoryBlogParams = $BLOGS_CONFIG[$topStoryBlogID] )
+
+  ## Top Story Vars
+  #set ( $topStoryHeader = $topStory.getChild('header').value )
+  #set ( $topStoryLink = $topStory.getChild('link').value )
+  #set ( $topStoryHeaderStripped = $_DisplayTool.stripTags($topStoryHeader) )
+  #set ( $topStoryCtaLabel = $topStoryHeaderStripped.replaceAll("&amp;","and").replaceAll("""","").replaceAll("/\W/", "") )
+  #set ( $topStoryCategoryText = $topStory.getChild('topCategory').getChild('text').value )
+  #set ( $topStoryCategoryLink = $topStory.getChild('topCategory').getChild('link').value )
+  #set ( $topStoryExcerpt = ${_SerializerTool.serialize($topStory.getChild('excerpt'), true)} )
+  #set ( $topStoryImages = $_XPathTool.selectNodes($currentPage, "./system-data-structure/BlogStories/topStory/images") )
+  #set ( $topStoryLinkText = $topStory.getChild('extraLink').getChild('text').value )
+#end
+
+#macro ( setTrendingStoriesVars )
+  #set ( $trendingStories = $_XPathTool.selectNodes($currentPage, "./system-data-structure/BlogStories/trendingStories/story") )
+#end
+
+#macro ( setButtonsVars )
+  ## Primary Button
+  #set ( $primaryButton = $blogStories.getChild('primaryButton') )
+  #set ( $primaryButtonText = $primaryButton.getChild('text').value )
+  #set ( $primaryButtonIcon = $primaryButton.getChild('icon').value )
+  #set ( $primaryButtonTrackingID = $primaryButton.getChild('trackingID').value )
+  #set ( $primaryButtonExternalLink = $primaryButton.getChild('link').value )
+  #set ( $primaryButtonInternalLinkPath = $primaryButton.getChild('internalLink').getChild('path').value )
+
+  ## Set Primary Button Link
+  #if ( $primaryButtonExternalLink != '' )
+    #set ( $primaryButtonLink = $primaryButtonExternalLink )
+  #elseif ( $primaryButtonInternalLinkPath != '' && $primaryButtonInternalLinkPath != '/' )
+    #set ( $primaryButtonLink = $primaryButtonInternalLinkPath )
+  #else
+    #set ( $primaryButtonLink = '#' )
+  #end
+
+  ## Secondary Button
+  #set ( $secondaryButton = $blogStories.getChild('secondaryButton') )
+  #set ( $secondaryButtonText = $secondaryButton.getChild('text').value )
+  #set ( $secondaryButtonIcon = $secondaryButton.getChild('icon').value )
+  #set ( $secondaryButtonTrackingID = $secondaryButton.getChild('trackingID').value )
+  #set ( $secondaryButtonExternalLink = $secondaryButton.getChild('link').value )
+  #set ( $secondaryButtonInternalLink = $secondaryButton.getChild('internalLink').getChild('path').value )
+
+  ## Set Secondary Button Link
+  #if ( $secondaryButtonExternalLink != '' )
+    #set ( $secondaryButtonLink = $secondaryButtonExternalLink )
+  #elseif ($secondaryButtonInternalLink != '' && $secondaryButtonInternalLink != '/')
+    #set ( $secondaryButtonLink = $secondaryButtonInternalLink )
+  #else
+    #set ( $secondaryButtonLink = '#' )
+  #end
+#end
+
+
+##
+## Build Macros
+##
+#macro ( buildHomepageBlogStoriesBlock )
+  <!-- Homepage Blog Stories Macro -->
+  <!-- topStoryBlogID: $topStoryBlogID -->
+  <section id="featured_stories" class="stories section">
+    <div class="maxWidth">
+      #buildAnnouncementBlock()
+      #buildTrendingStoriesBlock()
+      #buildActionsBlock()
+    </div>
+  </section>
+#end
+
+#macro ( buildAnnouncementBlock )
+  #set ( $footerName = $topStoryBlogParams[0] )
+  #set ( $footerCss = $topStoryBlogParams[1] )
+  #set ( $footerLink = "https://blogs.chapman.edu/${topStoryBlogID}" )
+
+  <div class="announcement">
+    ## Images must be 725x374 (or proportionally larger) for this space
+    ## Supports unlimited number of images.
+    <div class="imagerotator">
+
+      ## Is this if check needed?
+      #if ( $topStoryImages.size() > 0 )
+        #foreach( $image in $topStoryImages )
+          #set ( $imageAltText = $image.getChild('altText').value )
+          #set ( $imageExternalLink = $image.getChild('link').value )
+          #set ( $imageInternalLinkPath = $image.getChild('internalLink').getChild('path').value )
+
+          ## Set image src.
+          #if ( $imageExternalLink != '' )
+            #set ( $imageSrc = $imageExternalLink )
+          #elseif ( $imageInternalLinkPath != '' && $imageInternalLinkPath != '/' )
+            #set ( $imageSrc = $imageInternalLinkPath )
+          #else
+            #set ( $imageSrc = '' )
+          #end
+
+          <img src="$imageSrc" alt="$imageAltText" />
+        #end
+      #end
+
+      <div style="padding-bottom:52%" class="imagerotator_clearfix"></div>
+    </div>
+
+    <div class="details">
+      <a href="$topStoryCategoryLink" class="tag">#${topStoryCategoryText}</a>
+
+      <h2 class="title">
+        <a class="smc-cta"
+           href="$topStoryLink"
+           data-cta-id="Top Story"
+           data-cta-label="$topStoryCtaLabel">
+          $topStoryHeader
+        </a>
+      </h2>
+
+      <p class="source blogname $footerCss">
+        <a href="$footerLink">$footerName</a>
+      </p>
+
+      <p>$topStoryExcerpt</p>
+
+      #if ( $topStoryLinkText != "" )
+        <p><a href="$topStoryLink">$topStoryLinkText »</a></p>
+      #end
+    </div>
+</div>
+#end
+
+#macro ( buildTrendingStoriesBlock )
+  ## There are three trending stories
+  #if ( $trendingStories.size() > 0 )
+    #foreach ( $story in $trendingStories )
+      #buildStoryArticleBlock($story $foreach.count)
+    #end
+  #end
+#end
+
+#macro ( buildStoryArticleBlock $story $storyIndex )
+  ## Data
+  ## Set category vars.
+  #set ( $storyCategoryLink = $story.getChild('topCategory').getChild('link').value )
+  #set ( $storyCategoryText = $story.getChild('topCategory').getChild('text').value )
+
+  ## Set story link.
+  #set ( $storyLink = $story.getChild('link').value )
+
+  ## if url to story starts with // then the compound link to Twitter using that
+  ## url won't work. Append https: in front.
+  #if ( $storyLink.substring(0,2) == "//" )
+    #set ( $storyLink = "https:" + $storyLink )
+  #end
+
+  ## Set story header vars.
+  #set ( $storyHeader = $story.getChild('header').value )
+  #set ( $storyHeaderStripped = $_DisplayTool.stripTags($storyHeader) )
+  #set ( $storyHeaderCtaLabel = $storyHeaderStripped.replaceAll("&amp;","and").replaceAll("""","").replaceAll("/\W/", "") )
+
+  ## Set story image vars
+  #set ( $storyImageAltText = $story.getChild('image').getChild('altText').value )
+  #set ( $storyImageExternalLink = $story.getChild('image').getChild('link').value )
+  #set ( $storyImageInternalLink = $story.getChild('image').getChild('internalLink').getChild('path').value )
+  #if ( $storyImageExternalLink != '' )
+    #set ( $storyImage = $storyImageExternalLink )
+  #elseif ( $storyImageInternalLink != '' && $storyImageInternalLink != '/' )
+    ## This renders image inside Cascade.
+    #set ( $storyImage = "[system-asset:local]${storyImageInternalLink}[/system-asset:local]")
+  #else
+    #set ( $storyImage = '' )
+  #end
+
+  ## Output
+  ## Yes, each block has className "third" (for 1/3rd?)
+  <div class="third">
+    <article class="story story-$storyIndex">
+      <a class="tag" href="$storyCategoryLink">#$storyCategoryText</a>
+
+      <a class="permalink smc-cta"
+         href="$storyLink"
+         data-cta-id="Trending Story $storyIndex"
+         data-cta-label="$storyHeaderCtaLabel">
+        ## Limit title to 50 characters. (Not sure why that's being announced here.)
+        <h2 class="title">$storyHeader</h2>
+        <div class="story-bg"
+             style="background-image:url('$storyImage');"
+             role="img"
+             aria-label="$storyImageAltText">
+          <img src="$storyImage" alt="$storyImageAltText" />
+        </div>
+      </a>
+
+      #buildStoryArticleBlockFooter( $story $storyLink $storyHeader )
+    </article>
+  </div>
+#end
+
+#macro ( buildStoryArticleBlockFooter $story $storyLink $storyHeader )
+  ## Data
+  #set ( $storyBlogName = $story.getChild('blogName').value )
+  #set ( $storyBlogParams = $BLOGS_CONFIG[$storyBlogName] )
+  #set ( $storyBlogTitle = $storyBlogParams[0] )
+  #set ( $storyCss = $storyBlogParams[1] )
+  #set ( $storyBlogLink = "https://blogs.chapman.edu/${storyBlogName}" )
+
+  ## Output
+  <footer class="story_footer">
+    <p class="source blogname $storyCss">
+      <a href="$storyBlogLink">$storyBlogTitle</a>
+    </p>
+    #buildMetaSocialBlock( $storyLink $storyHeader )
+  </footer>
+#end
+
+#macro( buildMetaSocialBlock $storyLink $storyHeader )
+  ## Data
+  ## Normalize header for Twitter.
+  #set ( $headerStripped = $_DisplayTool.stripTags($storyHeader) )
+  #set ( $headerNormed = $headerStripped.replaceAll("&amp;","and").replaceAll("""","").replaceAll("/\W/", "") )
+  #set ( $escapedHeader = ${_EscapeTool.url($headerNormed)} )
+  #set ( $facebookLink = $FACEBOOK_SHARE_URL + $storyLink )
+  #set ( $twitterLink = $TWITTER_SHARE_URL + $escapedHeader + '&amp;url=' + $storyLink )
+
+  ## Output
+  <p class="meta">
+    <a href="$facebookLink" class="action facebook" service="Facebook">Share on Facebook</a>
+    <a href="$twitterLink" class="action twitter" service="Twitter">Post to Twitter</a>
+
+    ## sr-only span avoids WAVE issue: https://stackoverflow.com/a/39919878/6763239
+    <a href="#" class="icon shares"><span class="sr-only">Share Icon</span></a>
+  </p>
+#end
+
+#macro ( buildActionsBlock )
+  <div class="actions">
+    #if ( $secondaryButtonTrackingID != "" )
+      <a class="button smc-cta $secondaryButtonIcon"
+         href="$secondaryButtonLink"
+         data-cta-id="$secondaryButtonTrackingID">
+        $secondaryButtonText
+      </a>
+    #else
+      <a href="$secondaryButtonLink" class="button $secondaryButtonIcon">$secondaryButtonText</a>
+    #end
+
+    #if ( $primaryButtonTrackingID != "" )
+      <a class="button red smc-cta $primaryButtonIcon"
+         href="$primaryButtonLink"
+         data-cta-id="$primaryButtonTrackingID">
+        $primaryButtonText
+      </a>
+    #else
+      <a href="$primaryButtonLink" class="button red $primaryButtonIcon">$primaryButtonText</a>
+    #end
+  </div>
+#end
+
+
+##
+## Main Format Block
+##
+#setVars()
+#buildHomepageBlogStoriesBlock()

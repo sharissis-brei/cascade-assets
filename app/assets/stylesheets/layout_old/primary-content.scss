@@ -99,12 +99,13 @@
       }
     }
     .newsEventsContent {
-      h3 .bullet {
-        font-size: 12px;
-        position: relative;
-        // left: 2px;
-        bottom: 2px;
-        display: none;
+      div.title {
+        .bullet {
+          font-size: 12px;
+          position: relative;
+          bottom: 2px;
+          display: none;
+        }
       }
     }
     .tabContent {

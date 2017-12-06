@@ -1,0 +1,222 @@
+#set ($GLOBAL_NAV_CONFIG = [
+  {
+    'sectionTitle': 'About',
+    'sectionLink': '/about/index',
+    'dropdown': [
+      {
+        'text': 'Maps and Directions',
+        'link': '/about/maps-directions/index',
+        'iconClass': 'icon-location'
+      },
+      {
+        'text': 'Visit Chapman',
+        'link': '/about/visit-chapman/index',
+        'iconClass': 'icon-california'
+      },
+      {
+        'text': 'Discover Chapman',
+        'link': '/discover/index',
+        'iconClass': 'icon-cu-monogram'
+      },
+      {
+        'text': 'Our Campus',
+        'link': '/about/campus/index',
+        'iconClass': 'icon-office'
+      },
+      {
+        'text': 'Facts and History',
+        'link': '/about/facts-history/index',
+        'iconClass': 'icon-cu-monogram'
+      },
+      {
+        'text': 'Administration',
+        'link': '/about/administration/index',
+        'iconClass': 'icon-cu-window'
+      },
+      {
+        'text': 'Contact Us',
+        'link': '/about/contact-us',
+        'iconClass': 'icon-envelop'
+      }
+    ]
+  },
+  {
+    'sectionTitle': 'Academics',
+    'sectionLink': '/academics/index',
+    'dropdown': [
+      {
+        'text': 'Degrees & Programs',
+        'link': '/academics/degrees-and-programs',
+        'iconClass': 'icon-graduation'
+      },
+      {
+        'text': 'Schools & Colleges',
+        'link': '/academics/schools-colleges',
+        'iconClass': 'icon-library2'
+      },
+      {
+        'text': 'Academic Calendar',
+        'link': '/academics/academic-calendar',
+        'iconClass': 'icon-calendar4'
+      },
+      {
+        'text': 'Libraries',
+        'link': '/academics/libraries/index',
+        'iconClass': 'icon-books'
+      },
+      {
+        'text': 'Course Catalogs',
+        'link': '/academics/course-catalogs/index',
+        'iconClass': 'icon-book2'
+      },
+      {
+        'text': 'International Study',
+        'link': '/international-studies/index',
+        'iconClass': 'icon-earth'
+      }
+    ]
+  },
+  {
+    'sectionTitle': 'Admission',
+    'sectionLink': '/admission/index',
+    'dropdown': [
+      {
+        'text': 'Undergraduate Admission',
+        'link': '/admission/undergraduate/index',
+        'iconClass': 'icon-bookmark'
+      },
+      {
+        'text': 'Undergraduate Application',
+        'link':'/admission/undergraduate/applynow',
+        'iconClass': 'icon-pencil5'
+      },
+      {
+        'text': 'Graduate Admission',
+        'link':'/admission/graduate/index',
+        'iconClass': 'icon-bookmark2'
+      },
+      {
+        'text': 'Graduate Application',
+        'link':'/admission/graduate/applynow',
+        'iconClass': 'icon-pencil5'
+      },
+      {
+        'text': 'Affordability',
+        'link':'/admission/undergraduate/afford',
+        'iconClass': 'icon-calculate2'
+      },
+      {
+        'text': 'Financial Aid Calculator',
+        'link':'/students/tuition-and-aid/financial-aid/net-cost-calculator/index',
+        'iconClass': 'icon-calculate'
+      },
+      {
+        'text': 'Campus Tours',
+        'link': '/admission/undergraduate/visit',
+        'iconClass': 'icon-office'
+      }
+    ]
+  },
+  {
+    'sectionTitle': 'Arts',
+    'sectionLink': '/arts/index'
+  },
+  {
+    'sectionTitle': 'Campus Life',
+    'sectionLink': '/campus-life/index',
+    'dropdown': [
+      {
+        'text': 'Athletics',
+        'link': 'http://www.chapmanathletics.com/landing/index',
+        'iconClass': 'icon-paw'
+      },
+      {
+        'text': 'Diversity and Inclusion',
+        'link': '/diversity/index',
+        'iconClass': 'icon-hand'
+      },
+      {
+        'text': 'Events',
+        'link': 'https://events.chapman.edu/',
+        'iconClass': 'icon-calendar4'
+      },
+      {
+        'text': 'Fish Interfaith Center',
+        'link': '/about/fish-interfaith-center/index',
+        'iconClass': 'icon-earth'
+      },
+      {
+        'text': 'Health and Safety',
+        'link': '/students/health-and-safety/index',
+        'iconClass': 'icon-heart3'
+      },
+      {
+        'text': 'Residence Life',
+        'link': '/students/services/housing-and-residence/index',
+        'iconClass': 'icon-home2'
+      },
+      {
+        'text': 'Student Life',
+        'link': '/students/life/index',
+        'iconClass': 'icon-smiley'
+      }
+    ]
+  },
+  {
+    'sectionTitle': 'Research',
+    'sectionLink': '/research/index',
+    'dropdown': [
+      {
+        'text': 'Sponsored Projects Services',
+        'link': '/research/sponsored-projects-services/index',
+        'iconClass': 'icon-medal'
+      },
+      {
+        'text': 'Research Integrity',
+        'link': '/research/integrity/index',
+        'iconClass': 'icon-clipboard5'
+      },
+      {
+        'text': 'Institutes and Centers',
+        'link': '/research/institutes-and-centers/index',
+        'iconClass': 'icon-library4'
+      },
+      {
+        'text': 'Undergraduate Research and Creative Activity',
+        'link': '/research/office-undergraduate-research-creative-activity/index',
+        'iconClass': 'icon-lamp8'
+      },
+      {
+        'text': 'Graduate Research Support',
+        'link': '/research/graduate-research/index',
+        'iconClass': 'icon-microscope'
+      }
+    ]
+  },
+  {
+    'sectionTitle': 'Support',
+    'sectionLink': '/support-chapman/index',
+    'dropdown': [
+      {
+        'text': 'Contact Development',
+        'link': '/support-chapman/contact-us',
+        'iconClass':'icon-envelop'
+      },
+      {
+        'text': 'Get Involved',
+        'link': '/support-chapman/get-involved',
+        'iconClass': 'icon-hand'
+      },
+      {
+        'text': 'Areas to Support',
+        'link': '/support-chapman/ways-to-give/areas-to-support',
+        'iconClass': 'icon-cu-monogram'
+      },
+      {
+        'text': 'Alumni',
+        'link': '/alumni/index',
+        'iconClass': 'icon-paw'
+      }
+    ]
+  }
+])
