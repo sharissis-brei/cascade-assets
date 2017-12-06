@@ -25,7 +25,6 @@ var chapman = chapman || {};
 		isUserScroll = true, // Flag for scrolling caused by user vs. animation
 		transitioningClass = 'is-transitioning',
 		urlTypeQuery = '',
-		$chapmanHeader = $('.bigMasthead header:first-of-type'),
 		$dapFeature = $('#js-dap-feature'),
 		$resultsCount = $('.results-count'),
 		activeClass = 'active',
@@ -91,7 +90,7 @@ var chapman = chapman || {};
 				if (isUserScroll) {
 					lazyLoadingPaused = false;
 				}
-				
+
 				isMobile = Modernizr.mq('(max-width: 1023px)'); // Reset this if screen size changes
 				scrollPosition = $(window).scrollTop();
 
@@ -156,7 +155,7 @@ var chapman = chapman || {};
 				if (!isFormChangeEvent && !hashChangesActive) {
 					_this.applyHashFilters();
 				}
-				
+
 				isFormChangeEvent = false; // Reset flag
 
 			});
@@ -284,7 +283,7 @@ var chapman = chapman || {};
 				if (dap.hasOwnProperty(type)) {
 					_this.resetForm($('#js-' + dap[type].fieldNamePrefix + 'form'));
 				}
-				
+
 			}
 
 		},
@@ -317,8 +316,8 @@ var chapman = chapman || {};
 									var degreeTypeFormatted = degreeType.toLowerCase();
 
 									// Any of the following count as bridge/accelerated
-									if (degreeTypeFormatted === 'bridge' || 
-										degreeTypeFormatted === 'integrated/4+1' || 
+									if (degreeTypeFormatted === 'bridge' ||
+										degreeTypeFormatted === 'integrated/4+1' ||
 										degreeTypeFormatted === 'accelerated 3+2') {
 										isUndergradAndGrad = true;
 										break;
@@ -532,26 +531,15 @@ var chapman = chapman || {};
 						$(this).css('overflow', 'visible');
 
 						// Wait to do the following until new section is opened
-						var ommiNavHeight = $('#cu_nav').outerHeight(true),
-							scrollToSectionTime = 1000,
+						var scrollToSectionTime = 1000,
 							scrollPoint,
-							chapmanHeaderHeight = $chapmanHeader.outerHeight(true);
+							headerOffset = parseInt($('html').css('padding-top').replace('px', ''));
 
 						// Scroll to new section
 						if (scrollEl) {
-							scrollPoint = scrollEl.offset().top;
-
-							if (!($('body').hasClass('scrolled'))) {
-								scrollPoint = scrollPoint + chapmanHeaderHeight;
-							}
-
+							scrollPoint = scrollEl.offset().top - headerOffset;
 						} else if (scrollEl === undefined) {
-							scrollPoint = sectionBody.offset().top;
-
-							if (!($('body').hasClass('scrolled'))) {
-								scrollPoint = scrollPoint + chapmanHeaderHeight;
-							}
-
+							scrollPoint = section.offset().top - headerOffset;
 						}
 
 						if (scrollPoint) {
@@ -559,9 +547,9 @@ var chapman = chapman || {};
 							isUserScroll = false;
 
 							$('html, body').animate({
-								scrollTop: scrollPoint - ommiNavHeight
+								scrollTop: scrollPoint
 							}, scrollToSectionTime, 'swing', function () {
-								
+
 								isTransitioning = false;
 
 								setTimeout(function () {
@@ -619,7 +607,7 @@ var chapman = chapman || {};
 						setTimeout(function () {
 							lazyLoadingPaused = false;
 						}, standardTransitionTime/2);
-						
+
 					});
 
 					_this.mobileScrollToTarget(dap.discover.$interests); // Scroll to interests on mobile
@@ -647,7 +635,7 @@ var chapman = chapman || {};
 
 		switchDiscoverInterest: function (el) {
 			var _this = this;
-			
+
 			if (!(el.hasClass(activeClass))) {
 				var interest = el.data('interest');
 
@@ -735,7 +723,7 @@ var chapman = chapman || {};
 
 					if (formattedName.indexOf('program') !== -1) { // Push to array if a program
 						var valuesArray = value.split(',');
-						
+
 						// Loop through all values associated with the filter
 						for (var j = 0; j < valuesArray.length; j++) {
 							var programType = valuesArray[j];
@@ -755,7 +743,7 @@ var chapman = chapman || {};
 						if (value && value.length && value !== 'all' && value !== 'none') {
 							activeFilters[formattedName] = value;
 						}
-						
+
 					} else {
 						activeFilters[formattedName] = value;
 					}
@@ -784,7 +772,7 @@ var chapman = chapman || {};
 				schools,
 				resultsCountText;
 
-			if (activeSection === 'discover' || 
+			if (activeSection === 'discover' ||
 				activeSection === 'undergraduate') {
 
 				for (var i = 0; i < undergraduateResults.length; i++) {
@@ -865,7 +853,7 @@ var chapman = chapman || {};
 
 						for (var i = 0; i < interests.length; i++) {
 							var interest = interests[i];
-							
+
 							if (activeFilters.interests.indexOf(interest) > -1) {
 								interestMatch = true;
 								break; // If it's a match already, no need to continue
@@ -885,7 +873,7 @@ var chapman = chapman || {};
 					if (motivations !== undefined && motivations.indexOf(activeFilters.motivation) > -1) {
 						motivationMatch = true;
 					}
-					
+
 				} else {
 					motivationMatch = true;
 				}
@@ -910,7 +898,7 @@ var chapman = chapman || {};
 						}
 
 					}
-					
+
 				} else {
 					degreeTypesMatch = true;
 				}
@@ -922,7 +910,7 @@ var chapman = chapman || {};
 
 						for (var j = 0; j < schools.length; j++) {
 							var school = schools[j];
-							
+
 							if (activeFilters.school.indexOf(school) > -1) {
 								schoolsMatch = true;
 								break; // If it's a match already, no need to continue
@@ -974,7 +962,7 @@ var chapman = chapman || {};
 				}
 
 				campusHTML += '</ul>';
-				
+
 			}
 
 			// Only show this field if it's defined
@@ -1007,7 +995,7 @@ var chapman = chapman || {};
 		                        '<p class="desc">' + desc + '</p>' +
 		                        '<a href="' + href + '" title="View landing page for ' + title + ' program" class="button">Learn More <svg class="icon icon-double-chevron"><use xmlns:xlink="http://www.w3.org/1999/xlink" xlink:href="#icon-double-chevron"></use></svg></span></a>' +
 		                    '</div>';
-		    
+
 		    resultHTML = resultHTML + '</article>';
 
 		    resultsSetItems.push(resultHTML);
@@ -1031,8 +1019,8 @@ var chapman = chapman || {};
 
 			        if (hash[0] === 'type') { // BREI's Version
 			        	urlTypeQuery = hash[1].toLowerCase();
-			        	
-			        	if (urlTypeQuery === 'undergraduate' || 
+
+			        	if (urlTypeQuery === 'undergraduate' ||
 			        		urlTypeQuery === 'graduate') {
 			        		_this.toggleSection($('#js-dap-section-' + urlTypeQuery));
 			        	} else if (urlTypeQuery === 'discover') {
@@ -1040,7 +1028,7 @@ var chapman = chapman || {};
 			        	}
 
 			        	return;
-			        	
+
 			        } else if (hash[0] === 'startingtab') { // Chapman's Version
 			        	urlTypeQuery = hash[1].toString();
 
@@ -1089,23 +1077,23 @@ var chapman = chapman || {};
 				var fieldID = $(this).attr('id');
 
 				if (fieldID.indexOf('-discover') !== -1 || fieldID.indexOf('-undergraduate') !== -1) {
-					
+
 					$(this).autoComplete({
 						minChars: 1,
 					    source: function(term, suggest) {
 					        suggest(undergraduateProgramNames);
 					    }
 					});
-					
+
 				} else if (fieldID.indexOf('-graduate') !== -1) {
-					
+
 					$(this).autoComplete({
 						minChars: 1,
 					    source: function(term, suggest) {
 					        suggest(graduateProgramNames);
 					    }
 					});
-					
+
 				}
 
 			});
@@ -1135,7 +1123,7 @@ var chapman = chapman || {};
 			var formType = _this.getHashValue('type') || activeSection;
 			var form = $('#js-dap-' + formType + '-form');
 			var noFilters = false;
-			
+
 			_this.resetAllForms();
 			_this.resetDiscoverMotivation();
 			_this.resetDiscoverInterest();
@@ -1187,7 +1175,7 @@ var chapman = chapman || {};
 							noFilters = true;
 							_this.toggleSection($('#js-dap-section-' + activeSection)); // Close the section if it's open (which it should be)
 						}
-						
+
 					} else {
 						filterEl.prop('checked', true); // Check the checkbox
 					}
@@ -1222,7 +1210,7 @@ var chapman = chapman || {};
 					$('html, body').animate({
 						scrollTop: $(target).offset().top - (omniNavHeight + offset)
 					}, standardTransitionTime, 'swing', function () {
-						
+
 						setTimeout(function () {
 							isUserScroll = true;
 						}, 100);
@@ -1230,7 +1218,7 @@ var chapman = chapman || {};
 					});
 
 				}, 250);
-				
+
 			}
 
 		}

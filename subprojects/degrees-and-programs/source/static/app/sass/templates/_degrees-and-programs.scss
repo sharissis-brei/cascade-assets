@@ -2,37 +2,19 @@
 // scss-lint:disable IdSelector
 .degrees-and-programs {
 
-	@include breakpoint(rem-calc(1024)) {
-		margin-top: rem-calc(-115); // Height of header
-	}
-
-	@include breakpoint(rem-calc(1120)) {
-		margin-top: rem-calc(-105); // Height of header
-	}
-
-	&.scrolled,
+	&.ready,
 	.no-js & {
-		margin-top: 0;
-	}
 
-	&.scrolled {
-		transition: margin-top 1s;
-	}
-
-	&.ready {
-		
-		#container header .maxWidth,
 		.dap-feature {
 			opacity: 1;
 		}
 
 	}
 
-	#container header .maxWidth,
 	.dap-feature {
 		opacity: 0;
 		transition: opacity $transition-time;
 	}
-	
+
 }
 // scss-lint:enable IdSelector

@@ -1,8 +1,8 @@
 $palettes: map-merge($palettes, (
-    'dap-form': (
-        'core': $black,
-        'background': $white
-    )
+	'dap-form': (
+		'core': $black,
+		'background': $white
+	)
 ));
 
 .dap-form {
@@ -16,6 +16,10 @@ $palettes: map-merge($palettes, (
 
 	@include breakpoint(xlarge) {
 		padding: 0;
+	}
+
+	.no-js & {
+		display: none;
 	}
 
 	fieldset > .row {
@@ -125,7 +129,7 @@ $palettes: map-merge($palettes, (
 		.large-5 {
 
 			&:first-child {
-				
+
 				@include breakpoint(large) {
 					width: 44%;
 				}
@@ -151,5 +155,5 @@ $palettes: map-merge($palettes, (
 		}
 
 	}
-	
+
 }
