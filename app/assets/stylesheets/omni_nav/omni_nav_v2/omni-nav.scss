@@ -526,6 +526,7 @@ html.omni-nav-v2 {
 
             a.branded-logo {
               vertical-align: baseline;
+              white-space: nowrap;
             }
           }
         }
@@ -588,6 +589,7 @@ html.omni-nav-v2 {
           & > a {
             text-transform: uppercase;
             font-size: 15px;
+            white-space: nowrap;
           }
 
           &:hover {
@@ -887,7 +889,7 @@ html.omni-nav-v2 {
       padding: 1px 0 0 20px;
       border-left: 1px solid #2f2f2f;
       font-size: 18px;
-      font-family: Minion Pro;
+      font-family: 'minion-pro', serif;
       font-style: italic;
 
       @include media($medium-screen) {
