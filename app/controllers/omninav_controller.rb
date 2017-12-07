@@ -16,19 +16,19 @@ class OmninavController < ApplicationController
     # body > div#theme.law > ... > div.cu-off-canvas-header > a.sc-logo.fowler
     umbrella_categories = [
       # [ directory (assume leading /), menu label, class/image id, path, brand text ]
-      [ 'business', 'ARGYROS SCHOOL', 'asbe', 'business/index.aspx', 'Argyros School of Business' ],
-      [ 'education', 'ATTALLAH COLLEGE', 'education', 'education/index.aspx' ],
-      [ 'dodge', 'DODGE COLLEGE', 'dodge', 'dodge/index.aspx' ],
-      [ 'crean', 'CREAN COLLEGE', 'crean', 'crean/index.aspx' ],
-      [ 'wilkinson', 'WILKINSON COLLEGE', 'wilkinson', 'wilkinson/index.aspx' ],
-      [ 'copa', 'CoPA', 'copa', 'copa/index.aspx' ],
-      [ 'pharmacy', 'CUSP', 'cusp', 'pharmacy/index.aspx' ],
-      [ 'law', 'FOWLER SCHOOL OF LAW', 'fowler', 'law/index.aspx', 'Fowler School of Law' ]
+      ['business', 'ARGYROS SCHOOL', 'asbe', 'business/index.aspx', 'Argyros School of Business'],
+      ['education', 'ATTALLAH COLLEGE', 'education', 'education/index.aspx'],
+      ['dodge', 'DODGE COLLEGE', 'dodge', 'dodge/index.aspx'],
+      ['crean', 'CREAN COLLEGE', 'crean', 'crean/index.aspx'],
+      ['wilkinson', 'WILKINSON COLLEGE', 'wilkinson', 'wilkinson/index.aspx'],
+      ['copa', 'CoPA', 'copa', 'copa/index.aspx'],
+      ['pharmacy', 'CUSP', 'cusp', 'pharmacy/index.aspx'],
+      ['law', 'FOWLER SCHOOL OF LAW', 'fowler', 'law/index.aspx', 'Fowler School of Law']
     ]
 
     # Set umbrella category. This is more-or-less how the Cascade format does it
     @page_umbrella_category = []
-    umbrella_categories.each do | umbrella_category |
+    umbrella_categories.each do |umbrella_category|
       @page_umbrella_category = umbrella_category if umbrella_category.first == cascade_context
     end
 
