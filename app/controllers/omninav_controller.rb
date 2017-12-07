@@ -41,20 +41,10 @@ class OmninavController < ApplicationController
     view_template = params[:template]
     view_theme = params[:theme]
 
-    puts view_template
-    puts view_theme
-
     umbrella_categories.each do | umbrella_category |
       @page_umbrella_category = umbrella_category if umbrella_category.first == view_theme
     end
 
-    puts @page_umbrella_category
-    
-
-    if view_template == "home"
-      render template: "omni_nav_v2/omninav", layout: 'omninav_home'
-    else
-      render template: "omni_nav_v2/omninav", layout: 'omninav_' + view_template
-    end
+    render template: "omni_nav_v2/omninav", layout: 'omninav_' + view_template
   end
 end
