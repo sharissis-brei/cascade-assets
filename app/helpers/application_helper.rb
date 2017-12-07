@@ -8,7 +8,7 @@ module ApplicationHelper
   end
 
   def widgets(yml)
-    page = YAML.load(yml)
+    page = YAML.safe_load(yml)
     page.each do |area, widgets|
       content_for(area.to_sym, render_widgets(*widgets))
     end
