@@ -227,11 +227,10 @@
           > li {
             background-color: $white;
             list-style: none;
-            display: table;
+            display: block;
             border-bottom: 1px solid $cu-off-canvas-nav-border;
             position: relative;
             width: 100%;
-            height: 46px;
             margin: 0;
 
             > ul {
@@ -277,9 +276,9 @@
 
             > a {
               color: $cu-off-canvas-nav-text;
-              padding: 18px;
+              padding: 0px 50px 0px 18px;
               position: relative;
-              display: block;
+              display: table-cell;
               @include transition(all, 0.175s, ease-in-out);
               vertical-align: middle;
               font-size: 16px;
