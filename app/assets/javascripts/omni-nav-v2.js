@@ -3,6 +3,7 @@ var OmniNav2 = (function() {
   // Constants
   var TABLET_BREAKPOINT = 768; //px
   var DESKTOP_BREAKPOINT = 1024; //px
+  var OMNINAV_BASE_HEIGHT = 60; //px
 
   // Module Vars
   var $container,
@@ -13,6 +14,7 @@ var OmniNav2 = (function() {
   var initialize = function(container) {
     GoogleCustomSearch.init();
     OffCanvasNav.init();
+    MobileNav.init();
     $container = container;
     $utilityNav = $container.find('.utility-nav');
     $primaryNav = $container.find('#primary-nav');
@@ -43,20 +45,20 @@ var OmniNav2 = (function() {
   };
 
   var getOmninavHeight = function() {
+    // Primary Nav
     // The primary nav will always show, this is the minimum
-    var height = 60;
+    var height = OMNINAV_BASE_HEIGHT;
 
     // On mobile screen, omninav is always just primary nav
     if ( $(window).width() < TABLET_BREAKPOINT ) {
       return height;
     }
 
-    // Global nav height
-    // For branded omninav, global nav is always stacked below primary
-    // Otherwise, global nav is only stacked on tablet
+    // Global Nav
+    // Always stacked on tablet, so should be primary nav + global nav height
     var isTabletSize = ($(window).width() >= TABLET_BREAKPOINT) && ($(window).width() < DESKTOP_BREAKPOINT);
-    if ( $('html').find('#omni-nav-v2').hasClass('branded') || isTabletSize) {
-      height += 60;
+    if ( isTabletSize) {
+      height += OMNINAV_BASE_HEIGHT;
     }
 
     // By default when you load the page for the first time, the utility nav is closed
@@ -599,6 +601,42 @@ var OmniNav2 = (function() {
         $('div#off-canvas-umbrella').toggle('slide');
       });
     }
+
+    return {
+      init: initialize
+    };
+  })();
+
+
+  var MobileNav = (function() {
+    // Module Vars
+    var $navThisSectionButton,
+        $leftNavMenu,
+        $omniNavHeight;
+
+    // Module Functions
+    var initialize = function() {
+      $navThisSectionButton = $('div#mobile-nav > a.button');
+      $leftNavMenu = $('.leftNav > .leftTitle');
+      $omniNavHeight = getOmninavHeight();
+
+      $navThisSectionButton.on('click', scrollToLeftNavOnButtonClick);
+    };
+
+    var scrollToLeftNavOnButtonClick = function() {
+      // OmniNav is fixed position. I'd expect this to be:
+      // $leftNavMenu.offset().top + omniNavHeight
+      // But testing proved otherwise.
+      var scrollTo = $leftNavMenu.offset().top - $omniNavHeight;
+
+      // I really wish we had used a plugin like scrollTo or scrollable. I'm
+      // seeing various other approaches to scrolling elsewhere in code base so
+      // I'm reluctanct to introduce a plugin now.
+      // Source for this approach: https://stackoverflow.com/a/6677069/6763239
+      $('html, body').animate({
+        scrollTop: scrollTo
+      }, 'slow');
+    };
 
     return {
       init: initialize
