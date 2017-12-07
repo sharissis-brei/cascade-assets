@@ -15,7 +15,7 @@ module ApplicationHelper
   end
 
   def footer(theme)
-    path = (theme == "law") ? "law_footer" : "footer"
+    path = theme == "law" ? "law_footer" : "footer"
     content_for :footer do
       render "_cascade/blocks/html/#{path}"
     end
