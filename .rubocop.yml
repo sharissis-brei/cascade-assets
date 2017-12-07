@@ -11,6 +11,10 @@ AllCops:
 Rails:
   Enabled: true
 
+# Rails 5 Only
+Rails/HttpPositionalArguments:
+  Enabled: false
+
 # Commonly used screens these days easily fit more than 80 characters.
 Metrics/LineLength:
   Max: 100
@@ -131,7 +135,7 @@ Style/Documentation:
   Enabled: false
 
 # This is just silly. Calling the argument `other` in all cases makes no sense.
-Style/OpMethod:
+Naming/BinaryOperatorParameterName:
   Enabled: false
 
 # There are valid cases, for example debugging Cucumber steps,

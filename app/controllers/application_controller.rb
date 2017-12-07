@@ -27,10 +27,11 @@ class ApplicationController < ActionController::Base
   end
 
   def render_region_tags
+    return unless @configuration_set
     @configuration_set.regions.each do |name, html|
       region_tag = format('<system-region name="%s"/>', name)
       response.body = response.body.gsub(region_tag, html)
-    end if @configuration_set
+    end
   end
 
   # rubocop:disable Metrics/AbcSize
@@ -40,12 +41,13 @@ class ApplicationController < ActionController::Base
     response.body = response.body.gsub(title_tag, @metadata_set.title)
 
     # Replace <system-page-meta-foo/> tags.
+    return unless @metadata_set
     @metadata_set.class.column_names.each do |name|
       meta_tag = format('<system-page-meta-%s/>', name)
       content = @metadata_set.send(name)
       html = content.nil? ? '' : format('<meta name="%s" content="%s"/>', name, content)
       response.body = response.body.gsub(meta_tag, html)
-    end if @metadata_set
+    end
   end
   # rubocop:enable Metrics/AbcSize
 

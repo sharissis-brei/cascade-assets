@@ -1,5 +1,6 @@
 require 'zip_file_generator'
 
+# rubocop:disable Metrics/BlockLength
 namespace :build do
   namespace :omninav do
     #
@@ -103,8 +104,8 @@ namespace :build do
       # NOTE: Sprockets only minifies files in production environment so this assumes
       # RAILS_ENV is set to production on the command line.
       Rails.application.config.assets.prefix = "../build/omninav/staging"
-      Rails.application.config.assets.paths = [Rails.root.join('app/assets/javascripts'),
-                                               Rails.root.join('app/assets/stylesheets')]
+      Rails.application.config.assets.paths = [Rails.root.join('app', 'assets', 'javascripts'),
+                                               Rails.root.join('app', 'assets', 'stylesheets')]
       Rails.application.config.assets.precompile -= ['master.js', 'master.css']
       Rails.application.config.assets.precompile += ['omni-nav.js', 'omni-nav.css']
 
@@ -124,6 +125,7 @@ namespace :build do
     Rake::Task['build:omninav:inside'].invoke
   end
 end
+# rubocop:enable Metrics/BlockLength
 
 desc "Build assets for deployment to Cascade."
 task build: :environment do

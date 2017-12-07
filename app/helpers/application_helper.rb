@@ -8,14 +8,14 @@ module ApplicationHelper
   end
 
   def widgets(yml)
-    page = YAML.load(yml)
+    page = YAML.safe_load(yml)
     page.each do |area, widgets|
       content_for(area.to_sym, render_widgets(*widgets))
     end
   end
 
   def footer(theme)
-    path = (theme == "law") ? "law_footer" : "footer"
+    path = theme == "law" ? "law_footer" : "footer"
     content_for :footer do
       render "_cascade/blocks/html/#{path}"
     end
