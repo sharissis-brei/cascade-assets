@@ -5,33 +5,56 @@ class OmninavController < ApplicationController
     render html: omninav_html, layout: 'omninav'
   end
 
-  # GET /omni_nav/omni_nav_v2(/:context)
+  # GET /omninav_v2(/:template)(/:theme)
   def demo_v2
-    # params[:context] can be used to simulate different contexts (e.g. /omninav_v2/law)
-    cascade_context = params[:context]
 
     # Umbrella Categories: this is hardcoded in the OmniNav velocity format in Cascade
     # Apparently this is a thing in Cascade. Kill me. See for instance the law home pages
     # where DOM tree goes:
     # body > div#theme.law > ... > div.cu-off-canvas-header > a.sc-logo.fowler
     umbrella_categories = [
-      # [ directory (assume leading /), menu label, class/image id, path, brand text ]
-      [ 'business', 'ARGYROS SCHOOL', 'asbe', 'business/index.aspx', 'Argyros School of Business' ],
-      [ 'education', 'ATTALLAH COLLEGE', 'education', 'education/index.aspx' ],
-      [ 'dodge', 'DODGE COLLEGE', 'dodge', 'dodge/index.aspx' ],
-      [ 'crean', 'CREAN COLLEGE', 'crean', 'crean/index.aspx' ],
-      [ 'wilkinson', 'WILKINSON COLLEGE', 'wilkinson', 'wilkinson/index.aspx' ],
-      [ 'copa', 'CoPA', 'copa', 'copa/index.aspx' ],
-      [ 'pharmacy', 'CUSP', 'cusp', 'pharmacy/index.aspx' ],
-      [ 'law', 'FOWLER SCHOOL OF LAW', 'fowler', 'law/index.aspx', 'Fowler School of Law' ]
+      # [ directory (assume leading /), menu label, class/image id ]
+      [ 'business', 'Argyros School', 'asbe' ],
+      [ 'education', 'Attallah College', 'education' ],
+      [ 'dodge', 'Dodge College', 'dodge' ],
+      [ 'crean', 'Crean College', 'crean' ],
+      [ 'wilkinson', 'Wilkinson College', 'wilkinson' ],
+      [ 'copa', 'College of Performing Arts', 'copa' ],
+      [ 'pharmacy', 'School of Pharmacy', 'cusp' ],
+      [ 'law', 'Fowler School', 'fowler' ],
+      [ 'scst', 'Schmid College', 'schmid' ],
+      [ 'communication', 'School of Communication', 'soc' ],
+      [ 'about', 'About', 'default' ],
+      [ 'academics', 'Academics', 'default' ],
+      [ 'admission', 'Admission', 'default' ],
+      [ 'alumni', 'Alumni', 'default' ],
+      [ 'campus-services', 'Campus Services', 'default' ],
+      [ 'campus-services/career-development', 'Career', 'default' ],
+      [ 'faculty-staff', 'Faculty and Staff', 'default' ],
+      [ 'families', 'Families', 'default' ],
+      [ 'research', 'Research', 'default' ],
+      [ 'students', 'Students', 'default' ],
+      [ 'support-chapman', 'Support Chapman', 'default' ]
     ]
 
-    # Set umbrella category. This is more-or-less how the Cascade format does it
-    @page_umbrella_category = []
+    # Ex. localhost:5000/omninav_v2/1col/law
+    view_template = params[:template]
+    view_theme = params[:theme]
+
+    puts view_template
+    puts view_theme
+
     umbrella_categories.each do | umbrella_category |
-      @page_umbrella_category = umbrella_category if umbrella_category.first == cascade_context
+      @page_umbrella_category = umbrella_category if umbrella_category.first == view_theme
     end
 
-    render template: "omni_nav_v2/omninav", layout: 'omninav'
+    puts @page_umbrella_category
+    
+
+    if view_template == "home"
+      render template: "omni_nav_v2/omninav", layout: 'omninav_home'
+    else
+      render template: "omni_nav_v2/omninav", layout: 'omninav_' + view_template
+    end
   end
 end
