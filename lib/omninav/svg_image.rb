@@ -22,7 +22,7 @@ module Omninav
     #
     # Logo Class Methods
     #
-    # rubocop:disable Metrics/MethodLength
+    # rubocop:disable Layout/IndentHeredoc
     def self.chapman_horizontal_color_logo
       <<-SVG_TAG
 <svg xmlns="http://www.w3.org/2000/svg"
@@ -75,7 +75,7 @@ module Omninav
 </svg>
 SVG_TAG
     end
-    # rubocop:enable Metrics/MethodLength
+    # rubocop:enable Layout/IndentHeredoc
 
     #
     # Icon Class Methods
