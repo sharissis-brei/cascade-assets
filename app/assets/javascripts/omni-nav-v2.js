@@ -2,7 +2,7 @@ var OmniNav2 = (function() {
 
   // Constants
   var TABLET_BREAKPOINT = 768; //px
-  var DESKTOP_BREAKPOINT = 1024; //px
+  var DESKTOP_BREAKPOINT = 1200; //px
   var OMNINAV_BASE_HEIGHT = 60; //px
 
   // Module Vars
@@ -21,11 +21,6 @@ var OmniNav2 = (function() {
     $('html').addClass('omni-nav-v2');
     $('.utility-nav-trigger').on('click', onUtilityNavClick);
     $utilityNav.find('li.utility-has-dropdown').on('click', onUtilityNavDropdownClick);
-
-    // Adjusts CSS to accomodate primary nav stacked on top of global nav when branded
-    if ( $('html').find('#omni-nav-v2').hasClass('branded') ) {
-      $('html').addClass('branded');
-    }
 
     // Remove padding from theme version. Have to use js because css will not work.
     // See https://stackoverflow.com/a/1014958/6763239
