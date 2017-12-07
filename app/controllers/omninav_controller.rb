@@ -38,6 +38,8 @@ class OmninavController < ApplicationController
     ]
 
     # Ex. localhost:5000/omninav_v2/1col/law
+    # :template => 1col
+    # :theme => law
     view_template = params[:template]
     view_theme = params[:theme]
 
