@@ -1,0 +1,35 @@
+<!--<div id="search_message"><p>Search results may be temporarily incorrect while our site is being reindexed by Google.</p></div>-->
+<div id="cse" style="width: 100%;">Loading</div>
+<script src="//www.google.com/jsapi"></script>
+<script type="text/javascript">
+              /*
+	<![CDATA[*/
+              function parseQueryFromUrl() {
+              var queryParamName = "q";
+              var search = window.location.search.substr(1);
+              var parts = search.split('&');
+              for (var i = 0; i < parts.length; i++) {
+              var keyvaluepair = parts[i].split('=');
+              if (decodeURIComponent(keyvaluepair[0]) == queryParamName) {
+              return decodeURIComponent(keyvaluepair[1].replace(/\+/g, ' '));
+              }
+              }
+              return '';
+              }
+
+              google.load('search', '1', { language: 'en' });
+              google.setOnLoadCallback(function () {
+              var customSearchOptions = {}; var customSearchControl = new google.search.CustomSearchControl(
+              'TBA', customSearchOptions);
+              customSearchControl.setResultSetSize(google.search.Search.FILTERED_CSE_RESULTSET);
+              customSearchControl.setLinkTarget(google.search.Search.LINK_TARGET_SELF);
+              customSearchControl.draw('cse');
+              var queryFromUrl = parseQueryFromUrl();
+              if (queryFromUrl) {
+              customSearchControl.execute(queryFromUrl);
+              }
+              }, true);
+              /*]]>*/
+
+</script>
+<link href="//www.google.com/cse/style/look/default.css" rel="stylesheet" type="text/css"/>
