@@ -209,6 +209,9 @@
           letter-spacing: 0.25px;
           text-transform: uppercase;
           border-bottom: 1px solid $cu-off-canvas-nav-border-secondary;
+          /* This can be removed when we address this story: https://trello.com/c/lUotrjAd
+            Long labels will be trimmed to fit on one line */
+          overflow: auto;
 
           a {
             color:$white;
