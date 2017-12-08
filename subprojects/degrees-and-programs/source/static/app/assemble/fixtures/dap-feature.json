@@ -231,16 +231,13 @@
 			"href": "#",
 			"degreeTypes": {
 				"title": ["4+1", "Testing"],
-				"type": ["4+1 and bridge", "major"]
+				"type": ["bridge", "major"]
 			},
 			"desc": "Short program description lorem ipsum dolor sit amet, consectetur adipisicing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua. Ut enim ad minim veniam, quis nostrud exercitation ullamco laboris nisi ut aliquip. Short program description lorem ipsum dolor sit amet, consectetur adipisicing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua. Ut enim ad minim veniam, quis nostrud exercitation ullamco laboris nisi ut aliquip.",
 			"motivations": ["innovating", "expressing", "helping", "experiencing", "making"],
 			"interests": ["innovating-interest-d", "writing", "helping-interest-d", "experiencing-interest-d", "making-interest-d"],
 			"schools": ["ces"],
-			"campus": {
-				"title": "Main Campus",
-				"id": "orange"
-			}
+			"campus": ["Main Campus", "Rinker Health Science Campus"]
 		},
 		{
 			"type": "undergraduate",
@@ -258,10 +255,7 @@
 			"motivations": ["innovating", "helping", "making"],
 			"interests": ["innovating-interest-a", "helping-interest-b", "making-interest-c"],
 			"schools": ["business"],
-			"campus": {
-				"title": "Main Campus",
-				"id": "orange"
-			}
+			"campus": ["Main Campus"]
 		},
 		{
 			"type": "undergraduate",
@@ -279,10 +273,7 @@
 			"motivations": ["innovating", "expressing", "experiencing"],
 			"interests": ["innovating-interest-d", "visual-studio-arts", "experiencing-interest-c"],
 			"schools": ["dodge"],
-			"campus": {
-				"title": "Main Campus",
-				"id": "orange"
-			}
+			"campus": ["Main Campus"]
 		},
 		{
 			"type": "undergraduate",
@@ -293,17 +284,14 @@
 			},
 			"href": "#",
 			"degreeTypes": {
-				"title": ["Minor"],
-				"type": ["minor"]
+				"title": ["Integrated/4+1"],
+				"type": ["integrated/4+1"]
 			},
 			"desc": "Short program description lorem ipsum dolor sit amet, consectetur adipisicing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua. Ut enim ad minim veniam, quis nostrud exercitation ullamco laboris nisi ut aliquip. Short program description lorem ipsum dolor sit amet, consectetur adipisicing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua. Ut enim ad minim veniam, quis nostrud exercitation ullamco laboris nisi ut aliquip.",
 			"motivations": ["innovating", "helping", "experiencing"],
 			"interests": ["innovating-interest-c", "helping-interest-b", "experiencing-interest-c"],
 			"schools": ["wilkinson"],
-			"campus": {
-				"title": "Rinker Health Science Campus",
-				"id": "rinker"
-			}
+			"campus": ["Rinker Health Science Campus"]
 		},
 		{
 			"type": "undergraduate",
@@ -321,10 +309,7 @@
 			"motivations": ["expressing", "experiencing"],
 			"interests": ["visual-studio-arts", "experiencing-interest-d"],
 			"schools": ["dodge"],
-			"campus": {
-				"title": "Main Campus",
-				"id": "orange"
-			}
+			"campus": ["Main Campus"]
 		},
 		{
 			"type": "undergraduate",
@@ -335,17 +320,14 @@
 			},
 			"href": "#",
 			"degreeTypes": {
-				"title": ["B.S."],
-				"type": ["major"]
+				"title": ["Accelerated 3+2"],
+				"type": ["accelerated 3+2"]
 			},
 			"desc": "Short program description lorem ipsum dolor sit amet, consectetur adipisicing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua. Ut enim ad minim veniam, quis nostrud exercitation ullamco laboris nisi ut aliquip. Short program description lorem ipsum dolor sit amet, consectetur adipisicing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua. Ut enim ad minim veniam, quis nostrud exercitation ullamco laboris nisi ut aliquip.",
 			"motivations": ["innovating", "helping"],
 			"interests": ["innovating-interest-b", "helping-interest-a"],
 			"schools": ["scst"],
-			"campus": {
-				"title": "Main Campus",
-				"id": "orange"
-			}
+			"campus": ["Main Campus", "Rinker Health Science Campus"]
 		},
 		{
 			"type": "undergraduate",
@@ -357,16 +339,13 @@
 			"href": "#",
 			"degreeTypes": {
 				"title": ["4+1"],
-				"type": ["4+1 and bridge"]
+				"type": ["bridge"]
 			},
 			"desc": "Short program description lorem ipsum dolor sit amet, consectetur adipisicing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua. Ut enim ad minim veniam, quis nostrud exercitation ullamco laboris nisi ut aliquip. Short program description lorem ipsum dolor sit amet, consectetur adipisicing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua. Ut enim ad minim veniam, quis nostrud exercitation ullamco laboris nisi ut aliquip.",
 			"motivations": ["innovating", "helping", "making"],
 			"interests": ["innovating-interest-a", "helping-interest-a", "making-interest-b"],
 			"schools": ["scst"],
-			"campus": {
-				"title": "Rinker Health Science Campus",
-				"id": "rinker"
-			}
+			"campus": ["Rinker Health Science Campus"]
 		},
 		{
 			"type": "undergraduate",
@@ -384,10 +363,7 @@
 			"motivations": ["expressing", "experiencing"],
 			"interests": ["performing-arts", "experiencing-interest-b"],
 			"schools": ["copa"],
-			"campus": {
-				"title": "Main Campus",
-				"id": "orange"
-			}
+			"campus": ["Main Campus"]
 		},
 		{
 			"type": "undergraduate",
@@ -405,10 +381,7 @@
 			"motivations": [],
 			"interests": [],
 			"schools": [],
-			"campus": {
-				"title": "Main Campus",
-				"id": "orange"
-			}
+			"campus": ["Main Campus"]
 		},
 		{
 			"type": "graduate",
@@ -426,167 +399,7 @@
 			"motivations": ["innovating", "expressing", "making"],
 			"interests": ["innovating-interest-a", "writing", "making-interest-b"],
 			"schools": ["scst"],
-			"campus": {
-				"title": "Main Campus",
-				"id": "orange"
-			}
-		},
-		{
-			"type": "graduate",
-			"title": "Accounting",
-			"img": {
-				"src": "img/temp/program-image-1.jpg",
-				"alt": "Image alt goes here"
-			},
-			"href": "#",
-			"degreeTypes": {
-				"title": ["M.S."],
-				"type": ["masters"]
-			},
-			"desc": "Short program description lorem ipsum dolor sit amet, consectetur adipisicing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua. Ut enim ad minim veniam, quis nostrud exercitation ullamco laboris nisi ut aliquip. Short program description lorem ipsum dolor sit amet, consectetur adipisicing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua. Ut enim ad minim veniam, quis nostrud exercitation ullamco laboris nisi ut aliquip.",
-			"motivations": ["innovating", "helping", "making"],
-			"interests": ["innovating-interest-a", "helping-interest-b", "making-interest-c"],
-			"schools": ["business"],
-			"campus": {
-				"title": "Main Campus",
-				"id": "orange"
-			}
-		},
-		{
-			"type": "undergraduate",
-			"title": "Dance",
-			"img": {
-				"src": "img/temp/program-image-1.jpg",
-				"alt": "Image alt goes here"
-			},
-			"href": "#",
-			"degreeTypes": {
-				"title": ["Minor"],
-				"type": ["minor"]
-			},
-			"desc": "Short program description lorem ipsum dolor sit amet, consectetur adipisicing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua. Ut enim ad minim veniam, quis nostrud exercitation ullamco laboris nisi ut aliquip. Short program description lorem ipsum dolor sit amet, consectetur adipisicing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua. Ut enim ad minim veniam, quis nostrud exercitation ullamco laboris nisi ut aliquip.",
-			"motivations": ["expressing", "experiencing"],
-			"interests": ["performing-arts", "experiencing-interest-b"],
-			"schools": ["copa"],
-			"campus": {
-				"title": "Rinker Health Science Campus",
-				"id": "rinker"
-			}
-		},
-		{
-			"type": "graduate",
-			"title": "Documentary Filmmaking",
-			"img": {
-				"src": "img/temp/program-image-1.jpg",
-				"alt": "Image alt goes here"
-			},
-			"href": "#",
-			"degreeTypes": {
-				"title": ["M.F.A."],
-				"type": ["masters"]
-			},
-			"desc": "Short program description lorem ipsum dolor sit amet, consectetur adipisicing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua. Ut enim ad minim veniam, quis nostrud exercitation ullamco laboris nisi ut aliquip. Short program description lorem ipsum dolor sit amet, consectetur adipisicing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua. Ut enim ad minim veniam, quis nostrud exercitation ullamco laboris nisi ut aliquip.",
-			"motivations": ["innovating", "expressing", "helping", "experiencing"],
-			"interests": ["innovating-interest-c", "movies-television", "helping-interest-c", "experiencing-interest-c"],
-			"schools": ["dodge"],
-			"campus": {
-				"title": "Rinker Health Science Campus",
-				"id": "rinker"
-			}
-		},
-		{
-			"type": "graduate",
-			"title": "Integrated MS in Economic Systems Design",
-			"img": {
-				"src": "img/temp/program-image-1.jpg",
-				"alt": "Image alt goes here"
-			},
-			"href": "#",
-			"degreeTypes": {
-				"title": ["4+1"],
-				"type": ["4+1 and bridge"]
-			},
-			"desc": "Short program description lorem ipsum dolor sit amet, consectetur adipisicing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua. Ut enim ad minim veniam, quis nostrud exercitation ullamco laboris nisi ut aliquip. Short program description lorem ipsum dolor sit amet, consectetur adipisicing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua. Ut enim ad minim veniam, quis nostrud exercitation ullamco laboris nisi ut aliquip.",
-			"motivations": ["innovating", "making"],
-			"interests": ["innovating-interest-a", "making-interest-a"],
-			"schools": ["business"],
-			"campus": {
-				"title": "Main Campus",
-				"id": "orange"
-			}
-		},
-		{
-			"type": "graduate",
-			"title": "International Studies",
-			"img": {
-				"src": "img/temp/program-image-1.jpg",
-				"alt": "Image alt goes here"
-			},
-			"href": "#",
-			"degreeTypes": {
-				"title": ["M.A."],
-				"type": ["masters"]
-			},
-			"desc": "Short program description lorem ipsum dolor sit amet, consectetur adipisicing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua. Ut enim ad minim veniam, quis nostrud exercitation ullamco laboris nisi ut aliquip. Short program description lorem ipsum dolor sit amet, consectetur adipisicing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua. Ut enim ad minim veniam, quis nostrud exercitation ullamco laboris nisi ut aliquip.",
-			"motivations": ["helping", "experiencing"],
-			"interests": ["helping-interest-b", "experiencing-interest-b"],
-			"schools": ["wilkinson"],
-			"campus": {
-				"title": "Main Campus",
-				"id": "orange"
-			}
-		},
-		{
-			"type": "graduate",
-			"title": "Marriage & Family Therapy",
-			"img": {
-				"src": "img/temp/program-image-1.jpg",
-				"alt": "Image alt goes here"
-			},
-			"href": "#",
-			"degreeTypes": {
-				"title": ["M.A."],
-				"type": ["masters"]
-			},
-			"desc": "Short program description lorem ipsum dolor sit amet, consectetur adipisicing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua. Ut enim ad minim veniam, quis nostrud exercitation ullamco laboris nisi ut aliquip. Short program description lorem ipsum dolor sit amet, consectetur adipisicing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua. Ut enim ad minim veniam, quis nostrud exercitation ullamco laboris nisi ut aliquip.",
-			"motivations": ["helping"],
-			"interests": ["helping-interest-d", "helping-interest-b"],
-			"schools": ["wilkinson"],
-			"campus": {
-				"title": "Main Campus",
-				"id": "orange"
-			}
-		},
-		{
-			"type": "undergraduate",
-			"title": "Art",
-			"img": {
-				"src": "img/temp/program-image-1.jpg",
-				"alt": "Image alt goes here"
-			},
-			"href": "#",
-			"degreeTypes": {
-				"title": ["Minor"],
-				"type": ["minor"]
-			},
-			"desc": "Short program description lorem ipsum dolor sit amet, consectetur adipisicing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua. Ut enim ad minim veniam, quis nostrud exercitation ullamco laboris nisi ut aliquip. Short program description lorem ipsum dolor sit amet, consectetur adipisicing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua. Ut enim ad minim veniam, quis nostrud exercitation ullamco laboris nisi ut aliquip.",
-			"motivations": ["expressing", "experiencing"],
-			"interests": ["visual-studio-arts", "experiencing-interest-d"],
-			"schools": ["dodge"],
-			"campus": {
-				"title": "Main Campus",
-				"id": "orange"
-			}
-		},
-		{
-			"type": "undergraduate",
-			"title": "Result with some values missing for testing purposes",
-			"img": {
-				"src": "img/temp/program-image-1.jpg",
-				"alt": "Image alt goes here"
-			},
-			"href": "#",
-			"desc": "Short program description lorem ipsum dolor sit amet, consectetur adipisicing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua. Ut enim ad minim veniam, quis nostrud exercitation ullamco laboris nisi ut aliquip. Short program description lorem ipsum dolor sit amet, consectetur adipisicing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua. Ut enim ad minim veniam, quis nostrud exercitation ullamco laboris nisi ut aliquip."
+			"campus": ["Main Campus"]
 		}
 	]
 }

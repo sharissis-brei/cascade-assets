@@ -7,12 +7,7 @@ $palettes: map-merge($palettes, (
 
 .dap-discover-interests {
 	overflow: hidden;
-	max-height: 0;
-	transition: max-height 2s;
-
-	&.open {
-		max-height: rem-calc(2000);
-	}
+	display: none;
 
 	&.lighten-background {
 		background-color: lighten($mine-shaft, 10%);
@@ -69,7 +64,7 @@ $palettes: map-merge($palettes, (
 		&.visible {
 			opacity: 0;
 			display: block;
-			transition: opacity 0.75s;
+			transition: opacity 0.5s;
 
 			&.faded-in {
 				opacity: 1;

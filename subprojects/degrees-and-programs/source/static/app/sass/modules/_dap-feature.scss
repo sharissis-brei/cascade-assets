@@ -30,6 +30,14 @@ $dap-feature-background-image-width: rem-calc(1396);
 		height: 100%;
 	}
 
+	&.is-transitioning {
+
+		.dap-form {
+			pointer-events: none;
+		}
+		
+	}
+
 	.dap-feature-inner {
 		position: relative;
 	}
@@ -281,10 +289,8 @@ $dap-feature-background-image-width: rem-calc(1396);
 		color: $white;
 	}
 
-	input::-webkit-calendar-picker-indicator:hover {
-		cursor: pointer;
-		color: rgba($white, 0.9);
-		background: transparent;
+	input::-webkit-calendar-picker-indicator {
+		display: none;
 	}
 	// scss-lint:enable VendorPrefix
 
@@ -366,6 +372,11 @@ $dap-feature-background-image-width: rem-calc(1396);
 
 		}
 
+	}
+
+	datalist {
+		background-color: $white;
+		color: $black;
 	}
 
 }
