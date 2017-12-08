@@ -691,15 +691,15 @@ html.omni-nav-v2 {
           border: none;
           padding: 0;
 
-         a {
-          display: block;
-          font-size: 0px;
-          line-height: 26px;
-          padding: 0px;
-        }
+          a {
+            display: block;
+            font-size: 0px;
+            line-height: 26px;
+            padding: 0px;
 
-          &:hover {
-            border: 1px solid $white;
+            &:hover {
+              border: 1px solid $white;
+            }
           }
         }
       }

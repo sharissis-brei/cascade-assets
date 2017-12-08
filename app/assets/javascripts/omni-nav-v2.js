@@ -434,6 +434,7 @@ var OmniNav2 = (function() {
         $element.find('.search-filter-option').on('click', onSearchFilterClick);
         $searchBox.find('input.gsc-search-button').on('click', onSearchEnter);
         $searchBox.find('input.gsc-input').on('keyup', onSearchEnter);
+        $searchBox.find('input.gsc-input').on('keyup', searchAutocomplete);
         $searchBox.find('.gsc-clear-button').on('click', hideSearchResults);
         $(window).on('resize', onSearchResultsResize);
       };
@@ -446,6 +447,14 @@ var OmniNav2 = (function() {
         if((e.type == 'click' || e.which == ENTER_KEY) && gcsElement.getInputQuery().length > 0) {
           showSearchResults();
         }
+      }
+
+      // Show the results lightbox when autocomplete is clicked.
+      var searchAutocomplete = function() {
+        // Do not bind if nothing to bind
+        if (!$(".gsc-completion-container").length) return;
+
+        $(".gsc-completion-container").on('click', onSearchEnter); // Waits for autocomplete to add to DOM
       }
 
       var onSearchEsc = function(e) {
@@ -476,6 +485,7 @@ var OmniNav2 = (function() {
       };
 
       var showSearchResults = function() {
+        console.log("i am here");
         var term = gcsElement.getInputQuery();
         $loadMoreResultsButton.text('See more results for "'+term+'"');
         $loadMoreResultsButton.attr('href', SEARCH_RESULTS_BASE_URL + 'q=' + encodeURIComponent(term));
