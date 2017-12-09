@@ -10,7 +10,7 @@ html.omni-nav-v2 {
     padding-top: 120px;
   }
 
-  @include bp(xl) {
+  @include media($xl-screen) {
     padding-top: 60px;
   }
 
@@ -19,7 +19,7 @@ html.omni-nav-v2 {
       padding-top: 180px;
     }
 
-    @include bp(xl) {
+    @include media($xl-screen) {
       padding-top: 120px;
     }
   }
@@ -40,7 +40,7 @@ html.omni-nav-v2 {
   /* Branded and unbranded break at the same place, for XL screens */
   &.branded div#primary-nav div.global-nav, 
   &.unbranded div#primary-nav div.global-nav {
-    @include bp(xl) {
+    @include media($xl-screen) {
       display: inline-block;
       float: right;
       width: auto;
@@ -239,7 +239,7 @@ html.omni-nav-v2 {
         }
 
         //show all utility sections on large screen
-        @include bp(xl) {
+        @include media($xl-screen) {
           &.utility-search {
             width: auto;
           }
@@ -329,7 +329,7 @@ html.omni-nav-v2 {
       height: 120px;
     }
 
-    @include bp(xl) {
+    @include media($xl-screen) {
       height: $primary-nav-height;
     }
 
@@ -539,7 +539,7 @@ html.omni-nav-v2 {
           border-bottom: 1px solid #8a8a8a;
         }
 
-        @include bp(xl) {
+        @include media($xl-screen) {
           border-bottom-width: 0px;
         }
 
