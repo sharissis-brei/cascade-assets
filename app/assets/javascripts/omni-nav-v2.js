@@ -2,7 +2,7 @@ var OmniNav2 = (function() {
 
   // Constants
   var TABLET_BREAKPOINT = 768; //px
-  var DESKTOP_BREAKPOINT = 1200; //px
+  var DESKTOP_BREAKPOINT = 1300; //px
   var OMNINAV_BASE_HEIGHT = 60; //px
 
   // Module Vars
@@ -400,6 +400,8 @@ var OmniNav2 = (function() {
         $selectedSearchFilter = $element.find('.selected-search-filter');
         elementName = $element[0].id;
         hasSearchFilters = $element.find('.search-filter-option').length;
+        utilityAutocompleteBound = false;
+        primaryAutocompleteBound = false;
 
         searchBoxConfig = {
           gname: elementName,
@@ -434,7 +436,6 @@ var OmniNav2 = (function() {
         $element.find('.search-filter-option').on('click', onSearchFilterClick);
         $searchBox.find('input.gsc-search-button').on('click', onSearchEnter);
         $searchBox.find('input.gsc-input').on('keyup', onSearchEnter);
-        $searchBox.find('input.gsc-input').on('keyup', searchAutocomplete);
         $searchBox.find('.gsc-clear-button').on('click', hideSearchResults);
         $(window).on('resize', onSearchResultsResize);
       };
@@ -444,17 +445,31 @@ var OmniNav2 = (function() {
       }
 
       var onSearchEnter = function(e) {
+        // The autocomplete container is not present until the user starts typing
+        // Add click event listener the first time it shows up
+        bindAutocomplete();
+
         if((e.type == 'click' || e.which == ENTER_KEY) && gcsElement.getInputQuery().length > 0) {
           showSearchResults();
         }
       }
 
-      // Show the results lightbox when autocomplete is clicked.
-      var searchAutocomplete = function() {
-        // Do not bind if nothing to bind
-        if (!$(".gsc-completion-container").length) return;
+      var bindAutocomplete = function() {
+        // If both containers are bound, don't execute again
+        if(primaryAutocompleteBound && utilityAutocompleteBound) return;
 
-        $(".gsc-completion-container").on('click', onSearchEnter); // Waits for autocomplete to add to DOM
+        if($element[0].className.includes("utility") && !utilityAutocompleteBound) {
+          $("table.gstl_50.gssb_c").find(".gsc-completion-container").on("click", onAutocompleteClick);
+          utilityAutocompleteBound = true;
+        }
+        else if(!primaryAutocompleteBound) {
+          $("table.gstl_51.gssb_c").find(".gsc-completion-container").on("click", onAutocompleteClick);
+          primaryAutocompleteBound = true;
+        }
+      }
+
+      var onAutocompleteClick = function(e) {
+        setTimeout(showSearchResults, 100);
       }
 
       var onSearchEsc = function(e) {
@@ -485,7 +500,6 @@ var OmniNav2 = (function() {
       };
 
       var showSearchResults = function() {
-        console.log("i am here");
         var term = gcsElement.getInputQuery();
         $loadMoreResultsButton.text('See more results for "'+term+'"');
         $loadMoreResultsButton.attr('href', SEARCH_RESULTS_BASE_URL + 'q=' + encodeURIComponent(term));
@@ -612,7 +626,7 @@ var OmniNav2 = (function() {
     };
   })();
 
-
+  // Module for Navigate This Section button on mobile
   var MobileNav = (function() {
     // Module Vars
     var $navThisSectionButton,
@@ -648,6 +662,7 @@ var OmniNav2 = (function() {
     };
   })();
 
+  // Return for OmniNav2 module
   return {
     init: initialize
   };
