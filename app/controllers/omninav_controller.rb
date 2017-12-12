@@ -2,7 +2,7 @@ class OmninavController < ApplicationController
   def demo
     builder = ::Omninav::Builder.new
     omninav_html = builder.build_html
-    render html: omninav_html, layout: 'omninav'
+    render html: omninav_html, layout: 'omninav_v1'
   end
 
   # GET /omninav_v2(/:template)(/:theme)
