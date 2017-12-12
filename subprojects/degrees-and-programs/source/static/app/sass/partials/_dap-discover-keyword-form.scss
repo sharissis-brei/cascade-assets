@@ -1,0 +1,84 @@
+$palettes: map-merge($palettes, (
+    'dap-discover-keyword-form': (
+        'core': $black,
+        'background': $white
+    )
+));
+
+.dap-discover-keyword-form {
+	padding: rem-calc(0 0 25);
+	display: none;
+
+	hr {
+		border-color: $dusty-gray;
+	}
+
+	fieldset {
+		padding: rem-calc(45 0 0);
+	}
+
+	.filter-types > .row {
+
+		@include breakpoint(medium) {
+			display: flex;
+		}
+
+	}
+
+	.label-column,
+	.field-column {
+
+		@include breakpoint(medium) {
+			width: auto;
+		}
+
+	}
+
+	.label-column {
+
+		@include breakpoint(medium) {
+			flex: 0 0 auto;
+		}
+
+	}
+
+	.field-column {
+		
+		@include breakpoint(medium) {
+			flex: 1 1 auto;
+		}
+
+	}
+
+	.big-label {
+		color: $burgundy;
+		// line-height: $input-height;
+		font-size: rem-calc(22);
+		font-weight: 700;
+		display: block;
+		padding: rem-calc(12 0);
+	}
+
+	// scss-lint:disable VendorPrefix
+	::-webkit-input-placeholder {
+		color: $dark-gray;
+	}
+
+	:-moz-placeholder {
+		color: $dark-gray;
+	}
+
+	::-moz-placeholder {
+		color: $dark-gray;
+	}
+
+	:-ms-input-placeholder {
+		color: $dark-gray;
+	}
+
+	input::-webkit-calendar-picker-indicator {
+		display: none;
+	}
+	// scss-lint:enable VendorPrefix
+
+}

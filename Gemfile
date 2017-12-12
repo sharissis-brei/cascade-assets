@@ -1,15 +1,15 @@
 source 'https://rubygems.org'
 
-gem 'foreman'
-gem 'render_anywhere', require: false
-gem 'rubyzip'
 gem 'autoprefixer-rails'
 gem 'awesome_print'
-gem 'tzinfo-data'
+gem 'foreman'
 gem 'nokogiri', '>= 1.6.7.rc'
+gem 'render_anywhere', require: false
+gem 'rubyzip'
+gem 'tzinfo-data'
 
 # Bundle edge Rails instead: gem 'rails', github: 'rails/rails'
-gem 'rails', '4.2.3'
+gem 'rails', '~> 4.2.7.1'
 # Use SCSS for stylesheets
 gem 'sass-rails', '~> 5.0'
 # Use Uglifier as compressor for JavaScript assets

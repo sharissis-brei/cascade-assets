@@ -47,6 +47,8 @@
 				<p>Some of the content on this website requires JavaScript to be enabled in your web browser to function as intended. This includes, but is not limited to: navigation, video, image galleries, etc. While the website is still usable without JavaScript, it should be enabled to enjoy the full interactive experience.</p>
 			</div>
 
+			<h1 class="sr-only show-for-sr">Chapman University Degrees and Programs</h1>
+
 			<div class="bigMasthead smallRotator" id="container">
 
 				<header>

@@ -115,7 +115,7 @@ module Omninav
     # Note: when updating navbar markup, you will most likely be changing one of these
     # methods.
     #
-    # rubocop:disable Metrics/MethodLength
+    # rubocop:disable Metrics/MethodLength, Layout/IndentHeredoc
     def navbar_template
       <<-NAVBAR_HTML
 %<header>s
@@ -714,6 +714,6 @@ OFF_CANVAS_NAV_BODY_HTML
       }
       format(template, params)
     end
-    # rubocop:enable Metrics/MethodLength
+    # rubocop:enable Metrics/MethodLength, Layout/IndentHeredoc
   end
 end
