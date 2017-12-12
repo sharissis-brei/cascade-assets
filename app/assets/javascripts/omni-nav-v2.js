@@ -469,7 +469,7 @@ var OmniNav2 = (function() {
       }
 
       var onAutocompleteClick = function(e) {
-        setTimeout(showSearchResults, 100);
+        setTimeout(showSearchResults, 100); // Waits for autocomplete to add to DOM
       }
 
       var onSearchEsc = function(e) {
