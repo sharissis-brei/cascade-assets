@@ -85,14 +85,14 @@ var OmniNav2 = (function() {
 
   var repositionForCollabsibleAnchor = function(urlParams, omninavHeight) {
     /* Used with the Collapsible Region widget */
-    if ((urlParams["openregion"] != undefined) && 
-        (urlParams["openregion"] == parseInt(urlParams["openregion"])) && 
+    if ((urlParams["openregion"] != undefined) &&
+        (urlParams["openregion"] == parseInt(urlParams["openregion"])) &&
         (urlParams["openregion"] - 1 < $(".collapsibles-widget .accordion").length)) {
 
       // Offset for zero based arrays
-      if (urlParams["openregion"] != 0) 
+      if (urlParams["openregion"] != 0)
           urlParams["openregion"] = urlParams["openregion"] - 1;
-      
+
       var $activeElementRegion = $(".collapsibles-widget .accordion").eq(urlParams["openregion"]);
 
       // Add the active class to nth accordion and remove all other active classes
@@ -103,7 +103,7 @@ var OmniNav2 = (function() {
 
       // Hide the other regions
       $activeElementRegion.siblings().find("div.content").hide();
-  
+
       // Scroll to the active element (add offset for omninav height)
       setTimeout(function(){
         $('html, body').stop().animate({
@@ -115,14 +115,14 @@ var OmniNav2 = (function() {
 
   var repositionForTabAnchor = function(urlParams, omninavHeight) {
     /* Used with the Tab widget */
-    if ((urlParams["startingtab"] != undefined) && 
-        (urlParams["startingtab"] == parseInt(urlParams["startingtab"])) && 
+    if ((urlParams["startingtab"] != undefined) &&
+        (urlParams["startingtab"] == parseInt(urlParams["startingtab"])) &&
         (urlParams["startingtab"] - 1 < $(".main .tabs-nav li").length)) {
-      
+
       // Offset for zero based arrays
       if (urlParams["startingtab"] != 0)
           urlParams["startingtab"] = urlParams["startingtab"] - 1;
-      
+
       var $activeElementTab = $(".main .tabs-nav li").eq(urlParams["startingtab"]);
 
       // Set active class
@@ -183,7 +183,14 @@ var OmniNav2 = (function() {
       var idSelector = '#' + anchorIdentifer;
 
       // Look first for name selector.
-      var $target = $(nameSelector);
+      // anchorIdentifier could lead to an invalid jQuery selector so wrap in a
+      // try/catch. For details, see https://github.com/chapmanu/cascade-assets/issues/295.
+      try {
+        var $target = $(nameSelector);
+      }
+      catch(error) {
+        return false;
+      }
 
       // If no name selector, look for ID selector.
       if (!$target.length) {
@@ -233,7 +240,7 @@ var OmniNav2 = (function() {
           $('#gsc-i-id1').focus();
         },300);
       }
-    } 
+    }
     else if ( $(window).width() >= TABLET_BREAKPOINT && $(window).width() < DESKTOP_BREAKPOINT ) {
       // On tablet, utility-links don't show, only utility-search should toggle in container
       $utilityNav.find('.utility-nav-container.utility-search').slideToggle(10, function() {
@@ -251,7 +258,7 @@ var OmniNav2 = (function() {
       // Other utility nav trigger classes
       $('html.omni-nav-v2').toggleClass('utility-nav-open');
       $primaryNav.removeClass('search-open');
-      
+
       // Sets focus on search input field, if utility nav is being opened
       if ($('.utility-nav-open').length > 0) {
         // Focus needs a slight delay to allow the utility nav to come down all the way
@@ -268,7 +275,7 @@ var OmniNav2 = (function() {
       if ($('.search-open').length > 0) $('#gsc-i-id2').focus();
     }
 
-    
+
     var primaryNavClasses = document.getElementById('primary-nav').classList;
 
     // jQuery < 3.0 doesn't support toggleClass for SVGs
@@ -294,7 +301,7 @@ var OmniNav2 = (function() {
       $(this).siblings('.utility-has-dropdown').removeClass('dropdown-open');
       $('.utility-search').find('.utility-has-dropdown').removeClass('dropdown-open');
     }
-    
+
     $(this).toggleClass('dropdown-open');
     $(document).on("click", onDocumentClick);
   };

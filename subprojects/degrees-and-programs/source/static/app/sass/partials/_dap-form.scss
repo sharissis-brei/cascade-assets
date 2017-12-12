@@ -1,8 +1,8 @@
 $palettes: map-merge($palettes, (
-    'dap-form': (
-        'core': $black,
-        'background': $white
-    )
+	'dap-form': (
+		'core': $black,
+		'background': $white
+	)
 ));
 
 .dap-form {
@@ -16,6 +16,10 @@ $palettes: map-merge($palettes, (
 
 	@include breakpoint(xlarge) {
 		padding: 0;
+	}
+
+	.no-js & {
+		display: none;
 	}
 
 	fieldset > .row {
@@ -40,38 +44,6 @@ $palettes: map-merge($palettes, (
 			border-bottom: $transparent-white-border;
 			padding: rem-calc(0 0 12);
 			margin: rem-calc(0 0 20);
-		}
-
-	}
-
-	.filter-types {
-
-		.large-5 {
-
-			&:first-child {
-				
-				@include breakpoint(large) {
-					width: 44%;
-				}
-
-			}
-
-			&:last-child {
-
-				@include breakpoint(large) {
-					width: 44%;
-				}
-
-			}
-
-		}
-
-		.large-2 {
-
-			@include breakpoint(large) {
-				width: 12%;
-			}
-
 		}
 
 	}
@@ -141,6 +113,43 @@ $palettes: map-merge($palettes, (
 
 			@include breakpoint(large) {
 				line-height: $input-height;
+			}
+
+		}
+
+	}
+
+}
+
+.dap-undergraduate-form,
+.dap-graduate-form {
+
+	.filter-types {
+
+		.large-5 {
+
+			&:first-child {
+
+				@include breakpoint(large) {
+					width: 44%;
+				}
+
+			}
+
+			&:last-child {
+
+				@include breakpoint(large) {
+					width: 44%;
+				}
+
+			}
+
+		}
+
+		.large-2 {
+
+			@include breakpoint(large) {
+				width: 12%;
 			}
 
 		}

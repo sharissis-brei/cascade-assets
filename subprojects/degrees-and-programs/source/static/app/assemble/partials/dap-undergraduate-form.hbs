@@ -59,35 +59,37 @@
 
 			</div>
 		</div>
+		
+		<div id="js-dap-undergraduate-interests" class="dap-undergraduate-interests">
+			<div class="row">
+				
+				<!-- I'm Interested In Checkboxes -->
+				<div class="columns small-12 clearfix">
+					<a id="js-reset-undergraduate-interests" class="reset" href="javascript:void(0)" title="Reset interests filters">{{svg "reset"}} Reset</a>
+					<h4 class="subsection-heading">I'm Interested In:</h4>
+				</div>
+				<div class="columns small-12">
+					<ul id="js-dap-undergraduate-interests-list" class="dap-undergraduate-interests-list">
+						{{#parseFixture 'dap-feature.json'}}
+							{{#each interests}}
+								<li>
+									<label for="dap-undergraduate-interest-{{id}}">
+										<input id="dap-undergraduate-interest-{{id}}" name="dap-undergraduate-interest-{{id}}" type="checkbox" value="{{id}}">
+										<span>{{{title}}}</span>
+									</label>
+								</li>
+							{{/each}}
+						{{/parseFixture}}
+						<li class="show-more">
+							<a href="javascript:void(0)">+ Show More</a>
+						</li>
+					</ul>
+				</div>
 
-		<div class="row">
-			
-			<!-- I'm Interested In Checkboxes -->
-			<div class="columns small-12 clearfix">
-				<a id="js-reset-undergraduate-interests" class="reset" href="javascript:void(0)" title="Reset interests filters">{{svg "reset"}} Reset</a>
-				<h4 class="subsection-heading">I'm Interested In:</h4>
 			</div>
-			<div class="columns small-12">
-				<ul id="js-dap-undergraduate-interests" class="dap-undergraduate-interests">
-					{{#parseFixture 'dap-feature.json'}}
-						{{#each interests}}
-							<li>
-								<label for="dap-undergraduate-interest-{{id}}">
-									<input id="dap-undergraduate-interest-{{id}}" name="dap-undergraduate-interest-{{id}}" type="checkbox" value="{{id}}">
-									<span>{{{title}}}</span>
-								</label>
-							</li>
-						{{/each}}
-					{{/parseFixture}}
-					<li class="show-more">
-						<a href="javascript:void(0)">+ Show More</a>
-					</li>
-				</ul>
-			</div>
-
 		</div>
 
-		<div id="js-dap-graduate-filter-types" class="filter-types">
+		<div id="js-dap-undergraduate-filter-types" class="filter-types">
 			<div class="row">
 
 				<!-- Filter by Schools and Colleges -->
