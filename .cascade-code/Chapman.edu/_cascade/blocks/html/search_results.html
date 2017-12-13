@@ -1,17 +1,24 @@
 <script src="https://www.google.com/jsapi" type="text/javascript"></script>
+<div id="cse" style="width: 100%;">Loading</div>
 
 <!--#passthrough
 <script>
-  (function() {
-    console.log('load gcse results');
-    var cx = '015856566681218627934:2ndbiubovo4';
-    var gcse = document.createElement('script');
-    gcse.type = 'text/javascript';
-    gcse.async = true;
-    gcse.src = 'https://cse.google.com/cse.js?cx=' + cx;
-    var s = document.getElementsByTagName('script')[0];
-    s.parentNode.insertBefore(gcse, s);
-  })();
+(function() {
+  var searchResultConfigV2 = {
+    div: 'cse',
+    tag: 'searchresults-only',
+    attributes: {
+      linkTarget: '_self',
+      enableOrderBy: true
+    }
+  };
+
+  var renderSearchResults = function() {
+    console.log('load gcse results', google.search.cse);
+    google.search.cse.element.render(searchResultConfigV2);
+  };
+
+  setTimeout(function() { renderSearchResults(); }, 2000);
+})();
 </script>
-<gcse:searchresults-only></gcse:searchresults-only>
 #passthrough-->
