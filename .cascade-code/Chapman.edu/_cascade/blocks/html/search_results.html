@@ -13,12 +13,20 @@
     }
   };
 
-  var renderSearchResults = function() {
-    console.log('load gcse results', google.search.cse);
-    google.search.cse.element.render(searchResultConfigV2);
-  };
-
-  setTimeout(function() { renderSearchResults(); }, 2000);
+  var googleSearchLoadingIntervalDelay = 250; // ms
+  var googleSearchLoadingInterval = setInterval(function() {
+    try {
+      // Check to see if API ready. If not, will throw error caught below and try again
+      // at interval.
+      google.search.cse.element;
+      $('#cse').empty();
+      google.search.cse.element.render(searchResultConfigV2);
+      clearInterval(googleSearchLoadingInterval);
+    }
+    catch (e) {
+      console.log('Still waiting for google.search.cse.element.')
+    }
+  }, googleSearchLoadingIntervalDelay);
 })();
 </script>
 #passthrough-->
