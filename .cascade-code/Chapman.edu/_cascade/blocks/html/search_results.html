@@ -1,0 +1,34 @@
+<script src="https://www.google.com/jsapi" type="text/javascript"></script>
+<div id="cse" style="width: 100%;">Loading</div>
+
+<!--#passthrough
+<script>
+(function() {
+  // Google API Docs: https://developers.google.com/custom-search/docs/element#cse-element
+  // This instruct render call to attach search results (only!) to div#cse block.
+  var searchResultConfigV2 = {
+    div: 'cse',
+    tag: 'searchresults-only',
+    attributes: {
+      linkTarget: '_self',
+      enableOrderBy: true
+    }
+  };
+
+  var googleSearchLoadingIntervalDelay = 250; // ms
+  var googleSearchLoadingInterval = setInterval(function() {
+    try {
+      // Check to see if API ready. If not, will throw error caught below and try again
+      // at interval.
+      google.search.cse.element;
+      $('#cse').empty();
+      google.search.cse.element.render(searchResultConfigV2);
+      clearInterval(googleSearchLoadingInterval);
+    }
+    catch (e) {
+      console.log('Still waiting for google.search.cse.element.')
+    }
+  }, googleSearchLoadingIntervalDelay);
+})();
+</script>
+#passthrough-->
