@@ -10,15 +10,8 @@ html.omni-nav-v2 {
     padding-top: 120px;
   }
 
-  @include media($large-screen) {
+  @include media($xl-screen) {
     padding-top: 60px;
-  }
-
-  /* branded omninav always has primary nav stacked on top of global nav */
-  &.branded {
-    @include media($large-screen) {
-      padding-top: 120px;
-    }
   }
 
   &.utility-nav-open {
@@ -26,15 +19,8 @@ html.omni-nav-v2 {
       padding-top: 180px;
     }
 
-    @include media($large-screen) {
+    @include media($xl-screen) {
       padding-top: 120px;
-    }
-
-    /* since branded is min 120px height (global + primary), adding utility will always make it 180 */
-    &.branded {
-      @include media($medium-screen) {
-        padding-top: 180px;
-      }     
     }
   }
 }
@@ -50,28 +36,17 @@ html.omni-nav-v2 {
 
   /* Branded / Unbranded Variations
   ---------------------------------------- */
-  &.unbranded {
-    div#primary-nav div.global-nav {
-      /* In unbranded version, global nav float parallel to log. In branded, it
-         it stacks underneath. */
-      @include media($large-screen) {
-        display: inline-block;
-        float: right;
-        width: auto;
-        border-top: none;
-        margin: 14px $base-spacing;
-        padding: 0;
-      }
-    }
-  }
 
-  &.branded {
-    div#primary-nav div.global-nav {
-      /* When it stacks, primary-nav will already have bottom-border. */
-      @include media($large-screen) {
-        border-top: none;
-        border-bottom: 1px solid #8a8a8a;
-      }
+  /* Branded and unbranded break at the same place, for XL screens */
+  &.branded div#primary-nav div.global-nav, 
+  &.unbranded div#primary-nav div.global-nav {
+    @include media($xl-screen) {
+      display: inline-block;
+      float: right;
+      width: auto;
+      border-top: none;
+      margin: 14px $base-spacing;
+      padding: 0;
     }
   }
 
@@ -264,7 +239,7 @@ html.omni-nav-v2 {
         }
 
         //show all utility sections on large screen
-        @include media($large-screen) {
+        @include media($xl-screen) {
           &.utility-search {
             width: auto;
           }
@@ -354,7 +329,7 @@ html.omni-nav-v2 {
       height: 120px;
     }
 
-    @include media($large-screen) {
+    @include media($xl-screen) {
       height: $primary-nav-height;
     }
 
@@ -514,6 +489,10 @@ html.omni-nav-v2 {
         svg.chapman-logo {
           width: 190px;
           height: 32px;
+
+          @include media($medium-screen) {
+            width: 256px;
+          }
         }
 
         @include media($medium-screen) {
@@ -560,7 +539,7 @@ html.omni-nav-v2 {
           border-bottom: 1px solid #8a8a8a;
         }
 
-        @include media($large-screen) {
+        @include media($xl-screen) {
           border-bottom-width: 0px;
         }
 
@@ -588,7 +567,7 @@ html.omni-nav-v2 {
 
           & > a {
             text-transform: uppercase;
-            font-size: 15px;
+            font-size: 16px;
             white-space: nowrap;
           }
 
@@ -621,6 +600,13 @@ html.omni-nav-v2 {
                 display: block;
               }
 
+              a:before { 
+                padding: 0.1em;
+                display: block;
+                margin: 3px 10px 10px 0;
+                float: left;
+              }
+
               &:last-of-type { border-bottom: none; }
 
               &:hover {
@@ -640,11 +626,6 @@ html.omni-nav-v2 {
 
             .icon-cu-window:before {
               font-size: 1.25em; 
-            }
-
-            a:before { 
-              padding-right: 8px;
-              margin: 3px 3px 10px 0;
             }
           }
         }
@@ -700,7 +681,7 @@ html.omni-nav-v2 {
       }
 
       ul.social-list {
-        text-align: left;
+        text-align: center;
         padding: 10px;
 
         li {
@@ -710,15 +691,15 @@ html.omni-nav-v2 {
           border: none;
           padding: 0;
 
-         a {
-          display: block;
-          font-size: 0px;
-          line-height: 26px;
-          padding: 0px;
-        }
+          a {
+            display: block;
+            font-size: 0px;
+            line-height: 26px;
+            padding: 0px;
 
-          &:hover {
-            border: 1px solid $white;
+            &:hover {
+              border: 1px solid $white;
+            }
           }
         }
       }
@@ -880,8 +861,6 @@ html.omni-nav-v2 {
     }
 
     @include media($large-screen) {}
-
-
 
     .secondary-logo {
       display: none;

@@ -35,5 +35,9 @@ var MobileNav = (function() {
 
 // On document ready.
 $(function () {
-  MobileNav.scrollToLeftNavOnButtonClick();
+  // The JS in this file only applies to omninav v1
+  // For OmniNav v2, see omni-nav-v2.js
+  if ( $('html').find('#omni-nav-v2').length === 0 ) {
+    MobileNav.scrollToLeftNavOnButtonClick();
+  }
 });
