@@ -376,9 +376,17 @@ html.omni-nav-v2 {
       // Used by hamburger, search, and user icons
       .primary-nav-icon {
         cursor: pointer;
+        height: 60px;
 
         svg {
           vertical-align: middle;
+          width: 18px;
+          height: 18px;
+
+          @include media($medium-screen) {
+            width: 22px;
+            height: 22px;
+          }
         }
       }
 
@@ -421,12 +429,16 @@ html.omni-nav-v2 {
           }
 
           .primary-nav-icon {
+            // The square width (60x60) only applies to the find & login icons on tablet, desktop
             @include media($medium-screen) {
-
               vertical-align: middle;
               position: absolute;
               text-align: center;
               width: 60px;
+
+              svg {
+                fill: $white;
+              }
             }
           }
 
@@ -475,12 +487,6 @@ html.omni-nav-v2 {
                 color: $white;
               }
             }
-          }
-        }
-
-        .primary-nav-icon svg {
-          @include media($medium-screen) {
-            fill: $white;
           }
         }
       }
@@ -744,25 +750,6 @@ html.omni-nav-v2 {
 
   /* NAV TRIGGERS
   ---------------------------------------- */
-  .primary-nav-action {
-    display: inline-block;
-  }
-
-  .primary-nav-icon {
-    display: inline-block;
-    width: 18px;
-    height: 18px;
-
-    @include media($medium-screen) {
-      width: 22px;
-      height: 22px;
-    }
-
-    svg {
-      width: 22px;
-      height: 22px;
-    }
-  }
 
   .utility-nav-trigger{
     @include media($medium-screen) {
