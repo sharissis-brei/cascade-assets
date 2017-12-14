@@ -1,0 +1,83 @@
+<!DOCTYPE html>
+<html class="no-js omni-nav-v2" lang="en">
+
+<head>
+  <meta charset="utf-8" />
+  <meta content="IE=edge,chrome=1" http-equiv="X-UA-Compatible" />
+  <meta content="width=device-width, initial-scale=1, minimum-scale=1" name="viewport" />
+  <title>OmniNav v2 Demo</title>
+
+  <!-- scripts -->
+  <script src="//ajax.googleapis.com/ajax/libs/jquery/1.7.2/jquery.min.js"></script>
+
+  <script src="//use.typekit.net/eyn5jyy.js" type="text/javascript"></script>
+  <script type="text/javascript">
+  try {
+      Typekit.load();
+  } catch (e) {}
+  </script>
+  <%= javascript_include_tag 'master' %>
+  <%= stylesheet_link_tag 'master', media: 'all' %>
+</head>
+
+
+<body>
+  <div id="theme" class="<%= params[:theme] %>">
+    <span class="hidden">
+      <a href="#main" title="Skip navigation and jump directly to the main content of this page">
+        Jump to the main content of this page
+      </a>
+    </span>
+
+    <div id="fb-root"></div>
+
+    <div class="noscript">
+      <p>Some of the content on this website requires JavaScript to be enabled in your web browser to function as intended. This includes, but is not limited to: navigation, video, image galleries, etc. While the website is still usable without JavaScript, it should be enabled to enjoy the full interactive experience.</p>
+    </div>
+
+    <div id="container">
+      <header>
+        <%= yield %>
+      </header>
+
+      <div id="main" role="main">
+        <div class="primary-content one-column">
+          <%= render 'widgets/masthead/boxes_1' %>
+
+          <div class="subRotator">
+            <div class="primaryContent clearfix twoColumns">
+              <%= render 'regions/mobile_nav' %>
+
+              <div class="breadcrumbs clearfix">
+                <%= render 'widgets/shared/breadcrumbs' %>
+                <%= render 'widgets/shared/social_media_icons' %>
+              </div>
+
+              <div class="middleRightContainer">
+                <div class="main">
+                  <h1><span class="bullet">»</span>2 Column Modular Sample</h1>
+                    <%= render 'widgets/primary_content/collapsables_2' %>
+                    <%= render 'widgets/primary_content/personnel_region_1' %>
+                    <%= render 'widgets/primary_content/wysiwyg_editor_3' %>
+                    <%= render 'widgets/primary_content/wysiwyg_anchor_links' %>
+                    <%= render 'widgets/primary_content/tabs_1' %>
+                    <%= render 'widgets/primary_content/featured_news_events_feed_1' %>
+                </div>
+              </div>
+
+              <div class="leftNav">
+                <%= render 'widgets/shared/left_nav' %>
+                <div class="leftNavSubContent">
+                  <%= render 'widgets/left_column/shared_content_contacts_1' %>
+                </div>
+              </div>
+            </div>
+          </div>
+        </div>
+      </div>
+
+      <%= render '_cascade/blocks/html/footer' %>
+    </div>
+  </div>
+</body>
+</html>

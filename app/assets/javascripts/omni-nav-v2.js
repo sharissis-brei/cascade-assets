@@ -2,7 +2,8 @@ var OmniNav2 = (function() {
 
   // Constants
   var TABLET_BREAKPOINT = 768; //px
-  var DESKTOP_BREAKPOINT = 1024; //px
+  var DESKTOP_BREAKPOINT = 1300; //px
+  var OMNINAV_BASE_HEIGHT = 60; //px
 
   // Module Vars
   var $container,
@@ -13,17 +14,13 @@ var OmniNav2 = (function() {
   var initialize = function(container) {
     GoogleCustomSearch.init();
     OffCanvasNav.init();
+    MobileNav.init();
     $container = container;
     $utilityNav = $container.find('.utility-nav');
     $primaryNav = $container.find('#primary-nav');
     $('html').addClass('omni-nav-v2');
     $('.utility-nav-trigger').on('click', onUtilityNavClick);
     $utilityNav.find('li.utility-has-dropdown').on('click', onUtilityNavDropdownClick);
-
-    // Adjusts CSS to accomodate primary nav stacked on top of global nav when branded
-    if ( $('html').find('#omni-nav-v2').hasClass('branded') ) {
-      $('html').addClass('branded');
-    }
 
     // Remove padding from theme version. Have to use js because css will not work.
     // See https://stackoverflow.com/a/1014958/6763239
@@ -43,20 +40,20 @@ var OmniNav2 = (function() {
   };
 
   var getOmninavHeight = function() {
+    // Primary Nav
     // The primary nav will always show, this is the minimum
-    var height = 60;
+    var height = OMNINAV_BASE_HEIGHT;
 
     // On mobile screen, omninav is always just primary nav
     if ( $(window).width() < TABLET_BREAKPOINT ) {
       return height;
     }
 
-    // Global nav height
-    // For branded omninav, global nav is always stacked below primary
-    // Otherwise, global nav is only stacked on tablet
+    // Global Nav
+    // Always stacked on tablet, so should be primary nav + global nav height
     var isTabletSize = ($(window).width() >= TABLET_BREAKPOINT) && ($(window).width() < DESKTOP_BREAKPOINT);
-    if ( $('html').find('#omni-nav-v2').hasClass('branded') || isTabletSize) {
-      height += 60;
+    if ( isTabletSize) {
+      height += OMNINAV_BASE_HEIGHT;
     }
 
     // By default when you load the page for the first time, the utility nav is closed
@@ -410,6 +407,8 @@ var OmniNav2 = (function() {
         $selectedSearchFilter = $element.find('.selected-search-filter');
         elementName = $element[0].id;
         hasSearchFilters = $element.find('.search-filter-option').length;
+        utilityAutocompleteBound = false;
+        primaryAutocompleteBound = false;
 
         searchBoxConfig = {
           gname: elementName,
@@ -453,9 +452,31 @@ var OmniNav2 = (function() {
       }
 
       var onSearchEnter = function(e) {
+        // The autocomplete container is not present until the user starts typing
+        // Add click event listener the first time it shows up
+        bindAutocomplete();
+
         if((e.type == 'click' || e.which == ENTER_KEY) && gcsElement.getInputQuery().length > 0) {
           showSearchResults();
         }
+      }
+
+      var bindAutocomplete = function() {
+        // If both containers are bound, don't execute again
+        if(primaryAutocompleteBound && utilityAutocompleteBound) return;
+
+        if($element[0].className.includes("utility") && !utilityAutocompleteBound) {
+          $("table.gstl_50.gssb_c").find(".gsc-completion-container").on("click", onAutocompleteClick);
+          utilityAutocompleteBound = true;
+        }
+        else if(!primaryAutocompleteBound) {
+          $("table.gstl_51.gssb_c").find(".gsc-completion-container").on("click", onAutocompleteClick);
+          primaryAutocompleteBound = true;
+        }
+      }
+
+      var onAutocompleteClick = function(e) {
+        setTimeout(showSearchResults, 100); // Waits for autocomplete to add to DOM
       }
 
       var onSearchEsc = function(e) {
@@ -612,6 +633,43 @@ var OmniNav2 = (function() {
     };
   })();
 
+  // Module for Navigate This Section button on mobile
+  var MobileNav = (function() {
+    // Module Vars
+    var $navThisSectionButton,
+        $leftNavMenu,
+        $omniNavHeight;
+
+    // Module Functions
+    var initialize = function() {
+      $navThisSectionButton = $('div#mobile-nav > a.button');
+      $leftNavMenu = $('.leftNav > .leftTitle');
+      $omniNavHeight = getOmninavHeight();
+
+      $navThisSectionButton.on('click', scrollToLeftNavOnButtonClick);
+    };
+
+    var scrollToLeftNavOnButtonClick = function() {
+      // OmniNav is fixed position. I'd expect this to be:
+      // $leftNavMenu.offset().top + omniNavHeight
+      // But testing proved otherwise.
+      var scrollTo = $leftNavMenu.offset().top - $omniNavHeight;
+
+      // I really wish we had used a plugin like scrollTo or scrollable. I'm
+      // seeing various other approaches to scrolling elsewhere in code base so
+      // I'm reluctanct to introduce a plugin now.
+      // Source for this approach: https://stackoverflow.com/a/6677069/6763239
+      $('html, body').animate({
+        scrollTop: scrollTo
+      }, 'slow');
+    };
+
+    return {
+      init: initialize
+    };
+  })();
+
+  // Return for OmniNav2 module
   return {
     init: initialize
   };
