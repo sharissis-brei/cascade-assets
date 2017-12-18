@@ -359,9 +359,12 @@
         <ul class="global-nav-links">
           #foreach( $link in $globalNavLinks )
             <li class="primary-link">
-              <a href="$link.sectionLink">$link.sectionTitle</a>
               #if( $link.dropdown.size() > 0 )
-                #buildGlobalNavDropdown( $link.dropdown )
+                <a>$link.sectionTitle</a>
+                #buildGlobalNavDropdown( $link.dropdown $link.sectionLink)
+              #else
+                ## Primary links with no dropdown have a link with the title
+                <a href="$link.sectionLink">$link.sectionTitle</a>
               #end
             </li>
           #end
@@ -371,9 +374,20 @@
   </div>
 #end
 
-#macro( buildGlobalNavDropdown $dropdownLinks )
+#macro( buildGlobalNavDropdown $dropdownLinks $overviewLink)
+  ## Law global nav dropdowns don't have icons
+  #if( $umbrellaDirectory != 'law' )
+    #set ( $overviewIconClass = "icon-file-text" )
+  #else
+    #set ( $overviewIconClass = "" )
+  #end
+
   <div class="global-nav-dropdown">
     <ul>
+      ## First list item is always Overview
+      <li>
+        <a class="icon $overviewIconClass" href="$overviewLink">Overview</a>
+      </li>
       #foreach( $dropdownLink in $dropdownLinks )
         <li>
           <a class="icon $dropdownLink.iconClass" href="$dropdownLink.link">
