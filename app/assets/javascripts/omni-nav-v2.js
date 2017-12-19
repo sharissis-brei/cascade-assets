@@ -278,9 +278,10 @@ var OmniNav2 = (function() {
 
     var primaryNavClasses = document.getElementById('primary-nav').classList;
 
-    // jQuery < 3.0 doesn't support toggleClass for SVGs
-    // toggle open iff one of the search bars is open
+    // jQuery < 3.0 doesn't support addClass/removeClass for SVGs
+    // See Stack Overflow question: https://stackoverflow.com/questions/8638621/jquery-svg-why-cant-i-addclass
     if (primaryNavClasses.contains("search-open") || $utilityNav.hasClass('utility-nav-open')) {
+      // Toggle open iff one of the search bars is open
       $('.icon-open-search').attr("class", "icon-open-search hide");
       $('.icon-close-search').attr("class", "icon-close-search");
     } else {

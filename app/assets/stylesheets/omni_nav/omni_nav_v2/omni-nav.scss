@@ -376,9 +376,12 @@ html.omni-nav-v2 {
       // Used by hamburger, search, and user icons
       .primary-nav-icon {
         cursor: pointer;
+        height: 60px;
 
         svg {
           vertical-align: middle;
+          width: 22px;
+          height: 22px;
         }
       }
 
@@ -403,84 +406,60 @@ html.omni-nav-v2 {
         float: right;
         display: table;
         height: 60px;
-        line-height: 60px;
 
         .primary-nav-action {
-          height: 60px;
-          display: table-cell;
-          position: relative;
-          line-height: 60px;
-
           // without z-index, global nav dropdown overlaps primary icons
           z-index: 668;
+          display: table-cell;
+          position: relative;
+          text-align: center;
+          vertical-align: middle;
+          height: 60px;
+          cursor: pointer;
+
+          svg {
+            &.icon-open-search.hide,
+            &.icon-close-search.hide {
+              display: none;
+            }
+          }
 
           @include media($medium-screen) {
-            width: 60px;
             background-color: #2f2f2f;
             margin: 0 auto;
-          }
+            width: 60px;
 
-          .primary-nav-icon {
-            @include media($medium-screen) {
-
-              vertical-align: middle;
-              position: absolute;
-              text-align: center;
-              width: 60px;
-            }
-          }
-
-          &:hover {
             .nav-icon-text {
-              @include bp(wildcard-max, $medium-screen) {
-                display: none;
-              }
-
-              line-height: normal;
-              bottom: 6px;
-              position: absolute;
-              width: 60px;
-              text-align: center;
-
-              a {
-                display: inline-block;
-                font-size: 10px;
-                font-family: "futura-pt", verdana, sans-serif;
-                font-weight: 800;
-                text-transform: uppercase;
-                color: $white;
-              }
+              display: none;
             }
-          }
 
-          //only search text ("Find") stays when utility nav is open
-          &.utility-open {
-            .nav-icon-text.search {
-              @include bp(wildcard-max, $medium-screen) {
-                display: none;
-              }
-
-              line-height: normal;
+            // Text shows up for both login and search icons on hover
+            // Also stays for search while utility nav is open
+            &:hover .nav-icon-text,
+            &.utility-open .nav-icon-text.search {
+              display: block;
               bottom: 5px;
+              color: $white;
               position: absolute;
               width: 60px;
-              text-align: center;
 
-              a {
-                display: inline-block;
-                font-size: 10px;
-                font-family: "futura-pt", verdana, sans-serif;
-                font-weight: 800;
-                text-transform: uppercase;
-                color: $white;
+              // Text-related CSS
+              line-height: normal;
+              font-size: 10px;
+              font-family: "futura-pt", verdana, sans-serif;
+              font-weight: 800;
+              text-transform: uppercase;
+            }
+
+            a.primary-nav-icon {
+              display: inline-block;
+              position: relative;
+
+              svg {
+                // On mobile, fill is black
+                fill: $white;
               }
             }
-          }
-        }
-
-        .primary-nav-icon svg {
-          @include media($medium-screen) {
-            fill: $white;
           }
         }
       }
@@ -744,25 +723,6 @@ html.omni-nav-v2 {
 
   /* NAV TRIGGERS
   ---------------------------------------- */
-  .primary-nav-action {
-    display: inline-block;
-  }
-
-  .primary-nav-icon {
-    display: inline-block;
-    width: 18px;
-    height: 18px;
-
-    @include media($medium-screen) {
-      width: 22px;
-      height: 22px;
-    }
-
-    svg {
-      width: 22px;
-      height: 22px;
-    }
-  }
 
   .utility-nav-trigger{
     @include media($medium-screen) {
@@ -770,18 +730,12 @@ html.omni-nav-v2 {
     }
 
     .primary-nav-icon {
+      // Spacing between search and login icons on mobile
       margin-right: 13px;
 
-      .icon-open-search, .icon-close-search {
-        &.hide {
-          display: none;
-        }
+      @include media($medium-screen) {
+        margin-right: 0px;
       }
-    }
-
-    .text {
-      margin-bottom: 0;
-      color: $white;
     }
   }
 
