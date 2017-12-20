@@ -466,7 +466,8 @@ var OmniNav2 = (function() {
         // If both containers are bound, don't execute again
         if(primaryAutocompleteBound && utilityAutocompleteBound) return;
 
-        if($element[0].className.includes("utility") && !utilityAutocompleteBound) {
+        // indexOf = -1 if not found
+        if(($element[0].className.indexOf("utility") >= 0) && !utilityAutocompleteBound) {
           $("table.gstl_50.gssb_c").find(".gsc-completion-container").on("click", onAutocompleteClick);
           utilityAutocompleteBound = true;
         }
