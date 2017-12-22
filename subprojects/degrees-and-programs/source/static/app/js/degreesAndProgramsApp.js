@@ -142,6 +142,10 @@ var chapman = chapman || {};
 						_this.resetFiltering(form);
 					}
 
+					setTimeout(function () {
+						_this.scrollToResults();
+					}, 100);
+
 				}
 
 			}).on('submit', function (event) {
@@ -190,9 +194,9 @@ var chapman = chapman || {};
 			});
 
 			// Click on Interests in Undergraduate section
-			dap.undergraduate.$interestsItems.on('change', function () {
-				_this.mobileScrollToTarget(dap.undergraduate.$filterTypes); // Scroll to school and keyword filters on mobile
-			});
+			// dap.undergraduate.$interestsItems.on('change', function () {
+			//
+			// });
 
 			$('form').on('change', function (event) {
 				var form = $(this),
@@ -221,10 +225,9 @@ var chapman = chapman || {};
 
 			});
 
-			$('#dap-undergraduate-school, #dap-undergraduate-keyword').on('change', function () {
-				_this.mobileScrollToTarget(dap.undergraduate.$results); // Scroll to results on mobile
-			});
-
+			// $('#dap-undergraduate-school, #dap-undergraduate-keyword').on('change', function () {
+			//
+			// });
 
 			//-------- Graduate Events --------//
 
@@ -233,9 +236,9 @@ var chapman = chapman || {};
 				_this.syncGraduateProgramTypes($(this));
 			});
 
-			$('#dap-graduate-school, #dap-graduate-keyword').on('change', function () {
-				_this.mobileScrollToTarget(dap.graduate.$results); // Scroll to results on mobile
-			});
+			// $('#dap-graduate-school, #dap-graduate-keyword').on('change', function () {
+			//
+			// });
 
 		},
 
@@ -383,7 +386,7 @@ var chapman = chapman || {};
 
 		lazyLoadResults: function () {
 			var _this = this;
-			var resultsContainer = $('#js-dap-results-' + activeSection);
+			var $resultsContainer = $('#js-dap-results-' + activeSection);
 			var bottomOfResultsContainer;
 			var windowHeight = $(window).height();
 			var bottomOfWindow = scrollPosition + windowHeight;
@@ -394,9 +397,9 @@ var chapman = chapman || {};
 
 				$('#js-dap-results-' + activeSection + ' .results-row').append(result); // Append the result
 				var $result = $(result); // Store previously appended result as variable
-				bottomOfResultsContainer = resultsContainer.offset().top + resultsContainer.outerHeight(true); // Recalculate container's height with new result
+				bottomOfResultsContainer = $resultsContainer.offset().top + $resultsContainer.outerHeight(true); // Recalculate container's height with new result
 
-				if (scrollThreshold >= bottomOfResultsContainer && resultsContainer.is(':visible')) { // If the user is past the scroll threshold
+				if (scrollThreshold >= bottomOfResultsContainer && $resultsContainer.is(':visible')) { // If the user is past the scroll threshold
 					_this.fadeInResult($result); // Fade the result in
 					resultsSetItemsLoaded++; // Move to the next result
 				} else {
@@ -576,7 +579,6 @@ var chapman = chapman || {};
 		},
 
 		switchDiscoverMotivation: function (el) {
-			var _this = this;
 
 			if (!(el.hasClass(activeClass))) {
 				var motivation = el.data('motivation'),
@@ -612,8 +614,6 @@ var chapman = chapman || {};
 
 					});
 
-					_this.mobileScrollToTarget(dap.discover.$interests); // Scroll to interests on mobile
-
 				});
 
 			}
@@ -636,7 +636,6 @@ var chapman = chapman || {};
 		},
 
 		switchDiscoverInterest: function (el) {
-			var _this = this;
 
 			if (!(el.hasClass(activeClass))) {
 				var interest = el.data('interest');
@@ -651,7 +650,6 @@ var chapman = chapman || {};
 				el.find('input').prop('checked', true); // Make sure the interest's input is checked if it's not already
 
 				lazyLoadingPaused = false;
-				_this.mobileScrollToTarget(dap.discover.$results); // Scroll to results on mobile
 
 			}
 
@@ -673,8 +671,7 @@ var chapman = chapman || {};
 			This function selects/deselects inputs accordingly.
 		*/
 		syncUndergraduateProgramTypes: function (el) {
-			var _this = this,
-				allProgramsID = 'dap-undergraduate-program-all',
+			var allProgramsID = 'dap-undergraduate-program-all',
 				inputID = el.attr('id');
 
 			if (inputID === allProgramsID) {
@@ -682,8 +679,6 @@ var chapman = chapman || {};
 			} else {
 				$('#' + allProgramsID).prop('checked', false);
 			}
-
-			_this.mobileScrollToTarget(dap.undergraduate.$interests); // Scroll to interests on mobile
 
 		},
 
@@ -693,8 +688,7 @@ var chapman = chapman || {};
 			This function selects/deselects inputs accordingly.
 		*/
 		syncGraduateProgramTypes: function (el) {
-			var _this = this,
-				allProgramsID = 'dap-graduate-program-all',
+			var allProgramsID = 'dap-graduate-program-all',
 				inputID = el.attr('id');
 
 			if (inputID === allProgramsID) {
@@ -702,8 +696,6 @@ var chapman = chapman || {};
 			} else {
 				$('#' + allProgramsID).prop('checked', false);
 			}
-
-			_this.mobileScrollToTarget(dap.graduate.$filterTypes); // Scroll to school and keyword filters on mobile
 
 		},
 
@@ -1199,27 +1191,48 @@ var chapman = chapman || {};
 			return matches ? matches[1] : null;
 		},
 
-		// Used to scroll to different points on mobile views only
-		mobileScrollToTarget: function (target) {
+		// Used to scroll to different points
+		scrollToTarget: function (target) {
+			headerOffset = parseInt($('html').css('padding-top').replace('px', ''));
 
-			if (isMobile) {
-				headerOffset = parseInt($('html').css('padding-top').replace('px', ''));
+			setTimeout(function() {
 
-				setTimeout(function() {
+				isUserScroll = false;
 
-					isUserScroll = false;
+				$('html, body').animate({
+					scrollTop: $(target).offset().top - (headerOffset + 20)
+				}, standardTransitionTime, 'swing', function () {
 
-					$('html, body').animate({
-						scrollTop: $(target).offset().top - (headerOffset + 20)
-					}, standardTransitionTime, 'swing', function () {
+					setTimeout(function () {
+						isUserScroll = true;
+					}, 100);
 
-						setTimeout(function () {
-							isUserScroll = true;
-						}, 100);
+				});
 
-					});
+			}, 250);
 
-				}, 250);
+		},
+
+		scrollToResults: function () {
+			var $resultsContainer = $('#js-dap-results-' + activeSection);
+			var resultsContainerHeight = $resultsContainer.outerHeight(true);
+			var windowHeight = $(window).height();
+			var bottomOfWindow = $(window).scrollTop() + windowHeight;
+			var topOfResultsContainer = $resultsContainer.offset().top;
+			var scrollPoint = topOfResultsContainer - (windowHeight - resultsContainerHeight);
+
+			// If the top of the results container isn't completely in view, scroll to it
+			if ((bottomOfWindow - resultsContainerHeight) <= topOfResultsContainer) {
+
+				$('html, body').animate({
+					scrollTop: scrollPoint
+				}, standardTransitionTime, 'swing', function () {
+
+					setTimeout(function () {
+						isUserScroll = true;
+					}, 100);
+
+				});
 
 			}
 

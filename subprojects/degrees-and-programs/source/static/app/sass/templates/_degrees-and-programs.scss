@@ -2,19 +2,19 @@
 // scss-lint:disable IdSelector
 .degrees-and-programs {
 
-	&.ready,
-	.no-js & {
-
-		.dap-feature {
-			opacity: 1;
-		}
-
-	}
-
-	.dap-feature {
-		opacity: 0;
-		transition: opacity $transition-time;
-	}
+	// &.ready,
+	// .no-js & {
+	//
+	// 	.dap-feature {
+	// 		opacity: 1;
+	// 	}
+	//
+	// }
+	//
+	// .dap-feature {
+	// 	opacity: 0;
+	// 	transition: opacity $transition-time;
+	// }
 
 }
 // scss-lint:enable IdSelector
