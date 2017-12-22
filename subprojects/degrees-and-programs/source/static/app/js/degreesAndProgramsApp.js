@@ -32,8 +32,8 @@ var chapman = chapman || {};
 		isFormChangeEvent = false,
 		hashChangesActive = false,
 		isMobile = Modernizr.mq('(max-width: 1023px)'),
-		omniNavHeight = $('#cu_nav').outerHeight(true),
 		scrollPosition = $(window).scrollTop(),
+		headerOffset = parseInt($('html').css('padding-top').replace('px', '')),
 
 		dap = {
 
@@ -387,6 +387,7 @@ var chapman = chapman || {};
 			var bottomOfResultsContainer;
 			var windowHeight = $(window).height();
 			var bottomOfWindow = scrollPosition + windowHeight;
+			var scrollThreshold = bottomOfWindow + (windowHeight * 0.33);
 			var result = $(resultsSetItems[resultsSetItemsLoaded]);
 
 			if (resultsSetItemsLoaded < resultsSetItems.length && result.length) { // If there are results left to load
@@ -395,7 +396,7 @@ var chapman = chapman || {};
 				var $result = $(result); // Store previously appended result as variable
 				bottomOfResultsContainer = resultsContainer.offset().top + resultsContainer.outerHeight(true); // Recalculate container's height with new result
 
-				if (bottomOfWindow >= bottomOfResultsContainer && resultsContainer.is(':visible')) { // If the user is past the scroll threshold
+				if (scrollThreshold >= bottomOfResultsContainer && resultsContainer.is(':visible')) { // If the user is past the scroll threshold
 					_this.fadeInResult($result); // Fade the result in
 					resultsSetItemsLoaded++; // Move to the next result
 				} else {
@@ -532,8 +533,9 @@ var chapman = chapman || {};
 
 						// Wait to do the following until new section is opened
 						var scrollToSectionTime = 1000,
-							scrollPoint,
-							headerOffset = parseInt($('html').css('padding-top').replace('px', ''));
+							scrollPoint;
+
+						headerOffset = parseInt($('html').css('padding-top').replace('px', ''));
 
 						// Scroll to new section
 						if (scrollEl) {
@@ -1201,14 +1203,14 @@ var chapman = chapman || {};
 		mobileScrollToTarget: function (target) {
 
 			if (isMobile) {
-				var offset = 0; // Some extra room if needed
+				headerOffset = parseInt($('html').css('padding-top').replace('px', ''));
 
 				setTimeout(function() {
 
 					isUserScroll = false;
 
 					$('html, body').animate({
-						scrollTop: $(target).offset().top - (omniNavHeight + offset)
+						scrollTop: $(target).offset().top - (headerOffset + 20)
 					}, standardTransitionTime, 'swing', function () {
 
 						setTimeout(function () {
