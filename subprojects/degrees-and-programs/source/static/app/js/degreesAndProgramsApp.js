@@ -193,11 +193,6 @@ var chapman = chapman || {};
 				_this.syncUndergraduateProgramTypes($(this));
 			});
 
-			// Click on Interests in Undergraduate section
-			// dap.undergraduate.$interestsItems.on('change', function () {
-			//
-			// });
-
 			$('form').on('change', function (event) {
 				var form = $(this),
 					target = $(event.target);
@@ -225,20 +220,12 @@ var chapman = chapman || {};
 
 			});
 
-			// $('#dap-undergraduate-school, #dap-undergraduate-keyword').on('change', function () {
-			//
-			// });
-
 			//-------- Graduate Events --------//
 
 			// Click on Program Types buttons in Graduate section
 			dap.graduate.$programTypes.on('change', '.program-type input', function () {
 				_this.syncGraduateProgramTypes($(this));
 			});
-
-			// $('#dap-graduate-school, #dap-graduate-keyword').on('change', function () {
-			//
-			// });
 
 		},
 
