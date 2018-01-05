@@ -8,7 +8,8 @@ var OmniNav2 = (function() {
   // Module Vars
   var $container,
       $utilityNav,
-      $primaryNav;
+      $primaryNav,
+      searchAPI;
 
   // Module Functions
   var initialize = function(container) {
@@ -21,14 +22,16 @@ var OmniNav2 = (function() {
     $('html').addClass('omni-nav-v2');
 
     // Initialize submodules.
-    GoogleCustomSearch.init($container);
+    searchAPI = GoogleCustomSearch.init($container, TABLET_BREAKPOINT);
+    console.log(searchAPI);
     OffCanvasNav.init();
     MobileNav.init();
 
-    // Bind handlers.
-    $('.utility-nav-trigger').on('click', onUtilityNavClick);
-    $utilityNav.find('li.utility-has-dropdown').on('click', onUtilityNavDropdownClick);
+    applyStyleAdjustments();
+    bindEventHandlers();
+  };
 
+  var applyStyleAdjustments = function() {
     // Remove padding from theme version. Have to use js because css will not work.
     // See https://stackoverflow.com/a/1014958/6763239
     $('#theme header').css('padding-bottom', '0px');
@@ -44,6 +47,28 @@ var OmniNav2 = (function() {
     repositionForPersonnelAnchor(params, height);
     repositionForTabAnchor(params, height);
     repositionForCollabsibleAnchor(params, height);
+  };
+
+  var bindEventHandlers = function() {
+    $('.utility-nav-trigger').on('click', onUtilityNavClick);
+    $utilityNav.find('li.utility-has-dropdown').on('click', onUtilityNavDropdownClick);
+
+    var hideSearchResultsTimeoutId = null;
+    $(window).on('resize', function() {
+      clearTimeout(hideSearchResultsTimeoutId);
+      hideSearchResultsTimeoutId = setTimeout(hideSearchResults, 250);
+    });
+  };
+
+  var hideSearchResults = function() {
+    if ( $(window).width() >= TABLET_BREAKPOINT &&
+         searchAPI.primaryNavForm.isOpen() ) {
+      searchAPI.primaryNavForm.hideResults();
+    }
+    else if ( $(window).width() < TABLET_BREAKPOINT &&
+              searchAPI.utilityNavForm.isOpen() ) {
+      searchAPI.utilityNavForm.hideResults();
+    }
   };
 
   var getOmninavHeight = function() {
@@ -333,36 +358,30 @@ var OmniNav2 = (function() {
   var OffCanvasNav = (function() {
 
     // Module Vars
-    var $offCanvasLinks,
-        resizeId;
+    var $offCanvasLinks;
 
     // Module Functions
     var initialize = function() {
       $offCanvasLinks = $('#js-off-canvas-nav > ul > li > a');
       syncLinkWidths();
-      enableMenusToggle();
-
-      $('#js-off-canvas-trigger, #js-close-off-canvas-nav, #js-off-canvas-overlay').on('click', function(event) {
-        event.preventDefault();
-        $('#js-off-canvas-nav-container').toggleClass('open');
-        $('#js-off-canvas-overlay').toggleClass('active');
-        $('body').toggleClass('no-scroll');
-      });
-
-      $('#js-off-canvas-nav-container .toggle').on('click', function() {
-        $(this).parent().toggleClass('open'); // Targets li
-        $(this).parent().find('ul').slideToggle();
-      });
-
-      $(window).on('resize', function() {
-        clearTimeout(resizeId);
-        resizeId = setTimeout(syncLinkWidths, 500);
-      });
+      bindEventHandlers();
     };
 
     var syncLinkWidths = function() {
+      console.log('TODO: syncLinkWidths');
       var width = $('#js-off-canvas-nav > ul').width();
       $offCanvasLinks.css('width', width);
+    };
+
+    var bindEventHandlers = function() {
+      enableMenusToggle();
+      enableOffCanvasNavHandlers();
+
+      var syncLinkWidthsTimeoutId;
+      $(window).on('resize', function() {
+        clearTimeout(syncLinkWidthsTimeoutId);
+        syncLinkWidthsTimeoutId = setTimeout(syncLinkWidths, 500);
+      });
     };
 
     var enableMenusToggle = function() {
@@ -374,7 +393,23 @@ var OmniNav2 = (function() {
         // Slide-toggles the menus.
         $('div#off-canvas-umbrella').toggle('slide');
       });
-    }
+    };
+
+    var enableOffCanvasNavHandlers = function() {
+      var offCanvasSelectors = '#js-off-canvas-trigger, #js-close-off-canvas-nav, #js-off-canvas-overlay';
+
+      $(offCanvasSelectors).on('click', function(event) {
+        event.preventDefault();
+        $('#js-off-canvas-nav-container').toggleClass('open');
+        $('#js-off-canvas-overlay').toggleClass('active');
+        $('body').toggleClass('no-scroll');
+      });
+
+      $('#js-off-canvas-nav-container .toggle').on('click', function() {
+        $(this).parent().toggleClass('open'); // Targets li
+        $(this).parent().find('ul').slideToggle();
+      });
+    };
 
     return {
       init: initialize

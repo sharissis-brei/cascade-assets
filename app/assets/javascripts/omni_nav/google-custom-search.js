@@ -6,10 +6,14 @@ var GoogleCustomSearch = (function() {
       primaryNavGCS,
       $utilitySearch,
       $primarySearch,
-      resizeTimer;
+      resizeTimer,
+      tabletBreakpoint,
+      searchAPI;
 
-  var initialize = function(omniNavContainer) {
+  var initialize = function(omniNavContainer, omniNavTabletBreakpoint) {
     $omniNavContainer = omniNavContainer;
+    tabletBreakpoint = omniNavTabletBreakpoint;
+
     $utilitySearch = $('#utility-nav-search');
     $primarySearch = $('#primary-nav-search');
 
@@ -33,16 +37,22 @@ var GoogleCustomSearch = (function() {
       })();
     }
 
-    $(window).on('resize', onWindowResize);
+    searchAPI = {
+      primaryNavForm: new SearchComponent('#utility-nav-search'),
+      utilityNavForm: new SearchComponent('#primary-nav-search')
+    };
+    return searchAPI;
+
+    //$(window).on('resize', onWindowResize);
   };
 
   var onWindowResize = function() {
     clearTimeout(resizeTimer);
 
     resizeTimer = setTimeout(function(){
-      if($(window).width() >= TABLET_BREAKPOINT && $primarySearch.hasClass('search-results-open')) {
+      if($(window).width() >= tabletBreakpoint && $primarySearch.hasClass('search-results-open')) {
         primaryNavGCS.hideSearchResults();
-      } else if($(window).width() < TABLET_BREAKPOINT && $utilitySearch.hasClass('search-results-open')) {
+      } else if($(window).width() < tabletBreakpoint && $utilitySearch.hasClass('search-results-open')) {
         utilityNavGCS.hideSearchResults();
       }
     }, 250);
@@ -54,6 +64,23 @@ var GoogleCustomSearch = (function() {
     utilityNavGCS.init($utilitySearch);
     primaryNavGCS.init($primarySearch);
   };
+
+  // TODO: This will replace TwoColumnGCS below and be returned by the parent module init method.
+  var SearchComponent = function(parentId) {
+    var isOpen = function() {
+      console.debug('TODO: isOpen:', parentId);
+      return true;
+    };
+
+    var hideResults = function() {
+      console.debug('TODO: hide:', parentId);
+    };
+
+    return {
+      isOpen: isOpen,
+      hideResults: hideResults
+    };
+  }
 
   // two-column GCS(named by Google) layout consists of a search box and separate search results container
   // Layout option is set in the GCS control panel
