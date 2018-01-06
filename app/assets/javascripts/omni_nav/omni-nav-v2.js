@@ -22,10 +22,15 @@ var OmniNav2 = (function() {
     $('html').addClass('omni-nav-v2');
 
     // Initialize submodules.
-    searchAPI = GoogleCustomSearch.init($container, TABLET_BREAKPOINT);
-    console.log(searchAPI);
     OffCanvasNav.init();
     MobileNav.init();
+
+    // Search module has a more exact interface.
+    var omniNavId = $container.attr('id'),
+        primarySearchId = 'primary-nav-search',
+        utilitySearchId = 'utility-nav-search';
+    searchAPI = GoogleCustomSearch.init(omniNavId, primarySearchId, utilitySearchId);
+    console.log(searchAPI);
 
     applyStyleAdjustments();
     bindEventHandlers();
