@@ -67,12 +67,12 @@ var OmniNav2 = (function() {
 
   var hideSearchResults = function() {
     if ( $(window).width() >= TABLET_BREAKPOINT &&
-         searchAPI.primaryNavForm.isOpen() ) {
-      searchAPI.primaryNavForm.hideResults();
+         searchAPI.primaryNav.isOpen() ) {
+      searchAPI.primaryNav.hideResults();
     }
     else if ( $(window).width() < TABLET_BREAKPOINT &&
-              searchAPI.utilityNavForm.isOpen() ) {
-      searchAPI.utilityNavForm.hideResults();
+              searchAPI.utilityNav.isOpen() ) {
+      searchAPI.utilityNav.hideResults();
     }
   };
 

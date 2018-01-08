@@ -18,8 +18,8 @@ var GoogleCustomSearch = (function() {
     loadGoogleSearchIfNotLoaded();
 
     searchAPI = {
-      primaryNavForm: new SearchComponent(primarySearchId),
-      utilityNavForm: new SearchComponent(utilitySearchId)
+      primaryNav: new SearchComponent(primarySearchId),
+      utilityNav: new SearchComponent(utilitySearchId)
     };
     return searchAPI;
   };
@@ -40,14 +40,28 @@ var GoogleCustomSearch = (function() {
     }
   }
 
+  /*
+   * Module initializes two forms, one for mobile and one for non-mobile. This works,
+   * but because one element in Google-generated part of the markup has a hardcoded
+   * ID, it's raising an alert in SiteImprove.
+   *
+   * TODO: create only one search component object and require OmniNav to toggle its
+   * position in the navbar based on device view.
+   */
   var onGoogleSearchInitialized = function() {
-    console.log('onGoogleSearchInitialized');
-    searchAPI.primaryNavForm.init();
-    searchAPI.utilityNavForm.init();
+    searchAPI.primaryNav.init();
+    searchAPI.utilityNav.init();
   };
 
   // TODO: This will replace TwoColumnGCS below and be returned by the parent module init method.
-  var SearchComponent = function(parentId) {
+  /*
+   * This object represents the Search component (search form and results block). It wraps
+   * the Google element[0] and jQuery $elements representing the component in order to
+   * provide an API tailored to OmniNav.
+   *
+   * [0] https://developers.google.com/custom-search/docs/element#cse-element
+   */
+  var SearchComponent = function(containerId) {
     // Constants
     var SEARCH_RESULTS_BASE_URL = "//www.chapman.edu/search-results/index.aspx?",
         ENTER_KEY = 13,
@@ -55,29 +69,36 @@ var GoogleCustomSearch = (function() {
         DEFAULT_FILTER_TEXT = "Search From";
 
     // Internal Attrs
-    var $parent,
+    var $container,
         $searchBox,
         $searchResultsContainer,
         $searchResults,
+        $selectedSearchFilter,
         $moreResultsButton,
-        gcsElement;
+        gcsElement,
+        resizeTimeoutId;
 
     var init = function() {
-      $parent = $('#' + parentId);
-      $searchBox = $parent.find(".cu-search-box");
-      $searchResultsContainer = $parent.find('.search-results-container');
-      $searchResults = $parent.find('.cu-search-results');
+      // jQuery Elements
+      $container = $('#' + containerId);
+      $searchBox = $container.find(".cu-search-box");
+      $searchResultsContainer = $container.find('.search-results-container');
+      $searchResults = $container.find('.cu-search-results');
+      $selectedSearchFilter = $container.find('.selected-search-filter');
       $moreResultsButton = $('<a>', {
         class: "more-results",
         href: SEARCH_RESULTS_BASE_URL,
         title: "See more results",
         text: "See more results"
       });
-      console.log('SearchComponent.init:', $parent);
 
       renderGoogleSearchMarkup();
       applyStyleAdjustments();
       bindEventHandlers();
+
+      // The Google Custom Search Element object. Can only be called after
+      // renderGoogleSearchMarkup.
+      gcsElement = google.search.cse.element.getElement(containerId);
     };
 
     var applyStyleAdjustments = function() {
@@ -89,28 +110,40 @@ var GoogleCustomSearch = (function() {
     };
 
     var bindEventHandlers = function() {
-      $parent.find('.search-filter-option').on('click', onSearchFilterClick);
       $searchBox.find('input.gsc-search-button').on('click', onSearchEnter);
       $searchBox.find('input.gsc-input').on('keyup', onSearchEnter);
+      $container.find('.search-filter-option').on('click', onSearchFilterClick);
       $searchBox.find('.gsc-clear-button').on('click', hideResults);
       $(window).on('resize', onSearchResultsResize);
     };
 
     var isOpen = function() {
-      console.debug('TODO: isOpen:', parentId);
-      return true;
+      console.debug('isOpen:', $container.hasClass('search-results-open'));
+      return $container.hasClass('search-results-open');
     };
 
     var hideResults = function() {
-      console.debug('TODO: hide:', parentId);
+      // Reset results.
+      $searchResultsContainer.hide();
+      $omniNav.removeClass('search-results-open');
+      $container.removeClass('search-results-open');
+      unlockScroll();
+      gcsElement.clearAllResults();
+      $(document).off('keyup', onSearchEsc);
+      $(document).off('click', onDocumentClick);
+
+      // Clear search filters.
+      var hasSearchFilters = $container.find('.search-filter-option').length;
+      if ( hasSearchFilters ) $selectedSearchFilter.text(DEFAULT_FILTER_TEXT);
     };
 
     var renderGoogleSearchMarkup = function() {
+      // Each GCS element must have a unique id to use as its gname.
       var searchBoxDiv = $searchBox[0];
       var searchResultsDiv = $searchResults[0];
 
       var searchBoxConfig = {
-        gname: parentId,
+        gname: containerId,
         div: searchBoxDiv,
         tag: 'searchbox',
         attributes: {
@@ -122,7 +155,7 @@ var GoogleCustomSearch = (function() {
       };
 
       var searchResultsConfig = {
-        gname: parentId,
+        gname: containerId,
         div: searchResultsDiv,
         tag: 'searchresults',
         attributes: {
@@ -131,19 +164,121 @@ var GoogleCustomSearch = (function() {
         }
       };
 
-      // Render Google search markup
-      // https://developers.google.com/custom-search/docs/element#cse-element
       google.search.cse.element.render(searchBoxConfig, searchResultsConfig);
-      gcsElement = google.search.cse.element.getElement(parentId);
     };
 
     var updateSearchResultsHeight = function() {
       $searchResultsContainer.height($(window).height());
     };
 
-    var onSearchFilterClick = function() { console.debug('TODO: onSearchFilterClick:', parentId); };
-    var onSearchEnter = function() { console.debug('TODO: onSearchEnter:', parentId); };
-    var onSearchResultsResize = function() { console.debug('TODO: onSearchResultsResize:', parentId); };
+    var onSearchEnter = function(e) {
+      // The autocomplete container is not present until the user starts typing
+      // Add click event listener the first time it shows up
+      bindAutocomplete();
+
+      var resultsRequested = e.type == 'click' || e.which == ENTER_KEY;
+      var searchTermsPresent = gcsElement.getInputQuery().length > 0;
+      if( resultsRequested && searchTermsPresent ) {
+        showResults();
+      }
+    };
+
+    var onSearchFilterClick = function() {
+      $selectedSearchFilter.text($(this).text());
+    };
+
+    var onSearchResultsResize = function() {
+      clearTimeout(resizeTimeoutId);
+      resizeTimeoutId = setTimeout(updateSearchResultsHeight, 500);
+    };
+
+    var bindAutocomplete = function() {
+      // Use a data flag to track binding.
+      var autocompleteIsBound = $container.data('autocompleteIsBound');
+      var autoCompleteSelector = 'table.gsc-completion-container';
+
+      if ( autocompleteIsBound ) {
+        return;
+      }
+      else {
+        $(autoCompleteSelector).on("click", function() {
+          setTimeout(showResults, 100); // Waits for autocomplete to add to DOM
+        });
+        $container.data('autocompleteIsBound', true)
+      }
+    };
+
+    var showResults = function() {
+      var term = gcsElement.getInputQuery();
+      var moreResultsUrl = SEARCH_RESULTS_BASE_URL + 'q=' + encodeURIComponent(term);
+      var hasSearchFilters = $container.find('.search-filter-option').length;
+
+      // Update More Results button.
+      $moreResultsButton.text('See more results for "' + term + '"');
+      $moreResultsButton.attr('href', moreResultsUrl);
+
+      // Mark results open.
+      $omniNav.addClass('search-results-open');
+      $container.addClass('search-results-open');
+
+      // Bind callbacks.
+      lockScroll();
+      $(document).on('keyup', onSearchEsc);
+      $(document).on('click', onDocumentClick);
+
+      // Trigger a click on the GCS tab corresponding to the search type dropdown selection
+      // unfortunately GCS does not provide a callback for when search results
+      // are returned so must use timeout
+      if ( hasSearchFilters ) {
+        setTimeout(function() {
+          //tabs are created after each search executes so don't cache these selectors
+          $('.gsc-tabsArea .gsc-tabHeader').each(function() {
+            if ($(this).text() == $selectedSearchFilter.text()) {
+              $(this).trigger('click');
+              return false;
+            }
+          });
+
+          $searchResultsContainer.fadeIn(200);
+        }, 500);
+      }
+      else {
+        $searchResultsContainer.fadeIn(200);
+      }
+    };
+
+    var onSearchEsc = function(e) {
+      if ( e.which == ESC_KEY ) { hideResults(); }
+    };
+
+    var onDocumentClick = function(e) {
+      if( $(e.target).is($searchResults, $searchBox) ||
+          $searchResults.has(e.target).length ||
+          $searchBox.has(e.target).length ) {
+        return;
+      }
+      hideResults();
+    };
+
+    var lockScroll = function() {
+      // lock scroll position, but retain settings for later
+      var xLeft = window.pageXOffset || document.documentElement.scrollLeft || document.body.scrollLeft;
+      var yTop = window.pageYOffset || document.documentElement.scrollTop  || document.body.scrollTop;
+      var scrollPosition = [xLeft, yTop];
+
+      var html = $('html');
+      html.data('scroll-position', scrollPosition);
+      html.data('previous-overflow', html.css('overflow'));
+      html.css('overflow', 'hidden');
+      window.scrollTo(xLeft, yTop);
+    };
+
+    var unlockScroll = function() {
+      var html = $('html');
+      var scrollPosition = html.data('scroll-position');
+      html.css('overflow', 'visible');
+      window.scrollTo(scrollPosition[0], scrollPosition[1]);
+    };
 
     // Returns API
     return {
@@ -156,7 +291,7 @@ var GoogleCustomSearch = (function() {
   // two-column GCS(named by Google) layout consists of a search box and separate search results container
   // Layout option is set in the GCS control panel
   // Each GCS element must have a unique id to use as it's gname
-  var TwoColumnGCS = function() {
+  var __Deprecated__TwoColumnGCS = function() {
     var SEARCH_RESULTS_BASE_URL = "//www.chapman.edu/search-results/index.aspx?",
       ENTER_KEY = 13,
       ESC_KEY = 27,
