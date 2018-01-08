@@ -53,7 +53,6 @@ var GoogleCustomSearch = (function() {
     searchAPI.utilityNav.init();
   };
 
-  // TODO: This will replace TwoColumnGCS below and be returned by the parent module init method.
   /*
    * This object represents the Search component (search form and results block). It wraps
    * the Google element[0] and jQuery $elements representing the component in order to
@@ -118,7 +117,6 @@ var GoogleCustomSearch = (function() {
     };
 
     var isOpen = function() {
-      console.debug('isOpen:', $container.hasClass('search-results-open'));
       return $container.hasClass('search-results-open');
     };
 
@@ -193,19 +191,42 @@ var GoogleCustomSearch = (function() {
     };
 
     var bindAutocomplete = function() {
-      // Use a data flag to track binding.
-      var autocompleteIsBound = $container.data('autocompleteIsBound');
-      var autoCompleteSelector = 'table.gsc-completion-container';
+      // Autocomplete map. This seems very fragile as it requires Google to use
+      // the same hardcorded selector each time. But it is how this was originally coded
+      // and so far has proved reliable so I am keeping it for now.
+      var contextSelectorMap = {
+        // omniNavContext: selector
+        'primary': 'table.gstl_50.gssb_c',
+        'utility': 'table.gstl_51.gssb_c'
+      };
 
-      if ( autocompleteIsBound ) {
-        return;
-      }
-      else {
-        $(autoCompleteSelector).on("click", function() {
-          setTimeout(showResults, 100); // Waits for autocomplete to add to DOM
-        });
-        $container.data('autocompleteIsBound', true)
-      }
+      // Bind only once: use a data flag to track binding.
+      var autoCompleteIsBound = $container.data('autoCompleteIsBound');
+      if ( autoCompleteIsBound ) return;
+
+      // This is required for selecting the Autocomplete block associated with
+      // SearchComponent. Since these are added post-loading by Google and are attached
+      // as absolute elements directly to the body, the parent cannot be deduced
+      // from the object itself. Checked Google API. No accessor. This is unfortunate.
+      var omniNavContext = ( containerId.indexOf("utility") >= 0 ) ? 'utility' : 'primary';
+      var autoCompleteSelector = contextSelectorMap[omniNavContext];
+      $container.data('autoCompleteIsBound', true);
+
+      // Bind callback: when autocomplete option is clicked, show results. Interval
+      // allows time for autoCompleteTable to be added to DOM.
+      var intervalId = setInterval(function() {
+        var $autoCompleteTable = $(autoCompleteSelector).find(".gsc-completion-container");
+        var autoCompleteLoaded = $autoCompleteTable.length > 0;
+
+        if ( autoCompleteLoaded ) {
+          $autoCompleteTable.on("click", onAutoCompleteClick);
+          clearInterval(intervalId);
+        }
+      }, 100);
+    };
+
+    var onAutoCompleteClick = function() {
+      setTimeout(showResults, 100);
     };
 
     var showResults = function() {
