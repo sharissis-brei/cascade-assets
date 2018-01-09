@@ -1,0 +1,108 @@
+<system-data-structure>
+  <text default="Undergraduate" identifier="cat" label="Category" required="true" type="radiobutton">
+    <radio-item value="Undergraduate"/>
+    <radio-item value="Graduate"/>
+  </text>
+  <text identifier="level" label="Degree Level" required="true" type="multi-selector">
+    <selector-item value="Minor"/>
+    <selector-item value="Major"/>
+    <selector-item value="Integrated/4+1"/>
+    <selector-item value="Accelerated 3+2"/>
+    <selector-item value="Post-Baccalaureate"/>
+    <selector-item value="Certificate"/>
+    <selector-item value="Masters"/>
+    <selector-item value="Bridge"/>
+    <selector-item value="Dual/Joint"/>
+    <selector-item value="Doctorate"/>
+    <selector-item value="Credential"/>
+    <selector-item value="Transitional"/>
+  </text>
+  <text identifier="type" label="Degree Type" required="true" type="multi-selector">
+    <selector-item value="BA"/>
+    <selector-item value="BM"/>
+    <selector-item value="BS"/>
+    <selector-item value="BFA"/>
+    <selector-item value="MS"/>
+    <selector-item value="MA"/>
+    <selector-item value="MBA"/>
+    <selector-item value="EMBA"/>
+    <selector-item value="MFA"/>
+    <selector-item value="Ed.S/Ed.S + LPCC"/>
+    <selector-item value="LL.M."/>
+    <selector-item value="MMS"/>
+    <selector-item value="PharmD"/>
+    <selector-item value="MA/MA+PPS/MA+LPCC"/>
+    <selector-item value="MM"/>
+    <selector-item value="MLD"/>
+    <selector-item value="JD"/>
+    <selector-item value="DPT"/>
+    <selector-item value="Credential"/>
+    <selector-item value="Ph.D"/>
+    <selector-item value="Minor"/>
+    <selector-item value="Integrated/4+1"/>
+    <selector-item value="Accelerated 3+2"/>
+    <selector-item value="Certificate"/>
+    <selector-item value="Bridge"/>
+    <selector-item value="Post-Baccalaureate"/>
+  </text>
+  <text identifier="title" label="Degree Title" required="true"/>
+  <text identifier="school" label="School Affiliation" required="true" type="checkbox">
+    <checkbox-item value="Argyros School of Business and Economics"/>
+    <checkbox-item value="Attallah College of Educational Studies"/>
+    <checkbox-item value="Dodge College of Film and Media Arts"/>
+    <checkbox-item value="Crean College of Health and Behavioral Sciences"/>
+    <checkbox-item value="Wilkinson College of Arts, Humanities, and Social Sciences"/>
+    <checkbox-item value="College of Performing Arts"/>
+    <checkbox-item value="School of Pharmacy"/>
+    <checkbox-item value="Fowler School of Law"/>
+    <checkbox-item value="Schmid College of Science and Technology"/>
+    <checkbox-item value="School of Communication"/>
+  </text>
+  <text identifier="campus" label="Campus" type="multi-selector">
+    <selector-item value="Orange"/>
+    <selector-item value="Rinker"/>
+  </text>
+  <group identifier="link" label="Link">
+    <text default="Internal Link" identifier="linkType" label="Link Type" type="radiobutton">
+      <radio-item show-fields="link/internalLink" value="Internal Link"/>
+      <radio-item show-fields="link/externalLink" value="External Link"/>
+      <radio-item show-fields="link/fileLink" value="File Link"/>
+    </text>
+    <text identifier="externalLink" label="External Link"/>
+    <asset identifier="internalLink" label="Internal Link" type="page"/>
+    <asset identifier="fileLink" label="File Link" type="file"/>
+    <text identifier="label" label="Label"/>
+  </group>
+  <text identifier="keywords" label="Additional Keywords"/>
+  <asset identifier="image" label="Image (optional)" type="file"/>
+  <text help-text="Alternate text to describe image (required)" identifier="altText" label="Image Alt-Text"/>
+  <text identifier="desc" label="Short Description" wysiwyg="true"/>
+  <text identifier="motivations" label="Motivations" type="checkbox">
+    <checkbox-item value="Innovating New Solutions"/>
+    <checkbox-item value="Expressing Myself Creatively"/>
+    <checkbox-item value="Helping Other People"/>
+    <checkbox-item value="Experiencing New Places"/>
+    <checkbox-item value="Making Business Decisions"/>
+  </text>
+  <text identifier="interests" label="Interests" type="multi-selector">
+    <selector-item value="Analytical Thinking"/>
+    <selector-item value="Art &amp; Culture"/>
+    <selector-item value="Business Leaders"/>
+    <selector-item value="Global Leadership"/>
+    <selector-item value="Humanities &amp; Education"/>
+    <selector-item value="Health &amp; Human Services"/>
+    <selector-item value="Liberal Arts"/>
+    <selector-item value="Marketing &amp; Communication"/>
+    <selector-item value="Mind &amp; Body"/>
+    <selector-item value="Movies &amp; Television"/>
+    <selector-item value="Performing Arts"/>
+    <selector-item value="Science &amp; Technology"/>
+    <selector-item value="Science in Action"/>
+    <selector-item value="Social Change"/>
+    <selector-item value="Social Good"/>
+    <selector-item value="Tech Innovators"/>
+    <selector-item value="The Business World"/>
+    <selector-item value="Visual &amp; Studio Arts"/>
+    <selector-item value="Writing"/>
+  </text>
+</system-data-structure>
