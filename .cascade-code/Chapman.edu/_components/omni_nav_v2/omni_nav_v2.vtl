@@ -143,7 +143,7 @@
   #set ( $umbrellaFolder = $_.locateFolder($umbrellaDirectoryPath) )
 
   #foreach( $childAsset in $umbrellaFolder.children )
-    ## When the 'Hide from navigation' box is not checked, and it has never been checked, the metadata 
+    ## When the 'Hide from navigation' box is not checked, and it has never been checked, the metadata
     ## field doesn't exist for that asset. When the box is not checked, but it was at one point, it exists with a value of ''.
     ## See Github issue: https://github.com/chapmanu/cascade-assets/issues/262
     ## By default, set visibility to false
@@ -153,14 +153,14 @@
       #set ( $folderVisible = $childAsset.metadata.getDynamicField('Hide from navigation').value != "Yes" )
       #set ( $folderIndexPage = $_.locatePage("${childAsset.path}/index" ) )
       #set ( $folderIndexVisible = $folderIndexPage.metadata.getDynamicField('Hide from navigation').value != "Yes" )
-      
+
       #if ( $folderIndexVisible && $folderVisible )
           #set ( $isVisibleChild = true )
       #end
     #elseif ( $childAsset.assetType == 'page' && ($childAsset.name != 'index') )
       #set ( $isVisibleChild = $childAsset.metadata.getDynamicField('Hide from navigation').value != "Yes" )
     #end
-    
+
     #if ( $isVisibleChild )
       #set ( $discard = $umbrellaAssets.add($childAsset) )
     #end
@@ -718,7 +718,7 @@
 
   #if ( $assetType == 'page' )
     <li><a href="${asset.path}">${_EscapeTool.xml($asset.metadata.displayName)}</a></li>
-  
+
   #elseif ( $assetType == 'folder' )
     ## Collect folder's visible children.
     #set ( $visibleChildren = [] )
@@ -731,7 +731,7 @@
           #set ( $folderVisible = $childAsset.metadata.getDynamicField('Hide from navigation').value != "Yes" )
           #set ( $folderIndexPage = $_.locatePage("${childAsset.path}/index" ) )
           #set ( $folderIndexVisible = $folderIndexPage.metadata.getDynamicField('Hide from navigation').value != "Yes" )
-          
+
           #if ( $folderIndexVisible && $folderVisible )
               #set ( $isVisibleChild = true )
           #end
@@ -743,11 +743,11 @@
           #set ( $discard = $visibleChildren.add($childAsset) )
       #end
     #end
-  
+
     ## Link for folder. Include drop-down if folder has visible children.
     <li>
       <a href="${asset.path}/index">${_EscapeTool.xml($asset.metadata.displayName)}</a>
-  
+
       #if ( $visibleChildren.size() > 0 )
         #buildToggleIcon()
         <ul>
@@ -769,7 +769,7 @@
     <span>
       <svg version="1.1" xmlns="http://www.w3.org/2000/svg" width="32" height="32" viewBox="0 0 512 512">
         <title></title>
-        <g id="icomoon-ignore"></g>
+        <g class="icomoon-ignore"></g>
         <path d="M480 224h-192v-192h-64v192h-192v64h192v192h64v-192h192z"></path>
       </svg>
     </span>
@@ -780,7 +780,7 @@
   <span class="close" id="js-close-off-canvas-nav">
     <svg version="1.1" xmlns="http://www.w3.org/2000/svg" width="13" height="13" viewBox="0 0 512 512">
       <title></title>
-      <g id="icomoon-ignore"></g>
+      <g class="icomoon-ignore"></g>
       <path d="M446.627 110.627l-45.254-45.254-145.373 145.372-145.373-145.372-45.254 45.253 145.373 145.374-145.373 145.373 45.254 45.254 145.373-145.373 145.373 145.373 45.254-45.255-145.372-145.372z"></path>
     </svg>
   </span>
