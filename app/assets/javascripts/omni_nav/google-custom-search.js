@@ -87,7 +87,6 @@ var GoogleCustomSearch = (function() {
       $moreResultsButton = $('<a>', {
         class: "more-results",
         href: SEARCH_RESULTS_BASE_URL,
-        title: "See more results",
         text: "See more results"
       });
 
