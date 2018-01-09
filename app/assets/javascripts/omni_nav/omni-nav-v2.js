@@ -30,7 +30,6 @@ var OmniNav2 = (function() {
         primarySearchId = 'primary-nav-search',
         utilitySearchId = 'utility-nav-search';
     searchAPI = GoogleCustomSearch.init(omniNavId, primarySearchId, utilitySearchId);
-    console.log(searchAPI);
 
     applyStyleAdjustments();
     bindEventHandlers();
@@ -230,15 +229,20 @@ var OmniNav2 = (function() {
       }
 
       // If no name selector, look for ID selector.
-      if (!$target.length) {
+      if ( !$target.length ) {
         $target = $(idSelector);
+      }
+
+      // Still no target? Return or we get an error below.
+      if ( !$target.length ) {
+        return;
       }
 
       setTimeout(function(){
         $('html, body').stop().animate({
-          scrollTop:$target.offset().top - omninavHeight
-        },1000);
-      },250);
+          scrollTop: $target.offset().top - omninavHeight
+        }, 1000);
+      }, 250);
     };
 
     if (typeof urlHash === 'string') repositionAnchorsFromUrl();
@@ -373,7 +377,6 @@ var OmniNav2 = (function() {
     };
 
     var syncLinkWidths = function() {
-      console.log('TODO: syncLinkWidths');
       var width = $('#js-off-canvas-nav > ul').width();
       $offCanvasLinks.css('width', width);
     };
