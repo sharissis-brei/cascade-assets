@@ -214,6 +214,12 @@ var OmniNav2 = (function() {
       // Pull anchor identifer from URL hash.
       var anchorIdentifer = urlHash.slice(1);
 
+      // There will only be an anchorIdentifier for url with hash identifier. (e.g.
+      // https://chapman.edu/#container. If no hash, return.)
+      if ( !anchorIdentifer ) {
+        return;
+      }
+
       // Identify target element. It could be a name or id attr.
       var nameSelector = 'a[name=' + anchorIdentifer + ']';
       var idSelector = '#' + anchorIdentifer;
@@ -233,7 +239,8 @@ var OmniNav2 = (function() {
         $target = $(idSelector);
       }
 
-      // Still no target? Return or we get an error below.
+      // If target for anchorIdentifer not found, we can return or else we'll get an
+      // error in animate code below.
       if ( !$target.length ) {
         return;
       }
