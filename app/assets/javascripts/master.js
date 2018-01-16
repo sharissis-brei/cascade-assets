@@ -3,7 +3,30 @@
 
 //= require global
 //= require omni-nav
-//= require omni-nav-v2
+
+//= require_tree ./widgets
+//= require_tree ./components
+//= require_tree ./regions
+//= require_tree ./omni_nav
+
+//= require cascade/analytics
+//= require cascade/carousel
+//= require cascade/collapsed-nav
+//= require cascade/console-log
+//= require cascade/new-home
+//= require cascade/ie7
+//= require cascade/main
+//= require cascade/news-events
+//= require cascade/form-validation
+//= require cascade/query-string
+//= require cascade/rotator
+//= require cascade/search
+//= require cascade/video-overlay
+//= require cascade/weather
+
+// If they're not required, can we delete them and remove these lines?
+// don't require cascade/home
+// don't require cascade/shortcuts
 
 //= require cascade/plugins/amplify
 //= require cascade/plugins/cookie
@@ -17,26 +40,8 @@
 //= require cascade/plugins/respond
 //= require cascade/plugins/super-pager
 //= require cascade/plugins/touchwipe
+
 //= require cascade/level/plugins/tipsy
-
-//= require cascade/analytics
-//= require cascade/carousel
-//= require cascade/collapsed-nav
-//= require cascade/console-log
-// don't require cascade/home
-//= require cascade/new-home
-//= require cascade/ie7
-//= require cascade/main
-//= require cascade/news-events
-//= require cascade/form-validation
-
-//= require cascade/query-string
-//= require cascade/rotator
-//= require cascade/search
-// don't require cascade/shortcuts
-//= require cascade/video-overlay
-//= require cascade/weather
-
 //= require cascade/level/accordion
 //= require cascade/level/degrees-programs
 //= require cascade/level/directory
@@ -58,7 +63,3 @@
 //= require cascade/level/scroll-bar
 //= require cascade/level/social
 //= require cascade/level/sponsor
-
-//= require_tree ./widgets
-//= require_tree ./components
-//= require_tree ./regions
