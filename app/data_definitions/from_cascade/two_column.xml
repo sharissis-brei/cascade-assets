@@ -415,7 +415,7 @@
                         <dropdown-item value="rk-94_110"/>
                         <dropdown-item value="rk-94_113"/>
                         <dropdown-item value="rk-94_127"/>
-                        <dropdown-item value="rinker-health-science-9401-room-128"/>
+                        <dropdown-item value="rinker-health-science-9401-room-131"/>
                         <dropdown-item value="rinker-health-science-9401-room-202"/>
                         <dropdown-item value="rinker-health-science-9401-room-203"/>
                         <dropdown-item value="rinker-health-science-9401-room-236"/>
@@ -499,17 +499,18 @@
                     <dropdown-item value="Admission"/>
                     <dropdown-item value="Alumni"/>
                     <dropdown-item value="Argyros School of Business"/>
+                    <dropdown-item value="Attallah College"/>
                     <dropdown-item value="Campus Services"/>
-                    <dropdown-item value="College of Educational Studies"/>
                     <dropdown-item value="College of Performing Arts"/>
                     <dropdown-item value="Crean College"/>
                     <dropdown-item value="Dodge College"/>
                     <dropdown-item value="Faculty and Staff"/>
                     <dropdown-item value="Families"/>
                     <dropdown-item value="Fowler Law School"/>
-                    <dropdown-item value="School of Pharmacy"/>
                     <dropdown-item value="Research and Institutions"/>
                     <dropdown-item value="Schmid College"/>
+                    <dropdown-item value="School of Communication"/>
+                    <dropdown-item value="School of Pharmacy"/>
                     <dropdown-item value="Students"/>
                     <dropdown-item value="Student Affairs"/>
                     <dropdown-item value="Support Chapman"/>
@@ -537,7 +538,7 @@
                 <text default="All" identifier="school" label="School Affliation" type="dropdown">
                     <dropdown-item value="All"/>
                     <dropdown-item value="Argyros School of Business and Economics"/>
-                    <dropdown-item value="College of Educational Studies"/>
+                    <dropdown-item value="Attallah College of Educational Studies"/>
                     <dropdown-item value="Dodge College of Film and Media Arts"/>
                     <dropdown-item value="Crean College of Health and Behavioral Sciences"/>
                     <dropdown-item value="Wilkinson College of Arts, Humanities, and Social Sciences"/>
@@ -545,6 +546,7 @@
                     <dropdown-item value="School of Pharmacy"/>
                     <dropdown-item value="Fowler School of Law"/>
                     <dropdown-item value="Schmid College of Science and Technology"/>
+                    <dropdown-item value="School of Communication"/>
                 </text>
                 <text identifier="level" label="Degree Level" type="checkbox">
                     <checkbox-item value="Bachelors"/>
@@ -597,7 +599,7 @@
                 <text default="All" identifier="school" label="School Affiliation" type="dropdown">
                     <dropdown-item value="All"/>
                     <dropdown-item value="Argyros School"/>
-                    <dropdown-item value="College of Educational Studies"/>
+                    <dropdown-item value="Attallah College"/>
                     <dropdown-item value="Dodge College"/>
                     <dropdown-item value="Crean College"/>
                     <dropdown-item value="Wilkinson College"/>
