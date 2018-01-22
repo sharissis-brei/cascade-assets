@@ -1,0 +1,120 @@
+<system-data-structure>
+  <text identifier="dept" label="Department or Organization Name" required="true"/>
+  <text default="None" identifier="umbrella" label="Umbrella Group" type="dropdown">
+    <dropdown-item value="None"/>
+    <dropdown-item value="About"/>
+    <dropdown-item value="Academics"/>
+    <dropdown-item value="Admission"/>
+    <dropdown-item value="Alumni"/>
+    <dropdown-item value="Argyros School of Business"/>
+    <dropdown-item value="Campus Services"/>
+    <dropdown-item value="College of Educational Studies"/>
+    <dropdown-item value="College of Performing Arts"/>
+    <dropdown-item value="Crean College"/>
+    <dropdown-item value="Dodge College"/>
+    <dropdown-item value="Faculty and Staff"/>
+    <dropdown-item value="Families"/>
+    <dropdown-item value="Fowler Law School"/>
+    <dropdown-item value="School of Communication"/>
+    <dropdown-item value="School of Pharmacy"/>
+    <dropdown-item value="Research and Institutions"/>
+    <dropdown-item value="Schmid College"/>
+    <dropdown-item value="Student Affairs"/>
+    <dropdown-item value="Students"/>    
+    <dropdown-item value="Support Chapman"/>
+    <dropdown-item value="Wilkinson College"/>
+  </text>
+  <text help-text="if you have multiple blocks, check if this block is your primary one" identifier="main" label="Is this Contact Block the main one for your dept/org?" type="checkbox">
+    <checkbox-item value="Yes"/>
+  </text>
+  <text help-text="example: SMC (for Strategic Marketing and Communications)" identifier="acronym" label="Acronym"/>
+  <text identifier="phone" label="Main Phone"/>
+  <text identifier="email" label="Main Email"/>
+  <group identifier="supplementaryContacts" label="Supplementary Contacts (optional)" multiple="true">
+    <text identifier="label" label="Title or Label"/>
+    <text identifier="phone" label="Phone"/>
+    <text identifier="email" label="Email"/>
+  </group>
+  <text identifier="keywords" label="Search Keywords"/>
+  <text help-text="very brief description of your organization" identifier="desc" label="Short Description" wysiwyg="true"/>
+  <text identifier="hours" label="Hours of Operation" wysiwyg="true"/>
+  <group identifier="mainDeptLink" label="Main Dept Website Link">
+    <text default="Internal Link" identifier="linkType" label="Link Type" type="radiobutton">
+      <radio-item show-fields="mainDeptLink/internalLink" value="Internal Link"/>
+      <radio-item show-fields="mainDeptLink/externalLink" value="External Link"/>
+    </text>
+    <text identifier="externalLink" label="External Link"/>
+    <asset identifier="internalLink" label="Internal Link" type="page"/>
+    <text default="Visit Website" identifier="label" label="Label"/>
+  </group>
+  <group identifier="contactPageLink" label="Contact/Staff Webpage Link">
+    <text default="Internal Link" identifier="linkType" label="Link Type" type="radiobutton">
+      <radio-item show-fields="contactPageLink/internalLink" value="Internal Link"/>
+      <radio-item show-fields="contactPageLink/externalLink" value="External Link"/>
+    </text>
+    <text identifier="externalLink" label="External Link"/>
+    <asset identifier="internalLink" label="Internal Link" type="page"/>
+    <text identifier="label" label="Label"/>
+  </group>
+  <group identifier="address" label="Physical Location (required)">
+    <text identifier="building" label="Building" type="dropdown">
+      <dropdown-item value=""/>
+      <dropdown-item value="Argyros Forum"/>
+      <dropdown-item value="Beckman Hall"/>
+      <dropdown-item value="Bertea Hall"/>
+      <dropdown-item value="Bhathal Student Services Center"/>
+      <dropdown-item value="Demille Hall"/>
+      <dropdown-item value="Doti Hall"/>
+      <dropdown-item value="Kennedy Hall"/>
+      <dropdown-item value="Leatherby Libraries"/>
+      <dropdown-item value="Memorial Hall"/>
+      <dropdown-item value="Moulton Hall"/>
+      <dropdown-item value="Oliphant Hall"/>
+      <dropdown-item value="Smith Hall"/>
+      <dropdown-item value="Wilkinson Hall"/>
+    </text>
+    <text help-text="Can be street address or simply room number of selected building above" identifier="line" label="Address (or Room Number)" required="true"/>
+    <text identifier="line2" label="Address Line 2"/>
+    <text identifier="city" label="City"/>
+    <text identifier="state" label="State / Province"/>
+    <text identifier="country" label="Country"/>
+    <text identifier="zip" label="Zip / Postal code"/>
+    <text identifier="map" label="Link to Map"/>
+  </group>
+  <text default="main campus in Orange" identifier="mailingAddrType" label="Mailing Address" type="radiobutton">
+    <radio-item value="main campus in Orange"/>
+    <radio-item value="Rinker campus in Irvine"/>
+    <radio-item show-fields="mAddress" value="Custom address"/>
+  </text>
+  <group identifier="mAddress" label="Mailing Address">
+    <text identifier="line" label="Address Line 1" required="true"/>
+    <text identifier="line2" label="Address Line 2"/>
+    <text identifier="city" label="City" required="true"/>
+    <text identifier="state" label="State / Province" required="true"/>
+    <text identifier="country" label="Country"/>
+    <text identifier="zip" label="Zip / Postal code"/>
+  </group>
+  <group collapsed="true" identifier="individual" label="Individual Contacts (optional)" multiple="true">
+    <text default="No" identifier="main" label="Main Contact" required="true" type="radiobutton">
+      <radio-item value="Yes"/>
+      <radio-item value="No"/>
+    </text>
+    <asset identifier="photo" label="Photo" type="file"/>
+    <text identifier="name" label="Contact Name"/>
+    <text identifier="title" label="Title or Label"/>
+    <text identifier="phone" label="Phone"/>
+    <text identifier="email" label="Email"/>
+    <text identifier="desc" label="Description" wysiwyg="true"/>
+    <group identifier="link" label="Link">
+      <text default="Internal Link" identifier="linkType" label="Link Type" type="radiobutton">
+        <radio-item show-fields="individual/link/internalLink" value="Internal Link"/>
+        <radio-item show-fields="individual/link/externalLink" value="External Link"/>
+        <radio-item show-fields="individual/link/fileLink" value="File Link"/>
+      </text>
+      <text identifier="externalLink" label="External Link"/>
+      <asset identifier="internalLink" label="Internal Link" type="page"/>
+      <asset identifier="fileLink" label="File Link" type="file"/>
+      <text default="Learn More" identifier="label" label="Label"/>
+    </group>
+  </group>
+</system-data-structure>
