@@ -2,7 +2,7 @@
 * Colors and Mixins
 ***************************************************/
 
-$chapman-red:         #98002e;
+$chapman-red:         #A50034;
 
 $page-bg-color:       #eaeaea;
 
@@ -972,25 +972,6 @@ a.cu_nav_button {
         }
     }
 }
-
-/*.cu-logo {
-    z-index: 99091;
-    left: 62px;
-
-    img, svg {
-        margin: 18px 0;
-        max-height: 29px;
-        max-width: 155px;
-
-        @include bp(m) {
-            margin: 18px 0 18px 12px;
-        }
-
-    }
-
-}*/
-
-
 
 .cu-logo {
     display: block;
