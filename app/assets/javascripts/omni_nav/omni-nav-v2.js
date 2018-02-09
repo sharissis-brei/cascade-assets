@@ -261,7 +261,6 @@ var OmniNav2 = (function() {
     // Set gradual transition for padding adjustments after initial load
     // Timing and duration match slideToggle defaults
     $('html.omni-nav-v2').css('transition', 'padding-top 400ms ease-in-out');
-
     $('.primary-nav-action').toggleClass("utility-open");
 
     if ($(window).width() >= DESKTOP_BREAKPOINT) {
@@ -285,7 +284,7 @@ var OmniNav2 = (function() {
       if ($('.utility-nav-open').length > 0) {
         // Focus needs a slight delay to allow the utility nav to come down all the way
         setTimeout(function(){
-          $('#gsc-i-id1').focus();
+          $('#utility-nav-search').find('.cu-search-box').find('input.gsc-input').focus();
         },300);
       }
     }
@@ -311,7 +310,7 @@ var OmniNav2 = (function() {
       if ($('.utility-nav-open').length > 0) {
         // Focus needs a slight delay to allow the utility nav to come down all the way
         setTimeout(function(){
-          $('#gsc-i-id1').focus();
+          $('#utility-nav-search').find('.cu-search-box').find('input.gsc-input').focus();
         },300);
       }
     }
@@ -320,7 +319,7 @@ var OmniNav2 = (function() {
       $('html.omni-nav-v2').removeClass('utility-nav-open');
       $primaryNav.toggleClass('search-open');
       // Sets focus for search input field
-      if ($('.search-open').length > 0) $('#gsc-i-id2').focus();
+      if ($('.search-open').length > 0) $('#primary-nav-search').find('.cu-search-box').find('input.gsc-input').focus();
     }
 
 

@@ -149,7 +149,6 @@ task build: :environment do
 
     zip rails_asset_path, dist_assets_path
     File.write(dist_cascade_block_path, render(file: 'layouts/cascade-assets.xml', layout: false))
-    FileUtils.cp instructions, dist_folder
   end
 end
 
@@ -182,10 +181,6 @@ end
 
 def dist_cascade_block_path
   Rails.root.join('dist', Rails.env, 'cascade-assets.xml')
-end
-
-def instructions
-  Rails.root.join('lib', 'instructions.txt')
 end
 
 def zip(input_folder, output_name)
