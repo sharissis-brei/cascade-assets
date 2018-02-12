@@ -776,7 +776,7 @@ a.cu_nav_button {
 
         input.persist {
             border-color: #D8D6D0;
-            color: #98002e;
+            color: #a50034;
             @include vendorize(box-shadow, none);
         }
 
@@ -791,7 +791,7 @@ a.cu_nav_button {
             speak: none;
             -webkit-font-smoothing: antialiased;
             -moz-osx-font-smoothing: grayscale;
-            color: #98002e;
+            color: #a50034;
         }
 
     }

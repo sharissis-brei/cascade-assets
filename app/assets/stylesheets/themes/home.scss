@@ -31,7 +31,7 @@ h1, h2, h3, h4, h5, h6 {
       text-decoration: none;
     }
     &.red {
-      background: #98002e no-repeat center;
+      background: #a50034 no-repeat center;
       color: #FFFFFF;
       &:hover {
         background-color: #ba183e;
@@ -85,7 +85,7 @@ h1, h2, h3, h4, h5, h6 {
     z-index: 100;
     display: none;
     @media only screen and (min-width: 480px) {
-      top: 15px;    
+      top: 15px;
     }
     .smallButton {
       color: #FFFFFF;
@@ -326,7 +326,7 @@ h1, h2, h3, h4, h5, h6 {
         line-height: 30px;
       }
     }
-    
+
   }
 }
 
@@ -387,7 +387,7 @@ h1, h2, h3, h4, h5, h6 {
       border-left: 2px solid #ffffff;
       min-height: 375px;
     }
-  }    
+  }
 }
 
 @media only screen and (min-width: 1180px) {
