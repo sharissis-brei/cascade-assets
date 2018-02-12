@@ -1,6 +1,6 @@
 source 'https://rubygems.org'
 
-gem 'autoprefixer-rails'
+gem 'autoprefixer-rails', '~> 6.4'
 gem 'awesome_print'
 gem 'foreman'
 gem 'nokogiri', '>= 1.6.7.rc'
@@ -11,7 +11,7 @@ gem 'tzinfo-data'
 # Bundle edge Rails instead: gem 'rails', github: 'rails/rails'
 gem 'rails', '~> 4.2.7.1'
 # Use SCSS for stylesheets
-gem 'sass-rails', '~> 5.0'
+gem 'sass-rails', '~> 5.0.6'
 # Use Uglifier as compressor for JavaScript assets
 gem 'uglifier', '>= 1.3.0'
 # Use CoffeeScript for .coffee assets and views
