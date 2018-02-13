@@ -4,8 +4,15 @@
 Typically, if a color is used more than once or twice,
 it should be added here as a variable. Changing the value
 of these variables will affect the colors sitewide. */
-$font-stack-body: "proxima-nova", verdana, sans-serif;
-$font-stack-heading: "futura-pt", verdana, sans-serif;
+$futura-regular: "futura-pt", verdana, sans-serif;
+$futura-condensed: "futura-pt-condensed", verdana, sans-serif;
+$proxima-nova: "proxima-nova", verdana, sans-serif;
+$arial: Arial, verdana, sans-serif;
+
+$font-stack-body: $arial;
+$font-stack-heading: $futura-regular;
+$font-stack-heading-condensed: $futura-condensed;
+
 $cu-red: #a50034;
 $cu-red-rgb-transparent: rgba(165, 0, 52, 0.95);
 $cu-dark-red: #851c2b;

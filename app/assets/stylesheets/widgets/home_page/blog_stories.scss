@@ -121,8 +121,8 @@
         width: 43%;
       }
       .details .title {
-        font-size: 30px;
-        line-height: 36px;
+        font-size: 34px;
+        line-height: 34px;
       }
     }
   }
@@ -194,11 +194,6 @@
       img {
         max-width: 100%;
       }
-      .title {
-        margin: 0 20px 0 20px;
-        font-size: 18px;
-        line-height: 22px;
-      }
       .publication_date {
         margin: 5px 0 20px 24px;
         font-size: 12px;
@@ -216,6 +211,9 @@
         max-height: 365px;
       }
       .title {
+        margin: 0 20px 0 20px;
+        font-size: 18px;
+        line-height: 18px;
         .beginning:after {
           content: "Ã¢â‚¬Â¦";
         }

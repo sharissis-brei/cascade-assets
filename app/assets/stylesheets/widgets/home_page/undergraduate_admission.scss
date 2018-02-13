@@ -33,7 +33,7 @@
       .bigstat {
         font-size: 32px;
         line-height: 32px;
-        font-family: $font-stack-heading;
+        font-family: $font-stack-heading-condensed;
         color: #FFFFFF;
         margin-top: 0px;
         font-weight: 800;
@@ -132,13 +132,12 @@
   .homepage {
     ul.statistics li {
       .bigstat {
-        font-size: 52px;
-        line-height: 52px;
+        font-size: 60px;
+        line-height: 60px;
       }
       .label {
         font-size: 22px;
-        line-height: 22px;
-        font-weight: 800;
+        line-height: 24px;
       }
       width: 150px;
       height: 130px;
@@ -165,17 +164,10 @@
   }
   .subheading {
     margin: 0 50px;
-    font-family: 'minion-pro', serif;
-    font-style: italic;
-    font-weight: 400;
     text-align: center;
   }
 }
 
 .skrollr #undergraduateAdmission {
   background-attachment: fixed;
-}
-
-#undergraduateAdmission .subheading {
-  font-weight: 100;
 }

@@ -28,9 +28,6 @@
   }
   .subheading {
     margin: 0 15px;
-    font-family: 'minion-pro', serif;
-    font-style: italic;
-    font-weight: 400;
     text-align: center;
   }
   .actions {
@@ -71,7 +68,7 @@
 }
 
 @media only screen and (min-width: 1250px) {
-  #graduateAdmission { 
+  #graduateAdmission {
     .actions {
       // hardcoded width so buttons stay stacked in desktop view instead of 100%
       width: 470px;

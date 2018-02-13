@@ -373,7 +373,8 @@ p, li {
 }
 
 h1, h2 {
-  font-family: $font-stack-heading;
+  font-family: $font-stack-heading-condensed;
+  font-weight: 800;
 }
 
 h2, h3, h4, h5, h6 {
@@ -382,12 +383,10 @@ h2, h3, h4, h5, h6 {
 
 h1 {
 	font-size: 30px;
-  font-weight: 800;
 }
 
 h2 {
   font-size: 20px;
-  font-weight: 600;
   line-height: 1.2em;
 }
 
