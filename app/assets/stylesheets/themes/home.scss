@@ -22,6 +22,7 @@ h1, h2, h3, h4, h5, h6 {
     border-radius: 3px;
     background: #cfcfcf no-repeat center;
     color: #313131;
+    @include transition(background-color);
     &:hover {
       background-color: #ffffff;
       text-decoration: none;
@@ -31,14 +32,14 @@ h1, h2, h3, h4, h5, h6 {
       text-decoration: none;
     }
     &.red {
-      background: #a50034 no-repeat center;
+      background: $cu-red no-repeat center;
       color: #FFFFFF;
       &:hover {
-        background-color: #ba183e;
+        background-color: #C8003F;
         text-decoration: none;
       }
       &:active {
-        background-color: #7f0026;
+        background-color: #88002B;
         text-decoration: none;
       }
     }

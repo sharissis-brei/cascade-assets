@@ -1,5 +1,19 @@
 #theme {
   @include theme-color-classes($red);
+
+  // Overwrites because the hover/active states don't work with the mixin. -SH
+  .theme-button {
+
+  	&:hover, &:focus {
+  		background-color: $red-button-hover;
+  	}
+
+  	&:active {
+  		background-color: $red-button-active;
+  	}
+
+  }
+
 }
 
 
