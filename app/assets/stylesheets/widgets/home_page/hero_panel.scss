@@ -4,7 +4,7 @@
 
 @media only screen and (min-width: 680px) {
   .homepage #mastheadNavigation {
-    display: block;
+    display: none;
   }
 }
 
@@ -18,6 +18,7 @@
 }
 
 #hero {
+  $shadow-color: rgba(0, 0, 0, 0.5);
   clear: both;
   position: relative;
   overflow: hidden;
@@ -27,7 +28,12 @@
   background-size: cover;
   color: #FFFFFF;
   .button {
+    $shadow: 0.125em 0.25em 0.25em 0 $shadow-color;
     margin-right: 10px;
+    padding: 12px 25px;
+    -webkit-box-shadow: $shadow;
+    -moz-box-shadow: $shadow;
+    box-shadow: $shadow;
   }
   .actions {
     margin-top: 25px;
@@ -39,7 +45,6 @@
   &.dark-bg {
     .heading, .subheading, .excerpt {
       color: #FFFFFF;
-      text-shadow: 1px 1px 1px rgba(0, 0, 0, 0.3);
     }
   }
   &.light-bg {
@@ -56,6 +61,9 @@
       margin-left: auto !important;
       margin-right: 0 !important;
     }
+    .tagline:after {
+      margin: 0.875em 0 0 auto;
+    }
   }
   &.align-center {
     text-align: center;
@@ -63,14 +71,25 @@
       margin-left: auto !important;
       margin-right: auto !important;
     }
+    .tagline:after {
+      margin: 0.875em auto 0;
+    }
+  }
+  .heading, .subheading {
+    display: block;
   }
   .heading {
     margin: 0;
-    padding: 0;
     font-size: 32px;
     line-height: 32px;
     text-transform: none;
     &.uppercase, &.lowercase, &.extended, &.thin {}
+    &.bold {
+      text-transform: uppercase;
+      font-weight: 700;
+      font-size: 36px;
+      line-height: 1;
+    }
   }
   .subheading {
     margin: 0;
@@ -81,6 +100,11 @@
     font-weight: 400;
     font-family: $font-stack-heading;
     &.uppercase, &.lowercase, &.extended, &.thin {}
+    &.bold {
+      @include condensed-heading;
+      font-size: 60px;
+      line-height: 0.9;
+    }
   }
   .excerpt {
     margin: 20px 0;
@@ -114,6 +138,7 @@
     /* W3C */
     filter: progid:DXImageTransform.Microsoft.gradient( startColorstr='#a6000000', endColorstr='#00000000',GradientType=1 );
     /* IE6-9 */
+    display: none;
   }
   #mastheadBackground {
     position: absolute;
@@ -126,6 +151,24 @@
       width: 100%;
       height: auto;
     }
+  }
+  .tagline {
+    font-family: $futura-regular;
+    text-transform: uppercase;
+    font-size: 24px;
+    line-height: 24px;
+    display: inline-block;
+    &:after {
+      content: '';
+      display: block;
+      background-color: $white;
+      width: 75px;
+      height: 2px;
+      margin: 0.875em 0 0;
+    }
+  }
+  .heading, .subheading, .tagline, .excerpt {
+    text-shadow: 0.05em 0.05em 0.1em $shadow-color;
   }
 }
 
@@ -199,6 +242,14 @@
     .heading {
       font-size: 48px;
       line-height: 48px;
+      &.bold {
+        font-size: 48px;
+      }
+    }
+    .subheading {
+      &.bold {
+        font-size: 80px;
+      }
     }
   }
 }
@@ -206,10 +257,33 @@
 @media only screen and (min-width: 1024px) {
   #hero {
     .heading {
+      &.uppercase, &.lowercase, &.extended {}
+      &.thin {
+        // font-size: 62px;
+        // line-height: 62px;
+      }
+      &.bold {
+        font-size: 72px;
+      }
+    }
+    .subheading {
+      &.uppercase, &.lowercase, &.extended, &.thin {}
+      &.bold {
+        font-size: 120px;
+      }
+    }
+    #mastheadContent {
       padding-top: 70px;
+    }
+  }
+}
+
+@media only screen and (min-width: 1180px) {
+  #hero {
+    .heading {
       font-size: 60px;
       line-height: 60px;
-      &.uppercase, &.lowercase, &.extended {}
+      &.big800, &.lowercase, &.extended {}
       &.thin {
         // font-size: 62px;
         // line-height: 62px;
@@ -218,23 +292,14 @@
     .subheading {
       font-size: 40px;
       line-height: 48px;
-      &.uppercase, &.lowercase, &.extended, &.thin {}
-    }
-  }
-}
-
-@media only screen and (min-width: 1180px) {
-  #hero {
-    .heading {
-      padding-top: 100px;
-      &.big800, &.lowercase, &.extended {}
-      &.thin {
-        // font-size: 62px;
-        // line-height: 62px;
-      }
-    }
-    .subheading {
       &.big800, &.lowercase, &.extended, &.thin {}
+    }
+    #mastheadContent {
+      padding-top: 100px;
+    }
+    .tagline {
+      font-size: 30px;
+      line-height: 30px;
     }
   }
 }
