@@ -256,11 +256,11 @@ a {
 }
 a:link, p.source a:link,
 a:visited, p.source a:visited {
-    color: #a82439;
+    color: #C8003F;
     border-bottom: none;
 }
 a:hover, p.source a:hover {
-    color: #c52b43;
+    color: #88002B;
     border-bottom: none;
 }
 
@@ -681,7 +681,7 @@ section li{
 
 .newsEventsNav li {
     background-color: #cfcfcf;
-    border-bottom; 1px solid #c1c1c1;
+    border-bottom: 1px solid #c1c1c1;
     font-size: 1.1em;
     font-style: normal;
     float: left;
