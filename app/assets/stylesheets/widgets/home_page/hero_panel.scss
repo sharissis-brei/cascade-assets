@@ -70,7 +70,6 @@
     font-size: 32px;
     line-height: 32px;
     text-transform: none;
-    font-weight: 800;
     &.uppercase, &.lowercase, &.extended, &.thin {}
   }
   .subheading {
@@ -80,7 +79,7 @@
     line-height: 32px;
     text-transform: none;
     font-weight: 400;
-    font-family: $futura-regular;
+    font-family: $font-stack-heading;
     &.uppercase, &.lowercase, &.extended, &.thin {}
   }
   .excerpt {
@@ -186,7 +185,7 @@
         letter-spacing: 4px;
       }
       &.thin {
-        // font-weight: 100;
+        font-weight: 100;
       }
     }
   }

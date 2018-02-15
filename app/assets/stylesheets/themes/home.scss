@@ -15,6 +15,7 @@ h1, h2, h3, h4, h5, h6 {
 }
 
 .homepage {
+  font-family: $font-stack-body-new;
   a.button {
     display: inline-block;
     padding: 15px 25px;
@@ -248,7 +249,7 @@ h1, h2, h3, h4, h5, h6 {
       -moz-box-sizing: border-box;
       box-sizing: border-box;
       h3 {
-        font-family: $font-stack-heading-condensed;
+        font-family: $font-stack-heading-new;
         font-weight: 800;
         padding: 0;
         margin: 0 0 10px 0;
@@ -263,6 +264,15 @@ h1, h2, h3, h4, h5, h6 {
         margin: 0 0 15px 0;
       }
     }
+  }
+  h1, h2 {
+    font-family: $font-stack-heading-new;
+  }
+  h1 {
+    font-weight: 800;
+  }
+  h2 {
+    font-weight: 600;
   }
 }
 

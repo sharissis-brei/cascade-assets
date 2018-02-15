@@ -9,9 +9,10 @@ $futura-condensed: "futura-pt-condensed", verdana, sans-serif;
 $proxima-nova: "proxima-nova", verdana, sans-serif;
 $arial: Arial, verdana, sans-serif;
 
-$font-stack-body: $arial;
+$font-stack-body: $proxima-nova;
+$font-stack-body-new: $arial;
 $font-stack-heading: $futura-regular;
-$font-stack-heading-condensed: $futura-condensed;
+$font-stack-heading-new: $futura-condensed;
 
 $cu-red: #a50034;
 $cu-red-rgb-transparent: rgba(165, 0, 52, 0.95);
