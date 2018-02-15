@@ -52,9 +52,6 @@ body {
   &.personnel .main {
 	  margin-left: 0;
 	}
-  &.new-font-theme {
-    font-family: $font-stack-body-new;
-  }
 }
 
 article, aside, details, figcaption, figure, footer, header, hgroup, nav, section {
@@ -389,11 +386,11 @@ p, li {
   @include paragraph;
 }
 
-h1, h2 {
+h1, h2, h3 {
   font-family: $font-stack-heading;
 }
 
-h3, h4, h5, h6 {
+h4, h5, h6 {
   font-weight: 200;
 }
 
@@ -424,4 +421,8 @@ h4 {
 h5 {
   font-size: 14px;
   font-weight: 500;
+}
+
+.new-font-theme {
+  font-family: $font-stack-body-new;
 }

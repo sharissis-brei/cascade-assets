@@ -19,8 +19,7 @@
 
 #graduateAdmission {
   .heading {
-    font-weight: 400;
-    text-transform: uppercase;
+    @include condensed-heading;
     text-align: center;
     span {
       display: block;

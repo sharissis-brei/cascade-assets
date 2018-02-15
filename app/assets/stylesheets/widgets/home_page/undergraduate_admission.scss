@@ -158,13 +158,14 @@
     margin: 0 auto;
   }
   .heading {
-    font-weight: 400;
-    text-transform: uppercase;
+    @include condensed-heading;
     text-align: center;
   }
   .subheading {
     margin: 0 50px;
     text-align: center;
+    font-size: 35px; // To fit all text on one line -SH
+    line-height: 42px;
   }
 }
 
