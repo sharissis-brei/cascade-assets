@@ -1,6 +1,7 @@
 var GoogleCustomSearch = (function() {
   var GCS_ENGINE_ID = '015856566681218627934:2ndbiubovo4';
   var GCS_SOURCE = location.protocol + '//www.google.com/cse/cse.js?cx=' + GCS_ENGINE_ID;
+  var TABLET_BREAKPOINT = 768; //px
 
   var $omniNav,
       searchAPI;
@@ -49,8 +50,12 @@ var GoogleCustomSearch = (function() {
    * position in the navbar based on device view.
    */
   var onGoogleSearchInitialized = function() {
-    searchAPI.primaryNav.init();
-    searchAPI.utilityNav.init();
+    if ($(window).width() >= TABLET_BREAKPOINT) {
+      searchAPI.utilityNav.init();
+    }
+    else {
+      searchAPI.primaryNav.init();
+    }
   };
 
   /*
