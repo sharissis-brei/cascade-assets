@@ -410,7 +410,9 @@ var OmniNav2 = (function() {
     };
 
     var enableOffCanvasNavHandlers = function() {
-      var offCanvasSelectors = '#js-off-canvas-trigger, #js-close-off-canvas-nav, #js-off-canvas-overlay';
+      // Selector for off canvas close can't be an ID because branded pages have it in 2 places
+      // SiteImprove reports duplicate IDs
+      var offCanvasSelectors = '#js-off-canvas-trigger, .js-close-off-canvas-nav, #js-off-canvas-overlay';
 
       $(offCanvasSelectors).on('click', function(event) {
         event.preventDefault();
