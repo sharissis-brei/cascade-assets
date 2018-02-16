@@ -42,12 +42,9 @@ var GoogleCustomSearch = (function() {
   }
 
   /*
-   * Module initializes two forms, one for mobile and one for non-mobile. This works,
-   * but because one element in Google-generated part of the markup has a hardcoded
-   * ID, it's raising an alert in SiteImprove.
-   *
-   * TODO: create only one search component object and require OmniNav to toggle its
-   * position in the navbar based on device view.
+   * Module initializes one form based on window size. This reduces the number
+   * of accessibility errors/alerts caused by Google Custom search code that
+   * we can't change.
    */
   var onGoogleSearchInitialized = function() {
     if ($(window).width() >= TABLET_BREAKPOINT) {
@@ -195,31 +192,16 @@ var GoogleCustomSearch = (function() {
     };
 
     var bindAutocomplete = function() {
-      // Autocomplete map. This seems very fragile as it requires Google to use
-      // the same hardcorded selector each time. But it is how this was originally coded
-      // and so far has proved reliable so I am keeping it for now.
-      var contextSelectorMap = {
-        // omniNavContext: selector
-        'primary': 'table.gstl_50.gssb_c',
-        'utility': 'table.gstl_51.gssb_c'
-      };
-
       // Bind only once: use a data flag to track binding.
       var autoCompleteIsBound = $container.data('autoCompleteIsBound');
       if ( autoCompleteIsBound ) return;
 
-      // This is required for selecting the Autocomplete block associated with
-      // SearchComponent. Since these are added post-loading by Google and are attached
-      // as absolute elements directly to the body, the parent cannot be deduced
-      // from the object itself. Checked Google API. No accessor. This is unfortunate.
-      var omniNavContext = ( containerId.indexOf("utility") >= 0 ) ? 'utility' : 'primary';
-      var autoCompleteSelector = contextSelectorMap[omniNavContext];
       $container.data('autoCompleteIsBound', true);
 
       // Bind callback: when autocomplete option is clicked, show results. Interval
       // allows time for autoCompleteTable to be added to DOM.
       var intervalId = setInterval(function() {
-        var $autoCompleteTable = $(autoCompleteSelector).find(".gsc-completion-container");
+        var $autoCompleteTable = $(".gsc-completion-container");
         var autoCompleteLoaded = $autoCompleteTable.length > 0;
 
         if ( autoCompleteLoaded ) {
