@@ -746,7 +746,7 @@
       <a href="${asset.path}/index">${_EscapeTool.xml($asset.metadata.displayName)}</a>
 
       #if ( $visibleChildren.size() > 0 )
-        #buildToggleIcon(${_EscapeTool.xml($asset.metadata.displayName)})
+        #buildToggleIcon($asset.metadata.displayName)
         <ul>
           #foreach ( $child in $visibleChildren )
             #if ( $child.assetType == "page" )
@@ -765,7 +765,7 @@
   <span class="toggle">
     <span>
       <svg version="1.1" xmlns="http://www.w3.org/2000/svg" width="32" height="32" viewBox="0 0 512 512">
-        <title>Toggle ${displayName}</title>
+        <title>Toggle ${_EscapeTool.xml($displayName)}</title>
         <path d="M480 224h-192v-192h-64v192h-192v64h192v192h64v-192h192z"></path>
       </svg>
     </span>
