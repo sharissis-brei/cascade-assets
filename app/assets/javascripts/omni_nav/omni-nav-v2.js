@@ -25,11 +25,21 @@ var OmniNav2 = (function() {
     OffCanvasNav.init();
     MobileNav.init();
 
-    // Search module has a more exact interface.
     var omniNavId = $container.attr('id'),
         primarySearchId = 'primary-nav-search',
         utilitySearchId = 'utility-nav-search';
-    searchAPI = GoogleCustomSearch.init(omniNavId, primarySearchId, utilitySearchId);
+
+    /*
+     * We only initialize one form based on window size. This reduces the number
+     * of accessibility errors/alerts caused by Google Custom search code that
+     * we can't change.
+     */
+    if ($(window).width() >= TABLET_BREAKPOINT) {
+      searchAPI = GoogleCustomSearch.init(omniNavId, utilitySearchId);
+    }
+    else {
+      searchAPI = GoogleCustomSearch.init(omniNavId, primarySearchId);
+    }
 
     applyStyleAdjustments();
     bindEventHandlers();
@@ -41,7 +51,6 @@ var OmniNav2 = (function() {
     $('#theme header').css('padding-bottom', '0px');
 
     // Removes space between mastheads and omninav
-    // Only applicable to omninav v2
     $('.bigMasthead').find('header').css('margin-top', '0px');
     $('.bigMasthead').find('header').css('margin-bottom', '0px');
 
@@ -65,13 +74,8 @@ var OmniNav2 = (function() {
   };
 
   var hideSearchResults = function() {
-    if ( $(window).width() >= TABLET_BREAKPOINT &&
-         searchAPI.primaryNav.isOpen() ) {
-      searchAPI.primaryNav.hideResults();
-    }
-    else if ( $(window).width() < TABLET_BREAKPOINT &&
-              searchAPI.utilityNav.isOpen() ) {
-      searchAPI.utilityNav.hideResults();
+    if ( searchAPI.isOpen() ) {
+      searchAPI.hideResults();
     }
   };
 

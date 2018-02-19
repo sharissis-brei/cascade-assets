@@ -1,12 +1,11 @@
 var GoogleCustomSearch = (function() {
   var GCS_ENGINE_ID = '015856566681218627934:2ndbiubovo4';
   var GCS_SOURCE = location.protocol + '//www.google.com/cse/cse.js?cx=' + GCS_ENGINE_ID;
-  var TABLET_BREAKPOINT = 768; //px
 
   var $omniNav,
       searchAPI;
 
-  var initialize = function(omniNavId, primarySearchId, utilitySearchId) {
+  var initialize = function(omniNavId, searchBoxId) {
     $omniNav = $('#' + omniNavId);
 
     // Google Search JavaScript API
@@ -18,10 +17,7 @@ var GoogleCustomSearch = (function() {
 
     loadGoogleSearchIfNotLoaded();
 
-    searchAPI = {
-      primaryNav: new SearchComponent(primarySearchId),
-      utilityNav: new SearchComponent(utilitySearchId)
-    };
+    searchAPI = new SearchComponent(searchBoxId);
     return searchAPI;
   };
 
@@ -41,18 +37,8 @@ var GoogleCustomSearch = (function() {
     }
   }
 
-  /*
-   * Module initializes one form based on window size. This reduces the number
-   * of accessibility errors/alerts caused by Google Custom search code that
-   * we can't change.
-   */
   var onGoogleSearchInitialized = function() {
-    if ($(window).width() >= TABLET_BREAKPOINT) {
-      searchAPI.utilityNav.init();
-    }
-    else {
-      searchAPI.primaryNav.init();
-    }
+    searchAPI.init();
   };
 
   /*
