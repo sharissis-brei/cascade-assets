@@ -14,10 +14,10 @@
     overflow: visible;
     z-index: 100;
   }
-  &.homepage #mastheadNavigation {
-    display: none;
+  &.homepage #mastheadNavigation { // Importants added because of display: block inline style -SH
+    display: none !important;
     @include bp(wildcard-min, 680px) {
-      display: none;
+      display: none !important;
     }
   }
   #mastheadNavigation {
