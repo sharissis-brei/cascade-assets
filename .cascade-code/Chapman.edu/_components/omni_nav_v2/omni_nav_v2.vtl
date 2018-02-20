@@ -352,7 +352,7 @@
 #macro( buildGlobalNav )
   <div class="nav-container global-nav">
     <div id="cu-global-nav">
-      <nav>
+      <nav arial-label="global navigation">
         <ul class="global-nav-links">
           #foreach( $link in $globalNavLinks )
             <li class="primary-link">
@@ -401,7 +401,7 @@
 ##
 #macro ( buildUtilityNav )
   <div class="utility-nav">
-    <nav>
+    <nav aria-label="utility navigation bar">
       #buildUtilityNavLinks()
       #buildSearchComponent()
     </nav>
