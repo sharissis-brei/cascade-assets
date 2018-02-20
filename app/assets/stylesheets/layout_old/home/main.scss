@@ -16,9 +16,6 @@
   }
   &.homepage #mastheadNavigation { // Importants added because of display: block inline style -SH
     display: none !important;
-    @include bp(wildcard-min, 680px) {
-      display: none !important;
-    }
   }
   #mastheadNavigation {
     position: absolute;

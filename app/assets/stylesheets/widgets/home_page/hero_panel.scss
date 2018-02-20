@@ -23,7 +23,6 @@
   position: relative;
   overflow: hidden;
   height: 360px;
-  padding: 15px 0 80px 0;
   background: #333333 no-repeat center;
   background-size: cover;
   color: #FFFFFF;
@@ -40,6 +39,8 @@
   }
   #mastheadContent {
     position: relative;
+    top: 50%;
+    transform: translateY(-50%);
     z-index: 20;
   }
   &.dark-bg {
@@ -181,7 +182,6 @@
 @media only screen and (min-width: 780px) {
   #hero {
     height: 400px;
-    padding: 15px 0 150px 0;
     .actions {
       margin-top: 25px;
     }
@@ -258,17 +258,12 @@
   #hero {
     .heading {
       &.uppercase, &.lowercase, &.extended {}
-      &.thin {
-        // font-size: 62px;
-        // line-height: 62px;
-      }
+      &.thin {}
     }
     .subheading {
       &.uppercase, &.lowercase, &.extended, &.thin {}
     }
-    #mastheadContent {
-      padding-top: 70px;
-    }
+    #mastheadContent {}
   }
 }
 
@@ -278,10 +273,7 @@
       font-size: 60px;
       line-height: 60px;
       &.big800, &.lowercase, &.extended {}
-      &.thin {
-        // font-size: 62px;
-        // line-height: 62px;
-      }
+      &.thin {}
       &.bold {
         font-size: 75px;
       }
@@ -294,9 +286,7 @@
         font-size: 130px;
       }
     }
-    #mastheadContent {
-      padding-top: 100px;
-    }
+    #mastheadContent {}
     .tagline {
       font-size: 30px;
       line-height: 30px;
