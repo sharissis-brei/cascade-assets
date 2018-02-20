@@ -245,7 +245,7 @@ h1, h2, h3, h4, h5, h6 {
       -moz-box-sizing: border-box;
       box-sizing: border-box;
       h3 {
-        font-family: $font-stack-heading-new;
+        font-family: $font-stack-heading;
         font-weight: 800;
         padding: 0;
         margin: 0 0 10px 0;
@@ -313,7 +313,7 @@ h1, h2, h3, h4, h5, h6 {
       }
       .third h3 {
         font-size: 24px;
-        line-height: 24px;
+        line-height: 26px;
       }
     }
 
