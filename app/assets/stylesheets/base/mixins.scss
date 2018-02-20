@@ -296,3 +296,9 @@
 		.theme-bg-color-alpha { background-color: rgba(red($primary), green($primary), blue($primary), 0.95); }
 	}
 }
+
+@mixin condensed-heading {
+	font-family: $font-stack-heading-new;
+	font-weight: 800;
+	text-transform: uppercase;
+}
