@@ -190,13 +190,9 @@ h1, h2, h3, h4, h5, h6 {
         color: $grey;
       }
       .heading {
-        // font-size: 22px;
-        // line-height: 28px;
         text-align: center;
       }
       .subheading {
-        // font-size: 18px;
-        // line-height: 18px;
         margin: 0 0 40px 0;
         text-align: center;
       }
@@ -287,13 +283,8 @@ h1, h2, h3, h4, h5, h6 {
         line-height: 34px;
       }
       &.light-bg {
-        .heading {
-          // font-size: 28px;
-          // line-height: 36px;
-        }
+        .heading {}
         .subheading {
-          // font-size: 24px;
-          // line-height: 24px;
           margin: 0 0 75px 0;
           font-weight: 800;
         }
@@ -315,13 +306,8 @@ h1, h2, h3, h4, h5, h6 {
         line-height: 40px;
       }
       &.light-bg {
-        .heading {
-          // font-size: 32px;
-          // line-height: 42px;
-        }
+        .heading {}
         .subheading {
-          // font-size: 26px;
-          // line-height: 38px;
           margin: 0 0 75px 0;
         }
       }
