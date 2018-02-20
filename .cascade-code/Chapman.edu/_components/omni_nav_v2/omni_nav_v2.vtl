@@ -352,7 +352,7 @@
 #macro( buildGlobalNav )
   <div class="nav-container global-nav">
     <div id="cu-global-nav">
-      <nav arial-label="global navigation">
+      <nav aria-label="global navigation">
         <ul class="global-nav-links">
           #foreach( $link in $globalNavLinks )
             <li class="primary-link">
@@ -665,7 +665,7 @@
       <ul>
         <li>
           <a href="/audiences/index">Find information for...</a>
-          #buildToggleIcon("Find Information")
+          #buildToggleIcon("Find Information By Audience")
           <ul>
             <li><a href="/future-students/index">Prospective Students</a></li>
             <li><a href="/students/index">Current Students</a></li>
@@ -677,7 +677,7 @@
         <li><a href="/academics/degrees-and-programs">Degrees &amp; Programs</a></li>
         <li>
           <a href="/about/maps-directions/index">Maps &amp; Directories</a>
-          #buildToggleIcon("Maps &amp; Directories")
+          #buildToggleIcon("Maps and Directories")
           <ul>
             <li><a href="/about/maps-directions/campus-map/index">Interactive Map</a></li>
             <li><a href="/our-faculty/index">Faculty Directory</a></li>
