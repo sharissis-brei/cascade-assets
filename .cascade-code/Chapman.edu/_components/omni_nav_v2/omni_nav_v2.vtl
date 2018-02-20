@@ -27,29 +27,29 @@
 ## all other vars be derived from those:
 ## [$umbrellaFolderId, $umbrellaLabel]
 ## Current inner array values:
-## [ $umbrellaDirectory, $umbrellaLabel/$umbrellaBrandLabel, $umbrellaClass ]
+## [ $umbrellaDirectory, $umbrellaLabel/$umbrellaBrandLabel ]
 #set ( $umbrellaCategories = [
-  [ 'business', 'Argyros School', 'asbe' ],
-  [ 'education', 'Attallah College', 'education' ],
-  [ 'dodge', 'Dodge College', 'dodge' ],
-  [ 'crean', 'Crean College', 'crean' ],
-  [ 'wilkinson', 'Wilkinson College', 'wilkinson' ],
-  [ 'copa', 'College of Performing Arts', 'copa' ],
-  [ 'pharmacy', 'School of Pharmacy', 'cusp' ],
-  [ 'law', 'Fowler School', 'fowler' ],
-  [ 'scst', 'Schmid College', 'schmid' ],
-  [ 'communication', 'School of Communication', 'soc' ],
-  [ 'about', 'About', 'default' ],
-  [ 'academics', 'Academics', 'default' ],
-  [ 'admission', 'Admission', 'default' ],
-  [ 'alumni', 'Alumni', 'default' ],
-  [ 'campus-services', 'Campus Services', 'default' ],
-  [ 'campus-services/career-development', 'Career', 'default' ],
-  [ 'faculty-staff', 'Faculty and Staff', 'default' ],
-  [ 'families', 'Families', 'default' ],
-  [ 'research', 'Research', 'default' ],
-  [ 'students', 'Students', 'default' ],
-  [ 'support-chapman', 'Support Chapman', 'default' ]
+  [ 'business', 'Argyros School' ],
+  [ 'education', 'Attallah College' ],
+  [ 'dodge', 'Dodge College' ],
+  [ 'crean', 'Crean College' ],
+  [ 'wilkinson', 'Wilkinson College' ],
+  [ 'copa', 'College of Performing Arts' ],
+  [ 'pharmacy', 'School of Pharmacy' ],
+  [ 'law', 'Fowler School' ],
+  [ 'scst', 'Schmid College' ],
+  [ 'communication', 'School of Communication' ],
+  [ 'about', 'About' ],
+  [ 'academics', 'Academics' ],
+  [ 'admission', 'Admission' ],
+  [ 'alumni', 'Alumni' ],
+  [ 'campus-services', 'Campus Services' ],
+  [ 'campus-services/career-development', 'Career' ],
+  [ 'faculty-staff', 'Faculty and Staff' ],
+  [ 'families', 'Families' ],
+  [ 'research', 'Research' ],
+  [ 'students', 'Students' ],
+  [ 'support-chapman', 'Support Chapman' ]
 ])
 
 ##
@@ -64,7 +64,6 @@
 #set ( $umbrellaDirectory = '' )
 #set ( $umbrellaDirectoryPath = '' )
 #set ( $umbrellaLabel = '' )
-#set ( $umbrellaClass = '' )
 #set ( $umbrellaBrandLabel = '' )
 #set ( $umbrellaAssets = [] )
 #set ( $brandClass = '' )
@@ -85,7 +84,6 @@
     #set ( $umbrellaLabel = $pageUmbrellaCategory[1] )
     #set ( $umbrellaBrandLabel = $pageUmbrellaCategory[1] )
 
-    #set ( $umbrellaClass = $pageUmbrellaCategory[2] )
     #set ( $umbrellaDirectoryPath = "/${umbrellaDirectory}" )
     #setUmbrellaAssets()
     #set ( $brandClass = 'branded' )
@@ -544,7 +542,7 @@
     <div class="cu-logo-wrapper">
       #if ( $isUmbrellaCategory )
         <div id="umbrella-logo" class="toggle-logo">
-          <a class="${umbrellaClass} off-logo" href="${umbrellaDirectoryPath}/index" title="${umbrellaBrandLabel}">
+          <a class="off-logo" href="${umbrellaDirectoryPath}/index" title="${umbrellaBrandLabel}">
             <!-- logo set as background image by class -->
             ${umbrellaBrandLabel} Logo
           </a>
