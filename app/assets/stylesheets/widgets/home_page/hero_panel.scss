@@ -84,7 +84,6 @@
     font-size: 32px;
     line-height: 32px;
     text-transform: none;
-    &.uppercase, &.lowercase, &.extended, &.thin {}
     &.bold {
       text-transform: uppercase;
       font-weight: 700;
@@ -100,7 +99,6 @@
     text-transform: none;
     font-weight: 400;
     font-family: $font-stack-heading;
-    &.uppercase, &.lowercase, &.extended, &.thin {}
     &.bold {
       @include condensed-heading;
       font-size: 60px;
@@ -254,26 +252,11 @@
   }
 }
 
-@media only screen and (min-width: 1024px) {
-  #hero {
-    .heading {
-      &.uppercase, &.lowercase, &.extended {}
-      &.thin {}
-    }
-    .subheading {
-      &.uppercase, &.lowercase, &.extended, &.thin {}
-    }
-    #mastheadContent {}
-  }
-}
-
 @media only screen and (min-width: 1180px) {
   #hero {
     .heading {
       font-size: 60px;
       line-height: 60px;
-      &.big800, &.lowercase, &.extended {}
-      &.thin {}
       &.bold {
         font-size: 75px;
       }
@@ -281,12 +264,10 @@
     .subheading {
       font-size: 40px;
       line-height: 48px;
-      &.big800, &.lowercase, &.extended, &.thin {}
       &.bold {
         font-size: 130px;
       }
     }
-    #mastheadContent {}
     .tagline {
       font-size: 30px;
       line-height: 30px;
