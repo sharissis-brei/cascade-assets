@@ -42,10 +42,10 @@ chapman.virtualtour.Overlays = (function ($, overlayJson, window) {
 		$.each(collection, function (index, value) {
 			var overlay = new google.maps.Polygon({
 				path: value,
-				strokeColor: '#98002e',
+				strokeColor: '#a50034',
 				strokeWeight: 2,
 				strokeOpacity: 0.25,
-				fillColor: '#98002e',
+				fillColor: '#a50034',
 				fillOpacity: 0.05,
 				map: chapman.virtualtour.Map.chapmanMap
 			});
@@ -94,7 +94,7 @@ chapman.virtualtour.Overlays = (function ($, overlayJson, window) {
 			}
 
 			$('#map-header, #virtualTour-streetView').fadeIn(500);
-			
+
 		});
 	};
 

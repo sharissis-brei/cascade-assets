@@ -252,15 +252,15 @@ p, li {
 
 a {
     text-decoration: none;
-    color: #98002E;
+    color: #a50034;
 }
 a:link, p.source a:link,
 a:visited, p.source a:visited {
-    color: #a82439;
+    color: #C8003F;
     border-bottom: none;
 }
 a:hover, p.source a:hover {
-    color: #c52b43;
+    color: #88002B;
     border-bottom: none;
 }
 
@@ -311,7 +311,7 @@ a:hover, p.source a:hover {
 .alert{
     margin: 0;
     font-size: large;
-    background-color: #98002E;
+    background-color: #a50034;
     color: #FFFFFF;
     text-align: center;
 }
@@ -681,7 +681,7 @@ section li{
 
 .newsEventsNav li {
     background-color: #cfcfcf;
-    border-bottom; 1px solid #c1c1c1;
+    border-bottom: 1px solid #c1c1c1;
     font-size: 1.1em;
     font-style: normal;
     float: left;
@@ -2521,7 +2521,7 @@ a.infoFor-btn {
         right: 0;
         width: 260px;
         color: white;
-        background-color: #98002E;
+        background-color: #a50034;
         padding:10px;
         height: 100px;
         display:none;
@@ -2558,13 +2558,13 @@ a.infoFor-btn {
     }
 
     .exploration article a:hover, .values article a:hover{
-        color:#98002E !important;
+        color:#a50034 !important;
     }
 
     .videoLink.button{
         display:block;
         padding:5px 10px;
-        background-color:#98002E;
+        background-color:#a50034;
         color:#fff;
         width:110px;
         margin:10px 0 0 0;
@@ -2700,7 +2700,7 @@ a.infoFor-btn {
     }
 
     .creativity article a:hover{
-        color:#98002E !important;
+        color:#a50034 !important;
     }
 
     .global .bg1{

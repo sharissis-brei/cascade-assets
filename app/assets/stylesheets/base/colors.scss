@@ -1,6 +1,6 @@
 /* Standard Colors
 ---------------------------------------- */
-$red:         #98002e;
+$red:         #a50034;
 $black:       #2f2f2f;
 $warm-gray:   #edeade;
 $cool-gray:   #ecebe5;
@@ -79,7 +79,7 @@ $bg-light-gray:      #eaeaea;
 $bg-platinum-gray:   #e5e5e5;
 $bg-silver-gray:     #cfcfcf;
 $bg-off-white:       #f2f2f0;
-$bg-red:             #98002e;
+$bg-red:             #a50034;
 
 
 // Type colors
@@ -91,11 +91,11 @@ $color-yellow:       #cc6700;
 
 
 // CU Brand Colors
-$color-chapman-red:  #98002e;
+$color-chapman-red:  #a50034;
 $color-chapman-blue: #407892;
 $color-chapman-gray: #dad8cf;
 
 
 // Selection colors
-$selection-background: rgba(168,36,57,0.875);
+$selection-background: rgba($cu-red, 0.875);
 $selection-color:    #ffffff;
