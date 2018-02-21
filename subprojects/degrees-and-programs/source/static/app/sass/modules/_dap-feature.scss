@@ -1,8 +1,8 @@
 $palettes: map-merge($palettes, (
-    'dap-feature': (
-        'core': $black,
-        'background': $white
-    )
+	'dap-feature': (
+		'core': $black,
+		'background': $white
+	)
 ));
 
 $dap-feature-background-image-width: rem-calc(1396);
@@ -17,6 +17,7 @@ $dap-feature-background-image-width: rem-calc(1396);
 	background-size: auto;
 	background-position: top center;
 	background-repeat: no-repeat;
+	font-family: Arial, Verdana, sans-serif;
 
 	@include breakpoint($dap-feature-background-image-width) {
 		background-size: 100% auto;
@@ -35,7 +36,7 @@ $dap-feature-background-image-width: rem-calc(1396);
 		.dap-form {
 			pointer-events: none;
 		}
-		
+
 	}
 
 	.dap-feature-inner {
@@ -58,7 +59,7 @@ $dap-feature-background-image-width: rem-calc(1396);
 		.no-js & {
 			display: block;
 		}
-		
+
 	}
 
 	//-------- Defaults for this page --------//
@@ -133,7 +134,7 @@ $dap-feature-background-image-width: rem-calc(1396);
 		}
 
 	}
-	
+
 	button,
 	.button,
 	a {
@@ -219,7 +220,7 @@ $dap-feature-background-image-width: rem-calc(1396);
 			padding: 0;
 			height: auto;
 		}
-		
+
 		&[type="text"],
 		&[type="search"] {
 
@@ -271,7 +272,7 @@ $dap-feature-background-image-width: rem-calc(1396);
 		}
 
 	}
-	
+
 	// scss-lint:disable VendorPrefix
 	::-webkit-input-placeholder {
 		color: $white;
@@ -298,7 +299,7 @@ $dap-feature-background-image-width: rem-calc(1396);
 		position: relative;
 
 		&.custom-select-options-active {
-			
+
 			// scss-lint:disable ImportantRule
 			select,
 			option {

@@ -1,7 +1,7 @@
 /*! jQuery UI - v1.10.3 - 2013-07-19
 * http://jqueryui.com
 * Includes: jquery.ui.core.css, jquery.ui.resizable.css, jquery.ui.button.css, jquery.ui.dialog.css
-* To view and modify this theme, visit http://jqueryui.com/themeroller/?ffDefault=Arial%2Csans-serif&fwDefault=bold&fsDefault=1.0em&cornerRadius=0px&bgColorHeader=%23595858&bgTextureHeader=gloss_wave&bgImgOpacityHeader=35&borderColorHeader=%23595858&fcHeader=%23ffffff&iconColorHeader=%23ffffff&bgColorContent=%23eeeeee&bgTextureContent=highlight_soft&bgImgOpacityContent=100&borderColorContent=%23dddddd&fcContent=%23464545&iconColorContent=%23222222&bgColorDefault=%23f6f6f6&bgTextureDefault=glass&bgImgOpacityDefault=100&borderColorDefault=%23cccccc&fcDefault=%23464545&iconColorDefault=%23464545&bgColorHover=%23e8e8e8&bgTextureHover=glass&bgImgOpacityHover=100&borderColorHover=%23cccccc&fcHover=%2398002e&iconColorHover=%2398002e&bgColorActive=%23ffffff&bgTextureActive=glass&bgImgOpacityActive=65&borderColorActive=%23cccccc&fcActive=%2398002e&iconColorActive=%2398002e&bgColorHighlight=%23ffe45c&bgTextureHighlight=highlight_soft&bgImgOpacityHighlight=75&borderColorHighlight=%23fed22f&fcHighlight=%23363636&iconColorHighlight=%23228ef1&bgColorError=%23b81900&bgTextureError=diagonals_thick&bgImgOpacityError=18&borderColorError=%23cd0a0a&fcError=%23ffffff&iconColorError=%23ffd27a&bgColorOverlay=%23666666&bgTextureOverlay=diagonals_thick&bgImgOpacityOverlay=20&opacityOverlay=50&bgColorShadow=%23000000&bgTextureShadow=flat&bgImgOpacityShadow=10&opacityShadow=20&thicknessShadow=5px&offsetTopShadow=-5px&offsetLeftShadow=-5px&cornerRadiusShadow=5px
+* To view and modify this theme, visit http://jqueryui.com/themeroller/?ffDefault=Arial%2Csans-serif&fwDefault=bold&fsDefault=1.0em&cornerRadius=0px&bgColorHeader=%23595858&bgTextureHeader=gloss_wave&bgImgOpacityHeader=35&borderColorHeader=%23595858&fcHeader=%23ffffff&iconColorHeader=%23ffffff&bgColorContent=%23eeeeee&bgTextureContent=highlight_soft&bgImgOpacityContent=100&borderColorContent=%23dddddd&fcContent=%23464545&iconColorContent=%23222222&bgColorDefault=%23f6f6f6&bgTextureDefault=glass&bgImgOpacityDefault=100&borderColorDefault=%23cccccc&fcDefault=%23464545&iconColorDefault=%23464545&bgColorHover=%23e8e8e8&bgTextureHover=glass&bgImgOpacityHover=100&borderColorHover=%23cccccc&fcHover=%23a50034&iconColorHover=%23a50034&bgColorActive=%23ffffff&bgTextureActive=glass&bgImgOpacityActive=65&borderColorActive=%23cccccc&fcActive=%23a50034&iconColorActive=%23a50034&bgColorHighlight=%23ffe45c&bgTextureHighlight=highlight_soft&bgImgOpacityHighlight=75&borderColorHighlight=%23fed22f&fcHighlight=%23363636&iconColorHighlight=%23228ef1&bgColorError=%23b81900&bgTextureError=diagonals_thick&bgImgOpacityError=18&borderColorError=%23cd0a0a&fcError=%23ffffff&iconColorError=%23ffd27a&bgColorOverlay=%23666666&bgTextureOverlay=diagonals_thick&bgImgOpacityOverlay=20&opacityOverlay=50&bgColorShadow=%23000000&bgTextureShadow=flat&bgImgOpacityShadow=10&opacityShadow=20&thicknessShadow=5px&offsetTopShadow=-5px&offsetLeftShadow=-5px&cornerRadiusShadow=5px
 * Copyright 2013 jQuery Foundation and other contributors Licensed MIT */
 
 /* Layout helpers
@@ -377,13 +377,13 @@ button.ui-button::-moz-focus-inner {
 	border: 1px solid #cccccc;
 	background: #e8e8e8 url(images/ui-bg_glass_100_e8e8e8_1x400.png) 50% 50% repeat-x;
 	font-weight: bold;
-	color: #98002e;
+	color: #a50034;
 }
 .ui-state-hover a,
 .ui-state-hover a:hover,
 .ui-state-hover a:link,
 .ui-state-hover a:visited {
-	color: #98002e;
+	color: #a50034;
 	text-decoration: none;
 }
 .ui-state-active,
@@ -392,12 +392,12 @@ button.ui-button::-moz-focus-inner {
 	border: 1px solid #cccccc;
 	background: #ffffff url(images/ui-bg_glass_65_ffffff_1x400.png) 50% 50% repeat-x;
 	font-weight: bold;
-	color: #98002e;
+	color: #a50034;
 }
 .ui-state-active a,
 .ui-state-active a:link,
 .ui-state-active a:visited {
-	color: #98002e;
+	color: #a50034;
 	text-decoration: none;
 }
 
@@ -475,10 +475,10 @@ button.ui-button::-moz-focus-inner {
 }
 .ui-state-hover .ui-icon,
 .ui-state-focus .ui-icon {
-	background-image: url(images/ui-icons_98002e_256x240.png);
+	background-image: url(images/ui-icons_a50034_256x240.png);
 }
 .ui-state-active .ui-icon {
-	background-image: url(images/ui-icons_98002e_256x240.png);
+	background-image: url(images/ui-icons_a50034_256x240.png);
 }
 .ui-state-highlight .ui-icon {
 	background-image: url(images/ui-icons_228ef1_256x240.png);
