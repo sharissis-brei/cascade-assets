@@ -4,7 +4,7 @@
 
 @media only screen and (min-width: 680px) {
   .homepage #mastheadNavigation {
-    display: block;
+    display: none;
   }
 }
 
@@ -18,28 +18,34 @@
 }
 
 #hero {
+  $shadow-color: rgba(0, 0, 0, 0.5);
   clear: both;
   position: relative;
   overflow: hidden;
-  height: 300px;
-  padding: 15px 0 80px 0;
+  height: 360px;
   background: #333333 no-repeat center;
   background-size: cover;
   color: #FFFFFF;
   .button {
-    margin-right: 10px;
+    $shadow: 0.125em 0.25em 0.25em 0 $shadow-color;
+    margin: 5px;
+    padding: 13px 25px 12px;
+    -webkit-box-shadow: $shadow;
+    -moz-box-shadow: $shadow;
+    box-shadow: $shadow;
   }
   .actions {
     margin-top: 25px;
   }
   #mastheadContent {
     position: relative;
+    top: 50%;
+    transform: translateY(-50%);
     z-index: 20;
   }
   &.dark-bg {
     .heading, .subheading, .excerpt {
       color: #FFFFFF;
-      text-shadow: 1px 1px 1px rgba(0, 0, 0, 0.3);
     }
   }
   &.light-bg {
@@ -56,6 +62,9 @@
       margin-left: auto !important;
       margin-right: 0 !important;
     }
+    .tagline:after {
+      margin: 0.875em 0 0 auto;
+    }
   }
   &.align-center {
     text-align: center;
@@ -63,14 +72,24 @@
       margin-left: auto !important;
       margin-right: auto !important;
     }
+    .tagline:after {
+      margin: 0.875em auto 0;
+    }
+  }
+  .heading, .subheading {
+    display: block;
   }
   .heading {
     margin: 0;
-    padding: 0;
     font-size: 32px;
     line-height: 32px;
     text-transform: none;
-    font-weight: 800;
+    &.bold {
+      text-transform: uppercase;
+      font-weight: 700;
+      font-size: 36px;
+      line-height: 1;
+    }
   }
   .subheading {
     margin: 0;
@@ -78,21 +97,22 @@
     font-size: 32px;
     line-height: 32px;
     text-transform: none;
-    font-weight: 100;
+    font-weight: 400;
+    font-family: $font-stack-heading;
+    &.bold {
+      @include condensed-heading;
+      font-size: 60px;
+      line-height: 0.9;
+    }
   }
   .excerpt {
     margin: 20px 0;
     padding: 0;
-    font-size: 14px;
-    line-height: 16px;
+    font-size: 18px;
+    line-height: 24px;
     max-width: 600px;
     display: none;
-  }
-  .heading {
-    &.uppercase, &.lowercase, &.extended, &.thin {}
-  }
-  .subheading {
-    &.uppercase, &.lowercase, &.extended, &.thin {}
+    font-weight: 400;
   }
   #mastheadGradient {
     position: absolute;
@@ -117,6 +137,7 @@
     /* W3C */
     filter: progid:DXImageTransform.Microsoft.gradient( startColorstr='#a6000000', endColorstr='#00000000',GradientType=1 );
     /* IE6-9 */
+    display: none;
   }
   #mastheadBackground {
     position: absolute;
@@ -130,6 +151,24 @@
       height: auto;
     }
   }
+  .tagline {
+    font-family: $font-stack-heading;
+    text-transform: uppercase;
+    font-size: 24px;
+    line-height: 24px;
+    display: inline-block;
+    &:after {
+      content: '';
+      display: block;
+      background-color: $white;
+      width: 75px;
+      height: 2px;
+      margin: 0.875em 0 0;
+    }
+  }
+  .heading, .subheading, .tagline, .excerpt {
+    text-shadow: 0.05em 0.05em 0.1em $shadow-color;
+  }
 }
 
 @media only screen and (min-width: 480px) {
@@ -141,7 +180,6 @@
 @media only screen and (min-width: 780px) {
   #hero {
     height: 400px;
-    padding: 15px 0 150px 0;
     .actions {
       margin-top: 25px;
     }
@@ -199,33 +237,17 @@
     .excerpt {
       display: block;
     }
-  }
-}
-
-@media only screen and (min-width: 1024px) {
-  #hero {
     .heading {
-      font-size: 40px;
-      line-height: 40px;
-      padding-top: 70px;
-    }
-    .subheading {
-      font-size: 40px;
-      line-height: 40px;
-    }
-    .excerpt {
-      font-size: 16px;
-      line-height: 20px;
-    }
-    .heading {
-      &.uppercase, &.lowercase, &.extended {}
-      &.thin {
-        font-size: 62px;
-        line-height: 62px;
+      font-size: 48px;
+      line-height: 48px;
+      &.bold {
+        font-size: 60px;
       }
     }
     .subheading {
-      &.uppercase, &.lowercase, &.extended, &.thin {}
+      &.bold {
+        font-size: 100px;
+      }
     }
   }
 }
@@ -233,27 +255,22 @@
 @media only screen and (min-width: 1180px) {
   #hero {
     .heading {
-      font-size: 48px;
-      line-height: 48px;
-      padding-top: 100px;
-    }
-    .subheading {
-      font-size: 48px;
-      line-height: 48px;
-    }
-    .excerpt {
-      font-size: 18px;
-      line-height: 22px;
-    }
-    .heading {
-      &.big800, &.lowercase, &.extended {}
-      &.thin {
-        font-size: 62px;
-        line-height: 62px;
+      font-size: 60px;
+      line-height: 60px;
+      &.bold {
+        font-size: 75px;
       }
     }
     .subheading {
-      &.big800, &.lowercase, &.extended, &.thin {}
+      font-size: 40px;
+      line-height: 48px;
+      &.bold {
+        font-size: 130px;
+      }
+    }
+    .tagline {
+      font-size: 30px;
+      line-height: 30px;
     }
   }
 }
