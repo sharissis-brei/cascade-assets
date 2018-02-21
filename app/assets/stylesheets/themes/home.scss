@@ -36,11 +36,11 @@ h1, h2, h3, h4, h5, h6 {
       background: $cu-red no-repeat center;
       color: #FFFFFF;
       &:hover {
-        background-color: #C8003F;
+        background-color: $red-button-hover;
         text-decoration: none;
       }
       &:active {
-        background-color: #88002B;
+        background-color: $red-button-active;
         text-decoration: none;
       }
     }
