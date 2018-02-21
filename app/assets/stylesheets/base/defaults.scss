@@ -1,7 +1,18 @@
 #theme {
   @include theme-color-classes($red);
-}
 
+  // Overwrites because the hover/active states don't work with the mixin. -SH
+  .theme-button {
+
+    &:hover, &:focus {
+      background-color: $red-button-hover;
+    }
+
+    &:active {
+      background-color: $red-button-active;
+    }
+  }
+}
 
 * {
   word-wrap: break-word;
@@ -376,7 +387,7 @@ h1, h2 {
   font-family: $font-stack-heading;
 }
 
-h2, h3, h4, h5, h6 {
+h3, h4, h5, h6 {
   font-weight: 200;
 }
 
@@ -397,6 +408,9 @@ h3 {
   line-height: 1.4em;
   margin-top: 30px;
   margin-bottom: 15px;
+  .new-font-theme & {
+    font-family: $font-stack-heading;
+  }
 }
 
 h4 {
@@ -407,4 +421,8 @@ h4 {
 h5 {
   font-size: 14px;
   font-weight: 500;
+}
+
+.new-font-theme {
+  font-family: $font-stack-body-new;
 }
