@@ -429,7 +429,7 @@ a.cta.hover{
 /*
 .editableContent ul>li:before{
     content: "â€¢ ";
-    color: #98002e;
+    color: #a50034;
 }
 */
 
@@ -819,7 +819,7 @@ a.cta.hover{
     {padding:7px 40px 7px 20px;font-size:16px;color:#fff;font-weight:800;border:1px solid #2f2f2f}
 
 .leftTitle>ul li a:hover
-    {background-color:#fff;color:#98002e;border-top:1px solid #c1c1c1;border-left:1px solid #c1c1c1;border-right:1px solid #c1c1c1;border-bottom:1px solid #f5f5f5}
+    {background-color:#fff;color:#a50034;border-top:1px solid #c1c1c1;border-left:1px solid #c1c1c1;border-right:1px solid #c1c1c1;border-bottom:1px solid #f5f5f5}
 
 .leftNav > ul {
     float:left;
@@ -1248,7 +1248,7 @@ a.cta.hover{
 
 .newsEventsContent a{
     font-weight: normal;
-    color: #98002e;
+    color: #a50034;
     margin: 10px 0 0 0;
 }
 
@@ -1399,7 +1399,7 @@ a.cta.hover{
 }
 
 .featured .title {
-    color: #98002E;
+    color: #a50034;
     /*font-family: arial;*/
     margin: 0 0 10px 0;
 }
@@ -1615,7 +1615,7 @@ div.accordion:first-child,
     padding: 3px 10px 3px 10px;
     margin:10px 0 10px 0;
     background-color: #fff;
-    color: #98002E;
+    color: #a50034;
     font-weight: 800;
     font-family: "proxima-nova", sans-serif;
     max-width: 145px;
@@ -2287,7 +2287,7 @@ html{
 /* moved from admission_2013.css for old region widget which used section tag in old Slideshow template. now in Funnel template as div class=funnelRegion1up*/
 .primaryContent .main .funnelRegion1up h3{
     clear:both;
-   /* color:#98002e;
+   /* color:#a50034;
     font-weight:normal;
     font-size:16px;*/
     padding:20px 0 7px 0;

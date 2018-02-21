@@ -4,16 +4,25 @@
 Typically, if a color is used more than once or twice,
 it should be added here as a variable. Changing the value
 of these variables will affect the colors sitewide. */
-$font-stack-body: "proxima-nova", verdana, sans-serif;
-$font-stack-heading: "futura-pt", verdana, sans-serif;
-$cu-red: #98002e;
-$cu-red-rgb-transparent: rgba(168,36,57,0.95);
-// $cu-red2: #830c28; // Old red replaced by $cu-red to keep colors standard
-// $cu-red3: #98002E; // Old red replaced by $cu-red to keep colors standard
+$futura-regular: "futura-pt", Arial, sans-serif;
+$futura-condensed: "futura-pt-condensed", Arial, sans-serif;
+$proxima-nova: "proxima-nova", Arial, sans-serif;
+$arial: Arial, sans-serif;
+
+$font-stack-body: $proxima-nova;
+$font-stack-body-new: $arial;
+$font-stack-heading: $futura-regular;
+$font-stack-heading-new: $futura-condensed;
+
+$cu-red: #a50034;
+$cu-red-rgb-transparent: rgba($cu-red, 0.95);
 $cu-dark-red: #851c2b;
 $cu-off-white: #f7f6f0;
 $cu-light-grey: #eaeaea;
 $cu-warm-light-grey: #eaeaea;
+
+$red-button-hover: #C8003F;
+$red-button-active: #88002B;
 
 $white: #ffffff;
 $brown: #896d49;
