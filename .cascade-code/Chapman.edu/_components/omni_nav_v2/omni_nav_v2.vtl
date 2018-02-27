@@ -350,7 +350,7 @@
 #macro( buildGlobalNav )
   <div class="nav-container global-nav">
     <div id="cu-global-nav">
-      <nav>
+      <nav aria-label="global navigation">
         <ul class="global-nav-links">
           #foreach( $link in $globalNavLinks )
             <li class="primary-link">
@@ -399,7 +399,7 @@
 ##
 #macro ( buildUtilityNav )
   <div class="utility-nav">
-    <nav>
+    <nav aria-label="utility navigation bar">
       #buildUtilityNavLinks()
       #buildSearchComponent()
     </nav>
@@ -585,7 +585,7 @@
     <ul>
       <li>
         <a href="/about/index">About</a>
-        #buildToggleIcon()
+        #buildToggleIcon("About")
         <ul>
           <li><a href="/about/maps-directions/index">Maps &amp; Directions</a></li>
           <li><a href="/about/visit-chapman/index">Visit Chapman</a></li>
@@ -598,7 +598,7 @@
       </li>
       <li>
         <a href="/academics/index">Academics</a>
-        #buildToggleIcon()
+        #buildToggleIcon("Academics")
         <ul>
           <li><a href="/academics/degrees-and-programs">Degrees &amp; Programs</a></li>
           <li><a href="/academics/schools-colleges">Schools &amp; Colleges</a></li>
@@ -610,7 +610,7 @@
       </li>
       <li>
         <a href="/admission/index">Admission</a>
-        #buildToggleIcon()
+        #buildToggleIcon("Admission")
         <ul>
           <li><a href="/admission/undergraduate/index">Undergraduate Admission</a></li>
           <li><a href="/admission/undergraduate/applynow">Undergraduate Application</a></li>
@@ -624,7 +624,7 @@
       <li><a href="/arts/index">Arts</a></li>
       <li>
         <a href="/campus-life/index">Campus Life</a>
-        #buildToggleIcon()
+        #buildToggleIcon("Campus Life")
         <ul>
           <li><a href="http://www.chapmanathletics.com/landing/index">Athletics</a></li>
           <li><a href="/diversity/index">Diversity &amp; Inclusion</a></li>
@@ -637,7 +637,7 @@
       </li>
       <li>
         <a href="/research/">Research</a>
-        #buildToggleIcon()
+        #buildToggleIcon("Research")
         <ul>
           <li><a href="/research/sponsored-projects-services/pre-award/index">Pre-Award Administration</a></li>
           <li><a href="/research/sponsored-projects-services/post-award/index">Post-Award Administration</a></li>
@@ -649,7 +649,7 @@
       </li>
       <li>
         <a href="/support-chapman/index">Support</a>
-        #buildToggleIcon()
+        #buildToggleIcon("Support")
         <ul>
           <li><a href="/support-chapman/contact-us">Contact Development</a></li>
           <li><a href="/support-chapman/get-involved">Get Involved</a></li>
@@ -663,7 +663,7 @@
       <ul>
         <li>
           <a href="/audiences/index">Find information for...</a>
-          #buildToggleIcon()
+          #buildToggleIcon("Find Information By Audience")
           <ul>
             <li><a href="/future-students/index">Prospective Students</a></li>
             <li><a href="/students/index">Current Students</a></li>
@@ -675,7 +675,7 @@
         <li><a href="/academics/degrees-and-programs">Degrees &amp; Programs</a></li>
         <li>
           <a href="/about/maps-directions/index">Maps &amp; Directories</a>
-          #buildToggleIcon()
+          #buildToggleIcon("Maps and Directories")
           <ul>
             <li><a href="/about/maps-directions/campus-map/index">Interactive Map</a></li>
             <li><a href="/our-faculty/index">Faculty Directory</a></li>
@@ -744,7 +744,7 @@
       <a href="${asset.path}/index">${_EscapeTool.xml($asset.metadata.displayName)}</a>
 
       #if ( $visibleChildren.size() > 0 )
-        #buildToggleIcon()
+        #buildToggleIcon($asset.metadata.displayName)
         <ul>
           #foreach ( $child in $visibleChildren )
             #if ( $child.assetType == "page" )
@@ -759,12 +759,11 @@
   #end
 #end
 
-#macro ( buildToggleIcon )
+#macro ( buildToggleIcon $displayName )
   <span class="toggle">
     <span>
       <svg version="1.1" xmlns="http://www.w3.org/2000/svg" width="32" height="32" viewBox="0 0 512 512">
-        <title></title>
-        <g class="icomoon-ignore"></g>
+        <title>Toggle ${_EscapeTool.xml($displayName)}</title>
         <path d="M480 224h-192v-192h-64v192h-192v64h192v192h64v-192h192z"></path>
       </svg>
     </span>
@@ -772,10 +771,9 @@
 #end
 
 #macro ( buildOffCanvasNavCloseIcon )
-  <span class="close" id="js-close-off-canvas-nav">
+  <span class="close js-close-off-canvas-nav">
     <svg version="1.1" xmlns="http://www.w3.org/2000/svg" width="13" height="13" viewBox="0 0 512 512">
-      <title></title>
-      <g class="icomoon-ignore"></g>
+      <title>Close</title>
       <path d="M446.627 110.627l-45.254-45.254-145.373 145.372-145.373-145.372-45.254 45.253 145.373 145.374-145.373 145.373 45.254 45.254 145.373-145.373 145.373 145.373 45.254-45.255-145.372-145.372z"></path>
     </svg>
   </span>
