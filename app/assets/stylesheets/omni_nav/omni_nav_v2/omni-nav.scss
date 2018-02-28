@@ -340,7 +340,11 @@ html.omni-nav-v2 {
       .search-results-container { line-height: normal; }
       input.gsc-input, input.gsc-search-button { border: 1px solid #545454;}
       input.gsc-input { border-right: none; }
-      input.gsc-search-button { border-left: none; }
+      
+      input.gsc-search-button { 
+        border-left: none; 
+        float: right; //new to fix search box
+      }
 
       .gs-visibleUrl {
         font-size: 12px;

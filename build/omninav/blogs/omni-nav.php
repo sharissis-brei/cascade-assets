@@ -1,5 +1,5 @@
 <?php
-// OmniNav Build Version: 2.0.1.20180206.171917
+// OmniNav Build Version: 2.0.1.20180228.010940
 
 // If logged in
 if (is_user_logged_in()) {
@@ -58,7 +58,7 @@ if (is_user_logged_in()) {
                        spellcheck="false"
                        style="outline: none;" />
               </td>
-              <td class="gsc-search-button">
+              <td class="gsc-search-button"> "Hello WOrld"
                 <input class="gsc-search-button" type="button" value="Search" />
               </td>
             </tr>
