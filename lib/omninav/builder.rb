@@ -226,7 +226,7 @@ LOGO_HTML
                        spellcheck="false"
                        style="outline: none;" />
               </td>
-              <td class="gsc-search-button"> "Hello WOrld"
+              <td class="gsc-search-button">
                 <input class="gsc-search-button" type="button" value="Search" />
               </td>
             </tr>
