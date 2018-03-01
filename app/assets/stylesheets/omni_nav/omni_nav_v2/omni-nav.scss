@@ -38,7 +38,7 @@ html.omni-nav-v2 {
   ---------------------------------------- */
 
   /* Branded and unbranded break at the same place, for XL screens */
-  &.branded div#primary-nav div.global-nav, 
+  &.branded div#primary-nav div.global-nav,
   &.unbranded div#primary-nav div.global-nav {
     @include media($xl-screen) {
       display: inline-block;
@@ -555,7 +555,7 @@ html.omni-nav-v2 {
           }
 
           &:hover {
-            .global-nav-dropdown { 
+            .global-nav-dropdown {
               visibility: visible;
               opacity: 1;
               @include vendorize(transition, opacity 0.3s ease-in);
@@ -583,7 +583,7 @@ html.omni-nav-v2 {
                 display: block;
               }
 
-              a:before { 
+              a:before {
                 padding: 0.1em;
                 display: block;
                 margin: 3px 10px 10px 0;
@@ -608,7 +608,7 @@ html.omni-nav-v2 {
             }
 
             .icon-cu-window:before {
-              font-size: 1.25em; 
+              font-size: 1.25em;
             }
           }
         }
@@ -747,7 +747,7 @@ html.omni-nav-v2 {
     position: relative;
 
     &:hover {
-      .login-menu { 
+      .login-menu {
         visibility: visible;
         opacity: 1;
         @include vendorize(transition, opacity 0.3s ease-in);
@@ -824,17 +824,16 @@ html.omni-nav-v2 {
       display: none;
       vertical-align: middle;
       padding: 1px 0 0 20px;
-      border-left: 1px solid #2f2f2f;
+      border-left: 1px solid #cfcfcf;
       font-size: 18px;
-      font-family: 'minion-pro', serif;
-      font-style: italic;
 
       @include media($medium-screen) {
         display: table-cell;
       }
 
       a {
-        color: $black;
+        color: $cu-red;
+        font-weight: 700;
       }
     }
   }

@@ -4,10 +4,13 @@
 
 .homepage {
   #accessibility-statement {
-    background-color:#fff;
-    padding:10px;
+    background-color: $white;
+    padding: 10px;
     h2 {
-      font-size:14px;
+      font-size: 18px;
+    }
+    a {
+      border-bottom: 2px solid rgba($cu-red, 0.7);
     }
   }
 }

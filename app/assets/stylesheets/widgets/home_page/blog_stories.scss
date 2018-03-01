@@ -41,7 +41,7 @@
       }
       .title {
         text-transform: none;
-        color: #98002e;
+        color: $cu-red;
         font-size: 22px;
         line-height: 26px;
         margin: 0;
@@ -61,7 +61,7 @@
       }
       .source a:hover, a.tag:hover {
         opacity: 0.8;
-        color: #98002e;
+        color: $cu-red;
       }
     }
     .third {
@@ -121,8 +121,8 @@
         width: 43%;
       }
       .details .title {
-        font-size: 30px;
-        line-height: 36px;
+        font-size: 34px;
+        line-height: 34px;
       }
     }
   }
@@ -155,7 +155,7 @@
         max-height: 265px;
       }
       .title {
-        color: #98002e;
+        color: $cu-red;
         text-transform: none;
         min-height: 50px;
       }
@@ -171,7 +171,7 @@
       width: 100%;
       margin-bottom: 15px;
       border: 1px solid #d8d8d8;
-      color: #98002e;
+      color: $cu-red;
       background: #FFFFFF;
       box-shadow: 0 rgba(0, 0, 0, 0.1);
       border-radius: 3px;
@@ -185,7 +185,7 @@
         background-color: #fff;
       }
       a {
-        color: #98002e;
+        color: $cu-red;
         text-decoration: none;
       }
       p {
@@ -193,11 +193,6 @@
       }
       img {
         max-width: 100%;
-      }
-      .title {
-        margin: 0 20px 0 20px;
-        font-size: 18px;
-        line-height: 22px;
       }
       .publication_date {
         margin: 5px 0 20px 24px;
@@ -216,6 +211,9 @@
         max-height: 365px;
       }
       .title {
+        margin: 0 20px 0 20px;
+        font-size: 18px;
+        line-height: 18px;
         .beginning:after {
           content: "Ã¢â‚¬Â¦";
         }
@@ -285,7 +283,7 @@
         &:hover a {
           z-index: 2;
           opacity: 1;
-          color: #98002e;
+          color: $cu-red;
         }
         a {
           padding: 14px 50px 13px 24px;
