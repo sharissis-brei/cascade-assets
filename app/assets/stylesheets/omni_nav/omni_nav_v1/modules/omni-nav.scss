@@ -2,7 +2,7 @@
 * Colors and Mixins
 ***************************************************/
 
-$chapman-red:         #98002e;
+$chapman-red:         #A50034;
 
 $page-bg-color:       #eaeaea;
 
@@ -74,7 +74,6 @@ html { padding-top: $cu-nav-height; }
 
 html.cu-companion-bar { padding-top: $cu-nav-height + $cu-companion-height !important;}
 
-
 /***************************************************
 * Transitions
 ***************************************************/
@@ -108,7 +107,6 @@ html.cu-companion-bar { padding-top: $cu-nav-height + $cu-companion-height !impo
          -o-transition: top 0.15s 0s ease-out;
             transition: top 0.15s 0s ease-out;
 }
-
 
 /***************************************************
 * Universal Nav structure
@@ -247,9 +245,6 @@ a.cu_nav_button {
     }
 
 }
-
-
-
 
 /***************************************************
 * SEARCH
@@ -725,7 +720,7 @@ a.cu_nav_button {
             display: block;
             height:27px;
             width: 100%;
-            background:#98002e;
+            background:$chapman-red;
             color:#ffffff;
             border:none;
             border-left:none;
@@ -735,7 +730,7 @@ a.cu_nav_button {
             cursor: pointer;
         }
 
-        #cu_submit:hover { background:#C92741; }
+        #cu_submit:hover { background:#C8003F; }
 
         #cu_username,
         #cu_password {
@@ -781,7 +776,7 @@ a.cu_nav_button {
 
         input.persist {
             border-color: #D8D6D0;
-            color: #98002e;
+            color: $chapman-red;
             @include vendorize(box-shadow, none);
         }
 
@@ -796,7 +791,7 @@ a.cu_nav_button {
             speak: none;
             -webkit-font-smoothing: antialiased;
             -moz-osx-font-smoothing: grayscale;
-            color: #98002e;
+            color: $chapman-red;
         }
 
     }
@@ -973,25 +968,6 @@ a.cu_nav_button {
     }
 }
 
-/*.cu-logo {
-    z-index: 99091;
-    left: 62px;
-
-    img, svg {
-        margin: 18px 0;
-        max-height: 29px;
-        max-width: 155px;
-
-        @include bp(m) {
-            margin: 18px 0 18px 12px;
-        }
-
-    }
-
-}*/
-
-
-
 .cu-logo {
     display: block;
     border: 0;
@@ -1068,7 +1044,7 @@ a.cu_nav_button {
     // Logo
     a.cu-logo, a.default-logo-cu {
         // In Discover Chapman, Cascade appears to be commenting out the internal styles.
-        svg polygon.cls-1 { fill: #98002e; }
+        svg path.cls-1 { fill: $chapman-red; }
         svg path.cls-2 { fill: #231f20; }
     }
 

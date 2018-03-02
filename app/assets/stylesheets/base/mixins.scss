@@ -237,7 +237,7 @@
 	box-shadow: 0px 2px 1px -1px rgba(0, 0, 0, 0.3);
 }
 
-@mixin button($bg-color: $red, $text-color: white) {
+@mixin button($bg-color: $cu-red, $text-color: white) {
 	display: inline-block;
 	padding: 15px 25px;
 	font-size: 16px;
@@ -295,4 +295,10 @@
 	@include media($large-screen) {
 		.theme-bg-color-alpha { background-color: rgba(red($primary), green($primary), blue($primary), 0.95); }
 	}
+}
+
+@mixin condensed-heading {
+	font-family: $font-stack-heading-new;
+	font-weight: 800;
+	text-transform: uppercase;
 }
