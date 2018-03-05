@@ -2,7 +2,6 @@
 
 This repository consists of sample HTML that Cascade Server generates for www.chapman.edu.  It contains the build system for stylesheets, javascripts, and images that we use on www.chapman.edu.  Use this repository to develop for www.chapman.edu locally, then deploy your HTML changes and asset files to the Cascade Server when they are ready.
 
-
 ## Setup
 ```
 git clone git@github.com:chapmanu/cascade-assets.git
@@ -11,9 +10,7 @@ bundle install
 rake serve
 ```
 
-Send your browser to [http://localhost:5000](http://localhost:5000)
-Turn on your livereload extention (optional)
-
+Send your browser to [http://localhost:5000](http://localhost:5000). Turn on your livereload extension (optional).
 
 ## Making Changes
 
@@ -21,7 +18,6 @@ Turn on your livereload extention (optional)
 - **CSS:** Edit the stylesheets in `app/assets/stylesheets/`
 - **JS:** Edit the javascripts in `app/assets/javascripts/`
 - **IMAGES:** Add/remove images in `app/assets/images/`
-
 
 ## Tests
 
@@ -37,26 +33,21 @@ To run a single test:
 
     bundle exec rake test/features/dashboard_test.rb
 
-
 ## Deploying to Cascade
 
-To deploy changes in this repository to Cascade, please see the [Cascade Accept Testing page](https://kb-smc.chapman.edu/?p=1860) in the Knowledge Base, which includes links to the pages on [Deploying Assets](https://kb-smc.chapman.edu/?p=1894) and [Deploying HTML](https://kb-smc.chapman.edu/?p=1887).
-
+To deploy changes in this repository to Cascade, please see the [Cascade Assets Deployment page](https://wimops.chapman.edu/wiki/Cascade_Assets_Deployment) on the WimOps Wiki. This page contains the most up-to-date instructions. There are a few older Knowledge Base articles that were once used for these deployments but we are in the process of removing them, so refer to the Wiki instead.
 
 ## OmniNav
 
-This project includes an OmniNav builder that builds versions of the OmniNav navbar for other projects.
+There are currently 2 versions of the OmniNav out in production right now: v1 and v2. The only site that has v2 at the moment is Chapman.edu. All other sites that have the OmniNav (Blogs, Inside, our .NET apps, etc.) are using the old version, v1. This repository includes an OmniNav builder that builds the old v1 versions of the OmniNav navbar for the other projects, not Chapman.edu.
 
-To build assets and markup, run the following rake command:
+When making updates to the old v1 OmniNav, run the following rake command to build the assets and markup:
 
     rake build:omninav
 
-It will output the generated OmniNav asset and markup files under the `build` directory.
+It will output the generated OmniNav v1 assets and markup files under the `build` directory. To update the OmniNav v1 markup, you'll want to update the appropriate method in the OmniNav Builder class found in the `lib` directory.
 
-To update the OmniNav markup, you'll want to update the appropriate method in the OmniNav Builder class found in the `lib` directory.
-
-For more information on the OmniNav, see [the OmniNav page](https://kb-smc.chapman.edu/?p=2425) in the knowledge base.
-
+For more information on the OmniNav, see [the OmniNav page](https://kb-smc.chapman.edu/?p=2425) in the Knowledge Base.
 
 ## CSS Conventions
 
@@ -115,7 +106,6 @@ Follow these conventions to keep our xml consistent across link types in our dat
 </group>
 ```
 
-
 ## Velocity Templating Language (VTL)
 
 For full reference, see the Apache Velocity Project site:
@@ -126,19 +116,13 @@ For Chapman's Velocity style guide, see the wiki:
 
 - https://wimops.chapman.edu/wiki/Velocity
 
-
 ## Developer Tips
 ### Cascade Testing
-To test changes, like adding or updating a Velocity format, the simplest way to test changes is to create a test page in the `test-section` of the folder tree. Recommend practice:
+To test changes inside the Cascade CMS, like adding or updating a Velocity format, the simplest way to test changes is to create a test page in the `test-section` of the folder tree. Recommended practice:
 
-- Create a new folder in `test-section`: New (navbar) > Default > Folder
-- To copy an existing page: in folder tree, click right drop-down menu for page > Copy
+- Create a new folder in `test-section`: "Add Content" > "Default" > "Folder"
+- Copy an existing page: in folder tree, right click on a page and select "Copy" from the dropdown.
 - Save new page copy to your test folder.
-
-To speed up page-loading, and thereby development, disable `Left Nav` and `Omni-Nav` regions of your test page:
-
-- In folder test, click page
-- Edit > Outputs > Uncheck format and block in each region > Submit
 
 ### Static Directory Assets
 At times, in order to build a sample page, you'll want to include assets like images or stylesheets that you do not want to be bundled and deployed with the assets under the `app` directory. You can do this by taking advantage of the `static/_files` directory.
