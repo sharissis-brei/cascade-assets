@@ -383,8 +383,8 @@ p, li {
   @include paragraph;
 }
 
-h1, h2 {
-  font-family: $font-stack-heading;
+h1, h2, h3 {
+  font-family: $futura-regular;
 }
 
 h3, h4, h5, h6 {
@@ -408,9 +408,6 @@ h3 {
   line-height: 1.4em;
   margin-top: 30px;
   margin-bottom: 15px;
-  .new-font-theme & {
-    font-family: $font-stack-heading;
-  }
 }
 
 h4 {
@@ -421,8 +418,4 @@ h4 {
 h5 {
   font-size: 14px;
   font-weight: 500;
-}
-
-.new-font-theme {
-  font-family: $font-stack-body-new;
 }

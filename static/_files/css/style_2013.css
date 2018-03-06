@@ -11,7 +11,7 @@
 
  html { font-size: 100%; -webkit-text-size-adjust: 100%; -ms-text-size-adjust: 100%; }
  body { margin: 0; font-size: 13px; line-height: 1.231; }
- body, button, input, select, textarea { font-family: sans-serif; color: #383838; }
+ body, button, input, select, textarea { font-family: Arial, sans-serif; color: #383838; }
 
  ::-moz-selection { background: #a82439; color: #fff; text-shadow: none; }
  ::selection { background: #a82439; color: #fff; text-shadow: none; }
