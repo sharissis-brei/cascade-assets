@@ -14,7 +14,7 @@ $palettes: map-merge($palettes, (
 		opacity: 0;
 		color: $dark-gray;
 		font-size: rem-calc(24);
-		font-family: $proxima-nova;
+		font-family: $arial;
 		transition: opacity 0.375s;
 
 		&.faded-in,
