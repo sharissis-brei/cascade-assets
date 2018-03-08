@@ -1,0 +1,295 @@
+<!--#protect-top
+
+### NOTE: This version is used to view archived panels on live website, and also for the previews of individual panels in Cascade)
+
+[system-view:internal]
+<!DOCTYPE html>
+<html class="no-js" lang="en">
+
+<head>
+  <meta charset="utf-8"/>
+  <meta content="IE=edge,chrome=1" http-equiv="X-UA-Compatible"/>
+  <title>Preview Hero Panel</title>
+  <meta content="width=device-width, initial-scale=1, minimum-scale=1" name="viewport"/>
+  <script src="//use.typekit.net/eyn5jyy.js" type="text/javascript"></script>
+  <script type="text/javascript">try{Typekit.load();}catch(e){}</script>
+  #set ( $path = "/_cascade/blocks/html/cascade-assets" )
+  #set ( $siteName = $_XPathTool.selectSingleNode( $contentRoot, "//system-page/site" ).value )
+  #set ( $cascadeAssets = $_.locateBlock( $path, $siteName ) )
+  #set ( $source = $_StringTool.substringAfter( $cascadeAssets.xML, "<system-xml>" ) )
+  #set ( $source = $_StringTool.substringBefore( $source, "</system-xml>" ) )
+  ## Output source files
+  $source
+ </head>
+ <body>
+ <div class="homepage" id="main" role="main">
+[/system-view:internal]
+
+#set ( $allPanels = $_XPathTool.selectNodes($contentRoot, "//system-index-block/calling-page/system-page") )
+#if( $allPanels.size() > 0 ) 
+    #foreach($panel in $allPanels)             
+            
+######################################################################  
+### this is so image renders inside Cascade too:
+#set ( $img = $panel.getChild('system-data-structure').getChild('fallbackImage').getChild('path').value )
+#set ( $fallbackImage = "")
+#set ( $fallbackImage = "[system-asset:local]$img"+$fallbackImage+"[/system-asset:local]")
+#set ( $imgAltText = $panel.getChild('system-data-structure').getChild('fallbackImageAltText').value )
+#if ($imgAltText == "")
+    #set ($imgAltText = "randomly selected slide from video")
+#end
+
+#set ( $align = $panel.getChild('system-data-structure').getChild('panelAlign').value )
+#set ( $mp4_ext = $panel.getChild('system-data-structure').getChild('mp4Video').getChild('externalLink').value )
+#set ( $mp4_int = $panel.getChild('system-data-structure').getChild('mp4Video').getChild('internalLink').getChild('path').value )
+#if ($mp4_ext != '')
+    #set ( $mp4Link = $mp4_ext )
+#elseif ($mp4_int != '' && $mp4_int != '/')
+    #set ( $mp4Link = $mp4_int )
+#else
+    #set ( $mp4Link = '' )
+#end
+#set ( $webm_ext = $panel.getChild('system-data-structure').getChild('webmVideo').getChild('externalLink').value )
+#set ( $webm_int = $panel.getChild('system-data-structure').getChild('webmVideo').getChild('internalLink').getChild('path').value )
+#if ($webm_ext != '')
+    #set ( $webmLink = $webm_ext )
+#elseif ($webm_int != '' && $webm_int != '/')
+    #set ( $webmLink = $webm_int )
+#else
+    #set ( $webmLink = '' )
+#end
+#set ( $mp3_ext = $panel.getChild('system-data-structure').getChild('mp3Audio').getChild('externalLink').value )
+#set ( $mp3_int = $panel.getChild('system-data-structure').getChild('mp3Audio').getChild('internalLink').getChild('path').value )
+#if ($mp3_ext != '')
+    #set ( $mp3Link = $mp3_ext )
+#elseif ($mp3_int != '' && $mp3_int != '/')
+    #set ( $mp3Link = $mp3_int )
+#else
+    #set ( $mp3Link = '' )
+#end
+#set ( $aac_ext = $panel.getChild('system-data-structure').getChild('aacAudio').getChild('externalLink').value )
+#set ( $aac_int = $panel.getChild('system-data-structure').getChild('aacAudio').getChild('internalLink').getChild('path').value )
+#if ($aac_ext != '')
+    #set ( $aacLink = $aac_ext )
+#elseif ($aac_int != '' && $aac_int != '/')
+    #set ( $aacLink = $aac_int )
+#else
+    #set ( $aacLink = '' )
+#end
+#set ( $wav_ext = $panel.getChild('system-data-structure').getChild('wavAudio').getChild('externalLink').value )
+#set ( $wav_int = $panel.getChild('system-data-structure').getChild('wavAudio').getChild('internalLink').getChild('path').value )
+#if ($wav_ext != '')
+    #set ( $wavLink = $wav_ext )
+#elseif ($wav_int != '' && $wav_int != '/')
+    #set ( $wavLink = $wav_int )
+#else
+    #set ( $wavLink = '' )
+#end
+
+## tagline, header and subHeader CSS are both strings of value(s) from multi-select dropdown:
+
+#set ( $tagline = $_XPathTool.selectSingleNode( $panel, "system-data-structure/tagline/copy" ) )
+#set ( $secondaryTagline = $_XPathTool.selectSingleNode( $panel, "system-data-structure/secondary-tagline/copy" ) )
+#set ( $taglineCssValues = $_XPathTool.selectNodes($panel,'./system-data-structure/tagline/CSS/value') )
+
+#set ( $header = $panel.getChild('system-data-structure').getChild('Header').getChild('copy').value )
+#set ( $headerCssValues = $_XPathTool.selectNodes($panel,'./system-data-structure/Header/CSS/value') )
+
+#set ( $subHeader = $panel.getChild('system-data-structure').getChild('subHeader').getChild('copy').value )
+#set ( $subHeaderCssValues = $_XPathTool.selectNodes($panel,'./system-data-structure/subHeader/CSS/value') )
+
+#set ($taglineCss = "")
+#if ($taglineCssValues.size() > 0)
+    #foreach($class in $taglineCssValues)
+       #set ( $taglineCss = $class.value + " " + $taglineCss)
+    #end
+#end
+
+#set ($headerCss = "")
+#if ($headerCssValues.size() > 0)
+    #foreach($class in $headerCssValues)
+       #set ( $headerCss = $class.value + " " + $headerCss)
+    #end
+#end
+
+#set ($subHeaderCss = "")
+#if ($subHeaderCssValues.size() > 0)   
+    #foreach($class in $subHeaderCssValues)
+       #set ( $subHeaderCss = $class.value + " " + $subHeaderCss)
+    #end
+#end
+
+#set ( $excerpt = $panel.getChild('system-data-structure').getChild('excerpt').value )
+### use pagename of hero anel as the tracking ID for both buttons:
+#set ( $trackingId = "homepage-hero-" + $panel.getChild('name').value )
+#set ( $primaryButtonText = $panel.getChild('system-data-structure').getChild('primaryLink').getChild('linkText').value )
+#set ( $primaryButtonTitle = $panel.getChild('system-data-structure').getChild('primaryLink').getChild('titleText').value )
+#if ( $primaryButtonText == '')
+    #set ( $primaryButtonText = 'Learn More')
+#end
+#if ( $primaryButtonTitle == '')
+    #set ( $primaryButtonTitle = 'Learn More')
+#end
+#set ( $primaryLink_ext = $panel.getChild('system-data-structure').getChild('primaryLink').getChild('externalLink').value )
+#set ( $primaryLink_int = $panel.getChild('system-data-structure').getChild('primaryLink').getChild('internalLink').getChild('path').value )
+#if ($primaryLink_ext != '')
+    #set ( $primaryLink = $primaryLink_ext )
+#elseif ($primaryLink_int != '' && $primaryLink_int != '/')
+    #set ( $primaryLink = $primaryLink_int )
+#else
+    #set ( $primaryLink = '' )
+#end
+
+#set ( $primaryLightBoxHTML = $panel.getChild('system-data-structure').getChild('primaryLink').getChild('lightBoxHtml').value )
+#set ( $secondaryLightBoxHTML = $panel.getChild('system-data-structure').getChild('secondaryLink').getChild('lightBoxHtml').value )
+
+#if ( $panel.getChild('system-data-structure').getChild('primaryLink').getChild('TriggerAudio').value == 'Yes' )
+    #set ($primaryLinkClasses = 'toggleAudio')
+#else
+    #set ($primaryLinkClasses = '')
+#end
+
+#if ( $panel.getChild('system-data-structure').getChild('secondaryLink').getChild('TriggerAudio').value == 'Yes' )
+    #set ($secondaryLinkClasses = 'toggleAudio')
+#else 
+    #set ($secondaryLinkClasses = '')
+#end
+
+
+
+#set ( $secondaryButtonText = $panel.getChild('system-data-structure').getChild('secondaryLink').getChild('linkText').value )
+#set ( $secondaryButtonTitle = $panel.getChild('system-data-structure').getChild('secondaryLink').getChild('titleText').value )
+#if ( $secondaryButtonText == '')
+    #set ( $secondaryButtonText = 'Learn More')
+#end
+#if ( $secondaryButtonTitle == '')
+    #set ( $secondaryButtonTitle = 'Learn More')
+#end
+#set ( $secondaryLink_ext = $panel.getChild('system-data-structure').getChild('secondaryLink').getChild('externalLink').value )
+#set ( $secondaryLink_int = $panel.getChild('system-data-structure').getChild('secondaryLink').getChild('internalLink').getChild('path').value )
+#if ($secondaryLink_ext != '')
+    #set ( $secondaryLink = $secondaryLink_ext )
+#elseif ($secondaryLink_int != '' && $secondaryLink_int != '/')
+    #set ( $secondaryLink = $secondaryLink_int )
+#else
+    #set ( $secondaryLink = '' )
+#end
+
+### Begin Hero Area  
+<div id="heroWrapper">
+
+    ### The UI controls for video and navigation 
+    <div id="mastheadNavigationWrapper" class="maxWidth">
+         <div id="mastheadNavigation">
+            <button id="showNewerContent" class="smallButton disabled">Newer</button>
+            <button id="changeVolume" class="smallButton disabled muted">Mute</button>
+            <button id="showOlderContent" class="smallButton disabled">Older</button>
+         </div>
+    </div>
+        
+    ### Fallback: BG image on #hero is the fallback for devices which support backgroundsize 
+    ###  but cannot autoplay an HTML5 video (includes Android mobile, FF 3.6, and iOS)  
+    <section id="hero" class="dark-bg $align" style="background-image:url('$fallbackImage');" aria-label="${_EscapeTool.xml($imgAltText)}" role="img">
+
+    ### The main text content and call to action buttons 
+    <div id="mastheadContent" class="maxWidth">
+        #if ( $tagline && $tagline.value != '' )
+            <span class="tagline $taglineCss" role="heading">$_EscapeTool.xml( $tagline.value )#if ( $secondaryTagline && $secondaryTagline.value != '' )&#32;<span class="tagline-line-2">$_EscapeTool.xml( $secondaryTagline.value )</span>#end</span>
+        #end
+        <h2>
+        #if ($header != '')
+            <span class="heading $headerCss">$header</span>
+        #end
+        #if ($subheader != '')
+            <span class="subheading $subHeaderCss">$subHeader</span>
+        #end
+        </h2>
+        #if ($excerpt != '')
+            <p class="excerpt">$excerpt</p>
+        #end
+        <div class="actions">
+            #if ($secondaryLink != '')
+                #if ($secondaryLightBoxHTML != '')
+                    <a href='$secondaryLink' class='button smc-cta $secondaryLinkClasses' id='secondary' data-cta-id='$trackingId' data-quickview-content='$secondaryLightBoxHTML' title='$secondaryButtonTitle'>$secondaryButtonText</a>
+                #else
+                    <a href="$secondaryLink" class="button smc-cta $secondaryLinkClasses" id="secondary" data-cta-id="$trackingId" title="$secondaryButtonTitle">$secondaryButtonText</a>
+                #end
+            #end
+            ### primary link always required to show button; alternate html can be provided for lightbox to display (eg. video playing in lightbox instead of linking to it)
+            #if ($primaryLink != '')
+                #if ($primaryLightBoxHTML != '')
+                    <a href='$primaryLink' class='button smc-cta $primaryLinkClasses' id='primary' data-cta-id='$trackingId' data-quickview-content='$primaryLightBoxHTML' title='$primaryButtonTitle'>$primaryButtonText</a>
+                #else
+                    <a href="$primaryLink" class="button smc-cta $primaryLinkClasses" id="primary" data-cta-id="$trackingId" title="$primaryButtonTitle">$primaryButtonText</a>
+                #end
+            #end
+        ### (end actions) ###
+        </div>
+     ### (end mastheadContent) ###
+    </div>
+
+      ### The gradient between the content and the BG: 
+      <div id="mastheadGradient"></div>
+      
+      ### The video or still image behind the content: 
+      <div id="mastheadBackground">
+
+        ### Video fades in by Javascript after confirming preload and playability (add back: muted loop autoplay) 
+        <video id="mastheadVideo" muted="muted" loop="loop" autoplay="autoplay" style="display:none;" >
+            ### mp4 must be first, webm second
+            #if ($mp4Link != '')
+                <source src="$mp4Link" />
+            #end
+            #if ($webmLink != '')
+                <source src="$webmLink" /> 
+            #end
+        </video>
+
+        <div stye="display:none;">
+
+            ### If one or more audio files present, this audio element will be rendered, taking the place of the video audio
+            #if ($mp3Link != '' or $aacLink != '' or $wavLink != '')
+                <audio id="mastheadAudio" controls="false" muted="muted" style="display:none;">
+                  #if ($mp3Link != '')
+                    <source src="$mp3Link" type="audio/mp3"/>
+                  #end
+                  #if ($aacLink != '')    
+                    <source src="$aacLink" type="audio/mp4"/>
+                  #end
+                  #if ($wavLink != '')  
+                    <source src="$wavLink" type="audio/wav"/>
+                  #end              
+                </audio>
+            #end
+
+        </div>    
+
+        ### Fallback: This image element is the fallback for devices which do not support backgroundsize 
+        ###  and cannot play an HTML5 video (includes IE 7, 8)
+        <img id="mastheadImage" src="$fallbackImage" alt="${_EscapeTool.xml($imgAltText)}"/>
+      ### (end mastheadBackground) ###
+      </div>
+
+    </section>
+    ### (end heroWrapper) ###
+    </div>
+######################################################################
+    #end 
+#end
+
+[system-view:internal]
+  </div>
+  <script src="//ajax.googleapis.com/ajax/libs/jquery/1.7.2/jquery.min.js"></script>
+  <script src="//www.chapman.edu/_files/js/plugins_2013.js"></script>
+  <script src="//www.chapman.edu/_files/js/script_2013.js"></script>
+  <script src="//www.chapman.edu/_files/js/main_2013.js"></script>
+  <script src="//www.chapman.edu/_files/js/home_2013.js"></script>
+  ###new for homepage v2 2014:
+  <script src="//www.chapman.edu/_files/js/libs/jquery.hammer.min.js"></script> 
+  <script src="//www.chapman.edu/_files/js/libs/skrollr.min.js"></script> 
+  <script src="//www.chapman.edu/_files/js/new_home.js"></script>
+  </body>
+  </html>
+[/system-view:internal]
+
+#protect-top-->
