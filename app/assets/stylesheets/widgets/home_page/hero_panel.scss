@@ -166,6 +166,9 @@
       margin: 0.875em 0 0;
     }
   }
+  .tagline-line-2 {
+    display: block;
+  }  
   .heading, .subheading, .tagline, .excerpt {
     text-shadow: 0.05em 0.05em 0.1em $shadow-color;
   }
@@ -237,6 +240,9 @@
     .excerpt {
       display: block;
     }
+    .tagline-line-2 {
+      display: inline;
+    }    
     .heading {
       font-size: 48px;
       line-height: 48px;
