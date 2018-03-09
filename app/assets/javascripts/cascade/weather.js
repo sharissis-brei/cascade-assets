@@ -1,10 +1,9 @@
 $(function () {
 
-	/* Populate weather from jsonp feed
+	/* Populate weather from json feed; default on page is 65 until modified by this routine
     ------------------------------------------------------------------------------------------------*/
-
-    $.getJSON("//forecast.chapman.edu/chapman/banner-json.php?callback=?", function (data) {
-
+	//sample data: {"weather":{"icon_path":"\/images\/icons\/weather\/2cloud_norain.png","temp_f":"66","temp_c":"19"}}
+	$.getJSON("https://forecast.chapman.edu/chapman/banner-json.php?callback=orange", function (data) {	
 
         var iconPath = data.weather.icon_path,
             tempF = data.weather.temp_f,
