@@ -40,8 +40,8 @@ $cu-viewport-xl: 1200px;
 }
 
 @mixin font-stack-for-headings() {
-    font-family: "futura-pt", Arial, "Sans Serif";
-    font-family: "futura-pt", Arial, "Sans Serif";
+    font-family: "futura-pt", Arial, Verdana, "Sans Serif";
+    font-family: "futura-pt", Arial, Verdana, "Sans Serif";
 }
 
 @mixin wordpress-admin-bar-spacing() {
