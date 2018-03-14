@@ -384,15 +384,15 @@
     <ul>
       ## First list item is always Overview
       <li>
-        #if($dropdownLink.link.toString().contains("http"))
-          <a class="icon $dropdownLink.iconClass" href="$dropdownLink.link">
-        #else
-          <a class="icon $dropdownLink.iconClass" href="site://Chapman.edu/$dropdownLink.link">          
-        #end
+        <a class="icon $overviewIconClass" href="site://Chapman.edu/$overviewLink">Overview</a>
       </li>
       #foreach( $dropdownLink in $dropdownLinks )
         <li>
-          <a class="icon $dropdownLink.iconClass" href="site://Chapman.edu/$dropdownLink.link">
+          #if($dropdownLink.link.toString().contains("http"))
+            <a class="icon $dropdownLink.iconClass" href="$dropdownLink.link">
+          #else
+            <a class="icon $dropdownLink.iconClass" href="site://Chapman.edu/$dropdownLink.link">          
+          #end
             ${_EscapeTool.xml( $dropdownLink.text )}
           </a>
         </li>
