@@ -337,14 +337,14 @@ a.cu_nav_button {
         transition: background-color 0.5s ease-out;
         position: relative;
         line-height: 16px;
-        font-family: Arial, sans-serif;
+        font-family: "proxima-nova-soft", "proxima-nova", "futura-pt", Arial, Verdana, "Sans Serif";
         box-shadow: none;
         @include vendorize(appearance, none);
 
         &::-webkit-input-placeholder {
             font-size: 13px;
             color: $black;
-            font-family: Arial, sans-serif;
+            font-family: "proxima-nova-soft", "proxima-nova", "futura-pt", Arial, Verdana, "Sans Serif";
         }
 
         &:focus,
@@ -642,7 +642,7 @@ a.cu_nav_button {
     right:0;
 
     #cu_identity {
-        font-family: Arial, sans-serif;
+        font-family: 'proxima-nova', sans-serif;
         font-size: 14px;
         @include reset-box-model();
 
@@ -736,7 +736,7 @@ a.cu_nav_button {
         #cu_password {
             width:100%;
             padding:7px;
-            font-family: "RooneySans", "futura-pt", Arial, "Sans Serif";
+            font-family:"RooneySans","proxima-nova-soft", "futura-pt", Arial, Verdana, "Sans Serif";
             font-size:12px;
             border:1px solid #D8D6D0;
             border-radius: 2px;
