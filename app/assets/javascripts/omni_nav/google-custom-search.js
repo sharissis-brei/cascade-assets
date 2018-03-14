@@ -93,7 +93,6 @@ var GoogleCustomSearch = (function() {
       // These must be applied after Google's markup has been rendered.
       $searchBox.find('input.gsc-input').attr('placeholder', 'Search');
       $searchResults.find('.gsc-control-cse').append($moreResultsButton);
-      document.querySelector('img.gsc-branding-img').alt = "Google"; // for accessibility
     };
 
     var bindEventHandlers = function() {
