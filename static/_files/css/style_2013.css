@@ -11,7 +11,7 @@
 
  html { font-size: 100%; -webkit-text-size-adjust: 100%; -ms-text-size-adjust: 100%; }
  body { margin: 0; font-size: 13px; line-height: 1.231; }
- body, button, input, select, textarea { font-family: Arial, sans-serif; color: #383838; }
+ body, button, input, select, textarea { font-family: sans-serif; color: #383838; }
 
  ::-moz-selection { background: #a82439; color: #fff; text-shadow: none; }
  ::selection { background: #a82439; color: #fff; text-shadow: none; }
@@ -167,7 +167,7 @@ html[xmlns] .slides {display: block;}
 html{
     background-image: url("img/window-pattern.gif");
     background-color: #eaeaea;
-    font-family: Arial, sans-serif;
+    font-family: "proxima-nova-soft", "proxima-nova-soft-n4", sans-serif;
     overflow-x: hidden;
     -webkit-font-smoothing: antialiased;
 }
@@ -176,7 +176,7 @@ body {
 }
 
 h1, h2, h3, h4, h5, h6 {
-    font-family: Arial, sans-serif;
+    font-family: 'proxima-nova', arial, verdana, sans-serif;
     color: #353430;
 }
 h2, h3, h4, h5, h6 {
@@ -213,7 +213,7 @@ h3 {
     letter-spacing: 0px;
     /*padding: 10px 0;*/
    /* margin: 1em 0 0.5em;*/
-    /*font-family: Arial, sans-serif;*/
+    /*font-family:"proxima-nova-soft", "proxima-nova-soft-n4", sans-serif;*/
     margin:0;
     padding:0;
     margin-top:30px;
@@ -240,11 +240,11 @@ hgroup h3 {
 }
 
 body, button, input, select, textarea {
-    font-family: Arial, sans-serif;
+    font-family: "proxima-nova-soft", "proxima-nova-soft-n4", sans-serif;
 }
 
 p, li {
-    font-family: Arial, sans-serif;
+    font-family: "proxima-nova-soft", "proxima-nova-soft-n4", sans-serif;
     font-size: 14px;
     color: #383838;
     line-height: 1.45em;
@@ -1903,7 +1903,8 @@ a.infoFor-btn {
     margin-bottom: 2px;
 }
 .footer-links-group > h3, .footer-links-group > h2 {
-    font-family: Arial, sans-serif;
+    /*font-family: "proxima-nova-soft", "proxima-nova-soft-n4", sans-serif;*/
+    font-family: 'proxima-nova', sans-serif;
     font-style: normal;
     font-size: 18px;
     padding: 20px;
@@ -2226,7 +2227,7 @@ a.infoFor-btn {
         position: relative;
         background-color: white;
         font-size: 14px;
-        font-family: Arial, sans-serif;
+        font-family: "proxima-nova-soft", "proxima-nova-soft-n4", sans-serif;
         padding: 8px 0 7px 0;
         text-align: center;
         -webkit-box-shadow: 0px 0px 7px 0px #434343;
@@ -2345,7 +2346,7 @@ a.infoFor-btn {
         color:#a82439;
         margin: 10px 0 0 0;
         font-weight:800;
-        font-family: Arial, sans-serif;
+        font-family:'proxima-nova', sans-serif;
     }
 
     .scatteredPhoto:hover .scatteredBlurb{
@@ -2567,7 +2568,7 @@ a.infoFor-btn {
         color:#fff;
         width:110px;
         margin:10px 0 0 0;
-        font-family: Arial, sans-serif;
+        font-family:'proxima-nova';
         font-weight:800;
         text-shadow: 1px 1px 1px #440617;
     }
@@ -2967,7 +2968,7 @@ a.infoFor-btn {
         display: block;
     }
     .homepage .newsEventsContent .description {
-        font-family: Arial, sans-serif;
+        font-family: 'proxima-nova', sans-serif;
         font-size: 18px;
         font-weight: 400;
     }
@@ -3005,14 +3006,14 @@ a.infoFor-btn {
 
 }
 .homepage-feature h2 {
-    font-family: Arial, sans-serif;
+    font-family: "proxima-nova", sans-serif;
     font-size: 50px;
     font-weight: 800;
     text-transform: none;
     margin:0;
 }
 .homepage-feature h3 {
-    font-family: Arial, sans-serif;
+    font-family: "proxima-nova-soft", sans-serif;
     font-size: 20px;
     font-style: normal;
     margin-top: -17px;
@@ -3184,12 +3185,12 @@ a.infoFor-btn {
 
 #welcome .message { background: #2774a6; }
 #welcome .message .welcome { background: transparent url('/_files/img/welcome/welcomeBackMobileText.png') left center no-repeat; -webkit-background-size: 281px 46px; background-size: 281px 46px; height: 46px; overflow: hidden; text-indent: 100%; font-size: 0px; white-space: nowrap; padding: 6px 0px; margin: 0px 7px;}
-#welcome .content-container .message .copy { padding: 6px 12px; font-family: Arial, sans-serif; color: #fff; font-size: 1.1em; font-weight: 800; }
+#welcome .content-container .message .copy { padding: 6px 12px; font-family: 'proxima-nova', sans-serif; color: #fff; font-size: 1.1em; font-weight: 800; }
 
 #welcome-tabs .desk-tabs { display: none; }
 #welcome-tabs .tabs .closed-body { display: none; }
 #welcome-tabs .tabs .open-body { display: block; background: #fff; }
-#welcome-tabs .tabs h2 { color: #494949; font-family: Arial, sans-serif; height: 30px; display: block; cursor: pointer; background: url('/_files/img/welcome/welcome_mobileTabClosed.png') top center repeat-x; -webkit-background-size: 10px 36px; background-size: 10px 36px; margin: 0; padding: 6px 4px 0px 4px; font-size: 1.15em; }
+#welcome-tabs .tabs h2 { color: #494949; font-family: 'proxima-nova', sans-serif; height: 30px; display: block; cursor: pointer; background: url('/_files/img/welcome/welcome_mobileTabClosed.png') top center repeat-x; -webkit-background-size: 10px 36px; background-size: 10px 36px; margin: 0; padding: 6px 4px 0px 4px; font-size: 1.15em; }
 
 #welcome-tabs .tabs h2.open { background: url('/_files/img/welcome/welcome_mobileTabOpen.png') top center repeat-x; -webkit-background-size: 10px 36px; background-size: 10px 36px; color: #fff;  }
 
@@ -3198,7 +3199,7 @@ a.infoFor-btn {
 #welcome-tabs .tabs .body li:first-child { border-top: none; }
 #welcome-tabs .tabs .body li.odd { background-color: #f7f6ef; }
 
-#welcome-tabs .tabs .body li a { color: #3399d1; font-family: Arial, sans-serif; font-size: 1em; }
+#welcome-tabs .tabs .body li a { color: #3399d1; font-family: 'proxima-nova', sans-serif; font-size: 1em; }
 #welcome-tabs .tabs .body li .close{ position: absolute; top:7px; right:10px;}
 
 #welcome-tabs .tabs .body li .close.confirm{ top:3px;}
@@ -3240,16 +3241,16 @@ a.infoFor-btn {
 #welcome.open #b-blog .second-col .even { background-color: #f7f6ef; }
 
 #welcome.open #b-blog .more-btn { padding: 4px 6px; background: #ecead8; display: inline-block; float: right; margin: 6px 9px;}
-#welcome.open #b-blog .more-btn a { font-family: Arial, sans-serif;  font-size: 1em; color: #797979; text-transform: uppercase; }
+#welcome.open #b-blog .more-btn a { font-family: 'proxima-nova', sans-serif;  font-size: 1em; color: #797979; text-transform: uppercase; }
 
-#welcome.open #b-blog .posts > ul li { padding: 5px 4px 2px; margin: 0 6px; font-family: Arial, sans-serif; }
+#welcome.open #b-blog .posts > ul li { padding: 5px 4px 2px; margin: 0 6px; font-family: 'proxima-nova', sans-serif; }
 #welcome.open #b-blog .posts > ul li time { color: #4d4d4d; font-size: 1.1em; }
 #welcome.open #b-blog .posts > ul li p { padding: 0.2em 0 0.5em 0; margin: 0; }
 #welcome.open #b-blog .posts > ul li p a { color: #3399d1; font-size: 1.3em; }
 
 #bottomPaging { position: relative; width: 99%; height: 37px; overflow: auto; margin-top: 5px; }
 #bottomPaging .next,
-#bottomPaging .prev { position: absolute; font-family: Arial, sans-serif; font-size: 1.5em; padding: 4px 6px; background: #ecead8; color: #797979; text-transform: uppercase; }
+#bottomPaging .prev { position: absolute; font-family: 'proxima-nova', sans-serif; font-size: 1.5em; padding: 4px 6px; background: #ecead8; color: #797979; text-transform: uppercase; }
 #bottomPaging .next { top: 0px; right: 0; }
 #bottomPaging .prev { top: 0px; left: 0; }
 #bottomPaging .leftSide { position: absolute; top: 7px; left: 50%; margin-left: -11px; font-size: 0.8em; }
@@ -3302,7 +3303,7 @@ a.infoFor-btn {
 
       #welcome-tabs .desk-tabs { display: block; overflow: auto; text-align: right; margin-left: 1px; }
       #welcome-tabs .desk-tabs ul { height: 45px; }
-      #welcome-tabs .desk-tabs li { float: left; padding: 8px 10px; border-style: solid; border-color: #b1b1b1; border-width: 1px 1px 1px 0px; list-style: none; color: #797979; font-size: 1em; background: #f4f4f4; font-family: Arial, sans-serif; margin-top: 5px; cursor: pointer; }
+      #welcome-tabs .desk-tabs li { float: left; padding: 8px 10px; border-style: solid; border-color: #b1b1b1; border-width: 1px 1px 1px 0px; list-style: none; color: #797979; font-size: 1em; background: #f4f4f4; font-family: 'proxima-nova', sans-serif; margin-top: 5px; cursor: pointer; }
       #welcome-tabs .desk-tabs li:first-child { border-width: 1px 1px 1px 1px; }
       #welcome-tabs .desk-tabs li.open { color: #fff; font-size: 1.3em; background: #81bd69 url('/_files/img/welcome/welcome_deskTabBg.png') top center no-repeat; -ms-text-shadow: #81bd69; text-shadow: #81bd69; margin-top: 1px; }
 

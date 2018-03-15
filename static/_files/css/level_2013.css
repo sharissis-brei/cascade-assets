@@ -23,7 +23,7 @@ a.cta{
     color:White;
     display:inline-block;
     text-transform:uppercase;
-    font-family:Arial, sans-serif;
+    font-family:'proxima-nova', sans-serif;
     font-weight:800;
     max-width:100%;
 }
@@ -659,7 +659,7 @@ a.cta.hover{
 }
 
 .collegeName{
-    font-family: Arial, sans-serif;
+    font-family: 'proxima-nova', sans-serif;
     font-weight: 800;
     font-size: 40px;
     letter-spacing: -1px;
@@ -690,7 +690,7 @@ a.cta.hover{
     clear:both;
     margin:10px auto 0 auto;
     width:95%;
-    font-family: Arial, sans-serif;
+    font-family:"proxima-nova", sans-serif;
     font-weight:600;
     font-size:15px;
 }
@@ -836,7 +836,7 @@ a.cta.hover{
 .leftNav > ul li {border: #C1C1C1;}
 
 .leftNav a {
-    font-family: Arial, sans-serif;
+    font-family: "proxima-nova-soft", "proxima-nova-soft-n4", sans-serif;
     display: block;
     padding: 7px 0 0 0;
 }
@@ -848,7 +848,7 @@ a.cta.hover{
 
 .leftNav > ul > li > a {
     border-top: 1px solid #c1c1c1;
-    /*font-family: Arial, sans-serif;*/
+    /*font-family: "proxima-nova", sans-serif;*/
     font-size: 16px;
     /*line-height: 18px;*/
     color: #383838;
@@ -950,7 +950,7 @@ a.cta.hover{
 .leftNav .active > a {
     font-weight: 700;
     /*
-    font-family: Arial, sans-serif;
+    font-family: "proxima-nova", sans-serif;
     font-weight:400;
     font-size:15px;
     background-color:black;
@@ -1051,7 +1051,7 @@ a.cta.hover{
  */
 
 /*.leftNavSubContent h1, h2, h3, h4, h5, h6 {
-    font-family: Arial, sans-serif;
+    font-family: "proxima-nova-soft", sans-serif;
 }*/
 
 
@@ -1112,7 +1112,7 @@ a.cta.hover{
     height: 20px;
     width:100%;
     min-width:200px;
-    font-family:Arial, sans-serif;
+    font-family:"proxima-nova", sans-serif;
     font-weight: 800;
     font-size: 15px;
     top: 25px;
@@ -1371,7 +1371,7 @@ a.cta.hover{
 .newsEvents .todayTomorrow{
     position:relative;
     height:20px;
-    font-family:Arial, sans-serif;
+    font-family:"proxima-nova", sans-serif;
     font-weight:800;
     font-size:15px;
 }
@@ -1463,7 +1463,7 @@ div.accordion:first-child,
     position: relative;
     cursor: pointer;
     cursor: hand;
-    font-family:Arial, sans-serif;
+    font-family:'proxima-nova', sans-serif;
     font-weight:800;
     text-transform:none;
 }
@@ -1617,7 +1617,7 @@ div.accordion:first-child,
     background-color: #fff;
     color: #a50034;
     font-weight: 800;
-    font-family: Arial, sans-serif;
+    font-family: "proxima-nova", sans-serif;
     max-width: 145px;
 }
 
@@ -2245,7 +2245,7 @@ html{
 }
 
 .funnel .funnelBlock h3, .funnel .funnelBlock h3 a {
-    /*font-family: Arial, sans-serif;*/
+    /*font-family: "proxima-nova-soft", sans-serif;*/
     font-weight: 700;
     font-size: 18px;
     font-style: normal;
@@ -2555,7 +2555,7 @@ html{
 }
 
 .oneColumn .masthead.withLink>div{
-    font-family:Arial, sans-serif;
+    font-family:"proxima-nova", sans-serif;
     font-weight: 600;
     text-transform:uppercase;
     font-style:normal;
@@ -2573,7 +2573,7 @@ html{
     vertical-align: bottom;
     background-color:White;
     color:#1994c8;
-    font-family:Arial, sans-serif;
+    font-family:'proxima-nova', sans-serif;
     font-weight:800;
     font-size:14px;
     padding:5px;
@@ -2666,7 +2666,7 @@ html{
     padding: 10px 0 10px 10px;
     color:White;
     background-color: black;
-    font-family:Arial, sans-serif;
+    font-family:'proxima-nova', sans-serif;
     font-weight:800;
     text-transform:uppercase;
 }
