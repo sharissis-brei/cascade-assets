@@ -28,7 +28,8 @@
 #set ( $topStoryCategoryText = '' )
 #set ( $topStoryCategoryLink = '' )
 #set ( $topStoryLink = '' )
-#set ( $topStoryLinkText = '' )
+#set ( $topStoryExtraLinkText = '' )
+#set ( $topStoryExtraLink = '' )
 #set ( $topStoryCtaLabel = '' )
 #set ( $topStoryExcerpt = '' )
 
@@ -70,7 +71,9 @@
   #set ( $topStoryCategoryLink = $topStory.getChild('topCategory').getChild('link').value )
   #set ( $topStoryExcerpt = ${_SerializerTool.serialize($topStory.getChild('excerpt'), true)} )
   #set ( $topStoryImages = $_XPathTool.selectNodes($currentPage, "./system-data-structure/BlogStories/topStory/images") )
-  #set ( $topStoryLinkText = $topStory.getChild('extraLink').getChild('text').value )
+  #set ( $topStoryExtraLinkText = $topStory.getChild('extraLink').getChild('text').value )
+  #set ( $topStoryExtraExternalLink = $topStory.getChild('extraLink').getChild('link').value )
+  #set ( $topStoryExtraInternalLinkPath = $topStory.getChild('extraLink').getChild('internalLink').getChild('path').value )
 #end
 
 #macro ( setTrendingStoriesVars )
@@ -180,8 +183,15 @@
 
       <p>$topStoryExcerpt</p>
 
-      #if ( $topStoryLinkText != "" )
-        <p><a href="$topStoryLink">$topStoryLinkText »</a></p>
+      #if ( $topStoryExtraLinkText != "" )
+        #if ( $topStoryExtraExternalLink != '' )
+            #set ($topStoryExtraLink = $topStoryExtraExternalLink )
+        #elseif ( $topStoryExtraInternalLinkPath != '' && $topStoryExtraInternalLinkPath != '/' )
+            #set ($topStoryExtraLink = $topStoryExtraInternalLinkPath )
+        #else
+            #set ($topStoryExtraLink = '#')
+        #end
+        <p><a href="$topStoryExtraLink">$topStoryExtraLinkText »</a></p>
       #end
     </div>
 </div>
