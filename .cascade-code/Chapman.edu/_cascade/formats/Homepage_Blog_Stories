@@ -27,6 +27,7 @@
 #set ( $topStoryImages = [] )
 #set ( $topStoryCategoryText = '' )
 #set ( $topStoryCategoryLink = '' )
+#set ( $topStoryHeader = '' )
 #set ( $topStoryLink = '' )
 #set ( $topStoryExtraLinkText = '' )
 #set ( $topStoryExtraLink = '' )
@@ -191,7 +192,7 @@
         #else
             #set ($topStoryExtraLink = '#')
         #end
-        <p><a href="$topStoryExtraLink">$topStoryExtraLinkText »</a></p>
+        <p><a href="$topStoryExtraLink">${_EscapeTool.xml($topStoryExtraLinkText)} »</a></p>
       #end
     </div>
 </div>
