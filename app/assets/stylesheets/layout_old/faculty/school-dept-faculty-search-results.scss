@@ -1,154 +1,154 @@
 //used by school/dept listing (including LAW SCHOOL) for faculty directory pages (not main listing)
 //
 .facultyList{
-	margin:0 0 20px 0;
-	.summary {
-		border-bottom: 1px dotted #565555;
-		padding: 10px 0 10px 0;    
-		.results {
-			font-size: 16px;
-		} 
-		.resultsFor {
-			font-style: italic;
-			font-size: 14px;
-			border-left: 1px solid $black;
-			margin: 0 0 0 10px;
-			padding: 0 0 0 10px;
-		}
-	} // end summary
-	.facultyMember{
-		margin:20px 20px 2px 0;
-		width:100%;
-		display:inline-block;
-		vertical-align:top;
-		position:relative;
-		min-height:100px;
-		padding:10px 20px 0 110px;  
-		border-top:1px dotted #c1c1c1;
-		@include bp(m) {
-			width:45%;
-		}
-			
-		&:nth-child(odd){
-			margin-right:45px;
-		}
-				
-		&:nth-child(even){
-			margin-right:0;
-		}
-		//
-		.profilePicture{
-			position:absolute;
-			top:10px;
-			left:10px;
-			height:110px;
-			width:110px;
-			overflow:hidden;
-			img {
-				position:absolute;
-				background: #ffffff;
-				padding: 7px;
-				box-shadow: 1px 1px 2px 1px rgba(0,0,0,0.2);
-				width: 90px;
-			}
-		}		
-		h2{
-			font-weight:500;
-			font-size:16px;   
-			margin:0;
-			padding:0;
-			text-transform:uppercase;
-		}		
-		h2>a:after{
-			content:" \00BB";   
-		}
-		.department{
-			font-size:14px;  
-		}		
-		.title{
-			font-size:14px;
-			line-height: 15px;
-			margin: 4px 0 0 0;
-		}
-		.additionalTitles, .specialty{
-			font-size:14px;
-			line-height: 15px;
-			margin:0;
-		}
-		.affiliation{
-			font-size:13px;
-			line-height:14px;
-			margin:6px 0;
-		}
-		.affiliation .spacer{
-			margin:0 0 5px 0;
-		}	
-		.email{
-			margin:5px 0 0 0;
-		}	
-	} //end facultyMenber
-	//
-	.pagingInfo {
-		margin: 15px 0 0 0;
-		.pagingNavigation {
-			color: $cu-red;
-			>span {
-				&:first-child {
-					border: none;
-				}
-				padding: 0 4px 0 4px;
-				border-left: 1px solid $black;
-				text-decoration: underline;
-				cursor: hand;
-				cursor: pointer;
-			}
-			@include bp(m) {
-				float: right;
-			}
-		}
-	} // end pagingInfo  
+  margin:0 0 20px 0;
+  .summary {
+    border-bottom: 1px dotted #565555;
+    padding: 10px 0 10px 0;    
+    .results {
+      font-size: 16px;
+    } 
+    .resultsFor {
+      font-style: italic;
+      font-size: 14px;
+      border-left: 1px solid $black;
+      margin: 0 0 0 10px;
+      padding: 0 0 0 10px;
+    }
+  } // end summary
+  .facultyMember{
+    margin:20px 20px 2px 0;
+    width:100%;
+    display:inline-block;
+    vertical-align:top;
+    position:relative;
+    min-height:100px;
+    padding:10px 20px 0 110px;  
+    border-top:1px dotted #c1c1c1;
+    @include bp(m) {
+      width:45%;
+    }
+
+    &:nth-child(odd){
+      margin-right:45px;
+    }
+
+    &:nth-child(even){
+      margin-right:0;
+    }
+
+    .profilePicture{
+      position:absolute;
+      top:10px;
+      left:10px;
+      height:110px;
+      width:110px;
+      overflow:hidden;
+      img {
+        position:absolute;
+        background: #ffffff;
+        padding: 7px;
+        box-shadow: 1px 1px 2px 1px rgba(0,0,0,0.2);
+        width: 90px;
+      }
+    }
+    h2{
+      font-weight:500;
+      font-size:16px;   
+      margin:0;
+      padding:0;
+      text-transform:uppercase;
+    }
+    h2>a:after{
+      content:" \00BB";   
+    }
+    .department{
+      font-size:14px;  
+    }
+    .title{
+      font-size:14px;
+      line-height: 15px;
+      margin: 4px 0 0 0;
+    }
+    .additionalTitles, .specialty{
+      font-size:14px;
+      line-height: 15px;
+      margin:0;
+    }
+    .affiliation{
+      font-size:13px;
+      line-height:14px;
+      margin:6px 0;
+    }
+    .affiliation .spacer{
+      margin:0 0 5px 0;
+    }
+    .email{
+      margin:5px 0 0 0;
+    }
+  } //end facultyMenber
+
+  .pagingInfo {
+    margin: 15px 0 0 0;
+    .pagingNavigation {
+      color: $cu-red;
+      >span {
+        &:first-child {
+          border: none;
+        }
+        padding: 0 4px 0 4px;
+        border-left: 1px solid $black;
+        text-decoration: underline;
+        cursor: hand;
+        cursor: pointer;
+      }
+      @include bp(m) {
+        float: right;
+      }
+    }
+  } // end pagingInfo  
  } // end facultyList
 //
 //
 // separate section of styles for optional spotlight:
 //
 .facultySpotlight{
-	margin:10px 0 10px 0;
-	background: #e2e1dc;
-	background: -ms-radial-gradient(circle, #e2e1dc, #e2e1dc);
-	background: -ms-radial-gradient(circle, #e2e1dc, #e2e1dc);
-	background: -webkit-radial-gradient(circle, #e2e1dc, #e2e1dc);
-	background: -moz-radial-gradient(circle, #e2e1dc, #e2e1dc);
-	background: -ms-radial-gradient(circle, #e2e1dc, #e2e1dc);
-	.copy {
-		max-width:400px;
-		min-width:300px;
-		padding:0 10px 10px 10px;
-		float:left;
-		margin:10px 5px 10px 5px;
-	}	
-	.copy > h2 {
-		font-weight:600;
-		color:#8f0c30;   
-		font-size:16px;
-		margin:0 0 10px 0;
-	}	
-	.video {
-		display:block;
-		position:relative;
-		float:left;
-	}	
-	.video > img {
-		margin:0;   
-	}	
-	.video > .playButton {
-		position:absolute;
-		top:0;
-		right:0;
-		bottom:0;
-		left:0;
-		background-image: image-url('play_button.png');
-		background-repeat:no-repeat;
-		background-position:center center;
-	}
+  margin:10px 0 10px 0;
+  background: #e2e1dc;
+  background: -ms-radial-gradient(circle, #e2e1dc, #e2e1dc);
+  background: -ms-radial-gradient(circle, #e2e1dc, #e2e1dc);
+  background: -webkit-radial-gradient(circle, #e2e1dc, #e2e1dc);
+  background: -moz-radial-gradient(circle, #e2e1dc, #e2e1dc);
+  background: -ms-radial-gradient(circle, #e2e1dc, #e2e1dc);
+  .copy {
+    max-width:400px;
+    min-width:300px;
+    padding:0 10px 10px 10px;
+    float:left;
+    margin:10px 5px 10px 5px;
+  }
+  .copy > h2 {
+    font-weight:600;
+    color:#8f0c30;   
+    font-size:16px;
+    margin:0 0 10px 0;
+  }
+  .video {
+    display:block;
+    position:relative;
+    float:left;
+  }
+  .video > img {
+    margin:0;   
+  }
+  .video > .playButton {
+    position:absolute;
+    top:0;
+    right:0;
+    bottom:0;
+    left:0;
+    background-image: image-url('play_button.png');
+    background-repeat:no-repeat;
+    background-position:center center;
+  }
 } //end of just facultySpotlight

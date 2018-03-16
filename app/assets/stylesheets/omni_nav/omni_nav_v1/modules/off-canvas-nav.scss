@@ -1,440 +1,440 @@
 .cu-off-canvas-nav-trigger {
-	// This should be similar to settings for a.cu_nav_button in omni-nav.scss.
-	svg {
-		width: 24px;
-		height: 24px;
-		margin-right: 8px;
-		background-size: contain;
-		vertical-align: middle;
-	}
+  // This should be similar to settings for a.cu_nav_button in omni-nav.scss.
+  svg {
+    width: 24px;
+    height: 24px;
+    margin-right: 8px;
+    background-size: contain;
+    vertical-align: middle;
+  }
 }
 
 .cu-off-canvas-nav {
-	width: 200%;
-	position: relative;
-	left: 0;
-	@include transition(all, 0.375s, ease-in-out);
+  width: 200%;
+  position: relative;
+  left: 0;
+  @include transition(all, 0.375s, ease-in-out);
 
-	.shifted & {
-		left: -100%;
-	}
+  .shifted & {
+    left: -100%;
+  }
 
-	li {
-		border-top: 1px solid $cu-off-canvas-nav-border-color;
-		list-style: none;
-		margin: 0;
-	}
+  li {
+    border-top: 1px solid $cu-off-canvas-nav-border-color;
+    list-style: none;
+    margin: 0;
+  }
 
-	a {
-		// color: $grey2;
-		color: #444444; // Client request - BarkleyREI
-		font-weight: normal; /* Fallback */
-		font-weight: 400;
-		position: relative;
-		left: 0px;
-		@include transition(all, 0.175s, ease-in-out);
+  a {
+    // color: $grey2;
+    color: #444444; // Client request - BarkleyREI
+    font-weight: normal; /* Fallback */
+    font-weight: 400;
+    position: relative;
+    left: 0px;
+    @include transition(all, 0.175s, ease-in-out);
 
-		&:hover {
-			left: 5px;
-		}
-	}
+    &:hover {
+      left: 5px;
+    }
+  }
 
-	> ul {
-		width: 50%;
-		float: left;
-		border-bottom: 1px solid $cu-off-canvas-nav-border-color;
-		@include vendorize(box-sizing, border-box);
+  > ul {
+    width: 50%;
+    float: left;
+    border-bottom: 1px solid $cu-off-canvas-nav-border-color;
+    @include vendorize(box-sizing, border-box);
 
-		&.level-1 {
-			border-right: 1px solid $cu-off-canvas-nav-border-color;
-		}
+    &.level-1 {
+      border-right: 1px solid $cu-off-canvas-nav-border-color;
+    }
 
-		&.level-2 {
-			position: relative;
-			left: -1px;
-			border-left: 1px solid $cu-off-canvas-nav-border-color;
-		}
+    &.level-2 {
+      position: relative;
+      left: -1px;
+      border-left: 1px solid $cu-off-canvas-nav-border-color;
+    }
 
-		> li {
-			display: block;
-			position: relative;
-			width: 100%;
+    > li {
+      display: block;
+      position: relative;
+      width: 100%;
 
-			> ul {
-				display: none;
+      > ul {
+        display: none;
 
-				&:empty {
-					display: none;
-				}
+        &:empty {
+          display: none;
+        }
 
-				> li {
-					// background-color: lighten($cu-light-grey, 5%);
-					background-color: #f5f5f5; // Client request - BarkleyREI
+        > li {
+          // background-color: lighten($cu-light-grey, 5%);
+          background-color: #f5f5f5; // Client request - BarkleyREI
 
-					a {
-						display: block;
-						font-size: 16px;
-						padding: 0.5em 1.325em;
-						color: $grey2-hover;
+          a {
+            display: block;
+            font-size: 16px;
+            padding: 0.5em 1.325em;
+            color: $grey2-hover;
 
-						&:hover {
-							color: $chapman-link-hover;
-						}
+            &:hover {
+              color: $chapman-link-hover;
+            }
 
-						// Client request - BarkleyREI
-						&:active {
-							color: $cu-red;
-						}
-					}
-				}
-			}
+            // Client request - BarkleyREI
+            &:active {
+              color: $cu-red;
+            }
+          }
+        }
+      }
 
-			&.open {
+      &.open {
 
-				&:empty {
-					display: none;
-				}
+        &:empty {
+          display: none;
+        }
 
-				> a {
-					color: $cu-red; // Client request - BarkleyREI
+        > a {
+          color: $cu-red; // Client request - BarkleyREI
 
-					&:before {
-						color: $cu-red;
-					}
+          &:before {
+            color: $cu-red;
+          }
 
-					svg {
-						fill: $cu-red;
-					}
-				}
+          svg {
+            fill: $cu-red;
+          }
+        }
 
-				.toggle > span {
-					@include vendorize(transform, rotate(45deg));
-				}
-			}
+        .toggle > span {
+          @include vendorize(transform, rotate(45deg));
+        }
+      }
 
-			> a, .toggle {
-				height: 60px;
-			}
+      > a, .toggle {
+        height: 60px;
+      }
 
-			> a {
-				display: table-cell;
-				vertical-align: middle;
-				padding: 0 70px 0 22px;
-				position: relative;
-				font-size: 18px;
-				font-family: "futura-pt", sans-serif;
+      > a {
+        display: table-cell;
+        vertical-align: middle;
+        padding: 0 70px 0 22px;
+        position: relative;
+        font-size: 18px;
+        font-family: "futura-pt", sans-serif;
 
-				&:before, svg {
-					// vertical-align: top;
-					position: relative;
-					@include transition(all, 0.175s, ease-in-out);
-				}
+        &:before, svg {
+          // vertical-align: top;
+          position: relative;
+          @include transition(all, 0.175s, ease-in-out);
+        }
 
-				&:before {
-					margin-right: 10px;
-				}
+        &:before {
+          margin-right: 10px;
+        }
 
-				&:hover {
-					color: $grey;
+        &:hover {
+          color: $grey;
 
-					&:before {
-						color: $cu-red;
-					}
+          &:before {
+            color: $cu-red;
+          }
 
-					svg {
-						fill: $cu-red;
-					}
-				}
+          svg {
+            fill: $cu-red;
+          }
+        }
 
-				svg {
-					fill: $grey2;
-					display: inline-block;
-					width: 18px;
-					height: 18px;
-					top: 2px;
-					margin-right: 10px;
-					
-					&.icon-graduation {
-						width: 21px;
-						height: 21px;
-						top: 5px;
-						margin-right: 7px;
-					}
-					&.icon-calendar {
-						width: 20px;
-						height: 20px;
-						margin-right: 8px;
-					}
-				}
-			}
+        svg {
+          fill: $grey2;
+          display: inline-block;
+          width: 18px;
+          height: 18px;
+          top: 2px;
+          margin-right: 10px;
+          
+          &.icon-graduation {
+            width: 21px;
+            height: 21px;
+            top: 5px;
+            margin-right: 7px;
+          }
+          &.icon-calendar {
+            width: 20px;
+            height: 20px;
+            margin-right: 8px;
+          }
+        }
+      }
 
-			.toggle {
-				width: 60px;
-				line-height: 60px;
-				font-size: 18px;
-				text-align: center;
-				position: absolute;
-				top: 0;
-				right: 0;
-				background-color: $cu-off-canvas-nav-background;
-				color: $grey;
-				font-weight: normal; /* Fallback */
-				font-weight: 400;
-				cursor: pointer;
+      .toggle {
+        width: 60px;
+        line-height: 60px;
+        font-size: 18px;
+        text-align: center;
+        position: absolute;
+        top: 0;
+        right: 0;
+        background-color: $cu-off-canvas-nav-background;
+        color: $grey;
+        font-weight: normal; /* Fallback */
+        font-weight: 400;
+        cursor: pointer;
 
-				> span {
-					display: block;
-					font-family: 'Helvetica Neue', Helvetica, Arial, sans-serif;
-					@include transition(all, 0.175s, ease-in-out);
-				}
-			}
-		}
-	}
+        > span {
+          display: block;
+          font-family: 'Helvetica Neue', Helvetica, Arial, sans-serif;
+          @include transition(all, 0.175s, ease-in-out);
+        }
+      }
+    }
+  }
 }
 
 .cu-off-canvas-nav-container {
-	position: fixed;
-	top: 0;
-	left: -($cu-off-canvas-nav-mobile-width);
-	width: $cu-off-canvas-nav-mobile-width;
-	height: 100%;
-	overflow-y: scroll;
-	overflow-x: hidden;
-	z-index: 99999;
-	background-color: $white;
-	@include transition(all, 0.375s, ease-in-out);
+  position: fixed;
+  top: 0;
+  left: -($cu-off-canvas-nav-mobile-width);
+  width: $cu-off-canvas-nav-mobile-width;
+  height: 100%;
+  overflow-y: scroll;
+  overflow-x: hidden;
+  z-index: 99999;
+  background-color: $white;
+  @include transition(all, 0.375s, ease-in-out);
 
-	* {
-		@include vendorize(user-select, none);
-	}
+  * {
+    @include vendorize(user-select, none);
+  }
 
-	&.open {
-		left: 0;
-	}
+  &.open {
+    left: 0;
+  }
 
-	ul, ol {
-		margin: 0;
-		padding: 0;
-	}
+  ul, ol {
+    margin: 0;
+    padding: 0;
+  }
 
-	a {
-		text-decoration: none;
-		&:hover, &:focus {
-			text-decoration: none;
-		}
-	}
+  a {
+    text-decoration: none;
+    &:hover, &:focus {
+      text-decoration: none;
+    }
+  }
 
-	@include bp(m) {
-		left: -($cu-off-canvas-nav-desktop-width);
-		width: $cu-off-canvas-nav-desktop-width;
-	}
+  @include bp(m) {
+    left: -($cu-off-canvas-nav-desktop-width);
+    width: $cu-off-canvas-nav-desktop-width;
+  }
 
 }
 
 .cu-off-canvas-overlay {
-	background-color: $black;
-	z-index: 99998;
-	position: fixed;
-	visibility: hidden;
-	opacity: 0;
-	top: 0;
-	bottom: 0;
-	left: 0;
-	right: 0;
-	width: 100%;
-	height: 100%;
-	@include transition(all, 0.375s, ease-in-out);
+  background-color: $black;
+  z-index: 99998;
+  position: fixed;
+  visibility: hidden;
+  opacity: 0;
+  top: 0;
+  bottom: 0;
+  left: 0;
+  right: 0;
+  width: 100%;
+  height: 100%;
+  @include transition(all, 0.375s, ease-in-out);
 
-	&.active {
-		visibility: visible;
-		opacity: 0.5;
-	}
+  &.active {
+    visibility: visible;
+    opacity: 0.5;
+  }
 }
 
 .cu-off-canvas-header {
-	position: relative;
-	background-color: $cu-off-canvas-nav-background;
-	padding: 1.5em 1.8em 0 1.5em; // 20170210 - CU Build
+  position: relative;
+  background-color: $cu-off-canvas-nav-background;
+  padding: 1.5em 1.8em 0 1.5em; // 20170210 - CU Build
 
 
-	.sc-logo {
-		display: block;
-		height: 23px;
-		width: 200px;
-		border: 0;
-		text-indent: -998em;
-		margin: 2px 0 0 0;
-		background: image-url('chapman_logo_horizontal_color.png'); // IE 8
-		background: image-url('chapman_logo_horizontal_color.svg'), linear-gradient(transparent, transparent);
-		background-repeat: no-repeat;
-		background-size: contain;
+  .sc-logo {
+    display: block;
+    height: 23px;
+    width: 200px;
+    border: 0;
+    text-indent: -998em;
+    margin: 2px 0 0 0;
+    background: image-url('chapman_logo_horizontal_color.png'); // IE 8
+    background: image-url('chapman_logo_horizontal_color.svg'), linear-gradient(transparent, transparent);
+    background-repeat: no-repeat;
+    background-size: contain;
 
-		@include bp(m) {
-			height: 28px;
-			width: 273px;
-			margin: 0;
-		}
-		.shifted & {
-			display: none;
-		}
-	}
+    @include bp(m) {
+      height: 28px;
+      width: 273px;
+      margin: 0;
+    }
+    .shifted & {
+      display: none;
+    }
+  }
 
-	.asbe {
-		background: image-url('off-canvas-header-asbe.png'); // IE 8
-		background: image-url('off-canvas-header-asbe.svg'), linear-gradient(transparent, transparent);
-		background-repeat: no-repeat;
-		background-size: contain;
-	}
-	.education {
-		background: image-url('off-canvas-header-education.png'); // IE 8
-		background: image-url('off-canvas-header-education.svg'), linear-gradient(transparent, transparent);
-		background-repeat: no-repeat;
-		background-size: contain;
-	}
-	.dodge {
-		background: image-url('off-canvas-header-dodge.png'); // IE 8
-		background: image-url('off-canvas-header-dodge.svg'), linear-gradient(transparent, transparent);
-		background-repeat: no-repeat;
-		background-size: contain;
-	}
-	.crean {
-		background: image-url('off-canvas-header-crean.png'); // IE 8
-		background: image-url('off-canvas-header-crean.svg'), linear-gradient(transparent, transparent);
-		background-repeat: no-repeat;
-		background-size: contain;
-	}
-	.wilkinson {
-		background: image-url('off-canvas-header-wilkinson.png'); // IE 8
-		background: image-url('off-canvas-header-wilkinson.svg'), linear-gradient(transparent, transparent);
-		background-repeat: no-repeat;
-		background-size: contain;
-	}
-	.copa {
-		background: image-url('off-canvas-header-copa.png'); // IE 8
-		background: image-url('off-canvas-header-copa.svg'), linear-gradient(transparent, transparent);
-		background-repeat: no-repeat;
-		background-size: contain;
-	}
-	.cusp {
-		background: image-url('off-canvas-header-cusp.png'); // IE 8
-		background: image-url('off-canvas-header-cusp.svg'), linear-gradient(transparent, transparent);
-		background-repeat: no-repeat;
-		background-size: contain;
-	}
-	.fowler {
-		background: image-url('off-canvas-header-fowler.png'); // IE 8
-		background: image-url('off-canvas-header-fowler.svg'), linear-gradient(transparent, transparent);
-		background-repeat: no-repeat;
-		background-size: contain;
-	}
-	.schmid {
-		background: image-url('off-canvas-header-schmid.png'); // IE 8
-		background: image-url('off-canvas-header-schmid.svg'), linear-gradient(transparent, transparent);
-		background-repeat: no-repeat;
-		background-size: contain;
-	}
-	.soc {
-		background: image-url('off-canvas-header-soc.png'); // IE 8
-		background: image-url('off-canvas-header-soc.svg'), linear-gradient(transparent, transparent);
-		background-repeat: no-repeat;
-		background-size: contain;
-	}
-
-
-	.default-logo {
-		display: none;
-
-		.shifted & , &-cu {
-			display: block;
-			border: 0;
-			height: 23px;
-			width: 200px;
-			text-indent: -998em;
-			margin: 2px 0 0 0;
-			background: image-url('chapman_logo_horizontal_color.png'); // IE 8
-			background: image-url('chapman_logo_horizontal_color.svg'), linear-gradient(transparent, transparent);
-			background-repeat: no-repeat;
-			background-size: contain;
-
-			@include bp(m) {
-				height: 28px;
-				width: 273px;
-				margin: 0;
-			}
-		}
-	}
+  .asbe {
+    background: image-url('off-canvas-header-asbe.png'); // IE 8
+    background: image-url('off-canvas-header-asbe.svg'), linear-gradient(transparent, transparent);
+    background-repeat: no-repeat;
+    background-size: contain;
+  }
+  .education {
+    background: image-url('off-canvas-header-education.png'); // IE 8
+    background: image-url('off-canvas-header-education.svg'), linear-gradient(transparent, transparent);
+    background-repeat: no-repeat;
+    background-size: contain;
+  }
+  .dodge {
+    background: image-url('off-canvas-header-dodge.png'); // IE 8
+    background: image-url('off-canvas-header-dodge.svg'), linear-gradient(transparent, transparent);
+    background-repeat: no-repeat;
+    background-size: contain;
+  }
+  .crean {
+    background: image-url('off-canvas-header-crean.png'); // IE 8
+    background: image-url('off-canvas-header-crean.svg'), linear-gradient(transparent, transparent);
+    background-repeat: no-repeat;
+    background-size: contain;
+  }
+  .wilkinson {
+    background: image-url('off-canvas-header-wilkinson.png'); // IE 8
+    background: image-url('off-canvas-header-wilkinson.svg'), linear-gradient(transparent, transparent);
+    background-repeat: no-repeat;
+    background-size: contain;
+  }
+  .copa {
+    background: image-url('off-canvas-header-copa.png'); // IE 8
+    background: image-url('off-canvas-header-copa.svg'), linear-gradient(transparent, transparent);
+    background-repeat: no-repeat;
+    background-size: contain;
+  }
+  .cusp {
+    background: image-url('off-canvas-header-cusp.png'); // IE 8
+    background: image-url('off-canvas-header-cusp.svg'), linear-gradient(transparent, transparent);
+    background-repeat: no-repeat;
+    background-size: contain;
+  }
+  .fowler {
+    background: image-url('off-canvas-header-fowler.png'); // IE 8
+    background: image-url('off-canvas-header-fowler.svg'), linear-gradient(transparent, transparent);
+    background-repeat: no-repeat;
+    background-size: contain;
+  }
+  .schmid {
+    background: image-url('off-canvas-header-schmid.png'); // IE 8
+    background: image-url('off-canvas-header-schmid.svg'), linear-gradient(transparent, transparent);
+    background-repeat: no-repeat;
+    background-size: contain;
+  }
+  .soc {
+    background: image-url('off-canvas-header-soc.png'); // IE 8
+    background: image-url('off-canvas-header-soc.svg'), linear-gradient(transparent, transparent);
+    background-repeat: no-repeat;
+    background-size: contain;
+  }
 
 
-	.close {
-		cursor: pointer;
-		position: absolute;
-		top: 0;
-		right: 0;
-		padding: 1.75em 1.8em 1.75em 1.25em; // Client request - BarkleyREI
-	}
+  .default-logo {
+    display: none;
 
-	.cu-off-canvas-links {
-		min-height: 1em;
-		margin-top: 1.25em;
-		position: relative;
-		height: 30px;
+    .shifted & , &-cu {
+      display: block;
+      border: 0;
+      height: 23px;
+      width: 200px;
+      text-indent: -998em;
+      margin: 2px 0 0 0;
+      background: image-url('chapman_logo_horizontal_color.png'); // IE 8
+      background: image-url('chapman_logo_horizontal_color.svg'), linear-gradient(transparent, transparent);
+      background-repeat: no-repeat;
+      background-size: contain;
 
-		.shifted & {
+      @include bp(m) {
+        height: 28px;
+        width: 273px;
+        margin: 0;
+      }
+    }
+  }
 
-			.level-1-link, .main-menu {
-				opacity: 0;
-				z-index: 1;
-			}
 
-			.level-2-link {
-				opacity: 1;
-				z-index: 2;
-			}
-		}
+  .close {
+    cursor: pointer;
+    position: absolute;
+    top: 0;
+    right: 0;
+    padding: 1.75em 1.8em 1.75em 1.25em; // Client request - BarkleyREI
+  }
 
-		.level-1-link, .main-menu {
-			opacity: 1;
-			z-index: 2;
-			max-width: 49%;
-		}
+  .cu-off-canvas-links {
+    min-height: 1em;
+    margin-top: 1.25em;
+    position: relative;
+    height: 30px;
 
-		.level-1-link, .level-2-link, .main-menu {
-			font-size: 13px;
-			text-transform: uppercase;
-			color: $grey2;
-			position: absolute;
-			height: 30px;
-			white-space: nowrap;
-			overflow: hidden;
-			text-overflow: ellipsis;
-			@include transition(opacity, 0.375s, ease-in-out);
+    .shifted & {
 
-			.accent {
-				color: $theme-blue;
-			}
+      .level-1-link, .main-menu {
+        opacity: 0;
+        z-index: 1;
+      }
 
-			&.hidden {
-				display: none;
-			}
+      .level-2-link {
+        opacity: 1;
+        z-index: 2;
+      }
+    }
 
-			&:hover {
-				text-decoration: none;
-			}
+    .level-1-link, .main-menu {
+      opacity: 1;
+      z-index: 2;
+      max-width: 49%;
+    }
 
-		}
+    .level-1-link, .level-2-link, .main-menu {
+      font-size: 13px;
+      text-transform: uppercase;
+      color: $grey2;
+      position: absolute;
+      height: 30px;
+      white-space: nowrap;
+      overflow: hidden;
+      text-overflow: ellipsis;
+      @include transition(opacity, 0.375s, ease-in-out);
 
-		.level-1-link, .level-2-link {
-			right: 0;
-		}
+      .accent {
+        color: $theme-blue;
+      }
 
-		.main-menu {
-			left: 0;
-		}
+      &.hidden {
+        display: none;
+      }
 
-		.level-2-link {
-			opacity: 0;
-			z-index: 1;
-			max-width: 100%;
-		}
-	}
+      &:hover {
+        text-decoration: none;
+      }
+
+    }
+
+    .level-1-link, .level-2-link {
+      right: 0;
+    }
+
+    .main-menu {
+      left: 0;
+    }
+
+    .level-2-link {
+      opacity: 0;
+      z-index: 1;
+      max-width: 100%;
+    }
+  }
 }

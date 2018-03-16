@@ -1,17 +1,17 @@
 .oneColumn {
-	.firstColumn {
+  .firstColumn {
     &.hasForm {
       @include bp(m) {
-      	max-width: 55%;
+        max-width: 55%;
       }
     }
     @include bp(m) {
-    	width: 100%;
-	    max-width: 80%;
-	    float: left;
+      width: 100%;
+      max-width: 80%;
+      float: left;
     }
-	}
-	.secondColumn {
+  }
+  .secondColumn {
     -webkit-box-sizing: border-box;
     -moz-box-sizing: border-box;
     box-sizing: border-box;
@@ -56,7 +56,7 @@
       }
     }
     @include bp(m) {
-    	max-width: 40%;
+      max-width: 40%;
       width: 350px;
       border-left: 1px solid $cu-border;
       margin: 0 0 0 30px;
@@ -71,17 +71,17 @@
     }
   }
   footer {
-  	@include bp(m) {
-  		position: relative;
-  	}
+    @include bp(m) {
+      position: relative;
+    }
   }
   .smallMasthead .masthead {
     min-height: 0;
     margin: 0 auto 0 auto;
     &:before {
-    	@include bp(l) {
-    		// background-image: image-url('oneColumnMasthead.png');
-    	}
+      @include bp(l) {
+      // background-image: image-url('oneColumnMasthead.png');
+      }
     }
     > div {
       text-transform: uppercase;
@@ -91,7 +91,7 @@
       max-width: 100%;
       padding: 25px 3% 25px 3%;
       @include bp(l) {
-      	position: relative;
+        position: relative;
       }
     }
   }
@@ -137,30 +137,30 @@
   .rightVideo {
     margin: 0 0 20px 0;
     @include bp(m) {
-    	float: right;
+      float: right;
       height: auto;
       width: 355px;
       margin: 0 0 10px 50px;
     }
   }
   .privacy {
-  	a {
-	    display: block;
-	    padding: 10px 0 10px 10px;
-	    color: $white;
-	    background-color: $black;
-	    font-family: $font-stack-body;
-	    font-weight: 800;
-	    text-transform: uppercase;
-	    @include bp(m) {
-	    	display: block;
+    a {
+      display: block;
+      padding: 10px 0 10px 10px;
+      color: $white;
+      background-color: $black;
+      font-family: $font-stack-body;
+      font-weight: 800;
+      text-transform: uppercase;
+      @include bp(m) {
+        display: block;
         padding: 0;
-	    }
-	  }
-	  @include bp(m) {
-	  	position: absolute;
+      }
+    }
+    @include bp(m) {
+      position: absolute;
       right: 25px;
-	  }
+    }
   }
   .finePrint {
     padding: 100px;

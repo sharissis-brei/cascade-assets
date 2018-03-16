@@ -1,50 +1,50 @@
 //for 25Live Trumba Calendars 
 .calendar-25live-widget {
-	padding: $primary-column-widget-spacing 0;
+  padding: $primary-column-widget-spacing 0;
 }
 //header bar above calendar
 .calendar-25live-headerbar {
     background-color: #E2E1DC; 
     border-bottom: 1px solid #C0C0B8; 
     border-right: 1px solid #C0C0B8; 
-	padding:10px;
+  padding:10px;
     padding-top:10px; 
-	width:100%;
-	height: 145px;
-	@include bp(m) {
-    	height: 65px;
+  width:100%;
+  height: 145px;
+  @include bp(m) {
+      height: 65px;
     }
 }
 .calendar-25live-headerbar-sect1 {
     float:none; 
-	text-align:left; 
-	width:100%; 
-	padding-bottom:15px; 
-	@include bp(m) {
-    	float:left; 
-		width:30%;
-		padding-bottom:5px;	
+  text-align:left; 
+  width:100%; 
+  padding-bottom:15px; 
+  @include bp(m) {
+      float:left; 
+    width:30%;
+    padding-bottom:5px; 
     }
 }
 .calendar-25live-headerbar-sect2 {
     float:none; 
-	text-align:left; 
-	width:100%; 
-	padding-bottom:15px;
-	@include bp(m) {
-    	float:left; 
-		width:30%;
-		padding-bottom:5px;	
+  text-align:left; 
+  width:100%; 
+  padding-bottom:15px;
+  @include bp(m) {
+      float:left; 
+    width:30%;
+    padding-bottom:5px; 
     }
 }
 .calendar-25live-headerbar-sect3 {
     float:none; 
-	text-align:left; 
-	width:100%;
-	padding-bottom:5px;	
-	@include bp(m) {
-    	text-align:right; 
-		display:inline-block; 
-		width:40%;
+  text-align:left; 
+  width:100%;
+  padding-bottom:5px; 
+  @include bp(m) {
+      text-align:right; 
+    display:inline-block; 
+    width:40%;
     }
 }

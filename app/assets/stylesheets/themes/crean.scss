@@ -1,28 +1,27 @@
-
 #theme.crean {
   @include theme-color-classes($crean-primary);
   .smallMasthead .masthead, .smallMasthead .masthead-old, .bigMasthead .mastheadPlaceholder, .bigMasthead .masthead, .bigMasthead .masthead-old, .nameBar, .rightColumn .styleTwo {
-  	background: $crean-primary; /* Old browsers */
-  	
+    background: $crean-primary; /* Old browsers */
+
   }
-	
+
     .rightColumn .styleTwo .border { 
-		background-color: $crean-tertiary; 
-	}
+    background-color: $crean-tertiary; 
+  }
 
     .rightColumn .styleTwo a {
       color: $white;
-	    border-bottom: 2px dotted #90aaa8;
+      border-bottom: 2px dotted #90aaa8;
     }
     
     .nameBarButtons li a { 
-		color: $crean-secondary;
-	}
+    color: $crean-secondary;
+  }
     
-	.expandedNameBarContainer h2, .expandedNameBarContainer a { 
-		color: $theme-light-grey;
-		text-decoration: underline; 
-	}
+  .expandedNameBarContainer h2, .expandedNameBarContainer a { 
+    color: $theme-light-grey;
+    text-decoration: underline; 
+  }
 
     #social_follow_us {
     .banner {

@@ -1,15 +1,14 @@
-
 #theme.copa__music {
   @include theme-color-classes($music-primary);
   
   .smallMasthead .masthead, .smallMasthead .masthead-old, .bigMasthead .mastheadPlaceholder, .bigMasthead .masthead, .bigMasthead .masthead-old, .nameBar, .rightColumn .styleTwo {
-  	background: $music-primary; /* Old browsers */
-  	
+    background: $music-primary; /* Old browsers */
+
   }
-	
+  
     .rightColumn .styleTwo .border { 
-		background-color: $music-tertiary; 
-	}
+    background-color: $music-tertiary; 
+  }
 
     .rightColumn .styleTwo a {
       color: #ffffff;
@@ -17,12 +16,12 @@
     }
     
     .nameBarButtons li a { 
-		color: $music-secondary;
-	}
+    color: $music-secondary;
+  }
     
-	.expandedNameBarContainer h2, .expandedNameBarContainer a { 
-		color: #c9adb3; 
-	}
+  .expandedNameBarContainer h2, .expandedNameBarContainer a { 
+    color: #c9adb3; 
+  }
 
     #social_follow_us {
     .banner {

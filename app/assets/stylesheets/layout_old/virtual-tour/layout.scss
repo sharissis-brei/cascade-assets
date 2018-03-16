@@ -1,7 +1,7 @@
 #container {
   overflow: visible;
   @include bp(wildcard-min, 767px) {
-  	overflow: hidden;
+    overflow: hidden;
     width: 100%;
     height: 100%;
   }

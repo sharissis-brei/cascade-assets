@@ -1,196 +1,196 @@
 /* For individual faculty profile pages (not listing pages)
-	from old profile_2013.css and one class from level_2013.css */ 
+   from old profile_2013.css and one class from level_2013.css */ 
 
 .facultyProfile  { 
-	
-	h2 {
-		font-size: 14px;
-	}
-	
-	.profilePicture {
-		margin:10px 10px 10px 0;
-		overflow:hidden;
-		width: 130px;
-		height:150px;
-		clear:both;
-		position:relative;
-		
-		.noPhoto {
-			height: 75px;
-			width: 65px;
-		}
-		
-		img {
-			position:absolute;
-			max-width:206px;
-			border: 10px solid #ffffff;
-			-webkit-box-shadow: 1px 1px 2px 1px rgba(0,0,0,0.2);
-			-moz-box-shadow: 1px 1px 2px 1px rgba(0,0,0,0.2);
-			box-shadow: 1px 1px 2px 1px rgba(0,0,0,0.2);  
-		}
-	
-	}
-	 
-	.credit {
-		font-size: 12px;
-	} 
-	
-	.jobTitle{
-		font-weight:normal;
-		font-size:16px; //set because part of h1 with name so need to be smaller
-		margin-top: 3px;
-		line-height:17px;
-	}
-	
-	div[itemprop="affiliation"]{
-		max-width:600px;
-	}
-	
-	div[itemprop="affiliation"]:first-child{
-		margin: 15px 0 0 0;
-	}
-	
-	.college {
-		padding-bottom:5px; 
-		font-size:14px;
-		line-height:15px;
-	}
-	
-	.honors{
-		margin:10px 0 0 0;
-	}
-	
-	dl{
-		margin:10px 0 10px 0;  
-	}
-	
-	.noFloat{
-		margin: 10px 0 10px 0;   
-		width: 70%;
-	}
-	
-	dt{
-		font-weight:bold;
-		float:left;
-		clear:left;
-		margin:0 5px 5px 0;
-	}
-	
-	dd{
-		padding:0;
-		margin:0;
-		float:left;
-	}
-	
-	.video {
-		position: relative;
-		padding-bottom: 56.25%;
-		padding-top: 30px;
-		height: 0;
-		overflow: hidden;
-	}
-	
-	.video iframe, .video object, .video embed {
-		position: absolute;
-		top: 50px;
-		left: 0;
-		width: 100%;
-		height: 100%;
-	}
-	
-	.social{
-		margin:10px 0 0 0;
-	}
-	
-	.contactInfo {
-		 max-width: 500px; 
-	}
-	
-	dd.scholarlyWork {
-		padding: 10px 15px 10px 30px;
-		text-indent: -15px;
-	}
-	
-	dd.scholarlyWork div {
-		display: inline;
-	}
-	
-	dd.scholarlyWork div:after{
-		content: '.';    
-	}
-	
-	dd.scholarlyWork div:first-child:after{
-		content:'';   
-	}
-		
-	//copied these social icon classes from level_2013.css. also new name and folder for image:
-	.social {
-		a {
-			float:left;
-			margin:0 10px 0 0;
-			text-indent:-999em;
-			height:26px;
-			width:26px;
-			background-image: image-url('social_icons_faculty_profile.png');
-			background-repeat:no-repeat;
-		}
-		.facebook{
-			background-position:left top;   
-		}
-		
-		.twitter{
-			background-position:-30px top;   
-		}
-		
-		.linkedIn{
-			background-position:-60px top;   
-		}
-		
-		.rss{
-			background-position:-90px top;   
-		}
-		
-		.flickr{
-			background-position:-120px top;   
-		}
-		
-		.youTube{
-			background-position:-150px top;   
-		}
-		
-		.vimeo{
-			background-position:-180px top;   
-		}
-		
-		.social .googlePlus{
-			background-position:-210px top;   
-		}
-		
-		.instagram{
-			background-position:-240px top;   
-		} 
-	}
-	
-	@include bp(m) {
-		.profilePicture {
-			position: absolute;
-			top: 65px;
-			right: 10px;
-			float: none;
-		}
-	}
-	
+
+  h2 {
+    font-size: 14px;
+  }
+
+  .profilePicture {
+    margin:10px 10px 10px 0;
+    overflow:hidden;
+    width: 130px;
+    height:150px;
+    clear:both;
+    position:relative;
+    
+    .noPhoto {
+      height: 75px;
+      width: 65px;
+    }
+    
+    img {
+      position:absolute;
+      max-width:206px;
+      border: 10px solid #ffffff;
+      -webkit-box-shadow: 1px 1px 2px 1px rgba(0,0,0,0.2);
+      -moz-box-shadow: 1px 1px 2px 1px rgba(0,0,0,0.2);
+      box-shadow: 1px 1px 2px 1px rgba(0,0,0,0.2);  
+    }
+
+  }
+
+  .credit {
+    font-size: 12px;
+  } 
+
+  .jobTitle{
+    font-weight:normal;
+    font-size:16px; //set because part of h1 with name so need to be smaller
+    margin-top: 3px;
+    line-height:17px;
+  }
+
+  div[itemprop="affiliation"]{
+    max-width:600px;
+  }
+
+  div[itemprop="affiliation"]:first-child{
+    margin: 15px 0 0 0;
+  }
+
+  .college {
+    padding-bottom:5px; 
+    font-size:14px;
+    line-height:15px;
+  }
+
+  .honors{
+    margin:10px 0 0 0;
+  }
+
+  dl{
+    margin:10px 0 10px 0;  
+  }
+
+  .noFloat{
+    margin: 10px 0 10px 0;   
+    width: 70%;
+  }
+
+  dt{
+    font-weight:bold;
+    float:left;
+    clear:left;
+    margin:0 5px 5px 0;
+  }
+
+  dd{
+    padding:0;
+    margin:0;
+    float:left;
+  }
+
+  .video {
+    position: relative;
+    padding-bottom: 56.25%;
+    padding-top: 30px;
+    height: 0;
+    overflow: hidden;
+  }
+
+  .video iframe, .video object, .video embed {
+    position: absolute;
+    top: 50px;
+    left: 0;
+    width: 100%;
+    height: 100%;
+  }
+
+  .social{
+    margin:10px 0 0 0;
+  }
+
+  .contactInfo {
+     max-width: 500px; 
+  }
+
+  dd.scholarlyWork {
+    padding: 10px 15px 10px 30px;
+    text-indent: -15px;
+  }
+
+  dd.scholarlyWork div {
+    display: inline;
+  }
+
+  dd.scholarlyWork div:after{
+    content: '.';    
+  }
+
+  dd.scholarlyWork div:first-child:after{
+    content:'';   
+  }
+    
+  //copied these social icon classes from level_2013.css. also new name and folder for image:
+  .social {
+    a {
+      float:left;
+      margin:0 10px 0 0;
+      text-indent:-999em;
+      height:26px;
+      width:26px;
+      background-image: image-url('social_icons_faculty_profile.png');
+      background-repeat:no-repeat;
+    }
+    .facebook{
+      background-position:left top;   
+    }
+    
+    .twitter{
+      background-position:-30px top;   
+    }
+    
+    .linkedIn{
+      background-position:-60px top;   
+    }
+    
+    .rss{
+      background-position:-90px top;   
+    }
+    
+    .flickr{
+      background-position:-120px top;   
+    }
+    
+    .youTube{
+      background-position:-150px top;   
+    }
+    
+    .vimeo{
+      background-position:-180px top;   
+    }
+    
+    .social .googlePlus{
+      background-position:-210px top;   
+    }
+    
+    .instagram{
+      background-position:-240px top;   
+    } 
+  }
+
+  @include bp(m) {
+    .profilePicture {
+      position: absolute;
+      top: 65px;
+      right: 10px;
+      float: none;
+    }
+  }
+
 } 
 // end of facultyProfile parent class
 
 .large_faculty_photo {
-	.profilePicture {
-		height:auto;
-		width:auto;
-	 	max-width:206px;
-		
-		img {
-			position:static;    
-		}   
-	}
+  .profilePicture {
+    height:auto;
+    width:auto;
+    max-width:206px;
+    
+    img {
+      position:static;    
+    }   
+  }
 } // end of large_faculty_photo override
