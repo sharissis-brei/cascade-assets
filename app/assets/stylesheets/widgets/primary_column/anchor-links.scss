@@ -1,5 +1,5 @@
 .anchorLinks-widget {
-    padding: $primary-column-widget-spacing 0;
+  padding: $primary-column-widget-spacing 0;
 }
 
 .anchorLinks {
@@ -30,21 +30,21 @@
 
 .ie7 .letterBlock {
   display:inline;
-  zoom:1;   
+  zoom:1;
 }
 
 .letterBlock ul {
-  list-style-type:none;   
+  list-style-type:none;
 }
 
-.letterBlock ul li{
-  margin:0 20px 5px 0;   
+.letterBlock ul li {
+  margin:0 20px 5px 0;
   padding:0 0 0 12px;
   text-indent:-12px;
 }
 
-.letter, .letter:hover, .letter:focus, .letter:visited{
-  color:Black !important;   
+.letter, .letter:hover, .letter:focus, .letter:visited {
+  color:Black !important;
   text-decoration:none;
   margin: 20px 0 5px 0;
   display:block;

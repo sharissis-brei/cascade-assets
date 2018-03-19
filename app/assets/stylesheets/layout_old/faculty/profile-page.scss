@@ -1,7 +1,7 @@
 /* For individual faculty profile pages (not listing pages)
    from old profile_2013.css and one class from level_2013.css */ 
 
-.facultyProfile  { 
+.facultyProfile { 
 
   h2 {
     font-size: 14px;
@@ -14,19 +14,19 @@
     height:150px;
     clear:both;
     position:relative;
-    
+
     .noPhoto {
       height: 75px;
       width: 65px;
     }
-    
+
     img {
       position:absolute;
       max-width:206px;
       border: 10px solid #ffffff;
       -webkit-box-shadow: 1px 1px 2px 1px rgba(0,0,0,0.2);
       -moz-box-shadow: 1px 1px 2px 1px rgba(0,0,0,0.2);
-      box-shadow: 1px 1px 2px 1px rgba(0,0,0,0.2);  
+      box-shadow: 1px 1px 2px 1px rgba(0,0,0,0.2);
     }
 
   }
@@ -61,11 +61,11 @@
   }
 
   dl{
-    margin:10px 0 10px 0;  
+    margin:10px 0 10px 0;
   }
 
   .noFloat{
-    margin: 10px 0 10px 0;   
+    margin: 10px 0 10px 0;
     width: 70%;
   }
 
@@ -116,13 +116,13 @@
   }
 
   dd.scholarlyWork div:after{
-    content: '.';    
+    content: '.';
   }
 
   dd.scholarlyWork div:first-child:after{
-    content:'';   
+    content:'';
   }
-    
+
   //copied these social icon classes from level_2013.css. also new name and folder for image:
   .social {
     a {
@@ -135,39 +135,39 @@
       background-repeat:no-repeat;
     }
     .facebook{
-      background-position:left top;   
+      background-position:left top;
     }
     
     .twitter{
-      background-position:-30px top;   
+      background-position:-30px top;
     }
-    
+
     .linkedIn{
-      background-position:-60px top;   
+      background-position:-60px top;
     }
-    
+
     .rss{
-      background-position:-90px top;   
+      background-position:-90px top;
     }
-    
+
     .flickr{
-      background-position:-120px top;   
+      background-position:-120px top;
     }
-    
+
     .youTube{
-      background-position:-150px top;   
+      background-position:-150px top;
     }
-    
+
     .vimeo{
-      background-position:-180px top;   
+      background-position:-180px top;
     }
-    
+
     .social .googlePlus{
-      background-position:-210px top;   
+      background-position:-210px top;
     }
-    
+
     .instagram{
-      background-position:-240px top;   
+      background-position:-240px top;
     } 
   }
 
@@ -188,9 +188,9 @@
     height:auto;
     width:auto;
     max-width:206px;
-    
+
     img {
-      position:static;    
-    }   
+      position:static;
+    }
   }
 } // end of large_faculty_photo override

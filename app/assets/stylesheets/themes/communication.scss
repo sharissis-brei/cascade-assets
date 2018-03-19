@@ -1,6 +1,6 @@
 #theme.communication {
   @include theme-color-classes($communication-primary);
-  
+
   .smallMasthead .masthead, .smallMasthead .masthead-old, .bigMasthead .mastheadPlaceholder, .bigMasthead .masthead, .bigMasthead .masthead-old, .nameBar, .rightColumn .styleTwo {
     background: $communication-primary; /* Old browsers */
   }

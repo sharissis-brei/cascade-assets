@@ -1,7 +1,7 @@
 //attallah college but /education folder
 #theme.education {
   @include theme-color-classes($education-primary);
-  
+
   .smallMasthead .masthead, .smallMasthead .masthead-old, .bigMasthead .mastheadPlaceholder, .bigMasthead .masthead, .bigMasthead .masthead-old, .nameBar, .rightColumn .styleTwo {
     background: $education-primary; /* Old browsers */
     //background: -moz-radial-gradient(center, ellipse cover, $education-primary 1%, $education-secondary 93%); /* FF3.6+ */

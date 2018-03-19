@@ -1,11 +1,11 @@
 .personnel-listing-widget {
   padding: $primary-column-widget-spacing 0;
-  
+
   .sectionHeader {
     margin-top: 0;
-  padding-top: 0;
+    padding-top: 0;
   }
-    
+
   .person {
     &:first-child {
       border-top: none;

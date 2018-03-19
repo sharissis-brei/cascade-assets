@@ -4,7 +4,7 @@ body.no-scroll {
 
 .mainNav {
   display: none;
-  
+
   &.mainNavLaw {
     display: block;
   }
@@ -12,5 +12,4 @@ body.no-scroll {
   @include bp(m) {
     display: block;
   }
-
 }
