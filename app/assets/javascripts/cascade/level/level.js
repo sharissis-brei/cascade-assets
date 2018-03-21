@@ -9,7 +9,7 @@ function wrapIframes() {
   var iframeSelectorBlacklist = [
     skipClass,                          // Class user can add in Cascade.
     '#no-video',                        // This is for existing cases (should use class above).
-
+    '#map_frame',
     // Special cases can be added below:
     '#message-your-lawmaker-iframe'     // countable.us widget
   ];
@@ -17,7 +17,6 @@ function wrapIframes() {
 
   $('.editableContent iframe').not(notSelector).each(function() {
     //Ensures that embedded map iframe elements do not receive a div element with class video
-    if ($(this)[0].id === "map_frame") return
     // Point any YouTube videos to https address.
     this.src.replace('http://www.youtube.com','https://www.youtube.com');
 
