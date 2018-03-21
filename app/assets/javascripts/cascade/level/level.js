@@ -1,4 +1,5 @@
 function wrapIframes() {
+
   // There's some uncertainty about what elements are being targeted with this modification:
   // just embedded YouTube videos? All embedded videos? Blacklist below is added to avoid breaking
   // any existing behavior while providing some flexibility in more selectively applying wrap to
@@ -16,6 +17,8 @@ function wrapIframes() {
   var notSelector = iframeSelectorBlacklist.join(', ');
 
   $('.editableContent iframe').not(notSelector).each(function() {
+    //Ensures that embedded map iframe elements do not receive a div element with class video
+    if ($(this)[0].id === "map_frame") return
     // Point any YouTube videos to https address.
     this.src.replace('http://www.youtube.com','https://www.youtube.com');
 
