@@ -1,5 +1,4 @@
 function wrapIframes() {
-
   // There's some uncertainty about what elements are being targeted with this modification:
   // just embedded YouTube videos? All embedded videos? Blacklist below is added to avoid breaking
   // any existing behavior while providing some flexibility in more selectively applying wrap to
