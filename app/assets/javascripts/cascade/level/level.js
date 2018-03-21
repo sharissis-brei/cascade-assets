@@ -16,7 +16,6 @@ function wrapIframes() {
   var notSelector = iframeSelectorBlacklist.join(', ');
 
   $('.editableContent iframe').not(notSelector).each(function() {
-    //Ensures that embedded map iframe elements do not receive a div element with class video
     // Point any YouTube videos to https address.
     this.src.replace('http://www.youtube.com','https://www.youtube.com');
 
