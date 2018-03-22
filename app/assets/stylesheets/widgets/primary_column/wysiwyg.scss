@@ -6,6 +6,10 @@
   }
 
   #map_frame {
-    min-height: 53vh;
+    min-height: 59vh;
+
+    @include bp(wildcard-max, 767px) {
+      min-height: 74vh;
+    }
   }
 }
