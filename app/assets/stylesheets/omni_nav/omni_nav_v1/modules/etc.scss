@@ -1,16 +1,15 @@
 body.no-scroll {
-	overflow: hidden;
+  overflow: hidden;
 }
 
 .mainNav {
-	display: none;
-	
-	&.mainNavLaw {
-		display: block;
-	}
+  display: none;
 
-	@include bp(m) {
-		display: block;
-	}
+  &.mainNavLaw {
+    display: block;
+  }
 
+  @include bp(m) {
+    display: block;
+  }
 }

@@ -1,45 +1,45 @@
 .feature-points {
-	.outer-container {
-		@include outer-container;
-		padding: 0 24px $base-spacing*2;
+  .outer-container {
+    @include outer-container;
+    padding: 0 24px $base-spacing*2;
 
-		@include media($medium-screen) { padding: 0 0 $base-spacing*2; }
-	}
+    @include media($medium-screen) { padding: 0 0 $base-spacing*2; }
+  }
 
-	.feature-points-list {
-		display: inline-block;
-		list-style-type: none;
-	}
+  .feature-points-list {
+    display: inline-block;
+    list-style-type: none;
+  }
 
-	.point-item {
-		display: table;
-		font-size: 16px;
-		line-height: 24px;
-		font-weight: 600;
+  .point-item {
+    display: table;
+    font-size: 16px;
+    line-height: 24px;
+    font-weight: 600;
 
-		@include media($large-screen) {
-			font-size: 18px;
-			line-height: 28px;
-		}
-	}
+    @include media($large-screen) {
+      font-size: 18px;
+      line-height: 28px;
+    }
+  }
 
-	.item-wrap {
-		display: table-cell;
-		vertical-align: middle;
-	}
+  .item-wrap {
+    display: table-cell;
+    vertical-align: middle;
+  }
 
-	.icon {
-		display: inline-block;
-		height: 48px;
-		width: 48px;
-		line-height: 48px;
-		margin-right: 12px;
-		text-align: center;
-		border-radius: 50%;
-		background-color: $bg-silver-gray;
-		font-size: 21px;
-		color: white;
+  .icon {
+    display: inline-block;
+    height: 48px;
+    width: 48px;
+    line-height: 48px;
+    margin-right: 12px;
+    text-align: center;
+    border-radius: 50%;
+    background-color: $bg-silver-gray;
+    font-size: 21px;
+    color: white;
 
-		&::before { line-height: inherit; }
-	}
+    &::before { line-height: inherit; }
+  }
 }
