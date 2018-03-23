@@ -1,6 +1,6 @@
 .subNavLinks {
   font-family: $font-stack-heading;
-	display: none;
+  display: none;
   .csstransitions & {
     @include bp(m) {
       visibility: visible;

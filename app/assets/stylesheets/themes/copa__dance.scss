@@ -1,9 +1,8 @@
-
 #theme.copa__dance {
   @include theme-color-classes($dance-primary);
   .smallMasthead .masthead, .smallMasthead .masthead-old, .bigMasthead .mastheadPlaceholder, .bigMasthead .masthead, .bigMasthead .masthead-old, .nameBar, .rightColumn .styleTwo {
-  	background: $dance-primary; /* Old browsers */
-  	
+    background: $dance-primary; /* Old browsers */
+
   }
 
   .rightColumn .styleTwo .border {

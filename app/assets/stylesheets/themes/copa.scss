@@ -1,8 +1,7 @@
-
 #theme.copa {
   @include theme-color-classes($copa-primary);
   .smallMasthead .masthead, .smallMasthead .masthead-old, .bigMasthead .mastheadPlaceholder, .bigMasthead .masthead, .bigMasthead .masthead-old, .nameBar, .rightColumn .styleTwo {
-  	background: $copa-primary; /* Old browsers */
+    background: $copa-primary; /* Old browsers */
 
   }
 

@@ -1,25 +1,25 @@
 .excerpt {
-	.outer-container {
-		@include outer-container;
-		padding-bottom: 24px;
-	}
-	
-	.text-container {
-		border-top: 2px solid $bg-silver-gray;
-		border-bottom: 2px solid $bg-silver-gray;
-		padding: 24px;
+  .outer-container {
+    @include outer-container;
+    padding-bottom: 24px;
+  }
 
-		@include media($medium-screen) { padding: $base-spacing*2 0; }
-	}
+  .text-container {
+    border-top: 2px solid $bg-silver-gray;
+    border-bottom: 2px solid $bg-silver-gray;
+    padding: 24px;
 
-	.text {
-		margin: 0;
-		text-align: center;
-		font-size: 26px;
-		line-height: 40px;
-		font-weight: 800;
-		color: #828282;
+    @include media($medium-screen) { padding: $base-spacing*2 0; }
+  }
 
-		@include media($large-screen) { text-align: left; }
-	}
+  .text {
+    margin: 0;
+    text-align: center;
+    font-size: 26px;
+    line-height: 40px;
+    font-weight: 800;
+    color: #828282;
+
+    @include media($large-screen) { text-align: left; }
+  }
 }
