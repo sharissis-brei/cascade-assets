@@ -9,7 +9,7 @@ function wrapIframes() {
   var iframeSelectorBlacklist = [
     skipClass,                          // Class user can add in Cascade.
     '#no-video',                        // This is for existing cases (should use class above).
-
+    '#map_frame',
     // Special cases can be added below:
     '#message-your-lawmaker-iframe'     // countable.us widget
   ];
