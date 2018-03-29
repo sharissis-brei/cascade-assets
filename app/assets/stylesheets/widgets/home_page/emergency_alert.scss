@@ -2,26 +2,37 @@
   background-color: $cu-red;
   color: $white;
   padding: 25px;
-  width: 100%;
 
-  p {
-    font-family: $font-stack-body;
-    font-weight: 600;
-    font-size: 16px;
-    line-height: 22px;
-
-    &.alert-title {
-      text-transform: uppercase;
-      font-family: $font-stack-heading;
-      font-size: 24px;
-      font-weight: 800;
-      text-align: center;
+  .alert-text {
+    @include media($medium-screen) {
+      padding: 0 60px;
     }
 
-    &.alert-message {
-      a {
-        color: $white;
-        border-bottom: 2px solid rgba(255,255,255,0.5);
+    p {
+      font-family: $font-stack-body;
+      font-weight: 400;
+      font-size: 16px;
+      line-height: 22px;
+
+      &.alert-heading {
+        text-transform: uppercase;
+        font-family: $font-stack-heading;
+        font-size: 24px;
+        font-weight: 800;
+        text-align: center;
+
+        @include media($medium-screen) {
+          text-align: left;
+          display: inline-block;
+          font-size: 26px;
+        }
+      }
+
+      &.alert-message {
+        a {
+          color: $white;
+          border-bottom: 2px solid rgba(255,255,255,0.5);
+        }
       }
     }
   }
@@ -31,7 +42,12 @@
     display: block;
     margin: 15px auto;
 
-    #icon-close {
+    @include media($medium-screen) {
+      margin: 0 5px 0 0;
+      display: inline-block;
+    }
+
+    &#icon-close-alert {
       float: right;
       margin: 0;
     }
