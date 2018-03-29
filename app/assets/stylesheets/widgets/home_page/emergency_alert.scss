@@ -1,0 +1,39 @@
+.emergency-alert {
+  background-color: $cu-red;
+  color: $white;
+  padding: 25px;
+  width: 100%;
+
+  p {
+    font-family: $font-stack-body;
+    font-weight: 600;
+    font-size: 16px;
+    line-height: 22px;
+
+    &.alert-title {
+      text-transform: uppercase;
+      font-family: $font-stack-heading;
+      font-size: 24px;
+      font-weight: 800;
+      text-align: center;
+    }
+
+    &.alert-message {
+      a {
+        color: $white;
+        border-bottom: 2px solid rgba(255,255,255,0.5);
+      }
+    }
+  }
+
+  svg {
+    fill: $white;
+    display: block;
+    margin: 15px auto;
+
+    #icon-close {
+      float: right;
+      margin: 0;
+    }
+  }
+}
