@@ -7,6 +7,24 @@ $large-screen: 1130px;
   color: $white;
   padding: 25px;
 
+  .close-alert-trigger {
+    cursor: pointer;
+    margin: 5px;
+    float: right;
+
+    svg {
+      margin: 0;
+    }
+
+    @include media($medium-screen) {
+      margin: 10px;
+    }
+
+    @include media($large-screen) {
+      margin: 15px;
+    }
+  }
+
   .alert-text {
     @include media($medium-screen) {
       padding: 0 60px;
@@ -55,11 +73,6 @@ $large-screen: 1130px;
     @include media($medium-screen) {
       margin: 0 5px 0 0;
       display: inline-block;
-    }
-
-    &#icon-close-alert {
-      float: right;
-      margin: 0;
     }
   }
 }
