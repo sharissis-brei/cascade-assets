@@ -6,6 +6,7 @@ $large-screen: 1130px;
   background-color: $cu-red;
   color: $white;
   padding: 25px;
+  border-bottom: 1px solid $cu-light-grey;
 
   .close-alert-trigger {
     cursor: pointer;
