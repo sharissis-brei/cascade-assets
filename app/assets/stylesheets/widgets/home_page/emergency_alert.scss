@@ -3,6 +3,7 @@
 $large-screen: 1130px;
 
 .emergency-alert {
+  display: none;
   background-color: $cu-red;
   color: $white;
   padding: 25px;
@@ -47,6 +48,7 @@ $large-screen: 1130px;
         font-size: 24px;
         font-weight: 800;
         text-align: center;
+        padding-bottom: 5px;
 
         @include media($medium-screen) {
           text-align: left;
@@ -55,9 +57,20 @@ $large-screen: 1130px;
         }
       }
 
-      &.alert-link, &.alert-message {
-        display: inline;
+      &.alert-title {
+        padding-top: 20px;
+        font-weight: 600;
+        font-size: 18px;
+        border-top: 1px solid white;
+      }
 
+      &.alert-message {
+        padding-bottom: 20px;
+        border-bottom: 1px solid white;
+      }
+
+      &.alert-link {
+        padding-top: 20px;
         a {
           color: $white;
           border-bottom: 2px solid rgba(255,255,255,0.5);
