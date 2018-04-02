@@ -3,7 +3,7 @@ source 'https://rubygems.org'
 gem 'autoprefixer-rails', '~> 6.4'
 gem 'awesome_print'
 gem 'foreman'
-gem 'nokogiri', '>= 1.6.7.rc'
+gem 'nokogiri'
 gem 'render_anywhere', require: false
 gem 'rubyzip'
 gem 'tzinfo-data'
