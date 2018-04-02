@@ -8,7 +8,7 @@ var EmergencyAlert = (function() {
   // Module Functions
   var initialize = function() {
     emergencyAlertDiv = $('div.emergency-alert');
-    alertMessage = $('p.alert-message')[0];
+    alertMessage = $('div.alert-message')[0];
     raveFeed = 'https://content.getrave.com/rss/chapman/channel1';
     noEmergencyMessage = "There is no emergency"; // current Rave message for no emergency
     var isEmergency = checkEmergencyFeed();

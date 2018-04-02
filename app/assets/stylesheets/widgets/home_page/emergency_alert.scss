@@ -36,26 +36,26 @@ $large-screen: 1130px;
       padding: 0 250px;
     }
 
-    p {
+    p.alert-heading {
+      text-transform: uppercase;
+      font-family: $font-stack-heading;
+      font-size: 24px;
+      font-weight: 800;
+      text-align: center;
+      padding-bottom: 5px;
+
+      @include media($medium-screen) {
+        text-align: left;
+        display: inline-block;
+        font-size: 26px;
+      }
+    }
+
+    div {
       font-family: $font-stack-body;
       font-weight: 400;
       font-size: 16px;
       line-height: 22px;
-
-      &.alert-heading {
-        text-transform: uppercase;
-        font-family: $font-stack-heading;
-        font-size: 24px;
-        font-weight: 800;
-        text-align: center;
-        padding-bottom: 5px;
-
-        @include media($medium-screen) {
-          text-align: left;
-          display: inline-block;
-          font-size: 26px;
-        }
-      }
 
       &.alert-title {
         padding-top: 20px;
