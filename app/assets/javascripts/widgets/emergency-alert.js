@@ -8,14 +8,14 @@ var EmergencyAlert = (function() {
   // Module Functions
   var initialize = function() {
     emergencyAlertDiv = $('div.emergency-alert');
-    alertMessage = $('div.alert-message')[0];
+    alertMessage = $('div.alert-message').text();
     raveFeed = 'https://content.getrave.com/rss/chapman/channel1';
     noEmergencyMessage = "There is no emergency"; // current Rave message for no emergency
     var isEmergency = checkEmergencyFeed();
 
     // If there is already a message (comes from data def in Cascade),
     // don't override the HTML with Rave feed
-    if (alertMessage.innerHTML != '') {
+    if (alertMessage.trim() != '') {
       displayEmergencyAlert();
     }
     else if(isEmergency) {
@@ -64,5 +64,8 @@ var EmergencyAlert = (function() {
 })();
 
 $(document).ready(function() {
-  EmergencyAlert.init();
+  // Only load on homepage
+  if($('.homepage').length) {
+    EmergencyAlert.init();
+  }
 });
