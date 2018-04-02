@@ -1,7 +1,28 @@
-$(document).ready( function() {
-  var emergencyAlertDiv = $('div.emergency-alert');
-  var alertMessage = $('p.alert-message')[0];
-  var raveFeed = 'https://content.getrave.com/rss/chapman/channel1';
+var EmergencyAlert = (function() {
+  // Module Vars
+  var emergencyAlertDiv,
+      alertMessage,
+      raveFeed,
+      noEmergencyMessage;
+
+  // Module Functions
+  var initialize = function() {
+    emergencyAlertDiv = $('div.emergency-alert');
+    alertMessage = $('p.alert-message')[0];
+    raveFeed = 'https://content.getrave.com/rss/chapman/channel1';
+    noEmergencyMessage = "There is no emergency"; // current Rave message for no emergency
+    var isEmergency = checkEmergencyFeed();
+
+    // If there is already a message (comes from data def in Cascade),
+    // don't override the HTML with Rave feed
+    if (alertMessage.innerHTML != '') {
+      displayEmergencyAlert();
+    }
+    else if(isEmergency) {
+      displayEmergencyAlert();
+      getRaveFeedData();
+    }
+  };
 
   var displayEmergencyAlert = function() {
     emergencyAlertDiv.show();
@@ -19,7 +40,7 @@ $(document).ready( function() {
   var checkEmergencyFeed = function() {
     $.get(raveFeed, function (data) {
       $(data).find("item").each(function () {
-        return $(this).find("title").text().includes("There is no emergency");
+        return $(this).find("title").text().includes(noEmergencyMessage);
       });
     });
   };
@@ -37,14 +58,11 @@ $(document).ready( function() {
     });
   };
 
-  // If there is already a message (comes from data def in Cascade),
-  // don't override the HTML with Rave feed
-  var isEmergency = checkEmergencyFeed();
-  if (alertMessage.innerHTML != '') {
-    displayEmergencyAlert();
-  }
-  else if(isEmergency) {
-    displayEmergencyAlert();
-    getRaveFeedData();
-  }
+  return {
+    init: initialize
+  };
+})();
+
+$(document).ready(function() {
+  EmergencyAlert.init();
 });
