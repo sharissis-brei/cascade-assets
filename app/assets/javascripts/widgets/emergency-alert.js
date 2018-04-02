@@ -51,9 +51,9 @@ var EmergencyAlert = (function() {
       $(data).find("item").each(function () {
         var item = $(this);
         var raveFeedDescription = item.find("description").text();
-        emergencyAlertDiv.find('p.alert-message').html(raveFeedDescription);
+        emergencyAlertDiv.find('div.alert-message').html(raveFeedDescription);
         var raveFeedTitle = item.find("title").text();
-        emergencyAlertDiv.find('p.alert-title').html(raveFeedTitle);
+        emergencyAlertDiv.find('div.alert-title').html(raveFeedTitle);
       });
     });
   };
