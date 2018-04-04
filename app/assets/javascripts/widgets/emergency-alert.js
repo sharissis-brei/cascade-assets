@@ -27,7 +27,7 @@ var EmergencyAlert = (function() {
           $(data).find("item").each(function () {
             var title = $(this).find("title").text();
             // Looks for absence of the "no emergency" message
-            isEmergency = !title.includes(noEmergencyMessage);
+            isEmergency = title.indexOf(noEmergencyMessage) < 0;
           });
 
           if(isEmergency) {
