@@ -3,24 +3,39 @@ var EmergencyAlert = (function() {
   var emergencyAlertDiv,
       alertMessage,
       raveFeed,
-      noEmergencyMessage;
+      noEmergencyMessage,
+      isEmergency = false;
 
   // Module Functions
   var initialize = function() {
     emergencyAlertDiv = $('div.emergency-alert');
     alertMessage = $('div.alert-message').text();
+    // Imposter test feed: https://imposter.chapman.edu/rave.rss
     raveFeed = 'https://content.getrave.com/rss/chapman/channel1';
-    noEmergencyMessage = "There is no emergency"; // current Rave message for no emergency
-    var isEmergency = checkEmergencyFeed();
+    noEmergencyMessage = "There is currently no emergency"; // current Rave message for no emergency
 
     // If there is already a message (comes from data def in Cascade),
     // don't override the HTML with Rave feed
     if (alertMessage.trim() != '') {
       displayEmergencyAlert();
     }
-    else if(isEmergency) {
-      displayEmergencyAlert();
-      getRaveFeedData();
+    else {
+      $.ajax({
+        url: raveFeed,
+        type: 'GET',
+        success: function(data) {
+          $(data).find("item").each(function () {
+            var title = $(this).find("title").text();
+            // Looks for absence of the "no emergency" message
+            isEmergency = !title.includes(noEmergencyMessage);
+          });
+
+          if(isEmergency) {
+            displayEmergencyAlert();
+            fillRaveFeedData(data);
+          }
+        }
+      });
     }
   };
 
@@ -36,25 +51,15 @@ var EmergencyAlert = (function() {
     });
   };
 
-  // Looks for key phrase in Rave feed to indicate no emergency
-  var checkEmergencyFeed = function() {
-    $.get(raveFeed, function (data) {
-      $(data).find("item").each(function () {
-        return $(this).find("title").text().includes(noEmergencyMessage);
-      });
-    });
-  };
-
-  var getRaveFeedData = function() {
-    $.get(raveFeed, function (data) {
-      // There should really only be 1 item in the feed at any given time
-      $(data).find("item").each(function () {
-        var item = $(this);
-        var raveFeedDescription = item.find("description").text();
-        emergencyAlertDiv.find('div.alert-message').html(raveFeedDescription);
-        var raveFeedTitle = item.find("title").text();
-        emergencyAlertDiv.find('div.alert-title').html(raveFeedTitle);
-      });
+  var fillRaveFeedData = function(data) {
+    // There should really only be 1 item in the feed at any given time
+    // See imposter.chapman.edu for sample feeds
+    $(data).find("item").each(function () {
+      var item = $(this);
+      var raveFeedDescription = item.find("description").text();
+      emergencyAlertDiv.find('div.alert-message').html(raveFeedDescription);
+      var raveFeedTitle = item.find("title").text();
+      emergencyAlertDiv.find('div.alert-title').html(raveFeedTitle);
     });
   };
 
