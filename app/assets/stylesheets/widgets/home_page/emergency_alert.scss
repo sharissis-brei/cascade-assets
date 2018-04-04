@@ -68,6 +68,18 @@ $large-screen: 1130px;
         padding-top: 10px;
         padding-bottom: 20px;
         border-bottom: 1px solid white;
+
+        // Styles for potential WYSIWYG content (data def in Cascade)
+        p {
+          font-size: 16px;
+          line-height: 22px;
+        }
+
+        h1, h2, h3 {
+          font-family: $font-stack-body;
+          margin: 0 0 15px 0;
+          font-size: 18px;
+        }
       }
 
       &.alert-link {
