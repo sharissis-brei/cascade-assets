@@ -98,7 +98,7 @@ this.jQuery && (function ($) {
 			// CU_search.cleanHash();
 
 			// Show results lightbox on search
-			$("input.gsc-search-button").on('click',function() {
+			$("button.gsc-search-button").on('click',function() {
 				if (CU_search.gse.getInputQuery().length <= 0){
 					$('.gsc-input').focus();
 					return;
@@ -241,30 +241,6 @@ this.jQuery && (function ($) {
 			// Display logged in or out based on cookie
 			CU_user.updateDisplay();
 			CU_user.checkStatus();
-
-			// TODO: Why is this code commented out but not deleted? Remove after Apr 2017.
-			// Bind show login
-			// $("#login_button").on('click', function(e) {
-			// 	$("#cu_nav").toggleClass("show-login");
-			// 	$(CU_user.login_form).find(".username").val('CU Username');
-			// 	$(CU_user.login_form).find(".password").val('Password');
-			// 	e.preventDefault();
-			// 	return false;
-			// });
-
-			// Bind logout link
-			// $("#cu_logout").on('click', function(e) {
-			// 	CU_user.doLogout();
-			// 	e.preventDefault();
-			// 	return false;
-			// });
-
-			// Bind login submit
-			// $(CU_user.login_form).on("submit", function(e) {
-			// 	CU_user.doLogin();
-			// 	e.preventDefault();
-			// 	return false;
-			// });
 		},
 
 		/***************************************************
@@ -284,13 +260,7 @@ this.jQuery && (function ($) {
 					CU_user.userinfo = data;
 					CU_user.saveData();
 					CU_user.updateDisplay();
-
-					// console.log("Cookie data differed. Updating from server!");
-
-				} else {
-					// console.log("No change. Doing nothing.");
 				}
-
 			});
 		},
 
