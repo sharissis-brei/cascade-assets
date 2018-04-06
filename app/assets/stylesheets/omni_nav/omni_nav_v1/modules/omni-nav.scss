@@ -515,6 +515,7 @@ a.cu_nav_button {
 
     &:focus, &:active { outline: none !important; }
 
+    // Invisible span tag added for accessibility error (empty button)
     span {
       display: none;
     }
@@ -529,11 +530,9 @@ a.cu_nav_button {
     padding: 14px 30px;
   }
 
-  // Don't show clear button in search box unless on mobile
+  // Hide google's clear search button
   div.gsc-clear-button {
-    @include bp(m) {
-      display: none;
-    }
+    display: none;
   }
 }
 
