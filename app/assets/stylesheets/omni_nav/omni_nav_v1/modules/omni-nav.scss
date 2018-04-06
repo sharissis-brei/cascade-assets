@@ -524,6 +524,8 @@ a.cu_nav_button {
 
     // Invisible span tag added for accessibility error (empty button)
     span {
+      // Wave complains about small text, must be > 10px
+      font-size: 12px;
       display: none;
     }
   }
