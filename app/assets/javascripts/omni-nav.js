@@ -98,7 +98,7 @@ this.jQuery && (function ($) {
 			// CU_search.cleanHash();
 
 			// Show results lightbox on search
-			$("button.gsc-search-button").on('click',function() {
+			$("button.gsc-search-button, input.gsc-search-button").on('click',function() {
 				if (CU_search.gse.getInputQuery().length <= 0){
 					$('.gsc-input').focus();
 					return;
