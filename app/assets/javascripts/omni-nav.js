@@ -46,6 +46,10 @@ this.jQuery && (function ($) {
 			});
 
 			$('input.gsc-input').attr('placeholder', 'Search');
+
+			// To get around accessibility error with empty buttons
+			var buttonContent = '<span>Search button</span>';
+			$('button.gsc-search-button').append(buttonContent);
 		},
 
 		/***************************************************
@@ -131,10 +135,8 @@ this.jQuery && (function ($) {
 		cleanHash : function() {
 			var h = window.location.hash;
 			if (h == '#gsc.tab=0' || h == '#gsc.tab=0&gsc.sort=') {
-
-				var
-				loc = window.location.href,
-				index = loc.indexOf('#');
+				var loc = window.location.href,
+						index = loc.indexOf('#');
 
 				if (index > 0) history.replaceState("", document.title, loc.substring(0, index));
 			}
@@ -156,7 +158,6 @@ this.jQuery && (function ($) {
 		},
 
 		show : function() {
-
 			var term = CU_search.gse.getInputQuery();
 
 			$('.gsc-control-cse').find('.more-results').remove();
@@ -218,7 +219,6 @@ this.jQuery && (function ($) {
 		userinfo     : null,
 
 		initialize : function() {
-
 			this.$container = $("#cu_login_container");
 
 			// Check for cookie
@@ -258,7 +258,6 @@ this.jQuery && (function ($) {
 				var data = jQuery.parseJSON(cookie);
 				CU_user.userinfo = data;
 			}
-
 			return data || false;
 		},
 
