@@ -244,7 +244,6 @@ a.cu_nav_button {
 ***************************************************/
 
 #cu_search {
-  @include reset-box-model();
   display: none;
   position: absolute;
   top: 0;
@@ -304,16 +303,27 @@ a.cu_nav_button {
   }
 
   #cu_search_box {
+    // On mobile & tablet, border is set on input.gsc-input
+    border: none;
+
     @include bp(l) {
       width: 65%;
       float: right;
+      border: 1px solid #b9b9b9;
+      border-radius: 0px 4px 4px 0px !important;
     }
   }
 
   div.gsc-input-box {
-    height: $cu-search-base-height;
-    border-radius: 0px 4px 4px 0px !important;
+    height: 32px;
     background: transparent;
+    border: none !important;
+    box-shadow: none !important;
+    margin-top: 5px;
+
+    @include bp(l) {
+      margin: 0;
+    }
   }
 
   .gsc-search-box {
@@ -323,12 +333,16 @@ a.cu_nav_button {
     z-index: 99100;
   }
 
+  // Container surrounding input.gsc-input
+  td.gsib_a {
+    padding: 0 0 0 5px;
+  }
+
   // The query input box
   input.gsc-input {
-    @include reset-box-model();
     width: 100%;
+    margin: 0;
     text-indent: 0px !important;
-    padding: 6px 0 3px !important;
     height: 25px !important;
     border-bottom: 1px solid $grey2 !important;
     border-radius: 0px 4px 4px 0px !important;
@@ -348,10 +362,8 @@ a.cu_nav_button {
     }
 
     @include bp(l) {
-      padding: 3px 0;
-      height: $cu-search-base-height;
-      padding: 5px 10px;
-      color: $black;
+      height: 32px !important;
+      // Border goes around cu_search_box on desktop
       border: none !important;
     }
   }
@@ -472,7 +484,7 @@ a.cu_nav_button {
   td.gsc-search-button {
     display: block;
     width: 30px;
-    height: 34px;
+    height: $cu-search-base-height;
     position: absolute;
     left: 0;
     font-size: 18px;
@@ -492,7 +504,7 @@ a.cu_nav_button {
     text-indent: -9999px;
     width: 30px;
     min-width: 30px;
-    height: 34px;
+    height: $cu-search-base-height;
     padding: 0;
     cursor: pointer;
     margin-left: 0;
