@@ -306,11 +306,16 @@ a.cu_nav_button {
     // On mobile & tablet, border is set on input.gsc-input
     border: none;
 
+    @include bp(m) {
+      padding-right: $cu-button-padding;
+    }
+
     @include bp(l) {
       width: 65%;
       float: right;
       border: 1px solid #b9b9b9;
       border-radius: 0px 4px 4px 0px !important;
+      padding: 0;
     }
   }
 
@@ -601,9 +606,18 @@ table.gssb_c {
       .gsc-tabsArea {
         // Extra pixel for bottom border
         height: 56px;
+        margin-bottom: 5px;
 
         > div {
           height: 55px;
+        }
+
+        @include bp(m) {
+          height: 26px;
+
+          > div {
+            height: 25px;
+          }
         }
       }
 
@@ -949,7 +963,7 @@ table.gssb_c {
     font-size: 24px;
   }
 
-  @include bp(m) {
+  @include bp(l) {
     display: none;
   }
 }
