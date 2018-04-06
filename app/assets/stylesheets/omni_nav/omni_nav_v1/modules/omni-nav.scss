@@ -3,6 +3,7 @@
 ***************************************************/
 
 $chapman-red:         #A50034;
+$font-stack-body:     arial, sans-serif;
 
 $page-bg-color:       #eaeaea;
 
@@ -18,6 +19,7 @@ $cu-domain-width:         175px;
 $cu-login-width:          220px;
 $cu-secondary-width:      435px;
 $cu-search-results-width: 560px;
+$cu-search-base-height:   34px;
 
 $cu-button-padding: 21px;
 
@@ -40,8 +42,8 @@ $cu-viewport-xl: 1200px;
 }
 
 @mixin font-stack-for-headings() {
-  font-family: "futura-pt", Arial, Verdana, "Sans Serif";
-  font-family: "futura-pt", Arial, Verdana, "Sans Serif";
+  font-family: "futura-pt", arial, sans-serif;
+  font-family: "futura-pt", arial, sans-serif;
 }
 
 @mixin wordpress-admin-bar-spacing() {
@@ -261,7 +263,6 @@ a.cu_nav_button {
   padding: 15px;
   z-index: 99997;
   background-color: #D9D9D9;
-
   margin-right: 0;
 
   @include bp(l) {
@@ -292,8 +293,8 @@ a.cu_nav_button {
     appearance: none;
     font-size: 13px;
     padding: 0 34px 0 10px;
-    height: 34px;
-    line-height: 34px;
+    height: $cu-search-base-height;
+    line-height: $cu-search-base-height;
     cursor: pointer;
     @include vendorize(border-radius, 4px 0px 0px 4px);
     @include vendorize(box-shadow, none);
@@ -318,6 +319,12 @@ a.cu_nav_button {
     }
   }
 
+  div.gsc-input-box {
+    height: $cu-search-base-height;
+    border-radius: 0px 4px 4px 0px !important;
+    background: transparent;
+  }
+
   .gsc-search-box {
     margin: 0;
     position: relative;
@@ -328,23 +335,26 @@ a.cu_nav_button {
   // The query input box
   input.gsc-input {
     @include reset-box-model();
-
     width: 100%;
-    padding: 6px 0 3px;
-    border-bottom: 1px solid $grey2;
+    text-indent: 0px !important;
+    padding: 6px 0 3px !important;
+    height: 25px !important;
+    border-bottom: 1px solid $grey2 !important;
+    border-radius: 0px 4px 4px 0px !important;
     background-image: none !important;
+    background: transparent !important;
     background-color: transparent;
     transition: background-color 0.5s ease-out;
     position: relative;
     line-height: 16px;
-    font-family: "proxima-nova-soft", "proxima-nova", "futura-pt", Arial, Verdana, "Sans Serif";
+    font-family: $font-stack-body;
+    font-size: 13px;
     box-shadow: none;
-    @include vendorize(appearance, none);
 
     &::-webkit-input-placeholder {
       font-size: 13px;
       color: $black;
-      font-family: "proxima-nova-soft", "proxima-nova", "futura-pt", Arial, Verdana, "Sans Serif";
+      font-family: $font-stack-body;
     }
 
     &:focus,
@@ -354,11 +364,10 @@ a.cu_nav_button {
 
     @include bp(l) {
       padding: 3px 0;
-      height: 34px;
+      height: $cu-search-base-height;
       padding: 5px 10px;
       color: $black;
-      border: 1px solid $cu-silver-grey;
-      @include vendorize(border-radius, 0px 4px 4px 0px);
+      border: none !important;
     }
   }
 
@@ -368,6 +377,11 @@ a.cu_nav_button {
 
     @include bp(m) {
       padding: 0;
+
+      // Clear search icon
+      a.gsst_a {
+        display: none;
+      }
     }
   }
 
@@ -440,12 +454,6 @@ a.cu_nav_button {
   .gsc-table-cell-thumbnail { padding-right: 8px; }
   .gsc-webResult { margin-bottom: 7px; }
 
-  // Thumbnail sizes
-  // @media only screen and (min-width:480px) {
-  //  .gs-web-image-box, .gs-promotion-image-box { width: 85px; }
-  //  .gs-web-image-box img.gs-image { max-width: 80px; }
-  // }
-
   // The pagination block
   .gsc-cursor-box {
     display: none;
@@ -487,14 +495,13 @@ a.cu_nav_button {
     left: 0;
     font-size: 18px;
 
-
     @include bp(m) {
       left: auto;
       right: 0;
     }
   }
 
-  input.gsc-search-button {
+  button.gsc-search-button {
     display: block;
     border: none;
     background: none;
@@ -518,19 +525,11 @@ a.cu_nav_button {
   @include bp(l) {
     background-color: transparent;
     display: block;
-    //width: 510px;
     width: 500px;
-    //left: 50%;
     text-align: right;
     right: 0%;
-    //margin-left: -160px;
     padding: 14px 30px;
   }
-
-  @include bp(l) {
-    //margin-left: -255px;
-  }
-
 
   // Don't show clear button in search box unless on mobile
   div.gsc-clear-button {
@@ -545,10 +544,22 @@ a.cu_nav_button {
   position: fixed !important;
   top: 44px !important;
   z-index: 99200;
-  // @include wordpress-admin-bar-spacing();
+  font-size: 13px;
 
   @include bp(m) {
     top: 48px !important;
+  }
+
+  .gsc-completion-container {
+    font-size: 13px;
+  }
+}
+
+// This is for the search form autocomplete results which are dynamically attached to
+// the body, so can't be nested within navbar selector.
+table.gssb_c {
+  table, tbody, tr, td {
+    border: none;
   }
 }
 
@@ -562,7 +573,6 @@ a.cu_nav_button {
   position: fixed;
   top: $cu-nav-height;
   left: 0;
-  // @include wordpress-admin-bar-spacing();
 
   #cu_search_results_cell {
     display:table-cell;
@@ -613,15 +623,9 @@ a.cu_nav_button {
         width: 495px;
         right: 0;
       }
-
-      @include bp(l) {
-
-      }
-
     }
   }
 }
-
 
 /***************************************************
 * LOGIN
@@ -629,13 +633,12 @@ a.cu_nav_button {
 
 #cu_login_container {
   @include reset-box-model();
-
   position: absolute;
   top: 0;
   right:0;
 
   #cu_identity {
-    font-family: 'proxima-nova', sans-serif;
+    font-family: $font-stack-body;
     font-size: 14px;
     @include reset-box-model();
 
@@ -727,7 +730,7 @@ a.cu_nav_button {
     #cu_password {
       width:100%;
       padding:7px;
-      font-family:"RooneySans","proxima-nova-soft", "futura-pt", Arial, Verdana, "Sans Serif";
+      font-family: $font-stack-body;
       font-size:12px;
       border:1px solid #D8D6D0;
       border-radius: 2px;
@@ -813,51 +816,6 @@ a.cu_nav_button {
     }
   }
 }
-
-/***************************************************
-* Things get bigger
-***************************************************/
-
-// @media only screen and (min-width: $cu-viewport-ml) {
-//   #cu_search {
-
-//     .gsc-control-cse {
-
-//       width: $cu-search-results-width;
-
-//       // CENTER ALIGNED
-//       left: 50%;
-//       right: auto;
-//       margin-left: -($cu-search-results-width / 2);
-//     }
-//   }
-
-// }
-
-
-// @media only screen and (min-width: $cu-viewport-l) {
-
-//  #cu_login_container #cu_identity {
-//    padding-right: 30px;
-//  }
-
-//  #cu_login_container #cu_identity .cu_name {
-//    // display: inline-block;
-//  }
-
-//  #cu_search {
-
-//    .gsc-control-cse {
-//       // RIGHT ALIGNED
-//       float: right !important;
-//       right: 105px !important;
-//       left: auto !important;
-//       margin-left: auto !important;
-//     }
-//  }
-
-// }
-
 
 /***************************************************
 * User Area
@@ -974,7 +932,6 @@ a.cu_nav_button {
 .cu-search-open-trigger {
   // z-indexes in this file are in the 99900-range, eventually need to be changed to lower values
   z-index: 99999;
-
   padding: ($cu-button-padding - 1px) 12px;
   position: absolute;
   right: 25px;
@@ -1115,13 +1072,5 @@ a.cu_nav_button {
         display: inline-block;
       }
     }
-  }
-}
-
-// This is for the search form autocomplete results which are dynamically attached to
-// the body, so can't be nested within navbar selector.
-table.gssb_c {
-  table, tbody, tr, td {
-    border: none;
   }
 }
