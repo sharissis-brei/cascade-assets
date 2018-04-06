@@ -375,13 +375,13 @@ a.cu_nav_button {
     width: 100%;
     padding: 0 30px;
 
+    // Clear search icon
+    a.gsst_a {
+      display: none;
+    }
+
     @include bp(m) {
       padding: 0;
-
-      // Clear search icon
-      a.gsst_a {
-        display: none;
-      }
     }
   }
 
@@ -966,7 +966,7 @@ table.gssb_c {
   z-index: 99997;
 
   span {
-    display: none;
+    font-size: 24px;
   }
 
   @include bp(m) {
