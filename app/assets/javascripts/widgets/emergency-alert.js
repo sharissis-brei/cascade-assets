@@ -11,7 +11,7 @@ var EmergencyAlert = (function() {
     emergencyAlertDiv = $('div.emergency-alert');
     alertMessage = $('div.alert-message').text();
     // Imposter test feed: https://imposter.chapman.edu/rave.rss
-    raveFeed = 'https://content.getrave.com/rss/chapman/channel1';
+    raveFeed = 'https://content.getrave.com/rss/chapman/channel2';
     noEmergencyMessage = "There is currently no emergency"; // current Rave message for no emergency
 
     // If there is already a message (comes from data def in Cascade),
