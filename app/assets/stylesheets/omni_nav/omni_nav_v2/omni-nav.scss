@@ -70,6 +70,20 @@ html.omni-nav-v2 {
 
     td.gsc-input {
        padding-right: 0;
+
+      div.gsc-input-box-focus,
+      div.gsc-input-box-hover, {
+        box-shadow: none;
+      }
+
+      div.gsc-input-box {
+        border: none;
+        height: 28px;
+
+        td {
+          line-height: 26px;
+        }
+      }
     }
   }
 
@@ -91,7 +105,7 @@ html.omni-nav-v2 {
       @include vendorize(appearance, none);
     }
 
-    input.gsc-search-button {
+    button.gsc-search-button {
       display: inline-block;
       width: $square-icon-size;
       height: $gcs-search-box-height;
@@ -336,13 +350,16 @@ html.omni-nav-v2 {
     #primary-nav-search {
       display: none;
 
-      .cu-search-box{ margin-right: 8px; }
+      .cu-search-box{ 
+        margin-right: 8px;
+        margin-top: 2vh;
+        border: 1px solid #545454;
+      }
       .search-results-container { line-height: normal; }
-      input.gsc-input, input.gsc-search-button { border: 1px solid #545454;}
+      input.gsc-input { border: 1px solid #545454;}
       input.gsc-input { border-right: none; }
       
-      input.gsc-search-button { 
-        border-left: none; 
+      button.gsc-search-button { 
         float: right; //new to fix search box
       }
 
