@@ -379,7 +379,12 @@ html.omni-nav-v2 {
       }
 
       .gsc-clear-button {
+        display: table-cell;
+      }
+
+      div.gsc-clear-button {
         display: inline;
+        background-image: url('//www.google.com/uds/css/clear.gif');
       }
 
       .gs-visibleUrl {
