@@ -96,7 +96,7 @@ var GoogleCustomSearch = (function() {
     };
 
     var bindEventHandlers = function() {
-      $searchBox.find('input.gsc-search-button').on('click', onSearchEnter);
+      $searchBox.find('button.gsc-search-button').on('click', onSearchEnter);
       $searchBox.find('input.gsc-input').on('keyup', onSearchEnter);
       $container.find('.search-filter-option').on('click', onSearchFilterClick);
       $searchBox.find('.gsc-clear-button').on('click', hideResults);
