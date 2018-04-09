@@ -68,17 +68,13 @@ html.omni-nav-v2 {
   table.gsc-search-box {
     margin-bottom: 0;
 
-    tr {
-      line-height: 25px;
-    }
+    tr { line-height: 25px; }
 
     td.gsc-input {
        padding-right: 0;
 
       div.gsc-input-box-focus,
-      div.gsc-input-box-hover, {
-        box-shadow: none;
-      }
+      div.gsc-input-box-hover, { box-shadow: none; }
 
       div.gsc-input-box {
         border: none;
@@ -365,11 +361,10 @@ html.omni-nav-v2 {
       }
 
       .search-results-container { line-height: normal; }
-      div.gsc-input-box { border: 1px solid #545454;}
+      div.gsc-input-box, button.gsc-search-button { border: 1px solid #545454;}
       div.gsc-input-box { border-right: none; }
       
       button.gsc-search-button {
-        border: 1px solid #545454;
         border-left: none;
         float: right; //new to fix search box
       }
