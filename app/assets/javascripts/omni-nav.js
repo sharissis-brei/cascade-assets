@@ -135,8 +135,7 @@ this.jQuery && (function ($) {
 		cleanHash : function() {
 			var h = window.location.hash;
 			if (h == '#gsc.tab=0' || h == '#gsc.tab=0&gsc.sort=') {
-				var loc = window.location.href,
-						index = loc.indexOf('#');
+				var loc = window.location.href, index = loc.indexOf('#');
 
 				if (index > 0) history.replaceState("", document.title, loc.substring(0, index));
 			}
@@ -165,7 +164,6 @@ this.jQuery && (function ($) {
 
 			$('.gsc-input').blur();
 			CU_search.$containerCell.css('height',$(window).height()+"px").css('width',$(window).width()+"px");
-			// if (CU_search.visible) return;
 			CU_search.lockScroll();
 			CU_search.visible = true;
 
@@ -309,7 +307,7 @@ this.jQuery && (function ($) {
 			// Add classes for roles
 			if (CU_user.userinfo.role) {
 				for (var i = 0; i < CU_user.userinfo.role.length; i++) {
-				    $("#cu_nav").addClass("is-"+CU_user.userinfo.role[i]);
+					$("#cu_nav").addClass("is-"+CU_user.userinfo.role[i]);
 				}
 			}
 		},
@@ -324,7 +322,7 @@ this.jQuery && (function ($) {
 			// Add classes for roles
 			if (CU_user.userinfo) {
 				for (var i = 0; i < CU_user.userinfo.role.length; i++) {
-				    $("#cu_nav").removeClass("is-"+CU_user.userinfo.role[i]);
+					$("#cu_nav").removeClass("is-"+CU_user.userinfo.role[i]);
 				}
 			}
 
@@ -405,9 +403,7 @@ this.jQuery && (function ($) {
 				user_pass = '';
 				$(CU_user.login_form).find(".password").val('');
 			});
-
 		},
-
 
 		/*\
 		|*|  A complete cookies reader/writer framework with full unicode support.
@@ -560,7 +556,6 @@ this.jQuery && (function ($) {
 				var staging_domain = prod_urls[item.getAttribute('data-show-domain')];
 				if (staging_domain) item.setAttribute('data-show-domain', staging_domain);
 			});
-
 		},
 
 		// Return domain and port for given URL
