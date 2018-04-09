@@ -213,9 +213,9 @@ html.omni-nav-v2 {
       width: 100%;
     }
 
-    .gsc-clear-button {
-      display: table-cell;
-    }
+    .gsib_b { display: none; }
+
+    .gsc-clear-button { display: table-cell; }
 
     div.gsc-clear-button {
       display: inline;
@@ -374,13 +374,9 @@ html.omni-nav-v2 {
         float: right; //new to fix search box
       }
 
-      .gsib_b {
-        display: none;
-      }
+      .gsib_b { display: none; }
 
-      .gsc-clear-button {
-        display: table-cell;
-      }
+      .gsc-clear-button { display: table-cell; }
 
       div.gsc-clear-button {
         display: inline;
