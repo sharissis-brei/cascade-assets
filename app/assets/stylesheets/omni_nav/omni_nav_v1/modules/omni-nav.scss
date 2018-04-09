@@ -368,6 +368,12 @@ a.cu_nav_button {
       font-family: $font-stack-body;
     }
 
+    @include bp(m) {
+      // Needs right padding on tablet/desktop so
+      // input text doesn't go behind the search icon
+      padding-right: 25px !important;
+    }
+
     @include bp(l) {
       height: 32px !important;
       // Border goes around cu_search_box on desktop
