@@ -101,7 +101,8 @@ html.omni-nav-v2 {
       @include vendorize(appearance, none);
     }
 
-    button.gsc-search-button {
+    button.gsc-search-button, 
+    input.gsc-search-button {
       display: inline-block;
       width: $square-icon-size;
       height: $gcs-search-box-height;
@@ -147,9 +148,7 @@ html.omni-nav-v2 {
       margin-bottom: 16px;
     }
 
-    .gsc-result-info {
-      font-size: 12px;
-    }
+    .gsc-tabsArea, .gsc-tabsArea > div { height: 100%; }
 
     .gs-title {
       text-decoration: none;
@@ -207,6 +206,14 @@ html.omni-nav-v2 {
       display: table;
       table-layout: fixed;
       width: 100%;
+    }
+
+    .gsib_a {
+      padding: 2px 0px 1px 6px;
+
+      input.gsc-input {
+        font-size: 13px;
+      }
     }
 
     .gsib_b { display: none; }
@@ -361,12 +368,22 @@ html.omni-nav-v2 {
       }
 
       .search-results-container { line-height: normal; }
-      div.gsc-input-box, button.gsc-search-button { border: 1px solid #545454;}
-      div.gsc-input-box { border-right: none; }
+      div.gsc-input-box, button.gsc-search-button,
+      input.gsc-input, input.gsc-search-button { border: 1px solid #545454;}
+      div.gsc-input-box, input.gsc-input { border-right: none; }
       
-      button.gsc-search-button {
+      button.gsc-search-button,
+      input.gsc-search-button {
         border-left: none;
         float: right; //new to fix search box
+      }
+
+      .gsib_a {
+        padding: 1px 0px 1px 6px;
+
+        input.gsc-input {
+          font-size: 13px;
+        }
       }
 
       .gsib_b { display: none; }
@@ -870,6 +887,13 @@ html.omni-nav-v2 {
     }
   }
 }
+
+  /* SEARCH AUTOCOMPLERE RESULTS
+  ---------------------------------------- */
+
+table.gsc-completion-container { font-size: 13px; }
+
+
 
 /*
  * For OmniNav v2, #theme header should have no bottom padding.

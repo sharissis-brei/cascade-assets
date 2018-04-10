@@ -288,7 +288,7 @@ var OmniNav2 = (function() {
       if ($('.utility-nav-open').length > 0) {
         // Focus needs a slight delay to allow the utility nav to come down all the way
         setTimeout(function(){
-          $('#utility-nav-search').find('.cu-search-box').find('button.gsc-input').focus();
+          $('#utility-nav-search').find('.cu-search-box').find('input.gsc-input').focus();
         },300);
       }
     }
@@ -314,7 +314,7 @@ var OmniNav2 = (function() {
       if ($('.utility-nav-open').length > 0) {
         // Focus needs a slight delay to allow the utility nav to come down all the way
         setTimeout(function(){
-          $('#utility-nav-search').find('.cu-search-box').find('button.gsc-input').focus();
+          $('#utility-nav-search').find('.cu-search-box').find('input.gsc-input').focus();
         },300);
       }
     }
@@ -323,7 +323,7 @@ var OmniNav2 = (function() {
       $('html.omni-nav-v2').removeClass('utility-nav-open');
       $primaryNav.toggleClass('search-open');
       // Sets focus for search input field
-      if ($('.search-open').length > 0) $('#primary-nav-search').find('.cu-search-box').find('button.gsc-input').focus();
+      if ($('.search-open').length > 0) $('#primary-nav-search').find('.cu-search-box').find('input.gsc-input').focus();
     }
 
 
