@@ -17,7 +17,6 @@ var OmniNav2 = (function() {
     $container = container;
     $utilityNav = $container.find('.utility-nav');
     $primaryNav = $container.find('#primary-nav');
-
     // Mark OmniNav v2 presence on page.
     $('html').addClass('omni-nav-v2');
 
@@ -471,7 +470,6 @@ var OmniNav2 = (function() {
       init: initialize
     };
   })();
-
   // Return for OmniNav2 module
   return {
     init: initialize
