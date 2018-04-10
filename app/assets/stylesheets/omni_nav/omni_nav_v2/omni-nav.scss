@@ -50,6 +50,8 @@ html.omni-nav-v2 {
     }
   }
 
+  /* Searchbox and search results  styling
+  ---------------------------------------- */
   #search-results-overlay {
     display: none;
     position: fixed;
@@ -80,6 +82,28 @@ html.omni-nav-v2 {
         border: none;
         height: 28px;        
       }
+    }
+
+    .gsib_a {
+      padding: 1px 0px 1px 6px;
+
+      input.gsc-input {
+        font-size: 13px;
+      }
+    }
+
+    .gsib_b { display: none; }
+
+    div.gsc-clear-button {
+      display: inline;
+      background-image: url('//www.google.com/uds/css/clear.gif');
+      display: table-cell;
+    }
+
+    //fixes issue with WAVE accessibility errors for empty button element google search added to search box
+    .gsc-search-button span {
+      display: none;
+      font-size: 12px;
     }
   }
 
@@ -117,7 +141,6 @@ html.omni-nav-v2 {
       background-position: center;
       background-repeat: no-repeat;
       text-indent: -9999px;
-      border-left: none;
       float: right;
     }
   }
@@ -195,11 +218,6 @@ html.omni-nav-v2 {
     }
   }
 
-  .gsc-search-button-span {
-    display: none;
-  }
-
-
   /* UTILITY NAV
   ---------------------------------------- */
   .utility-nav {
@@ -212,23 +230,6 @@ html.omni-nav-v2 {
       display: table;
       table-layout: fixed;
       width: 100%;
-    }
-
-    .gsib_a {
-      padding: 2px 0px 1px 6px;
-
-      input.gsc-input {
-        font-size: 13px;
-      }
-    }
-
-    .gsib_b { display: none; }
-
-    .gsc-clear-button { display: table-cell; }
-
-    div.gsc-clear-button {
-      display: inline;
-      background-image: url('//www.google.com/uds/css/clear.gif');
     }
 
     .utility-nav-container {
@@ -381,23 +382,6 @@ html.omni-nav-v2 {
       button.gsc-search-button,
       input.gsc-search-button {
         border-left: none;
-      }
-
-      .gsib_a {
-        padding: 1px 0px 1px 6px;
-
-        input.gsc-input {
-          font-size: 13px;
-        }
-      }
-
-      .gsib_b { display: none; }
-
-      .gsc-clear-button { display: table-cell; }
-
-      div.gsc-clear-button {
-        display: inline;
-        background-image: url('//www.google.com/uds/css/clear.gif');
       }
 
       .gs-visibleUrl {
@@ -893,12 +877,7 @@ html.omni-nav-v2 {
   }
 }
 
-  /* SEARCH AUTOCOMPLERE RESULTS
-  ---------------------------------------- */
-
 table.gsc-completion-container { font-size: 13px; }
-
-
 
 /*
  * For OmniNav v2, #theme header should have no bottom padding.
