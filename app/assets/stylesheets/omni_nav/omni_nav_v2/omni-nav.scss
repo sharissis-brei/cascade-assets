@@ -117,6 +117,8 @@ html.omni-nav-v2 {
       background-position: center;
       background-repeat: no-repeat;
       text-indent: -9999px;
+      border-left: none;
+      float: right;
     }
   }
 
@@ -191,6 +193,10 @@ html.omni-nav-v2 {
 
         &:hover { background: #CCCCCC;}
     }
+  }
+
+  .gsc-search-button-span {
+    display: none;
   }
 
 
@@ -375,7 +381,6 @@ html.omni-nav-v2 {
       button.gsc-search-button,
       input.gsc-search-button {
         border-left: none;
-        float: right; //new to fix search box
       }
 
       .gsib_a {

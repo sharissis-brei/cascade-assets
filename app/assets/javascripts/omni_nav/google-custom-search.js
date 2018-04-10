@@ -81,7 +81,7 @@ var GoogleCustomSearch = (function() {
       renderGoogleSearchMarkup();
       applyStyleAdjustments();
       bindEventHandlers();
-      $('button.gsc-search-button-v2').append("<span></span>")
+      $('button.gsc-search-button-v2').append("<span class='gsc-search-button-span'>button</span>")
       // The Google Custom Search Element object. Can only be called after
       // renderGoogleSearchMarkup.
       gcsElement = google.search.cse.element.getElement(containerId);
