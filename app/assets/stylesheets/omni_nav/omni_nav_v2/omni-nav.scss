@@ -29,7 +29,7 @@ html.omni-nav-v2 {
   position: fixed;
   width: 100%;
   top: 0;
-  font-family: "futura-pt", verdana, sans-serif;
+  font-family: "futura-pt", arial, sans-serif;
 
   // Needs to be high enough to put off-canvas-nav on top of anything else on page.
   z-index: 1000;
@@ -101,7 +101,7 @@ html.omni-nav-v2 {
     }
 
     //fixes issue with WAVE accessibility errors for empty button element google search added to search box
-    .gsc-search-button span {
+    span {
       display: none;
       font-size: 12px;
     }
@@ -488,7 +488,7 @@ html.omni-nav-v2 {
               // Text-related CSS
               line-height: normal;
               font-size: 10px;
-              font-family: "futura-pt", verdana, sans-serif;
+              font-family: "futura-pt", arial, sans-serif;
               font-weight: 800;
               text-transform: uppercase;
             }
