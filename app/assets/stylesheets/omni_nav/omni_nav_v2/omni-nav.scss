@@ -99,12 +99,6 @@ html.omni-nav-v2 {
       padding-left: 5px;
       div.gsc-clear-button { background-image: url('//www.google.com/uds/css/clear.gif'); }
     }
-
-    //fixes issue with WAVE accessibility errors for empty button element google search added to search box
-    span {
-      display: none;
-      font-size: 12px;
-    }
   }
 
   .cu-search-box form.gsc-search-box {
@@ -142,6 +136,12 @@ html.omni-nav-v2 {
       background-repeat: no-repeat;
       text-indent: -9999px;
       float: right;
+
+      //fixes issue with WAVE accessibility errors for empty button element google search added to search box
+      span {
+        display: none;
+        font-size: 12px;
+      }
     }
   }
 
