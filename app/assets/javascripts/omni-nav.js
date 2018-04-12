@@ -41,64 +41,60 @@ this.jQuery && (function ($) {
 
 			CU_search.enableAjaxSearches();
 
-			// CU_search.resumeHistoryState();
-			// $(window).on('popstate', CU_search.resumeHistoryState);
-
 			$('#js-cu-search-open-trigger, #js-cu-search-close-trigger').on('click', function() {
 				$('#cu_search').toggleClass('open');
 			});
 
 			$('input.gsc-input').attr('placeholder', 'Search');
 
+			// To get around accessibility error with empty buttons
+			var buttonContent = '<span>Search button</span>';
+			$('button.gsc-search-button').append(buttonContent);
 		},
 
 		/***************************************************
 		* Initializses GCSE elements, and lightbox scripts
 		***************************************************/
 		enableAjaxSearches : function() {
-
 			if (CU_search.gse) return;
-
 			$("#cu_search_box").empty();
 
 			google.search.cse.element.render(
-			{
-				// SEARCH BOX
-				div: 'cu_search_box',
-				tag: 'searchbox',
-				attributes: {
-					// gname: 'two-column',
-					enableAutoComplete: true,
-					autoCompleteMatchType: 'any',
-					resultSetSize: 6,
-					enableHistory: false
+				{
+					// SEARCH BOX
+					div: 'cu_search_box',
+					tag: 'searchbox',
+					attributes: {
+						// gname: 'two-column',
+						enableAutoComplete: true,
+						autoCompleteMatchType: 'any',
+						resultSetSize: 6,
+						enableHistory: false
+					}
+				},
+				{
+					// RESULTS BOX
+					div: 'cu_search_results_ui',
+					tag: 'searchresults',
+					attributes: {
+						// gname: 'two-column',
+						linkTarget: '_self',
+						enableOrderBy: true
+					}
 				}
-			},
-			{
-				// RESULTS BOX
-				div: 'cu_search_results_ui',
-				tag: 'searchresults',
-				attributes: {
-					// gname: 'two-column',
-					linkTarget: '_self',
-					enableOrderBy: true
-				}
-			});
+			);
 
 			CU_search.gse = google.search.cse.element.getElement('two-column');
 
 			$('#search-type').on('change', function(){
 				CU_search.searchRefinement = $(this).val();
-				// var options =  { 'defaultToRefinement:' : CU_search.searchRefinement };
 			});
 
 			// Appends close button because the search plugin removes it if it's in the template
-			$('#cu_search_box').append('<div id="js-cu-search-close-trigger" class="cu-search-close-trigger"><span>Close</span></div>');
-
-			// CU_search.cleanHash();
+			$('#cu_search_box').append('<div id="js-cu-search-close-trigger" class="cu-search-close-trigger"><span>&#x00D7;</span></div>');
 
 			// Show results lightbox on search
-			$("input.gsc-search-button").on('click',function() {
+			$("button.gsc-search-button, input.gsc-search-button").on('click',function() {
 				if (CU_search.gse.getInputQuery().length <= 0){
 					$('.gsc-input').focus();
 					return;
@@ -125,7 +121,6 @@ this.jQuery && (function ($) {
 			$('body').keyup(function(e) {
 				if (e.which == 27) CU_search.hide();
 			});
-
 		},
 
 		resumeHistoryState : function() {
@@ -140,10 +135,7 @@ this.jQuery && (function ($) {
 		cleanHash : function() {
 			var h = window.location.hash;
 			if (h == '#gsc.tab=0' || h == '#gsc.tab=0&gsc.sort=') {
-
-				var
-				loc = window.location.href,
-				index = loc.indexOf('#');
+				var loc = window.location.href, index = loc.indexOf('#');
 
 				if (index > 0) history.replaceState("", document.title, loc.substring(0, index));
 			}
@@ -162,11 +154,9 @@ this.jQuery && (function ($) {
 				});
 				CU_search.isAutocompleteBound = true;
 			}, 100); // Waits for autocomplete to add to DOM
-
 		},
 
 		show : function() {
-
 			var term = CU_search.gse.getInputQuery();
 
 			$('.gsc-control-cse').find('.more-results').remove();
@@ -174,7 +164,6 @@ this.jQuery && (function ($) {
 
 			$('.gsc-input').blur();
 			CU_search.$containerCell.css('height',$(window).height()+"px").css('width',$(window).width()+"px");
-			// if (CU_search.visible) return;
 			CU_search.lockScroll();
 			CU_search.visible = true;
 
@@ -187,7 +176,6 @@ this.jQuery && (function ($) {
 				});
 				CU_search.$container.fadeIn(200);
 			}, 1000);
-
 		},
 
 		hide : function() {
@@ -196,9 +184,7 @@ this.jQuery && (function ($) {
 			CU_search.$container.fadeOut(40);
 			CU_search.unlockScroll();
 			CU_search.visible = false;
-
 			CU_search.gse.clearAllResults();
-			// CU_search.cleanHash();
 		},
 
 		lockScroll : function() {
@@ -227,12 +213,10 @@ this.jQuery && (function ($) {
 
 
 	var CU_user = {
-
 		cookie_name  : "cu_auth",
 		userinfo     : null,
 
 		initialize : function() {
-
 			this.$container = $("#cu_login_container");
 
 			// Check for cookie
@@ -241,30 +225,6 @@ this.jQuery && (function ($) {
 			// Display logged in or out based on cookie
 			CU_user.updateDisplay();
 			CU_user.checkStatus();
-
-			// TODO: Why is this code commented out but not deleted? Remove after Apr 2017.
-			// Bind show login
-			// $("#login_button").on('click', function(e) {
-			// 	$("#cu_nav").toggleClass("show-login");
-			// 	$(CU_user.login_form).find(".username").val('CU Username');
-			// 	$(CU_user.login_form).find(".password").val('Password');
-			// 	e.preventDefault();
-			// 	return false;
-			// });
-
-			// Bind logout link
-			// $("#cu_logout").on('click', function(e) {
-			// 	CU_user.doLogout();
-			// 	e.preventDefault();
-			// 	return false;
-			// });
-
-			// Bind login submit
-			// $(CU_user.login_form).on("submit", function(e) {
-			// 	CU_user.doLogin();
-			// 	e.preventDefault();
-			// 	return false;
-			// });
 		},
 
 		/***************************************************
@@ -278,19 +238,11 @@ this.jQuery && (function ($) {
 				if (!data.user_name) {
 					CU_user.removeData();
 					CU_user.updateDisplay();
-					// console.log("User not logged in. Killing user.");
-
 				} else if (JSON.stringify(data) !== JSON.stringify(CU_user.userinfo)) {
 					CU_user.userinfo = data;
 					CU_user.saveData();
 					CU_user.updateDisplay();
-
-					// console.log("Cookie data differed. Updating from server!");
-
-				} else {
-					// console.log("No change. Doing nothing.");
 				}
-
 			});
 		},
 
@@ -298,14 +250,12 @@ this.jQuery && (function ($) {
 		* Loads stored user data from the cookie saved in the browser
 		***************************************************/
 		loadData : function() {
-
 			var cookie = CU_user.docCookies.getItem(CU_user.cookie_name);
 
 			if (cookie) {
 				var data = jQuery.parseJSON(cookie);
 				CU_user.userinfo = data;
 			}
-
 			return data || false;
 		},
 
@@ -313,10 +263,8 @@ this.jQuery && (function ($) {
 		* Writes current user data to a cookie in the browser.
 		***************************************************/
 		saveData : function() {
-
 			// Save the cookie
 			CU_user.docCookies.setItem(CU_user.cookie_name, JSON.stringify(CU_user.userinfo), 1200, '', null, false);
-
 		},
 
 		/***************************************************
@@ -345,8 +293,6 @@ this.jQuery && (function ($) {
 		* Show logged in
 		***************************************************/
 		displayLoggedIn : function() {
-
-
 			// Set UI display info
 			$('.cu_name').html(CU_user.userinfo.display_name);
 			$('.cu_first_name').html(CU_user.userinfo.first_name);
@@ -361,11 +307,9 @@ this.jQuery && (function ($) {
 			// Add classes for roles
 			if (CU_user.userinfo.role) {
 				for (var i = 0; i < CU_user.userinfo.role.length; i++) {
-				    $("#cu_nav").addClass("is-"+CU_user.userinfo.role[i]);
+					$("#cu_nav").addClass("is-"+CU_user.userinfo.role[i]);
 				}
 			}
-
-
 		},
 
 		/***************************************************
@@ -378,7 +322,7 @@ this.jQuery && (function ($) {
 			// Add classes for roles
 			if (CU_user.userinfo) {
 				for (var i = 0; i < CU_user.userinfo.role.length; i++) {
-				    $("#cu_nav").removeClass("is-"+CU_user.userinfo.role[i]);
+					$("#cu_nav").removeClass("is-"+CU_user.userinfo.role[i]);
 				}
 			}
 
@@ -411,7 +355,6 @@ this.jQuery && (function ($) {
 		* Check the credentials and attempt to log the user in.
 		***************************************************/
 		doLogin : function() {
-
 			var form_action = $(CU_user.login_form).attr("action");
 			var user_pass 	= $(CU_user.login_form).find(".password").val();
 			var user_name 	= $(CU_user.login_form).find(".username").val();
@@ -435,7 +378,6 @@ this.jQuery && (function ($) {
 
 			// ON SUCCESS
 			request.done(function( data ) {
-
 				if (data.authenticated) {
 					// Authentication successful
 					CU_user.userinfo = data.userinfo;
@@ -454,7 +396,6 @@ this.jQuery && (function ($) {
 
 			// ON FAILURE
 			request.fail(function( jqXHR, textStatus ) {
-
 				// Display error message
 				$(CU_user.login_container).find(".status_msg").html("Something went wrong while connecting..." + ' <a href="#" onClick="CU_user.displayLoggedOut();">Try again</a>');
 
@@ -462,9 +403,7 @@ this.jQuery && (function ($) {
 				user_pass = '';
 				$(CU_user.login_form).find(".password").val('');
 			});
-
 		},
-
 
 		/*\
 		|*|  A complete cookies reader/writer framework with full unicode support.
@@ -523,26 +462,20 @@ this.jQuery && (function ($) {
 
 	// CU_navbar is made available to the global scope
 	CU_navbar = {
-
 		scrollTimeout : null,
 		nav_visible : true,
 		watchers_running : false,
 
 		initialize: function () {
-
 			// setup
 			this.$container = $('#cu_nav');
 			this.$menus = this.$container.find('.cu_nav_menu');
 			this.$menuTrigger = this.$container.find('.cu_nav_menu');
 			this.nav_bar_height = this.$container.outerHeight();
-
 			this.adjustEnvironment();
 			this.selectDomain(CU_navbar.getCurrentDomain(), window.location.pathname);
 			this.setupSecondaryNav(CU_navbar.getCurrentDomain(), window.location.pathname);
 			this.initializeCompanionBar();
-
-			// Click action
-			// this.$menuTrigger.on('click', CU_navbar.menuClick);
 
 			// Mouse Hover FX
 			this.$menuTrigger.lazybind('mouseenter', function (e) {
@@ -559,7 +492,6 @@ this.jQuery && (function ($) {
 			setTimeout(function() {
 				CU_navbar.$container.addClass('use-transitions');
 			}, 250);
-
 		},
 
 		initializeCompanionBar: function() {
@@ -624,7 +556,6 @@ this.jQuery && (function ($) {
 				var staging_domain = prod_urls[item.getAttribute('data-show-domain')];
 				if (staging_domain) item.setAttribute('data-show-domain', staging_domain);
 			});
-
 		},
 
 		// Return domain and port for given URL
@@ -667,7 +598,6 @@ this.jQuery && (function ($) {
 			$('#cu_login_container').find('.cu_dropdown_menu[data-show-domain]').each(function(index, item) {
 				if (item.getAttribute('data-show-domain').indexOf(domain) >= 0) $(item).show();
 			});
-
 		},
 
 		setupSecondaryNav: function(domain, path) {
@@ -700,7 +630,6 @@ this.jQuery && (function ($) {
 							$(item).addClass('selected').siblings().removeClass('selected');
 						}
 					});
-
 					return false; // break (there is only one domain)
 				}
 			});
@@ -712,7 +641,6 @@ this.jQuery && (function ($) {
 		},
 
 		menuSelect: function(e) {
-
 			var $target = $(e.target);
 			var $menu = ($target.hasClass('cu_nav_menu')) ? $target : $target.parents('.cu_nav_menu');
 
@@ -737,7 +665,6 @@ this.jQuery && (function ($) {
 
 				return true;
 			}
-
 		},
 
 		hideMenu: function ($menu) {
@@ -757,7 +684,6 @@ this.jQuery && (function ($) {
 		},
 
 		checkNavBar: function() {
-
 			// Only run this if we have a companion bar
 			if (CU_navbar.$companion_bar.length == 0) return;
 
@@ -797,9 +723,7 @@ this.jQuery && (function ($) {
 			CU_navbar.$companion_bar.removeClass('nav-down').addClass('nav-up');
 			CU_navbar.nav_visible = false;
 		}
-
 	}
-
 
 	var linkAnalytics = {
 
@@ -866,7 +790,6 @@ this.jQuery && (function ($) {
 
 
 	var CU_off_canvas_nav = {
-
 		initialize : function() {
 			CU_off_canvas_nav.syncLinkWidths();
 
@@ -896,12 +819,9 @@ this.jQuery && (function ($) {
 		},
 
 		syncLinkWidths: function() {
-
 			var width = $('#js-cu-off-canvas-nav > ul').width();
 			$('#js-cu-off-canvas-nav > ul > li > a').css('width', width);
-
 		}
-
 	} // end cu_off_canvas_nav
 
 
@@ -955,7 +875,5 @@ this.jQuery && (function ($) {
 		  var s = document.getElementsByTagName('script')[0];
 		  s.parentNode.insertBefore(gcse, s);
 		})();
-
 	});
-
 })(jQuery);

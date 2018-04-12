@@ -198,7 +198,7 @@ LOGO_HTML
       template = <<-SEARCH_HTML
   <!-- Search Trigger (Only displayed in mobile.) -->
   <div class="cu-search-open-trigger" id="js-cu-search-open-trigger">
-    <span>Search</span>
+    <span></span>
   </div>
 
   <!-- Search Block -->
@@ -211,28 +211,6 @@ LOGO_HTML
     </select>
 
     <div id="cu_search_box">
-      <form action="%<domain>ssearch-results/index.aspx">
-        <table cellpadding="0" cellspacing="0" class="gsc-search-box">
-          <tbody>
-            <tr>
-              <td class="gsc-input">
-                <input type="text"
-                       id="cu_search_no_js"
-                       name="q"
-                       class="gsc-input no-js"
-                       placeholder="Search"
-                       autocomplete="off"
-                       size="10"
-                       spellcheck="false"
-                       style="outline: none;" />
-              </td>
-              <td class="gsc-search-button">
-                <input class="gsc-search-button" type="button" value="Search" />
-              </td>
-            </tr>
-          </tbody>
-        </table>
-      </form>
     </div>
 
     <div id="cu_search_results">
