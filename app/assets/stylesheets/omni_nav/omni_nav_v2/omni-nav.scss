@@ -29,7 +29,7 @@ html.omni-nav-v2 {
   position: fixed;
   width: 100%;
   top: 0;
-  font-family: "futura-pt", verdana, sans-serif;
+  font-family: "futura-pt", arial, sans-serif;
 
   // Needs to be high enough to put off-canvas-nav on top of anything else on page.
   z-index: 1000;
@@ -50,6 +50,8 @@ html.omni-nav-v2 {
     }
   }
 
+  /* Searchbox and search results styling
+  ---------------------------------------- */
   #search-results-overlay {
     display: none;
     position: fixed;
@@ -68,8 +70,34 @@ html.omni-nav-v2 {
   table.gsc-search-box {
     margin-bottom: 0;
 
+    tr { line-height: 25px; }
+
     td.gsc-input {
        padding-right: 0;
+
+      div.gsc-input-box-focus,
+      div.gsc-input-box-hover, { box-shadow: none; }
+
+      div.gsc-input-box {
+        border: none;
+        height: 28px;        
+      }
+    }
+
+    .gsib_a {
+      padding: 1px 0px 1px 6px;
+
+      input.gsc-input {
+        font-size: 13px;
+      }
+    }
+
+    .gsib_b { display: none; }
+
+    .gsc-clear-button {
+      display: table-cell;
+      padding-left: 5px;
+      div.gsc-clear-button { background-image: url('//www.google.com/uds/css/clear.gif'); }
     }
   }
 
@@ -91,6 +119,7 @@ html.omni-nav-v2 {
       @include vendorize(appearance, none);
     }
 
+    button.gsc-search-button, 
     input.gsc-search-button {
       display: inline-block;
       width: $square-icon-size;
@@ -106,6 +135,13 @@ html.omni-nav-v2 {
       background-position: center;
       background-repeat: no-repeat;
       text-indent: -9999px;
+      float: right;
+
+      //fixes issue with WAVE accessibility errors for empty button element google search added to search box
+      span {
+        display: none;
+        font-size: 12px;
+      }
     }
   }
 
@@ -137,9 +173,7 @@ html.omni-nav-v2 {
       margin-bottom: 16px;
     }
 
-    .gsc-result-info {
-      font-size: 12px;
-    }
+    .gsc-tabsArea, .gsc-tabsArea > div { height: 100%; }
 
     .gs-title {
       text-decoration: none;
@@ -183,7 +217,6 @@ html.omni-nav-v2 {
         &:hover { background: #CCCCCC;}
     }
   }
-
 
   /* UTILITY NAV
   ---------------------------------------- */
@@ -336,14 +369,19 @@ html.omni-nav-v2 {
     #primary-nav-search {
       display: none;
 
-      .cu-search-box{ margin-right: 8px; }
+      .cu-search-box{ 
+        margin-right: 8px;
+        margin-top: 2vh;
+      }
+
       .search-results-container { line-height: normal; }
+      div.gsc-input-box, button.gsc-search-button,
       input.gsc-input, input.gsc-search-button { border: 1px solid #545454;}
-      input.gsc-input { border-right: none; }
+      div.gsc-input-box, input.gsc-input { border-right: none; }
       
-      input.gsc-search-button { 
-        border-left: none; 
-        float: right; //new to fix search box
+      button.gsc-search-button,
+      input.gsc-search-button {
+        border-left: none;
       }
 
       .gs-visibleUrl {
@@ -450,7 +488,7 @@ html.omni-nav-v2 {
               // Text-related CSS
               line-height: normal;
               font-size: 10px;
-              font-family: "futura-pt", verdana, sans-serif;
+              font-family: "futura-pt", arial, sans-serif;
               font-weight: 800;
               text-transform: uppercase;
             }
@@ -838,6 +876,8 @@ html.omni-nav-v2 {
     }
   }
 }
+
+table.gsc-completion-container { font-size: 13px; }
 
 /*
  * For OmniNav v2, #theme header should have no bottom padding.
