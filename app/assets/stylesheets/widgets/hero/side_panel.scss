@@ -186,7 +186,7 @@
 
   // The side panel
   .hero-content-panel {
-    
+
     @include media($large-screen) {
       @include span-columns(6);
       padding: $base-spacing*3 $one-column-widget-spacing/2 $one-column-widget-spacing $one-column-widget-spacing/2;
@@ -236,7 +236,7 @@
       text-align: center;
       @include media($large-screen) { text-align: left; }
     }
-    
+
     .calls-to-action { 
       margin-top: $base-spacing;
       text-align: center;
@@ -288,7 +288,7 @@
         height: 8px;
         transform: rotateZ(45deg);
       }
-      
+
       .hero-select-button {
         width: 100%;
         font-size: 16px;
@@ -370,11 +370,11 @@
         color: white;
       }
     }
-    
+
     .title {
       margin: 0;
     }
-    
+
     .subtitle { 
       margin-top: 0;
       font-weight: 200;

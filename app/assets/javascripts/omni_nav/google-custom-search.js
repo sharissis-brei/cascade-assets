@@ -81,7 +81,7 @@ var GoogleCustomSearch = (function() {
       renderGoogleSearchMarkup();
       applyStyleAdjustments();
       bindEventHandlers();
-
+      $('button.gsc-search-button').append("<span>Search button</span>")
       // The Google Custom Search Element object. Can only be called after
       // renderGoogleSearchMarkup.
       gcsElement = google.search.cse.element.getElement(containerId);
@@ -93,11 +93,10 @@ var GoogleCustomSearch = (function() {
       // These must be applied after Google's markup has been rendered.
       $searchBox.find('input.gsc-input').attr('placeholder', 'Search');
       $searchResults.find('.gsc-control-cse').append($moreResultsButton);
-      document.querySelector('img.gsc-branding-img').alt = "Google"; // for accessibility
     };
 
     var bindEventHandlers = function() {
-      $searchBox.find('input.gsc-search-button').on('click', onSearchEnter);
+      $searchBox.find('input.gsc-search-button, button.gsc-search-button').on('click', onSearchEnter);
       $searchBox.find('input.gsc-input').on('keyup', onSearchEnter);
       $container.find('.search-filter-option').on('click', onSearchFilterClick);
       $searchBox.find('.gsc-clear-button').on('click', hideResults);

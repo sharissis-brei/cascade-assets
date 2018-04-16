@@ -11,33 +11,33 @@
   // This should probably not be used (see note above). Leaving it as is because
   // not sure what changing it would break.
   // Use this instead: bp(wildcard-min, 767px)
-	@if $point == m { // Medium
-		@media (min-width: 780px) { @content; }
-	}
+  @if $point == m { // Medium
+    @media (min-width: 780px) { @content; }
+  }
 
-	@if $point == l { // Large
-		@media (min-width: 1024px) { @content; }
-	}
+  @if $point == l { // Large
+    @media (min-width: 1024px) { @content; }
+  }
 
-	@if $point == xl { // Extra-Large
-		@media (min-width: 1200px) { @content; }
-	}
+  @if $point == xl { // Extra-Large
+    @media (min-width: 1200px) { @content; }
+  }
 
-	@if $point == wildcard-min { // Uses variable breakpoint.
-		@media (min-width: #{$val}) { @content; }
-	}
+  @if $point == wildcard-min { // Uses variable breakpoint.
+    @media (min-width: #{$val}) { @content; }
+  }
 
-	@if $point == wildcard-max { // Uses variable breakpoint.
-		@media (max-width: #{$val}) { @content; }
-	}
+  @if $point == wildcard-max { // Uses variable breakpoint.
+    @media (max-width: #{$val}) { @content; }
+  }
 
-	// @if $point == highres {
-	// 	@media only screen and (-moz-min-device-pixel-ratio: 1.5), only screen and (-o-min-device-pixel-ratio: 3 / 2), only screen and (-webkit-min-device-pixel-ratio: 1.5), only screen and (min-devicepixel-ratio: 1.5), only screen and (min-resolution: 1.5dppx) { @content; }
-	// }
+  // @if $point == highres {
+  //   @media only screen and (-moz-min-device-pixel-ratio: 1.5), only screen and (-o-min-device-pixel-ratio: 3 / 2), only screen and (-webkit-min-device-pixel-ratio: 1.5), only screen and (min-devicepixel-ratio: 1.5), only screen and (min-resolution: 1.5dppx) { @content; }
+  // }
 
-	@if $point == print {
-		@media only print { @content; }
-	}
+  @if $point == print {
+    @media only print { @content; }
+  }
 
 }
 
@@ -54,226 +54,226 @@
 
 @mixin box_shadow($hoffset: 0, $voffset: 0, $blur: 0, $spread: 0, $color: $black, $inset: false) {
 
-	@if $inset == false {
-		-webkit-box-shadow: $hoffset $voffset $blur $spread $color;
-		box-shadow: $hoffset $voffset $blur $spread $color;
-	} @else {
-		-webkit-box-shadow: inset $hoffset $voffset $blur $spread $color;
-		box-shadow: inset $hoffset $voffset $blur $spread $color;
-	}
+  @if $inset == false {
+    -webkit-box-shadow: $hoffset $voffset $blur $spread $color;
+    box-shadow: $hoffset $voffset $blur $spread $color;
+  } @else {
+    -webkit-box-shadow: inset $hoffset $voffset $blur $spread $color;
+    box-shadow: inset $hoffset $voffset $blur $spread $color;
+  }
 
 }
 
 @mixin vendorize($property, $value) {
-	-webkit-#{$property}: $value;
-	-moz-#{$property}: $value;
-	-ms-#{$property}: $value;
-	-o-#{$property}: $value;
-	#{$property}: $value;
+  -webkit-#{$property}: $value;
+  -moz-#{$property}: $value;
+  -ms-#{$property}: $value;
+  -o-#{$property}: $value;
+  #{$property}: $value;
 }
 
 @mixin opacity($i) {
-	$forie: $i * 100;
+  $forie: $i * 100;
 
-	-ms-filter:"progid:DXImageTransform.Microsoft.Alpha(Opacity="+$forie+")";
-	filter: alpha(opacity=$forie);
-	opacity: $i;
+  -ms-filter:"progid:DXImageTransform.Microsoft.Alpha(Opacity="+$forie+")";
+  filter: alpha(opacity=$forie);
+  opacity: $i;
 }
 
 @mixin transition($sel: all,$time: 1s,$ease: linear) {
-	-webkit-transition: $sel $time $time;
-	-moz-transition: $sel $time $time;
-	-o-transition: $sel $time $time;
-	-ms-transition: $sel $time $time;
-	transition: $sel $time $time;
+  -webkit-transition: $sel $time $time;
+  -moz-transition: $sel $time $time;
+  -o-transition: $sel $time $time;
+  -ms-transition: $sel $time $time;
+  transition: $sel $time $time;
 }
 
 //Headings
 @mixin main_heading($weight: 800) {
-	font-family: $font-stack-heading;
-	font-size: 26px;
-	line-height: 30px;
-	margin-top: 12px;
-	margin-bottom: 24px;
+  font-family: $font-stack-heading;
+  font-size: 26px;
+  line-height: 30px;
+  margin-top: 12px;
+  margin-bottom: 24px;
 
-	@if type-of($weight) == string {
-		font-weight: unquote($weight);
-	} @else {
-		font-weight: $weight;
-	}
+  @if type-of($weight) == string {
+    font-weight: unquote($weight);
+  } @else {
+    font-weight: $weight;
+  }
 
-	@include media($medium-screen) {
-		font-size: 32px;
-		line-height: 38px;
-	}
+  @include media($medium-screen) {
+    font-size: 32px;
+    line-height: 38px;
+  }
 
-	@include media($large-screen) {
-		font-size: 36px;
-		line-height: 40px;
-	}
+  @include media($large-screen) {
+    font-size: 36px;
+    line-height: 40px;
+  }
 }
 
 @mixin sub_heading($weight: 800) {
-	font-family: $font-stack-heading;
-	font-size: 32px;
-	@if type-of($weight) == string {
-		font-weight: unquote($weight);
-	} @else {
-		font-weight: $weight;
-	}
-	line-height: 40px;
+  font-family: $font-stack-heading;
+  font-size: 32px;
+  @if type-of($weight) == string {
+    font-weight: unquote($weight);
+  } @else {
+    font-weight: $weight;
+  }
+  line-height: 40px;
 }
 
 @mixin section_heading($weight: 800) {
-	font-family: $font-stack-heading;
-	font-size: 22px;
-	line-height: 26px;
+  font-family: $font-stack-heading;
+  font-size: 22px;
+  line-height: 26px;
 
-	@if type-of($weight) == string {
-		font-weight: unquote($weight);
-	} @else {
-		font-weight: $weight;
-	}
+  @if type-of($weight) == string {
+    font-weight: unquote($weight);
+  } @else {
+    font-weight: $weight;
+  }
 
-	@include media($medium-screen) {
-		font-size: 16px;
-		line-height: 24px;
-	}
+  @include media($medium-screen) {
+    font-size: 16px;
+    line-height: 24px;
+  }
 
-	@include media($large-screen) {
-		font-size: 22px;
-		line-height: 32px;
-	}
+  @include media($large-screen) {
+    font-size: 22px;
+    line-height: 32px;
+  }
 }
 
 @mixin sub_section_heading($weight: 800) {
-	font-family: $font-stack-heading;
-	font-size: 18px;
-	@if type-of($weight) == string {
-		font-weight: unquote($weight);
-	} @else {
-		font-weight: $weight;
-	}
-	line-height: 24px;
+  font-family: $font-stack-heading;
+  font-size: 18px;
+  @if type-of($weight) == string {
+    font-weight: unquote($weight);
+  } @else {
+    font-weight: $weight;
+  }
+  line-height: 24px;
 }
 
 @mixin content_heading($weight: 800) {
-	font-family: $font-stack-heading;
-	font-size: 14px;
-	@if type-of($weight) == string {
-		font-weight: unquote($weight);
-	} @else {
-		font-weight: $weight;
-	}
-	line-height: 18px;
+  font-family: $font-stack-heading;
+  font-size: 14px;
+  @if type-of($weight) == string {
+    font-weight: unquote($weight);
+  } @else {
+    font-weight: $weight;
+  }
+  line-height: 18px;
 }
 
 @mixin content_label() {
-	margin-bottom: 0px;
-	font-family: $font-stack-heading;
-	font-size: 16px;
-	line-height: 10px;
-	font-weight: 800;
-	color: $color-medium-gray;
-	text-transform: uppercase;
+  margin-bottom: 0px;
+  font-family: $font-stack-heading;
+  font-size: 16px;
+  line-height: 10px;
+  font-weight: 800;
+  color: $color-medium-gray;
+  text-transform: uppercase;
 
-	@include media($large-screen) {
-		font-size: 18px;
-	}
+  @include media($large-screen) {
+    font-size: 18px;
+  }
 }
 
 //Paragraphs
 @mixin paragraph() {
-	font-size: 14px;
-	line-height: 20px;
-	margin:0 0 10px 0;
-	font-weight: 400;
+  font-size: 14px;
+  line-height: 20px;
+  margin:0 0 10px 0;
+  font-weight: 400;
 }
 
 @mixin p_small() {
-	margin-top: 24px;
-	font-family: $font-stack-body;
-	font-size: 12px;
-	font-weight: 400;
-	line-height: 18px;
+  margin-top: 24px;
+  font-family: $font-stack-body;
+  font-size: 12px;
+  font-weight: 400;
+  line-height: 18px;
 }
 
 @mixin hyperlinks() {
-	margin-top: 14px;
-	line-height: 14px;
+  margin-top: 14px;
+  line-height: 14px;
 }
 
 @mixin fluid-width-video-container() {
-	position: relative;
-	padding-bottom: 56.25%; /* 16:9 */
-	height: 0;
+  position: relative;
+  padding-bottom: 56.25%; /* 16:9 */
+  height: 0;
 
-	& iframe {
-		position: absolute;
-		top: 0;
-		left: 0;
-		width: 100% !important;
-		height: 100% !important;
-	}
+  & iframe {
+    position: absolute;
+    top: 0;
+    left: 0;
+    width: 100% !important;
+    height: 100% !important;
+  }
 }
 @mixin aspect_ratio($width, $height) {
-	position: relative;
-	&:before {
-		display: block;
-		content: "";
-		width: 100%;
-		padding-top: ($height / $width) * 100%;
-	}
-	img {
-		position: absolute;
-		top: 0;
-		left: 0;
-		right: 0;
-		bottom: 0;
-	}
+  position: relative;
+  &:before {
+    display: block;
+    content: "";
+    width: 100%;
+    padding-top: ($height / $width) * 100%;
+  }
+  img {
+    position: absolute;
+    top: 0;
+    left: 0;
+    right: 0;
+    bottom: 0;
+  }
 }
 
 @mixin box-shadow {
-	box-shadow: 0px 2px 1px -1px rgba(0, 0, 0, 0.3);
+  box-shadow: 0px 2px 1px -1px rgba(0, 0, 0, 0.3);
 }
 
 @mixin button($bg-color: $cu-red, $text-color: white) {
-	display: inline-block;
-	padding: 15px 25px;
-	font-size: 16px;
-	border-radius: 3px;
-	background: $bg-color;
-	color: $text-color;
-	cursor: pointer;
-	border: none;
-	@include box-shadow;
+  display: inline-block;
+  padding: 15px 25px;
+  font-size: 16px;
+  border-radius: 3px;
+  background: $bg-color;
+  color: $text-color;
+  cursor: pointer;
+  border: none;
+  @include box-shadow;
 
-	&:after {
-		content: '»';
-		padding-left: 4px;
-		font-size: 16px;
-	}
+  &:after {
+    content: '»';
+    padding-left: 4px;
+    font-size: 16px;
+  }
 
-	&:hover, &:focus {
-		outline: none;
-		background-color: darken($bg-color, 7%);
-		@include transition(background-color);
-	}
+  &:hover, &:focus {
+    outline: none;
+    background-color: darken($bg-color, 7%);
+    @include transition(background-color);
+  }
 
-	&:active {
-		transition: none;
-		background-color: darken($bg-color, 7%);
-	}
+  &:active {
+    transition: none;
+    background-color: darken($bg-color, 7%);
+  }
 }
 
 @mixin transition($property) {
-	transition: $property .4s;
+  transition: $property .4s;
 }
 
 @mixin ellipsis {
-	white-space: nowrap;
-	overflow: hidden;
-	text-overflow: ellipsis;
+  white-space: nowrap;
+  overflow: hidden;
+  text-overflow: ellipsis;
 }
 
 @mixin form-control-focus($color) {
@@ -287,18 +287,18 @@
 }
 
 @mixin theme-color-classes($primary) {
-	.theme-bg-color       { background-color: $primary; }
-	.theme-border-color   { border-color: $primary; }
-	.theme-button { @include button($primary); }
-	.theme-text-color	{ color: $primary }
+  .theme-bg-color       { background-color: $primary; }
+  .theme-border-color   { border-color: $primary; }
+  .theme-button { @include button($primary); }
+  .theme-text-color  { color: $primary }
 
-	@include media($large-screen) {
-		.theme-bg-color-alpha { background-color: rgba(red($primary), green($primary), blue($primary), 0.95); }
-	}
+  @include media($large-screen) {
+    .theme-bg-color-alpha { background-color: rgba(red($primary), green($primary), blue($primary), 0.95); }
+  }
 }
 
 @mixin condensed-heading {
-	font-family: $font-stack-heading-new;
-	font-weight: 800;
-	text-transform: uppercase;
+  font-family: $font-stack-heading-emphasis;
+  font-weight: 800;
+  text-transform: uppercase;
 }

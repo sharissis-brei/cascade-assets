@@ -4,4 +4,12 @@
   .content > p:last-child {
     margin-bottom: 0;
   }
+
+  #map_frame {
+    min-height: 79vh;
+
+    @include media($medium-screen) {
+      min-height: 59vh;
+    }
+  }
 }

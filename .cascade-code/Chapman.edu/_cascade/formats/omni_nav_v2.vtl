@@ -9,6 +9,9 @@
  *
  * But this makes debugging the code in Cascade's format editor much harder. It is
  * simpler to just keep it all in a well-structured single file.
+ *
+ * Note: the site://Chapman.edu/ seen in most href is not a hardcoded subdomain but a Cascade variable 
+ * that allows path to render correctly even when a page published to other webservers not www
  *#
 
 ##
@@ -221,7 +224,7 @@
   <div class="nav-container logo-container">
     <div class="cu-logo-wrapper">
       <div class="primary-logo">
-        <a href="/index" title="Chapman University Website Home Page">
+        <a href="site://Chapman.edu/index" title="Chapman University Website Home Page">
           <svg class="chapman-logo" xmlns="http://www.w3.org/2000/svg" viewBox="0 0 273.7 28.1">
             <defs>
               <style>.cls-1{fill:#a50034;}.cls-2{fill:#231f20;}</style>
@@ -234,7 +237,7 @@
 
       #if ( $isUmbrellaCategory )
       <div class="secondary-logo">
-        <a class="branded-logo" href="${umbrellaDirectoryPath}/index">${umbrellaBrandLabel}</a>
+        <a class="branded-logo" href="site://Chapman.edu/${umbrellaDirectoryPath}/index">${umbrellaBrandLabel}</a>
       </div>
       #end
     </div>
@@ -307,7 +310,7 @@
             </a>
           </li>
           <li>
-            <a href="/panthermail/">
+            <a href="https://www.chapman.edu/panthermail/">
               <svg xmlns="http://www.w3.org/2000/svg" width="32" height="32" viewBox="0 0 448 448">
                 <path d="M416 376V184c-5.2 6-11 11.5-17.2 16.5C363 228 327 256 292.2 285c-18.8 15.8-42 35-68 35h-0.5c-26 0-49.2-19.2-68-35C121 256 85 228 49.2 200.5c-6.2-5-12-10.5-17.2-16.5v192c0 4.2 3.8 8 8 8h368C412.2 384 416 380.2 416 376zM416 113.2c0-6.2 1.5-17.2-8-17.2H40c-4.2 0-8 3.8-8 8 0 28.5 14.2 53.2 36.8 71 33.5 26.2 67 52.8 100.2 79.2 13.2 10.8 37.2 33.8 54.8 33.8h0.5c17.5 0 41.5-23 54.8-33.8 33.2-26.5 66.8-53 100.2-79.2C395.5 162.2 416 134.5 416 113.2zM448 104v272c0 22-18 40-40 40H40c-22 0-40-18-40-40V104c0-22 18-40 40-40h368C430 64 448 82 448 104z"/>
               </svg>
@@ -359,7 +362,7 @@
                 #buildGlobalNavDropdown( $link.dropdown $link.sectionLink)
               #else
                 ## Primary links with no dropdown have a link with the title
-                <a href="$link.sectionLink">$link.sectionTitle</a>
+                <a href="site://Chapman.edu/$link.sectionLink">$link.sectionTitle</a>
               #end
             </li>
           #end
@@ -381,11 +384,15 @@
     <ul>
       ## First list item is always Overview
       <li>
-        <a class="icon $overviewIconClass" href="$overviewLink">Overview</a>
+        <a class="icon $overviewIconClass" href="site://Chapman.edu/$overviewLink">Overview</a>
       </li>
       #foreach( $dropdownLink in $dropdownLinks )
         <li>
-          <a class="icon $dropdownLink.iconClass" href="$dropdownLink.link">
+          #if($dropdownLink.link.toString().contains("http"))
+            <a class="icon $dropdownLink.iconClass" href="$dropdownLink.link">
+          #else
+            <a class="icon $dropdownLink.iconClass" href="site://Chapman.edu/$dropdownLink.link">          
+          #end
             ${_EscapeTool.xml( $dropdownLink.text )}
           </a>
         </li>
@@ -413,22 +420,22 @@
         <a href="#">Find information for</a>
         <div class="utility-dropdown dropdown">
           <ul>
-            <li><a href="/future-students/index">Prospective Students</a></li>
-            <li><a href="/students/index">Current Students</a></li>
-            <li><a href="/alumni/index">Alumni</a></li>
-            <li><a href="/faculty-staff/index">Faculty &amp; Staff</a></li>
-            <li><a href="/families/index">Parents &amp; Families</a></li>
+            <li><a href="site://Chapman.edu/future-students/index">Prospective Students</a></li>
+            <li><a href="site://Chapman.edu/students/index">Current Students</a></li>
+            <li><a href="site://Chapman.edu/alumni/index">Alumni</a></li>
+            <li><a href="site://Chapman.edu/faculty-staff/index">Faculty &amp; Staff</a></li>
+            <li><a href="site://Chapman.edu/families/index">Parents &amp; Families</a></li>
           </ul>
         </div>
       </li>
-      <li class="utility-cell"><a href="/academics/degrees-and-programs">Degrees &amp; Programs</a></li>
+      <li class="utility-cell"><a href="site://Chapman.edu/academics/degrees-and-programs">Degrees &amp; Programs</a></li>
       <li class="utility-cell utility-has-dropdown">
         <a href="#">Map &amp; Directories</a>
         <div class="utility-dropdown dropdown">
           <ul>
-            <li><a href="/about/maps-directions/campus-map/index">Interactive Map</a></li>
-            <li><a href="/our-faculty/index">Faculty Directory</a></li>
-            <li><a href="/directory/index">All Directories</a></li>
+            <li><a href="site://Chapman.edu/about/maps-directions/campus-map/index">Interactive Map</a></li>
+            <li><a href="site://Chapman.edu/our-faculty/index">Faculty Directory</a></li>
+            <li><a href="site://Chapman.edu/directory/index">All Directories</a></li>
           </ul>
         </div>
       </li>
@@ -542,7 +549,7 @@
     <div class="cu-logo-wrapper">
       #if ( $isUmbrellaCategory )
         <div id="umbrella-logo" class="toggle-logo">
-          <a class="off-logo" href="${umbrellaDirectoryPath}/index" title="${umbrellaBrandLabel}">
+          <a class="off-logo" href="site://Chapman.edu/${umbrellaDirectoryPath}/index" title="${umbrellaBrandLabel}">
             <!-- logo set as background image by class -->
             ${umbrellaBrandLabel} Logo
           </a>
@@ -551,7 +558,7 @@
       #end
 
       <div id="main-logo" class="toggle-logo">
-        <a class="default off-logo" href="/index" title="Chapman University Website Home Page">
+        <a class="default off-logo" href="site://Chapman.edu/index" title="Chapman University Website Home Page">
           <!-- logo set as background image by class -->
           Chapman University Logo
         </a>
@@ -584,77 +591,77 @@
 
     <ul>
       <li>
-        <a href="/about/index">About</a>
+        <a href="site://Chapman.edu/about/index">About</a>
         #buildToggleIcon("About")
         <ul>
-          <li><a href="/about/maps-directions/index">Maps &amp; Directions</a></li>
-          <li><a href="/about/visit-chapman/index">Visit Chapman</a></li>
-          <li><a href="/discover/index">Discover Chapman</a></li>
-          <li><a href="/about/campus/index">Our Campus</a></li>
-          <li><a href="/about/facts-history/index">Facts &amp; History</a></li>
-          <li><a href="/about/administration/index">Administration</a></li>
-          <li><a href="/about/contact-us">Contact Us</a></li>
+          <li><a href="site://Chapman.edu/about/maps-directions/index">Maps &amp; Directions</a></li>
+          <li><a href="site://Chapman.edu/about/visit-chapman/index">Visit Chapman</a></li>
+          <li><a href="site://Chapman.edu/discover/index">Discover Chapman</a></li>
+          <li><a href="site://Chapman.edu/about/campus/index">Our Campus</a></li>
+          <li><a href="site://Chapman.edu/about/facts-history/index">Facts &amp; History</a></li>
+          <li><a href="site://Chapman.edu/about/administration/index">Administration</a></li>
+          <li><a href="site://Chapman.edu/about/contact-us">Contact Us</a></li>
         </ul>
       </li>
       <li>
-        <a href="/academics/index">Academics</a>
+        <a href="site://Chapman.edu/academics/index">Academics</a>
         #buildToggleIcon("Academics")
         <ul>
-          <li><a href="/academics/degrees-and-programs">Degrees &amp; Programs</a></li>
-          <li><a href="/academics/schools-colleges">Schools &amp; Colleges</a></li>
-          <li><a href="/academics/academic-calendar">Academic Calendar</a></li>
-          <li><a href="/academics/libraries/index">Libraries</a></li>
-          <li><a href="/academics/course-catalogs/index">Course Catalogs</a></li>
-          <li><a href="/international-studies/index">International Study</a></li>
+          <li><a href="site://Chapman.edu/academics/degrees-and-programs">Degrees &amp; Programs</a></li>
+          <li><a href="site://Chapman.edu/academics/schools-colleges">Schools &amp; Colleges</a></li>
+          <li><a href="site://Chapman.edu/academics/academic-calendar">Academic Calendar</a></li>
+          <li><a href="site://Chapman.edu/academics/libraries/index">Libraries</a></li>
+          <li><a href="site://Chapman.edu/academics/course-catalogs/index">Course Catalogs</a></li>
+          <li><a href="site://Chapman.edu/international-studies/index">International Study</a></li>
         </ul>
       </li>
       <li>
-        <a href="/admission/index">Admission</a>
+        <a href="site://Chapman.edu/admission/index">Admission</a>
         #buildToggleIcon("Admission")
         <ul>
-          <li><a href="/admission/undergraduate/index">Undergraduate Admission</a></li>
-          <li><a href="/admission/undergraduate/applynow">Undergraduate Application</a></li>
-          <li><a href="/admission/graduate/index">Graduate Admission</a></li>
-          <li><a href="/admission/graduate/applynow">Graduate Application</a></li>
-          <li><a href="/admission/undergraduate/afford">Affordability</a></li>
-          <li><a href="/students/tuition-and-aid/financial-aid/net-cost-calculator/index">Financial Aid Calculator</a></li>
-          <li><a href="/admission/undergraduate/visit">Campus Tours</a></li>
+          <li><a href="site://Chapman.edu/admission/undergraduate/index">Undergraduate Admission</a></li>
+          <li><a href="site://Chapman.edu/admission/undergraduate/applynow">Undergraduate Application</a></li>
+          <li><a href="site://Chapman.edu/admission/graduate/index">Graduate Admission</a></li>
+          <li><a href="site://Chapman.edu/admission/graduate/applynow">Graduate Application</a></li>
+          <li><a href="site://Chapman.edu/admission/undergraduate/afford">Affordability</a></li>
+          <li><a href="site://Chapman.edu/students/tuition-and-aid/financial-aid/net-cost-calculator/index">Financial Aid Calculator</a></li>
+          <li><a href="site://Chapman.edu/admission/undergraduate/visit">Campus Tours</a></li>
         </ul>
       </li>
-      <li><a href="/arts/index">Arts</a></li>
+      <li><a href="site://Chapman.edu/arts/index">Arts</a></li>
       <li>
-        <a href="/campus-life/index">Campus Life</a>
+        <a href="site://Chapman.edu/campus-life/index">Campus Life</a>
         #buildToggleIcon("Campus Life")
         <ul>
           <li><a href="http://www.chapmanathletics.com/landing/index">Athletics</a></li>
-          <li><a href="/diversity/index">Diversity &amp; Inclusion</a></li>
+          <li><a href="site://Chapman.edu/diversity/index">Diversity &amp; Inclusion</a></li>
           <li><a href="https://events.chapman.edu/">Events</a></li>
-          <li><a href="/about/fish-interfaith-center/index">Fish Interfaith Center</a></li>
-          <li><a href="/students/health-and-safety/index">Health &amp; Safety</a></li>
-          <li><a href="/students/services/housing-and-residence/index">Residence Life</a></li>
-          <li><a href="/students/life/index">Student Life</a></li>
+          <li><a href="site://Chapman.edu/about/fish-interfaith-center/index">Fish Interfaith Center</a></li>
+          <li><a href="site://Chapman.edu/students/health-and-safety/index">Health &amp; Safety</a></li>
+          <li><a href="site://Chapman.edu/students/services/housing-and-residence/index">Residence Life</a></li>
+          <li><a href="site://Chapman.edu/students/life/index">Student Life</a></li>
         </ul>
       </li>
       <li>
-        <a href="/research/">Research</a>
+        <a href="site://Chapman.edu/research/">Research</a>
         #buildToggleIcon("Research")
         <ul>
-          <li><a href="/research/sponsored-projects-services/pre-award/index">Pre-Award Administration</a></li>
-          <li><a href="/research/sponsored-projects-services/post-award/index">Post-Award Administration</a></li>
-          <li><a href="/research/integrity/index">Research Integrity</a></li>
-          <li><a href="/research/institutes-and-centers/index">Institutes &amp; Centers</a></li>
-          <li><a href="/research/office-undergraduate-research-creative-activity/index">Undergraduate Research &amp; Creative Activity</a></li>
-          <li><a href="/research/graduate-research/index">Graduate Research Support</a></li>
+          <li><a href="site://Chapman.edu/research/sponsored-projects-services/pre-award/index">Pre-Award Administration</a></li>
+          <li><a href="site://Chapman.edu/research/sponsored-projects-services/post-award/index">Post-Award Administration</a></li>
+          <li><a href="site://Chapman.edu/research/integrity/index">Research Integrity</a></li>
+          <li><a href="site://Chapman.edu/research/institutes-and-centers/index">Institutes &amp; Centers</a></li>
+          <li><a href="site://Chapman.edu/research/office-undergraduate-research-creative-activity/index">Center for Undergraduate Excellence</a></li>
+          <li><a href="site://Chapman.edu/research/graduate-research/index">Graduate Research Support</a></li>
         </ul>
       </li>
       <li>
-        <a href="/support-chapman/index">Support</a>
+        <a href="site://Chapman.edu/support-chapman/index">Support</a>
         #buildToggleIcon("Support")
         <ul>
-          <li><a href="/support-chapman/contact-us">Contact Development</a></li>
-          <li><a href="/support-chapman/get-involved">Get Involved</a></li>
-          <li><a href="/support-chapman/ways-to-give/areas-to-support">Areas to Support</a></li>
-          <li><a href="/alumni/index">Alumni</a></li>
+          <li><a href="site://Chapman.edu/support-chapman/contact-us">Contact Development</a></li>
+          <li><a href="site://Chapman.edu/support-chapman/get-involved">Get Involved</a></li>
+          <li><a href="site://Chapman.edu/support-chapman/ways-to-give/areas-to-support">Areas to Support</a></li>
+          <li><a href="site://Chapman.edu/alumni/index">Alumni</a></li>
         </ul>
       </li>
     </ul>
@@ -662,24 +669,24 @@
     <div class="off-canvas-utility">
       <ul>
         <li>
-          <a href="/audiences/index">Find information for...</a>
+          <a href="site://Chapman.edu/audiences/index">Find information for...</a>
           #buildToggleIcon("Find Information By Audience")
           <ul>
-            <li><a href="/future-students/index">Prospective Students</a></li>
-            <li><a href="/students/index">Current Students</a></li>
-            <li><a href="/alumni/index">Alumni</a></li>
-            <li><a href="/faculty-staff/index">Faculty &amp; Staff</a></li>
-            <li><a href="/families/index">Parents &amp; Families</a></li>
+            <li><a href="site://Chapman.edu/future-students/index">Prospective Students</a></li>
+            <li><a href="site://Chapman.edu/students/index">Current Students</a></li>
+            <li><a href="site://Chapman.edu/alumni/index">Alumni</a></li>
+            <li><a href="site://Chapman.edu/faculty-staff/index">Faculty &amp; Staff</a></li>
+            <li><a href="site://Chapman.edu/families/index">Parents &amp; Families</a></li>
           </ul>
         </li>
-        <li><a href="/academics/degrees-and-programs">Degrees &amp; Programs</a></li>
+        <li><a href="site://Chapman.edu/academics/degrees-and-programs">Degrees &amp; Programs</a></li>
         <li>
-          <a href="/about/maps-directions/index">Maps &amp; Directories</a>
+          <a href="site://Chapman.edu/about/maps-directions/index">Maps &amp; Directories</a>
           #buildToggleIcon("Maps and Directories")
           <ul>
-            <li><a href="/about/maps-directions/campus-map/index">Interactive Map</a></li>
-            <li><a href="/our-faculty/index">Faculty Directory</a></li>
-            <li><a href="/directory/index">All Directories</a></li>
+            <li><a href="site://Chapman.edu/about/maps-directions/campus-map/index">Interactive Map</a></li>
+            <li><a href="site://Chapman.edu/our-faculty/index">Faculty Directory</a></li>
+            <li><a href="site://Chapman.edu/directory/index">All Directories</a></li>
           </ul>
         </li>
         <li><a href="https://blogs.chapman.edu/">News</a></li>
@@ -712,7 +719,7 @@
   #set ( $assetType = $asset.assetType )
 
   #if ( $assetType == 'page' )
-    <li><a href="${asset.path}">${_EscapeTool.xml($asset.metadata.displayName)}</a></li>
+    <li><a href="site://Chapman.edu/${asset.path}">${_EscapeTool.xml($asset.metadata.displayName)}</a></li>
 
   #elseif ( $assetType == 'folder' )
     ## Collect folder's visible children.
@@ -741,16 +748,16 @@
 
     ## Link for folder. Include drop-down if folder has visible children.
     <li>
-      <a href="${asset.path}/index">${_EscapeTool.xml($asset.metadata.displayName)}</a>
+      <a href="site://Chapman.edu/${asset.path}/index">${_EscapeTool.xml($asset.metadata.displayName)}</a>
 
       #if ( $visibleChildren.size() > 0 )
         #buildToggleIcon($asset.metadata.displayName)
         <ul>
           #foreach ( $child in $visibleChildren )
             #if ( $child.assetType == "page" )
-              <li><a href="${child.path}">${_EscapeTool.xml($child.metadata.displayName)}</a></li>
+              <li><a href="site://Chapman.edu/${child.path}">${_EscapeTool.xml($child.metadata.displayName)}</a></li>
             #elseif ( $child.assetType == "folder" )
-              <li><a href="${child.path}/index">${_EscapeTool.xml($child.metadata.displayName)}</a></li>
+              <li><a href="site://Chapman.edu/${child.path}/index">${_EscapeTool.xml($child.metadata.displayName)}</a></li>
             #end
           #end
         </ul>

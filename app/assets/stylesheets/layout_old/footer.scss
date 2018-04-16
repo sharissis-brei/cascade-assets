@@ -185,8 +185,8 @@
           a {
             vertical-align: middle;
             font-size: 24px;
-            line-height: 42px;
-            color: white;
+            line-height: 46px;
+            fill: #ffffff;
             //screen-readers only will see A text for social buttons
             .sr-only {
               position: absolute;
@@ -197,7 +197,7 @@
               overflow: hidden;
               clip: rect(0,0,0,0);
               border: 0;
-              }			
+              }
           }
         }
       }
