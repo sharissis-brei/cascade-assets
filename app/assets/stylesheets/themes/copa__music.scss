@@ -1,30 +1,28 @@
-
 #theme.copa__music {
   @include theme-color-classes($music-primary);
-  
+
   .smallMasthead .masthead, .smallMasthead .masthead-old, .bigMasthead .mastheadPlaceholder, .bigMasthead .masthead, .bigMasthead .masthead-old, .nameBar, .rightColumn .styleTwo {
-  	background: $music-primary; /* Old browsers */
-  	
+    background: $music-primary; /* Old browsers */
   }
-	
-    .rightColumn .styleTwo .border { 
-		background-color: $music-tertiary; 
-	}
 
-    .rightColumn .styleTwo a {
-      color: #ffffff;
-      border-bottom: 2px dotted #877479;
-    }
-    
-    .nameBarButtons li a { 
-		color: $music-secondary;
-	}
-    
-	.expandedNameBarContainer h2, .expandedNameBarContainer a { 
-		color: #c9adb3; 
-	}
+  .rightColumn .styleTwo .border { 
+    background-color: $music-tertiary; 
+  }
 
-    #social_follow_us {
+  .rightColumn .styleTwo a {
+    color: #ffffff;
+    border-bottom: 2px dotted #877479;
+  }
+
+  .nameBarButtons li a { 
+    color: $music-secondary;
+  }
+
+  .expandedNameBarContainer h2, .expandedNameBarContainer a { 
+    color: #c9adb3; 
+  }
+
+  #social_follow_us {
     .banner {
       background-image: image-url('copa_music_follow_us.png');
     }
@@ -34,12 +32,12 @@
       }
     }
   }
-        
-    .rounded-slider .info-container .blue{
-        background-color: $music-primary;
-    }   
 
-    .newbutton a {
+  .rounded-slider .info-container .blue{
+    background-color: $music-primary;
+  }
+
+  .newbutton a {
     background-color: $music-primary;
     &:hover {
       background-color: $music-secondary;
@@ -49,7 +47,7 @@
     }
   }
 
-   .midPhotoCallouts .photoCallout .caption {
+  .midPhotoCallouts .photoCallout .caption {
     background-color: $music-primary;
   }
 

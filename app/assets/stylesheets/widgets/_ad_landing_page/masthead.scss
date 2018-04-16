@@ -47,7 +47,7 @@
         border-bottom:1px solid #d8d8d8;
       }
     }
-    
+
     .header-logo-desktop {
       display: table-cell;
       height:35px;
@@ -120,7 +120,7 @@
   // The side panel
   .masthead-content-panel {
     background-color: white;
-    
+
     @include media($medium-screen) {
       @include span-columns(8);
       float: right;
@@ -141,7 +141,7 @@
     h2, p {
       text-align: left;
     }
-    
+
     .calls-to-action { 
       margin-top: $base-spacing;
       color: #767676;
@@ -236,13 +236,13 @@
         line-height: 52px;
       }
     }
-    
+
     .subtitle { 
       margin-top: 0;
       font-size: 20px;
       line-height: 28px;
       font-weight: 200;
-      
+
       @include media($medium-screen) {
         /*@include span-columns(12);*/
         font-size: 24px;
