@@ -118,6 +118,27 @@
     ]
   },
   {
+    'sectionTitle': 'Alumni',
+    'sectionLink': '/alumni/index',
+    'dropdown': [
+      {
+        'text': 'Events',
+        'link': '/alumni/events/index',
+        'iconClass': 'icon-calendar4'
+      },
+      {
+        'text': 'Get Involved',
+        'link': '/alumni/get-involved/index',
+        'iconClass': 'icon-hand'
+      },
+      {
+        'text': 'Career Support',
+        'link': '/campus-services/career-professional-development/index',
+        'iconClass': 'icon-paw'
+      }
+    ]
+  },
+  {
     'sectionTitle': 'Arts',
     'sectionLink': '/arts/index'
   },
@@ -213,8 +234,8 @@
         'iconClass': 'icon-cu-monogram'
       },
       {
-        'text': 'Alumni',
-        'link': '/alumni/index',
+        'text': 'Alumni Involvement',
+        'link': '/alumni/get-involved/index',
         'iconClass': 'icon-paw'
       }
     ]
