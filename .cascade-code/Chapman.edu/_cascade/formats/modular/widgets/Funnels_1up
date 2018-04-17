@@ -1,0 +1,68 @@
+##
+## Public Macro
+##
+#macro( outputFunnels1up $element )
+  ##
+  ## formerly Regions
+  ##
+  #set ( $funnels = $_XPathTool.selectNodes($element.getChild('funnels-1up'), "region") )
+
+  <div class="regions-widget">
+    #foreach ( $region in $funnels )
+      ## Set macro variables
+      #set ( $headline = $region.getChild('headline').value )
+      #set ( $imageUrl = $region.getChild('image').getChild('path').value )
+      #set ( $copy = $_SerializerTool.serialize($region.getChild('copy'), true) )
+      #set ( $links = $_XPathTool.selectNodes($region.getChild('links'), "link") )
+      #if ( $region.getChild('altText').value != "" )
+        #set ( $altText = $region.getChild('altText').value )
+      #else
+        #set ( $altText = "[photo description needed in 1up Funnel]" )
+      #end
+
+      <div class="region">
+        <h2>${_EscapeTool.xml($headline)}</h2>
+        <div class="content">
+          <p>
+            <img alt="$altText" class="featureImage" height="150" src="$imageUrl" width="200"/>
+            $copy
+          </p>
+
+          #if ( $links.size() > 0 )
+            #buildFunnelLinks( $links )
+          #end
+        </div>
+      </div>
+    #end
+  </div>
+#end
+
+##
+## Private Macros
+##
+#macro ( buildFunnelLinks $links )
+  <ul class="linkList">
+    #foreach ( $link in $links )
+      #set ( $linkType = $link.getChild('linkType').value )
+      #set ( $label = $link.getChild('label').value )
+
+      #if ( $linkType == 'Internal Link' )
+        #set ( $linkURL = $link.getChild('internalLink').getChild('path').value )
+      #elseif ( $linkType == 'File Link' )
+        #set ( $linkURL = $link.getChild('fileLink').getChild('path').value )
+      #elseif ( $linkType == 'External Link' )
+        #set ( $linkURL = $link.getChild('externalLink').value )
+      #else
+        #set ( $linkURL = '' )
+      #end
+
+      #if ( $linkURL != '' && $linkURL != '/' )
+        <li>
+          <a href="${_EscapeTool.xml($linkURL)}">${_EscapeTool.xml($label)}&#160;»</a>
+        </li>
+      #else
+        <li>${_EscapeTool.xml($label)}</li>
+      #end
+    #end
+  </ul>
+#end
