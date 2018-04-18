@@ -19,6 +19,10 @@ Send your browser to [http://localhost:5000](http://localhost:5000). Turn on you
 - **JS:** Edit the javascripts in `app/assets/javascripts/`
 - **IMAGES:** Add/remove images in `app/assets/images/`
 
+Sometimes after making changes to the assets, you won't see them in the browser. Try running the following in a separate command line window:
+
+    bundle exec rake assets:precompile
+
 ## Tests
 
 The testing suite includes feature tests exercising javascript functionality. These tests require the phantomjs driver. The easiest way to install this is with homebrew:
