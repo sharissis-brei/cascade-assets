@@ -1,4 +1,4 @@
-var messaging = {};
+var messaging = messaging || {};
 
 (function ($, document, window) {
 

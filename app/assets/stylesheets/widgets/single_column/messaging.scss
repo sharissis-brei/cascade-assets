@@ -38,16 +38,8 @@
 
   .select {
     position: relative;
-    margin-top: 10px;
-    margin-left: auto;
-    margin-right: auto;    
+    margin-top: 10px; 
     width: 100%;
-    max-width: 304px;
-
-    @include media($medium-screen) {
-      margin-left: 0;
-      margin-right: 0;
-    }
 
     .select-arrow {
       position: relative;
@@ -112,11 +104,13 @@
 	.text-column {
 		text-align: center;
 	}
+
 	.media-column {
 		padding-top: $base-spacing * 4;
 	}
 
 	&.messaging-widget__has-fact-cards {
+
 		.actions {
 			@include pad($base-spacing * 4  0 0 0);
 			text-align: center;
@@ -131,6 +125,7 @@
 		}
 
 		@include media($medium-screen) {
+
 			.text-column {
 				margin-bottom: 0;
 				margin-bottom: $base-spacing * 2;
@@ -143,71 +138,99 @@
 	}
 
 	@include media($medium-screen) {
+
 		.text-column {
 			margin: 0 auto;
 			width: 75%;
 		}
 	}
 	@include media($large-screen) {
+
 		.text-column {
 			width: 60%;
 		}
 	}
-
 }
 
 /* Two Column Variation */
 .messaging-widget__2-column {
 	background-color: #eaeaea;
+
 	/* All Variations */
 	.media-column {
 		white-space: nowrap;
 		margin-bottom: $base-spacing * 2;
 		padding: 0;
 	}
+
 	.text-column {
 		text-align: left;
 	}
 
+  .actions {
+    margin: 24px auto 0;
+    max-width: 304px;
+    width: 100%;
+  }
+
+  .theme-button {
+    text-align: center;
+    width: 100%;
+  }
+
 	&.messaging-widget__has-fact-cards {
+
 		.text-column {
 			text-align: center;
 		}
 	}
+
 	@include media($medium-screen) {
+
 		.media-column {
 			margin-bottom: 0;
 		}
 
+    .actions {
+      margin-left: 0;
+      margin-right: 0;
+    }
+
 		&.messaging-widget__has-fact-cards {
+
 			.text-column {
 				text-align: left;
 			}
 		}
 	}
 
-
 	/* Text Right Variation */
 	&.messaging-widget__text-right {
+
 		/* Medium Screen */
 		@include media($medium-screen) {
 
 			.media-column {
 				@include span-columns(8);
 			}
+
 			.text-column {
 				@include shift(1);
 				@include span-columns(9);
 			}
+
 			.actions {
 				text-align: left;
 			}
 		}
+
 		/* Large Screen */
 		@include media($large-screen) {
+
 			.media-column {
 				@include span-columns(10);
 			}
+
 			.text-column {
 				@include span-columns(7);
 				@include shift(1);
@@ -215,28 +238,35 @@
 		}
 	}
 
-
 	/* Text Left Variation */
 	&.messaging-widget__text-left {
+
 		@include direction-context(right-to-left) {
+
 			/* Medium Screen */
 			@include media($medium-screen) {
+
 				.media-column {
 					@include span-columns(8);
 				}
+
 				.text-column {
 					@include span-columns(9);
 					@include shift(1);
 				}
+
 				.actions {
 					text-align: left;
 				}
 			}
+
 			/* Large Screen */
 			@include media($large-screen) {
+
 				.media-column {
 					@include span-columns(10);
 				}
+
 				.text-column {
 					@include span-columns(7);
 					@include shift(1);
@@ -246,7 +276,9 @@
 	}
 
 	&.messaging-widget__text-right.messaging-widget__has-fact-cards {
+
 		@include media($medium-screen) {
+
 			.text-column {
 				float: right;
 			}
@@ -254,7 +286,9 @@
 	}
 
 	&.messaging-widget__text-left.messaging-widget__has-fact-cards {
+
 		@include media($medium-screen) {
+
 			.text-column {
 				float: left;
 			}
@@ -278,7 +312,12 @@
 /* Dark bg Variation */
 .messaging-widget__dark-bg {
 	background-color: $black;
-	.title, .category, .body { color: white; }
+
+	.title,
+  .category,
+  .body { 
+    color: white; 
+  }
 
 	/* Updated for accessibility. See:
 	   https://github.com/chapmanu/cascade-assets/issues/207 */
@@ -291,6 +330,7 @@
 
 /* Fact Card Media */
 .messaging-widget .media-column {
+
 	.fact-card-container {
 		white-space: normal;
 	}
