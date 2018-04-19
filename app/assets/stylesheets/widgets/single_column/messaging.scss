@@ -69,6 +69,14 @@
       border-radius: 3px;
       background-position: center right;
       background-repeat: no-repeat;
+
+      &.theme-text-color {
+
+      	#theme.dodge & {
+      		background-color: $white;
+          border-color: darken($dodge-primary, 7%);
+      	}
+      }
     }
 
     .select-list {
@@ -323,9 +331,17 @@
 	   https://github.com/chapmanu/cascade-assets/issues/207 */
 	a {
 		/* Indeed, neither white or #adadad is defined in colors.scss. */
-		color: white;
-		border-bottom: 2px dotted #adadad;
+    color: white;
+    border-bottom: 2px dotted #adadad;
 	}
+
+  .select {
+
+    a {
+      border-bottom: 0;
+      color: $cu-red;      
+    }
+  }
 }
 
 /* Fact Card Media */
