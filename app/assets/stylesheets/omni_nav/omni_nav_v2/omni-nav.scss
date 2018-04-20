@@ -466,14 +466,14 @@ html.omni-nav-v2 {
             }
           }
 
+          .nav-icon-text {
+            display: none;
+          }
+
           @include media($medium-screen) {
             background-color: #2f2f2f;
             margin: 0 auto;
             width: 60px;
-
-            .nav-icon-text {
-              display: none;
-            }
 
             // Text shows up for both login and search icons on hover
             // Also stays for search while utility nav is open
