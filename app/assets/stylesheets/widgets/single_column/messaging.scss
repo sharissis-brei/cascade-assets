@@ -1,42 +1,42 @@
 /*  Base Styles */
 .messaging-widget {
-	background-size: cover;
-	background-repeat: no-repeat;
-	background-position: center center;
-	padding: $one-column-widget-spacing 0;
+  background-size: cover;
+  background-repeat: no-repeat;
+  background-position: center center;
+  padding: $one-column-widget-spacing 0;
 
-	.outer-container {
-		@include outer-container;
-		@include pad(0 $base-spacing * 3);
+  .outer-container {
+    @include outer-container;
+    @include pad(0 $base-spacing * 3);
 
-		@include media($large-screen) {
-			@include pad(0 $base-spacing);
-		}
-	}
+    @include media($large-screen) {
+      @include pad(0 $base-spacing);
+    }
+  }
 
-	.media-column {
-		text-align: center;
-	}
+  .media-column {
+    text-align: center;
+  }
 
-	.center-media-helper {
-		display: inline-block;
-		height: 100%;
-		vertical-align: middle;
-	}
+  .center-media-helper {
+    display: inline-block;
+    height: 100%;
+    vertical-align: middle;
+  }
 
-	.media {
-		display: inline-block;
-		vertical-align: middle;
-		width: 100%;
-		height: auto;
-	}
+  .media {
+    display: inline-block;
+    vertical-align: middle;
+    width: 100%;
+    height: auto;
+  }
 
-	.fluid-width-video-container {
-		@include fluid-width-video-container;
-		display: inline-block;
-	}
+  .fluid-width-video-container {
+    @include fluid-width-video-container;
+    display: inline-block;
+  }
 
-  .select {
+  .text-widget-select {
     position: relative;
     margin-top: 10px; 
     width: 100%;
@@ -69,14 +69,6 @@
       border-radius: 3px;
       background-position: center right;
       background-repeat: no-repeat;
-
-      &.theme-text-color {
-
-      	#theme.dodge & {
-      		background-color: $white;
-          border-color: darken($dodge-primary, 7%);
-      	}
-      }
     }
 
     .select-list {
@@ -107,75 +99,75 @@
 
 /* One Column Variation */
 .messaging-widget__1-column {
-	background-color: #eaeaea;
+  background-color: #eaeaea;
 
-	.text-column {
-		text-align: center;
-	}
+  .text-column {
+    text-align: center;
+  }
 
-	.media-column {
-		padding-top: $base-spacing * 4;
-	}
+  .media-column {
+    padding-top: $base-spacing * 4;
+  }
 
-	&.messaging-widget__has-fact-cards {
+  &.messaging-widget__has-fact-cards {
 
-		.actions {
-			@include pad($base-spacing * 4  0 0 0);
-			text-align: center;
-		}
+    .text-actions {
+      @include pad($base-spacing * 4  0 0 0);
+      text-align: center;
+    }
 
-		.text-column {
-			margin-bottom: $base-spacing * 3;
-		}
+    .text-column {
+      margin-bottom: $base-spacing * 3;
+    }
 
-		.media-column {
-			padding-top: 0;
-		}
+    .media-column {
+      padding-top: 0;
+    }
 
-		@include media($medium-screen) {
+    @include media($medium-screen) {
 
-			.text-column {
-				margin-bottom: 0;
-				margin-bottom: $base-spacing * 2;
+      .text-column {
+        margin-bottom: 0;
+        margin-bottom: $base-spacing * 2;
 
-				p {
-					margin-bottom: 0;
-				}
-			}
-		}
-	}
+        p {
+          margin-bottom: 0;
+        }
+      }
+    }
+  }
 
-	@include media($medium-screen) {
+  @include media($medium-screen) {
 
-		.text-column {
-			margin: 0 auto;
-			width: 75%;
-		}
-	}
-	@include media($large-screen) {
+    .text-column {
+      margin: 0 auto;
+      width: 75%;
+    }
+  }
+  @include media($large-screen) {
 
-		.text-column {
-			width: 60%;
-		}
-	}
+    .text-column {
+      width: 60%;
+    }
+  }
 }
 
 /* Two Column Variation */
 .messaging-widget__2-column {
-	background-color: #eaeaea;
+  background-color: #eaeaea;
 
-	/* All Variations */
-	.media-column {
-		white-space: nowrap;
-		margin-bottom: $base-spacing * 2;
-		padding: 0;
-	}
+  /* All Variations */
+  .media-column {
+    white-space: nowrap;
+    margin-bottom: $base-spacing * 2;
+    padding: 0;
+  }
 
-	.text-column {
-		text-align: left;
-	}
+  .text-column {
+    text-align: left;
+  }
 
-  .actions {
+  .text-actions {
     margin: 24px auto 0;
     max-width: 304px;
     width: 100%;
@@ -186,156 +178,178 @@
     width: 100%;
   }
 
-	&.messaging-widget__has-fact-cards {
+  &.messaging-widget__has-fact-cards {
 
-		.text-column {
-			text-align: center;
-		}
-	}
+    .text-column {
+      text-align: center;
+    }
+  }
 
-	@include media($medium-screen) {
+  @include media($medium-screen) {
 
-		.media-column {
-			margin-bottom: 0;
-		}
+    .media-column {
+      margin-bottom: 0;
+    }
 
-    .actions {
+    .text-actions {
       margin-left: 0;
       margin-right: 0;
     }
 
-		&.messaging-widget__has-fact-cards {
+    &.messaging-widget__has-fact-cards {
 
-			.text-column {
-				text-align: left;
-			}
-		}
-	}
+      .text-column {
+        text-align: left;
+      }
+    }
+  }
 
-	/* Text Right Variation */
-	&.messaging-widget__text-right {
+  /* Text Right Variation */
+  &.messaging-widget__text-right {
 
-		/* Medium Screen */
-		@include media($medium-screen) {
+    /* Medium Screen */
+    @include media($medium-screen) {
 
-			.media-column {
-				@include span-columns(8);
-			}
+      .media-column {
+        @include span-columns(8);
+      }
 
-			.text-column {
-				@include shift(1);
-				@include span-columns(9);
-			}
+      .text-column {
+        @include shift(1);
+        @include span-columns(9);
+      }
 
-			.actions {
-				text-align: left;
-			}
-		}
+      .text-actions {
+        text-align: left;
+      }
+    }
 
-		/* Large Screen */
-		@include media($large-screen) {
+    /* Large Screen */
+    @include media($large-screen) {
 
-			.media-column {
-				@include span-columns(10);
-			}
+      .media-column {
+        @include span-columns(10);
+      }
 
-			.text-column {
-				@include span-columns(7);
-				@include shift(1);
-			}
-		}
-	}
+      .text-column {
+        @include span-columns(7);
+        @include shift(1);
+      }
+    }
+  }
 
-	/* Text Left Variation */
-	&.messaging-widget__text-left {
+  /* Text Left Variation */
+  &.messaging-widget__text-left {
 
-		@include direction-context(right-to-left) {
+    @include direction-context(right-to-left) {
 
-			/* Medium Screen */
-			@include media($medium-screen) {
+      /* Medium Screen */
+      @include media($medium-screen) {
 
-				.media-column {
-					@include span-columns(8);
-				}
+        .media-column {
+          @include span-columns(8);
+        }
 
-				.text-column {
-					@include span-columns(9);
-					@include shift(1);
-				}
+        .text-column {
+          @include span-columns(9);
+          @include shift(1);
+        }
 
-				.actions {
-					text-align: left;
-				}
-			}
+        .text-actions {
+          text-align: left;
+        }
+      }
 
-			/* Large Screen */
-			@include media($large-screen) {
+      /* Large Screen */
+      @include media($large-screen) {
 
-				.media-column {
-					@include span-columns(10);
-				}
+        .media-column {
+          @include span-columns(10);
+        }
 
-				.text-column {
-					@include span-columns(7);
-					@include shift(1);
-				}
-			}
-		}
-	}
+        .text-column {
+          @include span-columns(7);
+          @include shift(1);
+        }
+      }
+    }
+  }
 
-	&.messaging-widget__text-right.messaging-widget__has-fact-cards {
+  &.messaging-widget__text-right.messaging-widget__has-fact-cards {
 
-		@include media($medium-screen) {
+    @include media($medium-screen) {
 
-			.text-column {
-				float: right;
-			}
-		}
-	}
+      .text-column {
+        float: right;
+      }
+    }
+  }
 
-	&.messaging-widget__text-left.messaging-widget__has-fact-cards {
+  &.messaging-widget__text-left.messaging-widget__has-fact-cards {
 
-		@include media($medium-screen) {
+    @include media($medium-screen) {
 
-			.text-column {
-				float: left;
-			}
-		}
-	}
+      .text-column {
+        float: left;
+      }
+    }
+  }
 }
 
 .messaging-widget__has-fact-cards .media-column {
-	padding-top: $base-spacing * 4;
+  padding-top: $base-spacing * 4;
 
-	@include media($medium-screen) {
-		padding-top: 0;
-	}
+  @include media($medium-screen) {
+    padding-top: 0;
+  }
 }
 
 /* Medium bg Variation */
 .messaging-widget__medium-bg {
-	background-color: $bg-silver-gray;
+  background-color: $bg-silver-gray;
 }
 
 /* Dark bg Variation */
 .messaging-widget__dark-bg {
-	background-color: $black;
+  background-color: $black;
 
-	.title,
+  .title,
   .category,
   .body { 
     color: white; 
   }
 
-	/* Updated for accessibility. See:
-	   https://github.com/chapmanu/cascade-assets/issues/207 */
-	a {
-		/* Indeed, neither white or #adadad is defined in colors.scss. */
+  /* Updated for accessibility. See:
+     https://github.com/chapmanu/cascade-assets/issues/207 */
+  a {
+    /* Indeed, neither white or #adadad is defined in colors.scss. */
     color: white;
     border-bottom: 2px dotted #adadad;
-	}
+  }
 
-  .select {
+  // Restyle the dropdown when displayed on darker backgrounds for legibility
+  .text-widget-select {
+
+    .select-button {
+
+      #theme.business &,
+      #theme.communication &,
+      #theme.copa &,
+      #theme.crean &,
+      #theme.default &,
+      #theme.dodge &,
+      #theme.education &,
+      #theme.law &,
+      #theme.pharmacy &,
+      #theme.scst &,
+      #theme.wilkinson {
+        background-color: $white;
+      }
+
+      #theme.dodge & {
+        border-color: darken($dodge-primary, 7%);
+      }
+    }   
 
     a {
       border-bottom: 0;
@@ -347,12 +361,12 @@
 /* Fact Card Media */
 .messaging-widget .media-column {
 
-	.fact-card-container {
-		white-space: normal;
-	}
+  .fact-card-container {
+    white-space: normal;
+  }
 
-	.fact-card {
-		white-space: normal;
-		margin: $base-spacing $base-spacing 0;
-	}
+  .fact-card {
+    white-space: normal;
+    margin: $base-spacing $base-spacing 0;
+  }
 }
