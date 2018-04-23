@@ -1,0 +1,105 @@
+// Global value for large-screen is currently 1024px
+// Overwrite just in this file
+$large-screen: 1130px;
+
+.emergency-alert {
+  display: none;
+  background-color: $cu-red;
+  color: $white;
+  padding: 25px;
+  border-bottom: 1px solid $cu-light-grey;
+
+  .close-alert-trigger {
+    cursor: pointer;
+    margin: 5px;
+    float: right;
+
+    svg {
+      margin: 0;
+    }
+
+    @include media($medium-screen) {
+      margin: 10px;
+    }
+
+    @include media($large-screen) {
+      margin: 15px;
+    }
+  }
+
+  .alert-text {
+    @include media($medium-screen) {
+      padding: 0 60px;
+    }
+
+    @include media($large-screen) {
+      padding: 0 250px;
+    }
+
+    p.alert-heading {
+      text-transform: uppercase;
+      font-family: $font-stack-heading;
+      font-size: 24px;
+      font-weight: 800;
+      text-align: center;
+      padding-bottom: 5px;
+
+      @include media($medium-screen) {
+        text-align: left;
+        display: inline-block;
+        font-size: 26px;
+      }
+    }
+
+    div {
+      font-family: $font-stack-body;
+      font-weight: 400;
+      font-size: 16px;
+      line-height: 22px;
+
+      &.alert-title {
+        padding-top: 20px;
+        font-weight: 600;
+        font-size: 18px;
+        border-top: 1px solid white;
+      }
+
+      &.alert-message {
+        padding-top: 10px;
+        padding-bottom: 20px;
+        border-bottom: 1px solid white;
+
+        // Styles for potential WYSIWYG content (data def in Cascade)
+        p {
+          font-size: 16px;
+          line-height: 22px;
+        }
+
+        h1, h2, h3 {
+          font-family: $font-stack-body;
+          margin: 0 0 15px 0;
+          font-size: 18px;
+        }
+      }
+
+      &.alert-link {
+        padding-top: 20px;
+        a {
+          color: $white;
+          border-bottom: 2px solid rgba(255,255,255,0.5);
+        }
+      }
+    }
+  }
+
+  svg {
+    fill: $white;
+    display: block;
+    margin: 15px auto;
+
+    @include media($medium-screen) {
+      margin: 0 5px 0 0;
+      display: inline-block;
+    }
+  }
+}
