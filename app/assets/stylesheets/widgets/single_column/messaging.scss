@@ -327,6 +327,21 @@
     border-bottom: 2px dotted #adadad;
   }
 
+  .theme-button {
+
+    #theme.dodge & {
+      background-color: $white;
+      backface-visibility: hidden;
+      color: darken($dodge-primary, 7%);
+      @include transition(color);
+
+      &:hover,
+      &:focus {
+        color: $white;
+      }
+    }
+  }
+
   // Restyle the dropdown when displayed on darker backgrounds for legibility
   .text-widget-select {
 
