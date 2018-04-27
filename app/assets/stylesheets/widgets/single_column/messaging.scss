@@ -333,11 +333,10 @@
       background-color: $white;
       backface-visibility: hidden;
       color: darken($dodge-primary, 7%);
-      @include transition(color);
 
       &:hover,
       &:focus {
-        color: $white;
+        background-color: darken($white, 7%);
       }
     }
   }
