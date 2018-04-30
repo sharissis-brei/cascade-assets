@@ -1,5 +1,5 @@
 <system-data-structure>
-    <group identifier="masthead" label="Masthead" collapsed="true">
+    <group collapsed="true" identifier="masthead" label="Masthead">
         <!--
             Web coordinators want the ability to restrict mastheads to specific page types
             (corresponding to cascade 'groups'). Web coordinators have access to all mastheads.
@@ -8,108 +8,108 @@
             layout is complete, users (except for web coordinators) are assumed to be in the
             "Schools and Colleges" group and can only select the side panel hero.
          -->
-        <text type="radiobutton" identifier="userGroup" label="For" default="Schools and Colleges">
-            <radio-item value="Schools and Colleges" show-fields="masthead/schoolMastheadTypes"/>
-            <radio-item value="Brochure" show-fields="masthead/brochureMastheadTypes"/>
-            <radio-item value="Web Coordinator" show-fields="masthead/allMastheadTypes"/>
+        <text default="Schools and Colleges" identifier="userGroup" label="For" type="radiobutton">
+            <radio-item show-fields="masthead/schoolMastheadTypes" value="Schools and Colleges"/>
+            <radio-item show-fields="masthead/brochureMastheadTypes" value="Brochure"/>
+            <radio-item show-fields="masthead/allMastheadTypes" value="Web Coordinator"/>
         </text>
-        <text type="dropdown" identifier="schoolMastheadTypes" label="Type of Masthead" default="Side panel hero" help-text="Choose which masthead you would like on your page.">
+        <text default="Side panel hero" help-text="Choose which masthead you would like on your page." identifier="schoolMastheadTypes" label="Type of Masthead" type="dropdown">
             <dropdown-item value="None"/>
-            <dropdown-item value="Side panel hero" show-fields="masthead/sidePanelHero"/>
+            <dropdown-item show-fields="masthead/sidePanelHero" value="Side panel hero"/>
         </text>
         <!-- (April 2017) Product owners request that only web coordinators be able to select the new Brochure Masthead (temporarily) -->
-        <text type="dropdown" identifier="brochureMastheadTypes" label="Type of Masthead" default="None" restrict-to-groups="Web-Coordinators, Administrators" help-text="Choose which masthead you would like on your page.">
+        <text default="None" help-text="Choose which masthead you would like on your page." identifier="brochureMastheadTypes" label="Type of Masthead" restrict-to-groups="Web-Coordinators, Administrators" type="dropdown">
             <dropdown-item value="None"/>
-            <dropdown-item value="Brochure Page Masthead" show-fields="masthead/brochureMasthead"/>
+            <dropdown-item show-fields="masthead/brochureMasthead" value="Brochure Page Masthead"/>
         </text>
-        <text type="dropdown" identifier="allMastheadTypes" label="Type of Masthead" default="None" restrict-to-groups="Web-Coordinators, Administrators" help-text="Choose which masthead you would like on your page.">
+        <text default="None" help-text="Choose which masthead you would like on your page." identifier="allMastheadTypes" label="Type of Masthead" restrict-to-groups="Web-Coordinators, Administrators" type="dropdown">
             <dropdown-item value="None"/>
-            <dropdown-item value="Side panel hero" show-fields="masthead/sidePanelHero"/>
-            <dropdown-item value="Brochure Page Masthead" show-fields="masthead/brochureMasthead"/>
+            <dropdown-item show-fields="masthead/sidePanelHero" value="Side panel hero"/>
+            <dropdown-item show-fields="masthead/brochureMasthead" value="Brochure Page Masthead"/>
         </text>
-        <group identifier="sidePanelHero" label="Side panel hero" collapsed="true">
-            <group identifier="panel" label="Panel" collapsed="true">
+        <group collapsed="true" identifier="sidePanelHero" label="Side panel hero">
+            <group collapsed="true" identifier="panel" label="Panel">
                 <text identifier="title" label="Title"/>
                 <text identifier="subtitle" label="Subtitle"/>
-                <text wysiwyg="true" identifier="body" label="Content"/>
-                <group identifier="callsToAction" label="Calls to Action" collapsed="true">
-                    <group identifier="button" label="Button" multiple="true" maximum-number="3" minimum-number="0">
-                        <text type="radiobutton" identifier="linkType" label="Link Type" default="Internal Link">
-                            <radio-item value="Internal Link" show-fields="masthead/sidePanelHero/panel/callsToAction/button/internalLink"/>
-                            <radio-item value="External Link" show-fields="masthead/sidePanelHero/panel/callsToAction/button/externalLink"/>
-                            <radio-item value="File Link" show-fields="masthead/sidePanelHero/panel/callsToAction/button/fileLink"/>
+                <text identifier="body" label="Content" wysiwyg="true"/>
+                <group collapsed="true" identifier="callsToAction" label="Calls to Action">
+                    <group identifier="button" label="Button" maximum-number="3" minimum-number="0" multiple="true">
+                        <text default="Internal Link" identifier="linkType" label="Link Type" type="radiobutton">
+                            <radio-item show-fields="masthead/sidePanelHero/panel/callsToAction/button/internalLink" value="Internal Link"/>
+                            <radio-item show-fields="masthead/sidePanelHero/panel/callsToAction/button/externalLink" value="External Link"/>
+                            <radio-item show-fields="masthead/sidePanelHero/panel/callsToAction/button/fileLink" value="File Link"/>
                         </text>
-                        <text identifier="externalLink" label="External Link" help-text="full url (including http) to page outside of Cascade"/>
-                        <asset type="page" identifier="internalLink" label="Internal Link"/>
-                        <asset type="file" identifier="fileLink" label="File Link"/>
+                        <text help-text="full url (including http) to page outside of Cascade" identifier="externalLink" label="External Link"/>
+                        <asset identifier="internalLink" label="Internal Link" type="page"/>
+                        <asset identifier="fileLink" label="File Link" type="file"/>
                         <text identifier="label" label="Label"/>
                     </group>
                 </group>
-                <group identifier="dropdownNav" label="Dropdown Navigation" collapsed="true">
+                <group collapsed="true" identifier="dropdownNav" label="Dropdown Navigation">
                     <text identifier="dropdownLabel" label="Label"/>
                     <group identifier="dropdownLink" label="Link" multiple="true">
-                        <text type="radiobutton" identifier="linkType" label="Link Type" default="Internal Link">
-                            <radio-item value="Internal Link" show-fields="masthead/sidePanelHero/panel/dropdownNav/dropdownLink/internalLink"/>
-                            <radio-item value="External Link" show-fields="masthead/sidePanelHero/panel/dropdownNav/dropdownLink/externalLink"/>
-                            <radio-item value="File Link" show-fields="masthead/sidePanelHero/panel/dropdownNav/dropdownLink/fileLink"/>
+                        <text default="Internal Link" identifier="linkType" label="Link Type" type="radiobutton">
+                            <radio-item show-fields="masthead/sidePanelHero/panel/dropdownNav/dropdownLink/internalLink" value="Internal Link"/>
+                            <radio-item show-fields="masthead/sidePanelHero/panel/dropdownNav/dropdownLink/externalLink" value="External Link"/>
+                            <radio-item show-fields="masthead/sidePanelHero/panel/dropdownNav/dropdownLink/fileLink" value="File Link"/>
                         </text>
-                        <text identifier="externalLink" label="External Link" help-text="full url (including http) to page outside of Cascade"/>
-                        <asset type="page" identifier="internalLink" label="Internal Link"/>
-                        <asset type="file" identifier="fileLink" label="File Link"/>
+                        <text help-text="full url (including http) to page outside of Cascade" identifier="externalLink" label="External Link"/>
+                        <asset identifier="internalLink" label="Internal Link" type="page"/>
+                        <asset identifier="fileLink" label="File Link" type="file"/>
                         <text identifier="label" label="Label"/>
                     </group>
                 </group>
             </group>
-            <group identifier="featuredContent" label="Featured Content" multiple="true" collapsed="true">
-                <group identifier="featuredBackgroundMedia" label="Featured Background Media" collapsed="true">
-                    <text type="radiobutton" identifier="type" label="Type" default="Image">
-                        <radio-item value="Image" show-fields="masthead/sidePanelHero/featuredContent/featuredBackgroundMedia/imageFile, masthead/sidePanelHero/featuredContent/featuredBackgroundMedia/alignY"/>
-                        <radio-item value="Video" show-fields="masthead/sidePanelHero/featuredContent/featuredBackgroundMedia/videoFile, masthead/sidePanelHero/featuredContent/featuredBackgroundMedia/fallbackImageFile"/>
+            <group collapsed="true" identifier="featuredContent" label="Featured Content" multiple="true">
+                <group collapsed="true" identifier="featuredBackgroundMedia" label="Featured Background Media">
+                    <text default="Image" identifier="type" label="Type" type="radiobutton">
+                        <radio-item show-fields="masthead/sidePanelHero/featuredContent/featuredBackgroundMedia/imageFile, masthead/sidePanelHero/featuredContent/featuredBackgroundMedia/alignY" value="Image"/>
+                        <radio-item show-fields="masthead/sidePanelHero/featuredContent/featuredBackgroundMedia/videoFile, masthead/sidePanelHero/featuredContent/featuredBackgroundMedia/fallbackImageFile" value="Video"/>
                     </text>
-                    <asset type="file" identifier="videoFile" label="Video File (.mp4 no larger than 10mb)"/>
-                    <asset type="file" identifier="fallbackImageFile" label="Fallback Image File (Around 1600px by 1200px)"/>
-                    <asset type="file" identifier="imageFile" label="Image File (Around 1600px by 1200px)"/>
-                    <text type="radiobutton" identifier="alignY" label="Image Align" default="Bottom">
+                    <asset identifier="videoFile" label="Video File (.mp4 no larger than 10mb)" type="file"/>
+                    <asset identifier="fallbackImageFile" label="Fallback Image File (Around 1600px by 1200px)" type="file"/>
+                    <asset identifier="imageFile" label="Image File (Around 1600px by 1200px)" type="file"/>
+                    <text default="Bottom" identifier="alignY" label="Image Align" type="radiobutton">
                         <radio-item value="Top"/>
                         <radio-item value="Center"/>
                         <radio-item value="Bottom"/>
                     </text>
                     <text identifier="alternateText" label="Alternate Text"/>
                 </group>
-                <group identifier="featuredPanel" label="Featured Panel" collapsed="true">
+                <group collapsed="true" identifier="featuredPanel" label="Featured Panel">
                     <text identifier="category" label="Category"/>
                     <text identifier="title" label="Title"/>
                     <text identifier="subtitle" label="Subtitle"/>
-                    <text wysiwyg="true" identifier="body" label="Content"/>
+                    <text identifier="body" label="Content" wysiwyg="true"/>
                     <group identifier="link" label="Call to Action">
-                        <text type="radiobutton" identifier="linkType" label="Link Type" default="Internal Link">
-                            <radio-item value="Internal Link" show-fields="masthead/sidePanelHero/featuredContent/featuredPanel/link/internalLink"/>
-                            <radio-item value="External Link" show-fields="masthead/sidePanelHero/featuredContent/featuredPanel/link/externalLink"/>
-                            <radio-item value="File Link" show-fields="masthead/sidePanelHero/featuredContent/featuredPanel/link/fileLink"/>
+                        <text default="Internal Link" identifier="linkType" label="Link Type" type="radiobutton">
+                            <radio-item show-fields="masthead/sidePanelHero/featuredContent/featuredPanel/link/internalLink" value="Internal Link"/>
+                            <radio-item show-fields="masthead/sidePanelHero/featuredContent/featuredPanel/link/externalLink" value="External Link"/>
+                            <radio-item show-fields="masthead/sidePanelHero/featuredContent/featuredPanel/link/fileLink" value="File Link"/>
                         </text>
-                        <text identifier="externalLink" label="External Link" help-text="full url (including http) to page outside of Cascade"/>
-                        <asset type="page" identifier="internalLink" label="Internal Link"/>
-                        <asset type="file" identifier="fileLink" label="File Link"/>
+                        <text help-text="full url (including http) to page outside of Cascade" identifier="externalLink" label="External Link"/>
+                        <asset identifier="internalLink" label="Internal Link" type="page"/>
+                        <asset identifier="fileLink" label="File Link" type="file"/>
                         <text identifier="label" label="Label"/>
                     </group>
                 </group>
             </group>
         </group>
-        <group identifier="brochureMasthead" label="Brochure Page Masthead" restrict-to-groups="Web-Coordinators, Administrators" collapsed="true">
-            <group identifier="headline" label="Headline" collapsed="true">
+        <group collapsed="true" identifier="brochureMasthead" label="Brochure Page Masthead" restrict-to-groups="Web-Coordinators, Administrators">
+            <group collapsed="true" identifier="headline" label="Headline">
                 <text identifier="primary" label="Primary" required="true"/>
-                <text identifier="secondary" label="Secondary" help-text="Optional text displayed above primary text"/>
+                <text help-text="Optional text displayed above primary text" identifier="secondary" label="Secondary"/>
             </group>
-            <group identifier="slides" label="Slides" collapsed="true">
-                <group identifier="slide" label="Slide" multiple="true" collapsed="true">
-                    <text type="radiobutton" identifier="type" label="Type" default="Image">
-                        <radio-item value="Image" show-fields="masthead/brochureMasthead/slides/slide/imageFile"/>
-                        <radio-item value="Video" show-fields="masthead/brochureMasthead/slides/slide/videoFile, masthead/brochureMasthead/slides/slide/fallbackImageFile"/>
+            <group collapsed="true" identifier="slides" label="Slides">
+                <group collapsed="true" identifier="slide" label="Slide" multiple="true">
+                    <text default="Image" identifier="type" label="Type" type="radiobutton">
+                        <radio-item show-fields="masthead/brochureMasthead/slides/slide/imageFile" value="Image"/>
+                        <radio-item show-fields="masthead/brochureMasthead/slides/slide/videoFile, masthead/brochureMasthead/slides/slide/fallbackImageFile" value="Video"/>
                     </text>
-                    <asset type="file" identifier="videoFile" label="Video File (.mp4 no larger than 10mb)"/>
-                    <asset type="file" identifier="fallbackImageFile" label="Fallback Image File (Around 1600px by 1200px)"/>
-                    <asset type="file" identifier="imageFile" label="Image File (Around 1600px by 1200px)"/>
-                    <text type="radiobutton" identifier="alignY" label="Image Align" default="Center">
+                    <asset identifier="videoFile" label="Video File (.mp4 no larger than 10mb)" type="file"/>
+                    <asset identifier="fallbackImageFile" label="Fallback Image File (Around 1600px by 1200px)" type="file"/>
+                    <asset identifier="imageFile" label="Image File (Around 1600px by 1200px)" type="file"/>
+                    <text default="Center" identifier="alignY" label="Image Align" type="radiobutton">
                         <radio-item value="Top"/>
                         <radio-item value="Center"/>
                         <radio-item value="Bottom"/>
@@ -119,361 +119,403 @@
             </group>
         </group>
     </group>
-    <group identifier="primaryContent" label="Primary Content" collapsed="true">
+    <group collapsed="true" identifier="primaryContent" label="Primary Content">
         <group identifier="widget" label="Widget" multiple="true">
-            <text type="dropdown" identifier="widgetType" label="Type of Widget" default="(select a widget)" help-text="Choose the type of content you'd like to add to the page">
+            <text default="(select a widget)" help-text="Choose the type of content you'd like to add to the page" identifier="widgetType" label="Type of Widget" type="dropdown">
                 <dropdown-item value="(select a widget)"/>
-                <dropdown-item value="Text Only" show-fields="primaryContent/widget/textOnly"/>
-                <dropdown-item value="Image with Text" show-fields="primaryContent/widget/imageWithText"/>
-                <dropdown-item value="Video with Text" show-fields="primaryContent/widget/videoWithText"/>
-                <dropdown-item value="Fact Cards with Text" show-fields="primaryContent/widget/factCardsWithText"/>
-                <dropdown-item value="Call To Action 3 Up" show-fields="primaryContent/widget/callToAction3Up"/>
-                <dropdown-item value="Social.chapman Feed" show-fields="primaryContent/widget/chapmanSocialFeed"/>
-                <dropdown-item value="Subscribe" show-fields="primaryContent/widget/subscribe"/>
-                <dropdown-item value="Call To Action Block" show-fields="primaryContent/widget/callToActionBlock"/>
-                <dropdown-item value="Events.chapman Feed" show-fields="primaryContent/widget/chapmanEventsFeed"/>
-                <dropdown-item value="Stories Feed" show-fields="primaryContent/widget/chapmanStoriesFeed"/>
-                <dropdown-item value="Contact Footer" show-fields="primaryContent/widget/contactFooter"/>
-                <dropdown-item value="Call To Action Footer" show-fields="primaryContent/widget/callToActionFooter"/>
+                <dropdown-item show-fields="primaryContent/widget/textOnly" value="Text Only"/>
+                <dropdown-item show-fields="primaryContent/widget/imageWithText" value="Image with Text"/>
+                <dropdown-item show-fields="primaryContent/widget/videoWithText" value="Video with Text"/>
+                <dropdown-item show-fields="primaryContent/widget/factCardsWithText" value="Fact Cards with Text"/>
+                <dropdown-item show-fields="primaryContent/widget/callToAction3Up" value="Call To Action 3 Up"/>
+                <dropdown-item show-fields="primaryContent/widget/chapmanSocialFeed" value="Social.chapman Feed"/>
+                <dropdown-item show-fields="primaryContent/widget/subscribe" value="Subscribe"/>
+                <dropdown-item show-fields="primaryContent/widget/callToActionBlock" value="Call To Action Block"/>
+                <dropdown-item show-fields="primaryContent/widget/chapmanEventsFeed" value="Events.chapman Feed"/>
+                <dropdown-item show-fields="primaryContent/widget/chapmanStoriesFeed" value="Stories Feed"/>
+                <dropdown-item show-fields="primaryContent/widget/contactFooter" value="Contact Footer"/>
+                <dropdown-item show-fields="primaryContent/widget/callToActionFooter" value="Call To Action Footer"/>
             </text>
-            <group identifier="chapmanEventsFeed" label="Events.chapman Feed" collapsed="true">
-                <text type="radiobutton" identifier="show" label="Show" default="Yes">
+            <group collapsed="true" identifier="chapmanEventsFeed" label="Events.chapman Feed">
+                <text default="Yes" identifier="show" label="Show" type="radiobutton">
                     <radio-item value="Yes"/>
                     <radio-item value="No"/>
                 </text>
-                <text type="radiobutton" identifier="bgColor" label="Background Color" default="Light">
+                <text default="Light" identifier="bgColor" label="Background Color" type="radiobutton">
                     <radio-item value="Light"/>
                     <radio-item value="Medium"/>
                     <radio-item value="Dark"/>
                 </text>
                 <text identifier="category" label="Category"/>
                 <text identifier="title" label="Title"/>
-                <text wysiwyg="true" identifier="body" label="Content"/>
+                <text identifier="body" label="Content" wysiwyg="true"/>
                 <text identifier="buttonText" label="Button Text"/>
                 <text identifier="featuredFeedUrl" label="Featured Event Url" required="true"/>
                 <text identifier="feedUrl" label="Feed Url" required="true"/>
             </group>
-            <group identifier="callToActionBlock" label="Call To Action Block" collapsed="true">
-                <text type="radiobutton" identifier="display-call-to-action-block" label="Show" default="Yes">
+            <group collapsed="true" identifier="callToActionBlock" label="Call To Action Block">
+                <text default="Yes" identifier="display-call-to-action-block" label="Show" type="radiobutton">
                     <radio-item value="Yes"/>
                     <radio-item value="No"/>
                 </text>
-                <text type="radiobutton" identifier="bgColor" label="Background Color" default="Light">
+                <text default="Light" identifier="bgColor" label="Background Color" type="radiobutton">
                     <radio-item value="Light"/>
                     <radio-item value="Medium"/>
                     <radio-item value="Dark"/>
                 </text>
-                <group identifier="callToActionBlockRow" label="Call To Action Block Row" multiple="true" collapsed="true">
-                    <group identifier="callToActionBox" label="Call To Action Box" multiple="true" maximum-number="4" minimum-number="4" collapsed="true">
+                <group collapsed="true" identifier="callToActionBlockRow" label="Call To Action Block Row" multiple="true">
+                    <group collapsed="true" identifier="callToActionBox" label="Call To Action Box" maximum-number="4" minimum-number="4" multiple="true">
                         <text identifier="title" label="Title"/>
                         <text identifier="subtitle" label="Subtitle"/>
-                        <text type="radiobutton" identifier="colorTheme" label="Color Theme" default="Dark">
+                        <text default="Dark" identifier="colorTheme" label="Color Theme" type="radiobutton">
                             <radio-item value="Dark"/>
                             <radio-item value="Light"/>
                             <radio-item value="School Color"/>
                         </text>
-                        <group identifier="link" label="Link" collapsed="true">
-                            <text type="radiobutton" identifier="linkType" label="Link Type" default="Internal Link">
-                                <radio-item value="Internal Link" show-fields="primaryContent/widget/callToActionBlock/callToActionBlockRow/callToActionBox/link/internalLink"/>
-                                <radio-item value="External Link" show-fields="primaryContent/widget/callToActionBlock/callToActionBlockRow/callToActionBox/link/externalLink"/>
-                                <radio-item value="File Link" show-fields="primaryContent/widget/callToActionBlock/callToActionBlockRow/callToActionBox/link/fileLink"/>
+                        <group collapsed="true" identifier="link" label="Link">
+                            <text default="Internal Link" identifier="linkType" label="Link Type" type="radiobutton">
+                                <radio-item show-fields="primaryContent/widget/callToActionBlock/callToActionBlockRow/callToActionBox/link/internalLink" value="Internal Link"/>
+                                <radio-item show-fields="primaryContent/widget/callToActionBlock/callToActionBlockRow/callToActionBox/link/externalLink" value="External Link"/>
+                                <radio-item show-fields="primaryContent/widget/callToActionBlock/callToActionBlockRow/callToActionBox/link/fileLink" value="File Link"/>
                             </text>
-                            <text identifier="externalLink" label="External Link" help-text="full url (including http) to page outside of Cascade"/>
-                            <asset type="page" identifier="internalLink" label="Internal Link"/>
-                            <asset type="file" identifier="fileLink" label="File Link"/>
+                            <text help-text="full url (including http) to page outside of Cascade" identifier="externalLink" label="External Link"/>
+                            <asset identifier="internalLink" label="Internal Link" type="page"/>
+                            <asset identifier="fileLink" label="File Link" type="file"/>
                         </group>
-                        <group identifier="media" label="Media" collapsed="true">
-                            <text type="radiobutton" identifier="linkType" label="Link Type" default="None" help-text="Photo size: around 600px width and 272 px height  (Does not need to be exact, just close)">
+                        <group collapsed="true" identifier="media" label="Media">
+                            <text default="None" help-text="Photo size: around 600px width and 272 px height  (Does not need to be exact, just close)" identifier="linkType" label="Link Type" type="radiobutton">
                                 <radio-item value="None"/>
-                                <radio-item value="File Link" show-fields="primaryContent/widget/callToActionBlock/callToActionBlockRow/callToActionBox/media/fileLink"/>
+                                <radio-item show-fields="primaryContent/widget/callToActionBlock/callToActionBlockRow/callToActionBox/media/fileLink" value="File Link"/>
                             </text>
-                            <asset type="file" identifier="fileLink" label="File Link (Around 600px by 272px)"/>
+                            <asset identifier="fileLink" label="File Link (Around 600px by 272px)" type="file"/>
                         </group>
                     </group>
                 </group>
             </group>
-            <group identifier="textOnly" label="Text Only" collapsed="true">
-                <text type="radiobutton" identifier="display-text-only" label="Show" default="Yes">
+            <group collapsed="true" identifier="textOnly" label="Text Only">
+                <text default="Yes" identifier="display-text-only" label="Show" type="radiobutton">
                     <radio-item value="Yes"/>
                     <radio-item value="No"/>
                 </text>
-                <text type="dropdown" identifier="format" label="Text Position" default="Centered" help-text="Choose how to layout your text">
+                <text default="Centered" help-text="Choose how to layout your text" identifier="format" label="Text Position" type="dropdown">
                     <dropdown-item value="Centered"/>
-                    <dropdown-item value="Off to the side" show-fields="primaryContent/widget/textOnly/textFields/textAlign"/>
+                    <dropdown-item show-fields="primaryContent/widget/textOnly/textFields/textAlign" value="Off to the side"/>
                 </text>
-                <text type="radiobutton" identifier="bgColor" label="Background Color" default="Light">
+                <text default="Light" identifier="bgColor" label="Background Color" type="radiobutton">
                     <radio-item value="Light"/>
                     <radio-item value="Medium"/>
                     <radio-item value="Dark"/>
                 </text>
-                <group identifier="textFields" label="Text Fields" collapsed="true">
-                    <text type="radiobutton" identifier="textAlign" label="Text Align" default="Left">
+                <group collapsed="true" identifier="textFields" label="Text Fields">
+                    <text default="Left" identifier="textAlign" label="Text Align" type="radiobutton">
                         <radio-item value="Left"/>
                         <radio-item value="Right"/>
                     </text>
                     <text identifier="category" label="Category"/>
                     <text identifier="title" label="Title"/>
-                    <text wysiwyg="true" identifier="body" label="Content"/>
+                    <text identifier="body" label="Content" wysiwyg="true"/>
                     <group identifier="button" label="Button">
-                        <text type="radiobutton" identifier="linkType" label="Link Type" default="Internal Link">
-                            <radio-item value="Internal Link" show-fields="primaryContent/widget/textOnly/textFields/button/internalLink"/>
-                            <radio-item value="External Link" show-fields="primaryContent/widget/textOnly/textFields/button/externalLink"/>
-                            <radio-item value="File Link" show-fields="primaryContent/widget/textOnly/textFields/button/fileLink"/>
+                        <text default="Internal Link" identifier="linkType" label="Link Type" type="radiobutton">
+                            <radio-item show-fields="primaryContent/widget/textOnly/textFields/button/internalLink" value="Internal Link"/>
+                            <radio-item show-fields="primaryContent/widget/textOnly/textFields/button/externalLink" value="External Link"/>
+                            <radio-item show-fields="primaryContent/widget/textOnly/textFields/button/fileLink" value="File Link"/>
                         </text>
-                        <text identifier="externalLink" label="External Link" help-text="full url (including http) to page outside of Cascade"/>
-                        <asset type="page" identifier="internalLink" label="Internal Link"/>
-                        <asset type="file" identifier="fileLink" label="File Link"/>
+                        <text help-text="full url (including http) to page outside of Cascade" identifier="externalLink" label="External Link"/>
+                        <asset identifier="internalLink" label="Internal Link" type="page"/>
+                        <asset identifier="fileLink" label="File Link" type="file"/>
                         <text identifier="label" label="Label"/>
                     </group>
+                    <group identifier="dropdownNav" label="Dropdown Navigation">
+                        <text identifier="dropdownLabel" label="Label"/>
+                        <group identifier="dropdownLink" label="Link" multiple="true">
+                            <text default="Internal Link" identifier="linkType" label="Link Type" type="radiobutton">
+                                <radio-item show-fields="primaryContent/widget/textOnly/textFields/dropdownNav/dropdownLink/internalLink" value="Internal Link"/>
+                                <radio-item show-fields="primaryContent/widget/textOnly/textFields/dropdownNav/dropdownLink/externalLink" value="External Link"/>
+                                <radio-item show-fields="primaryContent/widget/textOnly/textFields/dropdownNav/dropdownLink/fileLink" value="File Link"/>
+                            </text>
+                            <text help-text="full url (including http) to page outside of Cascade" identifier="externalLink" label="External Link"/>
+                            <asset identifier="internalLink" label="Internal Link" type="page"/>
+                            <asset identifier="fileLink" label="File Link" type="file"/>
+                            <text identifier="label" label="Label"/>
+                        </group>
+                    </group>
                 </group>
-                <group identifier="backgroundImage" label="Background Image" collapsed="true">
-                    <asset type="file" identifier="fileLink" label="File Link (Around 1600px by 800px)"/>
+                <group collapsed="true" identifier="backgroundImage" label="Background Image">
+                    <asset identifier="fileLink" label="File Link (Around 1600px by 800px)" type="file"/>
                     <text identifier="alternateText" label="Alternate Text"/>
                 </group>
             </group>
-            <group identifier="imageWithText" label="Image with Text" collapsed="true">
-                <text type="radiobutton" identifier="display-image-with-text" label="Show" default="Yes">
+            <group collapsed="true" identifier="imageWithText" label="Image with Text">
+                <text default="Yes" identifier="display-image-with-text" label="Show" type="radiobutton">
                     <radio-item value="Yes"/>
                     <radio-item value="No"/>
                 </text>
-                <text type="dropdown" identifier="format" label="Text and Image Positions" default="Side by side" help-text="Choose how to layout your data">
+                <text default="Side by side" help-text="Choose how to layout your data" identifier="format" label="Text and Image Positions" type="dropdown">
                     <dropdown-item value="Stacked"/>
-                    <dropdown-item value="Side by side" show-fields="primaryContent/widget/imageWithText/textFields/textAlign"/>
+                    <dropdown-item show-fields="primaryContent/widget/imageWithText/textFields/textAlign" value="Side by side"/>
                 </text>
-                <text type="radiobutton" identifier="bgColor" label="Background Color" default="Light">
+                <text default="Light" identifier="bgColor" label="Background Color" type="radiobutton">
                     <radio-item value="Light"/>
                     <radio-item value="Medium"/>
                     <radio-item value="Dark"/>
                 </text>
-                <group identifier="backgroundImage" label="Background Image" collapsed="true">
-                    <text type="radiobutton" identifier="linkType" label="Link Type" default="None">
+                <group collapsed="true" identifier="backgroundImage" label="Background Image">
+                    <text default="None" identifier="linkType" label="Link Type" type="radiobutton">
                         <radio-item value="None"/>
-                        <radio-item value="File Link" show-fields="primaryContent/widget/imageWithText/backgroundImage/fileLink"/>
+                        <radio-item show-fields="primaryContent/widget/imageWithText/backgroundImage/fileLink" value="File Link"/>
                     </text>
-                    <asset type="file" identifier="fileLink" label="File Link"/>
+                    <asset identifier="fileLink" label="File Link" type="file"/>
                 </group>
-                <group identifier="textFields" label="Text Fields" collapsed="true">
-                    <text type="radiobutton" identifier="textAlign" label="Text Align" default="Left">
+                <group collapsed="true" identifier="textFields" label="Text Fields">
+                    <text default="Left" identifier="textAlign" label="Text Align" type="radiobutton">
                         <radio-item value="Left"/>
                         <radio-item value="Right"/>
                     </text>
                     <text identifier="category" label="Category"/>
                     <text identifier="title" label="Title"/>
-                    <text wysiwyg="true" identifier="body" label="Content"/>
+                    <text identifier="body" label="Content" wysiwyg="true"/>
                     <group identifier="button" label="Button">
-                        <text type="radiobutton" identifier="linkType" label="Link Type" default="Internal Link">
-                            <radio-item value="Internal Link" show-fields="primaryContent/widget/imageWithText/textFields/button/internalLink"/>
-                            <radio-item value="External Link" show-fields="primaryContent/widget/imageWithText/textFields/button/externalLink"/>
-                            <radio-item value="File Link" show-fields="primaryContent/widget/imageWithText/textFields/button/fileLink"/>
+                        <text default="Internal Link" identifier="linkType" label="Link Type" type="radiobutton">
+                            <radio-item show-fields="primaryContent/widget/imageWithText/textFields/button/internalLink" value="Internal Link"/>
+                            <radio-item show-fields="primaryContent/widget/imageWithText/textFields/button/externalLink" value="External Link"/>
+                            <radio-item show-fields="primaryContent/widget/imageWithText/textFields/button/fileLink" value="File Link"/>
                         </text>
-                        <text identifier="externalLink" label="External Link" help-text="full url (including http) to page outside of Cascade"/>
-                        <asset type="page" identifier="internalLink" label="Internal Link"/>
-                        <asset type="file" identifier="fileLink" label="File Link"/>
+                        <text help-text="full url (including http) to page outside of Cascade" identifier="externalLink" label="External Link"/>
+                        <asset identifier="internalLink" label="Internal Link" type="page"/>
+                        <asset identifier="fileLink" label="File Link" type="file"/>
                         <text identifier="label" label="Label"/>
                     </group>
+                    <group identifier="dropdownNav" label="Dropdown Navigation">
+                        <text identifier="dropdownLabel" label="Label"/>
+                        <group identifier="dropdownLink" label="Link" multiple="true">
+                            <text default="Internal Link" identifier="linkType" label="Link Type" type="radiobutton">
+                                <radio-item show-fields="primaryContent/widget/imageWithText/textFields/dropdownNav/dropdownLink/internalLink" value="Internal Link"/>
+                                <radio-item show-fields="primaryContent/widget/imageWithText/textFields/dropdownNav/dropdownLink/externalLink" value="External Link"/>
+                                <radio-item show-fields="primaryContent/widget/imageWithText/textFields/dropdownNav/dropdownLink/fileLink" value="File Link"/>
+                            </text>
+                            <text help-text="full url (including http) to page outside of Cascade" identifier="externalLink" label="External Link"/>
+                            <asset identifier="internalLink" label="Internal Link" type="page"/>
+                            <asset identifier="fileLink" label="File Link" type="file"/>
+                            <text identifier="label" label="Label"/>
+                        </group>
+                    </group>
                 </group>
-                <group identifier="imageFields" label="Image Fields" collapsed="true">
-                    <asset type="file" identifier="fileLink" label="File Link (Around 600px by 400px)"/>
+                <group collapsed="true" identifier="imageFields" label="Image Fields">
+                    <asset identifier="fileLink" label="File Link (Around 600px by 400px)" type="file"/>
                     <text identifier="alternateText" label="Alternate Text"/>
                 </group>
             </group>
-            <group identifier="videoWithText" label="Video with Text" collapsed="true">
-                <text type="radiobutton" identifier="display-video-with-text" label="Show" default="Yes">
+            <group collapsed="true" identifier="videoWithText" label="Video with Text">
+                <text default="Yes" identifier="display-video-with-text" label="Show" type="radiobutton">
                     <radio-item value="Yes"/>
                     <radio-item value="No"/>
                 </text>
-                <text type="dropdown" identifier="format" label="Text and Video Positions" default="Side by side" help-text="Choose how to layout your data">
+                <text default="Side by side" help-text="Choose how to layout your data" identifier="format" label="Text and Video Positions" type="dropdown">
                     <dropdown-item value="Stacked"/>
-                    <dropdown-item value="Side by side" show-fields="primaryContent/widget/videoWithText/textFields/textAlign"/>
+                    <dropdown-item show-fields="primaryContent/widget/videoWithText/textFields/textAlign" value="Side by side"/>
                 </text>
-                <text type="radiobutton" identifier="bgColor" label="Background Color" default="Light">
+                <text default="Light" identifier="bgColor" label="Background Color" type="radiobutton">
                     <radio-item value="Light"/>
                     <radio-item value="Medium"/>
                     <radio-item value="Dark"/>
                 </text>
-                <text identifier="videoShareLink" label="Youtube or Vimeo Share Link" help-text="Example: `https://youtu.be/jhz862KOstA` or `https://vimeo.com/194384917`"/>
-                <group identifier="textFields" label="Text Fields" collapsed="true">
-                    <text type="radiobutton" identifier="textAlign" label="Text Align" default="Left">
+                <text help-text="Example: `https://youtu.be/jhz862KOstA` or `https://vimeo.com/194384917`" identifier="videoShareLink" label="Youtube or Vimeo Share Link"/>
+                <group collapsed="true" identifier="textFields" label="Text Fields">
+                    <text default="Left" identifier="textAlign" label="Text Align" type="radiobutton">
                         <radio-item value="Left"/>
                         <radio-item value="Right"/>
                     </text>
                     <text identifier="category" label="Category"/>
                     <text identifier="title" label="Title"/>
-                    <text wysiwyg="true" identifier="body" label="Content"/>
+                    <text identifier="body" label="Content" wysiwyg="true"/>
                     <group identifier="button" label="Button">
-                        <text type="radiobutton" identifier="linkType" label="Link Type" default="Internal Link">
-                            <radio-item value="Internal Link" show-fields="primaryContent/widget/videoWithText/textFields/button/internalLink"/>
-                            <radio-item value="External Link" show-fields="primaryContent/widget/videoWithText/textFields/button/externalLink"/>
-                            <radio-item value="File Link" show-fields="primaryContent/widget/videoWithText/textFields/button/fileLink"/>
+                        <text default="Internal Link" identifier="linkType" label="Link Type" type="radiobutton">
+                            <radio-item show-fields="primaryContent/widget/videoWithText/textFields/button/internalLink" value="Internal Link"/>
+                            <radio-item show-fields="primaryContent/widget/videoWithText/textFields/button/externalLink" value="External Link"/>
+                            <radio-item show-fields="primaryContent/widget/videoWithText/textFields/button/fileLink" value="File Link"/>
                         </text>
-                        <text identifier="externalLink" label="External Link" help-text="full url (including http) to page outside of Cascade"/>
-                        <asset type="page" identifier="internalLink" label="Internal Link"/>
-                        <asset type="file" identifier="fileLink" label="File Link"/>
+                        <text help-text="full url (including http) to page outside of Cascade" identifier="externalLink" label="External Link"/>
+                        <asset identifier="internalLink" label="Internal Link" type="page"/>
+                        <asset identifier="fileLink" label="File Link" type="file"/>
                         <text identifier="label" label="Label"/>
+                    </group>
+                    <group identifier="dropdownNav" label="Dropdown Navigation">
+                        <text identifier="dropdownLabel" label="Label"/>
+                        <group identifier="dropdownLink" label="Link" multiple="true">
+                            <text default="Internal Link" identifier="linkType" label="Link Type" type="radiobutton">
+                                <radio-item show-fields="primaryContent/widget/videoWithText/textFields/dropdownNav/dropdownLink/internalLink" value="Internal Link"/>
+                                <radio-item show-fields="primaryContent/widget/videoWithText/textFields/dropdownNav/dropdownLink/externalLink" value="External Link"/>
+                                <radio-item show-fields="primaryContent/widget/videoWithText/textFields/dropdownNav/dropdownLink/fileLink" value="File Link"/>
+                            </text>
+                            <text help-text="full url (including http) to page outside of Cascade" identifier="externalLink" label="External Link"/>
+                            <asset identifier="internalLink" label="Internal Link" type="page"/>
+                            <asset identifier="fileLink" label="File Link" type="file"/>
+                            <text identifier="label" label="Label"/>
+                        </group>
                     </group>
                 </group>
             </group>
-            <group identifier="factCardsWithText" label="Fact Cards with Text" collapsed="true">
-                <text type="radiobutton" identifier="display-fact-cards-with-text" label="Show" default="Yes">
+            <group collapsed="true" identifier="factCardsWithText" label="Fact Cards with Text">
+                <text default="Yes" identifier="display-fact-cards-with-text" label="Show" type="radiobutton">
                     <radio-item value="Yes"/>
                     <radio-item value="No"/>
                 </text>
-                <text type="dropdown" identifier="format" label="Text and Fact Positions" default="Side by side" help-text="Choose how to layout your data">
+                <text default="Side by side" help-text="Choose how to layout your data" identifier="format" label="Text and Fact Positions" type="dropdown">
                     <dropdown-item value="Stacked"/>
-                    <dropdown-item value="Side by side" show-fields="primaryContent/widget/factCardsWithText/textFields/textAlign"/>
+                    <dropdown-item show-fields="primaryContent/widget/factCardsWithText/textFields/textAlign" value="Side by side"/>
                 </text>
-                <text type="radiobutton" identifier="bgColor" label="Background Color" default="Light">
+                <text default="Light" identifier="bgColor" label="Background Color" type="radiobutton">
                     <radio-item value="Light"/>
                     <radio-item value="Medium"/>
                     <radio-item value="Dark"/>
                 </text>
-                <group identifier="textFields" label="Text Fields" collapsed="true">
-                    <text type="radiobutton" identifier="textAlign" label="Text Align" default="Left">
+                <group collapsed="true" identifier="textFields" label="Text Fields">
+                    <text default="Left" identifier="textAlign" label="Text Align" type="radiobutton">
                         <radio-item value="Left"/>
                         <radio-item value="Right"/>
                     </text>
                     <text identifier="category" label="Category"/>
                     <text identifier="title" label="Title"/>
-                    <text wysiwyg="true" identifier="body" label="Content"/>
+                    <text identifier="body" label="Content" wysiwyg="true"/>
                     <group identifier="button" label="Button">
-                        <text type="radiobutton" identifier="linkType" label="Link Type" default="Internal Link">
-                            <radio-item value="Internal Link" show-fields="primaryContent/widget/factCardsWithText/textFields/button/internalLink"/>
-                            <radio-item value="External Link" show-fields="primaryContent/widget/factCardsWithText/textFields/button/externalLink"/>
-                            <radio-item value="File Link" show-fields="primaryContent/widget/factCardsWithText/textFields/button/fileLink"/>
+                        <text default="Internal Link" identifier="linkType" label="Link Type" type="radiobutton">
+                            <radio-item show-fields="primaryContent/widget/factCardsWithText/textFields/button/internalLink" value="Internal Link"/>
+                            <radio-item show-fields="primaryContent/widget/factCardsWithText/textFields/button/externalLink" value="External Link"/>
+                            <radio-item show-fields="primaryContent/widget/factCardsWithText/textFields/button/fileLink" value="File Link"/>
                         </text>
-                        <text identifier="externalLink" label="External Link" help-text="full url (including http) to page outside of Cascade"/>
-                        <asset type="page" identifier="internalLink" label="Internal Link"/>
-                        <asset type="file" identifier="fileLink" label="File Link"/>
+                        <text help-text="full url (including http) to page outside of Cascade" identifier="externalLink" label="External Link"/>
+                        <asset identifier="internalLink" label="Internal Link" type="page"/>
+                        <asset identifier="fileLink" label="File Link" type="file"/>
                         <text identifier="label" label="Label"/>
                     </group>
                 </group>
-                <group identifier="factCards" label="Fact Cards" collapsed="true">
-                    <group identifier="factCard" label="Fact Card" multiple="true" collapsed="true">
+                <group collapsed="true" identifier="factCards" label="Fact Cards">
+                    <group collapsed="true" identifier="factCard" label="Fact Card" multiple="true">
                         <text identifier="backLinkLabel" label="Back Link Label" required="true"/>
                         <text identifier="plainTextLink" label="Link"/>
-                        <asset type="page,file,symlink" identifier="link" label="Or Internal Link"/>
-                        <group identifier="frontStat" label="Front Stat" collapsed="true">
-                            <text identifier="frontStatNumber" label="Front Stat Number" help-text="4 digits max; If necessary to use bigger number, abbreviate as such: 10,000 = 10k"/>
+                        <asset identifier="link" label="Or Internal Link" type="page,file,symlink"/>
+                        <group collapsed="true" identifier="frontStat" label="Front Stat">
+                            <text help-text="4 digits max; If necessary to use bigger number, abbreviate as such: 10,000 = 10k" identifier="frontStatNumber" label="Front Stat Number"/>
                             <text identifier="frontStatText1" label="Front Stat Text 1"/>
                             <text identifier="frontStatText2" label="Front Stat Text 2"/>
-                            <text type="dropdown" identifier="frontBackgroundImage" label="Background Image">
+                            <text identifier="frontBackgroundImage" label="Background Image" type="dropdown">
                                 <dropdown-item value="people"/>
                                 <dropdown-item value="student"/>
                                 <dropdown-item value="chair"/>
                                 <dropdown-item value="books"/>
                                 <dropdown-item value="mortarboard"/>
                             </text>
-                            <text type="dropdown" identifier="frontBackgroundColor" label="Background Color">
+                            <text identifier="frontBackgroundColor" label="Background Color" type="dropdown">
                                 <dropdown-item value="red"/>
                                 <dropdown-item value="orange"/>
                                 <dropdown-item value="green"/>
                                 <dropdown-item value="blue"/>
                             </text>
                         </group>
-                        <group identifier="backStat" label="Back Stat" collapsed="true">
-                            <text multi-line="true" identifier="backStat" label="Back Stat"/>
+                        <group collapsed="true" identifier="backStat" label="Back Stat">
+                            <text identifier="backStat" label="Back Stat" multi-line="true"/>
                             <group identifier="link" label="Link">
-                                <text type="radiobutton" identifier="linkType" label="Link Type" default="Internal Link">
+                                <text default="Internal Link" identifier="linkType" label="Link Type" type="radiobutton">
                                     <radio-item value="Internal Link"/>
                                     <radio-item value="External Link"/>
                                     <radio-item value="File Link"/>
                                 </text>
-                                <text identifier="externalLink" label="External Link" help-text="full url (including http) to page outside of Cascade"/>
-                                <asset type="page" identifier="internalLink" label="Internal Link"/>
-                                <asset type="file" identifier="fileLink" label="File Link"/>
+                                <text help-text="full url (including http) to page outside of Cascade" identifier="externalLink" label="External Link"/>
+                                <asset identifier="internalLink" label="Internal Link" type="page"/>
+                                <asset identifier="fileLink" label="File Link" type="file"/>
                                 <text identifier="label" label="Label"/>
                             </group>
                         </group>
                     </group>
                 </group>
             </group>
-            <group identifier="callToAction3Up" label="Call To Action 3 Up" collapsed="true">
-                <text type="radiobutton" identifier="display-call-to-action-3-up" label="Show" default="Yes">
+            <group collapsed="true" identifier="callToAction3Up" label="Call To Action 3 Up">
+                <text default="Yes" identifier="display-call-to-action-3-up" label="Show" type="radiobutton">
                     <radio-item value="Yes"/>
                     <radio-item value="No"/>
                 </text>
-                <text type="radiobutton" identifier="bgColor" label="Background Color" default="Light">
+                <text default="Light" identifier="bgColor" label="Background Color" type="radiobutton">
                     <radio-item value="Light"/>
                     <radio-item value="Medium"/>
                     <radio-item value="Dark"/>
                 </text>
                 <group identifier="cta1" label="Call to Action Left">
                     <group identifier="media" label="Media">
-                        <asset type="file" identifier="fileLink" label="File Link (Exactly 600px by 400px)"/>
+                        <asset identifier="fileLink" label="File Link (Exactly 600px by 400px)" type="file"/>
                         <text identifier="alternateText" label="Alternate Text"/>
                     </group>
                     <group identifier="textFields" label="Text Fields">
                         <text identifier="title" label="Title"/>
-                        <text wysiwyg="true" identifier="body" label="Content"/>
+                        <text identifier="body" label="Content" wysiwyg="true"/>
                     </group>
                     <group identifier="link" label="Link">
-                        <text type="radiobutton" identifier="linkType" label="Link Type" default="Internal Link">
-                            <radio-item value="Internal Link" show-fields="primaryContent/widget/callToAction3Up/cta1/link/internalLink"/>
-                            <radio-item value="External Link" show-fields="primaryContent/widget/callToAction3Up/cta1/link/externalLink"/>
-                            <radio-item value="File Link" show-fields="primaryContent/widget/callToAction3Up/cta1/link/fileLink"/>
+                        <text default="Internal Link" identifier="linkType" label="Link Type" type="radiobutton">
+                            <radio-item show-fields="primaryContent/widget/callToAction3Up/cta1/link/internalLink" value="Internal Link"/>
+                            <radio-item show-fields="primaryContent/widget/callToAction3Up/cta1/link/externalLink" value="External Link"/>
+                            <radio-item show-fields="primaryContent/widget/callToAction3Up/cta1/link/fileLink" value="File Link"/>
                         </text>
-                        <text identifier="externalLink" label="External Link" help-text="full url (including http) to page outside of Cascade"/>
-                        <asset type="page" identifier="internalLink" label="Internal Link"/>
-                        <asset type="file" identifier="fileLink" label="File Link"/>
+                        <text help-text="full url (including http) to page outside of Cascade" identifier="externalLink" label="External Link"/>
+                        <asset identifier="internalLink" label="Internal Link" type="page"/>
+                        <asset identifier="fileLink" label="File Link" type="file"/>
                         <text identifier="label" label="Label"/>
                     </group>
                 </group>
                 <group identifier="cta2" label="Call to Action Center">
                     <group identifier="media" label="Media">
-                        <asset type="file" identifier="fileLink" label="File Link (Exactly 600px by 400px)" help-text="Photo size: exactly 600px width and 400px height"/>
+                        <asset help-text="Photo size: exactly 600px width and 400px height" identifier="fileLink" label="File Link (Exactly 600px by 400px)" type="file"/>
                         <text identifier="alternateText" label="Alternate Text"/>
                     </group>
                     <group identifier="textFields" label="Text Fields">
                         <text identifier="title" label="Title"/>
-                        <text wysiwyg="true" identifier="body" label="Content"/>
+                        <text identifier="body" label="Content" wysiwyg="true"/>
                     </group>
                     <group identifier="link" label="Link">
-                        <text type="radiobutton" identifier="linkType" label="Link Type" default="Internal Link">
-                            <radio-item value="Internal Link" show-fields="primaryContent/widget/callToAction3Up/cta2/link/internalLink"/>
-                            <radio-item value="External Link" show-fields="primaryContent/widget/callToAction3Up/cta2/link/externalLink"/>
-                            <radio-item value="File Link" show-fields="primaryContent/widget/callToAction3Up/cta2/link/fileLink"/>
+                        <text default="Internal Link" identifier="linkType" label="Link Type" type="radiobutton">
+                            <radio-item show-fields="primaryContent/widget/callToAction3Up/cta2/link/internalLink" value="Internal Link"/>
+                            <radio-item show-fields="primaryContent/widget/callToAction3Up/cta2/link/externalLink" value="External Link"/>
+                            <radio-item show-fields="primaryContent/widget/callToAction3Up/cta2/link/fileLink" value="File Link"/>
                         </text>
-                        <text identifier="externalLink" label="External Link" help-text="full url (including http) to page outside of Cascade"/>
-                        <asset type="page" identifier="internalLink" label="Internal Link"/>
-                        <asset type="file" identifier="fileLink" label="File Link"/>
+                        <text help-text="full url (including http) to page outside of Cascade" identifier="externalLink" label="External Link"/>
+                        <asset identifier="internalLink" label="Internal Link" type="page"/>
+                        <asset identifier="fileLink" label="File Link" type="file"/>
                         <text identifier="label" label="Label"/>
                     </group>
                 </group>
                 <group identifier="cta3" label="Call to Action Right">
                     <group identifier="media" label="Media">
-                        <asset type="file" identifier="fileLink" label="File Link (Exactly 600px by 400px)" help-text="Photo size: exactly 600px width and 400px height"/>
+                        <asset help-text="Photo size: exactly 600px width and 400px height" identifier="fileLink" label="File Link (Exactly 600px by 400px)" type="file"/>
                         <text identifier="alternateText" label="Alternate Text"/>
                     </group>
                     <group identifier="textFields" label="Text Fields">
                         <text identifier="title" label="Title"/>
-                        <text wysiwyg="true" identifier="body" label="Content"/>
+                        <text identifier="body" label="Content" wysiwyg="true"/>
                     </group>
                     <group identifier="link" label="Link">
-                        <text type="radiobutton" identifier="linkType" label="Link Type" default="Internal Link">
-                            <radio-item value="Internal Link" show-fields="primaryContent/widget/callToAction3Up/cta3/link/internalLink"/>
-                            <radio-item value="External Link" show-fields="primaryContent/widget/callToAction3Up/cta3/link/externalLink"/>
-                            <radio-item value="File Link" show-fields="primaryContent/widget/callToAction3Up/cta3/link/fileLink"/>
+                        <text default="Internal Link" identifier="linkType" label="Link Type" type="radiobutton">
+                            <radio-item show-fields="primaryContent/widget/callToAction3Up/cta3/link/internalLink" value="Internal Link"/>
+                            <radio-item show-fields="primaryContent/widget/callToAction3Up/cta3/link/externalLink" value="External Link"/>
+                            <radio-item show-fields="primaryContent/widget/callToAction3Up/cta3/link/fileLink" value="File Link"/>
                         </text>
-                        <text identifier="externalLink" label="External Link" help-text="full url (including http) to page outside of Cascade"/>
-                        <asset type="page" identifier="internalLink" label="Internal Link"/>
-                        <asset type="file" identifier="fileLink" label="File Link"/>
+                        <text help-text="full url (including http) to page outside of Cascade" identifier="externalLink" label="External Link"/>
+                        <asset identifier="internalLink" label="Internal Link" type="page"/>
+                        <asset identifier="fileLink" label="File Link" type="file"/>
                         <text identifier="label" label="Label"/>
                     </group>
                 </group>
             </group>
-            <group identifier="chapmanSocialFeed" label="Social.chapman Feed" collapsed="true">
-                <text type="radiobutton" identifier="displayChapmanSocialFeed" label="Show" default="Yes">
+            <group collapsed="true" identifier="chapmanSocialFeed" label="Social.chapman Feed">
+                <text default="Yes" identifier="displayChapmanSocialFeed" label="Show" type="radiobutton">
                     <radio-item value="Yes"/>
                     <radio-item value="No"/>
                 </text>
-                <text type="radiobutton" identifier="bgColor" label="Background Color" default="Light">
+                <text default="Light" identifier="bgColor" label="Background Color" type="radiobutton">
                     <radio-item value="Light"/>
                     <radio-item value="Medium"/>
                     <radio-item value="Dark"/>
                 </text>
                 <text identifier="title" label="Title"/>
-                <group identifier="social-media-link" label="Social Media Link" multiple="true" collapsed="true">
-                    <text type="dropdown" identifier="social-media-type" label="Social Media Type">
+                <group collapsed="true" identifier="social-media-link" label="Social Media Link" multiple="true">
+                    <text identifier="social-media-type" label="Social Media Type" type="dropdown">
                         <dropdown-item value="Facebook"/>
                         <dropdown-item value="GooglePlus"/>
                         <dropdown-item value="iTunes U"/>
@@ -485,87 +527,87 @@
                     </text>
                     <text identifier="link" label="Link"/>
                 </group>
-                <group identifier="socialFeedSettings" label="Social Feed Settings" collapsed="true">
+                <group collapsed="true" identifier="socialFeedSettings" label="Social Feed Settings">
                     <text identifier="feedLink" label="Feed Link" regular-expression="/^(f|ht)tps?:\/\//"/>
                     <text identifier="numberOfPosts" label="Number of Posts" regular-expression="/^\d+$/"/>
                 </group>
             </group>
-            <group identifier="chapmanStoriesFeed" label="Stories Feed" collapsed="true">
-                <text type="radiobutton" identifier="displayChapmanStoriesFeed" label="Show" default="Yes">
+            <group collapsed="true" identifier="chapmanStoriesFeed" label="Stories Feed">
+                <text default="Yes" identifier="displayChapmanStoriesFeed" label="Show" type="radiobutton">
                     <radio-item value="Yes"/>
                     <radio-item value="No"/>
                 </text>
-                <text type="radiobutton" identifier="bgColor" label="Background Color" default="Light">
+                <text default="Light" identifier="bgColor" label="Background Color" type="radiobutton">
                     <radio-item value="Light"/>
                     <radio-item value="Medium"/>
                     <radio-item value="Dark"/>
                 </text>
                 <text identifier="title" label="Title"/>
-                <text identifier="feedUrl" label="Feed Url" help-text="Paste url of a blog site from blogs.chapman"/>
-                <text identifier="topStory" label="Top Story Url" help-text="Paste url of a blog post from blogs.chapman"/>
-                <group identifier="button" label="Button" collapsed="true">
+                <text help-text="Paste url of a blog site from blogs.chapman" identifier="feedUrl" label="Feed Url"/>
+                <text help-text="Paste url of a blog post from blogs.chapman" identifier="topStory" label="Top Story Url"/>
+                <group collapsed="true" identifier="button" label="Button">
                     <text identifier="text" label="Text"/>
-                    <text identifier="link" label="Link" help-text="full url (including http)"/>
+                    <text help-text="full url (including http)" identifier="link" label="Link"/>
                 </group>
             </group>
-            <group identifier="subscribe" label="Campaign Monitor Newsletter Subscribe" collapsed="true">
-                <text type="radiobutton" identifier="display-subscribe" label="Show" default="Yes">
+            <group collapsed="true" identifier="subscribe" label="Campaign Monitor Newsletter Subscribe">
+                <text default="Yes" identifier="display-subscribe" label="Show" type="radiobutton">
                     <radio-item value="Yes"/>
                     <radio-item value="No"/>
                 </text>
-                <text type="radiobutton" identifier="bgColor" label="Background Color" default="Dark">
+                <text default="Dark" identifier="bgColor" label="Background Color" type="radiobutton">
                     <radio-item value="Light"/>
                     <radio-item value="Medium"/>
                     <radio-item value="Dark"/>
                 </text>
                 <text identifier="subscribeMessage" label="Subscribe Message"/>
-                <text multi-line="true" identifier="campaignMonitorHtml" label="Campaign Monitor HTML" help-text="Paste in HTML from Campaign Monitor" rows="15" cols="50"/>
+                <text cols="50" help-text="Paste in HTML from Campaign Monitor" identifier="campaignMonitorHtml" label="Campaign Monitor HTML" multi-line="true" rows="15"/>
             </group>
-            <group identifier="callToActionFooter" label="Call to Action Footer" collapsed="true">
-                <text type="radiobutton" identifier="displayCallToActionFooter" label="Show" default="Yes">
+            <group collapsed="true" identifier="callToActionFooter" label="Call to Action Footer">
+                <text default="Yes" identifier="displayCallToActionFooter" label="Show" type="radiobutton">
                     <radio-item value="Yes"/>
                     <radio-item value="No"/>
                 </text>
-                <text type="radiobutton" identifier="bgColor" label="Background Color" default="White">
+                <text default="White" identifier="bgColor" label="Background Color" type="radiobutton">
                     <radio-item value="White"/>
                     <radio-item value="School Color"/>
                 </text>
                 <text identifier="title" label="Title"/>
-                <group identifier="button" label="Button" multiple="true" maximum-number="3" minimum-number="0">
-                    <text type="radiobutton" identifier="linkType" label="Link Type" default="Internal Link">
-                        <radio-item value="Internal Link" show-fields="primaryContent/widget/callToActionFooter/button/linkType/internalLink"/>
-                        <radio-item value="External Link" show-fields="primaryContent/widget/callToActionFooter/button/linkType/externalLink"/>
-                        <radio-item value="File Link" show-fields="primaryContent/widget/callToActionFooter/button/linkType/fileLink"/>
+                <group identifier="button" label="Button" maximum-number="3" minimum-number="0" multiple="true">
+                    <text default="Internal Link" identifier="linkType" label="Link Type" type="radiobutton">
+                        <radio-item show-fields="primaryContent/widget/callToActionFooter/button/linkType/internalLink" value="Internal Link"/>
+                        <radio-item show-fields="primaryContent/widget/callToActionFooter/button/linkType/externalLink" value="External Link"/>
+                        <radio-item show-fields="primaryContent/widget/callToActionFooter/button/linkType/fileLink" value="File Link"/>
                     </text>
-                    <text identifier="externalLink" label="External Link" help-text="full url (including http) to page outside of Cascade"/>
-                    <asset type="page" identifier="internalLink" label="Internal Link"/>
-                    <asset type="file" identifier="fileLink" label="File Link"/>
+                    <text help-text="full url (including http) to page outside of Cascade" identifier="externalLink" label="External Link"/>
+                    <asset identifier="internalLink" label="Internal Link" type="page"/>
+                    <asset identifier="fileLink" label="File Link" type="file"/>
                     <text identifier="label" label="Label"/>
                 </group>
             </group>
-            <group identifier="contactFooter" label="Contact Footer" collapsed="true">
-                <text type="radiobutton" identifier="displayContactFooter" label="Show" default="Yes">
+            <group collapsed="true" identifier="contactFooter" label="Contact Footer">
+                <text default="Yes" identifier="displayContactFooter" label="Show" type="radiobutton">
                     <radio-item value="Yes"/>
                     <radio-item value="No"/>
                 </text>
-                <text type="radiobutton" identifier="bgColor" label="Background Color" default="Light">
+                <text default="Light" identifier="bgColor" label="Background Color" type="radiobutton">
                     <radio-item value="Light"/>
                     <radio-item value="Medium"/>
                     <radio-item value="Dark"/>
                 </text>
                 <text identifier="phone" label="Phone"/>
                 <text identifier="email" label="Email"/>
-                <group identifier="address" label="Address" collapsed="true">
+                <group collapsed="true" identifier="address" label="Address">
                     <text identifier="name" label="Name"/>
                     <text identifier="address-line-1" label="Address Line 1"/>
                     <text identifier="city" label="City"/>
                     <text identifier="state" label="State"/>
                     <text identifier="zip" label="Zip"/>
                 </group>
-                <group identifier="social-media" label="Social Media" collapsed="true">
+                <group collapsed="true" identifier="social-media" label="Social Media">
                     <text identifier="title" label="Title"/>
-                    <group identifier="social-media-link" label="Social Media Link" multiple="true" collapsed="true">
-                        <text type="dropdown" identifier="social-media-type" label="Social Media Type">
+                    <group collapsed="true" identifier="social-media-link" label="Social Media Link" multiple="true">
+                        <text identifier="social-media-type" label="Social Media Type" type="dropdown">
                             <dropdown-item value="Facebook"/>
                             <dropdown-item value="GooglePlus"/>
                             <dropdown-item value="iTunes U"/>
@@ -582,13 +624,13 @@
             </group>
         </group>
     </group>
-    <group identifier="meta" label="Supplemental Content" collapsed="true">
-        <group identifier="sharing" label="Sharing " collapsed="true">
-            <asset type="file" identifier="og_image" label="OG Image" help-text="Image used for sharing on facebook (130px w, 110px h exactly)"/>
-            <text identifier="og_title" label="OG Title" help-text="Overrides title for when page is shared to facebook (defaults to Display Name)"/>
-            <text identifier="og_description" label="OG Description" help-text="Overrides description when page is shared to facebook"/>
-            <text identifier="twitter_text" label="Twitter Share Text" help-text="The text that prepopulates on twitter (followed by URL and hashtags)"/>
-            <text identifier="twitter_hashtag" label="Twitter Hashtag" multiple="true" maximum-number="3" help-text="Hashtags to get appended to tweet (no #!)"/>
+    <group collapsed="true" identifier="meta" label="Supplemental Content">
+        <group collapsed="true" identifier="sharing" label="Sharing ">
+            <asset help-text="Image used for sharing on facebook (130px w, 110px h exactly)" identifier="og_image" label="OG Image" type="file"/>
+            <text help-text="Overrides title for when page is shared to facebook (defaults to Display Name)" identifier="og_title" label="OG Title"/>
+            <text help-text="Overrides description when page is shared to facebook" identifier="og_description" label="OG Description"/>
+            <text help-text="The text that prepopulates on twitter (followed by URL and hashtags)" identifier="twitter_text" label="Twitter Share Text"/>
+            <text help-text="Hashtags to get appended to tweet (no #!)" identifier="twitter_hashtag" label="Twitter Hashtag" maximum-number="3" multiple="true"/>
         </group>
     </group>
 </system-data-structure>

@@ -8,11 +8,14 @@
 ## Used for repeated code on primary_column widgets
 
 #macro(outputSectionMessage $content)
-    #set ($category = $_EscapeTool.xml($content.getChild('textFields').getChild('category').value) )
-    #set ($title    = $_EscapeTool.xml($content.getChild('textFields').getChild('title').value) )
-    #set ($body     = $_SerializerTool.serialize($content.getChild('textFields').getChild('body'), true) )
-    #set ($button   = $content.getChild('textFields').getChild('button') )
-    #set ($label    = $_EscapeTool.xml($button.getChild('label').value) )
+    #set ($category       = $_EscapeTool.xml($content.getChild('textFields').getChild('category').value) )
+    #set ($title          = $_EscapeTool.xml($content.getChild('textFields').getChild('title').value) )
+    #set ($body           = $_SerializerTool.serialize($content.getChild('textFields').getChild('body'), true) )
+    #set ($button         = $content.getChild('textFields').getChild('button') )
+    #set ($buttonLabel    = $_EscapeTool.xml($button.getChild('label').value) )
+    #set ($dropdownNav    = $content.getChild('textFields').getChild('dropdownNav') )
+    #set ($dropdownLabel  = $_EscapeTool.xml($dropdownNav.getChild('dropdownLabel').value) )
+    #set ($dropdownLinks  = $_XPathTool.selectNodes($dropdownNav, 'dropdownLink') )
 
     <div class="text-column">
         <div class="section-message">
@@ -27,9 +30,26 @@
                     <p>$body</p>
                 </div>
             #end
-            #if ($label != "" && ($content.getChild('format').value != "Stacked"))
+            #if (($buttonLabel != "" || $dropdownLabel != "") && ($content.getChild('format').value != "Stacked"))
                 <div class="actions">
-                    <a #outputHref($button) class="theme-button">$label&#160;</a>
+                    #if ($buttonLabel != "")
+                        <a #outputHref($button) class="theme-button">$buttonLabel&#160;</a>
+                    #end
+                    #if ($dropdownLabel != "")
+                        <nav class="select">
+                            <button class="select-button theme-border-color theme-text-color">
+                                $_EscapeTool.xml($dropdownLabel)
+                                <span class="select-arrow theme-border-color"></span>
+                            </button>
+                            #if ($dropdownLinks.size() > 0)
+                                <ul class="select-list">
+                                    #foreach( $link in $dropdownLinks )
+                                      <li><a #outputHref($link)>$_EscapeTool.xml($link.getChild('label').value)</a></li>
+                                    #end
+                                </ul>
+                            #end
+                        </nav>                        
+                    #end
                 </div>
             #end
         </div>

@@ -1,0 +1,76 @@
+#import( "/_cascade/formats/helpers.velocity" )
+
+#macro(outputFactCardsWithText $element)  
+    #set ($displayFactCardsWithText = $element.getChild('factCardsWithText').getChild('display-fact-cards-with-text').value)
+    #if ($displayFactCardsWithText == 'Yes')
+        #set ($factCardsWithText = $element.getChild('factCardsWithText'))
+        #set ($format = $content.getChild('format').value)
+        #set ($button   = $content.getChild('textFields').getChild('button') )
+        #set ($label    = $_EscapeTool.xml($button.getChild('label').value) )
+        
+        <div class="#outputMessagingClasses($factCardsWithText) messaging-widget__has-fact-cards">
+            <div class="outer-container">
+                #outputSectionMessage($factCardsWithText)
+                #insertFactCardsColumn($factCardsWithText)
+                
+                #if ($format == "Stacked")
+                    <div class="text-actions">
+                        <a #outputHref($button) class="theme-button">$label&#160;</a>
+                    </div>
+                #end 
+            </div>
+        </div>
+    #end
+#end
+
+#macro(insertFactCardsColumn $content)
+    #set($factCards = $_XPathTool.selectNodes($content, 'factCards/factCard'))
+    <div class="media-column">
+        <div class="fact-card-container">
+        #foreach ($factCard in $factCards)
+            <div class="fact-card">#outputFactCard($factCard)</div>
+        #end
+        </div>
+    </div>
+#end
+
+#macro(outputFactCard $cardElement)
+    #set ($card = {
+        "backLinkLabel"       : $_EscapeTool.xml($cardElement.getChild('backLinkLabel').value),
+        "linkType"            : $_XPathTool.selectSingleNode($cardElement, 'link/@type').getValue(),
+        "plainTextLink"       : $cardElement.getChild('plainTextLink').value,
+        "symlink"             : $_XPathTool.selectSingleNode($cardElement, 'link/content/system-symlink').value,
+        "linkPath"            : $cardElement.getChild('link').getChild('path').value,
+        "statNumber"          : $_XPathTool.selectSingleNode($cardElement, 'frontStat/frontStatNumber').value,
+        "statText1"           : $_XPathTool.selectSingleNode($cardElement, 'frontStat/frontStatText1').value,
+        "statText2"           : $_XPathTool.selectSingleNode($cardElement, 'frontStat/frontStatText2').value,
+        "statBackgroundImage" : $_XPathTool.selectSingleNode($cardElement, 'frontStat/frontBackgroundImage').value,
+        "statBackgroundColor" : $_XPathTool.selectSingleNode($cardElement, 'frontStat/frontBackgroundColor').value,
+        "backStat"            : $_XPathTool.selectSingleNode($cardElement, 'backStat/backStat').value
+    })
+    #if ($card.plainTextLink != '')
+        #set ($link = $!card.plainTextLink )
+    #elseif ($card.linkType == 'symlink')
+        #set ($link = $!card.symlink )
+    #elseif ($card.linkPath != '/')
+        #set ($link = $!card.linkPath )
+    #else
+        #set ($link = "#" )
+    #end
+    
+    <div class="fact-card ">
+        <div class="fact-front $card.statBackgroundColor">
+            <div class="fact-image $!card.statBackgroundImage">
+            </div>
+                <div class="fact-content">
+                    <span class="fact-stat-nums">$!card.statNumber</span>
+                    <span class="fact-title-1">$!card.statText1</span>
+                    <span class="fact-title-2">$!card.statText2</span>
+                </div>
+            </div>
+        <div class="fact-back fact-content">
+            <p class="fact-back-text">$!card.backStat</p>
+            <a href="$link" class="fact-link">$!card.backLinkLabel</a>
+        </div>
+    </div>
+#end
