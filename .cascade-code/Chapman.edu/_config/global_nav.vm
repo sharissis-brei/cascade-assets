@@ -16,7 +16,7 @@
       {
         'text': 'Discover Chapman',
         'link': '/discover/index',
-        'iconClass': 'icon-cu-monogram'
+        'iconClass': 'icon-cu-window'
       },
       {
         'text': 'Our Campus',
@@ -26,7 +26,7 @@
       {
         'text': 'Facts and History',
         'link': '/about/facts-history/index',
-        'iconClass': 'icon-cu-monogram'
+        'iconClass': 'icon-library4'
       },
       {
         'text': 'Administration',
@@ -231,7 +231,7 @@
       {
         'text': 'Areas to Support',
         'link': '/support-chapman/ways-to-give/areas-to-support',
-        'iconClass': 'icon-cu-monogram'
+        'iconClass': 'icon-cu-window'
       },
       {
         'text': 'Alumni Involvement',
