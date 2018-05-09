@@ -60,7 +60,7 @@
         'iconClass': 'icon-calendar4'
       },
       {
-        'text': 'Faculty',
+        'text': 'Faculty Directory',
         'link': '/our-faculty/index',
         'iconClass': 'icon-profile'
       },
