@@ -60,6 +60,11 @@
         'iconClass': 'icon-calendar4'
       },
       {
+        'text': 'Faculty Directory',
+        'link': '/our-faculty/index',
+        'iconClass': 'icon-profile'
+      },
+      {
         'text': 'Libraries',
         'link': '/academics/libraries/index',
         'iconClass': 'icon-books'
