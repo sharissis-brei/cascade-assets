@@ -1,44 +1,28 @@
 <div id="heroWrapper">
-  <div id="mastheadNavigationWrapper" class="maxWidth">
-    <div id="mastheadNavigation">
-      <button id="showNewerContent" class="smallButton disabled">Newer</button>
-      <button id="changeVolume" class="smallButton disabled muted">Mute</button>
-      <button id="showOlderContent" class="smallButton disabled">Older</button>
+  <div class="maxWidth" id="mastheadNavigationWrapper">
+    <div id="mastheadNavigation" style="display: block;">
+      <button class="smallButton disabled" id="showNewerContent" style="touch-action: pan-y; user-select: none; -webkit-user-drag: none; -webkit-tap-highlight-color: rgba(0, 0, 0, 0);">Newer</button>
+      <button class="smallButton disabled muted" id="changeVolume">Mute</button>
+      <button class="smallButton" id="showOlderContent" style="touch-action: pan-y; user-select: none; -webkit-user-drag: none; -webkit-tap-highlight-color: rgba(0, 0, 0, 0);">Older</button>
     </div>
   </div>
-  <section id="hero" class="dark-bg align-left" style="background-image:url('http://www.chapman.edu/_files/img/hero-panels/fallback-images/hilbert-art.jpg');">
-    <div id="mastheadContent" class="maxWidth">
-      <span class="tagline" role="heading">Optional Tagline goes here <span class="tagline-line-2">Optional Tagline, Line 2</span></span>
+  <section aria-label="red slash with connecting lines for Chapman brand launch" class="dark-bg align-center video-playing" id="hero" role="img" style="background-image:url('http://www.chapman.edu/_files/img/hero-panels/fallback-images/anything-imaginable.jpg');">
+
+    <div class="maxWidth" id="mastheadContent">
+      <span class="tagline " role="heading">Experiment boldly. <span class="tagline-line-2">Act thoughtfully.</span></span>
       <h2>
-        <span class="heading bold fast_transition" style="position: relative; left: 0px; opacity: 1;">California Scene Painting:</span>
-        <span class="subheading thin bold fast_transition" style="position: relative; left: 0px; opacity: 1;">A Narrative Revolution</span>
+        <span class="heading bold ">DO ANYTHING </span>
+        <span class="subheading thin bold ">IMAGINABLE</span>
       </h2>
-
-      <p class="excerpt fast_transition" style="position: relative; left: 0px; opacity: 1;">The once overlooked California Scene painting movement gets the recognition it deserves and a new home at the Hilbert Museum of California Art at Chapman University.</p>
-
       <div class="actions fast_transition" style="position: relative; left: 0px; opacity: 1;">
-        <!-- # Watch Video Button
-             # There's some Javascript that tweaks this and was causing an issue.
-             # See https://github.com/chapmanu/cascade-assets/issues/93
-             # -->
-        <a href="https://www.youtube.com/watch?v=Rr0XAFbe8b8"
-           class="button white smc-cta "
-           id="secondary"
-           data-cta-id="homepage-hero-fear-survey-2016"
-           data-quickview-content='<iframe width="80%" height="80%" src="//www.youtube.com/embed/Rr0XAFbe8b8?rel=0&autoplay=1" frameborder="0" allowfullscreen></iframe>'
-           title="click to go to YouTube to watch Chapman Fear Survey promo video">
-          Watch Video
-        </a>
-
-        <a href="/" class="button white smc-cta" id="primary" data-cta-id="homepage-hero-sample">Visit HilbertMuseum.org</a>
+        <a class="button smc-cta " data-cta-id="homepage-hero-anything-imaginable" href="academics/degrees-and-programs.aspx" id="secondary" title="link to our degrees and programs discovery search">Explore Our Degrees and Programs</a>
+        <a class="button smc-cta " data-cta-id="homepage-hero-anything-imaginable" href="about/visit-chapman/index.aspx" id="primary" title="Learn More">Plan a Visit to Chapman</a>
       </div>
     </div>
-
     <div id="mastheadGradient"></div>
-
-    <div id="mastheadBackground">
+    <div id="mastheadBackground">       
       <video id="mastheadVideo" muted="muted" loop="loop" autoplay="autoplay" style="display:none;"></video>
-      <img id="mastheadImage" src="http://www.chapman.edu/_files/img/hero-panels/fallback-images/hilbert-art.jpg" alt="California Scene Painting" />
+      <img id="mastheadImage" src="http://www.chapman.edu/_files/img/hero-panels/fallback-images/anything-imaginable.jpg" alt="Anything Imaginable" />
     </div>
   </section>
 </div>

@@ -16,7 +16,7 @@
       {
         'text': 'Discover Chapman',
         'link': '/discover/index',
-        'iconClass': 'icon-cu-monogram'
+        'iconClass': 'icon-cu-window'
       },
       {
         'text': 'Our Campus',
@@ -26,7 +26,7 @@
       {
         'text': 'Facts and History',
         'link': '/about/facts-history/index',
-        'iconClass': 'icon-cu-monogram'
+        'iconClass': 'icon-library4'
       },
       {
         'text': 'Administration',
@@ -58,6 +58,11 @@
         'text': 'Academic Calendar',
         'link': '/academics/academic-calendar',
         'iconClass': 'icon-calendar4'
+      },
+      {
+        'text': 'Faculty Directory',
+        'link': '/our-faculty/index',
+        'iconClass': 'icon-profile'
       },
       {
         'text': 'Libraries',
@@ -114,6 +119,27 @@
         'text': 'Campus Tours',
         'link': '/admission/undergraduate/visit',
         'iconClass': 'icon-office'
+      }
+    ]
+  },
+  {
+    'sectionTitle': 'Alumni',
+    'sectionLink': '/alumni/index',
+    'dropdown': [
+      {
+        'text': 'Events',
+        'link': '/alumni/events/index',
+        'iconClass': 'icon-calendar4'
+      },
+      {
+        'text': 'Get Involved',
+        'link': '/alumni/get-involved/index',
+        'iconClass': 'icon-hand'
+      },
+      {
+        'text': 'Career Support',
+        'link': '/campus-services/career-professional-development/index',
+        'iconClass': 'icon-paw'
       }
     ]
   },
@@ -210,11 +236,11 @@
       {
         'text': 'Areas to Support',
         'link': '/support-chapman/ways-to-give/areas-to-support',
-        'iconClass': 'icon-cu-monogram'
+        'iconClass': 'icon-cu-window'
       },
       {
-        'text': 'Alumni',
-        'link': '/alumni/index',
+        'text': 'Alumni Involvement',
+        'link': '/alumni/get-involved/index',
         'iconClass': 'icon-paw'
       }
     ]

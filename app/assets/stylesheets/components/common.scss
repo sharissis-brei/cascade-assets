@@ -158,19 +158,6 @@
   background: #FFFFBD;
 }
 
-.alert {
-  margin: 75px 0 -100px 0;
-  font-size: large;
-  line-height: 40px;
-  background-color: Red;
-  color: $white;
-  text-align: center;
-  a {
-    color: $white;
-    text-decoration: underline;
-  }
-}
-
 .twitter {
   background-position: -2px -1px;
   @include bp(m) {
